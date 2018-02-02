@@ -1,0 +1,15 @@
+= Bash & Git costumization
+:numbered:
+
+:BASH_PROFILE_PATH: ~/.bash_profile
+
+== Extend `{BASH_PROFILE_PATH}`
+
+Insert in the end of `{BASH_PROFILE_PATH}` the following code :
+
+[source,shell]
+----
+if [ -f ~/bashgit/bash/bash_profile.sh ]; then
+    . ~/bashgit/bash/bash_profile.sh
+fi
+----
