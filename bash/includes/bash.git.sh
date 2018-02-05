@@ -5,5 +5,5 @@ function git_get_current_branch {
 }
 
 function git_get_changes_nb {
-    git status --porcelain | wc -l
+    git status --porcelain 2> /dev/null | wc -l
 }
