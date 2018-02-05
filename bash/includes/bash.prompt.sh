@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
 
 function prompt_ps1_format {
-    local _PROMPT_TIME="$C_LIGHT_RED\t"
-    local _PROMPT_USER="$C_LIGHT_GREEN$USER@"
-    local _PROMPT_HOST="$C_LIGHT_CYAN\h"
-    local _PROMPT_LOCATION="$C_LIGHT_BLUE$(get_current_working_dir)"
+    local _TIME="$C_LIGHT_RED\t"
+    local _USER="$C_LIGHT_GREEN$USER@"
+    local _HOST="$C_LIGHT_CYAN\h"
+    local _DIR="$C_LIGHT_BLUE$(get_current_working_dir)"
 
-    local _PROMPT_BRANCH=""
+    local _BRANCH=""
     if [[ -n "$(git_get_current_branch)" ]]; then
-        _PROMPT_BRANCH=" $C_LIGHT_YELLOW$(git_get_current_branch)"
+        _BRANCH=" $C_LIGHT_YELLOW$(git_get_current_branch)"
 
         if [[ "$(git_get_changes_nb)" > 0 ]]; then
-            _PROMPT_BRANCH="$_PROMPT_BRANCH ($(git_get_changes_nb))"
+            _BRANCH="$_BRANCH ($(git_get_changes_nb))"
         fi
     fi
 
-    local _PROMPT_END="$F_RESET\n\$ "
+    local _END="$F_RESET\n\$ "
 
-    PS1="$_PROMPT_TIME $_PROMPT_USER$_PROMPT_HOST $_PROMPT_LOCATION$_PROMPT_BRANCH$_PROMPT_END"
+    PS1="$_TIME $_USER$_HOST $_DIR$_BRANCH$_END"
 }
 
 function prompt_ps2_format {
