@@ -51,7 +51,6 @@ function formatting_print_all {
     echo -e "Normal ${F_BOLD}Bold${F_RESET}"
     echo -e "Normal ${F_INVERTED}Inverted${F_RESET}"
     echo -e "Normal ${F_HIDDEN}Hidden${F_RESET}"
-    echo "End"
 
     echo
 
