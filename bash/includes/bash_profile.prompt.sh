@@ -6,3 +6,5 @@ LOCATION=' \033[01;94m\]`pwd | sed "s#\(/[^/]\{1,\}/[^/]\{1,\}/[^/]\{1,\}/\).*\(
 BRANCH=' \033[01;33m\]BRANCH\[\033[00m\]\n\$ '
 PS1=$TIME$USER$HOST$LOCATION$BRANCH
 PS2='\[\033[01;36m\]>'
+
+hello
