@@ -1,9 +1,15 @@
-= Git & Bash Workflow
+= Git Bash Workflow
 :numbered:
 
 :BASH_PROFILE_PATH: ~/.bash_profile
 
-== Extend `{BASH_PROFILE_PATH}`
+== Git customization
+
+TODO
+
+== Bash customization
+
+=== Extend `{BASH_PROFILE_PATH}`
 
 Insert in the end of `{BASH_PROFILE_PATH}` the following code :
 
@@ -13,3 +19,4 @@ if [ -f ~/git-bash-workflow/bash/bash_profile.sh ]; then
     . ~/git-bash-workflow/bash/bash_profile.sh
 fi
 ----
+
