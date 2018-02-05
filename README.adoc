@@ -1,5 +1,12 @@
 = Git Bash Workflow
 :numbered:
+:toc: macro
+
+:toc-title: Summary
+:toclevels: 2
+toc::[]
+
+'''
 
 :BASH_PROFILE_PATH: ~/.bash_profile
 
