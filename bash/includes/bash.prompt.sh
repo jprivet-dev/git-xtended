@@ -21,10 +21,9 @@ function prompt_ps1_format {
 }
 
 function prompt_ps2_format {
-    echo "$C_CYAN>"
+    PS2="$C_CYAN>"
 }
 
 PROMPT_COMMAND='prompt_ps1_format'
-
-#PS2=$(prompt_ps2_format)
+prompt_ps2_format
 
