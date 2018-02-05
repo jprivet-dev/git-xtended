@@ -20,6 +20,3 @@ function prompt_ps2_format {
     echo "$C_CYAN>"
 }
 
-PS1=$(prompt_ps1_format)
-PS2=$(prompt_ps2_format)
-
