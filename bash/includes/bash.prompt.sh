@@ -7,8 +7,8 @@ function prompt_ps1_format {
     _PROMPT_LOCATION="$C_LIGHT_BLUE$(get_current_working_dir)"
 
     _PROMPT_BRANCH=""
-    if [[ -n "$(get_current_git_branch)" ]]; then
-        _PROMPT_BRANCH=" $C_LIGHT_YELLOW($(get_current_git_branch))"
+    if [[ -n "$(git_get_current_branch)" ]]; then
+        _PROMPT_BRANCH=" $C_LIGHT_YELLOW($(git_get_current_branch))"
     fi
 
     _PROMPT_END="$F_RESET\n\$ "
