@@ -9,7 +9,7 @@ Insérer à la fin du fichier `{BASH_PROFILE_PATH}` le code suivant :
 
 [source,shell]
 ----
-if [ -f ~/bashgit/bash/bash_profile.sh ]; then
-    . ~/bashgit/bash/bash_profile.sh
+if [ -f ~/git-bash-workflow/bash/bash_profile.sh ]; then
+    . ~/git-bash-workflow/bash/bash_profile.sh
 fi
 ----
