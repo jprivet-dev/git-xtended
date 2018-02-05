@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-. ~/bashgit/bash/_bp.prompt.sh
+. ~/git-bash-workflow/bash/_bp.prompt.sh
