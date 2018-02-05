@@ -3,3 +3,7 @@
 function git_get_current_branch {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
+
+function git_get_changes_nb {
+    git status --porcelain | wc -l
+}
