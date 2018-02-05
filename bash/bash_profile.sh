@@ -11,5 +11,6 @@
 
 echo "# Bash profile extension"
 
+source ~/git-bash-workflow/bash/includes/bash.variables.sh
 source ~/git-bash-workflow/bash/includes/bash.functions.sh
 source ~/git-bash-workflow/bash/includes/bash_profile.prompt.sh
