@@ -8,7 +8,7 @@ function prompt_ps1_format {
 
     _PROMPT_BRANCH=""
     if [[ -n "$(git_get_current_branch)" ]]; then
-        _PROMPT_BRANCH=" $C_LIGHT_YELLOW($(git_get_current_branch))"
+        _PROMPT_BRANCH=" $C_LIGHT_YELLOW[$(git_get_changes_nb)] $(git_get_current_branch)"
     fi
 
     _PROMPT_END="$F_RESET\n\$ "
