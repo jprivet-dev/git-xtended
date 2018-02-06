@@ -57,7 +57,7 @@ function git_get_status_changes_to_be_committed_count {
 }
 
 function git_get_status_changes_not_staged_for_commit_count {
-    git status --porcelain 2> /dev/null | grep '^.M' | wc -l
+    git status --porcelain 2> /dev/null | grep '^.[^? ]' | wc -l
 }
 
 function git_get_status_untracked_files_count {
