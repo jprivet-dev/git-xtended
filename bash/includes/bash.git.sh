@@ -43,3 +43,16 @@ function git_get_changes_nb {
 function git_diff_current_branch_origin_dev {
     git diff --stat origin/dev 2> /dev/null
 }
+
+function git_get_status_count_changes_to_be_committed {
+    git status --porcelain 2> /dev/null | grep '^M ' | wc -l
+}
+
+function git_get_status_count_changes_not_staged_for_commit {
+    git status --porcelain 2> /dev/null | grep '^ M' | wc -l
+}
+
+function git_get_status_count_untracked_files {
+    git status --porcelain 2> /dev/null | grep '^??' | wc -l
+}
+
