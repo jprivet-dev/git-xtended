@@ -13,6 +13,7 @@ function prompt_ps1_format {
     local _STATUS_NOT_STAGED=""
     local _STATUS_UNTRACKED=""
     local _STATUS=""
+    local _AHEAD_BEHIND="\n$(git_status_ahead_count) commits ahead, $(git_status_behind_count) commit behind origin/dev"
     local _END="$F_RESET\n\$ "
 
     if [[ -n "$(git_get_current_branch)" ]]; then
@@ -40,7 +41,7 @@ function prompt_ps1_format {
         fi
     fi
 
-    PS1="$_TIME $_USER$_HOST $_DIR$_BRANCH$_STATUS$_END"
+    PS1="$_TIME $_USER$_HOST $_DIR$_BRANCH$_STATUS$_AHEAD_BEHIND$_END"
 }
 
 function prompt_ps2_format {
