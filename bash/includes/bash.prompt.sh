@@ -6,9 +6,9 @@ function prompt_ps1_format {
     local _HOST="$C_LIGHT_CYAN\h"
     local _DIR="$C_LIGHT_BLUE$(get_current_working_dir)"
     local _BRANCH=""
-    local _STATUS_TO_BE_COMMITED_COUNT="$(git_get_status_count_changes_to_be_committed)"
-    local _STATUS_NOT_STAGED_COUNT="$(git_get_status_count_changes_not_staged_for_commit)"
-    local _STATUS_UNTRACKED_COUNT="$(git_get_status_count_untracked_files)"
+    local _STATUS_TO_BE_COMMITED_COUNT="$(git_get_status_changes_to_be_committed_count)"
+    local _STATUS_NOT_STAGED_COUNT="$(git_get_status_changes_not_staged_for_commit_count)"
+    local _STATUS_UNTRACKED_COUNT="$(git_get_status_untracked_files_count)"
     local _STATUS_TO_BE_COMMITED=""
     local _STATUS_NOT_STAGED=""
     local _STATUS_UNTRACKED=""
@@ -21,7 +21,7 @@ function prompt_ps1_format {
         if [[ "$(git_get_changes_nb)" > 0 ]]; then
             _BRANCH="$_BRANCH ($(git_get_changes_nb))"
 
-            _STATUS_TO_BE_COMMITED="${C_LIGHT_GREEN}M$_STATUS_TO_BE_COMMITED_COUNT${F_RESET}"
+            _STATUS_TO_BE_COMMITED="${C_LIGHT_GREEN}C$_STATUS_TO_BE_COMMITED_COUNT${F_RESET}"
             if [[ "$_STATUS_TO_BE_COMMITED_COUNT" > 0 ]]; then
                 _STATUS_TO_BE_COMMITED="$F_UNDERLINED$_STATUS_TO_BE_COMMITED"
             fi
