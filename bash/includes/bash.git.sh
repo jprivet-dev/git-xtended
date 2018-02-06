@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+function git_apply_global_config {
+    git config --global alias.co checkout
+    git config --global alias.b branch
+    git config --global alias.c commit -m
+    git config --global alias.s status
+    git config --global alias.l "log -12 --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)%ar %C(auto,green)%<(9,trunc)%aN%Cred%d %Creset%s'"
+    git config --global alias.ll "log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)%ar %C(auto,green)%<(9,trunc)%aN%Cred%d %Creset%s'"
+}
+
 function git_get_current_branch {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
