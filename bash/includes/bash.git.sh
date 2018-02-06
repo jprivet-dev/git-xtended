@@ -12,11 +12,13 @@ function git_apply_global_config {
     git config --global alias.co checkout
 
     # git log
-    git config --global alias.l "log -12 --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)%ar %C(auto,green)%<(9,trunc)%aN%Cred%d %Creset%s'"
-    git config --global alias.ll "log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)%ar %C(auto,green)%<(9,trunc)%aN%Cred%d %Creset%s'"
+    local git_log_oneline="log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h%C(white) | %C(cyan)%ar%C(white) | %C(auto,green)%<(9,trunc)%aN%C(white) |%C(red reverse)%d %C(reset)%s'"
+    git config --global alias.l "$git_log_oneline -12"
+    git config --global alias.ll "$git_log_oneline"
 
     # git reset
-    git config --global alias.rrr "reset --hard HEAD"
+    git config --global alias.untracked "clean -f -d"
+    git config --global alias.rrr "!sh -c 'git clean -f -d; git reset --hard HEAD'"
 
     # git status
     git config --global alias.s "status -s"
