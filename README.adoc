@@ -1,0 +1,29 @@
+= Git Bash Workflow
+:numbered:
+:toc: macro
+
+:toc-title: Summary
+:toclevels: 2
+toc::[]
+
+'''
+
+:BASH_PROFILE_PATH: ~/.bash_profile
+
+== Git customization
+
+TODO
+
+== Bash customization
+
+=== Extend `{BASH_PROFILE_PATH}`
+
+Insert in the end of `{BASH_PROFILE_PATH}` the following code :
+
+[source,shell]
+----
+if [ -f ~/git-bash-workflow/bash/bash_profile.sh ]; then
+    . ~/git-bash-workflow/bash/bash_profile.sh
+fi
+----
+
