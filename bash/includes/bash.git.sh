@@ -7,6 +7,7 @@ function git_apply_global_config {
     # git commit
     git config --global alias.c "commit -m"
     git config --global alias.amend "commit -m --amend"
+    git config --global alias.undo "reset --soft HEAD^"
 
     # git checkout
     git config --global alias.co checkout
@@ -22,6 +23,7 @@ function git_apply_global_config {
 
     git config --global alias.l "$_ONELINE -12"
     git config --global alias.ll "$_ONELINE"
+    git config --global alias.lcount "shortlog -sn"
 
     # git reset
     git config --global alias.untracked "clean -f -d"
