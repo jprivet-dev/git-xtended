@@ -4,6 +4,9 @@ function git_apply_global_config {
     # git branch
     git config --global alias.b branch
 
+    # git diff
+    git config --global alias.d "diff --function-context"
+
     # git commit
     git config --global alias.c "commit -m"
     git config --global alias.amend "commit -m --amend"
