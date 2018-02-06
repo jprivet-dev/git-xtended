@@ -35,6 +35,9 @@ function git_apply_global_config {
     # git status
     git config --global alias.s "status -s"
     git config --global alias.ss status
+
+    # git grep
+    git config --global alias.sniffer "grep --break --heading --line-number --extended-regexp 'dump\(|console\.[^(]+\('"
 }
 
 function git_get_current_branch {
