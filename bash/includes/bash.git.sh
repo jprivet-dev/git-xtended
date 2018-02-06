@@ -1,12 +1,26 @@
 #!/usr/bin/env bash
 
 function git_apply_global_config {
-    git config --global alias.co checkout
+    # git branch
     git config --global alias.b branch
-    git config --global alias.c commit -m
-    git config --global alias.s status
+
+    # git commit
+    git config --global alias.c "commit -m"
+    git config --global alias.amend "commit -m --amend"
+
+    # git checkout
+    git config --global alias.co checkout
+
+    # git log
     git config --global alias.l "log -12 --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)%ar %C(auto,green)%<(9,trunc)%aN%Cred%d %Creset%s'"
     git config --global alias.ll "log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)%ar %C(auto,green)%<(9,trunc)%aN%Cred%d %Creset%s'"
+
+    # git reset
+    git config --global alias.rrr "reset --hard HEAD"
+
+    # git status
+    git config --global alias.s "status -s"
+    git config --global alias.ss status
 }
 
 function git_get_current_branch {
