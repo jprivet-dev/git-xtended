@@ -9,7 +9,7 @@ function gbw__prompt_branch {
 }
 
 function gbw__prompt_changes_count {
-    if [[ -z "$(git_get_current_branch)" ]]; then
+    if [[ -z "$(git_get_current_branch)" ]] || [[ "$(git_get_changes_nb)" == 0 ]]; then
         echo ""; return
     fi
 
