@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+function gbw__prompt_branch {
+    local prompt_branch=""
+
+    if [[ -n "$(git_get_current_branch)" ]]; then
+        prompt_branch="$C_LIGHT_YELLOW$(git_get_current_branch)"
+    fi
+
+    echo "$prompt_branch"
+}
+
 function gbw__prompt_ps1 {
     local _TIME="$C_LIGHT_RED\t"
     local _USER="$C_LIGHT_GREEN$USER@"
@@ -27,7 +37,7 @@ function gbw__prompt_ps1 {
     local _END="$_BEHIND_ALERT$F_RESET\$ "
 
     if [[ -n "$(git_get_current_branch)" ]]; then
-        _BRANCH=" $C_LIGHT_YELLOW$(git_get_current_branch)"
+        _BRANCH=" $(gbw__prompt_branch)"
 
         if [[ "$(git_get_changes_nb)" > 0 ]]; then
             _BRANCH="$_BRANCH ($(git_get_changes_nb))"
