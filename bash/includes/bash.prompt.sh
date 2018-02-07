@@ -16,6 +16,33 @@ function gbw_prompt_changes_count {
     echo "$C_LIGHT_YELLOW($(git_get_changes_nb))$F_RESET"
 }
 
+function gbw_prompt_status_to_be_commited {
+    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+        return
+    fi
+
+    local count="$(git_get_status_changes_to_be_committed_count)"
+    local format="$C_LIGHT_GREEN"
+
+    if [[ "$count" > 0 ]]; then
+        format="$F_UNDERLINED$format"
+    fi
+
+    echo "${format}${count}c${F_RESET}"
+}
+
+function gbw_prompt_status_not_staged {
+    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+        return
+    fi
+}
+
+function gbw_prompt_status_untracked {
+    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+        return
+    fi
+}
+
 function gbw_prompt_status {
     local _STATUS_TO_BE_COMMITED_COUNT="$(git_get_status_changes_to_be_committed_count)"
     local _STATUS_NOT_STAGED_COUNT="$(git_get_status_changes_not_staged_for_commit_count)"
@@ -26,10 +53,7 @@ function gbw_prompt_status {
     local _STATUS=""
 
     if [[ "$(git_get_changes_nb)" > 0 ]]; then
-        _STATUS_TO_BE_COMMITED="${C_LIGHT_GREEN}${_STATUS_TO_BE_COMMITED_COUNT}c${F_RESET}"
-        if [[ "$_STATUS_TO_BE_COMMITED_COUNT" > 0 ]]; then
-            _STATUS_TO_BE_COMMITED="$F_UNDERLINED$_STATUS_TO_BE_COMMITED"
-        fi
+        _STATUS_TO_BE_COMMITED="$(gbw_prompt_status_to_be_commited)"
 
         _STATUS_NOT_STAGED="${C_LIGHT_RED}$_STATUS_NOT_STAGED_COUNT!${F_RESET}"
         if [[ "$_STATUS_NOT_STAGED_COUNT" > 0 ]]; then
