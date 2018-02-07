@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function prompt_ps1_format {
+function gbw__prompt_ps1 {
     local _TIME="$C_LIGHT_RED\t"
     local _USER="$C_LIGHT_GREEN$USER@"
     local _HOST="$C_LIGHT_CYAN\h"
@@ -54,10 +54,10 @@ function prompt_ps1_format {
     PS1="$_TIME $_USER$_HOST $_DIR$_BRANCH$_STATUS $_AHEAD_BEHIND\n$_END"
 }
 
-function prompt_ps2_format {
+function gbw__prompt_ps2 {
     PS2="$C_CYAN>"
 }
 
-PROMPT_COMMAND='prompt_ps1_format'
-prompt_ps2_format
+PROMPT_COMMAND='gbw__prompt_ps1'
+gbw__prompt_ps2
 
