@@ -65,9 +65,9 @@ function git_get_status_untracked_files_count {
 }
 
 function git_status_ahead_count {
-    git rev-list --left-right --count $1...origin/dev | cut -f 1
+    git rev-list --left-right --count $1...origin/dev 2> /dev/null | cut -f 1
 }
 
 function git_status_behind_count {
-    git rev-list --left-right --count origin/dev...1-prompt-configuration | cut -f 1
+    git rev-list --left-right --count origin/dev...1-prompt-configuration 2> /dev/null | cut -f 1
 }
