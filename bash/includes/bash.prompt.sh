@@ -4,7 +4,7 @@ function gbw__prompt_branch {
     local prompt_branch=""
 
     if [[ -n "$(git_get_current_branch)" ]]; then
-        prompt_branch="$C_LIGHT_YELLOW$(git_get_current_branch)"
+        prompt_branch="$C_LIGHT_YELLOW$(git_get_current_branch)$F_RESET"
     fi
 
     echo "$prompt_branch"
@@ -14,7 +14,7 @@ function gbw__prompt_changes_count {
     local count=""
 
     if [[ -n "$(git_get_current_branch)" ]]; then
-        count="$C_LIGHT_YELLOW($(git_get_changes_nb))"
+        count="$C_LIGHT_YELLOW($(git_get_changes_nb))$F_RESET"
     fi
 
     echo "$count"
