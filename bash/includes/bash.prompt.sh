@@ -20,6 +20,37 @@ function gbw__prompt_changes_count {
     echo "$count"
 }
 
+function gbw__prompt_status {
+    local _STATUS_TO_BE_COMMITED_COUNT="$(git_get_status_changes_to_be_committed_count)"
+    local _STATUS_NOT_STAGED_COUNT="$(git_get_status_changes_not_staged_for_commit_count)"
+    local _STATUS_UNTRACKED_COUNT="$(git_get_status_untracked_files_count)"
+    local _STATUS_TO_BE_COMMITED=""
+    local _STATUS_NOT_STAGED=""
+    local _STATUS_UNTRACKED=""
+    local _STATUS=""
+
+    if [[ "$(git_get_changes_nb)" > 0 ]]; then
+        _STATUS_TO_BE_COMMITED="${C_LIGHT_GREEN}${_STATUS_TO_BE_COMMITED_COUNT}c${F_RESET}"
+        if [[ "$_STATUS_TO_BE_COMMITED_COUNT" > 0 ]]; then
+            _STATUS_TO_BE_COMMITED="$F_UNDERLINED$_STATUS_TO_BE_COMMITED"
+        fi
+
+        _STATUS_NOT_STAGED="${C_LIGHT_RED}$_STATUS_NOT_STAGED_COUNT!${F_RESET}"
+        if [[ "$_STATUS_NOT_STAGED_COUNT" > 0 ]]; then
+            _STATUS_NOT_STAGED="$F_UNDERLINED$_STATUS_NOT_STAGED"
+        fi
+
+        _STATUS_UNTRACKED="${C_LIGHT_RED}$_STATUS_UNTRACKED_COUNT?${F_RESET}"
+        if [[ "$_STATUS_UNTRACKED_COUNT" > 0 ]]; then
+            _STATUS_UNTRACKED="$F_UNDERLINED$_STATUS_UNTRACKED"
+        fi
+
+        _STATUS="$_STATUS_TO_BE_COMMITED $_STATUS_NOT_STAGED $_STATUS_UNTRACKED"
+    fi
+
+    echo "$_STATUS"
+}
+
 function gbw__prompt_ps1 {
     local _TIME="$C_LIGHT_RED\t"
     local _USER="$C_LIGHT_GREEN$USER@"
@@ -53,27 +84,11 @@ function gbw__prompt_ps1 {
 
         if [[ "$(git_get_changes_nb)" > 0 ]]; then
             _BRANCH=" $_BRANCH $_CHANGES_COUNT"
-
-            _STATUS_TO_BE_COMMITED="${C_LIGHT_GREEN}${_STATUS_TO_BE_COMMITED_COUNT}c${F_RESET}"
-            if [[ "$_STATUS_TO_BE_COMMITED_COUNT" > 0 ]]; then
-                _STATUS_TO_BE_COMMITED="$F_UNDERLINED$_STATUS_TO_BE_COMMITED"
-            fi
-
-            _STATUS_NOT_STAGED="${C_LIGHT_RED}$_STATUS_NOT_STAGED_COUNT!${F_RESET}"
-            if [[ "$_STATUS_NOT_STAGED_COUNT" > 0 ]]; then
-                _STATUS_NOT_STAGED="$F_UNDERLINED$_STATUS_NOT_STAGED"
-            fi
-
-            _STATUS_UNTRACKED="${C_LIGHT_RED}$_STATUS_UNTRACKED_COUNT?${F_RESET}"
-            if [[ "$_STATUS_UNTRACKED_COUNT" > 0 ]]; then
-                _STATUS_UNTRACKED="$F_UNDERLINED$_STATUS_UNTRACKED"
-            fi
-
-            _STATUS=" $_STATUS_TO_BE_COMMITED $_STATUS_NOT_STAGED $_STATUS_UNTRACKED"
+            _STATUS="$(gbw__prompt_status)"
         fi
     fi
 
-    PS1="$_TIME $_USER$_HOST $_DIR$_BRANCH$_STATUS $_AHEAD_BEHIND\n$_END"
+    PS1="$_TIME $_USER$_HOST $_DIR$_BRANCH $_STATUS $_AHEAD_BEHIND\n$_END"
 }
 
 function gbw__prompt_ps2 {
