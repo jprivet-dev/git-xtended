@@ -53,7 +53,7 @@ function gbw__prompt_status {
 
 function gbw__prompt_ps1 {
     local _TIME="$C_LIGHT_RED\t"
-    local _USER="$C_LIGHT_GREEN$USER@"
+    local _USER="$C_LIGHT_GREEN$USER"
     local _HOST="$C_LIGHT_CYAN\h"
     local _DIR="$C_LIGHT_BLUE$(get_current_working_dir)"
     local _BRANCH=""
@@ -88,7 +88,9 @@ function gbw__prompt_ps1 {
         fi
     fi
 
-    PS1="$_TIME $_USER$_HOST $_DIR$_BRANCH $_STATUS $_AHEAD_BEHIND\n$_END"
+    local user_host="$(gbw_implode @ \"$_USER\" \"$_HOST\")"
+
+    PS1="$_TIME $user_host $_DIR$_BRANCH $_STATUS $_AHEAD_BEHIND\n$_END"
 }
 
 function gbw__prompt_ps2 {
