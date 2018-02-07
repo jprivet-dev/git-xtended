@@ -108,7 +108,15 @@ function gbw_prompt_behind {
         return
     fi
 
-    echo "$C_LIGHT_GRAY$(git_status_behind_count $(git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)↓$F_RESET"
+    local count="$(git_status_behind_count $(git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local format="$C_LIGHT_GRAY"
+
+    if [[ -z "$count" ]]; then
+        count="x"
+        format="$C_LIGHT_RED"
+    fi
+
+    echo "$format$count↓$F_RESET"
 }
 
 function gbw_prompt_ahead {
@@ -116,7 +124,15 @@ function gbw_prompt_ahead {
         return
     fi
 
-    echo "$C_LIGHT_GRAY$(git_status_ahead_count $(git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)↑$F_RESET"
+    local count="$(git_status_ahead_count $(git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local format="$C_LIGHT_GRAY"
+
+    if [[ -z "$count" ]]; then
+        count="x"
+        format="$C_LIGHT_RED"
+    fi
+
+    echo "$format$count↑$F_RESET"
 }
 
 function gbw_prompt_ps1 {
