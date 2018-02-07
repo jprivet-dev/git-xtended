@@ -9,7 +9,8 @@ toc::[]
 '''
 
 :BASHRC_PATH: ~/.bashrc
-:GBW_PATH: ~/git-bash-workflow/gbw.sh
+:GBW_FILE: gbw.sh
+:GBW_PATH: ~/git-bash-workflow/{GBW_FILE}
 :GIT_PROJECT: https://github.com/jprivet-dev/git-bash-workflow
 
 == Installation
@@ -28,9 +29,8 @@ Add to your `{BASHRC_PATH}` the following code :
 [source,shell]
 [subs=attributes+]
 ----
-if [ -f {GBW_PATH} ]; then
-    source {GBW_PATH}
-fi
+# If the file `{GBW_FILE}` exists, then load it
+[[ -f {GBW_PATH} ]] && source {GBW_PATH}
 ----
 
 Reload `{BASHRC_PATH}` (avoids logout and back to the shell) :
