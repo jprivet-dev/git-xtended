@@ -8,18 +8,18 @@
 # a, b, hello, 3, bonjour, 4, 5
 function gbw_implode {
     local glue="$1"
+    local current_glue=""
     shift
+
     local -a pieces="($*)"
     local implode=""
 
     for p in "${pieces[@]}"
     do
-        if [[ "$implode" == "" ]]; then
-            implode="$p"
-        else
-            if [[ "$p" != "" ]]; then
-                implode="$implode$glue$p"
-            fi
+        [[ "$implode" == "" ]] && current_glue="" || current_glue="$glue"
+
+        if [[ "$p" != "" ]]; then
+            implode="$implode$current_glue$p"
         fi
     done
 
