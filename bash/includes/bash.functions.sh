@@ -1,9 +1,1 @@
 #!/usr/bin/env bash
-
-function hello {
-    echo "hello"
-}
-
-function get_current_working_dir {
-    pwd | sed "s#\(/[^/]\{1,\}/[^/]\{1,\}/[^/]\{1,\}/\).*\(/[^/]\{1,\}/[^/]\{1,\}\)/\{0,1\}#\1_\2#g"
-}
