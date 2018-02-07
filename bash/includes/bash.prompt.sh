@@ -108,7 +108,7 @@ function gbw_prompt_behind {
         return
     fi
 
-    echo "$C_LIGHT_GRAY$(git_status_behind_count)↓$F_RESET"
+    echo "$C_LIGHT_GRAY$(git_status_behind_count $(git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)↓$F_RESET"
 }
 
 function gbw_prompt_ahead {
