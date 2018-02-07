@@ -2,15 +2,15 @@
 
 function gbw__prompt_branch {
     if [[ -z "$(git_get_current_branch)" ]]; then
-        echo ""; return
+        return
     fi
 
     echo "$C_LIGHT_YELLOW$(git_get_current_branch)$F_RESET"
 }
 
 function gbw__prompt_changes_count {
-    if [[ -z "$(git_get_current_branch)" ]] || [[ "$(git_get_changes_nb)" == 0 ]]; then
-        echo ""; return
+    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+        return
     fi
 
     echo "$C_LIGHT_YELLOW($(git_get_changes_nb))$F_RESET"
