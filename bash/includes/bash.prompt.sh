@@ -12,6 +12,14 @@ function gbw_prompt_host {
     echo "$C_LIGHT_CYAN\h$F_RESET"
 }
 
+function gbw_prompt_userhost {
+    local user="$(gbw_prompt_user)"
+    local host="$(gbw_prompt_host)"
+    local glue="@"
+
+    echo "$(gbw_implode \"$glue\" \"$user\" \"$host\")"
+}
+
 function gbw_prompt_dir {
     echo "$C_LIGHT_BLUE$(get_current_working_dir)$F_RESET"
 }
@@ -107,21 +115,18 @@ function gbw_prompt_ahead {
 
 function gbw_prompt_ps1 {
     local time="$(gbw_prompt_time)"
-    local user="$(gbw_prompt_user)"
-    local host="$(gbw_prompt_host)"
+    local userhost="$(gbw_prompt_userhost)"
     local dir="$(gbw_prompt_dir)"
     local branch="$(gbw_prompt_branch)"
     local count="$(gbw_prompt_changes_count)"
     local status="$(gbw_prompt_status)"
     local behind="$(gbw_prompt_behind)"
     local ahead="$(gbw_prompt_ahead)"
-    
-    local userhost="$(gbw_implode @ \"$user\" \"$host\")"
-    
-    local prompt="$(gbw_implode " " \"$time\" \"$userhost\" \"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
-    local end="$F_RESET\n\$ "
 
-    PS1="$prompt$end"
+    local prompt="$(gbw_implode " " \"$time\" \"$userhost\" \"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
+    local newline="$F_RESET\n\$ "
+
+    PS1="$prompt$newline"
 }
 
 function gbw_prompt_ps2 {
