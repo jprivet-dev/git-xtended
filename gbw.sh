@@ -11,14 +11,14 @@
 
 echo "# Bash profile extension"
 
-source ~/git-bash-workflow/bash/includes/bash.params.sh
+source ~/git-bash-workflow/includes/bash.params.sh
 
 if [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
 
-source ~/git-bash-workflow/bash/includes/bash.utils.sh
-source ~/git-bash-workflow/bash/includes/bash.formatting.sh
+source ~/git-bash-workflow/includes/bash.utils.sh
+source ~/git-bash-workflow/includes/bash.formatting.sh
 
-source ~/git-bash-workflow/bash/includes/bash.git.sh
-source ~/git-bash-workflow/bash/includes/bash.prompt.sh
+source ~/git-bash-workflow/includes/bash.git.sh
+source ~/git-bash-workflow/includes/bash.prompt.sh
