@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 
+function gbw_prompt_time {
+    echo "$C_LIGHT_RED\t"
+}
+
+function gbw_prompt_user {
+    echo "$C_LIGHT_GREEN$USER"
+}
+
+function gbw_prompt_host {
+    echo "$C_LIGHT_CYAN\h"
+}
+
+function gbw_prompt_dir {
+    echo "$C_LIGHT_BLUE$(get_current_working_dir)"
+}
+
 function gbw_prompt_branch {
     if [[ -z "$(git_get_current_branch)" ]]; then
         return
@@ -90,10 +106,10 @@ function gbw_prompt_ahead {
 }
 
 function gbw_prompt_ps1 {
-    local time="$C_LIGHT_RED\t"
-    local user="$C_LIGHT_GREEN$USER"
-    local host="$C_LIGHT_CYAN\h"
-    local dir="$C_LIGHT_BLUE$(get_current_working_dir)"
+    local time="$(gbw_prompt_time)"
+    local user="$(gbw_prompt_user)"
+    local host="$(gbw_prompt_host)"
+    local dir="$(gbw_prompt_dir)"
     local branch="$(gbw_prompt_branch)"
     local count="$(gbw_prompt_changes_count)"
     local status="$(gbw_prompt_status)"
