@@ -46,11 +46,9 @@ function gbw_prompt_status_to_be_commited {
     fi
 
     local count="$(git_get_status_changes_to_be_committed_count)"
-    local format="$C_LIGHT_GREEN"
+    local format="$C_DARK_GRAY"
 
-    if [[ "$count" > 0 ]]; then
-        format="$F_UNDERLINED$format"
-    fi
+    [[ "$count" > 0 ]] && format="$C_LIGHT_GREEN"
 
     echo "$format${count}c$F_RESET"
 }
@@ -61,11 +59,9 @@ function gbw_prompt_status_not_staged {
     fi
 
     local count="$(git_get_status_changes_not_staged_for_commit_count)"
-    local format="$C_LIGHT_RED"
+    local format="$C_DARK_GRAY"
 
-    if [[ "$count" > 0 ]]; then
-        format="$F_UNDERLINED$format"
-    fi
+    [[ "$count" > 0 ]] && format="$C_LIGHT_RED"
 
     echo "$format${count}!$F_RESET"
 }
@@ -76,13 +72,11 @@ function gbw_prompt_status_untracked {
     fi
 
     local count="$(git_get_status_untracked_files_count)"
-    local format="$C_LIGHT_RED"
+    local format="$C_DARK_GRAY"
 
-    if [[ "$count" > 0 ]]; then
-        format="$F_UNDERLINED$format"
-    fi
+    [[ "$count" > 0 ]] && format="$C_LIGHT_RED"
 
-    echo "$format${count}!$F_RESET"
+    echo "$format${count}?$F_RESET"
 }
 
 function gbw_prompt_status {
