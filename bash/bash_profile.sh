@@ -18,9 +18,7 @@ if [[ -f ~/git-bash-workflow/params.sh ]]; then
 fi
 
 source ~/git-bash-workflow/bash/includes/bash.utils.sh
-source ~/git-bash-workflow/bash/includes/bash.variables.sh
 source ~/git-bash-workflow/bash/includes/bash.formatting.sh
-source ~/git-bash-workflow/bash/includes/bash.functions.sh
 
 source ~/git-bash-workflow/bash/includes/bash.git.sh
 source ~/git-bash-workflow/bash/includes/bash.prompt.sh
