@@ -57,12 +57,6 @@ function gbw__prompt_ps1 {
     local _HOST="$C_LIGHT_CYAN\h"
     local _DIR="$C_LIGHT_BLUE$(get_current_working_dir)"
     local _BRANCH=""
-    local _STATUS_TO_BE_COMMITED_COUNT="$(git_get_status_changes_to_be_committed_count)"
-    local _STATUS_NOT_STAGED_COUNT="$(git_get_status_changes_not_staged_for_commit_count)"
-    local _STATUS_UNTRACKED_COUNT="$(git_get_status_untracked_files_count)"
-    local _STATUS_TO_BE_COMMITED=""
-    local _STATUS_NOT_STAGED=""
-    local _STATUS_UNTRACKED=""
     local _STATUS=""
     local _CHANGES_COUNT=""
 
