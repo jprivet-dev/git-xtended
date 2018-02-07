@@ -1,23 +1,19 @@
 #!/usr/bin/env bash
 
 function gbw__prompt_branch {
-    local branch=""
-
-    if [[ -n "$(git_get_current_branch)" ]]; then
-        branch="$C_LIGHT_YELLOW$(git_get_current_branch)$F_RESET"
+    if [[ -z "$(git_get_current_branch)" ]]; then
+        echo ""; return
     fi
 
-    echo "$branch"
+    echo "$C_LIGHT_YELLOW$(git_get_current_branch)$F_RESET"
 }
 
 function gbw__prompt_changes_count {
-    local count=""
-
-    if [[ -n "$(git_get_current_branch)" ]]; then
-        count="$C_LIGHT_YELLOW($(git_get_changes_nb))$F_RESET"
+    if [[ -z "$(git_get_current_branch)" ]]; then
+        echo ""; return
     fi
 
-    echo "$count"
+    echo "$C_LIGHT_YELLOW($(git_get_changes_nb))$F_RESET"
 }
 
 function gbw__prompt_status {
