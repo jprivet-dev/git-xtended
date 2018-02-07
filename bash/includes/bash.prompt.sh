@@ -97,12 +97,15 @@ function gbw_prompt_ps1 {
     local branch="$(gbw_prompt_branch)"
     local count="$(gbw_prompt_changes_count)"
     local status="$(gbw_prompt_status)"
-    local _BEHIND="$(gbw_prompt_behind)"
-    local _AHEAD="$(gbw_prompt_ahead)"
+    local behind="$(gbw_prompt_behind)"
+    local ahead="$(gbw_prompt_ahead)"
+    
+    local userhost="$(gbw_implode @ \"$user\" \"$host\")"
+    
+    local prompt="$(gbw_implode " " \"$time\" \"$userhost\" \"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
     local end="$F_RESET\n\$ "
 
-    local userhost="$(gbw_implode @ \"$user\" \"$host\")"
-    PS1="$(gbw_implode " " \"$time\" \"$userhost\" \"$dir\" \"$branch\" \"$count\" \"$status\" \"$_BEHIND\" \"$_AHEAD\")$end"
+    PS1="$prompt$end"
 }
 
 function gbw_prompt_ps2 {
