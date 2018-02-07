@@ -9,7 +9,11 @@
 # Reload bash_profile
 # source ~/.bash_profile'
 
-echo "# Bash profile extension"
+echo " Git Bash Workflow"
+echo " - Prompt with Git information"
+echo " - Git aliases & hooks"
+echo " - Agile Git workflow commands"
+echo " @info https://github.com/jprivet-dev/git-bash-workflow.git"
 
 source ~/git-bash-workflow/includes/gbw.params.sh
 
@@ -19,6 +23,5 @@ fi
 
 source ~/git-bash-workflow/includes/gbw.utils.sh
 source ~/git-bash-workflow/includes/gbw.formatting.sh
-
 source ~/git-bash-workflow/includes/gbw.git.sh
 source ~/git-bash-workflow/includes/gbw.prompt.sh
