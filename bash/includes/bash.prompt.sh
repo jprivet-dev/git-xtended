@@ -21,7 +21,7 @@ function gbw_prompt_userhost {
 }
 
 function gbw_prompt_dir {
-    echo "$C_LIGHT_BLUE$PWD$F_RESET"
+    echo "$C_LIGHT_BLUE\\w$F_RESET"
 }
 
 function gbw_prompt_branch {
