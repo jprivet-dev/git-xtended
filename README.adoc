@@ -1,4 +1,10 @@
-= Git Bash Workflow
+:MAIN_TITLE: Git Bash Workflow
+:BASHRC_PATH: ~/.bashrc
+:GBW_FILE: gbw.sh
+:GBW_PATH: ~/git-bash-workflow/{GBW_FILE}
+:GIT_PROJECT: https://github.com/jprivet-dev/git-bash-workflow
+
+= {MAIN_TITLE}
 :numbered:
 :toc: macro
 
@@ -8,14 +14,10 @@ toc::[]
 
 '''
 
-:BASHRC_PATH: ~/.bashrc
-:GBW_FILE: gbw.sh
-:GBW_PATH: ~/git-bash-workflow/{GBW_FILE}
-:GIT_PROJECT: https://github.com/jprivet-dev/git-bash-workflow
 
 == Installation
 
-Clone the project :
+In your shell, clone the project :
 
 [source,shell]
 [subs=attributes+]
@@ -33,7 +35,7 @@ Add to your `{BASHRC_PATH}` the following code :
 [[ -f {GBW_PATH} ]] && source {GBW_PATH}
 ----
 
-Reload `{BASHRC_PATH}` (avoids logout and back to the shell) :
+Reload `{BASHRC_PATH}` (avoids logout and back to the shell) with the following command :
 
 [source,shell]
 [subs=attributes+]
@@ -41,7 +43,7 @@ Reload `{BASHRC_PATH}` (avoids logout and back to the shell) :
 . {BASHRC_PATH}
 ----
 
-TADA !
+TADA ! {MAIN_TITLE} is ready
 
 == Prompt with Git information
 
