@@ -83,5 +83,7 @@ function git_status_ahead_count {
 }
 
 function git_status_behind_count {
-    git rev-list --left-right --count origin/dev...1-prompt-configuration 2> /dev/null | cut -f 1
+    local from_branch=$1
+    local to_branch=$2
+    git rev-list --left-right --count $to_branch...$from_branch 2> /dev/null | cut -f 1
 }
