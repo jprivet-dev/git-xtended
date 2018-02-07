@@ -8,22 +8,26 @@ toc::[]
 
 '''
 
-:BASH_PROFILE_PATH: ~/.bash_profile
+:BASHRC_PATH: ~/.bashrc
+:GBW_PATH: ~/git-bash-workflow/gbw.sh
 
-== Git customization
+== Prompt with Git information
+
+Insert in the end of `{BASHRC_PATH}` the following code :
+
+[source,shell]
+[subs=attributes+]
+----
+if [ -f {GBW_PATH} ]; then
+    source {GBW_PATH}
+fi
+----
+
+== Git aliases & hooks
 
 TODO
 
-== Bash customization
+== Agile Git workflow commands
 
-=== Extend `{BASH_PROFILE_PATH}`
-
-Insert in the end of `{BASH_PROFILE_PATH}` the following code :
-
-[source,shell]
-----
-if [ -f ~/git-bash-workflow/bash/bash_profile.sh ]; then
-    . ~/git-bash-workflow/bash/bash_profile.sh
-fi
-----
+TODO
 
