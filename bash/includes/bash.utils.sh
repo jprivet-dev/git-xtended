@@ -17,7 +17,9 @@ function gbw_implode {
         if [[ "$implode" == "" ]]; then
             implode="$p"
         else
-            implode="$implode$glue$p"
+            if [[ "$p" != "" ]]; then
+                implode="$implode$glue$p"
+            fi
         fi
     done
 
