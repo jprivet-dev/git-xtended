@@ -95,9 +95,8 @@ function gbw_prompt_ps1 {
     local _END="$_BEHIND_ALERT$F_RESET\$ "
 
     local user_host_implode="$(gbw_implode @ \"$_USER\" \"$_HOST\")"
-    local ps1_implode="$_TIME $user_host_implode $_DIR $_BRANCH $_CHANGES_COUNT $_STATUS $_AHEAD_BEHIND"
 
-    PS1="$ps1_implode\n$_END"
+    PS1="$(gbw_implode " " \"$_TIME\" \"$user_host_implode\" \"$_DIR\" \"$_BRANCH\" \"$_CHANGES_COUNT\" \"$_STATUS\" \"$_AHEAD_BEHIND\")\n$_END"
 }
 
 function gbw_prompt_ps2 {
