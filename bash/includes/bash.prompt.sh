@@ -135,6 +135,25 @@ function gbw_prompt_ahead {
     echo "$format$count↑$F_RESET"
 }
 
+function gbw_prompt_info {
+    local branch="$(gbw_prompt_branch)"
+    local count="$(gbw_prompt_changes_count)"
+    local status_c="$(gbw_prompt_status_to_be_commited)"
+    local status_s="$(gbw_prompt_status_not_staged)"
+    local status_u="$(gbw_prompt_status_untracked)"
+    local behind="$(gbw_prompt_behind)"
+    local ahead="$(gbw_prompt_ahead)"
+
+
+    echo -e "$branch : current branch"
+    echo -e "$count : all elements from git status"
+    echo -e "$status_u : untracked files"
+    echo -e "$status_s : changes not staged for commit"
+    echo -e "$status_c : changes to be committed"
+    echo -e "$behind : commits behind $BRANCH_MAIN_REMOTE_DEVELOP"
+    echo -e "$ahead : commits ahead $BRANCH_MAIN_REMOTE_DEVELOP"
+}
+
 function gbw_prompt_ps1 {
     local time="$(gbw_prompt_time)"
     local userhost="$(gbw_prompt_userhost)"
