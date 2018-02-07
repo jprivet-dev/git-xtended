@@ -73,6 +73,22 @@ function gbw_prompt_status {
     echo "$(gbw_implode " " \"$c\" \"$s\" \"$u\")"
 }
 
+function gbw_prompt_behind {
+    if [[ -z "$(git_get_current_branch)" ]]; then
+        return
+    fi
+
+    echo "${C_LIGHT_GRAY}$(git_status_behind_count)↓${F_RESET}"
+}
+
+function gbw_prompt_ahead {
+    if [[ -z "$(git_get_current_branch)" ]]; then
+        return
+    fi
+
+    echo "${C_LIGHT_GRAY}$(git_status_ahead_count $(git_get_current_branch))↑${F_RESET}"
+}
+
 function gbw_prompt_ps1 {
     local time="$C_LIGHT_RED\t"
     local user="$C_LIGHT_GREEN$USER"
@@ -81,22 +97,12 @@ function gbw_prompt_ps1 {
     local branch="$(gbw_prompt_branch)"
     local count="$(gbw_prompt_changes_count)"
     local status="$(gbw_prompt_status)"
-
-    local _AHEAD="$(git_status_ahead_count $(git_get_current_branch))↑"
-    local _BEHIND_ALERT=""
-
-    if [[ "$(git_status_behind_count)" > 0 ]]; then
-        _BEHIND_ALERT="$C_ORANGE*$F_RESET"
-    fi
-
-    local _BEHIND="$_BEHIND_ALERT$(git_status_behind_count)↓"
-    local _AHEAD_BEHIND="${C_LIGHT_GRAY}$_BEHIND $_AHEAD${F_RESET}"
-
-    local end="$_BEHIND_ALERT$F_RESET\$ "
+    local _BEHIND="$(gbw_prompt_behind)"
+    local _AHEAD="$(gbw_prompt_ahead)"
+    local end="$F_RESET\n\$ "
 
     local userhost="$(gbw_implode @ \"$user\" \"$host\")"
-
-    PS1="$(gbw_implode " " \"$time\" \"$userhost\" \"$dir\" \"$branch\" \"$count\" \"$status\" \"$_AHEAD_BEHIND\")\n$end"
+    PS1="$(gbw_implode " " \"$time\" \"$userhost\" \"$dir\" \"$branch\" \"$count\" \"$status\" \"$_BEHIND\" \"$_AHEAD\")$end"
 }
 
 function gbw_prompt_ps2 {
