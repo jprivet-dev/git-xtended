@@ -144,14 +144,13 @@ function gbw_prompt_git_info {
     local behind="$(gbw_prompt_behind)"
     local ahead="$(gbw_prompt_ahead)"
 
-
-    echo -e "$branch : current branch"
-    echo -e "$count : all elements from git status"
-    echo -e "$status_u : untracked files"
-    echo -e "$status_s : changes not staged for commit"
-    echo -e "$status_c : changes to be committed"
-    echo -e "$behind : commits behind $BRANCH_MAIN_REMOTE_DEVELOP"
-    echo -e "$ahead : commits ahead $BRANCH_MAIN_REMOTE_DEVELOP"
+    [[ -n "$branch" ]]      && echo -e "$branch : current branch"
+    [[ -n "$count" ]]       && echo -e "$count : all elements from git status"
+    [[ -n "$status_u" ]]    && echo -e "$status_u : untracked files"
+    [[ -n "$status_s" ]]    && echo -e "$status_s : changes not staged for commit"
+    [[ -n "$status_c" ]]    && echo -e "$status_c : changes to be committed"
+    [[ -n "$behind" ]]      && echo -e "$behind : commits behind $BRANCH_MAIN_REMOTE_DEVELOP"
+    [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $BRANCH_MAIN_REMOTE_DEVELOP"
 }
 
 function gbw_prompt_ps1 {
