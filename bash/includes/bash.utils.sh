@@ -17,10 +17,7 @@ function gbw_implode {
     for p in "${pieces[@]}"
     do
         [[ "$implode" == "" ]] && current_glue="" || current_glue="$glue"
-
-        if [[ "$p" != "" ]]; then
-            implode="$implode$current_glue$p"
-        fi
+        [[ "$p" != "" ]] && implode="$implode$current_glue$p"
     done
 
     echo "$implode"
