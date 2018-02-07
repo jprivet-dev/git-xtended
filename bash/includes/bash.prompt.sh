@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 function gbw__prompt_branch {
-    local prompt_branch=""
+    local branch=""
 
     if [[ -n "$(git_get_current_branch)" ]]; then
-        prompt_branch="$C_LIGHT_YELLOW$(git_get_current_branch)$F_RESET"
+        branch="$C_LIGHT_YELLOW$(git_get_current_branch)$F_RESET"
     fi
 
-    echo "$prompt_branch"
+    echo "$branch"
 }
 
 function gbw__prompt_changes_count {
