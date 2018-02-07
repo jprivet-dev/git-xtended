@@ -66,9 +66,11 @@ function gbw_prompt_status {
         return
     fi
 
-    local status="$(gbw_prompt_status_to_be_commited) $(gbw_prompt_status_not_staged) $(gbw_prompt_status_untracked)"
+    local c="$(gbw_prompt_status_to_be_commited)"
+    local s="$(gbw_prompt_status_not_staged)"
+    local u="$(gbw_prompt_status_untracked)"
 
-    echo "$(gbw_implode "-" \"$status\")"
+    echo "$(gbw_implode " " \"$c\" \"$s\" \"$u\")"
 }
 
 function gbw_prompt_ps1 {
