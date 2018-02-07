@@ -45,12 +45,24 @@ function gbw_prompt_status_to_be_commited {
         return
     fi
 
-    local count="$(git_get_status_changes_to_be_committed_count)"
-    local format="$C_DARK_GRAY"
+    local c="$(git_get_status_changes_to_be_committed_count)"
+    local m="$(git_get_status_changes_to_be_committed_modified_count)"
+    local n="$(git_get_status_changes_to_be_committed_new_file_count)"
+    local d="$(git_get_status_changes_to_be_committed_deleted_count)"
+    local format_c="$C_DARK_GRAY"
+    local format_m="$C_DARK_GRAY"
+    local format_n="$C_DARK_GRAY"
+    local format_d="$C_DARK_GRAY"
 
-    [[ "$count" > 0 ]] && format="$C_LIGHT_GREEN"
+    if [[ "$c" > 0 ]]; then
+        format_c="$C_LIGHT_GREEN"
 
-    echo "$format${count}c$F_RESET"
+        [[ "$m" > 0 ]] && format_m="$C_LIGHT_GREEN" || format_m="$C_CYAN"
+        [[ "$n" > 0 ]] && format_n="$C_LIGHT_GREEN" || format_n="$C_CYAN"
+        [[ "$d" > 0 ]] && format_d="$C_LIGHT_GREEN" || format_d="$C_CYAN"
+    fi
+
+    echo "${format_c}c(${F_RESET}${format_m}${m} ${format_n}+${n} ${format_d}-${d}${F_RESET}${format_c})${F_RESET}"
 }
 
 function gbw_prompt_status_not_staged {
