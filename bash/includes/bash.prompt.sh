@@ -37,7 +37,7 @@ function gbw_prompt_status_not_staged {
     fi
 
     local count="$(git_get_status_changes_not_staged_for_commit_count)"
-    local format="C_LIGHT_RED"
+    local format="$C_LIGHT_RED"
 
     if [[ "$count" > 0 ]]; then
         format="$F_UNDERLINED$format"
@@ -50,6 +50,15 @@ function gbw_prompt_status_untracked {
     if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
         return
     fi
+
+    local count="$(git_get_status_untracked_files_count)"
+    local format="$C_LIGHT_RED"
+
+    if [[ "$count" > 0 ]]; then
+        format="$F_UNDERLINED$format"
+    fi
+
+    echo "${format}${count}!${F_RESET}"
 }
 
 function gbw_prompt_status {
@@ -64,11 +73,7 @@ function gbw_prompt_status {
     if [[ "$(git_get_changes_nb)" > 0 ]]; then
         _STATUS_TO_BE_COMMITED="$(gbw_prompt_status_to_be_commited)"
         _STATUS_NOT_STAGED="$(gbw_prompt_status_not_staged)"
-
-        _STATUS_UNTRACKED="${C_LIGHT_RED}$_STATUS_UNTRACKED_COUNT?${F_RESET}"
-        if [[ "$_STATUS_UNTRACKED_COUNT" > 0 ]]; then
-            _STATUS_UNTRACKED="$F_UNDERLINED$_STATUS_UNTRACKED"
-        fi
+        _STATUS_UNTRACKED="$(gbw_prompt_status_untracked)"
 
         _STATUS="$_STATUS_TO_BE_COMMITED $_STATUS_NOT_STAGED $_STATUS_UNTRACKED"
     fi
