@@ -10,6 +10,16 @@ function gbw__prompt_branch {
     echo "$prompt_branch"
 }
 
+function gbw__prompt_changes_count {
+    local count=""
+
+    if [[ -n "$(git_get_current_branch)" ]]; then
+        count="$C_LIGHT_YELLOW($(git_get_changes_nb))"
+    fi
+
+    echo "$count"
+}
+
 function gbw__prompt_ps1 {
     local _TIME="$C_LIGHT_RED\t"
     local _USER="$C_LIGHT_GREEN$USER@"
@@ -23,6 +33,7 @@ function gbw__prompt_ps1 {
     local _STATUS_NOT_STAGED=""
     local _STATUS_UNTRACKED=""
     local _STATUS=""
+    local _CHANGES_COUNT=""
 
     local _AHEAD="$(git_status_ahead_count $(git_get_current_branch))↑"
     local _BEHIND_ALERT=""
@@ -37,10 +48,11 @@ function gbw__prompt_ps1 {
     local _END="$_BEHIND_ALERT$F_RESET\$ "
 
     if [[ -n "$(git_get_current_branch)" ]]; then
-        _BRANCH=" $(gbw__prompt_branch)"
+        _BRANCH="$(gbw__prompt_branch)"
+        _CHANGES_COUNT="$(gbw__prompt_changes_count)"
 
         if [[ "$(git_get_changes_nb)" > 0 ]]; then
-            _BRANCH="$_BRANCH ($(git_get_changes_nb))"
+            _BRANCH=" $_BRANCH $_CHANGES_COUNT"
 
             _STATUS_TO_BE_COMMITED="${C_LIGHT_GREEN}${_STATUS_TO_BE_COMMITED_COUNT}c${F_RESET}"
             if [[ "$_STATUS_TO_BE_COMMITED_COUNT" > 0 ]]; then
