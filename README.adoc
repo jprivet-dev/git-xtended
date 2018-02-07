@@ -10,10 +10,20 @@ toc::[]
 
 :BASHRC_PATH: ~/.bashrc
 :GBW_PATH: ~/git-bash-workflow/gbw.sh
+:GIT_PROJECT: https://github.com/jprivet-dev/git-bash-workflow
 
-== Prompt with Git information
+== Installation
 
-Insert in the end of `{BASHRC_PATH}` the following code :
+Clone the project :
+
+[source,shell]
+[subs=attributes+]
+----
+cd
+git clone {GIT_PROJECT}
+----
+
+Add to your `{BASHRC_PATH}` the following code :
 
 [source,shell]
 [subs=attributes+]
@@ -22,6 +32,20 @@ if [ -f {GBW_PATH} ]; then
     source {GBW_PATH}
 fi
 ----
+
+Reload `{BASHRC_PATH}` (avoids logout and back to the shell) :
+
+[source,shell]
+[subs=attributes+]
+----
+. {BASHRC_PATH}
+----
+
+TADA !
+
+== Prompt with Git information
+
+TODO
 
 == Git aliases & hooks
 
