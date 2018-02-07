@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gbw__prompt_branch {
+function gbw_prompt_branch {
     if [[ -z "$(git_get_current_branch)" ]]; then
         return
     fi
@@ -8,7 +8,7 @@ function gbw__prompt_branch {
     echo "$C_LIGHT_YELLOW$(git_get_current_branch)$F_RESET"
 }
 
-function gbw__prompt_changes_count {
+function gbw_prompt_changes_count {
     if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
         return
     fi
@@ -16,7 +16,7 @@ function gbw__prompt_changes_count {
     echo "$C_LIGHT_YELLOW($(git_get_changes_nb))$F_RESET"
 }
 
-function gbw__prompt_status {
+function gbw_prompt_status {
     local _STATUS_TO_BE_COMMITED_COUNT="$(git_get_status_changes_to_be_committed_count)"
     local _STATUS_NOT_STAGED_COUNT="$(git_get_status_changes_not_staged_for_commit_count)"
     local _STATUS_UNTRACKED_COUNT="$(git_get_status_untracked_files_count)"
@@ -47,13 +47,13 @@ function gbw__prompt_status {
     echo "$_STATUS"
 }
 
-function gbw__prompt_ps1 {
+function gbw_prompt_ps1 {
     local _TIME="$C_LIGHT_RED\t"
     local _USER="$C_LIGHT_GREEN$USER"
     local _HOST="$C_LIGHT_CYAN\h"
     local _DIR="$C_LIGHT_BLUE$(get_current_working_dir)"
-    local _BRANCH="$(gbw__prompt_branch)"
-    local _CHANGES_COUNT="$(gbw__prompt_changes_count)"
+    local _BRANCH="$(gbw_prompt_branch)"
+    local _CHANGES_COUNT="$(gbw_prompt_changes_count)"
     local _STATUS=""
 
     local _AHEAD="$(git_status_ahead_count $(git_get_current_branch))↑"
@@ -70,7 +70,7 @@ function gbw__prompt_ps1 {
 
     if [[ -n "$(git_get_current_branch)" ]]; then
         if [[ "$(git_get_changes_nb)" > 0 ]]; then
-            _STATUS="$(gbw__prompt_status)"
+            _STATUS="$(gbw_prompt_status)"
         fi
     fi
 
@@ -80,10 +80,10 @@ function gbw__prompt_ps1 {
     PS1="$(gbw_implode @ \"$ps1_implode\")\n$_END"
 }
 
-function gbw__prompt_ps2 {
+function gbw_prompt_ps2 {
     PS2="$C_CYAN>"
 }
 
-PROMPT_COMMAND='gbw__prompt_ps1'
-gbw__prompt_ps2
+PROMPT_COMMAND='gbw_prompt_ps1'
+gbw_prompt_ps2
 
