@@ -74,13 +74,13 @@ function gbw_prompt_status {
 }
 
 function gbw_prompt_ps1 {
-    local _TIME="$C_LIGHT_RED\t"
-    local _USER="$C_LIGHT_GREEN$USER"
-    local _HOST="$C_LIGHT_CYAN\h"
-    local _DIR="$C_LIGHT_BLUE$(get_current_working_dir)"
-    local _BRANCH="$(gbw_prompt_branch)"
-    local _CHANGES_COUNT="$(gbw_prompt_changes_count)"
-    local _STATUS="$(gbw_prompt_status)"
+    local time="$C_LIGHT_RED\t"
+    local user="$C_LIGHT_GREEN$USER"
+    local host="$C_LIGHT_CYAN\h"
+    local dir="$C_LIGHT_BLUE$(get_current_working_dir)"
+    local branch="$(gbw_prompt_branch)"
+    local count="$(gbw_prompt_changes_count)"
+    local status="$(gbw_prompt_status)"
 
     local _AHEAD="$(git_status_ahead_count $(git_get_current_branch))↑"
     local _BEHIND_ALERT=""
@@ -92,11 +92,11 @@ function gbw_prompt_ps1 {
     local _BEHIND="$_BEHIND_ALERT$(git_status_behind_count)↓"
     local _AHEAD_BEHIND="${C_LIGHT_GRAY}$_BEHIND $_AHEAD${F_RESET}"
 
-    local _END="$_BEHIND_ALERT$F_RESET\$ "
+    local end="$_BEHIND_ALERT$F_RESET\$ "
 
-    local user_host_implode="$(gbw_implode @ \"$_USER\" \"$_HOST\")"
+    local userhost="$(gbw_implode @ \"$user\" \"$host\")"
 
-    PS1="$(gbw_implode " " \"$_TIME\" \"$user_host_implode\" \"$_DIR\" \"$_BRANCH\" \"$_CHANGES_COUNT\" \"$_STATUS\" \"$_AHEAD_BEHIND\")\n$_END"
+    PS1="$(gbw_implode " " \"$time\" \"$userhost\" \"$dir\" \"$branch\" \"$count\" \"$status\" \"$_AHEAD_BEHIND\")\n$end"
 }
 
 function gbw_prompt_ps2 {
