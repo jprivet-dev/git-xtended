@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
 function gbw_prompt_time {
-    echo "$C_LIGHT_RED\t"
+    echo "$C_LIGHT_RED\t$F_RESET"
 }
 
 function gbw_prompt_user {
-    echo "$C_LIGHT_GREEN$USER"
+    echo "$C_LIGHT_GREEN$USER$F_RESET"
 }
 
 function gbw_prompt_host {
-    echo "$C_LIGHT_CYAN\h"
+    echo "$C_LIGHT_CYAN\h$F_RESET"
 }
 
 function gbw_prompt_dir {
-    echo "$C_LIGHT_BLUE$(get_current_working_dir)"
+    echo "$C_LIGHT_BLUE$(get_current_working_dir)$F_RESET"
 }
 
 function gbw_prompt_branch {
@@ -44,7 +44,7 @@ function gbw_prompt_status_to_be_commited {
         format="$F_UNDERLINED$format"
     fi
 
-    echo "${format}${count}c${F_RESET}"
+    echo "$format${count}c$F_RESET"
 }
 
 function gbw_prompt_status_not_staged {
@@ -59,7 +59,7 @@ function gbw_prompt_status_not_staged {
         format="$F_UNDERLINED$format"
     fi
 
-    echo "${format}${count}!${F_RESET}"
+    echo "$format${count}!$F_RESET"
 }
 
 function gbw_prompt_status_untracked {
@@ -74,7 +74,7 @@ function gbw_prompt_status_untracked {
         format="$F_UNDERLINED$format"
     fi
 
-    echo "${format}${count}!${F_RESET}"
+    echo "$format${count}!$F_RESET"
 }
 
 function gbw_prompt_status {
@@ -94,7 +94,7 @@ function gbw_prompt_behind {
         return
     fi
 
-    echo "${C_LIGHT_GRAY}$(git_status_behind_count)↓${F_RESET}"
+    echo "$C_LIGHT_GRAY$(git_status_behind_count)↓$F_RESET"
 }
 
 function gbw_prompt_ahead {
@@ -102,7 +102,7 @@ function gbw_prompt_ahead {
         return
     fi
 
-    echo "${C_LIGHT_GRAY}$(git_status_ahead_count $(git_get_current_branch))↑${F_RESET}"
+    echo "$C_LIGHT_GRAY$(git_status_ahead_count $(git_get_current_branch))↑$F_RESET"
 }
 
 function gbw_prompt_ps1 {
