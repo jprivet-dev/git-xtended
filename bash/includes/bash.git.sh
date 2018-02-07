@@ -56,6 +56,18 @@ function git_get_status_changes_to_be_committed_count {
     git status --porcelain 2> /dev/null | grep '^[^? ]' | wc -l
 }
 
+function git_get_status_changes_to_be_committed_modified_count {
+    git status --porcelain 2> /dev/null | grep '^M' | wc -l
+}
+
+function git_get_status_changes_to_be_committed_deleted_count {
+    git status --porcelain 2> /dev/null | grep '^D' | wc -l
+}
+
+function git_get_status_changes_to_be_committed_new_file_count {
+    git status --porcelain 2> /dev/null | grep '^A' | wc -l
+}
+
 function git_get_status_changes_not_staged_for_commit_count {
     git status --porcelain 2> /dev/null | grep '^.[^? ]' | wc -l
 }
