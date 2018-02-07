@@ -100,7 +100,7 @@ function gbw_prompt_status {
     local s="$(gbw_prompt_status_not_staged)"
     local u="$(gbw_prompt_status_untracked)"
 
-    echo "$(gbw_implode " " \"$c\" \"$s\" \"$u\")"
+    echo "$(gbw_implode " " \"$u\" \"$s\" \"$c\")"
 }
 
 function gbw_prompt_behind {
