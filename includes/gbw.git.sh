@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function git_apply_global_config {
+function gbw_git_apply_global_config {
     # git branch
     git config --global alias.b branch
 
@@ -40,11 +40,11 @@ function git_apply_global_config {
     git config --global alias.sniffer "grep --break --heading --line-number --extended-regexp 'dump\(|console\.[^(]+\('"
 }
 
-function git_get_current_branch {
+function gbw_git_get_current_branch {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-function git_get_changes_nb {
+function gbw_git_get_changes_nb {
     git status --porcelain 2> /dev/null | wc -l
 }
 
