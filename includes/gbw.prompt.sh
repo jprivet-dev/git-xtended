@@ -108,7 +108,7 @@ function gbw_prompt_behind {
         return
     fi
 
-    local count="$(gbw_git_status_behind_count $(gbw_git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(gbw_git_status_behind_count $(gbw_git_get_current_branch) $GBW_BRANCH_MAIN_REMOTE_DEVELOP)"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
@@ -124,7 +124,7 @@ function gbw_prompt_ahead {
         return
     fi
 
-    local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $GBW_BRANCH_MAIN_REMOTE_DEVELOP)"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
@@ -149,8 +149,8 @@ function gbw_prompt_git_info {
     [[ -n "$status_u" ]]    && echo -e "$status_u : untracked files"
     [[ -n "$status_s" ]]    && echo -e "$status_s : changes not staged for commit"
     [[ -n "$status_c" ]]    && echo -e "$status_c : changes to be committed"
-    [[ -n "$behind" ]]      && echo -e "$behind : commits behind $BRANCH_MAIN_REMOTE_DEVELOP"
-    [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $BRANCH_MAIN_REMOTE_DEVELOP"
+    [[ -n "$behind" ]]      && echo -e "$behind : commits behind $GBW_BRANCH_MAIN_REMOTE_DEVELOP"
+    [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $GBW_BRANCH_MAIN_REMOTE_DEVELOP"
 }
 
 function gbw_prompt_ps1 {
