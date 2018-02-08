@@ -200,6 +200,12 @@ TIP: You can see all aliases in `--global` configuration file `~/.gitconfig`, or
 
 === Hooks
 
+==== `prepare-commit-msg`
+
+____
+Commits are documentation !
+____
+
 TODO (Work in progress)
 
 == Agile Git workflow commands
