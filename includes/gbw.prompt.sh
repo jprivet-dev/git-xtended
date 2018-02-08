@@ -25,23 +25,23 @@ function gbw_prompt_dir {
 }
 
 function gbw_prompt_branch {
-    if [[ -z "$(git_get_current_branch)" ]]; then
+    if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
     fi
 
-    echo "$C_LIGHT_YELLOW$(git_get_current_branch)$F_RESET"
+    echo "$C_LIGHT_YELLOW$(gbw_git_get_current_branch)$F_RESET"
 }
 
 function gbw_prompt_changes_count {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
-    echo "$C_LIGHT_YELLOW($(git_get_changes_nb))$F_RESET"
+    echo "$C_LIGHT_YELLOW($(gbw_git_get_changes_nb))$F_RESET"
 }
 
 function gbw_prompt_status_to_be_commited {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -66,7 +66,7 @@ function gbw_prompt_status_to_be_commited {
 }
 
 function gbw_prompt_status_not_staged {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -79,7 +79,7 @@ function gbw_prompt_status_not_staged {
 }
 
 function gbw_prompt_status_untracked {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -92,7 +92,7 @@ function gbw_prompt_status_untracked {
 }
 
 function gbw_prompt_status {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -104,11 +104,11 @@ function gbw_prompt_status {
 }
 
 function gbw_prompt_behind {
-    if [[ -z "$(git_get_current_branch)" ]]; then
+    if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
     fi
 
-    local count="$(git_status_behind_count $(git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(git_status_behind_count $(gbw_git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
@@ -120,11 +120,11 @@ function gbw_prompt_behind {
 }
 
 function gbw_prompt_ahead {
-    if [[ -z "$(git_get_current_branch)" ]]; then
+    if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
     fi
 
-    local count="$(git_status_ahead_count $(git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(git_status_ahead_count $(gbw_git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
