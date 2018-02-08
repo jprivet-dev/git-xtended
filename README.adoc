@@ -64,19 +64,19 @@ TADA ! {MAIN_TITLE} is ready
 $
 ----
 
+[cols="h,"]
 |===
-| `{PROMPT_TIME}`               | time
-| `{PROMPT_USER_HOST}`          | explain
-| `{PROMPT_DIR}`                | explain
-| `{PROMPT_BRANCH}`             | current branch
-| `{PROMPT_COUNT}`              | all elements from git status
-| `{PROMPT_UNTRACKED}`          | untracked files
-| `{PROMPT_NOT_STAGED}`         | changes not staged for commit
-| `{PROMPT_TO_BE_COMMITTED}`    | changes to be committed (modified +added -deleted)
-| `{PROMPT_BEHIND}`             | commits behind branch of reference
-| `{PROMPT_AHEAD}`              | commits ahead branch of reference
+| {PROMPT_TIME}               | time
+| {PROMPT_USER_HOST}          | explain
+| {PROMPT_DIR}                | explain
+| {PROMPT_BRANCH}             | current branch
+| {PROMPT_COUNT}              | all elements from git status
+| {PROMPT_UNTRACKED}          | untracked files
+| {PROMPT_NOT_STAGED}         | changes not staged for commit
+| {PROMPT_TO_BE_COMMITTED}    | changes to be committed (modified +added -deleted)
+| {PROMPT_BEHIND}             | commits behind branch of reference
+| {PROMPT_AHEAD}              | commits ahead branch of reference
 |===
-
 
 == Git aliases & hooks
 
