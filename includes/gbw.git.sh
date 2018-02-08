@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gbw_git_apply_global_config {
+function gbw_git_config_set_aliases {
     local global=$1
     local g=""
 
