@@ -1,4 +1,5 @@
 :MAIN_TITLE: Git Bash Workflow
+:MAIN_TITLE_SHORT: GBW
 :BASHRC_PATH: ~/.bashrc
 :GBW_FILE: gbw.sh
 :GBW_PATH: ~/git-bash-workflow/{GBW_FILE}
@@ -115,6 +116,24 @@ image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 == Git aliases & hooks
 
 === Aliases
+
+Active all aliases configured by {MAIN_TITLE_SHORT} :
+
+[source,shell]
+[subs=attributes+]
+----
+$ gbw aliases [--global]
+----
+
+Remove all aliases configured by {MAIN_TITLE_SHORT}
+
+[source,shell]
+[subs=attributes+]
+----
+$ gbw aliases --unset [--global]
+----
+
+TIP: You can see all aliases in `--global` configuration file `~/.gitconfig`, or in "local" configuration file `.git/config`, in current repository
 
 [cols="1 s,2 d,1 d", options="header"]
 |===
