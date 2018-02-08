@@ -25,3 +25,5 @@ source ~/git-bash-workflow/includes/gbw.utils.sh
 source ~/git-bash-workflow/includes/gbw.formatting.sh
 source ~/git-bash-workflow/includes/gbw.git.sh
 source ~/git-bash-workflow/includes/gbw.prompt.sh
+
+gbw_prompt_init
