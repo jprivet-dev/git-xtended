@@ -116,9 +116,14 @@ image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
 === Aliases
 
-[cols="s,d,d"]
+[cols="s,d,d", options="header"]
 |===
+| Alias
+| Complete command
+| Description
+
 3+| $ git ...
+
 | b
 | branch
 | List, create, or delete branches
