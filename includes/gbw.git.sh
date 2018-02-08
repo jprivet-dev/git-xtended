@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
 
 function gbw_git_apply_global_config {
+    local global=$1
+    local g=""
+
+    [[ "$global" != "--global" ]] && global=""
+
     # git branch
-    git config --global alias.b branch
+    git config $global alias.b branch
 
     # git diff
-    git config --global alias.d "diff --function-context"
+    git config $global alias.d "diff --function-context"
 
     # git commit
-    git config --global alias.c "commit -m"
-    git config --global alias.amend "commit -m --amend"
-    git config --global alias.undo "reset --soft HEAD^"
+    git config $global alias.c "commit -m"
+    git config $global alias.amend "commit -m --amend"
+    git config $global alias.undo "reset --soft HEAD^"
 
     # git checkout
-    git config --global alias.co checkout
+    git config $global alias.co checkout
 
     # git log
     local _HASH="%C(yellow)%h"
@@ -24,20 +29,20 @@ function gbw_git_apply_global_config {
 
     local _ONELINE="log --graph --oneline --decorate --date=short --pretty=format:'$_HASH $_TIME $_AUTHOR$_REF $_SUBJECT'"
 
-    git config --global alias.l "$_ONELINE -12"
-    git config --global alias.ll "$_ONELINE"
-    git config --global alias.lcount "shortlog -sn"
+    git config $global alias.l "$_ONELINE -12"
+    git config $global alias.ll "$_ONELINE"
+    git config $global alias.lcount "shortlog -sn"
 
     # git reset
-    git config --global alias.untracked "clean -f -d"
-    git config --global alias.rrr "!sh -c 'git clean -f -d; git reset --hard HEAD'"
+    git config $global alias.untracked "clean -f -d"
+    git config $global alias.rrr "!sh -c 'git clean -f -d; git reset --hard HEAD'"
 
     # git status
-    git config --global alias.s "status -s"
-    git config --global alias.ss status
+    git config $global alias.s "status -s"
+    git config $global alias.ss status
 
     # git grep
-    git config --global alias.sniffer "grep --break --heading --line-number --extended-regexp 'dump\(|console\.[^(]+\('"
+    git config $global alias.sniffer "grep --break --heading --line-number --extended-regexp 'dump\(|console\.[^(]+\('"
 }
 
 function gbw_git_get_current_branch {
