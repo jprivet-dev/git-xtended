@@ -210,5 +210,19 @@ TODO (Work in progress)
 
 == Agile Git workflow commands
 
+=== Workflow activation
+
 TODO (Work in progress)
 
+=== Workflow alias list
+
+TODO (Work in progress)
+
+[cols="s,d", options="header"]
+|===
+| Workflow alias
+| Description
+
+| git workflow
+| Explain
+|===
