@@ -114,6 +114,70 @@ image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
 == Git aliases & hooks
 
+=== Aliases
+
+[cols="m,m,d"]
+|===
+3+| $ git ...
+| b
+| branch
+| Explain
+
+| c
+| commit -m
+| Explain
+
+| amend
+| commit -m --amend
+| Explain
+
+| undo
+| reset --soft HEAD^
+| Explain
+
+| co
+| checkout
+| Explain
+
+| d
+| diff --function-context
+| Explain
+
+| l
+| log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s' -12
+| Explain
+
+| ll
+| log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s'
+| Explain
+
+| lcount
+| shortlog -sn
+| Explain
+
+| rrr
+| "!sh -c 'git clean -f -d; git reset --hard HEAD'"
+| Explain
+
+| s
+| status -s
+| Explain
+
+| ss
+| status
+| Explain
+
+| sniffer
+| grep --break --heading --line-number --extended-regexp 'dump\\(\|console\\.[^(]+\\('
+| Explain
+
+| untracked
+| clean -f -d
+| Explain
+|===
+
+=== Hooks
+
 TODO (Work in progress)
 
 == Agile Git workflow commands
