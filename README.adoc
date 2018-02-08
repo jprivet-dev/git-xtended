@@ -133,12 +133,12 @@ Remove all aliases configured by {MAIN_TITLE_SHORT}
 $ gbw aliases --unset [--global]
 ----
 
-TIP: You can see all aliases in `--global` configuration file `~/.gitconfig`, or in "local" configuration file `.git/config`, in current repository
+TIP: You can see all aliases in `--global` configuration file `~/.gitconfig`, or in the current repository configuration file `.git/config`
 
 [cols="1 s,2 d,1 d", options="header"]
 |===
 | Alias
-| Complete command
+| Raw command
 | Description
 
 | git b
@@ -157,7 +157,7 @@ TIP: You can see all aliases in `--global` configuration file `~/.gitconfig`, or
 | git reset --soft HEAD^
 | Undone last commit & changes are staged
 
-| git co
+| git k
 | git checkout
 | Switch branches
 
