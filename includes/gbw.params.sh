@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-BRANCH_MAIN_REMOTE_DEVELOP="origin/develop"
-BRANCH_MAIN_REMOTE_RELEASE="origin/release"
-BRANCH_MAIN_REMOTE_MASTER="origin/"
+GBW_BRANCH_MAIN_REMOTE_DEVELOP="origin/develop"
+GBW_BRANCH_MAIN_REMOTE_RELEASE="origin/release"
+GBW_BRANCH_MAIN_REMOTE_MASTER="origin/"
