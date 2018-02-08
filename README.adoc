@@ -48,25 +48,32 @@ TADA ! {MAIN_TITLE} is ready
 
 === Presentation
 
-:PROMPT_TIME:                09:15:27
-:PROMPT_USER_HOST:           user@host
-:PROMPT_DIR:                 :~/dir/project
-:PROMPT_BRANCH:              branch-project
-:PROMPT_COUNT:               (7)
-:PROMPT_UNTRACKED:           1?
-:PROMPT_NOT_STAGED:          3!
-:PROMPT_TO_BE_COMMITTED:     c(2 +1 -0)
-:PROMPT_BEHIND:              2↓
-:PROMPT_AHEAD:               74↑
-:PROMPT_PS1:                 {PROMPT_TIME} {PROMPT_USER_HOST}{PROMPT_DIR} {PROMPT_BRANCH} {PROMPT_COUNT} {PROMPT_UNTRACKED} {PROMPT_NOT_STAGED} {PROMPT_TO_BE_COMMITTED} {PROMPT_BEHIND} {PROMPT_AHEAD}
-:PROMPT_PS1_NO_CHANGE:       09:12:03 user@host:~/dir/project branch-project 0↓ 71↑
-:PROMPT_PS1_ONE_CHANGE:      09:13:38 user@host:~/dir/project branch-project (1) 0? 1! c(0 +0 -0) 0↓ 71↑
+:PROMPT_TIME:                   09:15:27
+:PROMPT_USER_HOST:              user@host
+:PROMPT_DIR:                    :~/dir/project
+:PROMPT_BRANCH:                 branch-project
+:PROMPT_COUNT_NB:               7
+:PROMPT_COUNT:                  ({PROMPT_COUNT_NB})
+:PROMPT_UNTRACKED_NB:           1
+:PROMPT_UNTRACKED:              {PROMPT_UNTRACKED_NB}?
+:PROMPT_NOT_STAGED_NB:          3
+:PROMPT_NOT_STAGED:             {PROMPT_NOT_STAGED_NB}!
+:PROMPT_TO_BE_COMMITTED_NB_1:   2
+:PROMPT_TO_BE_COMMITTED_NB_2:   1
+:PROMPT_TO_BE_COMMITTED_NB_3:   0
+:PROMPT_TO_BE_COMMITTED:        c({PROMPT_TO_BE_COMMITTED_NB_1} +{PROMPT_TO_BE_COMMITTED_NB_2} -{PROMPT_TO_BE_COMMITTED_NB_3})
+:PROMPT_BEHIND_NB:              2
+:PROMPT_BEHIND:                 {PROMPT_BEHIND_NB}↓
+:PROMPT_AHEAD_NB:               74
+:PROMPT_AHEAD:                  {PROMPT_AHEAD_NB}↑
+:PROMPT_PS1:                    {PROMPT_TIME} {PROMPT_USER_HOST}{PROMPT_DIR} {PROMPT_BRANCH} {PROMPT_COUNT} {PROMPT_UNTRACKED} {PROMPT_NOT_STAGED} {PROMPT_TO_BE_COMMITTED} {PROMPT_BEHIND} {PROMPT_AHEAD}
+:PROMPT_PS1_NO_CHANGE:          09:12:03 user@host:~/dir/project branch-project 0↓ 71↑
+:PROMPT_PS1_ONE_CHANGE:         09:13:38 user@host:~/dir/project branch-project (1) 0? 1! c(0 +0 -0) 0↓ 71↑
 
 image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
 
-Basic information
-
+.Basic information
 [cols="s,d"]
 |===
 | {PROMPT_TIME}               | current time
@@ -74,20 +81,22 @@ Basic information
 | {PROMPT_DIR}                | current working directory
 |===
 
-Git information
-
+.Git information
 [cols="s,d"]
 |===
 | {PROMPT_BRANCH}             | current branch
-| {PROMPT_COUNT}              | 7 changes in total
-| {PROMPT_UNTRACKED}          | 1 untracked file
-| {PROMPT_NOT_STAGED}         | 3 changes not staged for commit
+| {PROMPT_COUNT}              | {PROMPT_COUNT_NB} changes in total
+| {PROMPT_UNTRACKED}          | {PROMPT_UNTRACKED_NB} untracked file
+| {PROMPT_NOT_STAGED}         | {PROMPT_NOT_STAGED_NB} changes not staged for commit
 
 | {PROMPT_TO_BE_COMMITTED}
-| changes to be committed(2 = 2 modified / +1 = 1 added / -0 = 0 deleted)
+| changes to be committed :
+{PROMPT_TO_BE_COMMITTED_NB_1} = {PROMPT_TO_BE_COMMITTED_NB_1} modified
++{PROMPT_TO_BE_COMMITTED_NB_2} = {PROMPT_TO_BE_COMMITTED_NB_2} added
+-{PROMPT_TO_BE_COMMITTED_NB_3} = {PROMPT_TO_BE_COMMITTED_NB_3} deleted
 
-| {PROMPT_BEHIND}             | 2 commits behind branch of reference
-| {PROMPT_AHEAD}              | 74 commits ahead branch of reference
+| {PROMPT_BEHIND}             | {PROMPT_BEHIND_NB} commits behind branch of reference
+| {PROMPT_AHEAD}              | {PROMPT_AHEAD_NB} commits ahead branch of reference
 |===
 
 === Case examples
@@ -97,7 +106,6 @@ image::img/gbw-screenshot-prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
 
 .One change case
 image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
-
 
 == Git aliases & hooks
 
