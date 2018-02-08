@@ -116,40 +116,40 @@ image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
 === Aliases
 
-[cols="m,m,d"]
+[cols="s,d,d"]
 |===
 3+| $ git ...
 | b
 | branch
-| Explain
+| List, create, or delete branches
 
 | c
 | commit -m
-| Explain
+| Record changes to the repository with message
 
 | amend
 | commit -m --amend
-| Explain
+| Change the last commit
 
 | undo
 | reset --soft HEAD^
-| Explain
+| Undone last commit & changes are staged
 
 | co
 | checkout
-| Explain
+| Switch branches
 
 | d
 | diff --function-context
-| Explain
+| Show changes
 
 | l
 | log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s' -12
-| Explain
+| Show last 12 commit logs
 
 | ll
 | log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s'
-| Explain
+| Show commit logs
 
 | lcount
 | shortlog -sn
@@ -157,6 +157,10 @@ image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
 | rrr
 | "!sh -c 'git clean -f -d; git reset --hard HEAD'"
+| Explain
+
+| untracked
+| clean -f -d
 | Explain
 
 | s
@@ -169,10 +173,6 @@ image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
 | sniffer
 | grep --break --heading --line-number --extended-regexp 'dump\\(\|console\\.[^(]+\\('
-| Explain
-
-| untracked
-| clean -f -d
 | Explain
 |===
 
