@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 function gbw_git_config_set_aliases {
-    local global=$1
-    local g=""
-
-    [[ "$global" != "--global" ]] && global=""
+    [[ "$1" == "--global" ]] && global="" || global="--global"
 
     # git branch
     git config $global alias.b branch
@@ -43,6 +40,25 @@ function gbw_git_config_set_aliases {
 
     # git grep
     git config $global alias.sniffer "grep --break --heading --line-number --extended-regexp 'dump\(|console\.[^(]+\('"
+}
+
+function gbw_git_config_unset_aliases {
+    [[ "$1" == "--global" ]] && global="" || global="--global"
+    
+    git config $global --unset alias.b
+	git config $global --unset alias.d
+	git config $global --unset alias.c
+	git config $global --unset alias.amend
+	git config $global --unset alias.undo
+	git config $global --unset alias.co
+	git config $global --unset alias.l
+	git config $global --unset alias.ll
+	git config $global --unset alias.lcount
+	git config $global --unset alias.untracked
+	git config $global --unset alias.rrr
+	git config $global --unset alias.s
+	git config $global --unset alias.ss
+	git config $global --unset alias.sniffer
 }
 
 function gbw_git_get_current_branch {
