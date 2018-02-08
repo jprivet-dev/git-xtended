@@ -50,19 +50,15 @@ TADA ! {MAIN_TITLE} is ready
 :PROMPT_USER_HOST:           user@host
 :PROMPT_DIR:                 :~/dir/project
 :PROMPT_BRANCH:              branch-project
-:PROMPT_COUNT:               (3)
+:PROMPT_COUNT:               (7)
 :PROMPT_UNTRACKED:           1?
-:PROMPT_NOT_STAGED:          2!
-:PROMPT_TO_BE_COMMITTED:     c(0 +1 -0)
+:PROMPT_NOT_STAGED:          3!
+:PROMPT_TO_BE_COMMITTED:     c(2 +1 -0)
 :PROMPT_BEHIND:              2↓
 :PROMPT_AHEAD:               74↑
+:PROMPT_PS1:                 {PROMPT_TIME} {PROMPT_USER_HOST}{PROMPT_DIR} {PROMPT_BRANCH} {PROMPT_COUNT} {PROMPT_UNTRACKED} {PROMPT_NOT_STAGED} {PROMPT_TO_BE_COMMITTED} {PROMPT_BEHIND} {PROMPT_AHEAD}
 
-[source,shell]
-[subs=attributes+]
-----
-{PROMPT_TIME} {PROMPT_USER_HOST}{PROMPT_DIR} {PROMPT_BRANCH} {PROMPT_COUNT} {PROMPT_UNTRACKED} {PROMPT_NOT_STAGED} {PROMPT_TO_BE_COMMITTED} {PROMPT_BEHIND} {PROMPT_AHEAD}
-$
-----
+image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
 [cols="s,d"]
 |===
@@ -80,9 +76,9 @@ $
 
 == Git aliases & hooks
 
-TODO
+TODO (Work in progress)
 
 == Agile Git workflow commands
 
-TODO
+TODO (Work in progress)
 
