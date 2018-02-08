@@ -122,62 +122,60 @@ image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 | Complete command
 | Description
 
-3+| $ git ...
-
-| b
-| branch
+| git b
+| git branch
 | List, create, or delete branches
 
-| c
-| commit -m
+| git c
+| git commit -m
 | Record changes to the repository with message
 
-| amend
-| commit -m --amend
+| git amend
+| git commit -m --amend
 | Change the last commit
 
-| undo
-| reset --soft HEAD^
+| git undo
+| git reset --soft HEAD^
 | Undone last commit & changes are staged
 
-| co
-| checkout
+| git co
+| git checkout
 | Switch branches
 
-| d
-| diff --function-context
+| git d
+| git diff --function-context
 | Show changes
 
-| l
-| log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s' -12
+| git l
+| git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s' -12
 | Show last 12 commit logs
 
-| ll
-| log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s'
+| git ll
+| git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s'
 | Show commit logs
 
-| lcount
-| shortlog -sn
+| git lcount
+| git shortlog -sn
 | Explain
 
-| rrr
+| git rrr
 | git clean -f -d; git reset --hard HEAD
 | Explain
 
-| untracked
-| clean -f -d
+| git untracked
+| git clean -f -d
 | Explain
 
-| s
-| status -s
+| git s
+| git status -s
 | Explain
 
-| ss
-| status
+| git ss
+| git status
 | Explain
 
-| sniffer
-| grep --break --heading --line-number --extended-regexp 'dump\\(\|console\\.[^(]+\\('
+| git sniffer
+| git grep --break --heading --line-number --extended-regexp 'dump\\(\|console\\.[^(]+\\('
 | Explain
 |===
 
