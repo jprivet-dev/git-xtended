@@ -116,7 +116,7 @@ image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
 === Aliases
 
-[cols="s,d,d", options="header"]
+[cols="1 s,2 d,1 d", options="header"]
 |===
 | Alias
 | Complete command
