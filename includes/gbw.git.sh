@@ -15,7 +15,7 @@ function gbw_git_config_set_aliases {
     git config $global alias.undo "reset --soft HEAD^"
 
     # git checkout
-    git config $global alias.co checkout
+    git config $global alias.k checkout
 
     # git log
     local _HASH="%C(yellow)%h"
@@ -50,7 +50,7 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.c
 	git config $global --unset alias.amend
 	git config $global --unset alias.undo
-	git config $global --unset alias.co
+	git config $global --unset alias.k
 	git config $global --unset alias.l
 	git config $global --unset alias.ll
 	git config $global --unset alias.lcount
