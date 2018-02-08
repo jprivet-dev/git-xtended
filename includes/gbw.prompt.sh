@@ -163,7 +163,7 @@ function gbw_prompt_ps1 {
     local behind="$(gbw_prompt_behind)"
     local ahead="$(gbw_prompt_ahead)"
 
-    local prompt="$(gbw_implode " " \"$time\" \"$userhost\" \"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
+    local prompt="$(gbw_implode " " \"$time\" \"$userhost\":\"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
     local newline="$F_RESET\n\$ "
 
     PS1="$prompt$newline"
@@ -173,6 +173,9 @@ function gbw_prompt_ps2 {
     PS2="$C_CYAN>"
 }
 
-PROMPT_COMMAND='gbw_prompt_ps1'
-gbw_prompt_ps2
+function gbw_prompt_init {
+    [[ "$(gbw_is_bash_interactive)" == "false" ]] && return
+    PROMPT_COMMAND='gbw_prompt_ps1'
+    gbw_prompt_ps2
+}
 
