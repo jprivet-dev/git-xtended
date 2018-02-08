@@ -48,19 +48,19 @@ function gbw_git_get_changes_nb {
     git status --porcelain 2> /dev/null | wc -l
 }
 
-function git_diff_current_branch_origin_dev {
+function gbw_git_diff_current_branch_origin_dev {
     git diff --stat origin/dev 2> /dev/null
 }
 
-function git_get_status_changes_to_be_committed_count {
+function gbw_git_get_status_changes_to_be_committed_count {
     git status --porcelain 2> /dev/null | grep '^[^? ]' | wc -l
 }
 
-function git_get_status_changes_to_be_committed_modified_count {
+function gbw_git_get_status_changes_to_be_committed_modified_count {
     git status --porcelain 2> /dev/null | grep '^M' | wc -l
 }
 
-function git_get_status_changes_to_be_committed_modified_extended_count {
+function gbw_git_get_status_changes_to_be_committed_modified_extended_count {
     # ' ' = unmodified
     # M = modified / A = added / D = deleted
     # R = renamed / C = copied / U = updated but unmerged
@@ -69,7 +69,7 @@ function git_get_status_changes_to_be_committed_modified_extended_count {
     git status --porcelain 2> /dev/null | grep '^[^DA? ]' | wc -l
 }
 
-function git_get_status_changes_to_be_committed_deleted_count {
+function gbw_git_get_status_changes_to_be_committed_deleted_count {
     git status --porcelain 2> /dev/null | grep '^D' | wc -l
 }
 
