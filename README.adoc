@@ -73,27 +73,30 @@ TADA ! {MAIN_TITLE} is ready
 image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
 
-.Basic information
-[cols="s,d"]
+
+[cols="s,d", options="header"]
+[grid="none"]
 |===
+| BASIC INFORMATION           |
 | {PROMPT_TIME}               | current time
 | {PROMPT_USER_HOST}          | current user & hostname
 | {PROMPT_DIR}                | current working directory
 |===
 
-.Git information
-[cols="s,d"]
+[cols="s,d", options="header"]
+[grid="none"]
 |===
+| GIT INFORMATION             |
 | {PROMPT_BRANCH}             | current branch
 | {PROMPT_COUNT}              | {PROMPT_COUNT_NB} changes in total
 | {PROMPT_UNTRACKED}          | {PROMPT_UNTRACKED_NB} untracked file
 | {PROMPT_NOT_STAGED}         | {PROMPT_NOT_STAGED_NB} changes not staged for commit
 
 | {PROMPT_TO_BE_COMMITTED}
-| changes to be committed :
-{PROMPT_TO_BE_COMMITTED_NB_1} = {PROMPT_TO_BE_COMMITTED_NB_1} modified
-+{PROMPT_TO_BE_COMMITTED_NB_2} = {PROMPT_TO_BE_COMMITTED_NB_2} added
--{PROMPT_TO_BE_COMMITTED_NB_3} = {PROMPT_TO_BE_COMMITTED_NB_3} deleted
+v| changes to be committed :
+* {PROMPT_TO_BE_COMMITTED_NB_1} = {PROMPT_TO_BE_COMMITTED_NB_1} modified
+* +{PROMPT_TO_BE_COMMITTED_NB_2} = {PROMPT_TO_BE_COMMITTED_NB_2} added
+* -{PROMPT_TO_BE_COMMITTED_NB_3} = {PROMPT_TO_BE_COMMITTED_NB_3} deleted
 
 | {PROMPT_BEHIND}             | {PROMPT_BEHIND_NB} commits behind branch of reference
 | {PROMPT_AHEAD}              | {PROMPT_AHEAD_NB} commits ahead branch of reference
@@ -101,10 +104,12 @@ image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
 === Case examples
 
-.No change case
+No change case :
+
 image::img/gbw-screenshot-prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
 
-.One change case
+One change case :
+
 image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
 == Git aliases & hooks
