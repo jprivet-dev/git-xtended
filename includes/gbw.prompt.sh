@@ -46,7 +46,7 @@ function gbw_prompt_status_to_be_commited {
     fi
 
     local c="$(git_get_status_changes_to_be_committed_count)"
-    local m="$(git_get_status_changes_to_be_committed_modified_count)"
+    local m="$(git_get_status_changes_to_be_committed_modified_extended_count)"
     local n="$(git_get_status_changes_to_be_committed_new_file_count)"
     local d="$(git_get_status_changes_to_be_committed_deleted_count)"
     local format_c="$C_DARK_GRAY"
