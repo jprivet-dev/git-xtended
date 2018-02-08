@@ -46,17 +46,17 @@ TADA ! {MAIN_TITLE} is ready
 
 == Prompt with Git information
 
-:_TIME_:               09:15:27
-:_USER_:               user
-:_HOST_:               host
-:_DIR_:                ~/dir/project
-:_BRANCH_:             branch-project
-:_COUNT_:              (3)
-:_UNTRACKED_:          1?
-:_NOT_STAGED_: 2!
-:_TO_BE_COMMITTED_:    c(0 +1 -0)
-:_BEHIND_:             2↓
-:_AHEAD_:              74↑
+:_TIME_:                09:15:27
+:_USER_:                user
+:_HOST_:                host
+:_DIR_:                 ~/dir/project
+:_BRANCH_:              branch-project
+:_COUNT_:               (3)
+:_UNTRACKED_:           1?
+:_NOT_STAGED_:          2!
+:_TO_BE_COMMITTED_:     c(0 +1 -0)
+:_BEHIND_:              2↓
+:_AHEAD_:               74↑
 
 [source,shell]
 [subs=attributes+]
@@ -64,6 +64,20 @@ TADA ! {MAIN_TITLE} is ready
 {_TIME_} {_USER_}@{_HOST_}:{_DIR_} {_BRANCH_} {_COUNT_} {_UNTRACKED_} {_NOT_STAGED_} {_TO_BE_COMMITTED_} {_BEHIND_} {_AHEAD_}
 $
 ----
+
+|===
+
+| {_TIME_} | explain
+| {_TIME_} | explain
+| {_TIME_} | explain
+| {_TIME_} | explain
+| {_TIME_} | explain
+| {_TIME_} | explain
+| {_TIME_} | explain
+| {_TIME_} | explain
+
+|===
+
 
 == Git aliases & hooks
 
