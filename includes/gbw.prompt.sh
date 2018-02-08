@@ -47,7 +47,7 @@ function gbw_prompt_status_to_be_commited {
 
     local c="$(gbw_git_get_status_changes_to_be_committed_count)"
     local m="$(gbw_git_get_status_changes_to_be_committed_modified_extended_count)"
-    local n="$(git_get_status_changes_to_be_committed_new_file_count)"
+    local n="$(gbw_git_get_status_changes_to_be_committed_new_file_count)"
     local d="$(gbw_git_get_status_changes_to_be_committed_deleted_count)"
     local format_c="$C_DARK_GRAY"
     local format_m="$C_DARK_GRAY"
@@ -70,7 +70,7 @@ function gbw_prompt_status_not_staged {
         return
     fi
 
-    local count="$(git_get_status_changes_not_staged_for_commit_count)"
+    local count="$(gbw_git_get_status_changes_not_staged_for_commit_count)"
     local format="$C_DARK_GRAY"
 
     [[ "$count" > 0 ]] && format="$C_LIGHT_RED"
@@ -83,7 +83,7 @@ function gbw_prompt_status_untracked {
         return
     fi
 
-    local count="$(git_get_status_untracked_files_count)"
+    local count="$(gbw_git_get_status_untracked_files_count)"
     local format="$C_DARK_GRAY"
 
     [[ "$count" > 0 ]] && format="$C_LIGHT_RED"
@@ -108,7 +108,7 @@ function gbw_prompt_behind {
         return
     fi
 
-    local count="$(git_status_behind_count $(gbw_git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(gbw_git_status_behind_count $(gbw_git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
@@ -124,7 +124,7 @@ function gbw_prompt_ahead {
         return
     fi
 
-    local count="$(git_status_ahead_count $(gbw_git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
