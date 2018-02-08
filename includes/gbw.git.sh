@@ -60,6 +60,15 @@ function git_get_status_changes_to_be_committed_modified_count {
     git status --porcelain 2> /dev/null | grep '^M' | wc -l
 }
 
+function git_get_status_changes_to_be_committed_modified_extended_count {
+    # ' ' = unmodified
+    # M = modified / A = added / D = deleted
+    # R = renamed / C = copied / U = updated but unmerged
+    # ? = untracked / ! = ignored
+    # get all without D, A, ? & ' '
+    git status --porcelain 2> /dev/null | grep '^[^DA? ]' | wc -l
+}
+
 function git_get_status_changes_to_be_committed_deleted_count {
     git status --porcelain 2> /dev/null | grep '^D' | wc -l
 }
