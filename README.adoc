@@ -46,6 +46,8 @@ TADA ! {MAIN_TITLE} is ready
 
 == Prompt with Git information
 
+=== Presentation
+
 :PROMPT_TIME:                09:15:27
 :PROMPT_USER_HOST:           user@host
 :PROMPT_DIR:                 :~/dir/project
@@ -57,22 +59,45 @@ TADA ! {MAIN_TITLE} is ready
 :PROMPT_BEHIND:              2↓
 :PROMPT_AHEAD:               74↑
 :PROMPT_PS1:                 {PROMPT_TIME} {PROMPT_USER_HOST}{PROMPT_DIR} {PROMPT_BRANCH} {PROMPT_COUNT} {PROMPT_UNTRACKED} {PROMPT_NOT_STAGED} {PROMPT_TO_BE_COMMITTED} {PROMPT_BEHIND} {PROMPT_AHEAD}
+:PROMPT_PS1_NO_CHANGE:       09:12:03 user@host:~/dir/project branch-project 0↓ 71↑
+:PROMPT_PS1_ONE_CHANGE:      09:13:38 user@host:~/dir/project branch-project (1) 0? 1! c(0 +0 -0) 0↓ 71↑
 
 image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
+
+Basic information
+
 [cols="s,d"]
 |===
-| {PROMPT_TIME}               | time
-| {PROMPT_USER_HOST}          | explain
-| {PROMPT_DIR}                | explain
-| {PROMPT_BRANCH}             | current branch
-| {PROMPT_COUNT}              | all elements from git status
-| {PROMPT_UNTRACKED}          | untracked files
-| {PROMPT_NOT_STAGED}         | changes not staged for commit
-| {PROMPT_TO_BE_COMMITTED}    | changes to be committed (modified +added -deleted)
-| {PROMPT_BEHIND}             | commits behind branch of reference
-| {PROMPT_AHEAD}              | commits ahead branch of reference
+| {PROMPT_TIME}               | current time
+| {PROMPT_USER_HOST}          | current user & hostname
+| {PROMPT_DIR}                | current working directory
 |===
+
+Git information
+
+[cols="s,d"]
+|===
+| {PROMPT_BRANCH}             | current branch
+| {PROMPT_COUNT}              | 7 changes in total
+| {PROMPT_UNTRACKED}          | 1 untracked file
+| {PROMPT_NOT_STAGED}         | 3 changes not staged for commit
+
+| {PROMPT_TO_BE_COMMITTED}
+| changes to be committed(2 = 2 modified / +1 = 1 added / -0 = 0 deleted)
+
+| {PROMPT_BEHIND}             | 2 commits behind branch of reference
+| {PROMPT_AHEAD}              | 74 commits ahead branch of reference
+|===
+
+=== Case examples
+
+.No change case
+image::img/gbw-screenshot-prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
+
+.One change case
+image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
+
 
 == Git aliases & hooks
 
