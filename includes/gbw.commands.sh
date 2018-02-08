@@ -24,5 +24,5 @@ function gbw_command_parse_options {
 }
 
 function gbw_command_aliases {
-    gbw_git_apply_global_config $@
+    gbw_git_config_set_aliases $@
 }
