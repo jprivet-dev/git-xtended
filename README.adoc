@@ -64,7 +64,7 @@ TADA ! {MAIN_TITLE} is ready
 $
 ----
 
-[cols="h,"]
+[cols="s,d"]
 |===
 | {PROMPT_TIME}               | time
 | {PROMPT_USER_HOST}          | explain
