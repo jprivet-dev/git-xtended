@@ -22,3 +22,7 @@ function gbw_implode {
 
     echo "$implode"
 }
+
+function gbw_is_bash_interactive {
+    [[ $- == *i* ]] && echo "true" || echo "false"
+}
