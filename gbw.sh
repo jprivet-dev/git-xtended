@@ -22,6 +22,7 @@ if [[ -f ~/git-bash-workflow/params.sh ]]; then
 fi
 
 source ~/git-bash-workflow/includes/gbw.utils.sh
+source ~/git-bash-workflow/includes/gbw.commands.sh
 source ~/git-bash-workflow/includes/gbw.formatting.sh
 source ~/git-bash-workflow/includes/gbw.git.sh
 source ~/git-bash-workflow/includes/gbw.prompt.sh
