@@ -161,7 +161,7 @@ image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 | Explain
 
 | rrr
-| "!sh -c 'git clean -f -d; git reset --hard HEAD'"
+| git clean -f -d; git reset --hard HEAD
 | Explain
 
 | untracked
