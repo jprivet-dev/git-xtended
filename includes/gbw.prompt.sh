@@ -25,30 +25,30 @@ function gbw_prompt_dir {
 }
 
 function gbw_prompt_branch {
-    if [[ -z "$(git_get_current_branch)" ]]; then
+    if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
     fi
 
-    echo "$C_LIGHT_YELLOW$(git_get_current_branch)$F_RESET"
+    echo "$C_LIGHT_YELLOW$(gbw_git_get_current_branch)$F_RESET"
 }
 
 function gbw_prompt_changes_count {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
-    echo "$C_LIGHT_YELLOW($(git_get_changes_nb))$F_RESET"
+    echo "$C_LIGHT_YELLOW($(gbw_git_get_changes_nb))$F_RESET"
 }
 
 function gbw_prompt_status_to_be_commited {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
-    local c="$(git_get_status_changes_to_be_committed_count)"
-    local m="$(git_get_status_changes_to_be_committed_modified_extended_count)"
-    local n="$(git_get_status_changes_to_be_committed_new_file_count)"
-    local d="$(git_get_status_changes_to_be_committed_deleted_count)"
+    local c="$(gbw_git_get_status_changes_to_be_committed_count)"
+    local m="$(gbw_git_get_status_changes_to_be_committed_modified_extended_count)"
+    local n="$(gbw_git_get_status_changes_to_be_committed_new_file_count)"
+    local d="$(gbw_git_get_status_changes_to_be_committed_deleted_count)"
     local format_c="$C_DARK_GRAY"
     local format_m="$C_DARK_GRAY"
     local format_n="$C_DARK_GRAY"
@@ -66,11 +66,11 @@ function gbw_prompt_status_to_be_commited {
 }
 
 function gbw_prompt_status_not_staged {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
-    local count="$(git_get_status_changes_not_staged_for_commit_count)"
+    local count="$(gbw_git_get_status_changes_not_staged_for_commit_count)"
     local format="$C_DARK_GRAY"
 
     [[ "$count" > 0 ]] && format="$C_LIGHT_RED"
@@ -79,11 +79,11 @@ function gbw_prompt_status_not_staged {
 }
 
 function gbw_prompt_status_untracked {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
-    local count="$(git_get_status_untracked_files_count)"
+    local count="$(gbw_git_get_status_untracked_files_count)"
     local format="$C_DARK_GRAY"
 
     [[ "$count" > 0 ]] && format="$C_LIGHT_RED"
@@ -92,7 +92,7 @@ function gbw_prompt_status_untracked {
 }
 
 function gbw_prompt_status {
-    if [[ (-z "$(git_get_current_branch)") || ("$(git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -104,11 +104,11 @@ function gbw_prompt_status {
 }
 
 function gbw_prompt_behind {
-    if [[ -z "$(git_get_current_branch)" ]]; then
+    if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
     fi
 
-    local count="$(git_status_behind_count $(git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(gbw_git_status_behind_count $(gbw_git_get_current_branch) $GBW_BRANCH_MAIN_REMOTE_DEVELOP)"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
@@ -120,11 +120,11 @@ function gbw_prompt_behind {
 }
 
 function gbw_prompt_ahead {
-    if [[ -z "$(git_get_current_branch)" ]]; then
+    if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
     fi
 
-    local count="$(git_status_ahead_count $(git_get_current_branch) $BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $GBW_BRANCH_MAIN_REMOTE_DEVELOP)"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
@@ -149,8 +149,8 @@ function gbw_prompt_git_info {
     [[ -n "$status_u" ]]    && echo -e "$status_u : untracked files"
     [[ -n "$status_s" ]]    && echo -e "$status_s : changes not staged for commit"
     [[ -n "$status_c" ]]    && echo -e "$status_c : changes to be committed"
-    [[ -n "$behind" ]]      && echo -e "$behind : commits behind $BRANCH_MAIN_REMOTE_DEVELOP"
-    [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $BRANCH_MAIN_REMOTE_DEVELOP"
+    [[ -n "$behind" ]]      && echo -e "$behind : commits behind $GBW_BRANCH_MAIN_REMOTE_DEVELOP"
+    [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $GBW_BRANCH_MAIN_REMOTE_DEVELOP"
 }
 
 function gbw_prompt_ps1 {
