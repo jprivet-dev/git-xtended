@@ -56,11 +56,43 @@ function git_get_status_changes_to_be_committed_count {
     git status --porcelain 2> /dev/null | grep '^[^? ]' | wc -l
 }
 
+function git_get_status_changes_to_be_committed_modified_count {
+    git status --porcelain 2> /dev/null | grep '^M' | wc -l
+}
+
+function git_get_status_changes_to_be_committed_modified_extended_count {
+    # ' ' = unmodified
+    # M = modified / A = added / D = deleted
+    # R = renamed / C = copied / U = updated but unmerged
+    # ? = untracked / ! = ignored
+    # get all without D, A, ? & ' '
+    git status --porcelain 2> /dev/null | grep '^[^DA? ]' | wc -l
+}
+
+function git_get_status_changes_to_be_committed_deleted_count {
+    git status --porcelain 2> /dev/null | grep '^D' | wc -l
+}
+
+function git_get_status_changes_to_be_committed_new_file_count {
+    git status --porcelain 2> /dev/null | grep '^A' | wc -l
+}
+
 function git_get_status_changes_not_staged_for_commit_count {
-    git status --porcelain 2> /dev/null | grep '^.M' | wc -l
+    git status --porcelain 2> /dev/null | grep '^.[^? ]' | wc -l
 }
 
 function git_get_status_untracked_files_count {
     git status --porcelain 2> /dev/null | grep '^??' | wc -l
 }
 
+function git_status_ahead_count {
+    local from_branch=$1
+    local to_branch=$2
+    git rev-list --left-right --count $from_branch...$to_branch 2> /dev/null | cut -f 1
+}
+
+function git_status_behind_count {
+    local from_branch=$1
+    local to_branch=$2
+    git rev-list --left-right --count $to_branch...$from_branch 2> /dev/null | cut -f 1
+}
