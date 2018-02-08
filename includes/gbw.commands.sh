@@ -14,7 +14,8 @@ function gbw_command_parse_action {
             gbw_command_aliases $@
         ;;
         *)
-            echo "Unknow $action"
+            echo "Unknow action '$action'"
+            return
         ;;
     esac
 }
@@ -24,5 +25,29 @@ function gbw_command_parse_options {
 }
 
 function gbw_command_aliases {
-    gbw_git_config_set_aliases $@
+    local global=""
+    local unset=""
+    local i
+
+    for i in "$@"
+    do
+    case $i in
+        -g|--global)
+        global="--global"
+        ;;
+        --unset)
+        unset="--unset"
+        ;;
+        *)
+            echo "Unknown option '$i'"
+            return
+        ;;
+    esac
+    done
+
+    if [[ "$unset" == "--unset" ]]; then
+        gbw_git_config_unset_aliases $global
+    else
+        gbw_git_config_set_aliases $global
+    fi
 }
