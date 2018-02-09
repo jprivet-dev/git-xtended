@@ -88,7 +88,7 @@ image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 [cols="s,d", options="header"]
 |===
 2+| Git information
-| {PROMPT_BRANCH}             | current branch
+| {PROMPT_BRANCH}             | current local branch
 | {PROMPT_COUNT}              | *{PROMPT_COUNT_NB}* changes in total
 | {PROMPT_UNTRACKED}          | *{PROMPT_UNTRACKED_NB}* untracked file
 | {PROMPT_NOT_STAGED}         | *{PROMPT_NOT_STAGED_NB}* changes not staged for commit
