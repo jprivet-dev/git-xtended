@@ -145,59 +145,59 @@ TIP: You can see all aliases in `--global` configuration file `~/.gitconfig`, or
 | Raw command
 | Description
 
-| git b
+| g{nbsp}b
 | git branch
 | List, create, or delete branches
 
-| git c
+| g{nbsp}c
 | git commit -m
 | Record changes to the repository with message
 
-| git amend
+| g{nbsp}amend
 | git commit -m --amend
 | Change the last commit
 
-| git undo
+| g{nbsp}undo
 | git reset --soft HEAD^
 | Undone last commit & changes are staged
 
-| git k
+| g{nbsp}k
 | git checkout
 | Switch branches
 
-| git d
+| g{nbsp}d
 | git diff --function-context
 | Show changes
 
-| git l
+| g{nbsp}l
 | git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s' -12
 | Show last 12 commit logs
 
-| git ll
+| g{nbsp}ll
 | git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s'
 | Show commit logs
 
-| git lcount
+| g{nbsp}lcount
 | git shortlog -sn
 | Explain
 
-| git rrr
+| g{nbsp}rrr
 | git clean -f -d; git reset --hard HEAD
 | Explain
 
-| git untracked
+| g{nbsp}untracked
 | git clean -f -d
 | Explain
 
-| git s
+| g{nbsp}s
 | git status -s
 | Explain
 
-| git ss
+| g{nbsp}ss
 | git status
 | Explain
 
-| git sniffer
+| g{nbsp}sniffer
 | git grep --break --heading --line-number --extended-regexp 'dump\\(\|console\\.[^(]+\\('
 | Explain
 |===
