@@ -79,7 +79,7 @@ image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
 [cols="s,d", options="header"]
 |===
-2+| BASIC INFORMATION
+2+| Basic information
 | {PROMPT_TIME}               | current time
 | {PROMPT_USER_HOST}          | current user & hostname
 | {PROMPT_DIR}                | current working directory
@@ -87,7 +87,7 @@ image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
 [cols="s,d", options="header"]
 |===
-2+| GIT INFORMATION
+2+| Git information
 | {PROMPT_BRANCH}             | current branch
 | {PROMPT_COUNT}              | *{PROMPT_COUNT_NB}* changes in total
 | {PROMPT_UNTRACKED}          | *{PROMPT_UNTRACKED_NB}* untracked file
