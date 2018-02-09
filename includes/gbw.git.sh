@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 function gbw_git_config_set_aliases {
-    [[ "$1" == "--global" ]] && global="" || global="--global"
+    local global="$1"
+    [[ "$global" != "--global" ]] && global=""
 
     # git branch
     git config $global alias.b branch
