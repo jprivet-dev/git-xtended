@@ -9,6 +9,10 @@ function gbw_git_config_set_aliases {
     # git diff
     git config $global alias.d "diff --function-context"
 
+    # git add
+    git config $global alias.a "add"
+    git config $global alias.all "add ."
+
     # git commit
     git config $global alias.c "commit -m"
     git config $global alias.amend "commit -m --amend"
@@ -31,8 +35,9 @@ function gbw_git_config_set_aliases {
     git config $global alias.lcount "shortlog -sn"
 
     # git reset
-    git config $global alias.untracked "clean -f -d"
+    git config $global alias.r "reset"
     git config $global alias.rrr "!sh -c 'git clean -f -d; git reset --hard HEAD'"
+    git config $global alias.untracked "clean -f -d"
 
     # git status
     git config $global alias.s "status -s"
@@ -47,6 +52,8 @@ function gbw_git_config_unset_aliases {
 
     git config $global --unset alias.b
 	git config $global --unset alias.d
+	git config $global --unset alias.a
+	git config $global --unset alias.all
 	git config $global --unset alias.c
 	git config $global --unset alias.amend
 	git config $global --unset alias.undo
@@ -55,6 +62,7 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.ll
 	git config $global --unset alias.lcount
 	git config $global --unset alias.untracked
+	git config $global --unset alias.r
 	git config $global --unset alias.rrr
 	git config $global --unset alias.s
 	git config $global --unset alias.ss
