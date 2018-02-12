@@ -5,5 +5,9 @@ function gbw_tests_find_all_func_test {
 }
 
 function gbw_tests_run_all {
-    gbw_tests_find_all_func_test
+    gbw_tests_find_all_func_test | while read func; do
+        echo "==> $func"
+        $func
+        echo
+    done
 }
