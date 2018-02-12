@@ -13,7 +13,11 @@ function gbw_tests_run_all {
 }
 
 function gbw_tests_assert_equals {
-    [[ "$1" == "$2" ]] && echo "$GBW_TRUE" ||  echo "$GBW_FALSE"
+    if [[ "$1" == "$2" ]]; then
+        echo "$3: $GBW_TRUE [ $1 ] equals [ $2 ]"
+    else
+        echo "$3: $GBW_FALSE [ $1 ] not equals [ $2 ]"
+    fi
 }
 
 function gbw_tests_assert {
