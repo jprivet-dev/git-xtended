@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-echo "Git Bash Testing"
+echo "Git Bash Workflow Testing"
+echo
 
 source ~/git-bash-workflow/includes/gbw.tests.sh
 
