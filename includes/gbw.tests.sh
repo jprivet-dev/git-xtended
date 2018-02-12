@@ -21,7 +21,7 @@ function gbw_tests_assert {
     shift
 
     case $type in
-        aliases)
+        equals)
             gbw_tests_assert_equals $@
         ;;
         *)
