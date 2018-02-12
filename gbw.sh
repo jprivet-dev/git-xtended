@@ -9,6 +9,8 @@
 # Reload bash_profile
 # source ~/.bash_profile'
 
+[[ "$1" == "--test" ]] && GBW_ENV="TEST" || GBW_ENV="PROD"
+
 echo " Git Bash Workflow"
 echo " - Prompt with Git information"
 echo " - Git aliases & hooks"
@@ -29,4 +31,10 @@ source ~/git-bash-workflow/includes/gbw.prompt.sh
 
 source ~/git-bash-workflow/includes/gbw.bash_aliases.sh
 
-gbw_prompt_init
+if [[ "$GBW_ENV" == "TEST" ]]; then
+    source ~/git-bash-workflow/includes/gbw.tests.sh
+    source ~/git-bash-workflow/tests/gbw.prompt.tests.sh
+    gbw_tests_run_all
+else
+    gbw_prompt_init
+fi
