@@ -17,6 +17,7 @@ echo " - Git aliases & hooks"
 echo " - Agile Git workflow commands"
 echo " @info https://github.com/jprivet-dev/git-bash-workflow.git"
 
+source ~/git-bash-workflow/includes/gbw.variables.sh
 source ~/git-bash-workflow/includes/gbw.params.sh
 
 if [[ -f ~/git-bash-workflow/params.sh ]]; then
