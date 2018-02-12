@@ -45,7 +45,7 @@ C_BG_LIGHT_MAGENTA="\e[105m"
 C_BG_LIGHT_CYAN="\e[106m"
 C_BG_WHITE="\e[107m"
 
-function formatting_print_all {
+function gbw_formatting_print_all {
     echo -e "Normal ${F_UNDERLINED}Underlined${F_RESET}"
     echo -e "Normal ${F_DIM}Dim${F_RESET}"
     echo -e "Normal ${F_BOLD}Bold${F_RESET}"

@@ -1,4 +1,5 @@
 :MAIN_TITLE: Git Bash Workflow
+:MAIN_TITLE_SHORT: GBW
 :BASHRC_PATH: ~/.bashrc
 :GBW_FILE: gbw.sh
 :GBW_PATH: ~/git-bash-workflow/{GBW_FILE}
@@ -9,7 +10,7 @@
 :toc: macro
 
 :toc-title: Summary
-:toclevels: 2
+:toclevels: 3
 toc::[]
 
 '''
@@ -78,7 +79,7 @@ image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
 [cols="s,d", options="header"]
 |===
-2+| BASIC INFORMATION
+2+| Basic information
 | {PROMPT_TIME}               | current time
 | {PROMPT_USER_HOST}          | current user & hostname
 | {PROMPT_DIR}                | current working directory
@@ -86,8 +87,8 @@ image::img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
 [cols="s,d", options="header"]
 |===
-2+| GIT INFORMATION
-| {PROMPT_BRANCH}             | current branch
+2+| Git information
+| {PROMPT_BRANCH}             | current local branch
 | {PROMPT_COUNT}              | *{PROMPT_COUNT_NB}* changes in total
 | {PROMPT_UNTRACKED}          | *{PROMPT_UNTRACKED_NB}* untracked file
 | {PROMPT_NOT_STAGED}         | *{PROMPT_NOT_STAGED_NB}* changes not staged for commit
@@ -112,11 +113,114 @@ In *one change case*, you can see :
 
 image::img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
-== Git aliases & hooks
+== Git aliases
+
+=== Activation and removal
+
+Active all aliases configured by {MAIN_TITLE_SHORT} :
+
+[source,shell]
+[subs=attributes+]
+----
+$ gbw aliases [--global]
+----
+
+Remove all aliases configured by {MAIN_TITLE_SHORT}
+
+[source,shell]
+[subs=attributes+]
+----
+$ gbw aliases --unset [--global]
+----
+
+TIP: You can see all aliases in `--global` configuration file `~/.gitconfig`, or in the current repository configuration file `.git/config`
+
+=== Command list
+
+[cols="1 s,2 d,1 d", options="header"]
+|===
+| Alias
+| Raw command
+| Description
+
+| git{nbsp}b
+| git branch
+| List, create, or delete branches
+
+| git{nbsp}c
+| git commit -m
+| Record changes to the repository with message
+
+| git{nbsp}amend
+| git commit -m --amend
+| Change the last commit
+
+| git{nbsp}undo
+| git reset --soft HEAD^
+| Undone last commit & changes are staged
+
+| git{nbsp}k
+| git checkout
+| Switch branches
+
+| git{nbsp}d
+| git diff --function-context
+| Show changes
+
+| git{nbsp}l
+| git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s' -12
+| Show last 12 commit logs
+
+| git{nbsp}ll
+| git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s'
+| Show commit logs
+
+| git{nbsp}lcount
+| git shortlog -sn
+| Explain
+
+| git{nbsp}rrr
+| git clean -f -d; git reset --hard HEAD
+| Explain
+
+| git{nbsp}untracked
+| git clean -f -d
+| Explain
+
+| git{nbsp}s
+| git status -s
+| Explain
+
+| git{nbsp}ss
+| git status
+| Explain
+
+| git{nbsp}sniffer
+| git grep --break --heading --line-number --extended-regexp 'dump\\(\|console\\.[^(]+\\('
+| Explain
+|===
+
+== Git hooks
+
+=== Commits are documentation : `prepare-commit-msg`
 
 TODO (Work in progress)
 
 == Agile Git workflow commands
 
+=== Activation
+
 TODO (Work in progress)
 
+=== Command list
+
+TODO (Work in progress)
+
+[cols="s,d", options="header"]
+|===
+| Workflow alias
+| Description
+
+| git workflow
+| Explain
+|===
