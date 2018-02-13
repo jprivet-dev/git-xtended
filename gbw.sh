@@ -17,23 +17,23 @@ echo " - Git aliases & hooks"
 echo " - Agile Git workflow commands"
 echo " @info https://github.com/jprivet-dev/git-bash-workflow.git"
 
-source ~/git-bash-workflow/includes/gbw.variables.sh
-source ~/git-bash-workflow/includes/gbw.params.sh
+source ~/git-bash-workflow/src/gbw.variables.sh
+source ~/git-bash-workflow/src/gbw.params.sh
 
 if [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
 
-source ~/git-bash-workflow/includes/gbw.utils.sh
-source ~/git-bash-workflow/includes/gbw.commands.sh
-source ~/git-bash-workflow/includes/gbw.formatting.sh
-source ~/git-bash-workflow/includes/gbw.git.sh
-source ~/git-bash-workflow/includes/gbw.prompt.sh
+source ~/git-bash-workflow/src/gbw.utils.sh
+source ~/git-bash-workflow/src/gbw.commands.sh
+source ~/git-bash-workflow/src/gbw.formatting.sh
+source ~/git-bash-workflow/src/gbw.git.sh
+source ~/git-bash-workflow/src/gbw.prompt.sh
 
-source ~/git-bash-workflow/includes/gbw.bash_aliases.sh
+source ~/git-bash-workflow/src/gbw.bash_aliases.sh
 
 if [[ "$GBW_ENV" == "TEST" ]]; then
-    source ~/git-bash-workflow/includes/gbw.tests.sh
+    source ~/git-bash-workflow/src/gbw.tests.sh
     source ~/git-bash-workflow/tests/gbw.prompt.tests.sh
     gbw_tests_run_all
 else
