@@ -118,11 +118,17 @@ function gbw_git_get_status_untracked_files_count {
 function gbw_git_status_ahead_count {
     local from_branch=$1
     local to_branch=$2
-    git rev-list --left-right --count $from_branch...$to_branch 2> /dev/null | cut -f 1
+    # TODO : use "| while read -a array; do echo ${array[0]} ; done"
+    # instead of "| cut -f 1". Last tip does not work when gbw_git_status_ahead_count called
+    # into testing function "test_gbw_git_status_ahead_count". Find why !!!
+    git rev-list --left-right --count $from_branch...$to_branch 2> /dev/null | while read -a array; do echo ${array[0]} ; done
 }
 
 function gbw_git_status_behind_count {
     local from_branch=$1
     local to_branch=$2
-    git rev-list --left-right --count $to_branch...$from_branch 2> /dev/null | cut -f 1
+    # TODO : use "| while read -a array; do echo ${array[0]} ; done"
+    # instead of "| cut -f 1". Last tip does not work when gbw_git_status_ahead_count called
+    # into testing function "test_gbw_git_status_behind_count". Find why !!!
+    git rev-list --left-right --count $to_branch...$from_branch 2> /dev/null | while read -a array; do echo ${array[0]} ; done
 }
