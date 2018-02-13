@@ -12,3 +12,7 @@ function test_gbw_prompt_host {
     assert equals "$(gbw_prompt_host)" "\e[96m\h\e[0m" $LINENO
 }
 
+function test_gbw_prompt_userhost {
+    assert equals "$(gbw_prompt_userhost)" "\e[92muser\e[0m\"@\"\e[96m\h\e[0m" $LINENO
+
+}
