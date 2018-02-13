@@ -16,4 +16,4 @@ alias c="clear"
 alias ls="ls -alF --color=auto"
 alias ls.="ls -d .* --color=auto"
 
-alias t=". gbw.sh --test"
+alias t=". tests.sh"
