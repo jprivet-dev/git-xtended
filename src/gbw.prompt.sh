@@ -5,7 +5,7 @@ function gbw_prompt_time {
 }
 
 function gbw_prompt_user {
-    echo "$C_LIGHT_GREEN$USER$F_RESET"
+    echo "$C_LIGHT_GREEN$GBW_USER$F_RESET"
 }
 
 function gbw_prompt_host {
