@@ -5,13 +5,13 @@ echo "# Git Bash Workflow TESTING #"
 echo "#############################"
 echo
 
-source ~/git-bash-workflow/gbw.sh
+alias git="gbw_tests_fake_git"
 
+source ~/git-bash-workflow/gbw.sh
 source ~/git-bash-workflow/src/gbw.tests.sh
+
 source ~/git-bash-workflow/tests/gbw.prompt.tests.sh
 source ~/git-bash-workflow/tests/gbw.git.tests.sh
-
-alias git="gbw_tests_fake_git"
 
 gbw_tests_run_all
 
