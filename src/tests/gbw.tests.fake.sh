@@ -32,6 +32,14 @@ function gbw_tests_fake_git_diff_current_branch_origin_dev {
     echo " 32 files changed, 755 insertions(+), 526 deletions(-)"
 }
 
+function gbw_tests_fake_git_revlist_current_remote {
+    echo "88      0"
+}
+
+function gbw_tests_fake_git_revlist_remote_current {
+    echo "0       88"
+}
+
 function gbw_tests_fake_git {
     local args="$*"
 
@@ -44,6 +52,12 @@ function gbw_tests_fake_git {
         ;;
         "diff --stat origin/dev")
             gbw_tests_fake_git_diff_current_branch_origin_dev
+        ;;
+        "rev-list --left-right --count current-branch...remote-branch")
+            gbw_tests_fake_git_revlist_current_remote
+        ;;
+        "rev-list --left-right --count remote-branch...current-branch")
+            gbw_tests_fake_git_revlist_remote_current
         ;;
     esac
 }
