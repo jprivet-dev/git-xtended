@@ -28,3 +28,7 @@ function test_gbw_git_get_status_changes_to_be_committed_deleted_count {
     assert equals "$(gbw_git_get_status_changes_to_be_committed_deleted_count)" "1" $LINENO
 }
 
+function test_gbw_git_get_status_changes_to_be_committed_new_file_count {
+    assert equals "$(gbw_git_get_status_changes_to_be_committed_new_file_count)" "1" $LINENO
+}
+
