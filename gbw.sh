@@ -14,19 +14,21 @@ echo " - Prompt with Git information"
 echo " - Git aliases & hooks"
 echo " - Agile Git workflow commands"
 echo " @info https://github.com/jprivet-dev/git-bash-workflow.git"
+echo
 
-source ~/git-bash-workflow/includes/gbw.params.sh
+source ~/git-bash-workflow/src/gbw.variables.sh
+source ~/git-bash-workflow/config/gbw.params.sh
 
 if [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
 
-source ~/git-bash-workflow/includes/gbw.utils.sh
-source ~/git-bash-workflow/includes/gbw.commands.sh
-source ~/git-bash-workflow/includes/gbw.formatting.sh
-source ~/git-bash-workflow/includes/gbw.git.sh
-source ~/git-bash-workflow/includes/gbw.prompt.sh
+source ~/git-bash-workflow/src/gbw.utils.sh
+source ~/git-bash-workflow/src/gbw.commands.sh
+source ~/git-bash-workflow/src/gbw.colors.sh
+source ~/git-bash-workflow/src/gbw.git.sh
+source ~/git-bash-workflow/src/gbw.prompt.sh
 
-source ~/git-bash-workflow/includes/gbw.bash_aliases.sh
+source ~/git-bash-workflow/bash/gbw.bash_aliases.sh
 
 gbw_prompt_init
