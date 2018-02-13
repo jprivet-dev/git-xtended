@@ -39,7 +39,7 @@ function gbw_tests_print_results {
     [[ $gbw_tests_count_assertions > 1 ]] && assertion_plurial="assertions" || assertion_plurial="assertion"
     [[ $gbw_tests_count_failures > 1 ]] && failure_plurial="failures" || failure_plurial="failure"
 
-    echo -e "$color$prefix ($gbw_tests_count_tests $test_plurial,  $gbw_tests_count_assertions $assertion_plurial, $gbw_tests_count_failures $failure_plurial)$F_RESET"
+    echo -e "$color$prefix ($gbw_tests_count_tests $test_plurial, $gbw_tests_count_assertions $assertion_plurial, $gbw_tests_count_failures $failure_plurial)$F_RESET"
     echo
 }
 
