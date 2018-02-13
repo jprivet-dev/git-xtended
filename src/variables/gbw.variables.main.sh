@@ -2,3 +2,5 @@
 
 GBW_FALSE="false"
 GBW_TRUE="true"
+
+GBW_USER="$USER"
