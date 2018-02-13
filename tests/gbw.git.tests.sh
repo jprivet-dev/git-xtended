@@ -40,3 +40,7 @@ function test_gbw_git_get_status_untracked_files_count {
     assert equals "$(gbw_git_get_status_untracked_files_count)" "1" $LINENO
 }
 
+function test_gbw_git_status_ahead_count {
+    assert equals "$(gbw_git_status_ahead_count current-branch remote-branch)" "88" $LINENO
+}
+
