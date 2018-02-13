@@ -20,3 +20,7 @@ function test_gbw_git_get_status_changes_to_be_committed_modified_count {
     assert equals "$(gbw_git_get_status_changes_to_be_committed_modified_count)" "1" $LINENO
 }
 
+function test_gbw_git_get_status_changes_to_be_committed_modified_extended_count {
+    assert equals "$(gbw_git_get_status_changes_to_be_committed_modified_extended_count)" "3" $LINENO
+}
+
