@@ -7,3 +7,7 @@ function test_gbw_git_get_current_branch {
 function test_gbw_git_get_changes_nb {
     assert equals "$(gbw_git_get_changes_nb)" "11" $LINENO
 }
+
+function test_gbw_git_diff_current_branch_origin_dev {
+    assert equals "$(gbw_git_diff_current_branch_origin_dev | wc -l)" "5" $LINENO
+}
