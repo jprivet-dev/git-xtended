@@ -23,7 +23,7 @@ function gbw_tests_fake_git_branch {
     echo "  master"
 }
 
-function gbw_tests_fakegit_diff_current_branch_origin_dev {
+function gbw_tests_fake_git_diff_current_branch_origin_dev {
     echo " README.adoc                                  |   6 +-"
     echo " path/to/file-1                               |  18 +++++"
     echo " path/to/file-2                               |  13 ++++"
@@ -42,7 +42,7 @@ function gbw_tests_fake_git {
             gbw_tests_fake_git_branch
         ;;
         "diff --stat origin/dev")
-            gbw_tests_fakegit_diff_current_branch_origin_dev
+            gbw_tests_fake_git_diff_current_branch_origin_dev
         ;;
     esac
 }
