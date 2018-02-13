@@ -52,7 +52,7 @@ function gbw_tests_run_all {
 
     for func in "${func_test_list[@]}"
     do
-        echo "==> $func"
+        echo "-- $func"
         $func
         echo
         gbw_tests_count_tests_increment
