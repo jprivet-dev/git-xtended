@@ -5,5 +5,5 @@ function test_gbw_prompt_time {
 }
 
 function test_gbw_prompt_user {
-    assert equals "$(gbw_prompt_user)" "\e[92m\e[0" $LINENO
+    assert equals "$(gbw_prompt_user)" "\e[92muser\e[0" $LINENO
 }
