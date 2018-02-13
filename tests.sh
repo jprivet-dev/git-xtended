@@ -9,5 +9,8 @@ source ~/git-bash-workflow/gbw.sh
 
 source ~/git-bash-workflow/src/gbw.tests.sh
 source ~/git-bash-workflow/tests/gbw.prompt.tests.sh
+source ~/git-bash-workflow/tests/gbw.git.tests.sh
 
 gbw_tests_run_all
+
+source ~/git-bash-workflow/gbw.sh
