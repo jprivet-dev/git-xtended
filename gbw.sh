@@ -25,7 +25,7 @@ fi
 
 source ~/git-bash-workflow/src/gbw.utils.sh
 source ~/git-bash-workflow/src/gbw.commands.sh
-source ~/git-bash-workflow/src/gbw.formatting.sh
+source ~/git-bash-workflow/src/gbw.colors.sh
 source ~/git-bash-workflow/src/gbw.git.sh
 source ~/git-bash-workflow/src/gbw.prompt.sh
 
