@@ -13,4 +13,9 @@ source ~/git-bash-workflow/tests/gbw.git.tests.sh
 
 gbw_tests_run_all
 
+echo "##########################################"
+echo "# Switch to original Git Bash Workflow ! #";
+echo "##########################################"
+echo
+
 source ~/git-bash-workflow/gbw.sh
