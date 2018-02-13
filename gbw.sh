@@ -16,13 +16,13 @@ echo " - Agile Git workflow commands"
 echo " @info https://github.com/jprivet-dev/git-bash-workflow.git"
 echo
 
-source ~/git-bash-workflow/config/gbw.params.sh
+source ~/git-bash-workflow/src/gbw.variables.sh
 
+source ~/git-bash-workflow/config/gbw.params.sh
 if [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
 
-source ~/git-bash-workflow/src/gbw.variables.sh
 source ~/git-bash-workflow/src/gbw.utils.sh
 source ~/git-bash-workflow/src/gbw.commands.sh
 source ~/git-bash-workflow/src/gbw.formatting.sh
