@@ -26,9 +26,9 @@ function gbw_tests_assert_equals {
     local line=$3
 
     if [[ "$current" == "$expected" ]]; then
-        gbw_tests_assert_ok "[ $current ] equals [ $expected ]" $line
+        gbw_tests_assert_ok "$current equals $expected" $line
     else
-        gbw_tests_assert_nok "[ $current ] not equals [ $expected ]" $line
+        gbw_tests_assert_nok "$current not equals $expected" $line
     fi
 }
 
