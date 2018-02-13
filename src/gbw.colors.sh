@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# Formatting & Colors
-
-function gbw_formatting_print_all {
+function gbw_colors_print_all {
     echo -e "Normal ${F_UNDERLINED}Underlined${F_RESET}"
     echo -e "Normal ${F_DIM}Dim${F_RESET}"
     echo -e "Normal ${F_BOLD}Bold${F_RESET}"
