@@ -14,7 +14,6 @@ function test_gbw_prompt_host {
 
 function test_gbw_prompt_userhost {
     assert equals "$(gbw_prompt_userhost)" "\e[92muser\e[0m\"@\"\e[96m\h\e[0m" $LINENO
-
 }
 
 function test_gbw_prompt_dir {
@@ -22,5 +21,5 @@ function test_gbw_prompt_dir {
 }
 
 function test_gbw_prompt_branch {
-    assert equals "$(gbw_prompt_branch)" "\e[93m14-bash-testing\e[0m" $LINENO
+    assert equals "$(gbw_prompt_branch)" "\e[93mcurrent-branch\e[0m" $LINENO
 }
