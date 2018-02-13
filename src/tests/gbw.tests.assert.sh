@@ -5,6 +5,7 @@ function gbw_tests_assert_equals {
         echo "$3: $GBW_TRUE [ $1 ] equals [ $2 ]"
     else
         echo "$3: $GBW_FALSE [ $1 ] not equals [ $2 ]"
+        gbw_tests_count_failures_increment
     fi
 }
 
@@ -21,6 +22,8 @@ function gbw_tests_assert {
             return
         ;;
     esac
+
+    gbw_tests_count_assertions_increment
 }
 
 # gbw_tests_assert_equals alias
