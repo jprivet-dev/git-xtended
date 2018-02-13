@@ -36,3 +36,7 @@ function test_gbw_git_get_status_changes_not_staged_for_commit_count {
     assert equals "$(gbw_git_get_status_changes_not_staged_for_commit_count)" "5" $LINENO
 }
 
+function test_gbw_git_get_status_untracked_files_count {
+    assert equals "$(gbw_git_get_status_untracked_files_count)" "1" $LINENO
+}
+
