@@ -4,6 +4,7 @@ GBW_USER="user"
 
 function gbw_tests_fake_git {
     local args="$*"
+
     case $args in
         "status --porcelaine")
             echo "M  changes-to-be-committed--modified"
@@ -19,6 +20,13 @@ function gbw_tests_fake_git {
             echo " C changes-not-staged-for-commit--copied"
 
             echo "?? untracked-files"
+        ;;
+        "branch")
+            echo "  fake-branch-1"
+            echo "  fake-branch-2"
+            echo "* current-branch"
+            echo "  develop"
+            echo "  master"
         ;;
     esac
 }
