@@ -23,6 +23,14 @@ function gbw_tests_fake_git_branch {
     echo "  master"
 }
 
+function gbw_tests_fakegit_diff_current_branch_origin_dev {
+    echo " README.adoc                                  |   6 +-"
+    echo " path/to/file-1                               |  18 +++++"
+    echo " path/to/file-2                               |  13 ++++"
+    echo " path/to/image-1                              | Bin 0 -> 7502 bytes"
+    echo " 32 files changed, 755 insertions(+), 526 deletions(-)"
+}
+
 function gbw_tests_fake_git {
     local args="$*"
 
@@ -32,6 +40,9 @@ function gbw_tests_fake_git {
         ;;
         "branch")
             gbw_tests_fake_git_branch
+        ;;
+        "diff --stat origin/dev")
+            gbw_tests_fakegit_diff_current_branch_origin_dev
         ;;
     esac
 }
