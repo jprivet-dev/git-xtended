@@ -181,6 +181,7 @@ function gbw_prompt_ps1_part1 {
     echo "$(gbw_implode " " \"$time\" \"$userhost\":\"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
 }
 
+# @test
 function gbw_prompt_ps1_part2 {
     echo "$F_RESET\n\$ "
 }
