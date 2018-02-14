@@ -186,7 +186,7 @@ function gbw_prompt_ps1_part2 {
     echo "$F_RESET\n\$ "
 }
 
-function gbw_prompt_ps1 {
+function gbw_prompt_set_ps1 {
     local prompt="$(gbw_prompt_ps1_part1)"
     local newline="$(gbw_prompt_ps1_part2)"
 
@@ -199,7 +199,7 @@ function gbw_prompt_ps2 {
 
 function gbw_prompt_init {
     [[ "$(gbw_is_bash_interactive)" == "false" ]] && return
-    PROMPT_COMMAND='gbw_prompt_ps1'
+    PROMPT_COMMAND='gbw_prompt_set_ps1'
     gbw_prompt_ps2
 }
 
