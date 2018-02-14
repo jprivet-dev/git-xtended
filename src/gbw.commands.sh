@@ -13,6 +13,9 @@ function gbw_command_parse_action {
         aliases)
             gbw_command_aliases "$@"
         ;;
+        info)
+            gbw_prompt_git_info
+        ;;
         *)
             echo "Unknow action '$action'"
             return
