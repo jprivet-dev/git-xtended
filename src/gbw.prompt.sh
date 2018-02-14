@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-# @test test_gbw_prompt_time
+# @test
 function gbw_prompt_time {
     echo "$C_LIGHT_RED\t$F_RESET"
 }
 
-# @test test_gbw_prompt_user
+# @test
 function gbw_prompt_user {
     echo "$C_LIGHT_GREEN$GBW_USER$F_RESET"
 }
 
-# @test test_gbw_prompt_host
+# @test
 function gbw_prompt_host {
     echo "$C_LIGHT_CYAN\h$F_RESET"
 }
 
-# @test test_gbw_prompt_userhost
+# @test
 function gbw_prompt_userhost {
     local user="$(gbw_prompt_user)"
     local host="$(gbw_prompt_host)"
@@ -24,12 +24,12 @@ function gbw_prompt_userhost {
     echo "$(gbw_implode \"$glue\" \"$user\" \"$host\")"
 }
 
-# @test test_gbw_prompt_dir
+# @test
 function gbw_prompt_dir {
     echo "$C_LIGHT_BLUE\\w$F_RESET"
 }
 
-# @test test_gbw_prompt_branch
+# @test
 function gbw_prompt_branch {
     if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
