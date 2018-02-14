@@ -8,8 +8,5 @@ else
     echo "# LC_ALL is set to '$var'"
 fi
 
-GBW_BRANCH_MAIN_REMOTE_DEVELOP="origin/develop"
-GBW_BRANCH_MAIN_REMOTE_RELEASE="origin/release"
-GBW_BRANCH_MAIN_REMOTE_MASTER="origin/"
-
+GBW_GIT_REMOTE_BRANCH_REF=""
 GBW_TESTS_ASSERT_OK_SHOW_MESSAGE=0
