@@ -99,7 +99,8 @@ function gbw_git_get_changes_nb {
 
 # @test
 function gbw_git_diff_current_branch_origin_dev {
-    git diff --stat origin/dev 2> /dev/null
+    local remote_branch="$(gbw_git_get_remote_branch_ref)"
+    git diff --stat "$remote_branch" 2> /dev/null
 }
 
 # @test
