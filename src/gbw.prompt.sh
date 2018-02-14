@@ -131,6 +131,7 @@ function gbw_prompt_behind {
     echo "$format$count↓$F_RESET"
 }
 
+# @test
 function gbw_prompt_ahead {
     if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
