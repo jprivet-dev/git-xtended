@@ -38,7 +38,7 @@ function gbw_tests_assert {
 
     case $type in
         equals)
-            gbw_tests_assert_equals $@
+            gbw_tests_assert_equals "$@"
         ;;
         *)
             echo "Unknow assert type '$type'"
@@ -51,5 +51,5 @@ function gbw_tests_assert {
 
 # gbw_tests_assert_equals alias
 function assert {
-    gbw_tests_assert $@
+    gbw_tests_assert "$@"
 }
