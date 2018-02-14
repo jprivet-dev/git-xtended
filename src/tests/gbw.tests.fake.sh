@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-GBW_USER="user"
-
 function gbw_tests_fake_git_status_porcelain {
     echo "M  changes-to-be-committed--modified"
     echo "A  changes-to-be-committed--added"
