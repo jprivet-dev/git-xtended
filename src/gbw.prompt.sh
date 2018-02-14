@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
+# @test
 function gbw_prompt_time {
     echo "$C_LIGHT_RED\t$F_RESET"
 }
 
+# @test
 function gbw_prompt_user {
-    echo "$C_LIGHT_GREEN$USER$F_RESET"
+    echo "$C_LIGHT_GREEN$GBW_USER$F_RESET"
 }
 
+# @test
 function gbw_prompt_host {
     echo "$C_LIGHT_CYAN\h$F_RESET"
 }
 
+# @test
 function gbw_prompt_userhost {
     local user="$(gbw_prompt_user)"
     local host="$(gbw_prompt_host)"
@@ -20,10 +24,12 @@ function gbw_prompt_userhost {
     echo "$(gbw_implode \"$glue\" \"$user\" \"$host\")"
 }
 
+# @test
 function gbw_prompt_dir {
     echo "$C_LIGHT_BLUE\\w$F_RESET"
 }
 
+# @test
 function gbw_prompt_branch {
     if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
@@ -32,6 +38,7 @@ function gbw_prompt_branch {
     echo "$C_LIGHT_YELLOW$(gbw_git_get_current_branch)$F_RESET"
 }
 
+# @test
 function gbw_prompt_changes_count {
     if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
@@ -40,6 +47,7 @@ function gbw_prompt_changes_count {
     echo "$C_LIGHT_YELLOW($(gbw_git_get_changes_nb))$F_RESET"
 }
 
+# @test
 function gbw_prompt_status_to_be_commited {
     if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
@@ -65,6 +73,7 @@ function gbw_prompt_status_to_be_commited {
     echo "${format_c}c(${F_RESET}${format_m}${m} ${format_n}+${n} ${format_d}-${d}${F_RESET}${format_c})${F_RESET}"
 }
 
+# @test
 function gbw_prompt_status_not_staged {
     if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
@@ -78,6 +87,7 @@ function gbw_prompt_status_not_staged {
     echo "$format${count}!$F_RESET"
 }
 
+# @test
 function gbw_prompt_status_untracked {
     if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
@@ -91,6 +101,7 @@ function gbw_prompt_status_untracked {
     echo "$format${count}?$F_RESET"
 }
 
+# @test
 function gbw_prompt_status {
     if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
@@ -103,12 +114,13 @@ function gbw_prompt_status {
     echo "$(gbw_implode " " \"$u\" \"$s\" \"$c\")"
 }
 
+# @test
 function gbw_prompt_behind {
     if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
     fi
 
-    local count="$(gbw_git_status_behind_count $(gbw_git_get_current_branch) $GBW_BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(gbw_git_status_behind_count $(gbw_git_get_current_branch) $(gbw_git_get_remote_branch_ref))"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
@@ -119,12 +131,13 @@ function gbw_prompt_behind {
     echo "$format$count↓$F_RESET"
 }
 
+# @test
 function gbw_prompt_ahead {
     if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
     fi
 
-    local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $GBW_BRANCH_MAIN_REMOTE_DEVELOP)"
+    local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $(gbw_git_get_remote_branch_ref))"
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
@@ -135,6 +148,7 @@ function gbw_prompt_ahead {
     echo "$format$count↑$F_RESET"
 }
 
+# @test
 function gbw_prompt_git_info {
     local branch="$(gbw_prompt_branch)"
     local count="$(gbw_prompt_changes_count)"
@@ -149,11 +163,12 @@ function gbw_prompt_git_info {
     [[ -n "$status_u" ]]    && echo -e "$status_u : untracked files"
     [[ -n "$status_s" ]]    && echo -e "$status_s : changes not staged for commit"
     [[ -n "$status_c" ]]    && echo -e "$status_c : changes to be committed"
-    [[ -n "$behind" ]]      && echo -e "$behind : commits behind $GBW_BRANCH_MAIN_REMOTE_DEVELOP"
-    [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $GBW_BRANCH_MAIN_REMOTE_DEVELOP"
+    [[ -n "$behind" ]]      && echo -e "$behind : commits behind $(gbw_git_get_remote_branch_ref)"
+    [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $(gbw_git_get_remote_branch_ref)"
 }
 
-function gbw_prompt_ps1 {
+# @test
+function gbw_prompt_ps1_part1 {
     local time="$(gbw_prompt_time)"
     local userhost="$(gbw_prompt_userhost)"
     local dir="$(gbw_prompt_dir)"
@@ -163,19 +178,28 @@ function gbw_prompt_ps1 {
     local behind="$(gbw_prompt_behind)"
     local ahead="$(gbw_prompt_ahead)"
 
-    local prompt="$(gbw_implode " " \"$time\" \"$userhost\":\"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
-    local newline="$F_RESET\n\$ "
+    echo "$(gbw_implode " " \"$time\" \"$userhost\":\"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
+}
+
+# @test
+function gbw_prompt_ps1_part2 {
+    echo "$F_RESET\n\$ "
+}
+
+function gbw_prompt_set_ps1 {
+    local prompt="$(gbw_prompt_ps1_part1)"
+    local newline="$(gbw_prompt_ps1_part2)"
 
     PS1="$prompt$newline"
 }
 
-function gbw_prompt_ps2 {
+function gbw_prompt_set_ps2 {
     PS2="$C_CYAN>"
 }
 
 function gbw_prompt_init {
     [[ "$(gbw_is_bash_interactive)" == "false" ]] && return
-    PROMPT_COMMAND='gbw_prompt_ps1'
-    gbw_prompt_ps2
+    PROMPT_COMMAND='gbw_prompt_set_ps1'
+    gbw_prompt_set_ps2
 }
 
