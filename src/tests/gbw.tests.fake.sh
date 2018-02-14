@@ -48,7 +48,7 @@ function gbw_tests_fake_git {
         "branch")
             gbw_tests_fake_git_branch
         ;;
-        "diff --stat origin/dev")
+        "diff --stat remote-branch")
             gbw_tests_fake_git_diff_current_branch_origin_dev
         ;;
         "rev-list --left-right --count current-branch...remote-branch")
