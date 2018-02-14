@@ -47,3 +47,7 @@ function test_gbw_prompt_status {
 function test_gbw_prompt_behind {
     assert equals "$(gbw_prompt_behind)" "\e[91mx↓\e[0m" $LINENO
 }
+
+function test_gbw_prompt_ahead {
+    assert equals "$(gbw_prompt_ahead)" "\e[91mx↑\e[0m" $LINENO
+}
