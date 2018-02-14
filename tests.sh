@@ -17,9 +17,9 @@ source ~/git-bash-workflow/gbw.sh
 
 source ~/git-bash-workflow/src/gbw.test.sh
 
-source ~/git-bash-workflow/test/gbw.prompt.tests.sh
-source ~/git-bash-workflow/test/gbw.git.tests.sh
-source ~/git-bash-workflow/test/gbw.utils.tests.sh
+source ~/git-bash-workflow/tests/gbw.prompt.tests.sh
+source ~/git-bash-workflow/tests/gbw.git.tests.sh
+source ~/git-bash-workflow/tests/gbw.utils.tests.sh
 
 gbw_tests_run_all
 
