@@ -2,7 +2,7 @@
 
 # Alias of gbw_command_parse_action
 function gbw {
-    gbw_command_parse_action $@
+    gbw_command_parse_action "$@"
 }
 
 function gbw_command_parse_action {
@@ -11,7 +11,10 @@ function gbw_command_parse_action {
 
     case $action in
         aliases)
-            gbw_command_aliases $@
+            gbw_command_aliases "$@"
+        ;;
+        info)
+            gbw_prompt_git_info
         ;;
         *)
             echo "Unknow action '$action'"
@@ -33,10 +36,10 @@ function gbw_command_aliases {
     do
     case $i in
         -g|--global)
-        global="--global"
+            global="--global"
         ;;
         --unset)
-        unset="--unset"
+            unset="--unset"
         ;;
         *)
             echo "Unknown option '$i'"

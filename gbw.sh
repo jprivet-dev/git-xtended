@@ -1,25 +1,22 @@
 #!/usr/bin/env bash
 
-# Make file executable
-# $ chmod +x ~/git-bash-workflow/bash/bash_profile.sh
+GBW_TESTS_MODE=${GBW_TESTS_MODE:-0}
 
-# Execute file
-# $ ~/git-bash-workflow/bash/bash_profile.sh
-
-# Reload bash_profile
-# source ~/.bash_profile'
-
-echo " Git Bash Workflow"
-echo " - Prompt with Git information"
-echo " - Git aliases & hooks"
-echo " - Agile Git workflow commands"
-echo " @info https://github.com/jprivet-dev/git-bash-workflow.git"
+echo "----------------------------------------------------------"
+echo "Git Bash Workflow"
+echo "- Prompt with Git information"
+echo "- Git aliases & hooks"
+echo "- Agile Git workflow commands"
+echo "@info https://github.com/jprivet-dev/git-bash-workflow.git"
+echo "----------------------------------------------------------"
 echo
 
 source ~/git-bash-workflow/src/gbw.variables.sh
 source ~/git-bash-workflow/config/gbw.params.sh
 
-if [[ -f ~/git-bash-workflow/params.sh ]]; then
+if [[ "$GBW_TESTS_MODE" == 1 ]]; then
+    source ~/git-bash-workflow/config/gbw.params-tests.sh
+elif [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
 
