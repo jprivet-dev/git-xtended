@@ -16,6 +16,7 @@ TEST_GBW_PROMPT_BEHIND="\e[91mx↓\e[0m"
 TEST_GBW_PROMPT_AHEAD="\e[91mx↑\e[0m"
 
 TEST_GBW_PROMPT_PS1_PART1="$TEST_GBW_PROMPT_TIME $TEST_GBW_PROMPT_USERHOST:$TEST_GBW_PROMPT_DIR $TEST_GBW_PROMPT_BRANCH $TEST_GBW_PROMPT_COUNT $TEST_GBW_PROMPT_STATUS $TEST_GBW_PROMPT_BEHIND $TEST_GBW_PROMPT_AHEAD"
+TEST_GBW_PROMPT_PS1_PART2="\e[0m\n$ "
 
 function test_gbw_prompt_time {
     assert equals "$(gbw_prompt_time)" "$TEST_GBW_PROMPT_TIME" $LINENO
@@ -76,4 +77,8 @@ function test_gbw_prompt_ahead {
 
 function test_gbw_prompt_ps1_part1 {
     assert equals "$(gbw_prompt_ps1_part1)" "$TEST_GBW_PROMPT_PS1_PART1" $LINENO
+}
+
+function test_gbw_prompt_ps1_part2 {
+    assert equals "$(gbw_prompt_ps1_part2)" "$TEST_GBW_PROMPT_PS1_PART2" $LINENO
 }
