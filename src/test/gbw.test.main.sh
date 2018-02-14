@@ -44,7 +44,7 @@ function gbw_tests_print_results {
 }
 
 function gbw_tests_find_all_func_test {
-    compgen -A function | grep test_
+    compgen -A function | grep ^test_
 }
 
 function gbw_tests_run_all {
