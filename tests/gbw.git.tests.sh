@@ -4,6 +4,11 @@ function test_gbw_git_get_current_branch {
     assert equals "$(gbw_git_get_current_branch)" "current-branch" $LINENO
 }
 
+function test_gbw_git_status {
+    local count_lines="$(gbw_git_status | wc -l)"
+    assert equals "$count_lines" "11" $LINENO
+}
+
 function test_gbw_git_get_changes_nb {
     assert equals "$(gbw_git_get_changes_nb)" "11" $LINENO
 }
