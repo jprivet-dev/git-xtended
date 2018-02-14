@@ -47,6 +47,7 @@ function gbw_prompt_changes_count {
     echo "$C_LIGHT_YELLOW($(gbw_git_get_changes_nb))$F_RESET"
 }
 
+# @test
 function gbw_prompt_status_to_be_commited {
     if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
