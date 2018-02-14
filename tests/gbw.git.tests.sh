@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-_TEST_GBW_GIT_GET_CURRENT_BRANCH="current-branch"
-_TEST_GBW_GIT_GET_REMOTE_BRANCH_REF="remote-branch"
-
 function test_gbw_git_get_current_branch {
     assert equals "$(gbw_git_get_current_branch)" "$_TEST_GBW_GIT_GET_CURRENT_BRANCH" $LINENO
 }
