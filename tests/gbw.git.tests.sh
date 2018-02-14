@@ -54,12 +54,7 @@ function test_gbw_git_status_ahead_count {
 }
 
 function test_gbw_git_status_behind {
-    local result=($(gbw_git_status_behind current-branch remote-branch))
-    local first="${result[0]}"
-    local last="${result[1]}"
-
-    assert equals "$first" "0" $LINENO
-    assert equals "$last" "88" $LINENO
+    assert equals "$(gbw_git_status_behind current-branch remote-branch)" "0       88" $LINENO
 }
 
 function test_gbw_git_status_behind_count {
