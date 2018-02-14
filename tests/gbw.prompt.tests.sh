@@ -65,6 +65,12 @@ function test_gbw_prompt_status {
 }
 
 function test_gbw_prompt_behind {
+    local restore="$GBW_GIT_REMOTE_BRANCH_REF"
+
+    GBW_GIT_REMOTE_BRANCH_REF="$_GBW_FAKE_REMOTE_BRANCH_REF_NOK"
+    assert equals "$(gbw_prompt_behind)" "$TEST_GBW_PROMPT_BEHIND_NOK" $LINENO
+
+    GBW_GIT_REMOTE_BRANCH_REF="$restore"
     assert equals "$(gbw_prompt_behind)" "$TEST_GBW_PROMPT_BEHIND" $LINENO
 }
 
