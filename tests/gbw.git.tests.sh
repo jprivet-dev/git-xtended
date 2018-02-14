@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
 
+_TEST_GBW_GIT_GET_CURRENT_BRANCH="current-branch"
+_TEST_GBW_GIT_GET_REMOTE_BRANCH_REF="remote-branch"
+
 function test_gbw_git_get_current_branch {
-    assert equals "$(gbw_git_get_current_branch)" "current-branch" $LINENO
+    assert equals "$(gbw_git_get_current_branch)" "$_TEST_GBW_GIT_GET_CURRENT_BRANCH" $LINENO
+}
+
+function test_gbw_git_get_remote_branch_ref {
+    local last_value="$GBW_GIT_REMOTE_BRANCH_REF"
+
+    GBW_GIT_REMOTE_BRANCH_REF=""
+    assert equals "$(gbw_git_get_remote_branch_ref)" "$_TEST_GBW_GIT_GET_CURRENT_BRANCH" $LINENO
+
+    GBW_GIT_REMOTE_BRANCH_REF="$last_value"
+    assert equals "$(gbw_git_get_remote_branch_ref)" "$_TEST_GBW_GIT_GET_REMOTE_BRANCH_REF" $LINENO
 }
 
 function test_gbw_git_status {
