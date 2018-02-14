@@ -27,3 +27,7 @@ function test_gbw_prompt_branch {
 function test_gbw_prompt_changes_count {
     assert equals "$(gbw_prompt_changes_count)" "\e[93m(11)\e[0m" $LINENO
 }
+
+function test_gbw_prompt_status_to_be_commited {
+    assert equals "$(gbw_prompt_status_to_be_commited)" "\e[92mc(\e[0m\e[92m3 \e[92m+1 \e[92m-1\e[0m\e[92m)\e[0m" $LINENO
+}
