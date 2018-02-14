@@ -23,3 +23,7 @@ function test_gbw_prompt_dir {
 function test_gbw_prompt_branch {
     assert equals "$(gbw_prompt_branch)" "\e[93mcurrent-branch\e[0m" $LINENO
 }
+
+function test_gbw_prompt_changes_count {
+    assert equals "$(gbw_prompt_changes_count)" "\e[93m(11)\e[0m" $LINENO
+}
