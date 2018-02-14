@@ -101,6 +101,7 @@ function gbw_prompt_status_untracked {
     echo "$format${count}?$F_RESET"
 }
 
+# @test
 function gbw_prompt_status {
     if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
