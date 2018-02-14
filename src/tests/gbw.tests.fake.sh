@@ -38,6 +38,14 @@ function gbw_tests_fake_git_revlist_remote_current {
     echo "0       88"
 }
 
+function gbw_tests_fake_git_revlist_current_remote_nok {
+    echo ""
+}
+
+function gbw_tests_fake_git_revlist_remote_current_nok {
+    echo ""
+}
+
 function gbw_tests_fake_git {
     local args="$*"
 
@@ -56,6 +64,12 @@ function gbw_tests_fake_git {
         ;;
         "rev-list --left-right --count remote-branch...current-branch")
             gbw_tests_fake_git_revlist_remote_current
+        ;;
+        "rev-list --left-right --count current-branch...nok-branch")
+            gbw_tests_fake_git_revlist_current_remote_nok
+        ;;
+        "rev-list --left-right --count nok-branch...current-branch")
+            gbw_tests_fake_git_revlist_remote_current_nok
         ;;
     esac
 }
