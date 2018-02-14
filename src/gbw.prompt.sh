@@ -148,7 +148,7 @@ function gbw_prompt_ahead {
     echo "$format$count↑$F_RESET"
 }
 
-# TODO @test
+# @test
 function gbw_prompt_git_info {
     local branch="$(gbw_prompt_branch)"
     local count="$(gbw_prompt_changes_count)"
