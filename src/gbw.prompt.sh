@@ -167,6 +167,7 @@ function gbw_prompt_git_info {
     [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $GBW_BRANCH_MAIN_REMOTE_DEVELOP"
 }
 
+# @test
 function gbw_prompt_ps1_part1 {
     local time="$(gbw_prompt_time)"
     local userhost="$(gbw_prompt_userhost)"
