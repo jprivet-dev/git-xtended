@@ -12,10 +12,9 @@ echo "#############################"
 echo
 
 alias git="gbw_tests_fake_git"
+source ~/git-bash-workflow/src/gbw.test.sh
 
 source ~/git-bash-workflow/gbw.sh
-
-source ~/git-bash-workflow/src/gbw.test.sh
 
 source ~/git-bash-workflow/tests/gbw.prompt.tests.sh
 source ~/git-bash-workflow/tests/gbw.git.tests.sh
