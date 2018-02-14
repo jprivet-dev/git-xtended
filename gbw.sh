@@ -9,6 +9,9 @@
 # Reload bash_profile
 # source ~/.bash_profile'
 
+
+GBW_TESTS_MODE=${GBW_TESTS_MODE:-0}
+
 echo "----------------------------------------------------------"
 echo "Git Bash Workflow"
 echo "- Prompt with Git information"
@@ -21,7 +24,9 @@ echo
 source ~/git-bash-workflow/src/gbw.variables.sh
 source ~/git-bash-workflow/config/gbw.params.sh
 
-if [[ -f ~/git-bash-workflow/params.sh ]]; then
+if [[ "$GBW_TESTS_MODE" == 1 ]]; then
+    source ~/git-bash-workflow/config/gbw.params-tests.sh
+elif [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
 
