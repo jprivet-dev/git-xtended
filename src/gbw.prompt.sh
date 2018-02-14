@@ -114,6 +114,7 @@ function gbw_prompt_status {
     echo "$(gbw_implode " " \"$u\" \"$s\" \"$c\")"
 }
 
+# @test
 function gbw_prompt_behind {
     if [[ -z "$(gbw_git_get_current_branch)" ]]; then
         return
