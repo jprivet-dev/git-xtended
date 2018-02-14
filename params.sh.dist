@@ -1,3 +1,1 @@
 #!/usr/bin/env bash
-
-GBW_BRANCH_MAIN_REMOTE_DEVELOP="origin/dev"

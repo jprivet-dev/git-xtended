@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# @test
 # Example :
 # test_1="hello"
 # test_2="bonjour"
