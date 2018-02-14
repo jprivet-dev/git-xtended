@@ -20,7 +20,7 @@ source ~/git-bash-workflow/tests/gbw.prompt.tests.sh
 source ~/git-bash-workflow/tests/gbw.git.tests.sh
 source ~/git-bash-workflow/tests/gbw.utils.tests.sh
 
-gbw_tests_run_all
+gbw_test_run_all
 
 unalias git
 unset GBW_TESTS_MODE
