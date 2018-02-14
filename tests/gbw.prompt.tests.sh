@@ -64,3 +64,8 @@ function test_gbw_prompt_behind {
 function test_gbw_prompt_ahead {
     assert equals "$(gbw_prompt_ahead)" "$TEST_GBW_PROMPT_AHEAD" $LINENO
 }
+
+# TODO
+#function test_gbw_prompt_git_info {
+#    assert equals "$(gbw_prompt_git_info)" "" $LINENO
+#}
