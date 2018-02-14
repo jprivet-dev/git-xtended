@@ -130,11 +130,18 @@ function gbw_git_status_ahead_count {
     gbw_git_status_ahead "$from_branch" "$to_branch" 2> /dev/null | while read -a array; do echo ${array[0]} ; done
 }
 
+function gbw_git_status_behind {
+    local from_branch=$1
+    local to_branch=$2
+
+    git rev-list --left-right --count $to_branch...$from_branch 2> /dev/null
+}
+
 function gbw_git_status_behind_count {
     local from_branch=$1
     local to_branch=$2
     # TODO : use "| while read -a array; do echo ${array[0]} ; done"
     # instead of "| cut -f 1". Last tip does not work when gbw_git_status_ahead_count called
     # into testing function "test_gbw_git_status_behind_count". Find why !!!
-    git rev-list --left-right --count $to_branch...$from_branch 2> /dev/null | while read -a array; do echo ${array[0]} ; done
+    gbw_git_status_behind "$from_branch" "$to_branch" | while read -a array; do echo ${array[0]} ; done
 }
