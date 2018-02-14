@@ -2,7 +2,7 @@
 
 # Alias of gbw_command_parse_action
 function gbw {
-    gbw_command_parse_action $@
+    gbw_command_parse_action "$@"
 }
 
 function gbw_command_parse_action {
@@ -11,7 +11,7 @@ function gbw_command_parse_action {
 
     case $action in
         aliases)
-            gbw_command_aliases $@
+            gbw_command_aliases "$@"
         ;;
         *)
             echo "Unknow action '$action'"
