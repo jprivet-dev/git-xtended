@@ -11,7 +11,7 @@ echo "# Git Bash Workflow TESTING #"
 echo "#############################"
 echo
 
-alias git="gbw_tests_fake_git"
+alias git="gbw_test_fake_git"
 source ~/git-bash-workflow/src/gbw.test.sh
 
 source ~/git-bash-workflow/gbw.sh
