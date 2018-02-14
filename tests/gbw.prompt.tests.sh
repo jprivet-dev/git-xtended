@@ -35,3 +35,7 @@ function test_gbw_prompt_status_to_be_commited {
 function test_gbw_prompt_status_not_staged {
     assert equals "$(gbw_prompt_status_not_staged)" "\e[91m5!\e[0m" $LINENO
 }
+
+function test_gbw_prompt_status_untracked {
+    assert equals "$(gbw_prompt_status_untracked)" "\e[91m1?\e[0m" $LINENO
+}
