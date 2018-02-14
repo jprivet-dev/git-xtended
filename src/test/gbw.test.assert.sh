@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gbw_tests_assert_ok {
+function gbw_test_assert_ok {
     local message=$1
     local line=$2
     local color="$C_LIGHT_GREEN"
@@ -14,7 +14,7 @@ function gbw_tests_assert_ok {
     echo "$message"
 }
 
-function gbw_tests_assert_nok {
+function gbw_test_assert_nok {
     local message=$1
     local line=$2
     local color="$C_LIGHT_RED"
@@ -25,25 +25,25 @@ function gbw_tests_assert_nok {
     gbw_tests_count_failures_increment
 }
 
-function gbw_tests_assert_equals {
+function gbw_test_assert_equals {
     local current=$1
     local expected=$2
     local line=$3
 
     if [[ "$current" == "$expected" ]]; then
-        gbw_tests_assert_ok "$current equals $expected" $line
+        gbw_test_assert_ok "$current equals $expected" $line
     else
-        gbw_tests_assert_nok "$current not equals $expected" $line
+        gbw_test_assert_nok "$current not equals $expected" $line
     fi
 }
 
-function gbw_tests_assert {
+function gbw_test_assert {
     local type=$1
     shift
 
     case $type in
         equals)
-            gbw_tests_assert_equals "$@"
+            gbw_test_assert_equals "$@"
         ;;
         *)
             echo "Unknow assert type '$type'"
@@ -54,7 +54,7 @@ function gbw_tests_assert {
     gbw_tests_count_assertions_increment
 }
 
-# gbw_tests_assert_equals alias
+# gbw_test_assert_equals alias
 function assert {
-    gbw_tests_assert "$@"
+    gbw_test_assert "$@"
 }
