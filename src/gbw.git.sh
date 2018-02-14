@@ -74,8 +74,12 @@ function gbw_git_get_current_branch {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
+function gbw_git_status {
+    git status --porcelain 2> /dev/null
+}
+
 function gbw_git_get_changes_nb {
-    git status --porcelain 2> /dev/null | wc -l
+    gbw_git_status | wc -l
 }
 
 function gbw_git_diff_current_branch_origin_dev {
@@ -83,11 +87,11 @@ function gbw_git_diff_current_branch_origin_dev {
 }
 
 function gbw_git_get_status_changes_to_be_committed_count {
-    git status --porcelain 2> /dev/null | grep '^[^? ]' | wc -l
+    gbw_git_status | grep '^[^? ]' | wc -l
 }
 
 function gbw_git_get_status_changes_to_be_committed_modified_count {
-    git status --porcelain 2> /dev/null | grep '^M' | wc -l
+    gbw_git_status | grep '^M' | wc -l
 }
 
 function gbw_git_get_status_changes_to_be_committed_modified_extended_count {
@@ -96,23 +100,23 @@ function gbw_git_get_status_changes_to_be_committed_modified_extended_count {
     # R = renamed / C = copied / U = updated but unmerged
     # ? = untracked / ! = ignored
     # get all without D, A, ? & ' '
-    git status --porcelain 2> /dev/null | grep '^[^DA? ]' | wc -l
+    gbw_git_status | grep '^[^DA? ]' | wc -l
 }
 
 function gbw_git_get_status_changes_to_be_committed_deleted_count {
-    git status --porcelain 2> /dev/null | grep '^D' | wc -l
+    gbw_git_status | grep '^D' | wc -l
 }
 
 function gbw_git_get_status_changes_to_be_committed_new_file_count {
-    git status --porcelain 2> /dev/null | grep '^A' | wc -l
+    gbw_git_status | grep '^A' | wc -l
 }
 
 function gbw_git_get_status_changes_not_staged_for_commit_count {
-    git status --porcelain 2> /dev/null | grep '^.[^? ]' | wc -l
+    gbw_git_status | grep '^.[^? ]' | wc -l
 }
 
 function gbw_git_get_status_untracked_files_count {
-    git status --porcelain 2> /dev/null | grep '^??' | wc -l
+    gbw_git_status | grep '^??' | wc -l
 }
 
 function gbw_git_status_ahead {
