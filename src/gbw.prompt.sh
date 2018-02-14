@@ -167,7 +167,7 @@ function gbw_prompt_git_info {
     [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $GBW_BRANCH_MAIN_REMOTE_DEVELOP"
 }
 
-function gbw_prompt_ps1 {
+function gbw_prompt_ps1_part1 {
     local time="$(gbw_prompt_time)"
     local userhost="$(gbw_prompt_userhost)"
     local dir="$(gbw_prompt_dir)"
@@ -177,8 +177,16 @@ function gbw_prompt_ps1 {
     local behind="$(gbw_prompt_behind)"
     local ahead="$(gbw_prompt_ahead)"
 
-    local prompt="$(gbw_implode " " \"$time\" \"$userhost\":\"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
-    local newline="$F_RESET\n\$ "
+    echo "$(gbw_implode " " \"$time\" \"$userhost\":\"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
+}
+
+function gbw_prompt_ps1_part2 {
+    echo "$F_RESET\n\$ "
+}
+
+function gbw_prompt_ps1 {
+    local prompt="$(gbw_prompt_ps1_part1)"
+    local newline="$(gbw_prompt_ps1_part2)"
 
     PS1="$prompt$newline"
 }
