@@ -134,7 +134,7 @@ function gbw_git_get_status_untracked_files_count {
 function gbw_git_status_ahead {
     local from_branch=$1
     local to_branch=$2
-    git rev-list --left-right --count $from_branch...$to_branch 2> /dev/null
+    git rev-list --left-right --count "$from_branch"..."$to_branch" 2> /dev/null
 }
 
 # @test
@@ -152,7 +152,7 @@ function gbw_git_status_behind {
     local from_branch=$1
     local to_branch=$2
 
-    git rev-list --left-right --count $to_branch...$from_branch 2> /dev/null
+    git rev-list --left-right --count "$to_branch"..."$from_branch" 2> /dev/null
 }
 
 # @test
