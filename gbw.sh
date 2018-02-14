@@ -15,7 +15,7 @@ source ~/git-bash-workflow/src/gbw.variables.sh
 source ~/git-bash-workflow/config/gbw.params.sh
 
 if [[ "$GBW_TESTS_MODE" == 1 ]]; then
-    source ~/git-bash-workflow/config/gbw.params-tests.sh
+    source ~/git-bash-workflow/config/gbw.params_test.sh
 elif [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
