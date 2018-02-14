@@ -38,6 +38,7 @@ function gbw_prompt_branch {
     echo "$C_LIGHT_YELLOW$(gbw_git_get_current_branch)$F_RESET"
 }
 
+# @test
 function gbw_prompt_changes_count {
     if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
