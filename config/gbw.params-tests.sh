@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-GBW_GIT_REMOTE_BRANCH_REF="remote-branch"
+_GBW_FAKE_USER="user"
+_GBW_FAKE_CURRENT_BRANCH="current-branch"
+_GBW_FAKE_REMOTE_BRANCH_REF="remote-branch"
+
+GBW_USER="$_GBW_FAKE_USER"
+GBW_GIT_REMOTE_BRANCH_REF="$_GBW_FAKE_REMOTE_BRANCH_REF"
