@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-# Make file executable
-# $ chmod +x ~/git-bash-workflow/bash/bash_profile.sh
-
-# Execute file
-# $ ~/git-bash-workflow/bash/bash_profile.sh
-
-# Reload bash_profile
-# source ~/.bash_profile'
-
-
 GBW_TESTS_MODE=${GBW_TESTS_MODE:-0}
 
 echo "----------------------------------------------------------"
