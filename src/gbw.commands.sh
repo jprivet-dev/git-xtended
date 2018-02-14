@@ -33,10 +33,10 @@ function gbw_command_aliases {
     do
     case $i in
         -g|--global)
-        global="--global"
+            global="--global"
         ;;
         --unset)
-        unset="--unset"
+            unset="--unset"
         ;;
         *)
             echo "Unknown option '$i'"
