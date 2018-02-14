@@ -75,6 +75,7 @@ function gbw_git_get_current_branch {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
+# @test
 function gbw_git_get_remote_branch_ref {
     local branch="$1"
 
