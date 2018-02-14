@@ -17,10 +17,6 @@ gbw_tests_run_all
 
 unalias git
 
-echo "##########################################"
-echo "# Switch to original Git Bash Workflow ! #";
-echo "##########################################"
-echo
-
+echo -e "${C_LIGHT_YELLOW}[ Reload original Git Bash Workflow ! ]${F_RESET}";
 
 source ~/git-bash-workflow/gbw.sh
