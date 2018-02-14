@@ -22,7 +22,7 @@ function gbw_test_assert_nok {
     echo -e "$color$line: FAILURE$F_RESET"
     echo "$message"
 
-    gbw_tests_count_failures_increment
+    gbw_test_count_failures_increment
 }
 
 function gbw_test_assert_equals {
@@ -51,7 +51,7 @@ function gbw_test_assert {
         ;;
     esac
 
-    gbw_tests_count_assertions_increment
+    gbw_test_count_assertions_increment
 }
 
 # gbw_test_assert_equals alias
