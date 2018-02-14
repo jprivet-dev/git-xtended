@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 alias g="git"
-alias git="LC_ALL=en_GB git"
 
 if [[ -x "$(git --version)" ]]; then
     # active git autocompletion for 'g' alias
