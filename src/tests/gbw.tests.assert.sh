@@ -6,6 +6,11 @@ function gbw_tests_assert_ok {
     local color="$C_LIGHT_GREEN"
 
     echo -e "$color$line: OK$F_RESET"
+
+    if [[ "$GBW_TESTS_ASSERT_OK_SHOW_MESSAGE" == 0 ]]; then
+        return
+    fi
+
     echo "$message"
 }
 
