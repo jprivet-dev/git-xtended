@@ -14,7 +14,8 @@ function test_gbw_git_get_changes_nb {
 }
 
 function test_gbw_git_diff_current_branch_origin_dev {
-    assert equals "$(gbw_git_diff_current_branch_origin_dev | wc -l)" "5" $LINENO
+    local count_lines="$(gbw_git_diff_current_branch_origin_dev | wc -l)"
+    assert equals "$count_lines" "5" $LINENO
 }
 
 function test_gbw_git_get_status_changes_to_be_committed_count {
