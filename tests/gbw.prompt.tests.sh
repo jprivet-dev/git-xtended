@@ -64,10 +64,11 @@ function test_gbw_prompt_ahead {
     assert equals "$(gbw_prompt_ahead)" "$_TEST_GBW_PROMPT_AHEAD" $LINENO
 }
 
-# TODO
-#function test_gbw_prompt_git_info {
-#    assert equals "$(gbw_prompt_git_info)" "" $LINENO
-#}
+# TODO : improve the test
+function test_gbw_prompt_git_info {
+    local count_lines="$(gbw_prompt_git_info | wc -l)"
+    assert equals "$count_lines" "7" $LINENO
+}
 
 function test_gbw_prompt_ps1_part1 {
     assert equals "$(gbw_prompt_ps1_part1)" "$_TEST_GBW_PROMPT_PS1_PART1" $LINENO
