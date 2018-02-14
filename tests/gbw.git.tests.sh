@@ -46,12 +46,7 @@ function test_gbw_git_get_status_untracked_files_count {
 }
 
 function test_gbw_git_status_ahead {
-    local result=($(gbw_git_status_ahead current-branch remote-branch))
-    local first="${result[0]}"
-    local last="${result[1]}"
-
-    assert equals "$first" "88" $LINENO
-    assert equals "$last" "0" $LINENO
+    assert equals "$(gbw_git_status_ahead current-branch remote-branch)" "88      0" $LINENO
 }
 
 function test_gbw_git_status_ahead_count {
