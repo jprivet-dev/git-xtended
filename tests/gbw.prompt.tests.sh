@@ -43,3 +43,7 @@ function test_gbw_prompt_status_untracked {
 function test_gbw_prompt_status {
     assert equals "$(gbw_prompt_status)" "\e[91m1?\e[0m \e[91m5!\e[0m \e[92mc(\e[0m\e[92m3 \e[92m+1 \e[92m-1\e[0m\e[92m)\e[0m" $LINENO
 }
+
+function test_gbw_prompt_behind {
+    assert equals "$(gbw_prompt_behind)" "\e[91mx↓\e[0m" $LINENO
+}
