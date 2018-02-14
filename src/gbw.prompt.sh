@@ -73,6 +73,7 @@ function gbw_prompt_status_to_be_commited {
     echo "${format_c}c(${F_RESET}${format_m}${m} ${format_n}+${n} ${format_d}-${d}${F_RESET}${format_c})${F_RESET}"
 }
 
+# @test
 function gbw_prompt_status_not_staged {
     if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
