@@ -3,15 +3,19 @@
 TEST_GBW_PROMPT_TIME="\e[91m\t\e[0m"
 TEST_GBW_PROMPT_USER="\e[92muser\e[0m"
 TEST_GBW_PROMPT_HOST="\e[96m\h\e[0m"
-TEST_GBW_PROMPT_USERHOST="$TEST_GBW_PROMPT_USER\"@\"$TEST_GBW_PROMPT_HOST"
+TEST_GBW_PROMPT_USERHOST="${TEST_GBW_PROMPT_USER}@${TEST_GBW_PROMPT_HOST}"
+TEST_GBW_PROMPT_USERHOST_ESCAPE_AT="$TEST_GBW_PROMPT_USER\"@\"$TEST_GBW_PROMPT_HOST"
 TEST_GBW_PROMPT_DIR="\e[94m\w\e[0m"
 TEST_GBW_PROMPT_BRANCH="\e[93mcurrent-branch\e[0m"
 TEST_GBW_PROMPT_COUNT="\e[93m(11)\e[0m"
 TEST_GBW_PROMPT_STATUS_C="\e[92mc(\e[0m\e[92m3 \e[92m+1 \e[92m-1\e[0m\e[92m)\e[0m"
 TEST_GBW_PROMPT_STATUS_S="\e[91m5!\e[0m"
 TEST_GBW_PROMPT_STATUS_U="\e[91m1?\e[0m"
+TEST_GBW_PROMPT_STATUS="$TEST_GBW_PROMPT_STATUS_U $TEST_GBW_PROMPT_STATUS_S $TEST_GBW_PROMPT_STATUS_C"
 TEST_GBW_PROMPT_BEHIND="\e[91mx↓\e[0m"
 TEST_GBW_PROMPT_AHEAD="\e[91mx↑\e[0m"
+
+TEST_GBW_PROMPT_PS1_PART1="$TEST_GBW_PROMPT_TIME $TEST_GBW_PROMPT_USERHOST:$TEST_GBW_PROMPT_DIR $TEST_GBW_PROMPT_BRANCH $TEST_GBW_PROMPT_COUNT $TEST_GBW_PROMPT_STATUS $TEST_GBW_PROMPT_BEHIND $TEST_GBW_PROMPT_AHEAD"
 
 function test_gbw_prompt_time {
     assert equals "$(gbw_prompt_time)" "$TEST_GBW_PROMPT_TIME" $LINENO
@@ -26,7 +30,7 @@ function test_gbw_prompt_host {
 }
 
 function test_gbw_prompt_userhost {
-    assert equals "$(gbw_prompt_userhost)" "$TEST_GBW_PROMPT_USERHOST" $LINENO
+    assert equals "$(gbw_prompt_userhost)" "$TEST_GBW_PROMPT_USERHOST_ESCAPE_AT" $LINENO
 }
 
 function test_gbw_prompt_dir {
@@ -54,7 +58,7 @@ function test_gbw_prompt_status_untracked {
 }
 
 function test_gbw_prompt_status {
-    assert equals "$(gbw_prompt_status)" "$TEST_GBW_PROMPT_STATUS_U $TEST_GBW_PROMPT_STATUS_S $TEST_GBW_PROMPT_STATUS_C" $LINENO
+    assert equals "$(gbw_prompt_status)" "$TEST_GBW_PROMPT_STATUS" $LINENO
 }
 
 function test_gbw_prompt_behind {
@@ -69,3 +73,7 @@ function test_gbw_prompt_ahead {
 #function test_gbw_prompt_git_info {
 #    assert equals "$(gbw_prompt_git_info)" "" $LINENO
 #}
+
+function test_gbw_prompt_ps1_part1 {
+    assert equals "$(gbw_prompt_ps1_part1)" "$TEST_GBW_PROMPT_PS1_PART1" $LINENO
+}
