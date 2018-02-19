@@ -11,7 +11,7 @@ function gbw_command_parse_action {
 
     case $action in
         aliases)
-            gbw_command_aliases "$@"
+            gbw_command_config_git_aliases "$@"
         ;;
         info)
             gbw_prompt_git_info
@@ -27,7 +27,7 @@ function gbw_command_parse_options {
     echo "options"
 }
 
-function gbw_command_aliases {
+function gbw_command_config_git_aliases {
     local global=""
     local unset=""
     local i
