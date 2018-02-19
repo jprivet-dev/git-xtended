@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-GBW_TESTS_MODE=${GBW_TESTS_MODE:-0}
+GBW_TEST_MODE=${GBW_TEST_MODE:-0}
 
 echo "----------------------------------------------------------"
 echo "Git Bash Workflow"
@@ -14,8 +14,8 @@ echo
 source ~/git-bash-workflow/src/gbw.variables.sh
 source ~/git-bash-workflow/config/gbw.params.sh
 
-if [[ "$GBW_TESTS_MODE" == 1 ]]; then
-    source ~/git-bash-workflow/config/gbw.params-tests.sh
+if [[ "$GBW_TEST_MODE" == 1 ]]; then
+    source ~/git-bash-workflow/config/gbw.params_test.sh
 elif [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
