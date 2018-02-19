@@ -23,10 +23,6 @@ function gbw_command_parse_action {
     esac
 }
 
-function gbw_command_parse_options {
-    echo "options"
-}
-
 function gbw_command_config_git_aliases {
     local global=""
     local unset=""
