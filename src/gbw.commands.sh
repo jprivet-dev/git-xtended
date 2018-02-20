@@ -60,7 +60,7 @@ function gbw_command_githooks {
     local current_dir_hooks="$current_dir/.git/hooks"
     local current_dir_hook_pcm="$current_dir_hooks/prepare-commit-msg"
 
-    local pcm_symlink_command_create="$ ln -s $gbw_pcm $current_dir_hook_pcm"
+    local pcm_symlink_command_create="$ ln -sf $gbw_pcm $current_dir_hook_pcm"
     local pcm_symlink_command_create_ls="$ ls $current_dir_hooks"
     local pcm_symlink_command_delete="$ rm $current_dir_hook_pcm"
 
