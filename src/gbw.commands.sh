@@ -16,6 +16,9 @@ function gbw_command_parse_action {
         info)
             gbw_prompt_show_info_and_explanations
         ;;
+        symlink-pcm)
+            gbw_command_symlink_pcm "$@"
+        ;;
         *)
             echo "Unknow action '$action'"
             return
@@ -49,4 +52,36 @@ function gbw_command_config_git_aliases {
     else
         gbw_git_config_set_aliases $global
     fi
+}
+
+
+function gbw_command_symlink_pcm {
+    local delete=""
+
+    for i in "$@"
+    do
+    case $i in
+        -d|--delete)
+            delete="--delete"
+        ;;
+        *)
+            echo "Unknown option '$i'"
+            return
+        ;;
+    esac
+    done
+
+    if [[ "$delete" == "--delete" ]]; then
+        gbw_command_symlink_pcm_delete
+    else
+        gbw_command_symlink_pcm_create
+    fi
+}
+
+function gbw_command_symlink_pcm_delete {
+    echo "gbw_command_symlink_pcm_delete"
+}
+
+function gbw_command_symlink_pcm_create {
+    echo "gbw_command_symlink_pcm_create"
 }
