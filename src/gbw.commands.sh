@@ -54,7 +54,6 @@ function gbw_command_config_git_aliases {
     fi
 }
 
-
 function gbw_command_githooks {
     local current_dir="$PWD"
     local gbw_pcm="$GBW_ROOT/git/hooks/prepare-commit-msg"
