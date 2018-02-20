@@ -4,6 +4,7 @@ GBW_FALSE="false"
 GBW_TRUE="true"
 
 GBW_USER="$USER"
+GBW_ROOT="~/git-bash-workflow"
 
 F_BOLD="\e[1m";
 F_DIM="\e[2m";
