@@ -16,8 +16,8 @@ function gbw_command_parse_action {
         info)
             gbw_prompt_show_info_and_explanations
         ;;
-        symlink-pcm)
-            gbw_command_symlink_pcm "$@"
+        install)
+            gbw_command_install "$@"
         ;;
         *)
             echo "Unknow action '$action'"
@@ -55,33 +55,23 @@ function gbw_command_config_git_aliases {
 }
 
 
-function gbw_command_symlink_pcm {
-    local delete=""
+function gbw_command_install {
+    local current_dir="$PWD"
+    local gbw_hooks_pcm="$GBW_ROOT/git/hooks/prepare-commit-msg"
+    local current_dir_hooks_pcm="$current_dir/.git/hooks/prepare-commit-msg"
+    local symlink_command_create="$ ln -s $gbw_hooks_pcm $current_dir_hooks_pcm"
+    local symlink_command_delete="$ rm $current_dir_hooks_pcm"
 
-    for i in "$@"
-    do
-    case $i in
-        -d|--delete)
-            delete="--delete"
-        ;;
-        *)
-            echo "Unknown option '$i'"
-            return
-        ;;
-    esac
-    done
+    echo -e "$C_LIGHT_GREEN"
+    echo -e "##################################"
+    echo -e "# Git Bash Workflow installation #"
+    echo -e "##################################"
+    echo -e "$F_RESET"
 
-    if [[ "$delete" == "--delete" ]]; then
-        gbw_command_symlink_pcm_delete
-    else
-        gbw_command_symlink_pcm_create
-    fi
-}
+    echo "Active prepare-commit-msg :"
+    echo "$symlink_command_create"
+    echo
 
-function gbw_command_symlink_pcm_delete {
-    echo "gbw_command_symlink_pcm_delete"
-}
-
-function gbw_command_symlink_pcm_create {
-    echo "gbw_command_symlink_pcm_create"
+    echo "Delete prepare-commit-msg :"
+    echo "$symlink_command_delete"
 }
