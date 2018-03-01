@@ -26,6 +26,6 @@ source ~/git-bash-workflow/src/gbw.colors.sh
 source ~/git-bash-workflow/src/gbw.git.sh
 source ~/git-bash-workflow/src/gbw.prompt.sh
 
-source ~/git-bash-workflow/bash/gbw.bash_aliases.sh
+source ~/git-bash-workflow/bash/.bash_aliases
 
 gbw_prompt_init
