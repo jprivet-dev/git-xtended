@@ -12,7 +12,7 @@ echo "----------------------------------------------------------"
 echo
 
 source ~/git-bash-workflow/src/gbw.variables.sh
-source ~/git-bash-workflow/config/gbw.params.sh
+source ~/git-bash-workflow/config/params.sh
 
 if [[ "$GBW_TEST_MODE" == 1 ]]; then
     source ~/git-bash-workflow/config/gbw.params_test.sh
