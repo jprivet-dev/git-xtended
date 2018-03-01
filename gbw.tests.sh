@@ -4,7 +4,7 @@
 # START TEST MODE #
 ###################
 
-GBW_TEST_MODE=1
+GBW_ENV_TEST=1
 
 echo "#############################"
 echo "# Git Bash Workflow TESTING #"
@@ -23,7 +23,7 @@ source ~/git-bash-workflow/tests/utils.tests.sh
 gbw_test_run_all
 
 unalias git
-unset GBW_TEST_MODE
+unset GBW_ENV_TEST
 
 ####################
 # FINISH TEST MODE #
