@@ -1,8 +1,9 @@
 :MAIN_TITLE: Git Bash Workflow
 :MAIN_TITLE_SHORT: GBW
 :BASHRC_PATH: ~/.bashrc
-:GBW_FILE: gbw.sh
-:GBW_PATH: ~/git-bash-workflow/{GBW_FILE}
+:GBW_ROOT: ~/git-bash-workflow
+:GBW_ENTRY_FILE: gbw.sh
+:GBW_ENTRY_FILE_PATH: {GBW_ROOT}/{GBW_ENTRY_FILE}
 :GIT_PROJECT: https://github.com/jprivet-dev/git-bash-workflow
 
 = {MAIN_TITLE}
@@ -31,8 +32,8 @@ Add to your `{BASHRC_PATH}` the following code :
 [source,shell]
 [subs=attributes+]
 ----
-# If the file `{GBW_FILE}` exists, then load it
-[[ -f {GBW_PATH} ]] && source {GBW_PATH}
+# If the file `{GBW_ENTRY_FILE}` exists, then load it
+[[ -f {GBW_ENTRY_FILE_PATH} ]] && source {GBW_ENTRY_FILE_PATH}
 ----
 
 Reload `{BASHRC_PATH}` with the following command (avoids logout and back to the shell) :
@@ -204,7 +205,15 @@ TIP: You can see all aliases in `--global` configuration file `~/.gitconfig`, or
 
 === Commits are documentation : `prepare-commit-msg`
 
-TODO (Work in progress)
+==== Git hooks symlink
+
+[source,shell]
+[subs=attributes+]
+----
+$ ln -s {GBW_ROOT}/git/hooks/prepare-commit-msg ~/url/of/my/project/.git/hooks/prepare-commit-msg
+----
+
+TODO : to complete (Work in progress)
 
 == Agile Git workflow commands
 
