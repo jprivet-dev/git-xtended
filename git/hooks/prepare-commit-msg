@@ -1,0 +1,261 @@
+#!/bin/bash
+
+COMMIT_MSG=$1
+COMMIT_MODE=$2
+
+_D_="\\033[0;39m"
+_R_="\\033[1;31m"
+_G_="\\033[1;32m"
+_Y_="\\033[1;33m"
+_B_="\\033[1;34m"
+_M_="\\033[1;35m"
+
+# Background
+_BG_D_="\\033[49m" #default
+_BG_DG_="\\033[100m" #dark gray
+_BG_R_="\\033[41m" #red
+
+_TYPE_="$_M_<type*>$_D_"
+_SUBTYPE_="$_R_<subtype>$_D_"
+_MAINSCOPE_="$_G_<scope*>$_D_"
+_SUBSCOPE_="$_B_<subscope>$_D_"
+_SUBJECT_="$_Y_<subject*>$_D_"
+
+# git/hooks/prepare-commit-msg
+# git/hooks/prepare-commit-msg.php
+
+#echo "Bash version ${BASH_VERSION}..."
+
+function get_status_listing {
+	git status -s | while read line; do
+		if [[ $line =~ (^[MARD][M ] ) ]]; then
+			st=${BASH_REMATCH[1]}
+		else
+			st=""
+		fi
+
+		if [ "$st" != "" ]; then
+			if [[ $line =~ ([^/ ]*$) ]]; then
+				filename=${BASH_REMATCH[1]}
+				echo "$filename"
+			fi
+		fi
+	done
+}
+
+function get_filenames {
+	echo $(get_status_listing)
+}
+
+types[10]='a/archi/Changes application architecture (folder position, name, …)'
+types[15]='c/conf/Changes configuration, parameters (config.yml, .gitignore, .gitkeep, …)'
+types[20]='co/content/Changes wording or images in contents'
+types[22]='ch/chore/Changes to the build process or auxiliary tools and libraries (Gulp, Composer, …)'
+types[30]='d/dev/Changes main code (creation, enhancement, evolution, …)'
+types[35]='do/docs/Documentation only changes'
+types[40]="i/integ/Web integration, UX works - doesn't touch business logic (css, js, …)"
+types[45]="in/install/Install or update project, modules, pluggins (ex: composer install …)"
+types[55]='t/tpl/Templating works (Twig, Drupal templating, Smarty, …)'
+types[60]='tr/trans/Adds locale-specific components, translates text, …'
+
+subtypes[10]='c/clean/Remove pointless code or files'
+subtypes[15]='d/debug/Adding code for debugging (console.log, dpm, var_dump, …), to remove later !'
+subtypes[20]='f/fix/Bug fix'
+subtypes[25]='g/generate/Auto-generate code (Doctrine, PhoneGap, Ionic, …)'
+subtypes[30]='p/perf/A code change that improves performance'
+subtypes[35]='r/refactor/A code change that neither fixes a bug nor adds a feature'
+subtypes[40]='s/style/Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, …)'
+
+type_split="."
+main_split=": "
+scope_split=" > "
+
+# --------------
+# TYPE
+
+declare -A types_index
+declare -A types_shortcut
+
+echo ""
+echo -e "$_TYPE_ ="
+
+for key in "${!types[@]}"; do
+	if [[ ${types[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
+		shorcut=${BASH_REMATCH[1]}
+		type=${BASH_REMATCH[2]}
+		info=${BASH_REMATCH[3]}
+
+		types_shortcut[$shorcut]=$shorcut
+		types_index[$shorcut]=$type
+
+		text="   "
+		text="$text ($shorcut)"
+		for (( i=${#shorcut}; i<=2; i++ )); do
+			text="$text "
+		done
+
+		text="$text $type"
+		for (( i=${#type}; i<=11; i++ )); do
+			text="$text "
+		done
+
+		text="$text $info"
+
+		echo "$text"
+	fi
+done
+
+# --------------
+# SUBTYPE
+
+declare -A subtypes_shortcut
+declare -A subtypes_index
+
+echo ""
+echo -e "$_SUBTYPE_ ="
+
+for key in "${!subtypes[@]}"; do
+	if [[ ${subtypes[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
+		shorcut=${BASH_REMATCH[1]}
+		subtype=${BASH_REMATCH[2]}
+		info=${BASH_REMATCH[3]}
+
+		subtypes_shortcut[$shorcut]=$shorcut
+		subtypes_index[$shorcut]=$subtype
+
+		text="   "
+		text="$text ($shorcut)"
+		for (( i=${#shorcut}; i<=2; i++ )); do
+			text="$text "
+		done
+
+		text="$text $subtype"
+		for (( i=${#subtype}; i<=11; i++ )); do
+			text="$text "
+		done
+
+		text="$text $info"
+
+		echo "$text"
+	fi
+done
+
+# --------------
+# Example
+
+echo ""
+echo -e "MSG = $_TYPE_$type_split$_SUBTYPE_($_MAINSCOPE_)$main_split$_SUBSCOPE_$scope_split$_SUBJECT_"
+echo ""
+
+# --------------
+# Type
+
+while true; do
+	echo -e -n "$_TYPE_ : "
+
+	exec < /dev/tty
+	read choise_type_index
+
+	[[ " ${types_shortcut[@]} " =~ " ${choise_type_index} " ]]
+
+	if [ "${BASH_REMATCH}" != "" ]; then
+		break;
+	fi
+done
+
+type=${types_index[$choise_type_index]}
+
+# --------------
+# Subtype
+
+while true; do
+	echo -e -n "$type.$_SUBTYPE_ : "
+
+	exec < /dev/tty
+	read choise_subtype_index
+
+	if [ "$choise_subtype_index" == "" ] ;then
+		break;
+	fi
+
+	[[ " ${subtypes_shortcut[@]} " =~ " ${choise_subtype_index} " ]]
+
+	if [ "${BASH_REMATCH}" != "" ]; then
+		break;
+	fi
+done
+
+subtype=""
+if [ "$choise_subtype_index" != "" ] ;then
+	subtype=${subtypes_index[$choise_subtype_index]}
+fi
+
+# --------------
+# Type split
+
+if [ "$type" == "" -o "$subtype" == "" ]; then
+	type_split=""
+fi
+
+# --------------
+# File ref
+
+files_listing=$(get_filenames)
+
+while true; do
+    echo -e -n "$type$type_split$subtype($_MAINSCOPE_) : [$files_listing] "
+
+	exec < /dev/tty
+    read mainscope_choose
+
+	if [ "$files_listing" != "" -o "$mainscope_choose" != "" ]; then
+		break;
+	fi
+done
+
+mainscope="$files_listing"
+if [ "$mainscope_choose" != "" ] ;then
+	mainscope="$mainscope_choose"
+fi
+
+# --------------
+# Scope
+
+echo -e -n "$type$type_split$subtype($mainscope)$main_split$_SUBSCOPE_ "
+exec < /dev/tty
+read subscope
+
+# --------------
+# Scope split
+
+if [ "$mainscope" == "" -o "$subscope" == "" ]; then
+	scope_split=""
+fi
+
+# --------------
+# Commit message
+
+while true; do
+	echo -e -n "$type$type_split$subtype($mainscope)$main_split$subscope$scope_split$_SUBJECT_ "
+
+	exec < /dev/tty
+	read subject
+
+	if [ "$subject" != "" ]; then
+		break;
+	fi
+done
+
+# --------------
+# Final message
+
+complete_message="$type$type_split$subtype($mainscope)$main_split$subscope$scope_split$subject"
+
+if [ "${message}" != "no" ]; then
+	echo ""
+    echo "$complete_message" > "$COMMIT_MSG"
+else
+	echo -e "$_BG_R_ commit aborted $_BG_D_"
+	exit 1
+fi
+
