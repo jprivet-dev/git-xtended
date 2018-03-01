@@ -11,7 +11,7 @@ echo "@info https://github.com/jprivet-dev/git-bash-workflow.git"
 echo "----------------------------------------------------------"
 echo
 
-source ~/git-bash-workflow/src/gbw.variables.sh
+source ~/git-bash-workflow/src/variables.sh
 source ~/git-bash-workflow/config/params.sh
 
 if [[ "$GBW_TEST_MODE" == 1 ]]; then
@@ -20,11 +20,11 @@ elif [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
 
-source ~/git-bash-workflow/src/gbw.utils.sh
-source ~/git-bash-workflow/src/gbw.commands.sh
-source ~/git-bash-workflow/src/gbw.colors.sh
-source ~/git-bash-workflow/src/gbw.git.sh
-source ~/git-bash-workflow/src/gbw.prompt.sh
+source ~/git-bash-workflow/src/utils.sh
+source ~/git-bash-workflow/src/commands.sh
+source ~/git-bash-workflow/src/colors.sh
+source ~/git-bash-workflow/src/git.sh
+source ~/git-bash-workflow/src/prompt.sh
 
 source ~/git-bash-workflow/bash/.bash_aliases
 
