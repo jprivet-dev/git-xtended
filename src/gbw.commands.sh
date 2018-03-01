@@ -16,6 +16,9 @@ function gbw_command_parse_action {
         info)
             gbw_prompt_show_info_and_explanations
         ;;
+        githooks)
+            gbw_command_githooks "$@"
+        ;;
         *)
             echo "Unknow action '$action'"
             return
@@ -49,4 +52,30 @@ function gbw_command_config_git_aliases {
     else
         gbw_git_config_set_aliases $global
     fi
+}
+
+function gbw_command_githooks {
+    local current_dir="$PWD"
+    local gbw_pcm="$GBW_ROOT/git/hooks/prepare-commit-msg"
+    local current_dir_hooks="$current_dir/.git/hooks"
+    local current_dir_hook_pcm="$current_dir_hooks/prepare-commit-msg"
+
+    local pcm_symlink_command_create="$ ln -sf $gbw_pcm $current_dir_hook_pcm"
+    local pcm_symlink_command_create_ls="$ ls $current_dir_hooks"
+    local pcm_symlink_command_delete="$ rm $current_dir_hook_pcm"
+
+    echo -e "$C_LIGHT_GREEN"
+    echo -e "################################"
+    echo -e "# Git Bash Workflow - Githooks #"
+    echo -e "################################"
+    echo -e "$F_RESET"
+
+    echo "Active prepare-commit-msg :"
+    echo "$pcm_symlink_command_create"
+    echo "$pcm_symlink_command_create_ls"
+    echo
+
+    echo "Delete prepare-commit-msg :"
+    echo "$pcm_symlink_command_delete"
+    echo
 }
