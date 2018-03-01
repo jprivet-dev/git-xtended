@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-GBW_TEST_MODE=${GBW_TEST_MODE:-0}
+GBW_ENV_TEST=${GBW_ENV_TEST:-0}
 
 echo "----------------------------------------------------------"
 echo "Git Bash Workflow"
@@ -11,21 +11,20 @@ echo "@info https://github.com/jprivet-dev/git-bash-workflow.git"
 echo "----------------------------------------------------------"
 echo
 
-source ~/git-bash-workflow/src/gbw.variables.sh
-source ~/git-bash-workflow/config/gbw.params.sh
+source ~/git-bash-workflow/src/variables.sh
+source ~/git-bash-workflow/config/params.sh
 
-if [[ "$GBW_TEST_MODE" == 1 ]]; then
-    source ~/git-bash-workflow/config/gbw.params_test.sh
+if [[ "$GBW_ENV_TEST" == 1 ]]; then
+    source ~/git-bash-workflow/config/params_test.sh
 elif [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
 
-source ~/git-bash-workflow/src/gbw.utils.sh
-source ~/git-bash-workflow/src/gbw.commands.sh
-source ~/git-bash-workflow/src/gbw.colors.sh
-source ~/git-bash-workflow/src/gbw.git.sh
-source ~/git-bash-workflow/src/gbw.prompt.sh
-
-source ~/git-bash-workflow/bash/gbw.bash_aliases.sh
+source ~/git-bash-workflow/src/utils.sh
+source ~/git-bash-workflow/src/commands.sh
+source ~/git-bash-workflow/src/colors.sh
+source ~/git-bash-workflow/src/git.sh
+source ~/git-bash-workflow/src/prompt.sh
+source ~/git-bash-workflow/src/bash.aliases.sh
 
 gbw_prompt_init

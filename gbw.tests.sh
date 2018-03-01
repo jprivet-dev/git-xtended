@@ -4,7 +4,7 @@
 # START TEST MODE #
 ###################
 
-GBW_TEST_MODE=1
+GBW_ENV_TEST=1
 
 echo "#############################"
 echo "# Git Bash Workflow TESTING #"
@@ -13,17 +13,17 @@ echo
 
 alias git="gbw_test_fake_git"
 
-source ~/git-bash-workflow/src/gbw.test.sh
+source ~/git-bash-workflow/src/test.sh
 source ~/git-bash-workflow/gbw.sh
 
-source ~/git-bash-workflow/tests/gbw.prompt.tests.sh
-source ~/git-bash-workflow/tests/gbw.git.tests.sh
-source ~/git-bash-workflow/tests/gbw.utils.tests.sh
+source ~/git-bash-workflow/tests/prompt.tests.sh
+source ~/git-bash-workflow/tests/git.tests.sh
+source ~/git-bash-workflow/tests/utils.tests.sh
 
 gbw_test_run_all
 
 unalias git
-unset GBW_TEST_MODE
+unset GBW_ENV_TEST
 
 ####################
 # FINISH TEST MODE #
