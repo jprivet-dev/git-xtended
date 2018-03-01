@@ -16,9 +16,9 @@ alias git="gbw_test_fake_git"
 source ~/git-bash-workflow/src/gbw.test.sh
 source ~/git-bash-workflow/gbw.sh
 
-source ~/git-bash-workflow/tests/gbw.prompt.tests.sh
-source ~/git-bash-workflow/tests/gbw.git.tests.sh
-source ~/git-bash-workflow/tests/gbw.utils.tests.sh
+source ~/git-bash-workflow/tests/prompt.tests.sh
+source ~/git-bash-workflow/tests/git.tests.sh
+source ~/git-bash-workflow/tests/utils.tests.sh
 
 gbw_test_run_all
 
