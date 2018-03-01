@@ -13,7 +13,7 @@ echo
 
 alias git="gbw_test_fake_git"
 
-source ~/git-bash-workflow/src/gbw.test.sh
+source ~/git-bash-workflow/src/test.sh
 source ~/git-bash-workflow/gbw.sh
 
 source ~/git-bash-workflow/tests/prompt.tests.sh
