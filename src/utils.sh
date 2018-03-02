@@ -17,7 +17,7 @@ function gbw_implode {
 
     for p in "${pieces[@]}"
     do
-        p="$(echo "$p" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+        p="$(gbw_trim "$p")"
 
         if [[ "$implode" == "" ]]; then
             [[ "$p" != "" ]] && implode="$p"
@@ -37,4 +37,11 @@ function gbw_is_bash_interactive {
 function gbw_remove_r {
     local file=$1
     sed -i 's/\r$//' $file
+}
+
+
+# TODO : create test
+function gbw_trim {
+    local string=$1
+    echo "$string" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
