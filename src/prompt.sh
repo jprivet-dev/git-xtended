@@ -26,7 +26,7 @@ function gbw_prompt_userhost {
 
 # @test
 function gbw_prompt_dir {
-    echo "$C_LIGHT_BLUE\\w$F_RESET"
+    echo "$C_CYAN\\w$F_RESET"
 }
 
 # @test
