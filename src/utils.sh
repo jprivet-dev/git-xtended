@@ -17,7 +17,13 @@ function gbw_implode {
 
     for p in "${pieces[@]}"
     do
-        [[ "$implode" == "" ]] && implode="$p" || implode="$implode$glue$p"
+        p="$(echo "$p" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+
+        if [[ "$implode" == "" ]]; then
+            [[ "$p" != "" ]] && implode="$p"
+        else
+            [[ "$p" != "" ]] && implode="$implode$glue$p"
+        fi
     done
 
     echo "$implode"
