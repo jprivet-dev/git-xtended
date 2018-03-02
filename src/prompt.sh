@@ -35,7 +35,7 @@ function gbw_prompt_branch {
         return
     fi
 
-    echo "$C_LIGHT_YELLOW$(gbw_git_get_current_branch)$F_RESET"
+    echo "$C_LIGHT_YELLOW($(gbw_git_get_current_branch))$F_RESET"
 }
 
 # @test
@@ -44,7 +44,7 @@ function gbw_prompt_changes_count {
         return
     fi
 
-    echo "$C_LIGHT_YELLOW($(gbw_git_get_changes_nb))$F_RESET"
+    echo "$C_LIGHT_YELLOW$(gbw_git_get_changes_nb)$F_RESET"
 }
 
 # @test
