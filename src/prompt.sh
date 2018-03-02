@@ -178,7 +178,7 @@ function gbw_prompt_ps1_part1 {
     local behind="$(gbw_prompt_behind)"
     local ahead="$(gbw_prompt_ahead)"
 
-    echo "$(gbw_implode " " \"$time\" \"$userhost\":\"$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
+    echo "$(gbw_implode " " \"$time\" \"$userhost:$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
 }
 
 # @test
