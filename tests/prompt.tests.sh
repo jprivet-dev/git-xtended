@@ -13,7 +13,7 @@ function test_gbw_prompt_host {
 }
 
 function test_gbw_prompt_userhost {
-    assert equals "$(gbw_prompt_userhost)" "$_TEST_GBW_PROMPT_USERHOST_ESCAPE_AT" $LINENO
+    assert equals "$(gbw_prompt_userhost)" "$_TEST_GBW_PROMPT_USERHOST" $LINENO
 }
 
 function test_gbw_prompt_dir {
