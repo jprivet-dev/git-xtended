@@ -12,16 +12,16 @@ function gbw_prompt_user {
 
 # @test
 function gbw_prompt_host {
-    echo "$C_LIGHT_CYAN\h$F_RESET"
+    echo "$C_LIGHT_GREEN\h$F_RESET"
 }
 
 # @test
 function gbw_prompt_userhost {
     local user="$(gbw_prompt_user)"
     local host="$(gbw_prompt_host)"
-    local glue="@"
+    local glue="$C_LIGHT_GREEN@$F_RESET"
 
-    echo "$(gbw_implode \"$glue\" \"$user\" \"$host\")"
+    echo "$user$glue$host"
 }
 
 # @test
