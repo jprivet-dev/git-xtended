@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# TODO : create test
+function gbw_git_current_folder_is_repo {
+    if [[ "$(git rev-parse --git-dir 2> /dev/null)" == ".git" ]]; then
+        return 1
+    fi
+
+    return 0
+}
+
 # @test
 function gbw_git_get_current_branch {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
