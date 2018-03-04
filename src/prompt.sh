@@ -31,18 +31,16 @@ function gbw_prompt_dir {
 
 # @test
 function gbw_prompt_branch {
-    local branch="$(gbw_git_get_current_branch)"
-
-    if [[ -z "$branch" ]]; then
+    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
         return
     fi
 
-    echo "$C_LIGHT_YELLOW($branch)$F_RESET"
+    echo "$C_LIGHT_YELLOW($(gbw_git_get_current_branch))$F_RESET"
 }
 
 # @test
 function gbw_prompt_changes_count {
-    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -51,7 +49,7 @@ function gbw_prompt_changes_count {
 
 # @test
 function gbw_prompt_status_to_be_commited {
-    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -77,7 +75,7 @@ function gbw_prompt_status_to_be_commited {
 
 # @test
 function gbw_prompt_status_not_staged {
-    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -91,7 +89,7 @@ function gbw_prompt_status_not_staged {
 
 # @test
 function gbw_prompt_status_untracked {
-    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -105,7 +103,7 @@ function gbw_prompt_status_untracked {
 
 # @test
 function gbw_prompt_status {
-    if [[ (-z "$(gbw_git_get_current_branch)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
         return
     fi
 
@@ -118,7 +116,7 @@ function gbw_prompt_status {
 
 # @test
 function gbw_prompt_behind {
-    if [[ -z "$(gbw_git_get_current_branch)" ]]; then
+    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
         return
     fi
 
@@ -135,7 +133,7 @@ function gbw_prompt_behind {
 
 # @test
 function gbw_prompt_ahead {
-    if [[ -z "$(gbw_git_get_current_branch)" ]]; then
+    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
         return
     fi
 
