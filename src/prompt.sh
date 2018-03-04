@@ -40,7 +40,11 @@ function gbw_prompt_branch {
 
 # @test
 function gbw_prompt_changes_count {
-    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
+        return
+    fi
+
+    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
         return
     fi
 
@@ -49,7 +53,11 @@ function gbw_prompt_changes_count {
 
 # @test
 function gbw_prompt_status_to_be_commited {
-    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
+        return
+    fi
+
+    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
         return
     fi
 
@@ -75,7 +83,11 @@ function gbw_prompt_status_to_be_commited {
 
 # @test
 function gbw_prompt_status_not_staged {
-    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
+        return
+    fi
+
+    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
         return
     fi
 
@@ -89,7 +101,11 @@ function gbw_prompt_status_not_staged {
 
 # @test
 function gbw_prompt_status_untracked {
-    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
+        return
+    fi
+
+    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
         return
     fi
 
@@ -103,7 +119,11 @@ function gbw_prompt_status_untracked {
 
 # @test
 function gbw_prompt_status {
-    if [[ (-z "$(gbw_git_current_folder_is_repo)") || ("$(gbw_git_get_changes_nb)" == 0) ]]; then
+    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
+        return
+    fi
+
+    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
         return
     fi
 
