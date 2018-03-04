@@ -31,11 +31,13 @@ function gbw_prompt_dir {
 
 # @test
 function gbw_prompt_branch {
-    if [[ -z "$(gbw_git_get_current_branch)" ]]; then
+    local branch="$(gbw_git_get_current_branch)"
+
+    if [[ -z "$branch" ]]; then
         return
     fi
 
-    echo "$C_LIGHT_YELLOW($(gbw_git_get_current_branch))$F_RESET"
+    echo "$C_LIGHT_YELLOW($branch)$F_RESET"
 }
 
 # @test
