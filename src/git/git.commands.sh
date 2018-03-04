@@ -2,11 +2,7 @@
 
 # TODO : create test
 function gbw_git_current_folder_is_repo {
-    if [[ "$(git rev-parse --git-dir 2> /dev/null)" == ".git" ]]; then
-        return 1
-    fi
-
-    return 0
+    git rev-parse --git-dir 2> /dev/null
 }
 
 # @test
