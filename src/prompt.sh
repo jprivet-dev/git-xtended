@@ -143,12 +143,10 @@ function gbw_prompt_ps1_part1 {
         ps1="$ps1 $(gbw_prompt_branch)"
 
         if [[ "$(gbw_git_get_changes_nb)" != 0 ]]; then
-            ps1="$ps1 $(gbw_prompt_changes_count)"
-            ps1="$ps1 $(gbw_prompt_status)"
+            ps1="$ps1 $(gbw_prompt_changes_count) $(gbw_prompt_status)"
         fi
 
-        ps1="$ps1 $(gbw_prompt_behind)"
-        ps1="$ps1 $(gbw_prompt_ahead)"
+        ps1="$ps1 $(gbw_prompt_behind) $(gbw_prompt_ahead)"
     fi
 
     echo "$ps1"
