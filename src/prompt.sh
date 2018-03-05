@@ -17,11 +17,7 @@ function gbw_prompt_host {
 
 # @test
 function gbw_prompt_userhost {
-    local user="$(gbw_prompt_user)"
-    local host="$(gbw_prompt_host)"
-    local glue="$C_LIGHT_GREEN@$F_RESET"
-
-    echo "$user$glue$host"
+    echo "$(gbw_prompt_user)$C_LIGHT_GREEN@$F_RESET$(gbw_prompt_host)"
 }
 
 # @test
