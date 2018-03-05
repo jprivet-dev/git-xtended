@@ -83,11 +83,7 @@ function gbw_prompt_status_untracked {
 
 # @test
 function gbw_prompt_status {
-    local c="$(gbw_prompt_status_to_be_commited)"
-    local s="$(gbw_prompt_status_not_staged)"
-    local u="$(gbw_prompt_status_untracked)"
-
-    echo "$u $s $c"
+    echo "$(gbw_prompt_status_untracked) $(gbw_prompt_status_not_staged) $(gbw_prompt_status_to_be_commited)"
 }
 
 # @test
