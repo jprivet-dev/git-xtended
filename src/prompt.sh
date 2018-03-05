@@ -162,10 +162,7 @@ function gbw_prompt_ps1_part2 {
 }
 
 function gbw_prompt_set_ps1 {
-    local prompt="$(gbw_prompt_ps1_part1)"
-    local newline="$(gbw_prompt_ps1_part2)"
-
-    PS1="$prompt$newline"
+    PS1="$(gbw_prompt_ps1_part1)$(gbw_prompt_ps1_part2)"
 }
 
 function gbw_prompt_set_ps2 {
