@@ -31,36 +31,16 @@ function gbw_prompt_dir {
 
 # @test
 function gbw_prompt_branch {
-    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
-        return
-    fi
-
     echo "$C_LIGHT_YELLOW($(gbw_git_get_current_branch))$F_RESET"
 }
 
 # @test
 function gbw_prompt_changes_count {
-    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
-        return
-    fi
-
-    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
-        return
-    fi
-
     echo "$C_LIGHT_YELLOW$(gbw_git_get_changes_nb)$F_RESET"
 }
 
 # @test
 function gbw_prompt_status_to_be_commited {
-    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
-        return
-    fi
-
-    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
-        return
-    fi
-
     local c="$(gbw_git_get_status_changes_to_be_committed_count)"
     local m="$(gbw_git_get_status_changes_to_be_committed_modified_extended_count)"
     local n="$(gbw_git_get_status_changes_to_be_committed_new_file_count)"
@@ -83,14 +63,6 @@ function gbw_prompt_status_to_be_commited {
 
 # @test
 function gbw_prompt_status_not_staged {
-    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
-        return
-    fi
-
-    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
-        return
-    fi
-
     local count="$(gbw_git_get_status_changes_not_staged_for_commit_count)"
     local format="$C_DARK_GRAY"
 
@@ -101,14 +73,6 @@ function gbw_prompt_status_not_staged {
 
 # @test
 function gbw_prompt_status_untracked {
-    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
-        return
-    fi
-
-    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
-        return
-    fi
-
     local count="$(gbw_git_get_status_untracked_files_count)"
     local format="$C_DARK_GRAY"
 
@@ -119,14 +83,6 @@ function gbw_prompt_status_untracked {
 
 # @test
 function gbw_prompt_status {
-    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
-        return
-    fi
-
-    if [[ "$(gbw_git_get_changes_nb)" == 0 ]]; then
-        return
-    fi
-
     local c="$(gbw_prompt_status_to_be_commited)"
     local s="$(gbw_prompt_status_not_staged)"
     local u="$(gbw_prompt_status_untracked)"
@@ -136,10 +92,6 @@ function gbw_prompt_status {
 
 # @test
 function gbw_prompt_behind {
-    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
-        return
-    fi
-
     local count="$(gbw_git_status_behind_count $(gbw_git_get_current_branch) $(gbw_git_get_remote_branch_ref))"
     local format="$C_LIGHT_GRAY"
 
@@ -153,10 +105,6 @@ function gbw_prompt_behind {
 
 # @test
 function gbw_prompt_ahead {
-    if [[ -z "$(gbw_git_current_folder_is_repo)" ]]; then
-        return
-    fi
-
     local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $(gbw_git_get_remote_branch_ref))"
     local format="$C_LIGHT_GRAY"
 
@@ -192,11 +140,24 @@ function gbw_prompt_ps1_part1 {
     local time="$(gbw_prompt_time)"
     local userhost="$(gbw_prompt_userhost)"
     local dir="$(gbw_prompt_dir)"
-    local branch="$(gbw_prompt_branch)"
-    local count="$(gbw_prompt_changes_count)"
-    local status="$(gbw_prompt_status)"
-    local behind="$(gbw_prompt_behind)"
-    local ahead="$(gbw_prompt_ahead)"
+
+    local branch=""
+    local count=""
+    local status=""
+    local behind=""
+    local ahead=""
+
+    if [[ -d "$(gbw_git_current_folder_is_repo)" ]]; then
+        branch="$(gbw_prompt_branch)"
+
+        if [[ "$(gbw_git_get_changes_nb)" != 0 ]]; then
+            count="$(gbw_prompt_changes_count)"
+            status="$(gbw_prompt_status)"
+        fi
+
+        behind="$(gbw_prompt_behind)"
+        ahead="$(gbw_prompt_ahead)"
+    fi
 
     echo "$(gbw_implode " " \"$time\" \"$userhost:$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
 }
