@@ -143,7 +143,9 @@ function gbw_prompt_ps1_part1 {
 
     local branch=""
     local count=""
-    local status=""
+    local status_u=""
+    local status_s=""
+    local status_c=""
     local behind=""
     local ahead=""
 
@@ -152,14 +154,16 @@ function gbw_prompt_ps1_part1 {
 
         if [[ "$(gbw_git_get_changes_nb)" != 0 ]]; then
             count="$(gbw_prompt_changes_count)"
-            status="$(gbw_prompt_status)"
+            status_u="$(gbw_prompt_status_untracked)"
+            status_s="$(gbw_prompt_status_not_staged)"
+            status_c="$(gbw_prompt_status_to_be_commited)"
         fi
 
         behind="$(gbw_prompt_behind)"
         ahead="$(gbw_prompt_ahead)"
     fi
 
-    echo "$(gbw_implode " " \"$time\" \"$userhost:$dir\" \"$branch\" \"$count\" \"$status\" \"$behind\" \"$ahead\")"
+    echo "$(gbw_implode " " \"$time\" \"$userhost:$dir\" \"$branch\" \"$count\" \"$status_u\" \"$status_s\" \"$status_c\" \"$behind\" \"$ahead\")"
 }
 
 # @test
