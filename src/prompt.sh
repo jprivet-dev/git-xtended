@@ -49,9 +49,9 @@ function gbw_prompt_status_to_be_commited {
     if [[ "$c" > 0 ]]; then
         format_c="$C_LIGHT_GREEN"
 
-        [[ "$m" > 0 ]] && format_m="$C_LIGHT_GREEN" || format_m="$C_CYAN"
-        [[ "$n" > 0 ]] && format_n="$C_LIGHT_GREEN" || format_n="$C_CYAN"
-        [[ "$d" > 0 ]] && format_d="$C_LIGHT_GREEN" || format_d="$C_CYAN"
+        [[ "$m" > 0 ]] && format_m="$C_LIGHT_GREEN"
+        [[ "$n" > 0 ]] && format_n="$C_LIGHT_GREEN"
+        [[ "$d" > 0 ]] && format_d="$C_LIGHT_GREEN"
     fi
 
     echo "${format_c}c(${F_RESET}${format_m}${m} ${format_n}+${n} ${format_d}-${d}${F_RESET}${format_c})${F_RESET}"
