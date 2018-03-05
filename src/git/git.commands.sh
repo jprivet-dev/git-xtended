@@ -7,7 +7,7 @@ function gbw_git_current_folder_is_repo {
 
 # @test
 function gbw_git_get_current_branch {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+    git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
 # @test
