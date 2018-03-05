@@ -74,7 +74,7 @@ TADA ! *{MAIN_TITLE}* is ready
 
 *{MAIN_TITLE}* changes the prompt (`PS1`) and adds information about Git :
 
-image::doc/img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
+image::doc/img/prompt.png[{PROMPT_PS1}]
 
 {nbsp}
 
@@ -108,11 +108,11 @@ image::doc/img/gbw-screenshot-prompt.png[{PROMPT_PS1}]
 
 In *no change case*, you can see :
 
-image::doc/img/gbw-screenshot-prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
+image::doc/img/prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
 
 In *one change case*, you can see :
 
-image::doc/img/gbw-screenshot-prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
+image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
 == Git aliases
 
