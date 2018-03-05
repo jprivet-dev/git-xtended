@@ -22,6 +22,10 @@ function gbw_test_fake_git_branch {
     echo "  master"
 }
 
+function gbw_test_fake_git_rev_parse_abbrev_ref_head {
+    echo "current-branch"
+}
+
 function gbw_test_fake_git_diff_current_branch_origin_dev {
     echo " README.adoc                                  |   6 +-"
     echo " path/to/file-1                               |  18 +++++"
@@ -42,8 +46,8 @@ function gbw_test_fake_git_revlist_current_remote_nok {
     echo ""
 }
 
-function gbw_test_fake_git_revlist_remote_current_nok {
-    echo ""
+function gbw_test_fake_git_rev_parse_git_dir {
+    echo ".git"
 }
 
 function gbw_test_fake_git {
@@ -55,6 +59,9 @@ function gbw_test_fake_git {
         ;;
         "branch")
             gbw_test_fake_git_branch
+        ;;
+        "rev-parse --abbrev-ref HEAD")
+            gbw_test_fake_git_rev_parse_abbrev_ref_head
         ;;
         "diff --stat remote-branch")
             gbw_test_fake_git_diff_current_branch_origin_dev
@@ -70,6 +77,15 @@ function gbw_test_fake_git {
         ;;
         "rev-list --left-right --count nok-branch...current-branch")
             gbw_test_fake_git_revlist_remote_current_nok
+        ;;
+        "rev-parse --git-dir")
+            gbw_test_fake_git_rev_parse_git_dir
+        ;;
+        "--version")
+            return
+        ;;
+        *)
+            "[ ERROR !!! No Git fake command for '$args' ]"
         ;;
     esac
 }
