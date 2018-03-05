@@ -43,7 +43,8 @@ function gbw_prompt_status_to_be_commited {
     local n="$(gbw_git_get_status_changes_to_be_committed_new_file_count)"
     local d="$(gbw_git_get_status_changes_to_be_committed_deleted_count)"
 
-    [[ "$m$n$d" == "000" ]] && format_c="$C_DARK_GRAY"
+    [[ "$m$n$d" == "000" ]] \
+        && format_c="$C_DARK_GRAY"
 
     echo "${format_c}c($m +$n -$d)${F_RESET}"
 }
@@ -53,7 +54,8 @@ function gbw_prompt_status_not_staged {
     local count="$(gbw_git_get_status_changes_not_staged_for_commit_count)"
     local format="$C_DARK_GRAY"
 
-    [[ "$count" > 0 ]] && format="$C_LIGHT_RED"
+    [[ "$count" > 0 ]] \
+        && format="$C_LIGHT_RED"
 
     echo "$format${count}!$F_RESET"
 }
@@ -63,7 +65,8 @@ function gbw_prompt_status_untracked {
     local count="$(gbw_git_get_status_untracked_files_count)"
     local format="$C_DARK_GRAY"
 
-    [[ "$count" > 0 ]] && format="$C_LIGHT_RED"
+    [[ "$count" > 0 ]] \
+        && format="$C_LIGHT_RED"
 
     echo "$format${count}?$F_RESET"
 }
@@ -149,7 +152,9 @@ function gbw_prompt_set_ps2 {
 }
 
 function gbw_prompt_init {
-    [[ "$(gbw_is_bash_interactive)" == "false" ]] && return
+    if [[ "$(gbw_is_bash_interactive)" == "false" ]]; then
+        return
+    fi
     PROMPT_COMMAND='gbw_prompt_set_ps1'
     gbw_prompt_set_ps2
 }
