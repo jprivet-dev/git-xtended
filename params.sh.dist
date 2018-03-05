@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-GBW_BRANCH_MAIN_REMOTE_DEVELOP="origin/dev"
+GBW_GIT_REMOTE_BRANCH_REF="origin/dev"
