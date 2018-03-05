@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
+# TODO : create test
+function gbw_git_current_folder_is_repo {
+    git rev-parse --git-dir 2> /dev/null
+}
+
 # @test
 function gbw_git_get_current_branch {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+    git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
 # @test
@@ -24,23 +29,22 @@ function gbw_git_status {
 
 # @test
 function gbw_git_get_changes_nb {
-    gbw_git_status | wc -l
+    git status --porcelain | wc -l 2> /dev/null
 }
 
 # @test
 function gbw_git_diff_current_branch_origin_dev {
-    local remote_branch="$(gbw_git_get_remote_branch_ref)"
-    git diff --stat "$remote_branch" 2> /dev/null
+    git diff --stat "$(gbw_git_get_remote_branch_ref)" 2> /dev/null
 }
 
 # @test
 function gbw_git_get_status_changes_to_be_committed_count {
-    gbw_git_status | grep '^[^? ]' | wc -l
+    git status --porcelain | grep '^[^? ]' | wc -l 2> /dev/null
 }
 
 # @test
 function gbw_git_get_status_changes_to_be_committed_modified_count {
-    gbw_git_status | grep '^M' | wc -l
+    git status --porcelain | grep '^M' | wc -l 2> /dev/null
 }
 
 # @test
@@ -50,27 +54,27 @@ function gbw_git_get_status_changes_to_be_committed_modified_extended_count {
     # R = renamed / C = copied / U = updated but unmerged
     # ? = untracked / ! = ignored
     # get all without D, A, ? & ' '
-    gbw_git_status | grep '^[^DA? ]' | wc -l
+    git status --porcelain | grep '^[^DA? ]' | wc -l 2> /dev/null
 }
 
 # @test
 function gbw_git_get_status_changes_to_be_committed_deleted_count {
-    gbw_git_status | grep '^D' | wc -l
+    git status --porcelain | grep '^D' | wc -l 2> /dev/null
 }
 
 # @test
 function gbw_git_get_status_changes_to_be_committed_new_file_count {
-    gbw_git_status | grep '^A' | wc -l
+    git status --porcelain | grep '^A' | wc -l 2> /dev/null
 }
 
 # @test
 function gbw_git_get_status_changes_not_staged_for_commit_count {
-    gbw_git_status | grep '^.[^? ]' | wc -l
+    git status --porcelain | grep '^.[^? ]' | wc -l 2> /dev/null
 }
 
 # @test
 function gbw_git_get_status_untracked_files_count {
-    gbw_git_status | grep '^??' | wc -l
+    git status --porcelain | grep '^??' | wc -l 2> /dev/null
 }
 
 # @test
