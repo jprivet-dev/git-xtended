@@ -87,7 +87,7 @@ function gbw_prompt_status {
     local s="$(gbw_prompt_status_not_staged)"
     local u="$(gbw_prompt_status_untracked)"
 
-    echo "$(gbw_implode " " \"$u\" \"$s\" \"$c\")"
+    echo "$u $s $c"
 }
 
 # @test
@@ -144,9 +144,7 @@ function gbw_prompt_ps1_part1 {
 
         if [[ "$(gbw_git_get_changes_nb)" != 0 ]]; then
             ps1="$ps1 $(gbw_prompt_changes_count)"
-            ps1="$ps1 $(gbw_prompt_status_untracked)"
-            ps1="$ps1 $(gbw_prompt_status_not_staged)"
-            ps1="$ps1 $(gbw_prompt_status_to_be_commited)"
+            ps1="$ps1 $(gbw_prompt_status)"
         fi
 
         ps1="$ps1 $(gbw_prompt_behind)"
