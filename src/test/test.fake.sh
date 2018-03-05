@@ -81,6 +81,9 @@ function gbw_test_fake_git {
         "rev-parse --git-dir")
             gbw_test_fake_git_rev_parse_git_dir
         ;;
+        "--version")
+            return
+        ;;
         *)
             "[ ERROR !!! No Git fake command for '$args' ]"
         ;;
