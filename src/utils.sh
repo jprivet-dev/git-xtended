@@ -30,7 +30,9 @@ function gbw_implode {
 }
 
 function gbw_is_bash_interactive {
-    [[ $- == *i* ]] && echo "true" || echo "false"
+    [[ $- == *i* ]] \
+        && echo "true" \
+        || echo "false"
 }
 
 # -bash: $'\r': command not found
