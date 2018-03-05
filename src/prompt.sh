@@ -137,33 +137,23 @@ function gbw_prompt_show_info_and_explanations {
 
 # @test
 function gbw_prompt_ps1_part1 {
-    local time="$(gbw_prompt_time)"
-    local userhost="$(gbw_prompt_userhost)"
-    local dir="$(gbw_prompt_dir)"
-
-    local branch=""
-    local count=""
-    local status_u=""
-    local status_s=""
-    local status_c=""
-    local behind=""
-    local ahead=""
+    ps1="$(gbw_prompt_time) $(gbw_prompt_userhost):$(gbw_prompt_dir)"
 
     if [[ -d "$(gbw_git_current_folder_is_repo)" ]]; then
-        branch="$(gbw_prompt_branch)"
+        ps1="$ps1 $(gbw_prompt_branch)"
 
         if [[ "$(gbw_git_get_changes_nb)" != 0 ]]; then
-            count="$(gbw_prompt_changes_count)"
-            status_u="$(gbw_prompt_status_untracked)"
-            status_s="$(gbw_prompt_status_not_staged)"
-            status_c="$(gbw_prompt_status_to_be_commited)"
+            ps1="$ps1 $(gbw_prompt_changes_count)"
+            ps1="$ps1 $(gbw_prompt_status_untracked)"
+            ps1="$ps1 $(gbw_prompt_status_not_staged)"
+            ps1="$ps1 $(gbw_prompt_status_to_be_commited)"
         fi
 
-        behind="$(gbw_prompt_behind)"
-        ahead="$(gbw_prompt_ahead)"
+        ps1="$ps1 $(gbw_prompt_behind)"
+        ps1="$ps1 $(gbw_prompt_ahead)"
     fi
 
-    echo "$(gbw_implode " " \"$time\" \"$userhost:$dir\" \"$branch\" \"$count\" \"$status_u\" \"$status_s\" \"$status_c\" \"$behind\" \"$ahead\")"
+    echo "$ps1"
 }
 
 # @test
