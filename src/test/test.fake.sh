@@ -22,6 +22,10 @@ function gbw_test_fake_git_branch {
     echo "  master"
 }
 
+function gbw_test_fake_git_rev_parse_abbrev_ref_head {
+    echo "current-branch"
+}
+
 function gbw_test_fake_git_diff_current_branch_origin_dev {
     echo " README.adoc                                  |   6 +-"
     echo " path/to/file-1                               |  18 +++++"
@@ -55,6 +59,9 @@ function gbw_test_fake_git {
         ;;
         "branch")
             gbw_test_fake_git_branch
+        ;;
+        "rev-parse --abbrev-ref HEAD")
+            gbw_test_fake_git_rev_parse_abbrev_ref_head
         ;;
         "diff --stat remote-branch")
             gbw_test_fake_git_diff_current_branch_origin_dev
