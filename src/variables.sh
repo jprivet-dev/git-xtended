@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-GBW_FALSE="false"
-GBW_TRUE="true"
-
-GBW_USER_PS1="\u"
-GBW_ROOT="~/git-bash-workflow"
-
 F_BOLD="\e[1m";
 F_DIM="\e[2m";
 F_UNDERLINED="\e[4m";
@@ -48,3 +42,18 @@ C_BG_LIGHT_BLUE="\e[104m"
 C_BG_LIGHT_MAGENTA="\e[105m"
 C_BG_LIGHT_CYAN="\e[106m"
 C_BG_WHITE="\e[107m"
+
+GBW_FALSE="false"
+GBW_TRUE="true"
+
+GBW_ON="on"
+GBW_OFF="off"
+
+GBW_ON_C="${C_LIGHT_GREEN}on${F_RESET}"
+GBW_OFF_C="${C_LIGHT_RED}off${F_RESET}"
+
+GBW_USER_PS1="\u"
+GBW_ROOT="~/git-bash-workflow"
+
+GBW_GIT_ALIASES_STATUS_FILE="$GBW_ROOT/src/git/git.aliases.status.sh"
+
