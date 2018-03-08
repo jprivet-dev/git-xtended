@@ -27,6 +27,12 @@ function gbw_git_status {
     git status --porcelain 2> /dev/null
 }
 
+function gbw_git_status_indexed {
+    while IFS= read -r line
+	do echo -e "$line"
+	done < <(git status --porcelain)
+}
+
 # @test
 function gbw_git_get_changes_nb {
     git status --porcelain | wc -l 2> /dev/null
