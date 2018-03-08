@@ -50,9 +50,8 @@ function gbw_git_config_set_aliases {
 }
 
 function gbw_git_config_unset_aliases {
-    [[ "$1" == "--global" ]] \
-        && global="" \
-        || global="--global"
+    local global="$1"
+    [[ "$global" != "--global" ]] && global=""
 
     git config $global --unset alias.b
 	git config $global --unset alias.d
@@ -71,4 +70,12 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.s
 	git config $global --unset alias.ss
 	git config $global --unset alias.sniffer
+}
+
+function gbw_git_aliases_enable {
+    gbw_git_config_set_aliases --global
+}
+
+function gbw_git_aliases_disable {
+    gbw_git_config_unset_aliases --global
 }
