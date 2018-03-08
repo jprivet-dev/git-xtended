@@ -18,8 +18,8 @@ _BG_R_="\\033[41m" #red
 _TYPE_="$_M_<type*>$_D_"
 _SUBTYPE_="$_R_<subtype>$_D_"
 _MAINSCOPE_="$_G_<scope*>$_D_"
-_SUBSCOPE_="$_B_<subscope>$_D_"
 _SUBJECT_="$_Y_<subject*>$_D_"
+
 
 # git/hooks/prepare-commit-msg
 # git/hooks/prepare-commit-msg.php
@@ -68,7 +68,6 @@ subtypes[40]='s/style/Changes that do not affect the meaning of the code (white-
 
 type_split="."
 main_split=": "
-scope_split=" > "
 
 # --------------
 # TYPE
@@ -144,7 +143,7 @@ done
 # Example
 
 echo ""
-echo -e "MSG = $_TYPE_$type_split$_SUBTYPE_($_MAINSCOPE_)$main_split$_SUBSCOPE_$scope_split$_SUBJECT_"
+echo -e "MSG = $_TYPE_$type_split$_SUBTYPE_($_MAINSCOPE_)$main_split$_SUBJECT_"
 echo ""
 
 # --------------
@@ -221,22 +220,11 @@ fi
 # --------------
 # Scope
 
-echo -e -n "$type$type_split$subtype($mainscope)$main_split$_SUBSCOPE_ "
-exec < /dev/tty
-read subscope
-
-# --------------
-# Scope split
-
-if [ "$mainscope" == "" -o "$subscope" == "" ]; then
-	scope_split=""
-fi
-
 # --------------
 # Commit message
 
 while true; do
-	echo -e -n "$type$type_split$subtype($mainscope)$main_split$subscope$scope_split$_SUBJECT_ "
+	echo -e -n "$type$type_split$subtype($mainscope)$main_split$_SUBJECT_ "
 
 	exec < /dev/tty
 	read subject
@@ -249,7 +237,7 @@ done
 # --------------
 # Final message
 
-complete_message="$type$type_split$subtype($mainscope)$main_split$subscope$scope_split$subject"
+complete_message="$type$type_split$subtype($mainscope)$main_split$subject"
 
 if [ "${message}" != "no" ]; then
 	echo ""
