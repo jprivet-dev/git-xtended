@@ -27,6 +27,11 @@ function gbw_git_status {
     git status --porcelain 2> /dev/null
 }
 
+# TODO: create test
+function gbw_git_status_indexed {
+    source ~/git-bash-workflow/src/git/git.aliases.status.sh
+}
+
 # @test
 function gbw_git_get_changes_nb {
     git status --porcelain | wc -l 2> /dev/null

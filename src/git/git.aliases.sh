@@ -41,7 +41,8 @@ function gbw_git_config_set_aliases {
     git config $global alias.untracked "clean -f -d"
 
     # git status
-    git config $global alias.s "status -s"
+    git config $global alias.s "!sh -c '~/git-bash-workflow/src/git/git.aliases.status.sh'"
+
     git config $global alias.ss status
 
     # git grep
