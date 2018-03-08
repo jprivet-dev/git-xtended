@@ -21,9 +21,9 @@ source ~/git-bash-workflow/src/git.sh
 source ~/git-bash-workflow/src/prompt.sh
 source ~/git-bash-workflow/src/bash.aliases.sh
 
-####################
-#      PROMPT      #
-####################
+####################################
+#              PROMPT              #
+####################################
 
 gbw_prompt_init_state="$GBW_OFF_C"
 
@@ -34,9 +34,9 @@ fi
 
 echo -e "- Prompt with Git information : $gbw_prompt_init_state"
 
-####################
-#   GIT ALIASES    #
-####################
+####################################
+#           GIT ALIASES            #
+####################################
 
 if [ "$GBW_GIT_ALIASES_INIT_ACTIVE" == 1 ]; then
     gbw_git_aliases_enable
@@ -48,7 +48,21 @@ fi
 
 echo -e "- Git aliases : $gbw_git_aliases_init_state"
 
-echo "- Git hooks"
+####################################
+#   GIT HOOK PREPARE COMMIT MSG    #
+####################################
+
+if [ "$GBW_GIT_HOOK_PREPARE_COMMIT_MSG_INIT_ACTIVE" == 1 ]; then
+#    gbw_git_hook_prepare_commit_msg_enable
+    gbw_git_hook_prepare_commit_msg_init_state="$GBW_ON_C"
+else
+#    gbw_git_hook_prepare_commit_msg_disable
+    gbw_git_hook_prepare_commit_msg_init_state="$GBW_OFF_C"
+fi
+
+echo -e "- Git hook 'prepare-commit-msg' : $gbw_git_hook_prepare_commit_msg_init_state"
+
+
 echo "- Agile Git workflow commands"
 
 echo
