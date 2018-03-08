@@ -4,12 +4,6 @@ GBW_ENV_TEST=${GBW_ENV_TEST:-0}
 
 echo "----------------------------------------------------------"
 echo "Git Bash Workflow"
-echo "- Prompt with Git information"
-echo "- Git aliases & hooks"
-echo "- Agile Git workflow commands"
-echo "@info https://github.com/jprivet-dev/git-bash-workflow.git"
-echo "----------------------------------------------------------"
-echo
 
 source ~/git-bash-workflow/src/variables.sh
 source ~/git-bash-workflow/config/params.sh
@@ -27,4 +21,19 @@ source ~/git-bash-workflow/src/git.sh
 source ~/git-bash-workflow/src/prompt.sh
 source ~/git-bash-workflow/src/bash.aliases.sh
 
-gbw_prompt_init
+gbw_prompt_init_state="$GBW_OFF_C"
+
+if [ "$GBW_PROMPT_INIT_ACTIVE" == 1 ]; then
+    gbw_prompt_init
+    gbw_prompt_init_state="$GBW_ON_C"
+fi
+
+echo -e "- Prompt with Git information : $gbw_prompt_init_state"
+
+echo "- Git aliases & hooks"
+echo "- Agile Git workflow commands"
+
+echo
+echo "@info https://github.com/jprivet-dev/git-bash-workflow.git"
+echo "----------------------------------------------------------"
+echo
