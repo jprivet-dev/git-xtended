@@ -27,6 +27,7 @@ function gbw_git_status {
     git status --porcelain 2> /dev/null
 }
 
+# TODO: create test
 function gbw_git_status_indexed {
     while IFS= read -r line; do
         local INDEX=$(expr $INDEX + 1)
