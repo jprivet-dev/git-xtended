@@ -4,6 +4,10 @@ _commit_choose_indexes=$@
 
 if [ "$_commit_choose_indexes" == "" ]; then
     echo "> COMMIT ERROR: Choose index !"
+elseif [ "$_commit_choose_indexes" == "all" ]
+    git add -A
+    echo "> ADD: all"
+    git commit -m ""
 else
     _commit_index=0
     git status -s | cut -c4- | while read line; do
