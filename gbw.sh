@@ -4,7 +4,8 @@ GBW_ENV_TEST=${GBW_ENV_TEST:-0}
 
 echo "----------------------------------------------------------"
 echo "Git Bash Workflow"
-
+echo
+echo "Initialization..."
 source ~/git-bash-workflow/src/variables.sh
 source ~/git-bash-workflow/config/params.sh
 
@@ -49,21 +50,21 @@ fi
 echo -e "- Git aliases : $gbw_git_aliases_init_state"
 
 ####################################
-#   GIT HOOK PREPARE COMMIT MSG    #
+#            GIT HOOKS             #
 ####################################
 
-if [ "$GBW_GIT_HOOK_PREPARE_COMMIT_MSG_INIT_ACTIVE" == 1 ]; then
-#    gbw_git_hook_prepare_commit_msg_enable
-    gbw_git_hook_prepare_commit_msg_init_state="$GBW_ON_C"
+if [ "$GBW_GIT_HOOKS_INIT_ACTIVE" == 1 ]; then
+    gbw_git_config_hooks_enable
+    gbw_git_hooks_init_state="$GBW_ON_C"
 else
-#    gbw_git_hook_prepare_commit_msg_disable
-    gbw_git_hook_prepare_commit_msg_init_state="$GBW_OFF_C"
+    gbw_git_config_hooks_disable
+    gbw_git_hooks_init_state="$GBW_OFF_C"
 fi
 
-echo -e "- Git hook 'prepare-commit-msg' : $gbw_git_hook_prepare_commit_msg_init_state"
+echo -e "- Git hooks : $gbw_git_hooks_init_state"
 
 
-echo "- Agile Git workflow commands"
+echo "- Agile Git workflow commands : not available (wip)"
 
 echo
 echo "@info https://github.com/jprivet-dev/git-bash-workflow.git"
