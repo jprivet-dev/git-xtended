@@ -84,6 +84,9 @@ function gbw_test_fake_git {
         "--version")
             return
         ;;
+        config*)
+            return
+        ;;
         *)
             "[ ERROR !!! No Git fake command for '$args' ]"
         ;;
