@@ -2,12 +2,13 @@
 
 GBW_ENV_TEST=${GBW_ENV_TEST:-0}
 
-echo "----------------------------------------------------------"
-echo "Git Bash Workflow"
-echo
-echo "Initialization..."
 source ~/git-bash-workflow/src/variables.sh
 source ~/git-bash-workflow/config/params.sh
+
+echo
+echo -e "+------------------------------------------------------------+"
+echo -e "| Git Bash Workflow                                    $GBW_VERSION |"
+echo -e "+-----------------------------------------------+------------+"
 
 if [[ "$GBW_ENV_TEST" == 1 ]]; then
     source ~/git-bash-workflow/config/params_test.sh
@@ -33,7 +34,7 @@ if [ "$GBW_PROMPT_INIT_ACTIVE" == 1 ]; then
     gbw_prompt_init_state="$GBW_ON_C"
 fi
 
-echo -e "- Prompt with Git information : $gbw_prompt_init_state"
+echo -e "| Prompt with Git information                   | $gbw_prompt_init_state        |"
 
 ####################################
 #           GIT ALIASES            #
@@ -47,7 +48,7 @@ else
     gbw_git_aliases_init_state="$GBW_OFF_C"
 fi
 
-echo -e "- Git aliases : $gbw_git_aliases_init_state"
+echo -e "| Git aliases                                   | $gbw_git_aliases_init_state        |"
 
 ####################################
 #            GIT HOOKS             #
@@ -61,12 +62,11 @@ else
     gbw_git_hooks_init_state="$GBW_OFF_C"
 fi
 
-echo -e "- Git hooks : $gbw_git_hooks_init_state"
+echo -e "| Git hooks                                     | $gbw_git_hooks_init_state        |"
 
+echo -e "| Agile Git workflow commands                   | (wip)      |"
 
-echo "- Agile Git workflow commands : not available (wip)"
-
-echo
-echo "@info https://github.com/jprivet-dev/git-bash-workflow.git"
-echo "----------------------------------------------------------"
+echo -e "+-----------------------------------------------+------------+"
+echo -e "| @info https://github.com/jprivet-dev/git-bash-workflow.git |"
+echo -e "+------------------------------------------------------------+"
 echo
