@@ -56,4 +56,5 @@ GBW_USER_PS1="\u"
 GBW_ROOT="~/git-bash-workflow"
 
 GBW_GIT_ALIASES_STATUS_FILE="$GBW_ROOT/src/git/git.aliases.status.sh"
+GBW_GIT_HOOKS_DIR="$GBW_ROOT/git/hooks/"
 
