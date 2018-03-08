@@ -29,10 +29,7 @@ function gbw_git_status {
 
 # TODO: create test
 function gbw_git_status_indexed {
-    while IFS= read -r line; do
-        local INDEX=$(expr $INDEX + 1)
-        echo -e "$INDEX) $line"
-	done < <(git status --porcelain)
+    source ~/git-bash-workflow/src/git/git.aliases.status.sh
 }
 
 # @test
