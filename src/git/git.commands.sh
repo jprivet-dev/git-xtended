@@ -28,8 +28,9 @@ function gbw_git_status {
 }
 
 function gbw_git_status_indexed {
-    while IFS= read -r line
-	do echo -e "$line"
+    while IFS= read -r line; do
+        local INDEX=$(expr $INDEX + 1)
+        echo -e "$INDEX) $line"
 	done < <(git status --porcelain)
 }
 
