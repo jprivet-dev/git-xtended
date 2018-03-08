@@ -4,8 +4,8 @@ _commit_choose_indexes=$@
 
 if [ "$_commit_choose_indexes" == "" ]; then
     echo "> COMMIT ERROR: Choose index !"
-elseif [ "$_commit_choose_indexes" == "all" ]
-    git add -A
+elif [ "$_commit_choose_indexes" == "all" ]; then
+    git add .
     echo "> ADD: all"
     git commit -m ""
 else
