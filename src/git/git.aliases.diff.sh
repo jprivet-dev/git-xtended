@@ -2,9 +2,13 @@
 
 _index=$1
 
-if [ "$_index" == "" ]; then
+if [ "$_index" == "all" ] || [ "$_index" == "." ]; then
     git diff
     exit 1
+fi
+
+if [ "$_index" == "" ]; then
+    _index="1"
 fi
 
 _current_index=0
