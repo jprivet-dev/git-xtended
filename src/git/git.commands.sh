@@ -29,7 +29,7 @@ function gbw_git_status {
 
 # TODO: create test
 function gbw_git_status_indexed {
-    source ~/git-bash-workflow/src/git/git.alias.status.sh
+    source "$GBW_GIT_ALIASES_STATUS_FILE"
 }
 
 # @test
