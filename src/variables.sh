@@ -57,6 +57,8 @@ GBW_OFF_C="${C_LIGHT_RED}off${F_RESET}"
 GBW_USER_PS1="\u"
 GBW_ROOT="~/git-bash-workflow"
 
+GBW_GIT_ALIASES_DIFF_FILE="$GBW_ROOT/src/git/git.alias.diff.sh"
+GBW_GIT_ALIASES_COMMIT_FILE="$GBW_ROOT/src/git/git.alias.commit.sh"
 GBW_GIT_ALIASES_STATUS_FILE="$GBW_ROOT/src/git/git.alias.status.sh"
 GBW_GIT_HOOKS_DIR="$GBW_ROOT/git/hooks/"
 
