@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-_commit_choose_indexes=$@
+_indexes=$@
 _split="--------------------------------------------------"
 
-if [ "$_commit_choose_indexes" == "all" ] || [ "$_commit_choose_indexes" == "." ]; then
+if [ "$_indexes" == "all" ] || [ "$_indexes" == "." ]; then
     echo
     git add .
     git status -s -u
@@ -11,15 +11,15 @@ if [ "$_commit_choose_indexes" == "all" ] || [ "$_commit_choose_indexes" == "." 
     exit 1
 fi
 
-if [ "$_commit_choose_indexes" == "" ]; then
-    _commit_choose_indexes=1
+if [ "$_indexes" == "" ]; then
+    _indexes=1
 fi
 
-_commit_index=0
+_current_index=0
 
 git status -s | cut -c4- | while read line; do
-    _commit_index=$(expr $_commit_index + 1)
-    if [ "$_commit_index" == "$_commit_choose_indexes" ]; then
+    _current_index=$(expr $_current_index + 1)
+    if [ "$_current_index" == "$_indexes" ]; then
         git add $line
 
         echo
