@@ -32,7 +32,7 @@ function gbw_prompt_branch {
 
 # @test
 function gbw_prompt_changes_count {
-    echo "$C_LIGHT_YELLOW$(gbw_git_get_changes_nb)$F_RESET"
+    echo "$C_LIGHT_MAGENTA$(gbw_git_get_changes_nb)≡$F_RESET"
 }
 
 # @test
