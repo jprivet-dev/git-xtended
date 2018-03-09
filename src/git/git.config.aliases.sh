@@ -15,7 +15,7 @@ function gbw_git_config_set_aliases {
     git config $global alias.all "add ."
 
     # git commit
-    git config $global alias.c '!f() { ~/git-bash-workflow/src/git/git.aliases.commit.sh "$@"; }; f'
+    git config $global alias.c '!f() { ~/git-bash-workflow/src/git/git.alias.commit.sh "$@"; }; f'
     git config $global alias.amend "commit -m --amend"
     git config $global alias.undo "reset --soft HEAD^"
 
