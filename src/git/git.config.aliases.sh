@@ -8,14 +8,14 @@ function gbw_git_config_set_aliases {
     git config $global alias.b branch
 
     # git diff
-    git config $global alias.d '!f() { ~/git-bash-workflow/src/git/git.alias.diff.sh "$1"; }; f'
+    git config $global alias.d '!f() { $GBW_GIT_ALIASES_DIFF_FILE "$1"; }; f'
 
     # git add
     git config $global alias.a "add"
     git config $global alias.all "add ."
 
     # git commit
-    git config $global alias.c '!f() { ~/git-bash-workflow/src/git/git.alias.commit.sh "$@"; }; f'
+    git config $global alias.c '!f() { $GBW_GIT_ALIASES_COMMIT_FILE "$@"; }; f'
     git config $global alias.amend "commit -m --amend"
     git config $global alias.undo "reset --soft HEAD^"
 
