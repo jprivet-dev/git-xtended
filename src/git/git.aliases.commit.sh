@@ -29,6 +29,7 @@ git status -s | cut -c4- | while read line; do
 
         git add $line
 
+        echo
         echo "$_split"
         git status -s -u
 
