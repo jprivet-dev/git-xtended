@@ -8,14 +8,14 @@ function gbw_git_config_set_aliases {
     git config $global alias.b branch
 
     # git diff
-    git config $global alias.d "diff --function-context"
+    git config $global alias.d '!f() { '$GBW_GIT_ALIAS_DIFF_FILE' "$1"; }; f'
 
     # git add
     git config $global alias.a "add"
     git config $global alias.all "add ."
 
     # git commit
-    git config $global alias.c "commit -m"
+    git config $global alias.c '!f() { '$GBW_GIT_ALIAS_COMMIT_FILE' "$@"; }; f'
     git config $global alias.amend "commit -m --amend"
     git config $global alias.undo "reset --soft HEAD^"
 
@@ -41,7 +41,8 @@ function gbw_git_config_set_aliases {
     git config $global alias.untracked "clean -f -d"
 
     # git status
-    git config $global alias.s "status -s"
+    git config $global alias.s "!sh -c $GBW_GIT_ALIAS_STATUS_FILE"
+
     git config $global alias.ss status
 
     # git grep
@@ -49,9 +50,8 @@ function gbw_git_config_set_aliases {
 }
 
 function gbw_git_config_unset_aliases {
-    [[ "$1" == "--global" ]] \
-        && global="" \
-        || global="--global"
+    local global="$1"
+    [[ "$global" != "--global" ]] && global=""
 
     git config $global --unset alias.b
 	git config $global --unset alias.d
@@ -70,4 +70,12 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.s
 	git config $global --unset alias.ss
 	git config $global --unset alias.sniffer
+}
+
+function gbw_git_aliases_enable {
+    gbw_git_config_set_aliases --global
+}
+
+function gbw_git_aliases_disable {
+    gbw_git_config_unset_aliases --global
 }
