@@ -29,7 +29,7 @@ function gbw_git_status {
 
 # TODO: create test
 function gbw_git_status_indexed {
-    source "$GBW_GIT_ALIASES_STATUS_FILE"
+    source "$GBW_GIT_ALIAS_STATUS_FILE"
 }
 
 # @test
