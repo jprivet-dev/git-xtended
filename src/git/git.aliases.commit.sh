@@ -2,17 +2,16 @@
 
 _commit_choose_indexes=$@
 
-if [ "$_commit_choose_indexes" == "" ]; then
-    echo "> COMMIT ERROR: Choose index !"
-    exit 1
-fi
-
 if [ "$_commit_choose_indexes" == "all" ] || [ "$_commit_choose_indexes" == "." ]; then
     echo
     git add .
     git status -s -u
     git commit -m ""
     exit 1
+fi
+
+if [ "$_commit_choose_indexes" == "" ]; then
+    _commit_choose_indexes="1"
 fi
 
 _commit_index=0
