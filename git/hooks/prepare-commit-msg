@@ -147,42 +147,49 @@ echo -e "MSG = $_TYPE_$type_split$_SUBTYPE_($_MAINSCOPE_)$main_split$_SUBJECT_"
 echo ""
 
 # --------------
-# Type
+# Type & Subtype
 
 while true; do
-	echo -e -n "$_TYPE_ : "
+	echo -e -n "$_TYPE_.$_SUBTYPE_ : "
 
 	exec < /dev/tty
-	read choise_type_index
+	read choise_type_subtype_index
+
+	choise_type_subtype_index_tab=($choise_type_subtype_index)
+	choise_type_index="${choise_type_subtype_index_tab[0]}"
+	choise_subtype_index="${choise_type_subtype_index_tab[1]}"
+
+	choise_type_index_valid=0
+	choise_subtype_index_valid=0
 
 	[[ " ${types_shortcut[@]} " =~ " ${choise_type_index} " ]]
 
 	if [ "${BASH_REMATCH}" != "" ]; then
+		choise_type_index_valid=1;
+	fi
+
+	if [ "$choise_subtype_index" == "" ] ;then
+	    choise_subtype_index_valid=1
+	else
+        [[ " ${subtypes_shortcut[@]} " =~ " ${choise_subtype_index} " ]]
+
+        if [ "${BASH_REMATCH}" != "" ]; then
+	        choise_subtype_index_valid=1
+        fi
+	fi
+
+	if [ "$choise_type_index_valid" == 1 -a "$choise_subtype_index_valid" == 1 ]; then
 		break;
 	fi
 done
+
+# --------------
+# Type
 
 type=${types_index[$choise_type_index]}
 
 # --------------
 # Subtype
-
-while true; do
-	echo -e -n "$type.$_SUBTYPE_ : "
-
-	exec < /dev/tty
-	read choise_subtype_index
-
-	if [ "$choise_subtype_index" == "" ] ;then
-		break;
-	fi
-
-	[[ " ${subtypes_shortcut[@]} " =~ " ${choise_subtype_index} " ]]
-
-	if [ "${BASH_REMATCH}" != "" ]; then
-		break;
-	fi
-done
 
 subtype=""
 if [ "$choise_subtype_index" != "" ] ;then
