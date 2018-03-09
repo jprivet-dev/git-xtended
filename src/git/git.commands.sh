@@ -27,6 +27,21 @@ function gbw_git_status {
     git status --porcelain 2> /dev/null
 }
 
+# TODO: create test
+function gbw_git_commit_indexed {
+    source "$GBW_GIT_ALIAS_COMMIT_FILE"
+}
+
+# TODO: create test
+function gbw_git_diff_indexed {
+    source "$GBW_GIT_ALIAS_DIFF_FILE"
+}
+
+# TODO: create test
+function gbw_git_status_indexed {
+    source "$GBW_GIT_ALIAS_STATUS_FILE"
+}
+
 # @test
 function gbw_git_get_changes_nb {
     git status --porcelain | wc -l 2> /dev/null
