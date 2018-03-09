@@ -8,7 +8,7 @@ function gbw_git_config_set_aliases {
     git config $global alias.b branch
 
     # git diff
-    git config $global alias.d "diff --function-context"
+    git config $global alias.d '!f() { ~/git-bash-workflow/src/git/git.aliases.diff.sh "$1"; }; f'
 
     # git add
     git config $global alias.a "add"
