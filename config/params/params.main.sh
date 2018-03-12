@@ -12,6 +12,13 @@ GBW_PARAMS_OFF_C="${C_LIGHT_RED}off${F_RESET}"
 GBW_PARAMS_USER_PS1="\u"
 GBW_PARAMS_ROOT="~/git-bash-workflow"
 
+GBW_PARAMS_TITLE="Git Bash Workflow"
+GBW_PARAMS_LABEL_PROMPT="Prompt with Git information"
+GBW_PARAMS_LABEL_ALIASES="Git aliases"
+GBW_PARAMS_LABEL_HOOKS="Git hooks"
+GBW_PARAMS_LABEL_WORKFLOW="Git workflow commands (Agility)"
+GBW_PARAMS_LABEL_BASHALIASES="Bash aliases"
+
 # Change local
 #if [ -z ${LC_ALL+x} ]; then
 #    echo "# LC_ALL is unset > export LC_ALL=C"
