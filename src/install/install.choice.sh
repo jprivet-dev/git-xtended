@@ -59,13 +59,22 @@ function gbw_install_choice_init_hooks_active {
     fi
 }
 
+function gbw_install_choice_init_workflow_active {
+    GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW_ACTIVE)"
+
+    if [ "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE" == "" ]; then
+        gbw_install_choice_y_n "Activate 'Git workflow'"
+
+        GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
+        gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW_ACTIVE" "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE"
+    fi
+}
+
 function gbw_install_choice_init {
     gbw_install_choice_init_prompt_active
     gbw_install_choice_init_aliases_active
     gbw_install_choice_init_hooks_active
-
-    gbw_install_choice_y_n "Activate 'Git workflow commands (Agility)'"
-    GBW_PARAMS_INSTALL_GIT_WORKFLOW_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
+    gbw_install_choice_init_workflow_active
 
     gbw_install_choice_y_n "Activate 'Bash aliases'"
     GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
