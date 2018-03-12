@@ -4,9 +4,10 @@ _GBW_INSTALL_CHOICE_Y_N_LAST_VALUE=""
 
 function gbw_install_choice_y_n {
     local choice
+    local label=$1
 
     while true; do
-        echo -e -n "$1 (y/n): "
+        echo -e -n "$label (y/n): "
 
         exec < /dev/tty
         read choice
@@ -26,8 +27,13 @@ function gbw_install_choice_y_n {
 }
 
 function gbw_install_choice_init {
-    gbw_install_choice_y_n "Activate 'Prompt with Git information'"
-    GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
+    GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_ALIAS_KEY_PROMPT_ACTIVE)"
+
+    if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == "" ]; then
+        gbw_install_choice_y_n "Activate 'Prompt with Git information'"
+        GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
+        gwb_git_config_set "$GBW_PARAMS_GIT_ALIAS_KEY_PROMPT_ACTIVE" "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE"
+    fi
 
     gbw_install_choice_y_n "Activate 'Git aliases'"
     GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
@@ -40,6 +46,7 @@ function gbw_install_choice_init {
 
     gbw_install_choice_y_n "Activate 'Bash aliases'"
     GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
+
 
     echo "GBW_PARAMS_INSTALL_PROMPT_ACTIVE = $GBW_PARAMS_INSTALL_PROMPT_ACTIVE"
     echo "GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE = $GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE"
