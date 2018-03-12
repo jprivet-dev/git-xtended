@@ -27,35 +27,35 @@ function gbw_install_choice_y_n {
 }
 
 function gbw_install_choice_init_prompt_active {
-    GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_ALIAS_KEY_PROMPT_ACTIVE)"
+    GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_PROMPT_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == "" ]; then
         gbw_install_choice_y_n "Activate 'Prompt with Git information'"
 
         GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
-        gwb_git_config_set "$GBW_PARAMS_GIT_ALIAS_KEY_PROMPT_ACTIVE" "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE"
+        gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_PROMPT_ACTIVE" "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE"
     fi
 }
 
 function gbw_install_choice_init_aliases_active {
-    GBW_PARAMS_INSTALL_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_ALIAS_KEY_ALIASES_ACTIVE)"
+    GBW_PARAMS_INSTALL_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_ALIASES_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_ALIASES_ACTIVE" == "" ]; then
         gbw_install_choice_y_n "Activate 'Git aliases'"
 
         GBW_PARAMS_INSTALL_ALIASES_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
-        gwb_git_config_set "$GBW_PARAMS_GIT_ALIAS_KEY_ALIASES_ACTIVE" "$GBW_PARAMS_INSTALL_ALIASES_ACTIVE"
+        gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_ALIASES_ACTIVE" "$GBW_PARAMS_INSTALL_ALIASES_ACTIVE"
     fi
 }
 
 function gbw_install_choice_init_hooks_active {
-    GBW_PARAMS_INSTALL_HOOKS_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_ALIAS_KEY_HOOKS_ACTIVE)"
+    GBW_PARAMS_INSTALL_HOOKS_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_HOOKS_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_HOOKS_ACTIVE" == "" ]; then
         gbw_install_choice_y_n "Activate 'Git hooks (Agility)'"
 
         GBW_PARAMS_INSTALL_HOOKS_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
-        gwb_git_config_set "$GBW_PARAMS_GIT_ALIAS_KEY_HOOKS_ACTIVE" "$GBW_PARAMS_INSTALL_HOOKS_ACTIVE"
+        gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_HOOKS_ACTIVE" "$GBW_PARAMS_INSTALL_HOOKS_ACTIVE"
     fi
 }
 
