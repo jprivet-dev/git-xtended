@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 function test_gbw_git_get_current_branch {
-    assert equals "$(gbw_git_get_current_branch)" "$GBW_PARAMS_TEST_GIT_GET_CURRENT_BRANCH" $LINENO
+    assert equals "$(gbw_git_get_current_branch)" "$GBW_PARAMS_TEST_FAKE_GIT_GET_CURRENT_BRANCH" $LINENO
 }
 
 function test_gbw_git_get_remote_branch_ref {
     local last_value="$GBW_PARAMS_GIT_REMOTE_BRANCH_REF"
 
     GBW_PARAMS_GIT_REMOTE_BRANCH_REF=""
-    assert equals "$(gbw_git_get_remote_branch_ref)" "$GBW_PARAMS_TEST_GIT_GET_CURRENT_BRANCH" $LINENO
+    assert equals "$(gbw_git_get_remote_branch_ref)" "$GBW_PARAMS_TEST_FAKE_GIT_GET_CURRENT_BRANCH" $LINENO
 
     GBW_PARAMS_GIT_REMOTE_BRANCH_REF="$last_value"
-    assert equals "$(gbw_git_get_remote_branch_ref)" "$GBW_PARAMS_TEST_GIT_GET_REMOTE_BRANCH_REF" $LINENO
+    assert equals "$(gbw_git_get_remote_branch_ref)" "$GBW_PARAMS_TEST_FAKE_GIT_GET_REMOTE_BRANCH_REF" $LINENO
 }
 
 function test_gbw_git_status {
