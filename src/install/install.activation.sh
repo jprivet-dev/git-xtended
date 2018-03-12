@@ -50,7 +50,17 @@ function gbw_install_activation_init {
     # GIT WORKFLOW
     # ----------------------------------
 
-    echo -e "| $GBW_PARAMS_LABEL_WORKFLOW               | (wip)      |"
+    local gbw_workflow_init_state
+
+    if [ "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE" == 1 ]; then
+        #gbw_git_config_workflow_enable
+        gbw_workflow_init_state="$GBW_PARAMS_ON_C"
+    else
+        #gbw_git_config_workflow_disable
+        gbw_workflow_init_state="$GBW_PARAMS_OFF_C"
+    fi
+
+    echo -e "| $GBW_PARAMS_LABEL_WORKFLOW               | $gbw_workflow_init_state (wip)  |"
 
     # ----------------------------------
     # BASH ALIASES
