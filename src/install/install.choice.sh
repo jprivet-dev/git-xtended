@@ -26,14 +26,19 @@ function gbw_install_choice_y_n {
     return
 }
 
-function gbw_install_choice_init {
+function gbw_install_choice_init_prompt_active {
     GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_ALIAS_KEY_PROMPT_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == "" ]; then
         gbw_install_choice_y_n "Activate 'Prompt with Git information'"
+
         GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
         gwb_git_config_set "$GBW_PARAMS_GIT_ALIAS_KEY_PROMPT_ACTIVE" "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE"
     fi
+}
+
+function gbw_install_choice_init {
+    gbw_install_choice_init_prompt_active
 
     gbw_install_choice_y_n "Activate 'Git aliases'"
     GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
