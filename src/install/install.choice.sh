@@ -70,19 +70,21 @@ function gbw_install_choice_init_workflow_active {
     fi
 }
 
+function gbw_install_choice_init_bashaliases_active {
+    GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_BASHALIASES_ACTIVE)"
+
+    if [ "$GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE" == "" ]; then
+        gbw_install_choice_y_n "Activate 'Bash aliases'"
+
+        GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
+        gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_BASHALIASES_ACTIVE" "$GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE"
+    fi
+}
+
 function gbw_install_choice_init {
     gbw_install_choice_init_prompt_active
     gbw_install_choice_init_aliases_active
     gbw_install_choice_init_hooks_active
     gbw_install_choice_init_workflow_active
-
-    gbw_install_choice_y_n "Activate 'Bash aliases'"
-    GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
-
-
-    echo "GBW_PARAMS_INSTALL_PROMPT_ACTIVE = $GBW_PARAMS_INSTALL_PROMPT_ACTIVE"
-    echo "GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE = $GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE"
-    echo "GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE = $GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE"
-    echo "GBW_PARAMS_INSTALL_GIT_WORKFLOW_ACTIVE = $GBW_PARAMS_INSTALL_GIT_WORKFLOW_ACTIVE"
-    echo "GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE = $GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE"
+    gbw_install_choice_init_bashaliases_active
 }
