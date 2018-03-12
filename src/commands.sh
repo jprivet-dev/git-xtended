@@ -66,7 +66,7 @@ function gbw_command_githooks {
 
     echo -e "$C_LIGHT_GREEN"
     echo -e "################################"
-    echo -e "# Git Bash Workflow - Githooks #"
+    echo -e "# $GBW_PARAMS_TITLE - Githooks #"
     echo -e "################################"
     echo -e "$F_RESET"
 
