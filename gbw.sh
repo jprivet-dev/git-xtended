@@ -20,7 +20,7 @@ source ~/git-bash-workflow/src/commands.sh
 source ~/git-bash-workflow/src/colors.sh
 source ~/git-bash-workflow/src/git.sh
 source ~/git-bash-workflow/src/prompt.sh
-source ~/git-bash-workflow/src/bash.aliases.sh
+source ~/git-bash-workflow/src/bash.sh
 
 ####################################
 #              PROMPT              #
