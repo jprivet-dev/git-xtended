@@ -17,7 +17,7 @@ GBW_PARAMS_LABEL_PROMPT="Prompt with Git information"
 GBW_PARAMS_LABEL_ALIASES="Git aliases"
 GBW_PARAMS_LABEL_HOOKS="Git hooks"
 GBW_PARAMS_LABEL_WORKFLOW="Git workflow commands (Agility)"
-GBW_PARAMS_LABEL_BASHALIASES="Bash aliases"
+GBW_PARAMS_LABEL_BASH_ALIASES="Bash aliases"
 
 # Change local
 #if [ -z ${LC_ALL+x} ]; then
