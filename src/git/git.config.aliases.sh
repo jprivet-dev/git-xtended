@@ -8,14 +8,14 @@ function gbw_git_config_set_aliases {
     git config $global alias.b branch
 
     # git diff
-    git config $global alias.d '!f() { '$GBW_GIT_ALIAS_DIFF_FILE' "$1"; }; f'
+    git config $global alias.d '!f() { '$GBW_PARAMS_GIT_ALIAS_DIFF_FILE' "$1"; }; f'
 
     # git add
     git config $global alias.a "add"
     git config $global alias.all "add ."
 
     # git commit
-    git config $global alias.c '!f() { '$GBW_GIT_ALIAS_COMMIT_FILE' "$@"; }; f'
+    git config $global alias.c '!f() { '$GBW_PARAMS_GIT_ALIAS_COMMIT_FILE' "$@"; }; f'
     git config $global alias.amend "commit -m --amend"
     git config $global alias.undo "reset --soft HEAD^"
 
@@ -41,7 +41,7 @@ function gbw_git_config_set_aliases {
     git config $global alias.untracked "clean -f -d"
 
     # git status
-    git config $global alias.s "!sh -c $GBW_GIT_ALIAS_STATUS_FILE"
+    git config $global alias.s "!sh -c $GBW_PARAMS_GIT_ALIAS_STATUS_FILE"
 
     git config $global alias.ss status
 
