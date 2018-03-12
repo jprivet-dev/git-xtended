@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 GBW_PARAMS_GIT_ALIAS_KEY_PROMPT_ACTIVE="gbw.prompt"
+GBW_PARAMS_GIT_ALIAS_KEY_ALIASES_ACTIVE="gbw.aliases"
 
 GBW_PARAMS_GIT_ALIAS_DIFF_FILE="$GBW_PARAMS_ROOT/src/git/alias/git.alias.diff.sh"
 GBW_PARAMS_GIT_ALIAS_COMMIT_FILE="$GBW_PARAMS_ROOT/src/git/alias/git.alias.commit.sh"
