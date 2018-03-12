@@ -18,7 +18,9 @@ source ~/git-bash-workflow/src/prompt.sh
 source ~/git-bash-workflow/src/bash.sh
 source ~/git-bash-workflow/src/install.sh
 
-gbw_install_choice_init
+if [[ "$GBW_ENV_TEST" == 0 ]]; then
+    gbw_install_choice_init
+fi
 
 echo
 echo -e "+------------------------------------------------------------+"
