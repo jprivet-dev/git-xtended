@@ -30,7 +30,7 @@ function gbw_install_choice_init_prompt {
     GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_PROMPT_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == "" ]; then
-        gbw_install_choice_y_n "Activate 'Prompt with Git information'"
+        gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_PROMPT'"
 
         GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
         gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_PROMPT_ACTIVE" "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE"
@@ -41,7 +41,7 @@ function gbw_install_choice_init_aliases {
     GBW_PARAMS_INSTALL_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_ALIASES_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_ALIASES_ACTIVE" == "" ]; then
-        gbw_install_choice_y_n "Activate 'Git aliases'"
+        gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_ALIASES'"
 
         GBW_PARAMS_INSTALL_ALIASES_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
         gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_ALIASES_ACTIVE" "$GBW_PARAMS_INSTALL_ALIASES_ACTIVE"
@@ -52,7 +52,7 @@ function gbw_install_choice_init_hooks {
     GBW_PARAMS_INSTALL_HOOKS_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_HOOKS_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_HOOKS_ACTIVE" == "" ]; then
-        gbw_install_choice_y_n "Activate 'Git hooks'"
+        gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_HOOKS'"
 
         GBW_PARAMS_INSTALL_HOOKS_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
         gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_HOOKS_ACTIVE" "$GBW_PARAMS_INSTALL_HOOKS_ACTIVE"
@@ -63,7 +63,7 @@ function gbw_install_choice_init_workflow {
     GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE" == "" ]; then
-        gbw_install_choice_y_n "Activate 'Git workflow'"
+        gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_WORKFLOW'"
 
         GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
         gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW_ACTIVE" "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE"
@@ -74,7 +74,7 @@ function gbw_install_choice_init_bashaliases {
     GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_BASHALIASES_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE" == "" ]; then
-        gbw_install_choice_y_n "Activate 'Bash aliases'"
+        gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_BASHALIASES'"
 
         GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
         gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_BASHALIASES_ACTIVE" "$GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE"
