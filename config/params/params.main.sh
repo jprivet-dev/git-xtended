@@ -14,8 +14,8 @@ GBW_PARAMS_ROOT="~/git-bash-workflow"
 
 GBW_PARAMS_TITLE="Git Bash Workflow"
 GBW_PARAMS_LABEL_PROMPT="Prompt with Git information"
-GBW_PARAMS_LABEL_ALIASES="Git aliases"
-GBW_PARAMS_LABEL_HOOKS="Git hooks"
+GBW_PARAMS_LABEL_GIT_ALIASES="Git aliases"
+GBW_PARAMS_LABEL_GIT_HOOKS="Git hooks"
 GBW_PARAMS_LABEL_WORKFLOW="Git workflow commands (Agility)"
 GBW_PARAMS_LABEL_BASH_ALIASES="Bash aliases"
 
