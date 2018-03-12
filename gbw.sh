@@ -10,7 +10,7 @@ echo -e "| Git Bash Workflow                                    $GBW_VERSION |"
 echo -e "+-----------------------------------------------+------------+"
 
 if [[ "$GBW_ENV_TEST" == 1 ]]; then
-    source ~/git-bash-workflow/config/params_test.sh
+    source ~/git-bash-workflow/config/params.test.sh
 elif [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
 fi
