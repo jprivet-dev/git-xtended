@@ -52,7 +52,7 @@ function gbw_install_choice_init_hooks_active {
     GBW_PARAMS_INSTALL_HOOKS_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_HOOKS_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_HOOKS_ACTIVE" == "" ]; then
-        gbw_install_choice_y_n "Activate 'Git hooks (Agility)'"
+        gbw_install_choice_y_n "Activate 'Git hooks'"
 
         GBW_PARAMS_INSTALL_HOOKS_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
         gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_HOOKS_ACTIVE" "$GBW_PARAMS_INSTALL_HOOKS_ACTIVE"
@@ -62,9 +62,7 @@ function gbw_install_choice_init_hooks_active {
 function gbw_install_choice_init {
     gbw_install_choice_init_prompt_active
     gbw_install_choice_init_aliases_active
-
-    gbw_install_choice_y_n "Activate 'Git hooks (Agility)'"
-    GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
+    gbw_install_choice_init_hooks_active
 
     gbw_install_choice_y_n "Activate 'Git workflow commands (Agility)'"
     GBW_PARAMS_INSTALL_GIT_WORKFLOW_ACTIVE="$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
