@@ -45,4 +45,19 @@ echo -e "| Git hooks                                     | $gbw_git_hooks_init_s
 # GIT WORKFLOW
 # ----------------------------------
 
-echo -e "| Agile Git workflow commands                   | (wip)      |"
+echo -e "| Git workflow commands (Agility)               | (wip)      |"
+
+# ----------------------------------
+# BASH ALIASES
+# ----------------------------------
+
+if [ "$GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE" == 1 ]; then
+    gbw_bash_aliases_enable
+    gbw_bash_aliases_init_state="$GBW_PARAMS_ON_C"
+else
+    gbw_bash_aliases_disable
+    gbw_bash_aliases_init_state="$GBW_PARAMS_OFF_C"
+fi
+
+echo -e "| Bash aliases                                  | $gbw_bash_aliases_init_state        |"
+
