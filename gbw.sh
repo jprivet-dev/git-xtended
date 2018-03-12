@@ -4,11 +4,6 @@ GBW_ENV_TEST=${GBW_ENV_TEST:-0}
 
 source ~/git-bash-workflow/config/params.sh
 
-echo
-echo -e "+------------------------------------------------------------+"
-echo -e "| Git Bash Workflow                                    $GBW_PARAMS_VERSION |"
-echo -e "+-----------------------------------------------+------------+"
-
 if [[ "$GBW_ENV_TEST" == 1 ]]; then
     source ~/git-bash-workflow/config/params.test.sh
 elif [[ -f ~/git-bash-workflow/params.sh ]]; then
@@ -21,6 +16,11 @@ source ~/git-bash-workflow/src/colors.sh
 source ~/git-bash-workflow/src/git.sh
 source ~/git-bash-workflow/src/prompt.sh
 source ~/git-bash-workflow/src/bash.sh
+
+echo
+echo -e "+------------------------------------------------------------+"
+echo -e "| Git Bash Workflow                                    $GBW_PARAMS_VERSION |"
+echo -e "+-----------------------------------------------+------------+"
 
 ####################################
 #              PROMPT              #
