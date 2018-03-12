@@ -7,7 +7,7 @@ function gbw_prompt_time {
 
 # @test
 function gbw_prompt_user {
-    echo "$C_LIGHT_GREEN$GBW_USER_PS1$F_RESET"
+    echo "$C_LIGHT_GREEN$GBW_PARAMS_USER_PS1$F_RESET"
 }
 
 # @test

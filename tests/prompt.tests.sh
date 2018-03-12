@@ -45,22 +45,22 @@ function test_gbw_prompt_status {
 }
 
 function test_gbw_prompt_behind {
-    local restore="$GBW_GIT_REMOTE_BRANCH_REF"
+    local restore="$GBW_PARAMS_GIT_REMOTE_BRANCH_REF"
 
-    GBW_GIT_REMOTE_BRANCH_REF="$GBW_PARAMS_TEST_FAKE_REMOTE_BRANCH_REF_NOK"
+    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="$GBW_PARAMS_TEST_FAKE_GIT_REMOTE_BRANCH_REF_NOK"
     assert equals "$(gbw_prompt_behind)" "$GBW_PARAMS_TEST_PROMPT_BEHIND_NOK" $LINENO
 
-    GBW_GIT_REMOTE_BRANCH_REF="$restore"
+    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="$restore"
     assert equals "$(gbw_prompt_behind)" "$GBW_PARAMS_TEST_PROMPT_BEHIND" $LINENO
 }
 
 function test_gbw_prompt_ahead {
-    local restore="$GBW_GIT_REMOTE_BRANCH_REF"
+    local restore="$GBW_PARAMS_GIT_REMOTE_BRANCH_REF"
 
-    GBW_GIT_REMOTE_BRANCH_REF="$GBW_PARAMS_TEST_FAKE_REMOTE_BRANCH_REF_NOK"
+    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="$GBW_PARAMS_TEST_FAKE_GIT_REMOTE_BRANCH_REF_NOK"
     assert equals "$(gbw_prompt_ahead)" "$GBW_PARAMS_TEST_PROMPT_AHEAD_NOK" $LINENO
 
-    GBW_GIT_REMOTE_BRANCH_REF="$restore"
+    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="$restore"
     assert equals "$(gbw_prompt_ahead)" "$GBW_PARAMS_TEST_PROMPT_AHEAD" $LINENO
 }
 
