@@ -1,62 +1,70 @@
 #!/usr/bin/env bash
 
-# ----------------------------------
-# PROMPT
-# ----------------------------------
+function gbw_install_activation_init {
+    # ----------------------------------
+    # PROMPT
+    # ----------------------------------
 
-gbw_prompt_init_state="$GBW_PARAMS_OFF_C"
+    local gbw_prompt_init_state="$GBW_PARAMS_OFF_C"
 
-if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == 1 ]; then
-    gbw_prompt_init
-    gbw_prompt_init_state="$GBW_PARAMS_ON_C"
-fi
+    if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == 1 ]; then
+        gbw_prompt_init
+        gbw_prompt_init_state="$GBW_PARAMS_ON_C"
+    fi
 
-echo -e "| Prompt with Git information                   | $gbw_prompt_init_state        |"
+    echo -e "| Prompt with Git information                   | $gbw_prompt_init_state        |"
 
-# ----------------------------------
-# GIT ALIASES
-# ----------------------------------
+    # ----------------------------------
+    # GIT ALIASES
+    # ----------------------------------
 
-if [ "$GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE" == 1 ]; then
-    gbw_git_aliases_enable
-    gbw_git_aliases_init_state="$GBW_PARAMS_ON_C"
-else
-    gbw_git_aliases_disable
-    gbw_git_aliases_init_state="$GBW_PARAMS_OFF_C"
-fi
+    local gbw_git_aliases_init_state
 
-echo -e "| Git aliases                                   | $gbw_git_aliases_init_state        |"
+    if [ "$GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE" == 1 ]; then
+        gbw_git_aliases_enable
+        gbw_git_aliases_init_state="$GBW_PARAMS_ON_C"
+    else
+        gbw_git_aliases_disable
+        gbw_git_aliases_init_state="$GBW_PARAMS_OFF_C"
+    fi
 
-# ----------------------------------
-# GIT HOOKS
-# ----------------------------------
+    echo -e "| Git aliases                                   | $gbw_git_aliases_init_state        |"
 
-if [ "$GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE" == 1 ]; then
-    gbw_git_config_hooks_enable
-    gbw_git_hooks_init_state="$GBW_PARAMS_ON_C"
-else
-    gbw_git_config_hooks_disable
-    gbw_git_hooks_init_state="$GBW_PARAMS_OFF_C"
-fi
+    # ----------------------------------
+    # GIT HOOKS
+    # ----------------------------------
 
-echo -e "| Git hooks                                     | $gbw_git_hooks_init_state        |"
+    local gbw_git_hooks_init_state
 
-# ----------------------------------
-# GIT WORKFLOW
-# ----------------------------------
+    if [ "$GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE" == 1 ]; then
+        gbw_git_config_hooks_enable
+        gbw_git_hooks_init_state="$GBW_PARAMS_ON_C"
+    else
+        gbw_git_config_hooks_disable
+        gbw_git_hooks_init_state="$GBW_PARAMS_OFF_C"
+    fi
 
-echo -e "| Git workflow commands (Agility)               | (wip)      |"
+    echo -e "| Git hooks                                     | $gbw_git_hooks_init_state        |"
 
-# ----------------------------------
-# BASH ALIASES
-# ----------------------------------
+    # ----------------------------------
+    # GIT WORKFLOW
+    # ----------------------------------
 
-if [ "$GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE" == 1 ]; then
-    gbw_bash_aliases_enable
-    gbw_bash_aliases_init_state="$GBW_PARAMS_ON_C"
-else
-    gbw_bash_aliases_disable
-    gbw_bash_aliases_init_state="$GBW_PARAMS_OFF_C"
-fi
+    echo -e "| Git workflow commands (Agility)               | (wip)      |"
 
-echo -e "| Bash aliases                                  | $gbw_bash_aliases_init_state        |"
+    # ----------------------------------
+    # BASH ALIASES
+    # ----------------------------------
+
+    local gbw_bash_aliases_init_state
+
+    if [ "$GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE" == 1 ]; then
+        gbw_bash_aliases_enable
+        gbw_bash_aliases_init_state="$GBW_PARAMS_ON_C"
+    else
+        gbw_bash_aliases_disable
+        gbw_bash_aliases_init_state="$GBW_PARAMS_OFF_C"
+    fi
+
+    echo -e "| Bash aliases                                  | $gbw_bash_aliases_init_state        |"
+}
