@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gbw_bash_aliases_set_all {
+function gbw_bash_aliases_enable {
     alias g="git"
 
     if [[ -x "$(git --version)" ]]; then
@@ -17,5 +17,19 @@ function gbw_bash_aliases_set_all {
     alias ls.="ls -d .* --color=auto"
 
     alias t="source ~/.bashrc; source gbw.tests.sh"
+}
+
+function gbw_bash_aliases_disable {
+    unalias g
+
+    unalias reload
+    unalias reloadp
+
+    unalias c
+
+    unalias ls
+    unalias ls.
+
+    unalias t
 }
 
