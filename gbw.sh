@@ -22,7 +22,7 @@ gbw_install_choice_init
 
 echo
 echo -e "+------------------------------------------------------------+"
-echo -e "| Git Bash Workflow                                    $GBW_PARAMS_VERSION |"
+echo -e "| $GBW_PARAMS_TITLE                                    $GBW_PARAMS_VERSION |"
 echo -e "+------------------------------------------------------------+"
 
 gbw_install_activation_init
