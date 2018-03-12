@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
+source ~/git-bash-workflow/config/params/params.version.sh
 source ~/git-bash-workflow/config/params/params.colors.sh
 
-GBW_VERSION="0.0.0"
 
 GBW_FALSE="false"
 GBW_TRUE="true"
