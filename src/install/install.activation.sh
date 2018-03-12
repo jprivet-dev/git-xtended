@@ -12,7 +12,7 @@ function gbw_install_activation_init {
         gbw_prompt_init_state="$GBW_PARAMS_ON_C"
     fi
 
-    echo -e "| Prompt with Git information                   | $gbw_prompt_init_state        |"
+    echo -e "| $GBW_PARAMS_LABEL_PROMPT                   | $gbw_prompt_init_state        |"
 
     # ----------------------------------
     # GIT ALIASES
@@ -50,7 +50,7 @@ function gbw_install_activation_init {
     # GIT WORKFLOW
     # ----------------------------------
 
-    echo -e "| Git workflow commands (Agility)               | (wip)      |"
+    echo -e "| $GBW_PARAMS_LABEL_WORKFLOW               | (wip)      |"
 
     # ----------------------------------
     # BASH ALIASES
