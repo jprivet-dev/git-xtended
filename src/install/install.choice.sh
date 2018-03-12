@@ -26,7 +26,7 @@ function gbw_install_choice_y_n {
     return
 }
 
-function gbw_install_choice_init_prompt_active {
+function gbw_install_choice_init_prompt {
     GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_PROMPT_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == "" ]; then
@@ -37,7 +37,7 @@ function gbw_install_choice_init_prompt_active {
     fi
 }
 
-function gbw_install_choice_init_aliases_active {
+function gbw_install_choice_init_aliases {
     GBW_PARAMS_INSTALL_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_ALIASES_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_ALIASES_ACTIVE" == "" ]; then
@@ -48,7 +48,7 @@ function gbw_install_choice_init_aliases_active {
     fi
 }
 
-function gbw_install_choice_init_hooks_active {
+function gbw_install_choice_init_hooks {
     GBW_PARAMS_INSTALL_HOOKS_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_HOOKS_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_HOOKS_ACTIVE" == "" ]; then
@@ -59,7 +59,7 @@ function gbw_install_choice_init_hooks_active {
     fi
 }
 
-function gbw_install_choice_init_workflow_active {
+function gbw_install_choice_init_workflow {
     GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE" == "" ]; then
@@ -70,7 +70,7 @@ function gbw_install_choice_init_workflow_active {
     fi
 }
 
-function gbw_install_choice_init_bashaliases_active {
+function gbw_install_choice_init_bashaliases {
     GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_BASHALIASES_ACTIVE)"
 
     if [ "$GBW_PARAMS_INSTALL_BASHALIASES_ACTIVE" == "" ]; then
@@ -82,11 +82,11 @@ function gbw_install_choice_init_bashaliases_active {
 }
 
 function gbw_install_choice_init {
-    gbw_install_choice_init_prompt_active
-    gbw_install_choice_init_aliases_active
-    gbw_install_choice_init_hooks_active
-    gbw_install_choice_init_workflow_active
-    gbw_install_choice_init_bashaliases_active
+    gbw_install_choice_init_prompt
+    gbw_install_choice_init_aliases
+    gbw_install_choice_init_hooks
+    gbw_install_choice_init_workflow
+    gbw_install_choice_init_bashaliases
 
     echo "GBW_PARAMS_INSTALL_PROMPT_ACTIVE = $GBW_PARAMS_INSTALL_PROMPT_ACTIVE"
     echo "GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE = $GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE"
