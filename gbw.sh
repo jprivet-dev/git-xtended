@@ -16,13 +16,16 @@ source ~/git-bash-workflow/src/colors.sh
 source ~/git-bash-workflow/src/git.sh
 source ~/git-bash-workflow/src/prompt.sh
 source ~/git-bash-workflow/src/bash.sh
+source ~/git-bash-workflow/src/install.sh
+
+gbw_install_choice_init
 
 echo
 echo -e "+------------------------------------------------------------+"
 echo -e "| Git Bash Workflow                                    $GBW_PARAMS_VERSION |"
 echo -e "+------------------------------------------------------------+"
 
-source ~/git-bash-workflow/src/install.sh
+gbw_install_activation_init
 
 echo -e "+------------------------------------------------------------+"
 echo -e "| @info https://github.com/jprivet-dev/git-bash-workflow.git |"
