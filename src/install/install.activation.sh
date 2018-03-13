@@ -23,24 +23,24 @@ function gbw_install_activation_show_status {
     local gbw_workflow_on_off="$(gbw_install_activation_on_off_color $GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE)"
     local gbw_bash_aliases_on_off="$(gbw_install_activation_on_off_color $GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE)"
 
-    local col_width=60
+    local col_width=62
     local space=" "
 
-    local line="+----------------------------------------------------------+"
+    local line="+------------------------------------------------------------+"
 
     echo
-    echo -e "$line"
-    echo -e "$(gbw_echo_fixed_width "$col_width" "$space" "| $GBW_PARAMS_TITLE" " | $GBW_PARAMS_VERSION |")"
-    echo -e "$line"
+    echo "$line"
+    gbw_echo_fixed_width $col_width "$space" "| $GBW_PARAMS_TITLE" "$GBW_PARAMS_VERSION |"
+    echo "$line"
 
-    echo -e "| $GBW_PARAMS_LABEL_PROMPT                   | $gbw_prompt_on_off        |"
-    echo -e "| Git aliases                                   | $gbw_git_aliases_on_off        |"
-    echo -e "| Git hooks                                     | $gbw_git_hooks_on_off        |"
-    echo -e "| $GBW_PARAMS_LABEL_WORKFLOW               | $gbw_workflow_on_off (wip)  |"
-    echo -e "| Bash aliases                                  | $gbw_bash_aliases_on_off        |"
+    gbw_echo_fixed_width -e $col_width "$space" "| $GBW_PARAMS_LABEL_PROMPT"        "| $gbw_prompt_on_off |"
+    gbw_echo_fixed_width -e $col_width "$space" "| $GBW_PARAMS_LABEL_GIT_ALIASES"   "| $gbw_git_aliases_on_off |"
+    gbw_echo_fixed_width -e $col_width "$space" "| $GBW_PARAMS_LABEL_GIT_HOOKS"     "| $gbw_git_hooks_on_off |"
+    gbw_echo_fixed_width -e $col_width "$space" "| $GBW_PARAMS_LABEL_WORKFLOW"      "| $gbw_workflow_on_off |"
+    gbw_echo_fixed_width -e $col_width "$space" "| $GBW_PARAMS_LABEL_BASH_ALIASES"  "| $gbw_bash_aliases_on_off |"
 
-    echo -e "$line"
+    echo "$line"
     echo -e "| @info https://github.com/jprivet-dev/git-bash-workflow.git |"
-    echo -e "$line"
+    echo "$line"
     echo
 }
