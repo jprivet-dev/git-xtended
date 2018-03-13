@@ -16,9 +16,6 @@ function gbw_command_parse_action {
         aliases)
             gbw_command_config_git_aliases "$@"
         ;;
-        help)
-            gbw_command_help
-        ;;
         githooks)
             gbw_command_githooks "$@"
         ;;
