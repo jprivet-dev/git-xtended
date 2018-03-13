@@ -6,6 +6,6 @@ function gbw_git_config_workflow_on {
 }
 
 # TODO: complete action
-function gbw_git_config_workflow_disable {
+function gbw_git_config_workflow_off {
     local nope="off"
 }

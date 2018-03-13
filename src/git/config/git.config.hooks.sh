@@ -18,6 +18,6 @@ function gbw_git_config_hooks_on {
     gbw_git_config_hooks_set --global
 }
 
-function gbw_git_config_hooks_disable {
+function gbw_git_config_hooks_off {
     gbw_git_config_hooks_unset --global
 }

@@ -76,6 +76,6 @@ function gbw_git_aliases_on {
     gbw_git_config_set_aliases --global
 }
 
-function gbw_git_aliases_disable {
+function gbw_git_aliases_off {
     gbw_git_config_unset_aliases --global
 }
