@@ -18,11 +18,11 @@ function gbw_install_choice_y_n {
     done
 
     if [ "$choice" == "y" ]; then
-        _GBW_INSTALL_CHOICE_Y_N_LAST_VALUE=1
+        _GBW_INSTALL_CHOICE_Y_N_LAST_VALUE="$GBW_PARAMS_ACTIVE"
         return
     fi
 
-    _GBW_INSTALL_CHOICE_Y_N_LAST_VALUE=0
+    _GBW_INSTALL_CHOICE_Y_N_LAST_VALUE="$GBW_PARAMS_NOT_ACTIVE"
     return
 }
 
