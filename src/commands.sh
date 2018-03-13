@@ -9,8 +9,13 @@ function gbw_command_parse_action {
     local action=$1
     shift
 
+    if [ "$action" == "" ]; then
+        gbw_command_action_help
+        return
+    fi
+
     local func_name="gbw_command_action_$action"
-    
+
     if type "$func_name" &>/dev/null; then
         $func_name "$@"
         return
@@ -22,6 +27,10 @@ function gbw_command_parse_action {
 function gbw_command_action_install {
     gbw_install_choice
     gbw_install_activation
+    gbw_install_activation_show_status
+}
+
+function gbw_command_action_status {
     gbw_install_activation_show_status
 }
 
