@@ -14,7 +14,7 @@ function gbw_command_parse_action {
 }
 
 function gbw_command_action_help {
-    gbw_prompt_show_info_and_explanations
+    gbw_prompt_help
 }
 
 function gbw_command_action_githooks {
