@@ -11,16 +11,6 @@ function gbw_command_parse_action {
 
     local func_name="gbw_command_action_$action"
     type "$func_name" &>/dev/null && $func_name "$@" || echo "[ERROR] 'gbw $action' : unknow action"
-
-    case $action in
-        aliases)
-            gbw_command_config_git_aliases "$@"
-        ;;
-        *)
-            echo "Unknow action '$action'"
-            return
-        ;;
-    esac
 }
 
 function gbw_command_action_help {
@@ -29,6 +19,10 @@ function gbw_command_action_help {
 
 function gbw_command_action_githooks {
     gbw_command_githooks
+}
+
+function gbw_command_action_aliases {
+    gbw_command_config_git_aliases "$@"
 }
 
 function gbw_command_config_git_aliases {
