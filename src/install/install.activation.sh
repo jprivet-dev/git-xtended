@@ -3,7 +3,7 @@
 function gbw_install_activation {
     gbw_install_choice_params_set_all_from_git_config
 
-    [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]         && gbw_prompt_init
+    [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]         && gbw_prompt_on
     [ "$GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]    && gbw_git_aliases_on           || gbw_git_aliases_off
     [ "$GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]      && gbw_git_config_hooks_on      || gbw_git_config_hooks_off
     [ "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]       && gbw_git_config_workflow_on   || gbw_git_config_workflow_off
