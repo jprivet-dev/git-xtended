@@ -34,12 +34,10 @@ function gbw_install_activation_show_status {
     # GIT ALIASES
     # ----------------------------------
 
-    local gbw_git_aliases_init_state
+    local gbw_git_aliases_init_state="$GBW_PARAMS_OFF_C"
 
     if [ "$GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE" == "$GBW_PARAMS_ON" ]; then
         gbw_git_aliases_init_state="$GBW_PARAMS_ON_C"
-    else
-        gbw_git_aliases_init_state="$GBW_PARAMS_OFF_C"
     fi
 
     echo -e "| Git aliases                                   | $gbw_git_aliases_init_state        |"
@@ -48,12 +46,10 @@ function gbw_install_activation_show_status {
     # GIT HOOKS
     # ----------------------------------
 
-    local gbw_git_hooks_init_state
+    local gbw_git_hooks_init_state="$GBW_PARAMS_OFF_C"
 
     if [ "$GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE" == "$GBW_PARAMS_ON" ]; then
         gbw_git_hooks_init_state="$GBW_PARAMS_ON_C"
-    else
-        gbw_git_hooks_init_state="$GBW_PARAMS_OFF_C"
     fi
 
     echo -e "| Git hooks                                     | $gbw_git_hooks_init_state        |"
@@ -62,12 +58,10 @@ function gbw_install_activation_show_status {
     # GIT WORKFLOW
     # ----------------------------------
 
-    local gbw_workflow_init_state
+    local gbw_workflow_init_state="$GBW_PARAMS_OFF_C"
 
     if [ "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE" == "$GBW_PARAMS_ON" ]; then
         gbw_workflow_init_state="$GBW_PARAMS_ON_C"
-    else
-        gbw_workflow_init_state="$GBW_PARAMS_OFF_C"
     fi
 
     echo -e "| $GBW_PARAMS_LABEL_WORKFLOW               | $gbw_workflow_init_state (wip)  |"
@@ -76,12 +70,10 @@ function gbw_install_activation_show_status {
     # BASH ALIASES
     # ----------------------------------
 
-    local gbw_bash_aliases_init_state
+    local gbw_bash_aliases_init_state="$GBW_PARAMS_OFF_C"
 
     if [ "$GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE" == "$GBW_PARAMS_ON" ]; then
         gbw_bash_aliases_init_state="$GBW_PARAMS_ON_C"
-    else
-        gbw_bash_aliases_init_state="$GBW_PARAMS_OFF_C"
     fi
 
     echo -e "| Bash aliases                                  | $gbw_bash_aliases_init_state        |"
