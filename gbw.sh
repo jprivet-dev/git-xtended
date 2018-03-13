@@ -18,14 +18,4 @@ source ~/git-bash-workflow/src/prompt.sh
 source ~/git-bash-workflow/src/bash.sh
 source ~/git-bash-workflow/src/install.sh
 
-echo
-echo -e "+------------------------------------------------------------+"
-echo -e "| $GBW_PARAMS_TITLE                                    $GBW_PARAMS_VERSION |"
-echo -e "+------------------------------------------------------------+"
-
-gbw_install_activation
-
-echo -e "+------------------------------------------------------------+"
-echo -e "| @info https://github.com/jprivet-dev/git-bash-workflow.git |"
-echo -e "+------------------------------------------------------------+"
-echo
+gbw_install_activation_show_status
