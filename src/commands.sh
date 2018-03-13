@@ -9,6 +9,9 @@ function gbw_command_parse_action {
     local action=$1
     shift
 
+    local func_name="gbw_command_$action"
+    type "$func_name" &>/dev/null && $func_name "$@" || echo "[ERROR] 'gbw $action' : unknow action"
+
     case $action in
         aliases)
             gbw_command_config_git_aliases "$@"
