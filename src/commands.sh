@@ -16,9 +16,6 @@ function gbw_command_parse_action {
         aliases)
             gbw_command_config_git_aliases "$@"
         ;;
-        githooks)
-            gbw_command_githooks "$@"
-        ;;
         *)
             echo "Unknow action '$action'"
             return
@@ -28,6 +25,10 @@ function gbw_command_parse_action {
 
 function gbw_command_help {
     gbw_prompt_show_info_and_explanations
+}
+
+function gbw_command_githooks {
+    gbw_command_githooks "$@"
 }
 
 function gbw_command_config_git_aliases {
