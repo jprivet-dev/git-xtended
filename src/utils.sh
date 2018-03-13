@@ -58,8 +58,7 @@ function gbw_echo_fixed_width {
     local e="$GBW_PARAMS_OFF"
     local width middle_char start end
     local start_no_style end_no_style
-    local middle_prefix=" "
-    local middle_suffix=" "
+    local middle_prefix middle_suffix
     local middle trucate count
 
     if [ "$1" == "-e" ]; then
@@ -71,8 +70,8 @@ function gbw_echo_fixed_width {
     middle_char="$2"
     start="$3"
     end="$4"
-    [ "$5" == "" ] && middle_prefix=""
-    [ "$6" == "" ] && middle_suffix=""
+    [ "$5" != "" ] && middle_prefix="$5"
+    [ "$6" != "" ] && middle_suffix="$6"
 
     if [ "$e" == "$GBW_PARAMS_ON" ]; then
         start_no_style=$(gbw_regex_remove_colors "$start")
