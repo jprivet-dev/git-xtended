@@ -7,7 +7,7 @@ function gbw_install_activation {
 
     local gbw_prompt_init_state="$GBW_PARAMS_OFF_C"
 
-    if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == 1 ]; then
+    if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]; then
         gbw_prompt_init
         gbw_prompt_init_state="$GBW_PARAMS_ON_C"
     fi
@@ -20,7 +20,7 @@ function gbw_install_activation {
 
     local gbw_git_aliases_init_state
 
-    if [ "$GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE" == 1 ]; then
+    if [ "$GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]; then
         gbw_git_aliases_enable
         gbw_git_aliases_init_state="$GBW_PARAMS_ON_C"
     else
@@ -36,7 +36,7 @@ function gbw_install_activation {
 
     local gbw_git_hooks_init_state
 
-    if [ "$GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE" == 1 ]; then
+    if [ "$GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]; then
         gbw_git_config_hooks_enable
         gbw_git_hooks_init_state="$GBW_PARAMS_ON_C"
     else
@@ -52,7 +52,7 @@ function gbw_install_activation {
 
     local gbw_workflow_init_state
 
-    if [ "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE" == 1 ]; then
+    if [ "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]; then
         #gbw_git_config_workflow_enable
         gbw_workflow_init_state="$GBW_PARAMS_ON_C"
     else
@@ -68,7 +68,7 @@ function gbw_install_activation {
 
     local gbw_bash_aliases_init_state
 
-    if [ "$GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE" == 1 ]; then
+    if [ "$GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE" == "$GBW_PARAMS_ACTIVE" ]; then
         gbw_bash_aliases_enable
         gbw_bash_aliases_init_state="$GBW_PARAMS_ON_C"
     else
