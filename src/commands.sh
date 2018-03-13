@@ -19,6 +19,10 @@ function gbw_command_parse_action {
     echo "[ERROR] 'gbw $action' : unknow action"
 }
 
+function gbw_command_action_install {
+    gbw_install_choice_init
+}
+
 function gbw_command_action_help {
     gbw_prompt_help
 }
