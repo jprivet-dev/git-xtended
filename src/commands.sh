@@ -9,7 +9,7 @@ function gbw_command_parse_action {
     local action=$1
     shift
 
-    local func_name="gbw_command_$action"
+    local func_name="gbw_command_action_$action"
     type "$func_name" &>/dev/null && $func_name "$@" || echo "[ERROR] 'gbw $action' : unknow action"
 
     case $action in
@@ -23,11 +23,11 @@ function gbw_command_parse_action {
     esac
 }
 
-function gbw_command_help {
+function gbw_command_action_help {
     gbw_prompt_show_info_and_explanations
 }
 
-function gbw_command_githooks {
+function gbw_command_action_githooks {
     gbw_command_githooks
 }
 
