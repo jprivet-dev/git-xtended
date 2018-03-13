@@ -71,6 +71,8 @@ function gbw_echo_fixed_width {
     middle_char="$2"
     start="$3"
     end="$4"
+    [ "$5" == "" ] && middle_prefix=""
+    [ "$6" == "" ] && middle_suffix=""
 
     if [ "$e" == "$GBW_PARAMS_ON" ]; then
         start_no_style=$(gbw_regex_remove_colors "$start")
