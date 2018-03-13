@@ -13,8 +13,8 @@ function gbw_command_parse_action {
         aliases)
             gbw_command_config_git_aliases "$@"
         ;;
-        info)
-            gbw_prompt_show_info_and_explanations
+        help)
+            gbw_command_help
         ;;
         githooks)
             gbw_command_githooks "$@"
@@ -24,6 +24,10 @@ function gbw_command_parse_action {
             return
         ;;
     esac
+}
+
+function gbw_command_help {
+    gbw_prompt_show_info_and_explanations
 }
 
 function gbw_command_config_git_aliases {
