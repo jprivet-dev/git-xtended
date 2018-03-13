@@ -66,7 +66,7 @@ function test_gbw_prompt_ahead {
 
 # TODO : improve the test
 function test_gbw_prompt_git_info {
-    local count_lines="$(gbw_prompt_show_info_and_explanations | wc -l)"
+    local count_lines="$(gbw_prompt_help | wc -l)"
     assert equals "$count_lines" "7" $LINENO
 }
 
