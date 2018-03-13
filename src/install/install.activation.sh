@@ -23,9 +23,10 @@ function gbw_install_activation_show_status {
     local gbw_workflow_on_off="$(gbw_install_activation_on_off_color $GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE)"
     local gbw_bash_aliases_on_off="$(gbw_install_activation_on_off_color $GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE)"
 
-    local line="+------------------------------------------------------------+"
     local col_width=62
     local space=" "
+
+    local line=$(gbw_echo_fixed_width $col_width "-" "+" "+" "" "")
 
     echo
     echo "$line"
