@@ -47,3 +47,20 @@ function gbw_trim {
     local string=$1
     echo "$string" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
+
+# TODO : create test
+function gbw_echo_fixed_width {
+    local width="$1"
+    local middle_char="$2"
+    local start="$3"
+    local end="$4"
+
+    local middle_prefix=" "
+    local middle_suffix=" "
+
+    local middle=$(printf "$middle_char%.0s" {1..60})
+    local count=${#start}+${#end}+${#middle_prefix}+${#middle_suffix}
+    local trucate="$middle_prefix${middle:$count}$middle_suffix"
+
+    echo "$start$trucate$end"
+}
