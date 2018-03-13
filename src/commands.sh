@@ -10,7 +10,13 @@ function gbw_command_parse_action {
     shift
 
     local func_name="gbw_command_action_$action"
-    type "$func_name" &>/dev/null && $func_name "$@" || echo "[ERROR] 'gbw $action' : unknow action"
+    
+    if type "$func_name" &>/dev/null; then
+        $func_name "$@"
+        return
+    fi
+
+    echo "[ERROR] 'gbw $action' : unknow action"
 }
 
 function gbw_command_action_help {
