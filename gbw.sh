@@ -18,10 +18,6 @@ source ~/git-bash-workflow/src/prompt.sh
 source ~/git-bash-workflow/src/bash.sh
 source ~/git-bash-workflow/src/install.sh
 
-if [[ "$GBW_ENV_TEST" == 0 ]]; then
-    gbw_install_choice_init
-fi
-
 echo
 echo -e "+------------------------------------------------------------+"
 echo -e "| $GBW_PARAMS_TITLE                                    $GBW_PARAMS_VERSION |"
