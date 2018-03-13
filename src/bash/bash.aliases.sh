@@ -19,7 +19,7 @@ function gbw_bash_aliases_on {
     alias t="source ~/.bashrc; source gbw.tests.sh"
 }
 
-function gbw_bash_aliases_disable {
+function gbw_bash_aliases_off {
     unalias g
 
     unalias reload
