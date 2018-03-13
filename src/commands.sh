@@ -28,7 +28,7 @@ function gbw_command_help {
 }
 
 function gbw_command_githooks {
-    gbw_command_githooks "$@"
+    gbw_command_githooks
 }
 
 function gbw_command_config_git_aliases {
