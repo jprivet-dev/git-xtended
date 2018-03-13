@@ -58,7 +58,9 @@ function gbw_echo_fixed_width {
     local middle_prefix=" "
     local middle_suffix=" "
 
-    local middle=$(printf "$middle_char%.0s" {1..60})
+    printf -v generator '%*s' "$width"
+    local middle=${generator// /$middle_char}
+
     local count=${#start}+${#end}+${#middle_prefix}+${#middle_suffix}
     local trucate="$middle_prefix${middle:$count}$middle_suffix"
 
