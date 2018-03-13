@@ -49,20 +49,47 @@ function gbw_trim {
 }
 
 # TODO : create test
-function gbw_echo_fixed_width {
-    local width="$1"
-    local middle_char="$2"
-    local start="$3"
-    local end="$4"
+function gbw_regex_remove_colors {
+    echo "$1" | sed -E 's/\\e\[[0-9]{1,2}m//g'
+}
 
+# TODO : create test
+function gbw_echo_fixed_width {
+    local e="$GBW_PARAMS_OFF"
+    local width middle_char start end
+    local start_no_style end_no_style
     local middle_prefix=" "
     local middle_suffix=" "
+    local middle trucate count
+
+    if [ "$1" == "-e" ]; then
+        e="$GBW_PARAMS_ON"
+        shift
+    fi
+
+    width="$1"
+    middle_char="$2"
+    start="$3"
+    end="$4"
+
+    if [ "$e" == "$GBW_PARAMS_ON" ]; then
+        start_no_style=$(gbw_regex_remove_colors "$start")
+        end_no_style=$(gbw_regex_remove_colors "$end")
+    else
+        start_no_style="$start"
+        end_no_style="$end"
+    fi
 
     printf -v generator '%*s' "$width"
-    local middle=${generator// /$middle_char}
+    middle=${generator// /$middle_char}
 
-    local count=${#start}+${#end}+${#middle_prefix}+${#middle_suffix}
-    local trucate="$middle_prefix${middle:$count}$middle_suffix"
+    count=${#start_no_style}+${#end_no_style}+${#middle_prefix}+${#middle_suffix}
+    trucate="$middle_prefix${middle:$count}$middle_suffix"
+
+    if [ "$e" == "$GBW_PARAMS_ON" ]; then
+        echo -e "$start$trucate$end"
+        return
+    fi
 
     echo "$start$trucate$end"
 }
