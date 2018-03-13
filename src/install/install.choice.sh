@@ -26,37 +26,37 @@ function gbw_install_choice_y_n {
     return
 }
 
-function gbw_install_choice_init_prompt {
+function gbw_install_choice_prompt {
     gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_PROMPT'"
     gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_PROMPT" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
 }
 
-function gbw_install_choice_init_aliases {
+function gbw_install_choice_aliases {
     gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_GIT_ALIASES'"
     gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
 }
 
-function gbw_install_choice_init_hooks {
+function gbw_install_choice_hooks {
     gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_GIT_HOOKS'"
     gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
 }
 
-function gbw_install_choice_init_workflow {
+function gbw_install_choice_workflow {
     gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_WORKFLOW'"
     gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
 }
 
-function gbw_install_choice_init_bashaliases {
+function gbw_install_choice_bashaliases {
     gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_BASH_ALIASES'"
     gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
 }
 
-function gbw_install_choice_init {
-    gbw_install_choice_init_prompt
-    gbw_install_choice_init_aliases
-    gbw_install_choice_init_hooks
-    gbw_install_choice_init_workflow
-    gbw_install_choice_init_bashaliases
+function gbw_install_choice {
+    gbw_install_choice_prompt
+    gbw_install_choice_aliases
+    gbw_install_choice_hooks
+    gbw_install_choice_workflow
+    gbw_install_choice_bashaliases
 }
 
 function gbw_install_choice_params_set_all_from_git_config {
