@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gbw_install_activation_init {
+function gbw_install_activation {
     # ----------------------------------
     # PROMPT
     # ----------------------------------
