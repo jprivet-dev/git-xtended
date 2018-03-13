@@ -72,7 +72,7 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.sniffer
 }
 
-function gbw_git_aliases_enable {
+function gbw_git_aliases_on {
     gbw_git_config_set_aliases --global
 }
 
