@@ -103,7 +103,7 @@ function gbw_prompt_ahead {
 }
 
 # @test
-function gbw_prompt_show_info_and_explanations {
+function gbw_prompt_help {
     local branch="$(gbw_prompt_branch)"
     local count="$(gbw_prompt_changes_count)"
     local status_c="$(gbw_prompt_status_to_be_commited)"
