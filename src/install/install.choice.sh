@@ -27,8 +27,6 @@ function gbw_install_choice_y_n {
 }
 
 function gbw_install_choice_init_prompt {
-    GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_PROMPT)"
-
     if [ "$GBW_PARAMS_INSTALL_PROMPT_ACTIVE" == "" ]; then
         gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_PROMPT'"
 
@@ -38,8 +36,6 @@ function gbw_install_choice_init_prompt {
 }
 
 function gbw_install_choice_init_aliases {
-    GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES)"
-
     if [ "$GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE" == "" ]; then
         gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_GIT_ALIASES'"
 
@@ -49,8 +45,6 @@ function gbw_install_choice_init_aliases {
 }
 
 function gbw_install_choice_init_hooks {
-    GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS)"
-
     if [ "$GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE" == "" ]; then
         gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_GIT_HOOKS'"
 
@@ -60,7 +54,6 @@ function gbw_install_choice_init_hooks {
 }
 
 function gbw_install_choice_init_workflow {
-    GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW)"
 
     if [ "$GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE" == "" ]; then
         gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_WORKFLOW'"
@@ -71,7 +64,6 @@ function gbw_install_choice_init_workflow {
 }
 
 function gbw_install_choice_init_bashaliases {
-    GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES)"
 
     if [ "$GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE" == "" ]; then
         gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_BASH_ALIASES'"
@@ -87,10 +79,12 @@ function gbw_install_choice_init {
     gbw_install_choice_init_hooks
     gbw_install_choice_init_workflow
     gbw_install_choice_init_bashaliases
+}
 
-    echo "GBW_PARAMS_INSTALL_PROMPT_ACTIVE = $GBW_PARAMS_INSTALL_PROMPT_ACTIVE"
-    echo "GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE = $GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE"
-    echo "GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE = $GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE"
-    echo "GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE = $GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE"
-    echo "GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE = $GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE"
+function gbw_install_choice_params_set_all_from_git_config {
+    GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_PROMPT $GBW_PARAMS_NOT_ACTIVE)"
+    GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES $GBW_PARAMS_NOT_ACTIVE)"
+    GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS $GBW_PARAMS_NOT_ACTIVE)"
+    GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW $GBW_PARAMS_NOT_ACTIVE)"
+    GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES $GBW_PARAMS_NOT_ACTIVE)"
 }
