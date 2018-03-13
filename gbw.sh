@@ -23,7 +23,7 @@ echo -e "+------------------------------------------------------------+"
 echo -e "| $GBW_PARAMS_TITLE                                    $GBW_PARAMS_VERSION |"
 echo -e "+------------------------------------------------------------+"
 
-gbw_install_activation_init
+gbw_install_activation
 
 echo -e "+------------------------------------------------------------+"
 echo -e "| @info https://github.com/jprivet-dev/git-bash-workflow.git |"
