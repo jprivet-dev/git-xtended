@@ -20,7 +20,7 @@ function gbw_command_parse_action {
 }
 
 function gbw_command_action_install {
-    gbw_install_choice_init
+    gbw_install_choice
 }
 
 function gbw_command_action_help {
