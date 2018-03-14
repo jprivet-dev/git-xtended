@@ -104,51 +104,22 @@ function gbw_prompt_ahead {
 
 # @test
 function gbw_prompt_help {
-    local branch="$(gbw_prompt_branch)" branch_dots
-    local count="$(gbw_prompt_changes_count)" count_dots
-    local status_c="$(gbw_prompt_status_to_be_commited)" status_c_dots
-    local status_s="$(gbw_prompt_status_not_staged)" status_s_dots
-    local status_u="$(gbw_prompt_status_untracked)" status_c_dots
-    local behind="$(gbw_prompt_behind)" behind_dots
-    local ahead="$(gbw_prompt_ahead)" ahead_dots
+    local branch="$(gbw_prompt_branch)"
+    local count="$(gbw_prompt_changes_count)"
+    local status_c="$(gbw_prompt_status_to_be_commited)"
+    local status_s="$(gbw_prompt_status_not_staged)"
+    local status_u="$(gbw_prompt_status_untracked)"
+    local behind="$(gbw_prompt_behind)"
+    local ahead="$(gbw_prompt_ahead)"
 
-    local width=12
-    local ellipsis="..."
-
-    if [[ -n "$branch" ]]; then
-        gbw_prompt_help_line_dots "$branch" "current branch"
-    fi
-
-    if [[ -n "$count" ]]; then
-        count_dots=$(gbw_echo_fixed_width -e $width "." "$count " "")
-        echo -e "$count_dots$ellipsis all elements from git status"
-    fi
-
-    if [[ -n "$status_u" ]]; then
-        status_c_dots=$(gbw_echo_fixed_width -e $width "." "$status_u " "")
-        echo -e "$status_c_dots$ellipsis untracked files"
-    fi
-
-    if [[ -n "$status_s" ]]; then
-        status_s_dots=$(gbw_echo_fixed_width -e $width "." "$status_s " "")
-        echo -e "$status_s_dots$ellipsis changes not staged for commit"
-    fi
-
-    if [[ -n "$status_c" ]]; then
-        status_c_dots=$(gbw_echo_fixed_width -e $width "." "$status_c " "")
-        echo -e "$status_c_dots$ellipsis changes to be committed"
-    fi
-
-    if [[ -n "$behind" ]]; then
-        behind_dots=$(gbw_echo_fixed_width -e $width "." "$behind " "")
-        echo -e "$behind_dots$ellipsis commits behind $(gbw_git_get_remote_branch_ref)"
-    fi
-
-    if [[ -n "$ahead" ]]; then
-        ahead_dots=$(gbw_echo_fixed_width -e $width "." "$ahead " "")
-        echo -e "$ahead_dots$ellipsis commits ahead $(gbw_git_get_remote_branch_ref)"
-    fi
-
+    [[ -n "$branch" ]]      && gbw_prompt_help_line_dots "$branch"      "current branch"
+    [[ -n "$count" ]]       && gbw_prompt_help_line_dots "$count"       "all elements from git status"
+    [[ -n "$status_u" ]]    && gbw_prompt_help_line_dots "$status_u"    "untracked files"
+    [[ -n "$status_s" ]]    && gbw_prompt_help_line_dots "$status_s"    "changes not staged for commit"
+    [[ -n "$status_c" ]]    && gbw_prompt_help_line_dots "$status_c"    "changes to be committed"
+    [[ -n "$behind" ]]      && gbw_prompt_help_line_dots "$behind"      "commits behind $(gbw_git_get_remote_branch_ref)"
+    [[ -n "$ahead" ]]       && gbw_prompt_help_line_dots "$ahead"       "commits ahead $(gbw_git_get_remote_branch_ref)"
+    echo
 }
 
 # TODO: create test
