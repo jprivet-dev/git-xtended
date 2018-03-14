@@ -38,7 +38,7 @@ function gbw_git_config_set_aliases {
 
     # git reset
     git config $global alias.r "reset"
-    git config $global alias.hard "git reset --hard'"
+    git config $global alias.hard "git reset --hard"
     git config $global alias.undo "reset --soft HEAD^"
     git config $global alias.untracked "clean -f -d"
 
