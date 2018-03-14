@@ -109,7 +109,7 @@ function gbw_command_githooks {
 function gbw_command_help {
     echo "$GBW_PARAMS_LABEL_GBW_COMMANDS :"
     gbw_command_help_command_line "help" ...... "display help information about $GBW_PARAMS_TITLE_SHORT"
-    gbw_command_help_command_line "install" ... "selection and installation of $GBW_PARAMS_TITLE_SHORT elements"
+    gbw_command_help_command_line "install" ... "select and install $GBW_PARAMS_TITLE_SHORT elements"
     gbw_command_help_command_line "reload" .... "reload $GBW_PARAMS_TITLE_SHORT"
     gbw_command_help_command_line "status" .... "show status of $GBW_PARAMS_TITLE_SHORT elements"
     echo
