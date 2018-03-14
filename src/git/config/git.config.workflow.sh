@@ -12,6 +12,6 @@ function gbw_git_config_workflow_off {
 
 function gbw_git_config_workflow_help {
     echo "$GBW_PARAMS_LABEL_WORKFLOW :"
-    echo "  XX ... WIP"
+    echo "   XX ... WIP"
     echo
 }
