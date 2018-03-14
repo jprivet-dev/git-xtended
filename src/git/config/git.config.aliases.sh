@@ -82,6 +82,26 @@ function gbw_git_aliases_off {
 
 function gbw_git_config_aliases_help {
     echo "$GBW_PARAMS_LABEL_GIT_ALIASES :"
-    echo "   XX ... WIP"
+    gbw_git_config_aliases_help_line_dots "l" ............... "(log)"
+    gbw_git_config_aliases_help_line_dots "ll" .............. "(log)"
+    gbw_git_config_aliases_help_line_dots "lcount" .......... "(log)"
+    gbw_git_config_aliases_help_line_dots "b" ............... "(branch)"
+    gbw_git_config_aliases_help_line_dots "k" ............... "(checkout)"
+    gbw_git_config_aliases_help_line_dots "s" ............... "(status)"
+    gbw_git_config_aliases_help_line_dots "ss" .............. "(status)"
+    gbw_git_config_aliases_help_line_dots "d" ............... "(diff)"
+    gbw_git_config_aliases_help_line_dots "a" ............... "(add)"
+    gbw_git_config_aliases_help_line_dots "all" ............. "(add)"
+    gbw_git_config_aliases_help_line_dots "amend" ........... "(commit)"
+    gbw_git_config_aliases_help_line_dots "c [<indexes>]" ... "(commit)"
+    gbw_git_config_aliases_help_line_dots "r" ............... "(reset)"
+    gbw_git_config_aliases_help_line_dots "rrr" ............. "(reset)"
+    gbw_git_config_aliases_help_line_dots "undo" ............ "(reset)"
+    gbw_git_config_aliases_help_line_dots "untracked" ....... "(clean)"
+    gbw_git_config_aliases_help_line_dots "sniffer" ......... "(grep)"
     echo
+}
+
+function gbw_git_config_aliases_help_line_dots {
+    echo -e "${GBW_PARAMS_TAB}git ${C_LIGHT_CYAN}$1${F_RESET} $2 $3"
 }
