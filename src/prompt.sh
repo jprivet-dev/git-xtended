@@ -112,6 +112,7 @@ function gbw_prompt_help {
     local behind="$(gbw_prompt_behind)"
     local ahead="$(gbw_prompt_ahead)"
 
+    echo "$GBW_PARAMS_LABEL_PROMPT :"
     [[ -n "$branch" ]]      && gbw_prompt_help_line_dots "$branch"      "current branch"
     [[ -n "$count" ]]       && gbw_prompt_help_line_dots "$count"       "all elements from git status"
     [[ -n "$status_u" ]]    && gbw_prompt_help_line_dots "$status_u"    "untracked files"
@@ -128,7 +129,7 @@ function gbw_prompt_help_line_dots {
     local ellipsis="..."
     local text_dots=$(gbw_echo_fixed_width -e $width "." "$1 " "")
 
-    echo -e "$text_dots$ellipsis $2"
+    echo -e "  $text_dots$ellipsis $2"
 }
 
 # @test
