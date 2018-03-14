@@ -33,3 +33,9 @@ function gbw_bash_aliases_off {
     unalias t
 }
 
+function gbw_bash_aliases_help {
+    echo "$GBW_PARAMS_LABEL_BASH_ALIASES :"
+    echo "  XX ... WIP"
+    echo
+}
+
