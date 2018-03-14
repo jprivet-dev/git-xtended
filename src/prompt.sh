@@ -113,13 +113,13 @@ function gbw_prompt_help {
     local ahead="$(gbw_prompt_ahead)"
 
     echo "$GBW_PARAMS_LABEL_PROMPT :"
-    gbw_prompt_help_line_dots "$branch"      "current branch"
-    gbw_prompt_help_line_dots "$count"       "all elements from git status"
-    gbw_prompt_help_line_dots "$status_u"    "untracked files"
-    gbw_prompt_help_line_dots "$status_s"    "changes not staged for commit"
-    gbw_prompt_help_line_dots "$status_c"    "changes to be committed"
-    gbw_prompt_help_line_dots "$behind"      "commits behind $(gbw_git_get_remote_branch_ref)"
-    gbw_prompt_help_line_dots "$ahead"       "commits ahead $(gbw_git_get_remote_branch_ref)"
+    gbw_prompt_help_line_dots "$branch"      "Current branch"
+    gbw_prompt_help_line_dots "$count"       "All elements from git status"
+    gbw_prompt_help_line_dots "$status_u"    "Untracked files"
+    gbw_prompt_help_line_dots "$status_s"    "Changes not staged for commit"
+    gbw_prompt_help_line_dots "$status_c"    "Changes to be committed"
+    gbw_prompt_help_line_dots "$behind"      "Commits behind $(gbw_git_get_remote_branch_ref)"
+    gbw_prompt_help_line_dots "$ahead"       "Commits ahead $(gbw_git_get_remote_branch_ref)"
     echo
 }
 
