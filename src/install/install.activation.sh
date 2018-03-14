@@ -23,8 +23,8 @@ function gbw_install_activation_show_status {
     local gbw_workflow_on_off="$(gbw_install_activation_on_off_color $GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE)"
     local gbw_bash_aliases_on_off="$(gbw_install_activation_on_off_color $GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE)"
 
-    local info="| @info $GBW_PARAMS_GITHUB |"
-    local col_width=${#info}
+    local line_info="| @info $GBW_PARAMS_GITHUB |"
+    local col_width=${#line_info}
     local space=" "
 
     local line=$(gbw_echo_fixed_width $col_width "-" "+" "+")
@@ -41,7 +41,7 @@ function gbw_install_activation_show_status {
     gbw_echo_fixed_width -e $col_width "$space" "| $GBW_PARAMS_LABEL_BASH_ALIASES"  "| $gbw_bash_aliases_on_off |"
 
     echo "$line"
-    echo "$info"
+    echo "$line_info"
     echo "$line"
     echo
 }
