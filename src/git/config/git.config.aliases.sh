@@ -79,3 +79,9 @@ function gbw_git_aliases_on {
 function gbw_git_aliases_off {
     gbw_git_config_unset_aliases --global
 }
+
+function gbw_git_config_aliases_help {
+    echo "$GBW_PARAMS_LABEL_GIT_ALIASES :"
+    echo "  XX ... WIP"
+    echo
+}
