@@ -35,6 +35,7 @@ function gbw_command_action_status {
 }
 
 function gbw_command_action_help {
+    gbw_install_activation_show_status
     gbw_prompt_help
 }
 
