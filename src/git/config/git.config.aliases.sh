@@ -12,12 +12,13 @@ function gbw_git_config_set_aliases {
 
     # git add
     git config $global alias.a "add"
-    git config $global alias.all "add ."
+    git config $global alias.all "add --all"
+    git config $global alias.nm "add ."
+    git config $global alias.md "add --update"
 
     # git commit
     git config $global alias.c '!f() { '$GBW_PARAMS_GIT_ALIAS_COMMIT_FILE' "$@"; }; f'
     git config $global alias.amend "commit -m --amend"
-    git config $global alias.undo "reset --soft HEAD^"
 
     # git checkout
     git config $global alias.k checkout
@@ -37,7 +38,8 @@ function gbw_git_config_set_aliases {
 
     # git reset
     git config $global alias.r "reset"
-    git config $global alias.rrr "!sh -c 'git clean -f -d; git reset --hard HEAD'"
+    git config $global alias.hard "git reset --hard'"
+    git config $global alias.undo "reset --soft HEAD^"
     git config $global alias.untracked "clean -f -d"
 
     # git status
@@ -57,16 +59,18 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.d
 	git config $global --unset alias.a
 	git config $global --unset alias.all
+	git config $global --unset alias.nm
+	git config $global --unset alias.md
 	git config $global --unset alias.c
 	git config $global --unset alias.amend
-	git config $global --unset alias.undo
 	git config $global --unset alias.k
 	git config $global --unset alias.l
 	git config $global --unset alias.ll
 	git config $global --unset alias.lcount
 	git config $global --unset alias.untracked
 	git config $global --unset alias.r
-	git config $global --unset alias.rrr
+	git config $global --unset alias.hard
+	git config $global --unset alias.undo
 	git config $global --unset alias.s
 	git config $global --unset alias.ss
 	git config $global --unset alias.sniffer
@@ -82,25 +86,28 @@ function gbw_git_aliases_off {
 
 function gbw_git_config_aliases_help {
     local cat
+    local select_file="(select file with ${F_UNDERLINED}index${F_RESET} status instead of path)"
 
     echo "$GBW_PARAMS_LABEL_GIT_ALIASES :"
-    gbw_git_config_aliases_help_line "     log |" "l" ............... "description"
-    gbw_git_config_aliases_help_line "          " "ll" .............. "description"
-    gbw_git_config_aliases_help_line "          " "lcount" .......... "description"
-    gbw_git_config_aliases_help_line "  branch |" "b" ............... "description"
-    gbw_git_config_aliases_help_line "checkout |" "k" ............... "description"
-    gbw_git_config_aliases_help_line "  status |" "s" ............... "description"
-    gbw_git_config_aliases_help_line "          " "ss" .............. "description"
-    gbw_git_config_aliases_help_line "    diff |" "d" ............... "description"
-    gbw_git_config_aliases_help_line "     add |" "a" ............... "description"
-    gbw_git_config_aliases_help_line "          " "all" ............. "description"
-    gbw_git_config_aliases_help_line "  commit |" "amend" ........... "description"
-    gbw_git_config_aliases_help_line "          " "c [<indexes>]" ... "description"
-    gbw_git_config_aliases_help_line "   reset |" "r" ............... "description"
-    gbw_git_config_aliases_help_line "          " "rrr" ............. "description"
-    gbw_git_config_aliases_help_line "          " "undo" ............ "description"
-    gbw_git_config_aliases_help_line "   clean |" "untracked" ....... "description"
-    gbw_git_config_aliases_help_line "    grep |" "sniffer" ......... "description"
+    gbw_git_config_aliases_help_line "     log |" "l" ............... "Show the last 10 commit logs (graphical representation)"
+    gbw_git_config_aliases_help_line "          " "ll" .............. "Show all commit logs (graphical representation)"
+    gbw_git_config_aliases_help_line "          " "lcount" .......... "Number of commits per author"
+    gbw_git_config_aliases_help_line "  branch |" "b" ............... "Simple \"branch\" alias"
+    gbw_git_config_aliases_help_line "checkout |" "k" ............... "Simple \"checkout\" alias"
+    gbw_git_config_aliases_help_line "  status |" "s" ............... "${F_UNDERLINED}Indexed${F_RESET} status list (staged, unstaged, and untracked files)"
+    gbw_git_config_aliases_help_line "          " "ss" .............. "Simple \"status\" alias"
+    gbw_git_config_aliases_help_line "    diff |" "d [<indexes>]" ... "Extended \"diff\" alias $select_file"
+    gbw_git_config_aliases_help_line "     add |" "a [<indexes>]" ... "Extended \"add\" alias $select_file"
+    gbw_git_config_aliases_help_line "          " "all" ............. "Add all files (new, modified and deleted)"
+    gbw_git_config_aliases_help_line "          " "nm" .............. "Add new and modified files, without deleted"
+    gbw_git_config_aliases_help_line "          " "md" .............. "Add modified and deleted files, without new"
+    gbw_git_config_aliases_help_line "  commit |" "c [<indexes>]" ... "Extended \"commit\" alias $select_file"
+    gbw_git_config_aliases_help_line "          " "amend" ........... "Oups level 1! Modify the last commit"
+    gbw_git_config_aliases_help_line "   reset |" "r" ............... "Simple \"reset\" alias"
+    gbw_git_config_aliases_help_line "          " "hard" ............ "Description"
+    gbw_git_config_aliases_help_line "          " "undo" ............ "Oups level 2! Undo the last commit, while keeping files changes"
+    gbw_git_config_aliases_help_line "   clean |" "untracked" ....... "Description"
+    gbw_git_config_aliases_help_line "    grep |" "sniffer" ......... "Description"
     echo
 }
 
