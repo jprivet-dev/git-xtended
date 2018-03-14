@@ -84,26 +84,26 @@ function gbw_git_config_aliases_help {
     local cat
 
     echo "$GBW_PARAMS_LABEL_GIT_ALIASES :"
-    gbw_git_config_aliases_help_line_dots "     log |" "l" ............... "description"
-    gbw_git_config_aliases_help_line_dots "          " "ll" .............. "description"
-    gbw_git_config_aliases_help_line_dots "          " "lcount" .......... "description"
-    gbw_git_config_aliases_help_line_dots "  branch |" "b" ............... "description"
-    gbw_git_config_aliases_help_line_dots "checkout |" "k" ............... "description"
-    gbw_git_config_aliases_help_line_dots "  status |" "s" ............... "description"
-    gbw_git_config_aliases_help_line_dots "          " "ss" .............. "description"
-    gbw_git_config_aliases_help_line_dots "    diff |" "d" ............... "description"
-    gbw_git_config_aliases_help_line_dots "     add |" "a" ............... "description"
-    gbw_git_config_aliases_help_line_dots "          " "all" ............. "description"
-    gbw_git_config_aliases_help_line_dots "  commit |" "amend" ........... "description"
-    gbw_git_config_aliases_help_line_dots "          " "c [<indexes>]" ... "description"
-    gbw_git_config_aliases_help_line_dots "   reset |" "r" ............... "description"
-    gbw_git_config_aliases_help_line_dots "          " "rrr" ............. "description"
-    gbw_git_config_aliases_help_line_dots "          " "undo" ............ "description"
-    gbw_git_config_aliases_help_line_dots "   clean |" "untracked" ....... "description"
-    gbw_git_config_aliases_help_line_dots "    grep |" "sniffer" ......... "description"
+    gbw_git_config_aliases_help_line "     log |" "l" ............... "description"
+    gbw_git_config_aliases_help_line "          " "ll" .............. "description"
+    gbw_git_config_aliases_help_line "          " "lcount" .......... "description"
+    gbw_git_config_aliases_help_line "  branch |" "b" ............... "description"
+    gbw_git_config_aliases_help_line "checkout |" "k" ............... "description"
+    gbw_git_config_aliases_help_line "  status |" "s" ............... "description"
+    gbw_git_config_aliases_help_line "          " "ss" .............. "description"
+    gbw_git_config_aliases_help_line "    diff |" "d" ............... "description"
+    gbw_git_config_aliases_help_line "     add |" "a" ............... "description"
+    gbw_git_config_aliases_help_line "          " "all" ............. "description"
+    gbw_git_config_aliases_help_line "  commit |" "amend" ........... "description"
+    gbw_git_config_aliases_help_line "          " "c [<indexes>]" ... "description"
+    gbw_git_config_aliases_help_line "   reset |" "r" ............... "description"
+    gbw_git_config_aliases_help_line "          " "rrr" ............. "description"
+    gbw_git_config_aliases_help_line "          " "undo" ............ "description"
+    gbw_git_config_aliases_help_line "   clean |" "untracked" ....... "description"
+    gbw_git_config_aliases_help_line "    grep |" "sniffer" ......... "description"
     echo
 }
 
-function gbw_git_config_aliases_help_line_dots {
+function gbw_git_config_aliases_help_line {
     echo -e "${GBW_PARAMS_TAB}$1 git ${C_LIGHT_CYAN}$2${F_RESET} $3 $4"
 }
