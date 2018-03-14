@@ -82,6 +82,6 @@ function gbw_git_aliases_off {
 
 function gbw_git_config_aliases_help {
     echo "$GBW_PARAMS_LABEL_GIT_ALIASES :"
-    echo "  XX ... WIP"
+    echo "   XX ... WIP"
     echo
 }
