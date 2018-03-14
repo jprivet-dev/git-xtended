@@ -38,6 +38,7 @@ function gbw_command_action_help {
     gbw_install_activation_show_status
     gbw_prompt_help
     gbw_git_config_aliases_help
+    gbw_git_config_hooks_help
 }
 
 function gbw_command_action_githooks {
