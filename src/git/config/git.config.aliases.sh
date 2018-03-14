@@ -106,7 +106,7 @@ function gbw_git_config_aliases_help {
     gbw_git_config_aliases_help_line "   reset |" "r" ............... "Simple \"reset\" alias"
     gbw_git_config_aliases_help_line "          " "hard" ............ "Simple \"reset --hard\" alias. Discard any changes to ${F_UNDERLINED}tracked${F_RESET} files, since last commit"
     gbw_git_config_aliases_help_line "          " "undo" ............ "Oups level 2! Undo the last commit, while keeping files changes"
-    gbw_git_config_aliases_help_line "   clean |" "untracked" ....... "Description"
+    gbw_git_config_aliases_help_line "   clean |" "untracked" ....... "Remove all untracked files"
     gbw_git_config_aliases_help_line "    grep |" "sniffer" ......... "Description"
     echo
 }
