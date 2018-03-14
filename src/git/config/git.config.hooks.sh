@@ -24,6 +24,6 @@ function gbw_git_config_hooks_off {
 
 function gbw_git_config_hooks_help {
     echo "$GBW_PARAMS_LABEL_GIT_HOOKS :"
-    echo "   XX ... WIP"
+    echo "${GBW_PARAMS_TAB}XX ... WIP"
     echo
 }
