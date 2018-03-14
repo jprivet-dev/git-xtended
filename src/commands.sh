@@ -40,6 +40,7 @@ function gbw_command_action_help {
     gbw_git_config_aliases_help
     gbw_git_config_hooks_help
     gbw_git_config_workflow_help
+    gbw_bash_aliases_help
 }
 
 function gbw_command_action_githooks {
