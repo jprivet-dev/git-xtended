@@ -107,29 +107,48 @@ function gbw_prompt_help {
     local branch="$(gbw_prompt_branch)"
     local count="$(gbw_prompt_changes_count)" count_dot
     local status_c="$(gbw_prompt_status_to_be_commited)" status_c_dot
-    local status_s="$(gbw_prompt_status_not_staged)"
-    local status_u="$(gbw_prompt_status_untracked)"
-    local behind="$(gbw_prompt_behind)"
+    local status_s="$(gbw_prompt_status_not_staged)" status_s_tab
+    local status_u="$(gbw_prompt_status_untracked)" status_c_tab
+    local behind="$(gbw_prompt_behind)" behind_tab
     local ahead="$(gbw_prompt_ahead)"
 
-    local width=20
+    local width=12
 
-    [[ -n "$branch" ]]      && echo -e "$branch : current branch"
+    if [[ -n "$branch" ]]; then
+        branch_dot=$(gbw_echo_fixed_width -e $width "." "$branch " "")
+        echo -e "$branch_dot... current branch"
+    fi
 
     if [[ -n "$count" ]]; then
         count_dot=$(gbw_echo_fixed_width -e $width "." "$count " "")
-        echo -e "$count_dot all elements from git status"
+        echo -e "$count_dot... all elements from git status"
     fi
 
     if [[ -n "$status_u" ]]; then
         status_c_dot=$(gbw_echo_fixed_width -e $width "." "$status_u " "")
-        echo -e "$status_c_dot untracked files"
+        echo -e "$status_c_dot... untracked files"
     fi
 
-    [[ -n "$status_s" ]]    && echo -e "$status_s : changes not staged for commit"
-    [[ -n "$status_c" ]]    && echo -e "$status_c : changes to be committed"
-    [[ -n "$behind" ]]      && echo -e "$behind : commits behind $(gbw_git_get_remote_branch_ref)"
-    [[ -n "$ahead" ]]       && echo -e "$ahead : commits ahead $(gbw_git_get_remote_branch_ref)"
+    if [[ -n "$status_s" ]]; then
+        status_s_tab=$(gbw_echo_fixed_width -e $width "." "$status_s " "")
+        echo -e "$status_s_tab... changes not staged for commit"
+    fi
+
+    if [[ -n "$status_c" ]]; then
+        status_c_tab=$(gbw_echo_fixed_width -e $width "." "$status_c " "")
+        echo -e "$status_c_tab... changes to be committed"
+    fi
+
+    if [[ -n "$behind" ]]; then
+        behind_tab=$(gbw_echo_fixed_width -e $width "." "$behind " "")
+        echo -e "$behind_tab... commits behind $(gbw_git_get_remote_branch_ref)"
+    fi
+
+    if [[ -n "$ahead" ]]; then
+        ahead_tab=$(gbw_echo_fixed_width -e $width "." "$ahead " "")
+        echo -e "$ahead_tab... commits ahead $(gbw_git_get_remote_branch_ref)"
+    fi
+
 }
 
 # @test
