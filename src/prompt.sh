@@ -129,7 +129,7 @@ function gbw_prompt_help_line_dots {
     local ellipsis="..."
     local text_dots=$(gbw_echo_fixed_width -e $width "." "$1 " "")
 
-    echo -e "   $text_dots$ellipsis $2"
+    echo -e "${GBW_PARAMS_TAB}$text_dots$ellipsis $2"
 }
 
 # @test
