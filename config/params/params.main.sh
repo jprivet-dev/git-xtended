@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+GBW_PARAMS_TAB="   "
+GBW_PARAMS_TAB_2="$GBW_PARAMS_TAB$GBW_PARAMS_TAB"
+
 GBW_PARAMS_FALSE="false"
 GBW_PARAMS_TRUE="true"
 
@@ -22,12 +25,12 @@ GBW_PARAMS_LABEL_WORKFLOW="Git workflow commands (Agility)"
 GBW_PARAMS_LABEL_BASH_ALIASES="Bash aliases"
 GBW_PARAMS_LABEL_GBW_COMMANDS="$GBW_PARAMS_TITLE_SHORT commands"
 
-# Change local
-#if [ -z ${LC_ALL+x} ]; then
-#    echo "# LC_ALL is unset > export LC_ALL=C"
-#    export LC_ALL=C
-#else
-#    echo "# LC_ALL is set to '$var'"
-#fi
+Change local
+if [ -z ${LC_ALL+x} ]; then
+    echo "# LC_ALL is unset > export LC_ALL=C"
+    export LC_ALL=C
+else
+    echo "# LC_ALL is set to '$var'"
+fi
 
 
