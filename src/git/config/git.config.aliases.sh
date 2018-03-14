@@ -102,10 +102,10 @@ function gbw_git_config_aliases_help {
     gbw_git_config_aliases_help_line "          " "nm" .............. "Add new and modified files, without deleted"
     gbw_git_config_aliases_help_line "          " "md" .............. "Add modified and deleted files, without new"
     gbw_git_config_aliases_help_line "  commit |" "c [<indexes>]" ... "Extended \"commit\" alias $select_file"
-    gbw_git_config_aliases_help_line "          " "amend" ........... "Oups level 1! Modify the last commit"
+    gbw_git_config_aliases_help_line "          " "amend" ........... "Oops level 1! Modify the last commit"
     gbw_git_config_aliases_help_line "   reset |" "r" ............... "Simple \"reset\" alias"
     gbw_git_config_aliases_help_line "          " "hard" ............ "Simple \"reset --hard\" alias. Discard any changes to ${F_UNDERLINED}tracked${F_RESET} files, since last commit"
-    gbw_git_config_aliases_help_line "          " "undo" ............ "Oups level 2! Undo the last commit, while keeping files changes"
+    gbw_git_config_aliases_help_line "          " "undo" ............ "Oops level 2! Undo the last commit, while keeping files changes"
     gbw_git_config_aliases_help_line "   clean |" "untracked" ....... "Remove all ${F_UNDERLINED}untracked${F_RESET} files"
     gbw_git_config_aliases_help_line "    grep |" "find" ............ "Look for specified strings in the tracked files (case sensitive)"
     echo
