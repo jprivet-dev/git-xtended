@@ -21,3 +21,9 @@ function gbw_git_config_hooks_on {
 function gbw_git_config_hooks_off {
     gbw_git_config_hooks_unset --global
 }
+
+function gbw_git_config_hooks_help {
+    echo "$GBW_PARAMS_LABEL_GIT_HOOKS :"
+    echo "  XX ... WIP"
+    echo
+}
