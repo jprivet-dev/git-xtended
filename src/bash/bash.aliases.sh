@@ -15,8 +15,6 @@ function gbw_bash_aliases_on {
 
     alias ls="ls -alF --color=auto"
     alias ls.="ls -d .* --color=auto"
-
-    alias t="source ~/.bashrc; source gbw.tests.sh"
 }
 
 function gbw_bash_aliases_off {
@@ -29,8 +27,6 @@ function gbw_bash_aliases_off {
 
     unalias ls
     unalias ls.
-
-    unalias t
 }
 
 function gbw_bash_aliases_help {
