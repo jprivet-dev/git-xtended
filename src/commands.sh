@@ -41,6 +41,7 @@ function gbw_command_action_help {
     gbw_git_config_hooks_help
     gbw_git_config_workflow_help
     gbw_bash_aliases_help
+    gbw_command_help
 }
 
 function gbw_command_action_githooks {
@@ -102,5 +103,11 @@ function gbw_command_githooks {
 
     echo "Delete prepare-commit-msg :"
     echo "$pcm_symlink_command_delete"
+    echo
+}
+
+function gbw_command_help {
+    echo "$GBW_PARAMS_LABEL_GBW_COMMANDS :"
+    echo "   XX ... WIP"
     echo
 }
