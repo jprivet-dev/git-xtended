@@ -48,7 +48,7 @@ function gbw_git_config_set_aliases {
     git config $global alias.ss status
 
     # git grep
-    git config $global alias.sniffer "grep --break --heading --line-number --extended-regexp 'dump\(|console\.[^(]+\('"
+    git config $global alias.find '!f() { '$GBW_PARAMS_GIT_ALIAS_FIND_FILE' "$@"; }; f'
 }
 
 function gbw_git_config_unset_aliases {
@@ -73,7 +73,7 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.undo
 	git config $global --unset alias.s
 	git config $global --unset alias.ss
-	git config $global --unset alias.sniffer
+	git config $global --unset alias.find
 }
 
 function gbw_git_aliases_on {
@@ -107,7 +107,7 @@ function gbw_git_config_aliases_help {
     gbw_git_config_aliases_help_line "          " "hard" ............ "Simple \"reset --hard\" alias. Discard any changes to ${F_UNDERLINED}tracked${F_RESET} files, since last commit"
     gbw_git_config_aliases_help_line "          " "undo" ............ "Oups level 2! Undo the last commit, while keeping files changes"
     gbw_git_config_aliases_help_line "   clean |" "untracked" ....... "Remove all untracked files"
-    gbw_git_config_aliases_help_line "    grep |" "sniffer" ......... "Description"
+    gbw_git_config_aliases_help_line "    grep |" "find" ............ "Look for specified strings in the tracked files (case sensitive)"
     echo
 }
 
