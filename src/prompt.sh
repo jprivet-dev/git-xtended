@@ -116,8 +116,7 @@ function gbw_prompt_help {
     local ellipsis="..."
 
     if [[ -n "$branch" ]]; then
-        branch_dots=$(gbw_echo_fixed_width -e $width "." "$branch " "")
-        echo -e "$branch_dots$ellipsis current branch"
+        gbw_prompt_help_line_dots "$branch" "current branch"
     fi
 
     if [[ -n "$count" ]]; then
@@ -150,6 +149,15 @@ function gbw_prompt_help {
         echo -e "$ahead_dots$ellipsis commits ahead $(gbw_git_get_remote_branch_ref)"
     fi
 
+}
+
+# TODO: create test
+function gbw_prompt_help_line_dots {
+    local width=12
+    local ellipsis="..."
+    local text_dots=$(gbw_echo_fixed_width -e $width "." "$1 " "")
+
+    echo -e "$text_dots$ellipsis $2"
 }
 
 # @test
