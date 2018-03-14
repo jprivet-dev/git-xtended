@@ -116,6 +116,7 @@ function gbw_command_help {
     gbw_command_help_command_line "install" ... "select and install $GBW_PARAMS_TITLE_SHORT elements"
     gbw_command_help_command_line "reload" .... "reload $GBW_PARAMS_TITLE_SHORT"
     gbw_command_help_command_line "status" .... "show status of $GBW_PARAMS_TITLE_SHORT elements"
+    gbw_command_help_command_line "test" ...... "launch of all $GBW_PARAMS_TITLE_SHORT tests"
     echo
 }
 
