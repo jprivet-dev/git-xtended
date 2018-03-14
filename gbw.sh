@@ -18,4 +18,5 @@ source ~/git-bash-workflow/src/prompt.sh
 source ~/git-bash-workflow/src/bash.sh
 source ~/git-bash-workflow/src/install.sh
 
+gbw_install_activation
 gbw_install_activation_show_status
