@@ -39,6 +39,7 @@ function gbw_command_action_help {
     gbw_prompt_help
     gbw_git_config_aliases_help
     gbw_git_config_hooks_help
+    gbw_git_config_workflow_help
 }
 
 function gbw_command_action_githooks {
