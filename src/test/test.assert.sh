@@ -18,10 +18,10 @@ function gbw_test_assert_ok {
 function gbw_test_assert_nok {
     local message=$1
     local line=$2
-    local color="$C_LIGHT_RED"
 
-#    echo -e "$color| $line: FAILURE$F_RESET"
-#    echo -e "$color|$F_RESET $message"
+    gbw_test_assert_pipeline_failures+=("${C_LIGHT_RED}| $line: FAILURE${F_RESET}")
+    gbw_test_assert_pipeline_failures+=("| $message")
+
     echo -e -n "${C_BG_RED}${C_WHITE}!${F_RESET}"
 
     gbw_test_count_failures_increment
@@ -33,9 +33,9 @@ function gbw_test_assert_equals {
     local line=$3
 
     if [[ "$current" == "$expected" ]]; then
-        gbw_test_assert_ok "$current equals $expected" $line
+        gbw_test_assert_ok "Strings are equal '$current' '$expected'" $line
     else
-        gbw_test_assert_nok "$current not equals $expected" $line
+        gbw_test_assert_nok "Strings are not equals\n| Current : '$current'\n| Expected: '$expected'" $line
     fi
 }
 
@@ -59,4 +59,17 @@ function gbw_test_assert {
 # gbw_test_assert_equals alias
 function assert {
     gbw_test_assert "$@"
+}
+
+function gbw_test_assert_pipeline_failures_print_all {
+    if [ ${#gbw_test_assert_pipeline_failures[@]} -eq 0 ]; then
+        return
+    fi
+
+    echo
+
+    for line in "${gbw_test_assert_pipeline_failures[@]}"; do
+      echo -e "$line"
+    done
+    gbw_test_assert_pipeline_failures=()
 }
