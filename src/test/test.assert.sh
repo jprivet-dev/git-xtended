@@ -5,7 +5,7 @@ function gbw_test_assert_ok {
     local line=$2
     local color="$C_LIGHT_GREEN"
 
-    echo -e "$color$line: OK$F_RESET"
+    echo -e "| $color$line: OK$F_RESET "
 
     if [[ "$GBW_PARAMS_TEST_ASSERT_OK_SHOW_MESSAGE" == 0 ]]; then
         return
