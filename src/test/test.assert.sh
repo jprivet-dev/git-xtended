@@ -33,7 +33,7 @@ function gbw_test_assert_equals {
     local line=$3
 
     if [[ "$current" == "$expected" ]]; then
-        gbw_test_assert_nok "Strings are equals\n  Current : '$current'\n  Expected: '$expected'" $line
+        gbw_test_assert_ok "Strings are equals\n  Current : '$current'\n  Expected: '$expected'" $line
     else
         gbw_test_assert_nok "Strings are not equals\n  Current : '$current'\n  Expected: '$expected'" $line
     fi
