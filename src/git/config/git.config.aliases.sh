@@ -88,7 +88,7 @@ function gbw_git_config_aliases_help {
     local cat
     local select_file="(select file with ${F_UNDERLINED}index${F_RESET} status instead of path)"
 
-    echo "$GBW_PARAMS_LABEL_GIT_ALIASES :"
+    echo -e "${C_WHITE}${GBW_PARAMS_LABEL_GIT_ALIASES}${F_RESET} :"
     gbw_git_config_aliases_help_line "     log |" "l" ............... "Show the last 10 commit logs (graphical representation)"
     gbw_git_config_aliases_help_line "          " "ll" .............. "Show all commit logs (graphical representation)"
     gbw_git_config_aliases_help_line "          " "lcount" .......... "Number of commits per author"
