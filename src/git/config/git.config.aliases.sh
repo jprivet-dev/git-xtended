@@ -112,5 +112,5 @@ function gbw_git_config_aliases_help {
 }
 
 function gbw_git_config_aliases_help_line {
-    echo -e "${GBW_PARAMS_TAB}$1 git ${C_LIGHT_CYAN}$2${F_RESET} $3 $4"
+    echo -e "${GBW_PARAMS_TAB}$1 git ${C_LIGHT_CYAN}$2${F_RESET} ${C_DARK_GRAY}$3${F_RESET} $4"
 }
