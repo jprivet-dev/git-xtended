@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-gbw_test_count_tests=0
-gbw_test_count_assertions=0
-gbw_test_count_failures=0
-
 function gbw_test_count_tests_increment {
     ((gbw_test_count_tests++))
 }
