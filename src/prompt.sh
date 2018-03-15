@@ -11,7 +11,11 @@ function gbw_prompt_time_colors {
 
 # @test
 function gbw_prompt_user {
-    echo "$C_LIGHT_GREEN$GBW_PARAMS_USER_PS1$F_RESET"
+    echo $(gbw_prompt_user_colors "$GBW_PARAMS_USER_PS1")
+}
+
+function gbw_prompt_user_colors {
+    echo "$C_LIGHT_GREEN$1$F_RESET"
 }
 
 # @test
