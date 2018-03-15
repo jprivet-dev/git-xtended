@@ -22,6 +22,6 @@ function gbw_prompt_help {
 }
 
 function gbw_prompt_help_line {
-    echo -e "${GBW_PARAMS_TAB}$1 $2 $3"
+    echo -e "${GBW_PARAMS_TAB}$1 ${C_DARK_GRAY}$2${F_RESET} $3"
 }
 
