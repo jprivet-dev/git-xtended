@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function gbw_command_help {
-    echo "$GBW_PARAMS_LABEL_GBW_COMMANDS :"
+    echo -e "${C_WHITE}${GBW_PARAMS_LABEL_GBW_COMMANDS}${F_RESET} :"
     gbw_command_help_command_line "help" ............ "Display help information about $GBW_PARAMS_TITLE_SHORT"
     gbw_command_help_command_line "install" ......... "Select and install $GBW_PARAMS_TITLE_SHORT elements"
     gbw_command_help_command_line "reload" .......... "Reload $GBW_PARAMS_TITLE_SHORT"
