@@ -107,6 +107,11 @@ function gbw_prompt_status_not_staged_colors {
 # @test
 function gbw_prompt_status_untracked {
     local count="$(gbw_git_get_status_untracked_files_count)"
+    echo $(gbw_prompt_status_untracked_colors "$count")
+}
+
+function gbw_prompt_status_untracked_colors {
+    local count=$1
     local format="$C_DARK_GRAY"
 
     [[ "$count" > 0 ]] \
