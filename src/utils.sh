@@ -96,7 +96,7 @@ function gbw_echo_fixed_width {
 }
 
 # TODO : create test
-function gbw_generate {
+function gbw_line_generator {
     local length=$1
     local symbol=$2
     printf -v generator '%*s' "$length"
