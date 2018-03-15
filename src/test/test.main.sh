@@ -17,6 +17,8 @@ function gbw_test_count_failures_increment {
 }
 
 function gbw_test_print_results {
+    local message
+    local count
     local prefix
 
     local color_ok="$C_LIGHT_GREEN"
@@ -26,12 +28,13 @@ function gbw_test_print_results {
     local test_plurial
     local assertion_plurial
     local failure_plurial
+    local symbol="-"
 
     if [[ $gbw_test_count_failures > 0 ]]; then
-        prefix="FAILURES !"
+        prefix="FAILURES!"
         color="$color_nok"
     else
-        prefix="OK"
+        prefix="OK:"
         color="$color_ok"
     fi
 
@@ -39,8 +42,17 @@ function gbw_test_print_results {
     [[ $gbw_test_count_assertions > 1 ]]    && assertion_plurial="assertions"   || assertion_plurial="assertion"
     [[ $gbw_test_count_failures > 1 ]]      && failure_plurial="failures"       || failure_plurial="failure"
 
+    message="$prefix $gbw_test_count_tests $test_plurial, $gbw_test_count_assertions $assertion_plurial, $gbw_test_count_failures $failure_plurial"
+    length=${#message}
+
+    printf -v generator '%*s' "$length"
+    line=${generator// /$symbol}
+
     echo
-    echo -e "$color$prefix ($gbw_test_count_tests $test_plurial, $gbw_test_count_assertions $assertion_plurial, $gbw_test_count_failures $failure_plurial)$F_RESET"
+    echo
+    echo -e "${color}+$symbol$line$symbol+"
+    echo -e "| $message |"
+    echo -e "+$symbol$line$symbol+${F_RESET}"
 }
 
 function gbw_test_find_all_func_test {
@@ -93,7 +105,8 @@ function gbw_test_run_only {
 function gbw_test_run_func {
     local func=$1
 
-    echo "+-- $func"
+    echo
+    echo -n "- $func "
     $func
     gbw_test_count_tests_increment
 }
