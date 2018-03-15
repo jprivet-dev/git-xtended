@@ -20,7 +20,11 @@ function gbw_prompt_user_colors {
 
 # @test
 function gbw_prompt_host {
-    echo "$C_LIGHT_GREEN\h$F_RESET"
+    echo $(gbw_prompt_host_colors "\h")
+}
+
+function gbw_prompt_host_colors {
+    echo "$C_LIGHT_GREEN$1$F_RESET"
 }
 
 # @test
