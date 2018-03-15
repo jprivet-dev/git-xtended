@@ -58,7 +58,12 @@ function gbw_prompt_branch_colors {
 
 # @test
 function gbw_prompt_changes_count {
-    echo "$C_LIGHT_MAGENTA$(gbw_git_get_changes_nb)≡$F_RESET"
+    echo $(gbw_prompt_changes_count_colors "$(gbw_git_get_changes_nb)")
+}
+
+function gbw_prompt_changes_count_colors {
+    local count=$1
+    echo "$C_LIGHT_MAGENTA$count≡$F_RESET"
 }
 
 # @test
