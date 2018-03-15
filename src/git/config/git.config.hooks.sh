@@ -23,7 +23,7 @@ function gbw_git_config_hooks_off {
 }
 
 function gbw_git_config_hooks_help {
-    echo "$GBW_PARAMS_LABEL_GIT_HOOKS :"
+    echo -e "${C_WHITE}${GBW_PARAMS_LABEL_GIT_HOOKS}${F_RESET} :"
     echo "${GBW_PARAMS_TAB}XX ... WIP"
     echo
 }
