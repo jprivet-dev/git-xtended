@@ -11,22 +11,17 @@ function gbw_prompt_help {
     local ahead=$(gbw_prompt_ahead_colors "42")
 
     echo "$GBW_PARAMS_LABEL_PROMPT :"
-    gbw_prompt_help_line_dots "$branch"      "Current branch"
-    gbw_prompt_help_line_dots "$count"       "All elements from git status"
-    gbw_prompt_help_line_dots "$status_u"    "Untracked files"
-    gbw_prompt_help_line_dots "$status_s"    "Changes not staged for commit"
-    gbw_prompt_help_line_dots "$status_c"    "Changes to be committed"
-    gbw_prompt_help_line_dots "$behind"      "Commits behind remote branch reference"
-    gbw_prompt_help_line_dots "$ahead"       "Commits ahead remote branch reference"
+    gbw_prompt_help_line "$branch"      .....           "Current branch"
+    gbw_prompt_help_line "$count"       ...........     "All elements from git status"
+    gbw_prompt_help_line "$status_u"    ...........     "Untracked files"
+    gbw_prompt_help_line "$status_s"    ...........     "Changes not staged for commit"
+    gbw_prompt_help_line "$status_c"    ...             "Changes to be committed"
+    gbw_prompt_help_line "$behind"      ...........     "Commits behind remote branch reference"
+    gbw_prompt_help_line "$ahead"       ..........      "Commits ahead remote branch reference"
     echo
 }
 
-# TODO: create test
-function gbw_prompt_help_line_dots {
-    local width=12
-    local ellipsis="..."
-    local text_dots=$(gbw_echo_fixed_width -e $width "." "$1 " "")
-
-    echo -e "${GBW_PARAMS_TAB}$text_dots$ellipsis $2"
+function gbw_prompt_help_line {
+    echo -e "${GBW_PARAMS_TAB}$1 $2 $3"
 }
 
