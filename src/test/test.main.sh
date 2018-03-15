@@ -99,7 +99,7 @@ function gbw_test_run_only {
 function gbw_test_run_func {
     local func=$1
 
-    echo -n "- $func "
+    echo -e -n "${C_LIGHT_YELLOW}#${F_RESET} $func "
     $func
     gbw_test_count_tests_increment
 
