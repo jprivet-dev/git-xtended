@@ -164,7 +164,7 @@ function gbw_prompt_ahead_colors {
 # @test
 function gbw_prompt_help {
     local branch=$(gbw_prompt_branch_colors "branch")
-    local count=$(gbw_prompt_changes_count_colors "9")
+    local count=$(gbw_prompt_changes_count_colors "8")
     local status_u=$(gbw_prompt_status_untracked_colors "2")
     local status_s=$(gbw_prompt_status_not_staged_colors "3")
     local status_c=$(gbw_prompt_status_to_be_commited_colors "2" "0" "1")
@@ -177,8 +177,8 @@ function gbw_prompt_help {
     gbw_prompt_help_line_dots "$status_u"    "Untracked files"
     gbw_prompt_help_line_dots "$status_s"    "Changes not staged for commit"
     gbw_prompt_help_line_dots "$status_c"    "Changes to be committed"
-    gbw_prompt_help_line_dots "$behind"      "Commits behind $(gbw_git_get_remote_branch_ref)"
-    gbw_prompt_help_line_dots "$ahead"       "Commits ahead $(gbw_git_get_remote_branch_ref)"
+    gbw_prompt_help_line_dots "$behind"      "Commits behind remote branch reference"
+    gbw_prompt_help_line_dots "$ahead"       "Commits ahead remote branch reference"
     echo
 }
 
