@@ -81,9 +81,7 @@ function gbw_echo_fixed_width {
         end_no_style="$end"
     fi
 
-    printf -v generator '%*s' "$width"
-    middle=${generator// /$middle_char}
-
+    middle=$(gbw_line_generator "$width" "$middle_char")
     count=${#start_no_style}+${#end_no_style}+${#middle_prefix}+${#middle_suffix}
     trucate="$middle_prefix${middle:$count}$middle_suffix"
 
