@@ -68,11 +68,19 @@ function gbw_prompt_changes_count_colors {
 
 # @test
 function gbw_prompt_status_to_be_commited {
-    local format_c="$C_LIGHT_GREEN"
-
     local m="$(gbw_git_get_status_changes_to_be_committed_modified_extended_count)"
     local n="$(gbw_git_get_status_changes_to_be_committed_new_file_count)"
     local d="$(gbw_git_get_status_changes_to_be_committed_deleted_count)"
+
+    echo $(gbw_prompt_status_to_be_commited_colors "$m" "$n" "$d")
+}
+
+function gbw_prompt_status_to_be_commited_colors {
+    local format_c="$C_LIGHT_GREEN"
+
+    local m=$1
+    local n=$2
+    local d=$3
 
     [[ "$m$n$d" == "000" ]] \
         && format_c="$C_DARK_GRAY"
