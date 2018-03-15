@@ -60,12 +60,18 @@ function gbw_test_run_all {
 
     for func in "${func_test_list[@]}"
     do
-        echo "-- $func"
-        $func
-        gbw_test_count_tests_increment
+        gbw_test_run_func $func
     done
 
     gbw_test_print_results
+}
+
+function gbw_test_run_func {
+    local  func=$1
+
+    echo "-- $func"
+    $func
+    gbw_test_count_tests_increment
 }
 
 function gbw_test_check_func_with_test {
