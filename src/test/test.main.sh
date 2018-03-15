@@ -99,10 +99,12 @@ function gbw_test_run_only {
 function gbw_test_run_func {
     local func=$1
 
-    echo
     echo -n "- $func "
     $func
     gbw_test_count_tests_increment
+
+    echo
+
     gbw_test_assert_pipeline_failures_print_all
 }
 
