@@ -59,11 +59,13 @@ function gbw_test_run {
     echo
 
     if [ "$func" == "" ]; then
+        gbw_test_check_func_with_test
+        echo
         gbw_test_run_all
         return
     fi
 
-    gbw_test_run_only $fun
+    gbw_test_run_only $func
 }
 
 function gbw_test_run_all {
@@ -80,8 +82,12 @@ function gbw_test_run_all {
 function gbw_test_run_only {
     local func=$1
 
-    gbw_test_run_func $func
-    gbw_test_print_results
+    if type $func &>/dev/null; then
+        gbw_test_run_func $func
+        gbw_test_print_results
+    else
+        echo -e "$C_LIGHT_RED[ERROR] Test function '$func' does not exist$F_RESET"
+    fi
 }
 
 function gbw_test_run_func {
