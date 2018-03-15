@@ -11,7 +11,7 @@ function gbw_git_config_workflow_off {
 }
 
 function gbw_git_config_workflow_help {
-    echo "$GBW_PARAMS_LABEL_WORKFLOW :"
+    echo -e "${C_WHITE}${GBW_PARAMS_LABEL_WORKFLOW}${F_RESET} :"
     echo "${GBW_PARAMS_TAB}XX ... WIP"
     echo
 }
