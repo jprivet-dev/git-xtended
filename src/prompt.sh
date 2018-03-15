@@ -2,7 +2,11 @@
 
 # @test
 function gbw_prompt_time {
-    echo "$C_LIGHT_RED\t$F_RESET"
+    echo $(gbw_prompt_time_colors "\t")
+}
+
+function gbw_prompt_time_colors {
+    echo "$C_LIGHT_RED$1$F_RESET"
 }
 
 # @test
