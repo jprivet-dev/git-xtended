@@ -103,8 +103,10 @@ function gbw_test_check_func_with_test {
     do
         func_test_version="test_$func"
 
-        type $func_test_version &>/dev/null \
-            && echo -e "$C_LIGHT_GREEN[x]  $func$F_RESET" \
-            || echo -e "$C_LIGHT_BLUE[ ]  $func$F_RESET"
+        if type $func_test_version &>/dev/null; then
+            echo -e "$C_LIGHT_GREEN[x]  $func$F_RESET"
+        else
+            echo -e "$C_LIGHT_BLUE[ ]  $func$F_RESET"
+        fi
     done
 }
