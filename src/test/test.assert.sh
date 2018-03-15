@@ -20,7 +20,7 @@ function gbw_test_assert_nok {
     local line=$2
 
     gbw_test_assert_pipeline_failures+=("${C_LIGHT_RED}| $line: FAILURE${F_RESET}")
-    gbw_test_assert_pipeline_failures+=("| $message")
+    gbw_test_assert_pipeline_failures+=("  $message")
 
     echo -e -n "${C_BG_RED}${C_WHITE}!${F_RESET}"
 
@@ -33,9 +33,9 @@ function gbw_test_assert_equals {
     local line=$3
 
     if [[ "$current" == "$expected" ]]; then
-        gbw_test_assert_ok "Strings are equal '$current' '$expected'" $line
+        gbw_test_assert_nok "Strings are equals\n  Current : '$current'\n  Expected: '$expected'" $line
     else
-        gbw_test_assert_nok "Strings are not equals\n| Current : '$current'\n| Expected: '$expected'" $line
+        gbw_test_assert_nok "Strings are not equals\n  Current : '$current'\n  Expected: '$expected'" $line
     fi
 }
 
@@ -65,8 +65,6 @@ function gbw_test_assert_pipeline_failures_print_all {
     if [ ${#gbw_test_assert_pipeline_failures[@]} -eq 0 ]; then
         return
     fi
-
-    echo
 
     for line in "${gbw_test_assert_pipeline_failures[@]}"; do
       echo -e "$line"
