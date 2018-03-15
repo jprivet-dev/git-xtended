@@ -51,12 +51,23 @@ function gbw_test_find_all_func_gbw {
     compgen -A function | grep ^gbw_
 }
 
-function gbw_test_run_all {
-    local func_test_list=($(gbw_test_find_all_func_test))
+function gbw_test_run {
+    local func=$1
 
     echo
     echo -e "${C_LIGHT_YELLOW}# Testing launch${F_RESET}";
     echo
+
+    if [ "$func" == "" ]; then
+        gbw_test_run_all
+        return
+    fi
+
+    gbw_test_run_only $fun
+}
+
+function gbw_test_run_all {
+    local func_test_list=($(gbw_test_find_all_func_test))
 
     for func in "${func_test_list[@]}"
     do
@@ -66,8 +77,15 @@ function gbw_test_run_all {
     gbw_test_print_results
 }
 
+function gbw_test_run_only {
+    local func=$1
+
+    gbw_test_run_func $func
+    gbw_test_print_results
+}
+
 function gbw_test_run_func {
-    local  func=$1
+    local func=$1
 
     echo "-- $func"
     $func
