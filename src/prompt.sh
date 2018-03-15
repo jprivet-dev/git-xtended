@@ -6,7 +6,8 @@ function gbw_prompt_time {
 }
 
 function gbw_prompt_time_colors {
-    echo "$C_LIGHT_RED$1$F_RESET"
+    local time=$1
+    echo "$C_LIGHT_RED$time$F_RESET"
 }
 
 # @test
@@ -15,7 +16,8 @@ function gbw_prompt_user {
 }
 
 function gbw_prompt_user_colors {
-    echo "$C_LIGHT_GREEN$1$F_RESET"
+    local user=$1
+    echo "$C_LIGHT_GREEN$user$F_RESET"
 }
 
 # @test
@@ -24,7 +26,8 @@ function gbw_prompt_host {
 }
 
 function gbw_prompt_host_colors {
-    echo "$C_LIGHT_GREEN$1$F_RESET"
+    local host=$1
+    echo "$C_LIGHT_GREEN$host$F_RESET"
 }
 
 # @test
@@ -33,7 +36,9 @@ function gbw_prompt_userhost {
 }
 
 function gbw_prompt_userhost_colors {
-    echo "$1$C_LIGHT_GREEN@$F_RESET$2"
+    local user=$1
+    local host=$2
+    echo "$user$C_LIGHT_GREEN@$F_RESET$host"
 }
 
 # @test
