@@ -5,7 +5,8 @@ function gbw_test_assert_ok {
     local line=$2
     local color="$C_LIGHT_GREEN"
 
-    echo -e "$color| $line: OK$F_RESET "
+#    echo -e "$color| $line: OK$F_RESET "
+    echo -e -n "${C_LIGHT_GREEN}+${F_RESET}"
 
     if [[ "$GBW_PARAMS_TEST_ASSERT_OK_SHOW_MESSAGE" == 0 ]]; then
         return
@@ -19,8 +20,9 @@ function gbw_test_assert_nok {
     local line=$2
     local color="$C_LIGHT_RED"
 
-    echo -e " $color| $line: FAILURE$F_RESET"
-    echo -e " $color|$F_RESET $message"
+#    echo -e "$color| $line: FAILURE$F_RESET"
+#    echo -e "$color|$F_RESET $message"
+    echo -e -n "${C_BG_RED}${C_WHITE}!${F_RESET}"
 
     gbw_test_count_failures_increment
 }
