@@ -103,6 +103,7 @@ function gbw_test_run_func {
     echo -n "- $func "
     $func
     gbw_test_count_tests_increment
+    gbw_test_assert_pipeline_failures_print_all
 }
 
 function gbw_test_check_func_with_test {
