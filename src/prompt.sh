@@ -91,6 +91,11 @@ function gbw_prompt_status_to_be_commited_colors {
 # @test
 function gbw_prompt_status_not_staged {
     local count="$(gbw_git_get_status_changes_not_staged_for_commit_count)"
+    echo $(gbw_prompt_status_not_staged_colors "$count")
+}
+
+function gbw_prompt_status_not_staged_colors {
+    local count=$1
     local format="$C_DARK_GRAY"
 
     [[ "$count" > 0 ]] \
