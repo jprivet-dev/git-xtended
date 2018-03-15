@@ -146,6 +146,11 @@ function gbw_prompt_behind_colors {
 # @test
 function gbw_prompt_ahead {
     local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $(gbw_git_get_remote_branch_ref))"
+    echo $(gbw_prompt_ahead_colors "$count")
+}
+
+function gbw_prompt_ahead_colors {
+    local count=$1
     local format="$C_LIGHT_GRAY"
 
     if [[ -z "$count" ]]; then
