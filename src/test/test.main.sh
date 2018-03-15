@@ -44,9 +44,7 @@ function gbw_test_print_results {
 
     message="$prefix $gbw_test_count_tests $test_plurial, $gbw_test_count_assertions $assertion_plurial, $gbw_test_count_failures $failure_plurial"
     length=${#message}
-
-    printf -v generator '%*s' "$length"
-    line=${generator// /$symbol}
+    line=$(gbw_generate "$length" "$symbol")
 
     echo
     echo
