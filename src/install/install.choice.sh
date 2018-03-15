@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE=""
-
 function gbw_install_choice_y_n {
     local choice
     local label=$1
