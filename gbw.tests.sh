@@ -22,7 +22,8 @@ source ~/git-bash-workflow/tests/git.tests.sh
 source ~/git-bash-workflow/tests/utils.tests.sh
 
 gbw_test_check_func_with_test
-gbw_test_run_all
+echo "[$1]"
+gbw_test_run
 
 unalias git
 unset GBW_ENV_TEST
