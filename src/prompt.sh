@@ -48,7 +48,12 @@ function gbw_prompt_dir {
 
 # @test
 function gbw_prompt_branch {
-    echo "$C_LIGHT_YELLOW($(gbw_git_get_current_branch))$F_RESET"
+    echo $(gbw_prompt_branch_colors "$(gbw_git_get_current_branch)")
+}
+
+function gbw_prompt_branch_colors {
+    local branch=$1
+    echo "$C_LIGHT_YELLOW($branch)$F_RESET"
 }
 
 # @test
