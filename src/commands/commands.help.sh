@@ -11,5 +11,5 @@ function gbw_command_help {
 }
 
 function gbw_command_help_command_line {
-    echo -e "${GBW_PARAMS_TAB}gbw ${C_LIGHT_YELLOW}$1${F_RESET} $2 $3"
+    echo -e "${GBW_PARAMS_TAB}gbw ${C_LIGHT_YELLOW}$1${F_RESET} ${C_DARK_GRAY}$2${F_RESET} $3"
 }
