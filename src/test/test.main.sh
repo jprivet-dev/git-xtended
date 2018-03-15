@@ -93,7 +93,7 @@ function gbw_test_run_only {
 function gbw_test_run_func {
     local func=$1
 
-    echo "-- $func"
+    echo "+-- $func"
     $func
     gbw_test_count_tests_increment
 }
