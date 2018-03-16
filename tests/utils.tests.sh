@@ -116,3 +116,16 @@ function test_gbw_regex_remove_colors {
 
     assert equals "$(gbw_regex_remove_colors "\e[1234m")"       "\e[1234m" $LINENO
 }
+
+function test_gbw_line_generator {
+    assert equals "$(gbw_line_generator 0 ".")"     "" $LINENO
+
+    assert equals "$(gbw_line_generator 5 ".")"     "....." $LINENO
+    assert equals "$(gbw_line_generator 10 ".")"    ".........." $LINENO
+
+    assert equals "$(gbw_line_generator 5 "a")"     "aaaaa" $LINENO
+    assert equals "$(gbw_line_generator 10 "a")"    "aaaaaaaaaa" $LINENO
+
+    assert equals "$(gbw_line_generator 5 "-0-")"   "-0--0--0--0--0-" $LINENO
+    assert equals "$(gbw_line_generator 5 "| ")"    "| | | | | " $LINENO
+}
