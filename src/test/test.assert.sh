@@ -5,13 +5,13 @@ function gbw_test_assert_ok {
     local message=$2
     local current=$3
     local expected=$4
-
+    local tab="  ${C_LIGHT_GREEN}|${F_RESET} "
 
     if [[ "$GBW_PARAMS_TEST_ASSERT_OK_SHOW_MESSAGE" == 1 ]]; then
         gbw_test_pipeline_message_add_title_ok "$line"
-        gbw_test_pipeline_message_add "  $message"
-        gbw_test_pipeline_message_add "  Current : '$current'"
-        gbw_test_pipeline_message_add "  Expected: '$expected'"
+        gbw_test_pipeline_message_add "${tab}$message"
+        gbw_test_pipeline_message_add "${tab}Current : '$current'"
+        gbw_test_pipeline_message_add "${tab}Expected: '$expected'"
     fi
 
     echo -e -n "${C_LIGHT_GREEN}+${F_RESET}"
@@ -22,11 +22,12 @@ function gbw_test_assert_nok {
     local message=$2
     local current=$3
     local expected=$4
+    local tab="  ${C_LIGHT_RED}|${F_RESET} "
 
     gbw_test_pipeline_message_add_title_failure "$line"
-    gbw_test_pipeline_message_add "  $message"
-    gbw_test_pipeline_message_add "  Current : '$current'"
-    gbw_test_pipeline_message_add "  Expected: '$expected'"
+    gbw_test_pipeline_message_add "${tab}$message"
+    gbw_test_pipeline_message_add "${tab}Current : '$current'"
+    gbw_test_pipeline_message_add "${tab}Expected: '$expected'"
 
     gbw_test_count_failures_increment
 
@@ -81,12 +82,12 @@ function gbw_test_assert_pipeline_message_print_all {
 
 function gbw_test_pipeline_message_add_title_ok {
     local line=$1
-    gbw_test_assert_pipeline_message+=("${C_LIGHT_GREEN}| $line: OK${F_RESET}")
+    gbw_test_assert_pipeline_message+=("  ${C_LIGHT_GREEN}| $line: OK${F_RESET}")
 }
 
 function gbw_test_pipeline_message_add_title_failure {
     local line=$1
-    gbw_test_assert_pipeline_message+=("${C_LIGHT_RED}| $line: FAILURE${F_RESET}")
+    gbw_test_assert_pipeline_message+=("  ${C_LIGHT_RED}| $line: FAILURE${F_RESET}")
 }
 
 function gbw_test_pipeline_message_add {
