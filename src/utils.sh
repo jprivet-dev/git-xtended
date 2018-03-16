@@ -90,7 +90,6 @@ function gbw_echo_fixed_width {
     echo "$start$trucate$end"
 }
 
-# TODO : create test
 function gbw_line_generator {
     local length=$1
     local symbol=$2
