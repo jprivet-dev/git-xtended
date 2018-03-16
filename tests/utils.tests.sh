@@ -84,3 +84,14 @@ function test_gbw_trim {
     assert equals "$(gbw_trim " abc 123")"      "abc 123" $LINENO
     assert equals "$(gbw_trim " abc 123 ")"     "abc 123" $LINENO
 }
+
+function test_gbw_regex_remove_colors {
+    local _F_BOLD="\e[1m"
+    local _F_RESET="\e[0m"
+    local _C_RED="\e[31m"
+    local _C_WHITE="\e[97m"
+    local _C_BG_CYAN="\e[46m"
+    local _C_BG_LIGHT_MAGENTA="\e[100m"
+
+    assert equals "$(gbw_regex_remove_colors "color")"   "color" $LINENO
+}
