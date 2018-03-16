@@ -43,7 +43,6 @@ function gbw_test_print_results {
     line=$(gbw_line_generator "$length" "$symbol")
 
     echo
-    echo
     echo -e "${color}+$symbol$line$symbol+"
     echo -e "| $message |"
     echo -e "+$symbol$line$symbol+${F_RESET}"
