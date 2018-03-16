@@ -72,3 +72,15 @@ function test_gbw_echo_fixed_width {
     assert equals "$(gbw_echo_fixed_width 12 . "" "" " " " ")"                      " .......... " $LINENO
     assert equals "$(gbw_echo_fixed_width 12 . "abcdefgh" "89654321" " " " ")"      "abcdefgh  89654321" $LINENO
 }
+
+function test_gbw_trim {
+    assert equals "$(gbw_trim "abc")"   "abc" $LINENO
+    assert equals "$(gbw_trim "abc ")"  "abc" $LINENO
+    assert equals "$(gbw_trim " abc")"  "abc" $LINENO
+    assert equals "$(gbw_trim " abc ")" "abc" $LINENO
+
+    assert equals "$(gbw_trim "abc 123")"       "abc 123" $LINENO
+    assert equals "$(gbw_trim "abc 123 ")"      "abc 123" $LINENO
+    assert equals "$(gbw_trim " abc 123")"      "abc 123" $LINENO
+    assert equals "$(gbw_trim " abc 123 ")"     "abc 123" $LINENO
+}
