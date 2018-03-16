@@ -94,4 +94,25 @@ function test_gbw_regex_remove_colors {
     local _C_BG_LIGHT_MAGENTA="\e[100m"
 
     assert equals "$(gbw_regex_remove_colors "color")"   "color" $LINENO
+
+    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color")"                "color" $LINENO
+    assert equals "$(gbw_regex_remove_colors "color${_F_RESET}")"               "color" $LINENO
+    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color${_F_RESET}")"     "color" $LINENO
+
+    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color outrenoir")"                  "color outrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "color outrenoir${_F_RESET}")"                 "color outrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color outrenoir${_F_RESET}")"       "color outrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color${_F_RESET} outrenoir")"       "color outrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "color ${_F_BOLD}outrenoir${_F_RESET}")"       "color outrenoir" $LINENO
+
+    assert equals "$(gbw_regex_remove_colors "color${_C_RED}outrenoir")"                    "coloroutrenoir" $LINENO
+
+    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}${_F_RESET}${_C_RED}${_C_WHITE}${_C_BG_CYAN}${_C_BG_LIGHT_MAGENTA}")" "" $LINENO
+
+    assert equals "$(gbw_regex_remove_colors "\e${_C_RED}\e")"  "\e\e" $LINENO
+    assert equals "$(gbw_regex_remove_colors "m${_C_RED}m")"    "mm" $LINENO
+    assert equals "$(gbw_regex_remove_colors "\e${_C_RED}m")"   "\em" $LINENO
+    assert equals "$(gbw_regex_remove_colors "\e[${_C_RED}")"   "\e[" $LINENO
+
+    assert equals "$(gbw_regex_remove_colors "\e[1234m")"       "\e[1234m" $LINENO
 }
