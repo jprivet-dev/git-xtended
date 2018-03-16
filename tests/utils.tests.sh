@@ -51,6 +51,7 @@ function test_gbw_echo_fixed_width {
     assert equals "$(gbw_echo_fixed_width 8 . "abcd" "4321")"               "abcd4321" $LINENO
     assert equals "$(gbw_echo_fixed_width 9 . "abcd" "4321")"               "abcd.4321" $LINENO
     assert equals "$(gbw_echo_fixed_width 16 . "abcd" "4321")"              "abcd........4321" $LINENO
+    assert equals "$(gbw_echo_fixed_width 16 . "4321" "abcd")"              "4321........abcd" $LINENO
 
     assert equals "$(gbw_echo_fixed_width 20 . "ab cd" "43 21")"                    "ab cd..........43 21" $LINENO
     assert equals "$(gbw_echo_fixed_width 20 . "ab cd ef" "21")"                    "ab cd ef..........21" $LINENO
@@ -65,10 +66,10 @@ function test_gbw_echo_fixed_width {
     assert equals "$(gbw_echo_fixed_width 12 . "abcd" "4321" " " " ")"              "abcd .. 4321" $LINENO
     assert equals "$(gbw_echo_fixed_width 12 . "abcdef" "21" " " " ")"              "abcdef .. 21" $LINENO
     assert equals "$(gbw_echo_fixed_width 12 . "ab" "654321" " " " ")"              "ab .. 654321" $LINENO
-    assert equals "$(gbw_echo_fixed_width 12 . "abcdef" "654321" " " " ")"          "abcdef654321" $LINENO
+    assert equals "$(gbw_echo_fixed_width 12 . "abcdef" "654321" " " " ")"          "abcdef  654321" $LINENO
     assert equals "$(gbw_echo_fixed_width 12 . "a" "1" " " " ")"                    "a ........ 1" $LINENO
-    assert equals "$(gbw_echo_fixed_width 12 . "a" "" " " " ")"                     "a .........." $LINENO
-    assert equals "$(gbw_echo_fixed_width 12 . "" "1" " " " ")"                     ".......... 1" $LINENO
-    assert equals "$(gbw_echo_fixed_width 12 . "" "" " " " ")"                      "............" $LINENO
-    assert equals "$(gbw_echo_fixed_width 12 . "abcdefgh" "89654321" " " " ")"      "abcdefgh89654321" $LINENO
+    assert equals "$(gbw_echo_fixed_width 12 . "a" "" " " " ")"                     "a ......... " $LINENO
+    assert equals "$(gbw_echo_fixed_width 12 . "" "1" " " " ")"                     " ......... 1" $LINENO
+    assert equals "$(gbw_echo_fixed_width 12 . "" "" " " " ")"                      " .......... " $LINENO
+    assert equals "$(gbw_echo_fixed_width 12 . "abcdefgh" "89654321" " " " ")"      "abcdefgh  89654321" $LINENO
 }
