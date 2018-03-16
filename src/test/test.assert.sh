@@ -21,10 +21,10 @@ function gbw_test_assert_nok {
     local current=$3
     local expected=$4
 
-    gbw_test_pipeline_failures_add_title "$line"
-    gbw_test_pipeline_failures_add "  $message"
-    gbw_test_pipeline_failures_add "  Current : '$current'"
-    gbw_test_pipeline_failures_add "  Expected: '$expected'"
+    gbw_test_pipeline_message_add_title_failure "$line"
+    gbw_test_pipeline_message_add "  $message"
+    gbw_test_pipeline_message_add "  Current : '$current'"
+    gbw_test_pipeline_message_add "  Expected: '$expected'"
 
     echo -e -n "${C_BG_RED}${C_WHITE}!${F_RESET}"
 
@@ -65,22 +65,27 @@ function assert {
     gbw_test_assert "$@"
 }
 
-function gbw_test_assert_pipeline_failures_print_all {
-    if [ ${#gbw_test_assert_pipeline_failures[@]} -eq 0 ]; then
+function gbw_test_assert_pipeline_message_print_all {
+    if [ ${#gbw_test_assert_pipeline_message[@]} -eq 0 ]; then
         return
     fi
 
-    for line in "${gbw_test_assert_pipeline_failures[@]}"; do
+    for line in "${gbw_test_assert_pipeline_message[@]}"; do
       echo -e "$line"
     done
-    gbw_test_assert_pipeline_failures=()
+    
+    gbw_test_pipeline_message_clear
 }
 
-function gbw_test_pipeline_failures_add_title {
+function gbw_test_pipeline_message_add_title_failure {
     local line=$1
-    gbw_test_assert_pipeline_failures+=("${C_LIGHT_RED}| $line: FAILURE${F_RESET}")
+    gbw_test_assert_pipeline_message+=("${C_LIGHT_RED}| $line: FAILURE${F_RESET}")
 }
 
-function gbw_test_pipeline_failures_add {
-    gbw_test_assert_pipeline_failures+=("$1")
+function gbw_test_pipeline_message_add {
+    gbw_test_assert_pipeline_message+=("$1")
+}
+
+function gbw_test_pipeline_message_clear {
+    gbw_test_assert_pipeline_message=()
 }
