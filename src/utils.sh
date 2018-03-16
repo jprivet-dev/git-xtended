@@ -47,7 +47,6 @@ function gbw_trim {
     echo "$string" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
 
-# TODO : create test
 function gbw_regex_remove_colors {
     echo "$1" | sed -E 's/\\e\[[0-9]{1,3}m//g'
 }
