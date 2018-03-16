@@ -42,7 +42,6 @@ function gbw_remove_r {
 }
 
 
-# TODO : create test
 function gbw_trim {
     local string=$1
     echo "$string" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
