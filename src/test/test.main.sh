@@ -53,7 +53,7 @@ function gbw_test_find_all_func_test {
 }
 
 function gbw_test_find_all_func_gbw {
-    compgen -A function | grep ^gbw_
+    compgen -A function | grep ^gbw_ | grep -v ^gbw_test_
 }
 
 function gbw_test_run {
