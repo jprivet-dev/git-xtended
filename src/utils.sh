@@ -49,7 +49,7 @@ function gbw_trim {
 
 # TODO : create test
 function gbw_regex_remove_colors {
-    echo "$1" | sed -E 's/\\e\[[0-9]{1,2}m//g'
+    echo "$1" | sed -E 's/\\e\[[0-9]{1,3}m//g'
 }
 
 # TODO : create test
