@@ -8,7 +8,7 @@ function gbw_test_assert_ok {
     #local tab="  ${C_LIGHT_GREEN}|${F_RESET} "
     local tab="  | "
 
-    if [[ "$GBW_PARAMS_TEST_ASSERT_OK_SHOW_MESSAGE" == 1 ]]; then
+    if [[ "$TEST_GBW_PARAMS_ASSERT_OK_SHOW_MESSAGE" == 1 ]]; then
         gbw_test_pipeline_message_add_title_ok "$line"
         gbw_test_pipeline_message_add "${tab}$message"
         gbw_test_pipeline_message_add "${tab}Current : '$current'"
