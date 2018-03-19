@@ -5,7 +5,8 @@ function gbw_test_assert_ok {
     local message=$2
     local current=$3
     local expected=$4
-    local tab="  ${C_LIGHT_GREEN}|${F_RESET} "
+    #local tab="  ${C_LIGHT_GREEN}|${F_RESET} "
+    local tab="  | "
 
     if [[ "$GBW_PARAMS_TEST_ASSERT_OK_SHOW_MESSAGE" == 1 ]]; then
         gbw_test_pipeline_message_add_title_ok "$line"
@@ -22,7 +23,8 @@ function gbw_test_assert_nok {
     local message=$2
     local current=$3
     local expected=$4
-    local tab="  ${C_LIGHT_RED}|${F_RESET} "
+    #local tab="  ${C_LIGHT_RED}|${F_RESET} "
+    local tab="  | "
 
     gbw_test_pipeline_message_add_title_failure "$line"
     gbw_test_pipeline_message_add "${tab}$message"
@@ -74,7 +76,11 @@ function gbw_test_assert_pipeline_message_print_all {
     fi
 
     for line in "${gbw_test_assert_pipeline_message[@]}"; do
-      echo -e "$line"
+        if [[ "$line" =~ ^-e ]]; then
+            echo -e "${line:2}"
+        else
+            echo "$line"
+        fi
     done
 
     gbw_test_pipeline_message_clear
