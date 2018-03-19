@@ -76,3 +76,7 @@ function test_gbw_prompt_ps1_part1 {
 function test_gbw_prompt_ps1_part2 {
     assert equals "$(gbw_prompt_ps1_part2)" "$GBW_PARAMS_TEST_PROMPT_PS1_PART2" $LINENO
 }
+
+function test_gbw_prompt_ahead_colors {
+    assert equals "$(gbw_prompt_ahead_colors 88)" "$GBW_PARAMS_TEST_PROMPT_AHEAD" $LINENO
+}
