@@ -6,11 +6,11 @@
 
 GBW_ENV_TEST=1
 
-echo -e "$C_LIGHT_YELLOW"
+echo -e "${C_LIGHT_YELLOW}"
 echo -e "#############################"
-echo -e "# $GBW_PARAMS_TITLE TESTING #"
+echo -e "# ${GBW_PARAMS_TITLE} TESTING #"
 echo -e "#############################"
-echo -e "$F_RESET"
+echo -e "${F_RESET}"
 
 alias git="gbw_test_fake_git"
 
@@ -31,7 +31,7 @@ unset GBW_ENV_TEST
 ####################
 
 echo
-echo -e "${C_LIGHT_YELLOW}# Reload original $GBW_PARAMS_TITLE !${F_RESET}";
+echo -e "${C_LIGHT_YELLOW}# Reload original ${GBW_PARAMS_TITLE} !${F_RESET}";
 echo
 
 source ~/git-bash-workflow/gbw.sh
