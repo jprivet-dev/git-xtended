@@ -7,17 +7,17 @@ function gbw_prompt_time {
 
 function gbw_prompt_time_colors {
     local time=$1
-    echo "$C_LIGHT_RED$time$F_RESET"
+    echo "${C_LIGHT_RED}${time}${F_RESET}"
 }
 
 # @test
 function gbw_prompt_user {
-    echo $(gbw_prompt_user_colors "$GBW_PARAMS_USER_PS1")
+    echo $(gbw_prompt_user_colors "${GBW_PARAMS_USER_PS1}")
 }
 
 function gbw_prompt_user_colors {
     local user=$1
-    echo "$C_LIGHT_GREEN$user$F_RESET"
+    echo "${C_LIGHT_GREEN}${user}${F_RESET}"
 }
 
 # @test
@@ -27,7 +27,7 @@ function gbw_prompt_host {
 
 function gbw_prompt_host_colors {
     local host=$1
-    echo "$C_LIGHT_GREEN$host$F_RESET"
+    echo "${C_LIGHT_GREEN}${host}${F_RESET}"
 }
 
 # @test
@@ -38,12 +38,12 @@ function gbw_prompt_userhost {
 function gbw_prompt_userhost_colors {
     local user=$1
     local host=$2
-    echo "$user$C_LIGHT_GREEN@$F_RESET$host"
+    echo "${user}${C_LIGHT_GREEN}@${F_RESET}${host}"
 }
 
 # @test
 function gbw_prompt_dir {
-    echo "$C_CYAN\\w$F_RESET"
+    echo "${C_CYAN}\\w${F_RESET}"
 }
 
 # @test
@@ -53,7 +53,7 @@ function gbw_prompt_branch {
 
 function gbw_prompt_branch_colors {
     local branch=$1
-    echo "$C_LIGHT_YELLOW($branch)$F_RESET"
+    echo "${C_LIGHT_YELLOW}(${branch})${F_RESET}"
 }
 
 # @test
@@ -63,7 +63,7 @@ function gbw_prompt_changes_count {
 
 function gbw_prompt_changes_count_colors {
     local count=$1
-    echo "$C_LIGHT_MAGENTA$count≡$F_RESET"
+    echo "${C_LIGHT_MAGENTA}${count}≡${F_RESET}"
 }
 
 # @test
@@ -72,52 +72,52 @@ function gbw_prompt_status_to_be_commited {
     local n="$(gbw_git_get_status_changes_to_be_committed_new_file_count)"
     local d="$(gbw_git_get_status_changes_to_be_committed_deleted_count)"
 
-    echo $(gbw_prompt_status_to_be_commited_colors "$m" "$n" "$d")
+    echo $(gbw_prompt_status_to_be_commited_colors "${m}" "${n}" "${d}")
 }
 
 function gbw_prompt_status_to_be_commited_colors {
-    local format_c="$C_LIGHT_GREEN"
+    local format_c="${C_LIGHT_GREEN}"
 
     local m=$1
     local n=$2
     local d=$3
 
-    [[ "$m$n$d" == "000" ]] \
-        && format_c="$C_DARK_GRAY"
+    [[ "${m}${n}${d}" == "000" ]] \
+        && format_c="${C_DARK_GRAY}"
 
-    echo "${format_c}c($m +$n -$d)${F_RESET}"
+    echo "${format_c}c(${m} +${n} -${d})${F_RESET}"
 }
 
 # @test
 function gbw_prompt_status_not_staged {
     local count="$(gbw_git_get_status_changes_not_staged_for_commit_count)"
-    echo $(gbw_prompt_status_not_staged_colors "$count")
+    echo $(gbw_prompt_status_not_staged_colors "${count}")
 }
 
 function gbw_prompt_status_not_staged_colors {
     local count=$1
-    local format="$C_DARK_GRAY"
+    local format="${C_DARK_GRAY}"
 
-    [[ "$count" > 0 ]] \
-        && format="$C_LIGHT_RED"
+    [[ "${count}" > 0 ]] \
+        && format="${C_LIGHT_RED}"
 
-    echo "$format${count}!$F_RESET"
+    echo "${format}${count}!${F_RESET}"
 }
 
 # @test
 function gbw_prompt_status_untracked {
     local count="$(gbw_git_get_status_untracked_files_count)"
-    echo $(gbw_prompt_status_untracked_colors "$count")
+    echo $(gbw_prompt_status_untracked_colors "${count}")
 }
 
 function gbw_prompt_status_untracked_colors {
     local count=$1
-    local format="$C_DARK_GRAY"
+    local format="${C_DARK_GRAY}"
 
-    [[ "$count" > 0 ]] \
-        && format="$C_LIGHT_RED"
+    [[ "${count}" > 0 ]] \
+        && format="${C_LIGHT_RED}"
 
-    echo "$format${count}?$F_RESET"
+    echo "${format}${count}?${F_RESET}"
 }
 
 # @test
@@ -128,37 +128,37 @@ function gbw_prompt_status {
 # @test
 function gbw_prompt_behind {
     local count="$(gbw_git_status_behind_count $(gbw_git_get_current_branch) $(gbw_git_get_remote_branch_ref))"
-    echo $(gbw_prompt_behind_colors "$count")
+    echo $(gbw_prompt_behind_colors "${count}")
 }
 
 function gbw_prompt_behind_colors {
     local count=$1
-    local format="$C_LIGHT_GRAY"
+    local format="${C_LIGHT_GRAY}"
 
-    if [[ -z "$count" ]]; then
+    if [[ -z "${count}" ]]; then
         count="x"
-        format="$C_LIGHT_RED"
+        format="${C_LIGHT_RED}"
     fi
 
-    echo "$format$count↓$F_RESET"
+    echo "${format}${count}↓${F_RESET}"
 }
 
 # @test
 function gbw_prompt_ahead {
     local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $(gbw_git_get_remote_branch_ref))"
-    echo $(gbw_prompt_ahead_colors "$count")
+    echo $(gbw_prompt_ahead_colors "${count}")
 }
 
 function gbw_prompt_ahead_colors {
     local count=$1
-    local format="$C_LIGHT_GRAY"
+    local format="${C_LIGHT_GRAY}"
 
-    if [[ -z "$count" ]]; then
+    if [[ -z "${count}" ]]; then
         count="x"
-        format="$C_LIGHT_RED"
+        format="${C_LIGHT_RED}"
     fi
 
-    echo "$format$count↑$F_RESET"
+    echo "${format}${count}↑${F_RESET}"
 }
 
 # @test
@@ -166,21 +166,21 @@ function gbw_prompt_ps1_part1 {
     ps1="$(gbw_prompt_time) $(gbw_prompt_userhost):$(gbw_prompt_dir)"
 
     if [[ -d "$(gbw_git_current_folder_is_repo)" ]]; then
-        ps1="$ps1 $(gbw_prompt_branch)"
+        ps1="${ps1} $(gbw_prompt_branch)"
 
         if [[ "$(gbw_git_get_changes_nb)" != 0 ]]; then
-            ps1="$ps1 $(gbw_prompt_changes_count) $(gbw_prompt_status)"
+            ps1="${ps1} $(gbw_prompt_changes_count) $(gbw_prompt_status)"
         fi
 
-        ps1="$ps1 $(gbw_prompt_behind) $(gbw_prompt_ahead)"
+        ps1="${ps1} $(gbw_prompt_behind) $(gbw_prompt_ahead)"
     fi
 
-    echo "$ps1"
+    echo "${ps1}"
 }
 
 # @test
 function gbw_prompt_ps1_part2 {
-    echo "$F_RESET\n\$ "
+    echo "${F_RESET}\n\$ "
 }
 
 function gbw_prompt_set_ps1 {
@@ -188,7 +188,7 @@ function gbw_prompt_set_ps1 {
 }
 
 function gbw_prompt_set_ps2 {
-    PS2="$C_CYAN>"
+    PS2="${C_CYAN}>"
 }
 
 function gbw_prompt_on {

@@ -11,13 +11,13 @@ function gbw_prompt_help {
     local ahead=$(gbw_prompt_ahead_colors "42")
 
     echo -e "${C_WHITE}${GBW_PARAMS_LABEL_PROMPT}${F_RESET} :"
-    gbw_prompt_help_line "$branch"      .....           "Current branch"
-    gbw_prompt_help_line "$count"       ...........     "All elements from git status"
-    gbw_prompt_help_line "$status_u"    ...........     "Untracked files"
-    gbw_prompt_help_line "$status_s"    ...........     "Changes not staged for commit"
-    gbw_prompt_help_line "$status_c"    ...             "Changes to be committed"
-    gbw_prompt_help_line "$behind"      ...........     "Commits behind remote branch reference"
-    gbw_prompt_help_line "$ahead"       ..........      "Commits ahead remote branch reference"
+    gbw_prompt_help_line "${branch}"      .....           "Current branch"
+    gbw_prompt_help_line "${count}"       ...........     "All elements from git status"
+    gbw_prompt_help_line "${status_u}"    ...........     "Untracked files"
+    gbw_prompt_help_line "${status_s}"    ...........     "Changes not staged for commit"
+    gbw_prompt_help_line "${status_c}"    ...             "Changes to be committed"
+    gbw_prompt_help_line "${behind}"      ...........     "Commits behind remote branch reference"
+    gbw_prompt_help_line "${ahead}"       ..........      "Commits ahead remote branch reference"
     echo
 }
 
