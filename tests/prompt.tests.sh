@@ -50,7 +50,7 @@ function test_gbw_prompt_behind {
     GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GBW_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
     assert equals "$(gbw_prompt_behind)" "${TEST_GBW_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
 
-    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="$restore"
+    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
     assert equals "$(gbw_prompt_behind)" "${TEST_GBW_PARAMS_PROMPT_BEHIND}" $LINENO
 }
 
@@ -60,13 +60,13 @@ function test_gbw_prompt_ahead {
     GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GBW_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
     assert equals "$(gbw_prompt_ahead)" "${TEST_GBW_PARAMS_PROMPT_AHEAD_NOK}" $LINENO
 
-    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="$restore"
+    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
     assert equals "$(gbw_prompt_ahead)" "${TEST_GBW_PARAMS_PROMPT_AHEAD}" $LINENO
 }
 
 function test_gbw_prompt_help {
     local count_lines="$(gbw_prompt_help | wc -l)"
-    assert equals "$count_lines" "9" $LINENO
+    assert equals "${count_lines}" "9" $LINENO
 }
 
 function test_gbw_prompt_ps1_part1 {

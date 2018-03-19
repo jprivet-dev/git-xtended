@@ -31,9 +31,9 @@ function test_gbw_implode {
 
     local email_part_1="address"
     local email_part_2="email.com"
-    assert equals "$(gbw_implode "@" "$email_part_1" "$email_part_2")" "address@email.com" $LINENO
-    assert equals "$(gbw_implode "@" "" "$email_part_2")" "email.com" $LINENO
-    assert equals "$(gbw_implode "@" "$email_part_1" "")" "address" $LINENO
+    assert equals "$(gbw_implode "@" "${email_part_1}" "${email_part_2}")" "address@email.com" $LINENO
+    assert equals "$(gbw_implode "@" "" "${email_part_2}")" "email.com" $LINENO
+    assert equals "$(gbw_implode "@" "${email_part_1}" "")" "address" $LINENO
 }
 
 function test_gbw_echo_fixed_width {
