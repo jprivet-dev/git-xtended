@@ -1,16 +1,9 @@
 #!/usr/bin/env bash
 
-# Change local
-#if [ -z ${LC_ALL+x} ]; then
-#    echo "# LC_ALL is unset > export LC_ALL=C"
-#    export LC_ALL=C
-#else
-#    echo "# LC_ALL is set to '$var'"
-#fi
+source ~/git-bash-workflow/config/params/params.version.sh
+source ~/git-bash-workflow/config/params/params.colors.sh
+source ~/git-bash-workflow/config/params/params.main.sh
 
-GBW_GIT_REMOTE_BRANCH_REF=""
-GBW_TEST_ASSERT_OK_SHOW_MESSAGE=0
+source ~/git-bash-workflow/config/params/params.git.sh
+source ~/git-bash-workflow/config/params/params.install.sh
 
-GBW_PROMPT_INIT_ACTIVE=1
-GBW_GIT_ALIASES_INIT_ACTIVE=1
-GBW_GIT_HOOKS_INIT_ACTIVE=1

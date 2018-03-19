@@ -8,7 +8,7 @@ GBW_ENV_TEST=1
 
 echo -e "$C_LIGHT_YELLOW"
 echo -e "#############################"
-echo -e "# Git Bash Workflow TESTING #"
+echo -e "# $GBW_PARAMS_TITLE TESTING #"
 echo -e "#############################"
 echo -e "$F_RESET"
 
@@ -21,8 +21,7 @@ source ~/git-bash-workflow/tests/prompt.tests.sh
 source ~/git-bash-workflow/tests/git.tests.sh
 source ~/git-bash-workflow/tests/utils.tests.sh
 
-gbw_test_check_func_with_test
-gbw_test_run_all
+gbw_test_run $1
 
 unalias git
 unset GBW_ENV_TEST
@@ -32,7 +31,7 @@ unset GBW_ENV_TEST
 ####################
 
 echo
-echo -e "${C_LIGHT_YELLOW}# Reload original Git Bash Workflow !${F_RESET}";
+echo -e "${C_LIGHT_YELLOW}# Reload original $GBW_PARAMS_TITLE !${F_RESET}";
 echo
 
 source ~/git-bash-workflow/gbw.sh
