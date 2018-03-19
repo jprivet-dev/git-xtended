@@ -88,3 +88,7 @@ function test_gbw_prompt_ahead_colors_nok {
 function test_gbw_prompt_behind_colors {
     assert equals "$(gbw_prompt_behind_colors 0)" "$GBW_PARAMS_TEST_PROMPT_BEHIND" $LINENO
 }
+
+function test_gbw_prompt_behind_colors_nok {
+    assert equals "$(gbw_prompt_behind_colors "")" "$GBW_PARAMS_TEST_PROMPT_BEHIND_NOK" $LINENO
+}
