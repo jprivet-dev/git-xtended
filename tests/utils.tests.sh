@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
 function test_gbw_implode {
-    local _RED="\e[31m"
-    local _RESET="\e[0m"
-
     assert equals "$(gbw_implode "-" "con" "ca" "te" "na" "te")"                                "con-ca-te-na-te" $LINENO
     assert equals "$(gbw_implode "-"   "con"  "ca"  "te"      "na"  "te")"                      "con-ca-te-na-te" $LINENO
     assert equals "$(gbw_implode "-"   "con"  "ca"  "te"   ""   "na" "" "te")"                  "con-ca-te-na-te" $LINENO
@@ -25,9 +22,9 @@ function test_gbw_implode {
     assert equals "$(gbw_implode "  "   \"con\"  \"ca\"  \"te\"   \"\"   \"\"   \"na\" \"\" \"te\")"            "con  ca  te  na  te" $LINENO
     assert equals "$(gbw_implode "  "   \"con\"  \"ca\"  \"te\"   \" \"   \" \"   \"na\"  \"   \"   \"te\")"    "con  ca  te  na  te" $LINENO
 
-    assert equals "$(gbw_implode " - " "con" "ca" "te" "na" "te")"                      "con - ca - te - na - te" $LINENO
-    assert equals "$(gbw_implode " \e[31m-\e[0m " "con" "ca" "te" "na" "te")"           "con \e[31m-\e[0m ca \e[31m-\e[0m te \e[31m-\e[0m na \e[31m-\e[0m te" $LINENO
-    assert equals "$(gbw_implode " ${_RED}-${_RESET} " "con" "ca" "te" "na" "te")"          "con \e[31m-\e[0m ca \e[31m-\e[0m te \e[31m-\e[0m na \e[31m-\e[0m te" $LINENO
+    assert equals "$(gbw_implode " - " "con" "ca" "te" "na" "te")"                          "con - ca - te - na - te" $LINENO
+    assert equals "$(gbw_implode " \e[31m-\e[0m " "con" "ca" "te" "na" "te")"               "con \e[31m-\e[0m ca \e[31m-\e[0m te \e[31m-\e[0m na \e[31m-\e[0m te" $LINENO
+    assert equals "$(gbw_implode " ${C_RED}-${F_RESET} " "con" "ca" "te" "na" "te")"          "con \e[31m-\e[0m ca \e[31m-\e[0m te \e[31m-\e[0m na \e[31m-\e[0m te" $LINENO
 
     local email_part_1="address"
     local email_part_2="email.com"
@@ -86,33 +83,26 @@ function test_gbw_trim {
 }
 
 function test_gbw_regex_remove_colors {
-    local _F_BOLD="\e[1m"
-    local _F_RESET="\e[0m"
-    local _C_RED="\e[31m"
-    local _C_WHITE="\e[97m"
-    local _C_BG_CYAN="\e[46m"
-    local _C_BG_LIGHT_MAGENTA="\e[100m"
-
     assert equals "$(gbw_regex_remove_colors "color")"   "color" $LINENO
 
-    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color")"                "color" $LINENO
-    assert equals "$(gbw_regex_remove_colors "color${_F_RESET}")"               "color" $LINENO
-    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color${_F_RESET}")"     "color" $LINENO
+    assert equals "$(gbw_regex_remove_colors "${F_BOLD}color")"                "color" $LINENO
+    assert equals "$(gbw_regex_remove_colors "color${F_RESET}")"               "color" $LINENO
+    assert equals "$(gbw_regex_remove_colors "${F_BOLD}color${F_RESET}")"     "color" $LINENO
 
-    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color outrenoir")"                  "color outrenoir" $LINENO
-    assert equals "$(gbw_regex_remove_colors "color outrenoir${_F_RESET}")"                 "color outrenoir" $LINENO
-    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color outrenoir${_F_RESET}")"       "color outrenoir" $LINENO
-    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}color${_F_RESET} outrenoir")"       "color outrenoir" $LINENO
-    assert equals "$(gbw_regex_remove_colors "color ${_F_BOLD}outrenoir${_F_RESET}")"       "color outrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "${F_BOLD}color outrenoir")"                  "color outrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "color outrenoir${F_RESET}")"                 "color outrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "${F_BOLD}color outrenoir${F_RESET}")"       "color outrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "${F_BOLD}color${F_RESET} outrenoir")"       "color outrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "color ${F_BOLD}outrenoir${F_RESET}")"       "color outrenoir" $LINENO
 
-    assert equals "$(gbw_regex_remove_colors "color${_C_RED}outrenoir")"                    "coloroutrenoir" $LINENO
+    assert equals "$(gbw_regex_remove_colors "color${C_RED}outrenoir")"                    "coloroutrenoir" $LINENO
 
-    assert equals "$(gbw_regex_remove_colors "${_F_BOLD}${_F_RESET}${_C_RED}${_C_WHITE}${_C_BG_CYAN}${_C_BG_LIGHT_MAGENTA}")" "" $LINENO
+    assert equals "$(gbw_regex_remove_colors "${F_BOLD}${F_RESET}${C_RED}${C_WHITE}${C_BG_CYAN}${C_BG_LIGHT_MAGENTA}")" "" $LINENO
 
-    assert equals "$(gbw_regex_remove_colors "\e${_C_RED}\e")"  "\e\e" $LINENO
-    assert equals "$(gbw_regex_remove_colors "m${_C_RED}m")"    "mm" $LINENO
-    assert equals "$(gbw_regex_remove_colors "\e${_C_RED}m")"   "\em" $LINENO
-    assert equals "$(gbw_regex_remove_colors "\e[${_C_RED}")"   "\e[" $LINENO
+    assert equals "$(gbw_regex_remove_colors "\e${C_RED}\e")"  "\e\e" $LINENO
+    assert equals "$(gbw_regex_remove_colors "m${C_RED}m")"    "mm" $LINENO
+    assert equals "$(gbw_regex_remove_colors "\e${C_RED}m")"   "\em" $LINENO
+    assert equals "$(gbw_regex_remove_colors "\e[${C_RED}")"   "\e[" $LINENO
 
     assert equals "$(gbw_regex_remove_colors "\e[1234m")"       "\e[1234m" $LINENO
 }
