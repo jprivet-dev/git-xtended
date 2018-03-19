@@ -4,7 +4,7 @@ GBW_ENV_TEST=${GBW_ENV_TEST:-0}
 
 source ~/git-bash-workflow/config/params.sh
 
-if [[ "$GBW_ENV_TEST" == 1 ]]; then
+if [[ "${GBW_ENV_TEST}" == 1 ]]; then
     source ~/git-bash-workflow/config/params.test.sh
 elif [[ -f ~/git-bash-workflow/params.sh ]]; then
     source ~/git-bash-workflow/params.sh
