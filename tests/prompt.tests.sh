@@ -92,3 +92,7 @@ function test_gbw_prompt_behind_colors {
 function test_gbw_prompt_behind_colors_nok {
     assert equals "$(gbw_prompt_behind_colors "")" "$GBW_PARAMS_TEST_PROMPT_BEHIND_NOK" $LINENO
 }
+
+function test_gbw_prompt_branch_colors {
+    assert equals "$(gbw_prompt_branch_colors "current-branch")" "$GBW_PARAMS_TEST_PROMPT_BRANCH" $LINENO
+}
