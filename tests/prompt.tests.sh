@@ -100,3 +100,11 @@ function test_gbw_prompt_branch_colors {
 function test_gbw_prompt_changes_count_colors {
     assert equals "$(gbw_prompt_changes_count_colors "11")" "$GBW_PARAMS_TEST_PROMPT_COUNT" $LINENO
 }
+
+function test_gbw_prompt_help_line {
+    assert equals "$(gbw_prompt_help_line "label" .... "description")"      "    label \e[90m....\e[0m description" $LINENO
+}
+
+function test_gbw_prompt_host_colors {
+    assert equals "$(gbw_prompt_host_colors "host")" "\e[92mhost\e[0m" $LINENO
+}
