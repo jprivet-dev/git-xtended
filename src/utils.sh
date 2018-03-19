@@ -17,16 +17,16 @@ function gbw_implode {
 
     for p in "${pieces[@]}"
     do
-        p="$(gbw_trim "$p")"
+        p="$(gbw_trim "${p}")"
 
-        if [[ "$implode" == "" ]]; then
-            [[ "$p" != "" ]] && implode="$p"
+        if [[ "${implode}" == "" ]]; then
+            [[ "${p}" != "" ]] && implode="${p}"
         else
-            [[ "$p" != "" ]] && implode="$implode$glue$p"
+            [[ "${p}" != "" ]] && implode="${implode}${glue}${p}"
         fi
     done
 
-    echo "$implode"
+    echo "${implode}"
 }
 
 function gbw_is_bash_interactive {
@@ -44,7 +44,7 @@ function gbw_remove_r {
 
 function gbw_trim {
     local string=$1
-    echo "$string" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
+    echo "${string}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
 
 function gbw_regex_remove_colors {
@@ -52,14 +52,14 @@ function gbw_regex_remove_colors {
 }
 
 function gbw_echo_fixed_width {
-    local e="$GBW_PARAMS_OFF"
+    local e="${GBW_PARAMS_OFF}"
     local width middle_char start end
     local start_no_style end_no_style
     local middle_prefix middle_suffix
     local middle trucate count
 
     if [ "$1" == "-e" ]; then
-        e="$GBW_PARAMS_ON"
+        e="${GBW_PARAMS_ON}"
         shift
     fi
 
@@ -70,24 +70,24 @@ function gbw_echo_fixed_width {
     [ "$5" != "" ] && middle_prefix="$5"
     [ "$6" != "" ] && middle_suffix="$6"
 
-    if [ "$e" == "$GBW_PARAMS_ON" ]; then
-        start_no_style=$(gbw_regex_remove_colors "$start")
-        end_no_style=$(gbw_regex_remove_colors "$end")
+    if [ "${e}" == "${GBW_PARAMS_ON}" ]; then
+        start_no_style=$(gbw_regex_remove_colors "${start}")
+        end_no_style=$(gbw_regex_remove_colors "${end}")
     else
-        start_no_style="$start"
-        end_no_style="$end"
+        start_no_style="${start}"
+        end_no_style="${end}"
     fi
 
-    middle=$(gbw_line_generator "$width" "$middle_char")
+    middle=$(gbw_line_generator "${width}" "${middle_char}")
     count=${#start_no_style}+${#end_no_style}+${#middle_prefix}+${#middle_suffix}
-    trucate="$middle_prefix${middle:$count}$middle_suffix"
+    trucate="${middle_prefix}${middle:$count}${middle_suffix}"
 
-    if [ "$e" == "$GBW_PARAMS_ON" ]; then
-        echo -e "$start$trucate$end"
+    if [ "${e}" == "${GBW_PARAMS_ON}" ]; then
+        echo -e "${start}${trucate}${end}"
         return
     fi
 
-    echo "$start$trucate$end"
+    echo "${start}${trucate}${end}"
 }
 
 function gbw_line_generator {
@@ -95,8 +95,8 @@ function gbw_line_generator {
     local symbol=$2
     local result
 
-    printf -v generator '%*s' "$length"
+    printf -v generator '%*s' "${length}"
     result=${generator// /$symbol}
 
-    echo "$result"
+    echo "${result}"
 }
