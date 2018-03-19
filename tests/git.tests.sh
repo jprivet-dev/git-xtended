@@ -10,13 +10,13 @@ function test_gbw_git_get_remote_branch_ref {
     GBW_PARAMS_GIT_REMOTE_BRANCH_REF=""
     assert equals "$(gbw_git_get_remote_branch_ref)" "${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}" $LINENO
 
-    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="$last_value"
+    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${last_value}"
     assert equals "$(gbw_git_get_remote_branch_ref)" "${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}" $LINENO
 }
 
 function test_gbw_git_status {
     local count_lines="$(gbw_git_status | wc -l)"
-    assert equals "$count_lines" "11" $LINENO
+    assert equals "${count_lines}" "11" $LINENO
 }
 
 function test_gbw_git_get_changes_nb {
@@ -25,7 +25,7 @@ function test_gbw_git_get_changes_nb {
 
 function test_gbw_git_diff_current_branch_origin_dev {
     local count_lines="$(gbw_git_diff_current_branch_origin_dev | wc -l)"
-    assert equals "$count_lines" "5" $LINENO
+    assert equals "${count_lines}" "5" $LINENO
 }
 
 function test_gbw_git_get_status_changes_to_be_committed_count {
