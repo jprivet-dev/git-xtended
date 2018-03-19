@@ -14,12 +14,12 @@ function gbw_git_get_current_branch {
 function gbw_git_get_remote_branch_ref {
     local branch="$1"
 
-    if [[ "$GBW_PARAMS_GIT_REMOTE_BRANCH_REF" == "" ]]; then
+    if [[ "${GBW_PARAMS_GIT_REMOTE_BRANCH_REF}" == "" ]]; then
         gbw_git_get_current_branch
         return
     fi
 
-    echo "$GBW_PARAMS_GIT_REMOTE_BRANCH_REF"
+    echo "${GBW_PARAMS_GIT_REMOTE_BRANCH_REF}"
 }
 
 # @test
@@ -29,17 +29,17 @@ function gbw_git_status {
 
 # TODO: create test
 function gbw_git_commit_indexed {
-    source "$GBW_PARAMS_GIT_ALIAS_COMMIT_FILE"
+    source "${GBW_PARAMS_GIT_ALIAS_COMMIT_FILE}"
 }
 
 # TODO: create test
 function gbw_git_diff_indexed {
-    source "$GBW_PARAMS_GIT_ALIAS_DIFF_FILE"
+    source "${GBW_PARAMS_GIT_ALIAS_DIFF_FILE}"
 }
 
 # TODO: create test
 function gbw_git_status_indexed {
-    source "$GBW_PARAMS_GIT_ALIAS_STATUS_FILE"
+    source "${GBW_PARAMS_GIT_ALIAS_STATUS_FILE}"
 }
 
 # @test
@@ -96,7 +96,7 @@ function gbw_git_get_status_untracked_files_count {
 function gbw_git_status_ahead {
     local from_branch=$1
     local to_branch=$2
-    git rev-list --left-right --count "$from_branch"..."$to_branch" 2> /dev/null
+    git rev-list --left-right --count "${from_branch}"..."${to_branch}" 2> /dev/null
 }
 
 # @test
@@ -106,7 +106,7 @@ function gbw_git_status_ahead_count {
     # TODO : use "| while read -a array; do echo ${array[0]} ; done"
     # instead of "| cut -f 1". Last tip does not work when gbw_git_status_ahead_count called
     # into testing function "test_gbw_git_status_ahead_count". Find why !!!
-    gbw_git_status_ahead "$from_branch" "$to_branch" | while read -a array; do echo ${array[0]} ; done
+    gbw_git_status_ahead "${from_branch}" "${to_branch}" | while read -a array; do echo ${array[0]} ; done
 }
 
 # @test
@@ -114,7 +114,7 @@ function gbw_git_status_behind {
     local from_branch=$1
     local to_branch=$2
 
-    git rev-list --left-right --count "$to_branch"..."$from_branch" 2> /dev/null
+    git rev-list --left-right --count "${to_branch}"..."${from_branch}" 2> /dev/null
 }
 
 # @test
@@ -124,5 +124,5 @@ function gbw_git_status_behind_count {
     # TODO : use "| while read -a array; do echo ${array[0]} ; done"
     # instead of "| cut -f 1". Last tip does not work when gbw_git_status_ahead_count called
     # into testing function "test_gbw_git_status_behind_count". Find why !!!
-    gbw_git_status_behind "$from_branch" "$to_branch" | while read -a array; do echo ${array[0]} ; done
+    gbw_git_status_behind "${from_branch}" "${to_branch}" | while read -a array; do echo ${array[0]} ; done
 }

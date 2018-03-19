@@ -2,13 +2,13 @@
 
 function gbw_git_config_set_aliases {
     local global="$1"
-    [[ "$global" != "--global" ]] && global=""
+    [[ "${global}" != "--global" ]] && global=""
 
     # git branch
     git config $global alias.b branch
 
     # git diff
-    git config $global alias.d '!f() { '$GBW_PARAMS_GIT_ALIAS_DIFF_FILE' "$1"; }; f'
+    git config $global alias.d '!f() { '${GBW_PARAMS_GIT_ALIAS_DIFF_FILE}' "$1"; }; f'
 
     # git add
     git config $global alias.a "add"
@@ -17,7 +17,7 @@ function gbw_git_config_set_aliases {
     git config $global alias.md "add --update"
 
     # git commit
-    git config $global alias.c '!f() { '$GBW_PARAMS_GIT_ALIAS_COMMIT_FILE' "$@"; }; f'
+    git config $global alias.c '!f() { '${GBW_PARAMS_GIT_ALIAS_COMMIT_FILE}' "$@"; }; f'
     git config $global alias.amend "commit -m --amend"
 
     # git checkout
@@ -30,10 +30,10 @@ function gbw_git_config_set_aliases {
     local _REF="%C(auto)%d"
     local _SUBJECT="%C(reset)%s"
 
-    local _ONELINE="log --graph --oneline --decorate --date=short --pretty=format:'$_HASH $_TIME $_AUTHOR$_REF $_SUBJECT'"
+    local _ONELINE="log --graph --oneline --decorate --date=short --pretty=format:'${_HASH} ${_TIME} ${_AUTHOR}${_REF} ${_SUBJECT}'"
 
-    git config $global alias.l "$_ONELINE -12"
-    git config $global alias.ll "$_ONELINE"
+    git config $global alias.l "${_ONELINE} -12"
+    git config $global alias.ll "${_ONELINE}"
     git config $global alias.lcount "shortlog -sn"
 
     # git reset
@@ -43,17 +43,17 @@ function gbw_git_config_set_aliases {
     git config $global alias.untracked "clean -f -d"
 
     # git status
-    git config $global alias.s "!sh -c $GBW_PARAMS_GIT_ALIAS_STATUS_FILE"
+    git config $global alias.s "!sh -c ${GBW_PARAMS_GIT_ALIAS_STATUS_FILE}"
 
     git config $global alias.ss status
 
     # git grep
-    git config $global alias.find '!f() { '$GBW_PARAMS_GIT_ALIAS_FIND_FILE' "$@"; }; f'
+    git config $global alias.find '!f() { '${GBW_PARAMS_GIT_ALIAS_FIND_FILE}' "$@"; }; f'
 }
 
 function gbw_git_config_unset_aliases {
     local global="$1"
-    [[ "$global" != "--global" ]] && global=""
+    [[ "${global}" != "--global" ]] && global=""
 
     git config $global --unset alias.b
 	git config $global --unset alias.d

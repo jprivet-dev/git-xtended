@@ -5,14 +5,14 @@ function gwb_git_config_get {
     local key=$1
     local default=$2
 
-    local value="$(git config --global $key)"
+    local value="$(git config --global ${key})"
 
-    if [ "$value" == "" ]; then
-        echo "$default"
+    if [ "${value}" == "" ]; then
+        echo "${default}"
         return
     fi
 
-    echo "$value"
+    echo "${value}"
 }
 
 # TODO: create test
