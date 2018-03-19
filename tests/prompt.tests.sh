@@ -93,9 +93,9 @@ function test_gbw_prompt_branch_colors {
 }
 
 function test_gbw_prompt_help_line {
-    assert equals "$(gbw_prompt_help_line "label" .... "description")"      "    label \e[90m....\e[0m description" $LINENO
+    assert equals "$(gbw_prompt_help_line "label" .... "description")"      "    label ${TEST_C_DARK_GRAY}....${TEST_F_RESET} description" $LINENO
 }
 
 function test_gbw_prompt_host_colors {
-    assert equals "$(gbw_prompt_host_colors "host")" "\e[92mhost\e[0m" $LINENO
+    assert equals "$(gbw_prompt_host_colors "host")" "${TEST_C_LIGHT_GREEN}host${TEST_F_RESET}" $LINENO
 }
