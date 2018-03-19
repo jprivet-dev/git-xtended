@@ -82,12 +82,12 @@ function gbw_test_assert_pipeline_message_print_all {
 
 function gbw_test_pipeline_message_add_title_ok {
     local line=$1
-    gbw_test_assert_pipeline_message+=("  ${C_LIGHT_GREEN}| $line: OK${F_RESET}")
+    gbw_test_assert_pipeline_message+=("-e  ${C_LIGHT_GREEN}| $line: OK${F_RESET}")
 }
 
 function gbw_test_pipeline_message_add_title_failure {
     local line=$1
-    gbw_test_assert_pipeline_message+=("  ${C_LIGHT_RED}| $line: FAILURE${F_RESET}")
+    gbw_test_assert_pipeline_message+=("-e  ${C_LIGHT_RED}| $line: FAILURE${F_RESET}")
 }
 
 function gbw_test_pipeline_message_add {
