@@ -27,7 +27,7 @@ function test_gbw_implode {
 
     assert equals "$(gbw_implode " - " "con" "ca" "te" "na" "te")"                      "con - ca - te - na - te" $LINENO
     assert equals "$(gbw_implode " \e[31m-\e[0m " "con" "ca" "te" "na" "te")"           "con \e[31m-\e[0m ca \e[31m-\e[0m te \e[31m-\e[0m na \e[31m-\e[0m te" $LINENO
-    assert equals "$(gbw_implode " $_RED-$_RESET " "con" "ca" "te" "na" "te")"          "con \e[31m-\e[0m ca \e[31m-\e[0m te \e[31m-\e[0m na \e[31m-\e[0m te" $LINENO
+    assert equals "$(gbw_implode " ${_RED}-${_RESET} " "con" "ca" "te" "na" "te")"          "con \e[31m-\e[0m ca \e[31m-\e[0m te \e[31m-\e[0m na \e[31m-\e[0m te" $LINENO
 
     local email_part_1="address"
     local email_part_2="email.com"
