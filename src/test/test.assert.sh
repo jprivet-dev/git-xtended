@@ -1,28 +1,37 @@
 #!/usr/bin/env bash
 
 function gbw_test_assert_ok {
-    local message=$1
-    local line=$2
-    local color="$C_LIGHT_GREEN"
+    local line=$1
+    local message=$2
+    local current=$3
+    local expected=$4
+    local tab="  ${C_LIGHT_GREEN}|${F_RESET} "
 
-    echo -e "$color$line: OK$F_RESET"
-
-    if [[ "$GBW_TEST_ASSERT_OK_SHOW_MESSAGE" == 0 ]]; then
-        return
+    if [[ "$GBW_PARAMS_TEST_ASSERT_OK_SHOW_MESSAGE" == 1 ]]; then
+        gbw_test_pipeline_message_add_title_ok "$line"
+        gbw_test_pipeline_message_add "${tab}$message"
+        gbw_test_pipeline_message_add "${tab}Current : '$current'"
+        gbw_test_pipeline_message_add "${tab}Expected: '$expected'"
     fi
 
-    echo "$message"
+    echo -e -n "${C_LIGHT_GREEN}+${F_RESET}"
 }
 
 function gbw_test_assert_nok {
-    local message=$1
-    local line=$2
-    local color="$C_LIGHT_RED"
+    local line=$1
+    local message=$2
+    local current=$3
+    local expected=$4
+    local tab="  ${C_LIGHT_RED}|${F_RESET} "
 
-    echo -e "$color$line: FAILURE$F_RESET"
-    echo "$message"
+    gbw_test_pipeline_message_add_title_failure "$line"
+    gbw_test_pipeline_message_add "${tab}$message"
+    gbw_test_pipeline_message_add "${tab}Current : '$current'"
+    gbw_test_pipeline_message_add "${tab}Expected: '$expected'"
 
     gbw_test_count_failures_increment
+
+    echo -e -n "${C_BG_RED}${C_WHITE}!${F_RESET}"
 }
 
 function gbw_test_assert_equals {
@@ -31,9 +40,9 @@ function gbw_test_assert_equals {
     local line=$3
 
     if [[ "$current" == "$expected" ]]; then
-        gbw_test_assert_ok "$current equals $expected" $line
+        gbw_test_assert_ok $line "Strings are equals" "$current" "$expected"
     else
-        gbw_test_assert_nok "$current not equals $expected" $line
+        gbw_test_assert_nok $line "Strings are not equals" "$current" "$expected"
     fi
 }
 
@@ -57,4 +66,34 @@ function gbw_test_assert {
 # gbw_test_assert_equals alias
 function assert {
     gbw_test_assert "$@"
+}
+
+function gbw_test_assert_pipeline_message_print_all {
+    if [ ${#gbw_test_assert_pipeline_message[@]} -eq 0 ]; then
+        return
+    fi
+
+    for line in "${gbw_test_assert_pipeline_message[@]}"; do
+      echo -e "$line"
+    done
+
+    gbw_test_pipeline_message_clear
+}
+
+function gbw_test_pipeline_message_add_title_ok {
+    local line=$1
+    gbw_test_assert_pipeline_message+=("  ${C_LIGHT_GREEN}| $line: OK${F_RESET}")
+}
+
+function gbw_test_pipeline_message_add_title_failure {
+    local line=$1
+    gbw_test_assert_pipeline_message+=("  ${C_LIGHT_RED}| $line: FAILURE${F_RESET}")
+}
+
+function gbw_test_pipeline_message_add {
+    gbw_test_assert_pipeline_message+=("$1")
+}
+
+function gbw_test_pipeline_message_clear {
+    gbw_test_assert_pipeline_message=()
 }

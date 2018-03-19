@@ -43,23 +43,3 @@ C_BG_LIGHT_MAGENTA="\e[105m"
 C_BG_LIGHT_CYAN="\e[106m"
 C_BG_WHITE="\e[107m"
 
-GBW_VERSION="0.0.0"
-
-GBW_FALSE="false"
-GBW_TRUE="true"
-
-GBW_ON="on"
-GBW_OFF="off"
-
-GBW_ON_C="${C_LIGHT_GREEN}on ${F_RESET}"
-GBW_OFF_C="${C_LIGHT_RED}off${F_RESET}"
-
-GBW_USER_PS1="\u"
-GBW_ROOT="~/git-bash-workflow"
-
-GBW_GIT_ALIAS_DIFF_FILE="$GBW_ROOT/src/git/git.alias.diff.sh"
-GBW_GIT_ALIAS_COMMIT_FILE="$GBW_ROOT/src/git/git.alias.commit.sh"
-GBW_GIT_ALIAS_STATUS_FILE="$GBW_ROOT/src/git/git.alias.status.sh"
-
-GBW_GIT_HOOKS_DIR="$GBW_ROOT/git/hooks/"
-
