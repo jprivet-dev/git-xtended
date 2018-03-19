@@ -8,16 +8,17 @@ function gbw_git_config_set_aliases {
     git config $global alias.b branch
 
     # git diff
-    git config $global alias.d '!f() { '$GBW_GIT_ALIAS_DIFF_FILE' "$1"; }; f'
+    git config $global alias.d '!f() { '$GBW_PARAMS_GIT_ALIAS_DIFF_FILE' "$1"; }; f'
 
     # git add
     git config $global alias.a "add"
-    git config $global alias.all "add ."
+    git config $global alias.all "add --all"
+    git config $global alias.nm "add ."
+    git config $global alias.md "add --update"
 
     # git commit
-    git config $global alias.c '!f() { '$GBW_GIT_ALIAS_COMMIT_FILE' "$@"; }; f'
+    git config $global alias.c '!f() { '$GBW_PARAMS_GIT_ALIAS_COMMIT_FILE' "$@"; }; f'
     git config $global alias.amend "commit -m --amend"
-    git config $global alias.undo "reset --soft HEAD^"
 
     # git checkout
     git config $global alias.k checkout
@@ -37,16 +38,17 @@ function gbw_git_config_set_aliases {
 
     # git reset
     git config $global alias.r "reset"
-    git config $global alias.rrr "!sh -c 'git clean -f -d; git reset --hard HEAD'"
+    git config $global alias.hard "reset --hard"
+    git config $global alias.undo "reset --soft HEAD^"
     git config $global alias.untracked "clean -f -d"
 
     # git status
-    git config $global alias.s "!sh -c $GBW_GIT_ALIAS_STATUS_FILE"
+    git config $global alias.s "!sh -c $GBW_PARAMS_GIT_ALIAS_STATUS_FILE"
 
     git config $global alias.ss status
 
     # git grep
-    git config $global alias.sniffer "grep --break --heading --line-number --extended-regexp 'dump\(|console\.[^(]+\('"
+    git config $global alias.find '!f() { '$GBW_PARAMS_GIT_ALIAS_FIND_FILE' "$@"; }; f'
 }
 
 function gbw_git_config_unset_aliases {
@@ -57,25 +59,27 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.d
 	git config $global --unset alias.a
 	git config $global --unset alias.all
+	git config $global --unset alias.nm
+	git config $global --unset alias.md
 	git config $global --unset alias.c
 	git config $global --unset alias.amend
-	git config $global --unset alias.undo
 	git config $global --unset alias.k
 	git config $global --unset alias.l
 	git config $global --unset alias.ll
 	git config $global --unset alias.lcount
 	git config $global --unset alias.untracked
 	git config $global --unset alias.r
-	git config $global --unset alias.rrr
+	git config $global --unset alias.hard
+	git config $global --unset alias.undo
 	git config $global --unset alias.s
 	git config $global --unset alias.ss
-	git config $global --unset alias.sniffer
+	git config $global --unset alias.find
 }
 
-function gbw_git_aliases_enable {
+function gbw_git_aliases_on {
     gbw_git_config_set_aliases --global
 }
 
-function gbw_git_aliases_disable {
+function gbw_git_aliases_off {
     gbw_git_config_unset_aliases --global
 }
