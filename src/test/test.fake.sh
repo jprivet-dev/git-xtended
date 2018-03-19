@@ -88,7 +88,7 @@ function gbw_test_fake_git {
             return
         ;;
         *)
-            "[ ERROR !!! No Git fake command for '$args' ]"
+            "[ ERROR !!! No Git fake command for '${args}' ]"
         ;;
     esac
 }
