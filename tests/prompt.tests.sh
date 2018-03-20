@@ -153,5 +153,9 @@ function test_gbw_prompt_changes_count_colors {
 }
 
 function test_gbw_prompt_help_line {
-    assert equals "$(gbw_prompt_help_line "label" .... "description")"      "    label ${TEST_C_DARK_GRAY}....${TEST_F_RESET} description" $LINENO
+    local label="current_label"
+    local dots="...."
+    local description="current_description"
+
+    assert equals "$(gbw_prompt_help_line "${label}" $dots "${description}")"      "    ${label} ${TEST_C_DARK_GRAY}${dots}${TEST_F_RESET} ${description}" $LINENO
 }
