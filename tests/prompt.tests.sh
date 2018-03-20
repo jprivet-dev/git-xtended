@@ -31,6 +31,12 @@ function test_gbw_prompt_userhost {
     assert equals "$(gbw_prompt_userhost)" "${TEST_GBW_PARAMS_PROMPT_USERHOST}" $LINENO
 }
 
+function test_gbw_prompt_userhost_colors {
+    local user="current_userhost"
+    local host="current_userhost"
+    assert equals "$(gbw_prompt_userhost_colors "${user}" "${host}")" "${user}${TEST_C_LIGHT_GREEN}@${F_RESET}${host}" $LINENO
+}
+
 function test_gbw_prompt_dir {
     assert equals "$(gbw_prompt_dir)" "${TEST_GBW_PARAMS_PROMPT_DIR}" $LINENO
 }
