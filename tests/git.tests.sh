@@ -77,7 +77,7 @@ function test_gbw_git_config_set_global_alias_cmd {
     local value
 
     value="my_value"
-    assert equals "$(gbw_git_config_set_global_alias_cmd ${name} "${value}")" "git config --global alias.${name} \"${value}\"" $LINENO
+    assert equals "$(gbw_git_config_set_global_alias_cmd ${name} ${value})" "git config --global alias.${name} \"${value}\"" $LINENO
 
     value="other_value --option"
     assert equals "$(gbw_git_config_set_global_alias_cmd ${name} "${value}")" "git config --global alias.${name} \"${value}\"" $LINENO
