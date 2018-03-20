@@ -33,3 +33,10 @@ function gbw_git_config_set_global_alias_func_cmd {
 
     echo git config --global alias.${name} "\"!f() { ${value}; }; f\""
 }
+
+function gbw_git_config_set_global_alias_sh_cmd {
+    local name=$1
+    local value="$2"
+
+    echo git config --global alias.${name} "!sh -c ${value}"
+}
