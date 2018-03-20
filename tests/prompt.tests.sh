@@ -89,6 +89,9 @@ function test_gbw_prompt_behind_colors {
 
 function test_gbw_prompt_branch_colors {
     assert equals "$(gbw_prompt_branch_colors "current-branch")" "${TEST_GBW_PARAMS_PROMPT_BRANCH}" $LINENO
+}
+
+function test_gbw_prompt_changes_count_colors {
     assert equals "$(gbw_prompt_changes_count_colors "11")" "${TEST_GBW_PARAMS_PROMPT_COUNT}" $LINENO
 }
 
