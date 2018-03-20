@@ -78,3 +78,10 @@ function test_gbw_git_config_set_global_alias_cmd {
 
     assert equals "$(gbw_git_config_set_global_alias_cmd ${name} ${value})" "git config --global alias.${name} ${value}" $LINENO
 }
+
+function test_gbw_git_config_set_global_alias_func_cmd {
+    local name="my_name"
+    local value="my_value"
+
+    assert equals "$(gbw_git_config_set_global_alias_func_cmd ${name} "${value}")" "git config --global alias.${name} \"!f() { my_value; }; f\"" $LINENO
+}
