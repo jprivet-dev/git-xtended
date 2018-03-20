@@ -24,16 +24,16 @@ function gbw_git_config_set_aliases {
     git config $global alias.k checkout
 
     # git log
-    local _HASH="%C(yellow)%h"
-    local _TIME="%C(cyan)[%ar]"
-    local _AUTHOR="%C(green)<%<(9,trunc)%aN>"
-    local _REF="%C(auto)%d"
-    local _SUBJECT="%C(reset)%s"
+    local hash="%C(yellow)%h"
+    local time="%C(cyan)[%ar]"
+    local author="%C(green)<%<(9,trunc)%aN>"
+    local reference="%C(auto)%d"
+    local subject="%C(reset)%s"
 
-    local _ONELINE="log --graph --oneline --decorate --date=short --pretty=format:'${_HASH} ${_TIME} ${_AUTHOR}${_REF} ${_SUBJECT}'"
+    local command_log_oneline="log --graph --oneline --decorate --date=short --pretty=format:'${hash} ${time} ${author}${reference} ${subject}'"
 
-    git config $global alias.l "${_ONELINE} -12"
-    git config $global alias.ll "${_ONELINE}"
+    git config $global alias.l "${command_log_oneline} -12"
+    git config $global alias.ll "${command_log_oneline}"
     git config $global alias.lcount "shortlog -sn"
 
     # git reset
