@@ -32,6 +32,24 @@ function test_gbw_prompt_status_to_be_commited {
     assert equals "$(gbw_prompt_status_to_be_commited)" "${TEST_GBW_PARAMS_PROMPT_STATUS_C}" $LINENO
 }
 
+function test_gbw_prompt_status_to_be_commited_colors {
+    local test_m0="0"
+    local test_n0="+0"
+    local test_d0="-0"
+    local test_m1="1"
+    local test_n1="+1"
+    local test_d1="-1"
+
+    assert equals "$(gbw_prompt_status_to_be_commited_colors "0" "0" "0")" "${TEST_C_DARK_GRAY}c(${test_m0} ${test_n0} ${test_d0})${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_prompt_status_to_be_commited_colors "0" "0" "1")" "${TEST_C_LIGHT_GREEN}c(${test_m0} ${test_n0} ${test_d1})${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_prompt_status_to_be_commited_colors "0" "1" "0")" "${TEST_C_LIGHT_GREEN}c(${test_m0} ${test_n1} ${test_d0})${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_prompt_status_to_be_commited_colors "0" "1" "1")" "${TEST_C_LIGHT_GREEN}c(${test_m0} ${test_n1} ${test_d1})${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_prompt_status_to_be_commited_colors "1" "0" "0")" "${TEST_C_LIGHT_GREEN}c(${test_m1} ${test_n0} ${test_d0})${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_prompt_status_to_be_commited_colors "1" "0" "1")" "${TEST_C_LIGHT_GREEN}c(${test_m1} ${test_n0} ${test_d1})${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_prompt_status_to_be_commited_colors "1" "1" "0")" "${TEST_C_LIGHT_GREEN}c(${test_m1} ${test_n1} ${test_d0})${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_prompt_status_to_be_commited_colors "1" "1" "1")" "${TEST_C_LIGHT_GREEN}c(${test_m1} ${test_n1} ${test_d1})${TEST_F_RESET}" $LINENO
+}
+
 function test_gbw_prompt_status_not_staged {
     assert equals "$(gbw_prompt_status_not_staged)" "${TEST_GBW_PARAMS_PROMPT_STATUS_S}" $LINENO
 }
