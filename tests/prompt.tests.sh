@@ -4,6 +4,11 @@ function test_gbw_prompt_time {
     assert equals "$(gbw_prompt_time)" "${TEST_GBW_PARAMS_PROMPT_TIME}" $LINENO
 }
 
+function test_gbw_prompt_time_colors {
+    local time="10:42:00"
+    assert equals "$(gbw_prompt_time_colors "${time}")" "${TEST_C_LIGHT_RED}${time}${TEST_F_RESET}" $LINENO
+}
+
 function test_gbw_prompt_user {
     assert equals "$(gbw_prompt_user)" "${TEST_GBW_PARAMS_PROMPT_USER}" $LINENO
 }
