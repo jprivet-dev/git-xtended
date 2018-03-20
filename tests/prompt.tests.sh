@@ -36,6 +36,11 @@ function test_gbw_prompt_status_not_staged {
     assert equals "$(gbw_prompt_status_not_staged)" "${TEST_GBW_PARAMS_PROMPT_STATUS_S}" $LINENO
 }
 
+function test_gbw_prompt_status_not_staged_colors {
+    assert equals "$(gbw_prompt_status_not_staged_colors "42")" "${TEST_C_LIGHT_RED}42!${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_prompt_status_not_staged_colors "0")" "${TEST_C_DARK_GRAY}0!${TEST_F_RESET}" $LINENO
+}
+
 function test_gbw_prompt_status_untracked {
     assert equals "$(gbw_prompt_status_untracked)" "${TEST_GBW_PARAMS_PROMPT_STATUS_U}" $LINENO
 }
