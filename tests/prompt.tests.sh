@@ -63,6 +63,11 @@ function test_gbw_prompt_status_untracked {
     assert equals "$(gbw_prompt_status_untracked)" "${TEST_GBW_PARAMS_PROMPT_STATUS_U}" $LINENO
 }
 
+function test_gbw_prompt_status_untracked_colors {
+    assert equals "$(gbw_prompt_status_untracked_colors "42")" "${TEST_C_LIGHT_RED}42?${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_prompt_status_untracked_colors "0")" "${TEST_C_DARK_GRAY}0?${TEST_F_RESET}" $LINENO
+}
+
 function test_gbw_prompt_status {
     assert equals "$(gbw_prompt_status)" "${TEST_GBW_PARAMS_PROMPT_STATUS}" $LINENO
 }
