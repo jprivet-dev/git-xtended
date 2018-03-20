@@ -72,3 +72,9 @@ function test_gbw_git_status_behind_count {
     assert equals "$(gbw_git_status_behind_count current-branch remote-branch)" "0" $LINENO
 }
 
+function test_gbw_git_config_set_global_alias_cmd {
+    local name="my_name"
+    local value="my_value"
+
+    assert equals "$(gbw_git_config_set_global_alias_cmd ${name} ${value})" "git config --global alias.${name} ${value}" $LINENO
+}
