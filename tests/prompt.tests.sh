@@ -76,8 +76,12 @@ function test_gbw_prompt_status_not_staged {
 }
 
 function test_gbw_prompt_status_not_staged_colors {
-    assert equals "$(gbw_prompt_status_not_staged_colors "42")" "${TEST_C_LIGHT_RED}42!${TEST_F_RESET}" $LINENO
-    assert equals "$(gbw_prompt_status_not_staged_colors "0")" "${TEST_C_DARK_GRAY}0!${TEST_F_RESET}" $LINENO
+    local count
+
+    count="42"
+    assert equals "$(gbw_prompt_status_not_staged_colors "${count}")" "${TEST_C_LIGHT_RED}${count}!${TEST_F_RESET}" $LINENO
+    count="0"
+    assert equals "$(gbw_prompt_status_not_staged_colors "${count}")" "${TEST_C_DARK_GRAY}${count}!${TEST_F_RESET}" $LINENO
 }
 
 function test_gbw_prompt_status_untracked {
@@ -85,8 +89,12 @@ function test_gbw_prompt_status_untracked {
 }
 
 function test_gbw_prompt_status_untracked_colors {
-    assert equals "$(gbw_prompt_status_untracked_colors "42")" "${TEST_C_LIGHT_RED}42?${TEST_F_RESET}" $LINENO
-    assert equals "$(gbw_prompt_status_untracked_colors "0")" "${TEST_C_DARK_GRAY}0?${TEST_F_RESET}" $LINENO
+    local count
+
+    count="42"
+    assert equals "$(gbw_prompt_status_untracked_colors "${count}")" "${TEST_C_LIGHT_RED}${count}?${TEST_F_RESET}" $LINENO
+    count="0"
+    assert equals "$(gbw_prompt_status_untracked_colors "${count}")" "${TEST_C_DARK_GRAY}${count}?${TEST_F_RESET}" $LINENO
 }
 
 function test_gbw_prompt_status {
