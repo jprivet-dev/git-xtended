@@ -13,6 +13,11 @@ function test_gbw_prompt_user {
     assert equals "$(gbw_prompt_user)" "${TEST_GBW_PARAMS_PROMPT_USER}" $LINENO
 }
 
+function test_gbw_prompt_user_colors {
+    local user="current_user"
+    assert equals "$(gbw_prompt_user_colors "${user}")" "${TEST_C_LIGHT_GREEN}${user}${TEST_F_RESET}" $LINENO
+}
+
 function test_gbw_prompt_host {
     assert equals "$(gbw_prompt_host)" "${TEST_GBW_PARAMS_PROMPT_HOST}" $LINENO
 }
