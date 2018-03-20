@@ -22,6 +22,11 @@ function test_gbw_prompt_host {
     assert equals "$(gbw_prompt_host)" "${TEST_GBW_PARAMS_PROMPT_HOST}" $LINENO
 }
 
+function test_gbw_prompt_host_colors {
+    local host="current_host"
+    assert equals "$(gbw_prompt_host_colors "${host}")" "${TEST_C_LIGHT_GREEN}${host}${TEST_F_RESET}" $LINENO
+}
+
 function test_gbw_prompt_userhost {
     assert equals "$(gbw_prompt_userhost)" "${TEST_GBW_PARAMS_PROMPT_USERHOST}" $LINENO
 }
@@ -135,8 +140,4 @@ function test_gbw_prompt_changes_count_colors {
 
 function test_gbw_prompt_help_line {
     assert equals "$(gbw_prompt_help_line "label" .... "description")"      "    label ${TEST_C_DARK_GRAY}....${TEST_F_RESET} description" $LINENO
-}
-
-function test_gbw_prompt_host_colors {
-    assert equals "$(gbw_prompt_host_colors "host")" "${TEST_C_LIGHT_GREEN}host${TEST_F_RESET}" $LINENO
 }
