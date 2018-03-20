@@ -74,9 +74,13 @@ function test_gbw_git_status_behind_count {
 
 function test_gbw_git_config_set_global_alias_cmd {
     local name="my_name"
-    local value="my_value"
+    local value
 
-    assert equals "$(gbw_git_config_set_global_alias_cmd ${name} ${value})" "git config --global alias.${name} ${value}" $LINENO
+    value="my_value"
+    assert equals "$(gbw_git_config_set_global_alias_cmd ${name} "${value}")" "git config --global alias.${name} \"${value}\"" $LINENO
+
+    value="other_value --option"
+    assert equals "$(gbw_git_config_set_global_alias_cmd ${name} "${value}")" "git config --global alias.${name} \"${value}\"" $LINENO
 }
 
 function test_gbw_git_config_set_global_alias_func_cmd {
