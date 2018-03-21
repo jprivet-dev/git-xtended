@@ -94,12 +94,12 @@ function test_gbw_git_config_set_global_alias_cmd {
     local value
 
     value="my_value"
-    assert equals "$(gbw_git_config_set_global_alias_cmd ${name} ${value})" "git config --global alias.${name} \"${value}\"" $LINENO
-    assert equals "$(gbw_test_fake_git_last_args_check)" "xxx" $LINENO
+    gbw_git_config_set_global_alias_cmd ${name} ${value}
+    assert equals "$(gbw_test_fake_git_last_args_check)" "config --global alias.${name} \"${value}\"" $LINENO
 
     value="other_value --option"
-    assert equals "$(gbw_git_config_set_global_alias_cmd ${name} "${value}")" "git config --global alias.${name} \"${value}\"" $LINENO
-    assert equals "$(gbw_test_fake_git_last_args_check)" "xxx" $LINENO
+    gbw_git_config_set_global_alias_cmd ${name} ${value}
+    assert equals "$(gbw_test_fake_git_last_args_check)" "config --global alias.${name} \"${value}\"" $LINENO
 }
 
 function test_gbw_git_config_set_global_alias_func_cmd {
