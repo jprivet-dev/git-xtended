@@ -67,7 +67,7 @@ function gbw_test_fake_git_last_args_get {
 function gbw_test_fake_git {
     local args="$*"
 
-    gbw_test_fake_git_last_args_set "$*"
+    gbw_test_fake_git_last_args_set "git $*"
 
     case $args in
         "status --porcelain")
@@ -104,7 +104,7 @@ function gbw_test_fake_git {
             return
         ;;
         *)
-            echo "[ ERROR !!! No Git fake command for '${args}' ]"
+            echo "[ ERROR !!! No Git fake command for 'git ${args}' ]"
         ;;
     esac
 }
