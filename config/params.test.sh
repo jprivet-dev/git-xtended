@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "==> GBW: import config/params.sh"
+
 source ~/git-bash-workflow/config/params/test/params.test.colors.sh
 source ~/git-bash-workflow/config/params/test/params.test.main.sh
 source ~/git-bash-workflow/config/params/test/params.test.prompt.sh
