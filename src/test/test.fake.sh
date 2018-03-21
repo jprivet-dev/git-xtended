@@ -17,13 +17,13 @@ function gbw_test_fake_git_status_porcelain {
 function gbw_test_fake_git_branch {
     echo "  fake-branch-1"
     echo "  fake-branch-2"
-    echo "* current-branch"
+    echo "* ${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
     echo "  develop"
     echo "  master"
 }
 
 function gbw_test_fake_git_rev_parse_abbrev_ref_head {
-    echo "current-branch"
+    echo "${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
 }
 
 function gbw_test_fake_git_diff_current_branch_origin_dev {
@@ -73,19 +73,19 @@ function gbw_test_fake_git {
         "rev-parse --abbrev-ref HEAD")
             gbw_test_fake_git_rev_parse_abbrev_ref_head
         ;;
-        "diff --stat remote-branch")
+        "diff --stat ${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
             gbw_test_fake_git_diff_current_branch_origin_dev
         ;;
-        "rev-list --left-right --count current-branch...remote-branch")
+        "rev-list --left-right --count ${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
             gbw_test_fake_git_revlist_current_remote
         ;;
-        "rev-list --left-right --count remote-branch...current-branch")
+        "rev-list --left-right --count ${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}...${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
             gbw_test_fake_git_revlist_remote_current
         ;;
-        "rev-list --left-right --count current-branch...nok-branch")
+        "rev-list --left-right --count ${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...nok-branch")
             gbw_test_fake_git_revlist_current_remote_nok
         ;;
-        "rev-list --left-right --count nok-branch...current-branch")
+        "rev-list --left-right --count nok-branch...${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
             gbw_test_fake_git_revlist_remote_current_nok
         ;;
         "rev-parse --git-dir")
