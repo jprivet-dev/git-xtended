@@ -64,12 +64,14 @@ function gbw_test_run {
     echo
 
     if [ "${func}" == "" ]; then
+        TEST_GBW_PARAMS_ASSERT_OK_SHOW_MESSAGE=0
         gbw_test_check_func_with_test
         echo
         gbw_test_run_all
         return
     fi
 
+    TEST_GBW_PARAMS_ASSERT_OK_SHOW_MESSAGE=1
     gbw_test_run_only $func
 }
 
