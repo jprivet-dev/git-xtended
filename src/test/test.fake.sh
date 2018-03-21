@@ -53,6 +53,8 @@ function gbw_test_fake_git_rev_parse_git_dir {
 function gbw_test_fake_git {
     local args="$*"
 
+    gbw_test_fake_git_last_command="git ${args}"
+
     case $args in
         "status --porcelain")
             gbw_test_fake_git_status_porcelain
@@ -88,7 +90,7 @@ function gbw_test_fake_git {
             return
         ;;
         *)
-            "[ ERROR !!! No Git fake command for '${args}' ]"
+            echo "[ ERROR !!! No Git fake command for '${args}' ]"
         ;;
     esac
 }
