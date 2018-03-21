@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "==> GBW: import config/params.sh"
+echo "==> GBW: import config/params.test.sh"
 
 source ~/git-bash-workflow/config/params/test/params.test.colors.sh
 source ~/git-bash-workflow/config/params/test/params.test.main.sh
