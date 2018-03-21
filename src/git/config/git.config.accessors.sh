@@ -21,7 +21,10 @@ function gwb_git_config_set {
 }
 
 function gbw_git_config_set_global_alias_cmd {
-    echo "git config --global alias.$1 \"$2\""
+    local name="$1"
+    shift
+
+    git config --global alias.$name \"$*\"
 }
 
 function gbw_git_config_set_global_alias_func_cmd {
