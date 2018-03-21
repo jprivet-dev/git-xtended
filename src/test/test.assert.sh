@@ -54,9 +54,9 @@ function gbw_test_assert_last_git_command_is {
     local line=$2
 
     if [[ "${current}" == "${expected}" ]]; then
-        gbw_test_assert_ok ${line} "Last git commands is the one expected" "${current}" "${expected}"
+        gbw_test_assert_ok ${line} "Last git command is the one expected" "${current}" "${expected}"
     else
-        gbw_test_assert_nok ${line} "Last git commands is not the one expected" "${current}" "${expected}"
+        gbw_test_assert_nok ${line} "Last git command is not the one expected" "${current}" "${expected}"
     fi
 }
 
