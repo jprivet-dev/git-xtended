@@ -14,7 +14,7 @@ function test_gbw_git_get_remote_branch_ref {
 
     GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${last_value}"
     assert equals "$(gbw_git_get_remote_branch_ref)" "${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}" $LINENO
-    assert last-git-command-is "rev-parse --abbrev-ref HEAD" $LINENO
+    assert last-git-command-is "" $LINENO
 }
 
 function test_gbw_git_status {
