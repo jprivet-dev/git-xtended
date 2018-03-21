@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 GBW_ENV_TEST=${GBW_ENV_TEST:-0}
+echo "==> GBW: GBW_ENV_TEST = ${GBW_ENV_TEST} "
 
 source ~/git-bash-workflow/config/params.sh
 
