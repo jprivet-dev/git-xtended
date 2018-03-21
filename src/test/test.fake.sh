@@ -50,10 +50,18 @@ function gbw_test_fake_git_rev_parse_git_dir {
     echo ".git"
 }
 
+function gbw_test_fake_git_last_args_set {
+    echo "$*" > /tmp/gbw_test_fake_git_last_args.sh
+}
+
+function gbw_test_fake_git_last_args_get {
+    echo $(< /tmp/gbw_test_fake_git_last_args.sh)
+}
+
 function gbw_test_fake_git {
     local args="$*"
 
-    gbw_test_fake_git_last_args="$args"
+    gbw_test_fake_git_last_args_set "$*"
 
     case $args in
         "status --porcelain")
