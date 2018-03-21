@@ -28,9 +28,9 @@ function gbw_git_config_set_global_alias_cmd {
 }
 
 function gbw_git_config_set_global_alias_func_cmd {
-    echo git config --global alias.$1 "\"!f() { $2; }; f\""
+    git config --global alias.$1 "\"!f() { $2; }; f\""
 }
 
 function gbw_git_config_set_global_alias_sh_cmd {
-    echo git config --global alias.$1 "!sh -c $2"
+    git config --global alias.$1 "!sh -c $2"
 }
