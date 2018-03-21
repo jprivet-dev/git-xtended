@@ -48,6 +48,18 @@ function gbw_test_assert_equals {
     fi
 }
 
+function gbw_test_assert_last_git_command_is {
+    local current="$(gbw_test_fake_git_last_args_check)"
+    local expected=$1
+    local line=$2
+
+    if [[ "${current}" == "${expected}" ]]; then
+        gbw_test_assert_ok ${line} "Last git commands is the one expected" "${current}" "${expected}"
+    else
+        gbw_test_assert_nok ${line} "Last git commands is not the one expected" "${current}" "${expected}"
+    fi
+}
+
 function gbw_test_assert {
     local type=$1
     shift
@@ -55,6 +67,9 @@ function gbw_test_assert {
     case $type in
         equals)
             gbw_test_assert_equals "$@"
+        ;;
+        last-git-command-is)
+            gbw_test_assert_last_git_command_is "$@"
         ;;
         *)
             echo "Unknow assert type '${type}'"
