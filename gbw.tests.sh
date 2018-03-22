@@ -20,6 +20,7 @@ source ~/git-bash-workflow/gbw.sh
 source ~/git-bash-workflow/tests/test.tests.sh
 
 source ~/git-bash-workflow/tests/bash.tests.sh
+source ~/git-bash-workflow/tests/commands.tests.sh
 source ~/git-bash-workflow/tests/prompt.tests.sh
 source ~/git-bash-workflow/tests/git.tests.sh
 source ~/git-bash-workflow/tests/utils.tests.sh
