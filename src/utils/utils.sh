@@ -106,9 +106,9 @@ function gbw_print {
 }
 
 function gbw_print_colors {
-    echo ${GBW_PARAMS_PRINT_E_TAG} $*
+    echo ${GBW_PARAMS_PRINT_E_TAG} "$*"
 }
 
 function gbw_print_colors_force {
-    echo -e $*
+    echo -e "$*"
 }
