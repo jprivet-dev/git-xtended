@@ -11,9 +11,9 @@ elif [[ -f ~/git-bash-workflow/params/default/params.sh ]]; then
     source ~/git-bash-workflow/params/default/params.sh
 fi
 
-source ~/git-bash-workflow/src/utils.sh
+source ~/git-bash-workflow/src/utils/utils.sh
 source ~/git-bash-workflow/src/commands/commands.sh
-source ~/git-bash-workflow/src/colors.sh
+source ~/git-bash-workflow/src/colors/colors.sh
 source ~/git-bash-workflow/src/git/git.sh
 source ~/git-bash-workflow/src/prompt/prompt.sh
 source ~/git-bash-workflow/src/bash/bash.sh
