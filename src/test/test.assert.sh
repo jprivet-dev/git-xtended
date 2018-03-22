@@ -84,6 +84,18 @@ function gbw_test_assert_second_line {
     fi
 }
 
+function gbw_test_assert_last_line {
+    local current=`echo "${1}" | tail -n1`
+    local expected=$2
+    local line=$3
+
+    if [[ "${current}" == "${expected}" ]]; then
+        gbw_test_assert_ok ${line} "Last line is the one expected" "${current}" "${expected}"
+    else
+        gbw_test_assert_nok ${line} "Last line is not the one expected" "${current}" "${expected}"
+    fi
+}
+
 function gbw_test_assert {
     local type=$1
     shift
@@ -100,6 +112,9 @@ function gbw_test_assert {
         ;;
         second-line)
             gbw_test_assert_second_line "$@"
+        ;;
+        last-line)
+            gbw_test_assert_last_line "$@"
         ;;
         *)
             echo -e "${C_LIGHT_RED}[ERROR] Assert type '${type}' does not exist${F_RESET}"
