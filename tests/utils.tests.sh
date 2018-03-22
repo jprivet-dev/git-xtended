@@ -119,3 +119,25 @@ function test_gbw_line_generator {
     assert equals "$(gbw_line_generator 5 "-0-")"   "-0--0--0--0--0-" $LINENO
     assert equals "$(gbw_line_generator 5 "| ")"    "| | | | | " $LINENO
 }
+
+function test_gbw_print {
+    assert equals "$(gbw_print hello)"                  "hello" $LINENO
+    assert equals "$(gbw_print hello 42)"               "hello 42" $LINENO
+
+    assert equals "$(gbw_print "hello")"                "hello" $LINENO
+    assert equals "$(gbw_print "hello 42")"             "hello 42" $LINENO
+
+    assert equals "$(gbw_print "    hello")"            "    hello" $LINENO
+    assert equals "$(gbw_print "    hello 42")"         "    hello 42" $LINENO
+}
+
+function test_gbw_print_colors {
+    assert equals "$(gbw_print ${F_BOLD}hello${F_RESET})"               "${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_print ${F_BOLD}hello 42${F_RESET})"            "${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
+
+    assert equals "$(gbw_print "${F_BOLD}hello${F_RESET}")"             "${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_print "${F_BOLD}hello 42${F_RESET}")"          "${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
+
+    assert equals "$(gbw_print "    ${F_BOLD}hello${F_RESET}")"         "    ${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
+    assert equals "$(gbw_print "    ${F_BOLD}hello 42${F_RESET}")"      "    ${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
+}
