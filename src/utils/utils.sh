@@ -102,7 +102,7 @@ function gbw_line_generator {
 }
 
 function gbw_print {
-    echo $*
+    echo "$*"
 }
 
 function gbw_print_colors {
