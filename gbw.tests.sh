@@ -14,7 +14,7 @@ echo -e "${F_RESET}"
 
 alias git="gbw_test_fake_git"
 
-source ~/git-bash-workflow/src/test.sh
+source ~/git-bash-workflow/src/test/test.sh
 source ~/git-bash-workflow/gbw.sh
 
 source ~/git-bash-workflow/tests/test.tests.sh
