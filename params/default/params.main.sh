@@ -25,6 +25,8 @@ GBW_PARAMS_LABEL_WORKFLOW="(4) Git workflow commands (Agility)"
 GBW_PARAMS_LABEL_BASH_ALIASES="(5) Bash aliases"
 GBW_PARAMS_LABEL_GBW_COMMANDS="(6) ${GBW_PARAMS_TITLE_SHORT} commands"
 
+GBW_PARAMS_PRINT_E_TAG="-e"
+
 Change local
 if [ -z ${LC_ALL+x} ]; then
     echo "# LC_ALL is unset > export LC_ALL=C"
