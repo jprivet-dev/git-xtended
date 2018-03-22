@@ -117,3 +117,8 @@ function test_gbw_git_config_set_global_alias_sh_cmd {
     gbw_git_config_set_global_alias_sh_cmd ${name} ${value}
     assert last-git-command-is "git config --global alias.${name} !sh -c ${value}" $LINENO
 }
+
+function test_gbw_git_config_hooks_help {
+    assert first-line   "`gbw_git_config_hooks_help`"   "${TEST_C_WHITE}(3) Git hooks${TEST_F_RESET} :" $LINENO
+    assert last-line    "`gbw_git_config_hooks_help`"   "${TEST_GBW_PARAMS_TAB}XX ... WIP" $LINENO
+}
