@@ -100,3 +100,11 @@ function gbw_line_generator {
 
     echo "${result}"
 }
+
+function gbw_print {
+    echo $*
+}
+
+function gbw_print_colors {
+    echo ${GBW_PARAMS_PRINT_E_TAG} $*
+}
