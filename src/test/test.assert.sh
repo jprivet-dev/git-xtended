@@ -60,6 +60,18 @@ function gbw_test_assert_last_git_command_is {
     fi
 }
 
+function gbw_test_assert_first_line {
+    local current=`echo "${1}" | ${GBW_PARAMS_FILTER_FIRST_LINE}`
+    local expected=$2
+    local line=$3
+
+    if [[ "${current}" == "${expected}" ]]; then
+        gbw_test_assert_ok ${line} "First line is the one expected" "${current}" "${expected}"
+    else
+        gbw_test_assert_nok ${line} "First line is not the one expected" "${current}" "${expected}"
+    fi
+}
+
 function gbw_test_assert {
     local type=$1
     shift
@@ -70,6 +82,9 @@ function gbw_test_assert {
         ;;
         last-git-command-is)
             gbw_test_assert_last_git_command_is "$@"
+        ;;
+        first-line)
+            gbw_test_assert_first_line "$@"
         ;;
         *)
             echo "Unknow assert type '${type}'"
