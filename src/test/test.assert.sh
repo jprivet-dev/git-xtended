@@ -72,6 +72,18 @@ function gbw_test_assert_first_line {
     fi
 }
 
+function gbw_test_assert_second_line {
+    local current=`echo "${1}" | head -n2 | tail -n1`
+    local expected=$2
+    local line=$3
+
+    if [[ "${current}" == "${expected}" ]]; then
+        gbw_test_assert_ok ${line} "Second line is the one expected" "${current}" "${expected}"
+    else
+        gbw_test_assert_nok ${line} "Second line is not the one expected" "${current}" "${expected}"
+    fi
+}
+
 function gbw_test_assert {
     local type=$1
     shift
@@ -86,8 +98,11 @@ function gbw_test_assert {
         first-line)
             gbw_test_assert_first_line "$@"
         ;;
+        second-line)
+            gbw_test_assert_second_line "$@"
+        ;;
         *)
-            echo "Unknow assert type '${type}'"
+            echo -e "${C_LIGHT_RED}[ERROR] Assert type '${type}' does not exist${F_RESET}"
             return
         ;;
     esac
