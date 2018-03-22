@@ -3,12 +3,12 @@
 GBW_ENV_TEST=${GBW_ENV_TEST:-0}
 echo "==> GBW: GBW_ENV_TEST = ${GBW_ENV_TEST} "
 
-source ~/git-bash-workflow/config/params.sh
+source ~/git-bash-workflow/params/default/params.sh
 
 if [[ "${GBW_ENV_TEST}" == 1 ]]; then
-    source ~/git-bash-workflow/config/params.test.sh
-elif [[ -f ~/git-bash-workflow/params.sh ]]; then
-    source ~/git-bash-workflow/params.sh
+    source ~/git-bash-workflow/params/test/params.test.sh
+elif [[ -f ~/git-bash-workflow/params/default/params.sh ]]; then
+    source ~/git-bash-workflow/params/default/params.sh
 fi
 
 source ~/git-bash-workflow/src/utils.sh
