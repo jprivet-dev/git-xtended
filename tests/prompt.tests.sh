@@ -124,6 +124,10 @@ function test_gbw_prompt_ahead {
 function test_gbw_prompt_help {
     local count_lines="$(gbw_prompt_help | wc -l)"
     assert equals "${count_lines}" "9" $LINENO
+
+    assert first-line   "`gbw_prompt_help`"   "${TEST_C_WHITE}(1) Prompt with Git information${TEST_F_RESET} :" $LINENO
+    assert last-line    "`gbw_prompt_help`"   "${TEST_GBW_PARAMS_TAB}42↑ .......... Commits ahead remote branch reference" $LINENO
+
 }
 
 function test_gbw_prompt_ps1_part1 {
