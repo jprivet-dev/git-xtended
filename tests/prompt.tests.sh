@@ -157,9 +157,15 @@ function test_gbw_prompt_changes_count_colors {
 }
 
 function test_gbw_prompt_help_line {
-    local label="current_label"
+    local label="Label"
     local dots="...."
-    local description="current_description"
+    local description="Description"
 
-    assert equals "$(gbw_prompt_help_line "${label}" $dots "${description}")"      "    ${label} ${TEST_C_DARK_GRAY}${dots}${TEST_F_RESET} ${description}" $LINENO
+    assert equals "`gbw_prompt_help_line "${label}" $dots "${description}"`"      "${TEST_GBW_PARAMS_TAB}${label} ${TEST_C_DARK_GRAY}${dots}${TEST_F_RESET} ${description}" $LINENO
+
+    local label="A long label"
+    local dots="........"
+    local description="A long description"
+
+    assert equals "`gbw_prompt_help_line "${label}" $dots "${description}"`"      "${TEST_GBW_PARAMS_TAB}${label} ${TEST_C_DARK_GRAY}${dots}${TEST_F_RESET} ${description}" $LINENO
 }
