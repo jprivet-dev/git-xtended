@@ -127,6 +127,9 @@ function test_gbw_git_config_hooks_help {
 }
 
 function test_gbw_git_config_workflow_help {
+    local count_lines="$(gbw_git_config_workflow_help | wc -l)"
+    assert equals "${count_lines}" "3" $LINENO
+
     assert first-line   "`gbw_git_config_workflow_help`"   "${TEST_C_WHITE}(4) Git workflow commands (Agility)${TEST_F_RESET} :" $LINENO
     assert last-line    "`gbw_git_config_workflow_help`"   "${TEST_GBW_PARAMS_TAB}XX ... WIP" $LINENO
 }
