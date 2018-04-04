@@ -6,6 +6,7 @@ function gbw_command_help {
     gbw_command_help_command_line "install" "" ......... "Select and install ${GBW_PARAMS_TITLE_SHORT} elements"
     gbw_command_help_command_line "reload" "" .......... "Reload ${GBW_PARAMS_TITLE_SHORT}"
     gbw_command_help_command_line "status" "" .......... "Show status of ${GBW_PARAMS_TITLE_SHORT} elements"
+    gbw_command_help_command_line "colors" "" .......... "Show all ${GBW_PARAMS_TITLE_SHORT} colors"
     gbw_command_help_command_line "test"  "[<func>]" ... "Run one or all ${GBW_PARAMS_TITLE_SHORT} tests"
     gbw_print
 }
