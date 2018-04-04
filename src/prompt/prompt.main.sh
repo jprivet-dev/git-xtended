@@ -122,12 +122,12 @@ function gbw_prompt_status_untracked_colors {
 
 # @test
 function gbw_prompt_status {
-    echo "$(gbw_prompt_status_untracked) $(gbw_prompt_status_not_staged) $(gbw_prompt_status_to_be_commited)"
+    echo "`gbw_prompt_status_untracked` `gbw_prompt_status_not_staged` `gbw_prompt_status_to_be_commited`"
 }
 
 # @test
 function gbw_prompt_behind {
-    local count="$(gbw_git_status_behind_count $(gbw_git_get_current_branch) $(gbw_git_get_remote_branch_ref))"
+    local count="$(gbw_git_status_behind_count `gbw_git_get_current_branch` `gbw_git_get_remote_branch_ref`)"
     echo $(gbw_prompt_behind_colors "${count}")
 }
 
@@ -145,7 +145,7 @@ function gbw_prompt_behind_colors {
 
 # @test
 function gbw_prompt_ahead {
-    local count="$(gbw_git_status_ahead_count $(gbw_git_get_current_branch) $(gbw_git_get_remote_branch_ref))"
+    local count="$(gbw_git_status_ahead_count `gbw_git_get_current_branch` `gbw_git_get_remote_branch_ref`)"
     echo $(gbw_prompt_ahead_colors "${count}")
 }
 
@@ -163,16 +163,16 @@ function gbw_prompt_ahead_colors {
 
 # @test
 function gbw_prompt_ps1_part1 {
-    ps1="$(gbw_prompt_time) $(gbw_prompt_userhost):$(gbw_prompt_dir)"
+    ps1="`gbw_prompt_time` `gbw_prompt_userhost`:`gbw_prompt_dir`"
 
-    if [[ -d "$(gbw_git_current_folder_is_repo)" ]]; then
-        ps1="${ps1} $(gbw_prompt_branch)"
+    if [[ -d "`gbw_git_current_folder_is_repo`" ]]; then
+        ps1="${ps1} `gbw_prompt_branch`"
 
-        if [[ "$(gbw_git_get_changes_nb)" != 0 ]]; then
-            ps1="${ps1} $(gbw_prompt_changes_count) $(gbw_prompt_status)"
+        if [[ "`gbw_git_get_changes_nb`" != 0 ]]; then
+            ps1="${ps1} `gbw_prompt_changes_count` `gbw_prompt_status`"
         fi
 
-        ps1="${ps1} $(gbw_prompt_behind) $(gbw_prompt_ahead)"
+        ps1="${ps1} `gbw_prompt_behind` `gbw_prompt_ahead`"
     fi
 
     echo "${ps1}"
@@ -184,7 +184,7 @@ function gbw_prompt_ps1_part2 {
 }
 
 function gbw_prompt_set_ps1 {
-    PS1="$(gbw_prompt_ps1_part1)$(gbw_prompt_ps1_part2)"
+    PS1="`gbw_prompt_ps1_part1``gbw_prompt_ps1_part2`"
 }
 
 function gbw_prompt_set_ps2 {
@@ -192,7 +192,7 @@ function gbw_prompt_set_ps2 {
 }
 
 function gbw_prompt_on {
-    if [[ "$(gbw_is_bash_interactive)" == "false" ]]; then
+    if [[ "`gbw_is_bash_interactive`" == "false" ]]; then
         return
     fi
     PROMPT_COMMAND='gbw_prompt_set_ps1'
