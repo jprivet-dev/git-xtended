@@ -27,18 +27,18 @@ function gbw_install_activation_show_status {
     local col_width=${#line_info}
     local space=" "
 
-    local line=`gbw_echo_fixed_width $col_width "-" "+" "+"`
+    local line=`gbw_print_fixed_width $col_width "-" "+" "+"`
 
     echo
     echo "${line}"
-    gbw_echo_fixed_width $col_width "${space}" "| ${GBW_PARAMS_TITLE}" "${GBW_PARAMS_VERSION} |"
+    gbw_print_fixed_width $col_width "${space}" "| ${GBW_PARAMS_TITLE}" "${GBW_PARAMS_VERSION} |"
     echo "${line}"
 
-    gbw_echo_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_PROMPT}"        "| ${gbw_prompt_on_off} |"
-    gbw_echo_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_GIT_ALIASES}"   "| ${gbw_git_aliases_on_off} |"
-    gbw_echo_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_GIT_HOOKS}"     "| ${gbw_git_hooks_on_off} |"
-    gbw_echo_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_WORKFLOW}"      "| ${gbw_workflow_on_off} |"
-    gbw_echo_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_BASH_ALIASES}"  "| ${gbw_bash_aliases_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_PROMPT}"        "| ${gbw_prompt_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_GIT_ALIASES}"   "| ${gbw_git_aliases_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_GIT_HOOKS}"     "| ${gbw_git_hooks_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_WORKFLOW}"      "| ${gbw_workflow_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_BASH_ALIASES}"  "| ${gbw_bash_aliases_on_off} |"
 
     echo "${line}"
     echo "${line_info}"
