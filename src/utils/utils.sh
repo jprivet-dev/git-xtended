@@ -51,7 +51,7 @@ function gbw_regex_remove_colors {
     echo "$1" | sed -E 's/\\e\[[0-9]{1,3}m//g'
 }
 
-function gbw_echo_fixed_width {
+function gbw_print_fixed_width {
     local e="${GBW_PARAMS_OFF}"
     local width middle_char start end
     local start_no_style end_no_style
