@@ -71,14 +71,14 @@ function gbw_echo_fixed_width {
     [ "$6" != "" ] && middle_suffix="$6"
 
     if [ "${e}" == "${GBW_PARAMS_ON}" ]; then
-        start_no_style=$(gbw_regex_remove_colors "${start}")
-        end_no_style=$(gbw_regex_remove_colors "${end}")
+        start_no_style=`gbw_regex_remove_colors "${start}"`
+        end_no_style=`gbw_regex_remove_colors "${end}"`
     else
         start_no_style="${start}"
         end_no_style="${end}"
     fi
 
-    middle=$(gbw_line_generator "${width}" "${middle_char}")
+    middle=`gbw_line_generator "${width}" "${middle_char}"`
     count=${#start_no_style}+${#end_no_style}+${#middle_prefix}+${#middle_suffix}
     trucate="${middle_prefix}${middle:$count}${middle_suffix}"
 
