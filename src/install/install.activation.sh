@@ -17,11 +17,11 @@ function gbw_install_activation_on_off_color {
 function gbw_install_activation_show_status {
     gbw_install_choice_params_set_all_from_git_config
 
-    local gbw_prompt_on_off="$(gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_PROMPT_ACTIVE})"
-    local gbw_git_aliases_on_off="$(gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE})"
-    local gbw_git_hooks_on_off="$(gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE})"
-    local gbw_workflow_on_off="$(gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE})"
-    local gbw_bash_aliases_on_off="$(gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE})"
+    local gbw_prompt_on_off="`gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_PROMPT_ACTIVE}`"
+    local gbw_git_aliases_on_off="`gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE}`"
+    local gbw_git_hooks_on_off="`gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE}`"
+    local gbw_workflow_on_off="`gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE}`"
+    local gbw_bash_aliases_on_off="`gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE}`"
 
     local line_info="| @info ${GBW_PARAMS_GITHUB} |"
     local col_width=${#line_info}
