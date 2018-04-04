@@ -10,7 +10,7 @@ function gbw_prompt_help {
     local behind=$(gbw_prompt_behind_colors "3")
     local ahead=$(gbw_prompt_ahead_colors "42")
 
-    echo -e "${C_WHITE}${GBW_PARAMS_LABEL_PROMPT}${F_RESET} :"
+    gbw_print_colors "${C_WHITE}${GBW_PARAMS_LABEL_PROMPT}${F_RESET} :"
     gbw_prompt_help_line "${branch}"      .....           "Current branch"
     gbw_prompt_help_line "${count}"       ...........     "All elements from git status"
     gbw_prompt_help_line "${status_u}"    ...........     "Untracked files"
