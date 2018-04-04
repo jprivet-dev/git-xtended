@@ -76,7 +76,7 @@ function gbw_test_run {
 }
 
 function gbw_test_run_all {
-    local func_test_list=($(gbw_test_find_all_func_test))
+    local func_test_list=(`gbw_test_find_all_func_test`)
 
     for func in "${func_test_list[@]}"
     do
@@ -110,7 +110,7 @@ function gbw_test_run_func {
 }
 
 function gbw_test_check_func_with_test {
-    local func_gbw_list=($(gbw_test_find_all_func_gbw))
+    local func_gbw_list=(`gbw_test_find_all_func_gbw`)
 
     echo
     echo -e "${C_LIGHT_YELLOW}# Functions with test${F_RESET}";
