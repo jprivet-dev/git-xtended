@@ -3,7 +3,7 @@
 function gbw_bash_aliases_on {
     alias g="git"
 
-    if [[ -x "$(git --version)" ]]; then
+    if [[ -x "`git --version`" ]]; then
         # active git autocompletion for 'g' alias
         complete -o default -o nospace -F _git g
     fi
