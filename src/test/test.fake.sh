@@ -55,13 +55,13 @@ function gbw_test_fake_git_last_args_set {
 }
 
 function gbw_test_fake_git_last_args_check {
-    local value=$(< /tmp/gbw_test_fake_git_last_args.sh)
+    local value=`< /tmp/gbw_test_fake_git_last_args.sh`
     gbw_test_fake_git_last_args_set ""
     echo "${value}"
 }
 
 function gbw_test_fake_git_last_args_get {
-    echo $(< /tmp/gbw_test_fake_git_last_args.sh)
+    echo `< /tmp/gbw_test_fake_git_last_args.sh`
 }
 
 function gbw_test_fake_git {
