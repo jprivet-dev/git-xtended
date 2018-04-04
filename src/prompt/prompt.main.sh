@@ -2,7 +2,7 @@
 
 # @test
 function gbw_prompt_time {
-    echo $(gbw_prompt_time_colors "\t")
+    echo `gbw_prompt_time_colors "\t"`
 }
 
 function gbw_prompt_time_colors {
@@ -12,7 +12,7 @@ function gbw_prompt_time_colors {
 
 # @test
 function gbw_prompt_user {
-    echo $(gbw_prompt_user_colors "${GBW_PARAMS_USER_PS1}")
+    echo `gbw_prompt_user_colors "${GBW_PARAMS_USER_PS1}"`
 }
 
 function gbw_prompt_user_colors {
@@ -22,7 +22,7 @@ function gbw_prompt_user_colors {
 
 # @test
 function gbw_prompt_host {
-    echo $(gbw_prompt_host_colors "\h")
+    echo `gbw_prompt_host_colors "\h"`
 }
 
 function gbw_prompt_host_colors {
@@ -72,7 +72,7 @@ function gbw_prompt_status_to_be_commited {
     local n="`gbw_git_get_status_changes_to_be_committed_new_file_count`"
     local d="`gbw_git_get_status_changes_to_be_committed_deleted_count`"
 
-    echo $(gbw_prompt_status_to_be_commited_colors "${m}" "${n}" "${d}")
+    echo `gbw_prompt_status_to_be_commited_colors "${m}" "${n}" "${d}"`
 }
 
 function gbw_prompt_status_to_be_commited_colors {
@@ -91,7 +91,7 @@ function gbw_prompt_status_to_be_commited_colors {
 # @test
 function gbw_prompt_status_not_staged {
     local count="`gbw_git_get_status_changes_not_staged_for_commit_count`"
-    echo $(gbw_prompt_status_not_staged_colors "${count}")
+    echo `gbw_prompt_status_not_staged_colors "${count}"`
 }
 
 function gbw_prompt_status_not_staged_colors {
@@ -107,7 +107,7 @@ function gbw_prompt_status_not_staged_colors {
 # @test
 function gbw_prompt_status_untracked {
     local count="`gbw_git_get_status_untracked_files_count`"
-    echo $(gbw_prompt_status_untracked_colors "${count}")
+    echo `gbw_prompt_status_untracked_colors "${count}"`
 }
 
 function gbw_prompt_status_untracked_colors {
@@ -128,7 +128,7 @@ function gbw_prompt_status {
 # @test
 function gbw_prompt_behind {
     local count="$(gbw_git_status_behind_count `gbw_git_get_current_branch` `gbw_git_get_remote_branch_ref`)"
-    echo $(gbw_prompt_behind_colors "${count}")
+    echo `gbw_prompt_behind_colors "${count}"`
 }
 
 function gbw_prompt_behind_colors {
@@ -146,7 +146,7 @@ function gbw_prompt_behind_colors {
 # @test
 function gbw_prompt_ahead {
     local count="$(gbw_git_status_ahead_count `gbw_git_get_current_branch` `gbw_git_get_remote_branch_ref`)"
-    echo $(gbw_prompt_ahead_colors "${count}")
+    echo `gbw_prompt_ahead_colors "${count}"`
 }
 
 function gbw_prompt_ahead_colors {
