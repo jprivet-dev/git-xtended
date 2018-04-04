@@ -32,7 +32,7 @@ function gbw_prompt_host_colors {
 
 # @test
 function gbw_prompt_userhost {
-    echo $(gbw_prompt_userhost_colors "$(gbw_prompt_user)" "$(gbw_prompt_host)")
+    echo $(gbw_prompt_userhost_colors "`gbw_prompt_user`" "`gbw_prompt_host`")
 }
 
 function gbw_prompt_userhost_colors {
@@ -48,7 +48,7 @@ function gbw_prompt_dir {
 
 # @test
 function gbw_prompt_branch {
-    echo $(gbw_prompt_branch_colors "$(gbw_git_get_current_branch)")
+    echo $(gbw_prompt_branch_colors "`gbw_git_get_current_branch`")
 }
 
 function gbw_prompt_branch_colors {
@@ -58,7 +58,7 @@ function gbw_prompt_branch_colors {
 
 # @test
 function gbw_prompt_changes_count {
-    echo $(gbw_prompt_changes_count_colors "$(gbw_git_get_changes_nb)")
+    echo $(gbw_prompt_changes_count_colors "`gbw_git_get_changes_nb`")
 }
 
 function gbw_prompt_changes_count_colors {
@@ -68,9 +68,9 @@ function gbw_prompt_changes_count_colors {
 
 # @test
 function gbw_prompt_status_to_be_commited {
-    local m="$(gbw_git_get_status_changes_to_be_committed_modified_extended_count)"
-    local n="$(gbw_git_get_status_changes_to_be_committed_new_file_count)"
-    local d="$(gbw_git_get_status_changes_to_be_committed_deleted_count)"
+    local m="`gbw_git_get_status_changes_to_be_committed_modified_extended_count`"
+    local n="`gbw_git_get_status_changes_to_be_committed_new_file_count`"
+    local d="`gbw_git_get_status_changes_to_be_committed_deleted_count`"
 
     echo $(gbw_prompt_status_to_be_commited_colors "${m}" "${n}" "${d}")
 }
@@ -90,7 +90,7 @@ function gbw_prompt_status_to_be_commited_colors {
 
 # @test
 function gbw_prompt_status_not_staged {
-    local count="$(gbw_git_get_status_changes_not_staged_for_commit_count)"
+    local count="`gbw_git_get_status_changes_not_staged_for_commit_count`"
     echo $(gbw_prompt_status_not_staged_colors "${count}")
 }
 
@@ -106,7 +106,7 @@ function gbw_prompt_status_not_staged_colors {
 
 # @test
 function gbw_prompt_status_untracked {
-    local count="$(gbw_git_get_status_untracked_files_count)"
+    local count="`gbw_git_get_status_untracked_files_count`"
     echo $(gbw_prompt_status_untracked_colors "${count}")
 }
 
