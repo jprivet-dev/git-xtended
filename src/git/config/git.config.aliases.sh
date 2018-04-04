@@ -34,6 +34,7 @@ function gbw_git_config_set_aliases {
 
     git config $global alias.l "${command_log_oneline} -12"
     git config $global alias.ll "${command_log_oneline}"
+    git config $global alias.lfile "${command_log_oneline} --follow"
     git config $global alias.lcount "shortlog -sn"
 
     # git reset
