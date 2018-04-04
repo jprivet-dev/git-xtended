@@ -17,7 +17,7 @@ function gbw_implode {
 
     for p in "${pieces[@]}"
     do
-        p="$(gbw_trim "${p}")"
+        p="`gbw_trim "${p}"`"
 
         if [[ "${implode}" == "" ]]; then
             [[ "${p}" != "" ]] && implode="${p}"
