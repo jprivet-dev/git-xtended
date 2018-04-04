@@ -49,7 +49,7 @@ function gbw_test_assert_equals {
 }
 
 function gbw_test_assert_last_git_command_is {
-    local current="$(gbw_test_fake_git_last_args_check)"
+    local current="`gbw_test_fake_git_last_args_check`"
     local expected=$1
     local line=$2
 
