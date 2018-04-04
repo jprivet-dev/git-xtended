@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function test_gbw_command_help {
-    local count_lines="$(gbw_command_help | wc -l)"
+    local count_lines="`gbw_command_help | wc -l`"
     assert equals "${count_lines}" "7" $LINENO
 
     assert first-line   "`gbw_command_help`"   "${TEST_C_WHITE}(6) GBW commands${TEST_F_RESET} :" $LINENO
