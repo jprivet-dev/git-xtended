@@ -5,8 +5,9 @@ function gbw_git_config_aliases_help {
     local select_file="(select file with ${F_UNDERLINED}index${F_RESET} status instead of path)"
 
     echo -e "${C_WHITE}${GBW_PARAMS_LABEL_GIT_ALIASES}${F_RESET} :"
-    gbw_git_config_aliases_help_line "     log |" "l" "" ................. "Show the last 10 commit logs (graphical representation)"
+    gbw_git_config_aliases_help_line "     log |" "l" "" ................. "Show the last 12 commit logs (graphical representation)"
     gbw_git_config_aliases_help_line "          " "ll" "" ................ "Show all commit logs (graphical representation)"
+    gbw_git_config_aliases_help_line "          " "lfile"  "<file>" ...... "Show all commit logs for a specific file (graphical representation)"
     gbw_git_config_aliases_help_line "          " "lcount" "" ............ "Number of commits per author"
     gbw_git_config_aliases_help_line "  branch |" "b" "" ................. "Simple \"branch\" alias"
     gbw_git_config_aliases_help_line "checkout |" "k" "" ................. "Simple \"checkout\" alias"
