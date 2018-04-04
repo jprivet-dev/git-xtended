@@ -2,13 +2,13 @@
 
 # @test
 function gbw_prompt_help {
-    local branch=$(gbw_prompt_branch_colors "branch")
-    local count=$(gbw_prompt_changes_count_colors "8")
-    local status_u=$(gbw_prompt_status_untracked_colors "2")
-    local status_s=$(gbw_prompt_status_not_staged_colors "3")
-    local status_c=$(gbw_prompt_status_to_be_commited_colors "2" "0" "1")
-    local behind=$(gbw_prompt_behind_colors "3")
-    local ahead=$(gbw_prompt_ahead_colors "42")
+    local branch=`gbw_prompt_branch_colors "branch"`
+    local count=`gbw_prompt_changes_count_colors "8"`
+    local status_u=`gbw_prompt_status_untracked_colors "2"`
+    local status_s=`gbw_prompt_status_not_staged_colors "3"`
+    local status_c=`gbw_prompt_status_to_be_commited_colors "2" "0" "1"`
+    local behind=`gbw_prompt_behind_colors "3"`
+    local ahead=`gbw_prompt_ahead_colors "42"`
 
     gbw_print_colors "${C_WHITE}${GBW_PARAMS_LABEL_PROMPT}${F_RESET} :"
     gbw_prompt_help_line "${branch}"      .....           "Current branch"
