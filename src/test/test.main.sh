@@ -40,7 +40,7 @@ function gbw_test_print_results {
 
     message="${prefix} ${gbw_test_count_tests} ${test_plurial}, ${gbw_test_count_assertions} ${assertion_plurial}, ${gbw_test_count_failures} ${failure_plurial}"
     length=${#message}
-    line=$(gbw_line_generator "${length}" "${symbol}")
+    line=`gbw_line_generator "${length}" "${symbol}"`
 
     echo
     echo -e "${color}+${symbol}${line}${symbol}+"
