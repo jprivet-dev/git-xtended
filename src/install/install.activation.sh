@@ -43,5 +43,19 @@ function gbw_install_activation_show_status {
     echo "${line}"
     echo "${line_info}"
     echo "${line}"
+
+    echo
+
+    echo "${line}"
+    gbw_print_fixed_width -e $col_width "${space}"  "| git config ..." "|"
+    gbw_print_fixed_width -e $col_width "${space}"  "| ${GBW_PARAMS_TAB}user.name  = `git config user.name`"     "|"
+    gbw_print_fixed_width -e $col_width "${space}"  "| ${GBW_PARAMS_TAB}user.email = `git config user.email`"    "|"
+
+    echo "${line}"
+    gbw_print_fixed_width -e $col_width "${space}"  "| git config --global ..." "|"
+    gbw_print_fixed_width -e $col_width "${space}"  "| ${GBW_PARAMS_TAB}user.name  = `git config --global user.name`"    "|"
+    gbw_print_fixed_width -e $col_width "${space}"  "| ${GBW_PARAMS_TAB}user.email = `git config --global user.email`"   "|"
+
+    echo "${line}"
     echo
 }
