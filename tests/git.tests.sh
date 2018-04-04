@@ -133,3 +133,11 @@ function test_gbw_git_config_workflow_help {
     assert first-line   "`gbw_git_config_workflow_help`"   "${TEST_C_WHITE}(4) Git workflow commands (Agility)${TEST_F_RESET} :" $LINENO
     assert last-line    "`gbw_git_config_workflow_help`"   "${TEST_GBW_PARAMS_TAB}XX ... WIP" $LINENO
 }
+
+function test_gbw_git_config_aliases_help {
+    local count_lines="$(gbw_git_config_aliases_help | wc -l)"
+    assert equals "${count_lines}" "23" $LINENO
+
+    assert first-line   "`gbw_git_config_aliases_help`"   "${TEST_C_WHITE}(2) Git aliases${TEST_F_RESET} :" $LINENO
+    assert last-line    "`gbw_git_config_aliases_help`"   "        grep | git ${TEST_C_LIGHT_CYAN}find${TEST_F_RESET} <string> ${TEST_C_DARK_GRAY}.....${TEST_F_RESET} Look for specified strings in the tracked files (case sensitive)" $LINENO
+}
