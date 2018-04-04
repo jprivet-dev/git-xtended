@@ -27,7 +27,7 @@ function gbw_install_activation_show_status {
     local col_width=${#line_info}
     local space=" "
 
-    local line=$(gbw_echo_fixed_width $col_width "-" "+" "+")
+    local line=`gbw_echo_fixed_width $col_width "-" "+" "+"`
 
     echo
     echo "${line}"
