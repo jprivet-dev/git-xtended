@@ -44,6 +44,10 @@ function gbw_command_action_help {
     gbw_command_help
 }
 
+function gbw_command_action_colors {
+    gbw_colors_print_all
+}
+
 function gbw_command_action_test {
     source ~/git-bash-workflow/gbw.tests.sh
 }
