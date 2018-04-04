@@ -4,7 +4,7 @@ function gbw_git_config_aliases_help {
     local cat
     local select_file="(select file with ${F_UNDERLINED}index${F_RESET} status instead of path)"
 
-    echo -e "${C_WHITE}${GBW_PARAMS_LABEL_GIT_ALIASES}${F_RESET} :"
+    gbw_print_colors "${C_WHITE}${GBW_PARAMS_LABEL_GIT_ALIASES}${F_RESET} :"
     gbw_git_config_aliases_help_line "     log |" "l" "" ................. "Show the last 12 commit logs (graphical representation)"
     gbw_git_config_aliases_help_line "          " "ll" "" ................ "Show all commit logs (graphical representation)"
     gbw_git_config_aliases_help_line "          " "lfile"  "<file>" ...... "Show all commit logs for a specific file (graphical representation)"
@@ -32,5 +32,5 @@ function gbw_git_config_aliases_help {
 function gbw_git_config_aliases_help_line {
     local option
     [ "$3" == "" ] && option=" " || option=" $3 "
-    echo -e "${GBW_PARAMS_TAB}$1 git ${C_LIGHT_CYAN}$2${F_RESET}${option}${C_DARK_GRAY}$4${F_RESET} $5"
+    gbw_print_colors "${GBW_PARAMS_TAB}$1 git ${C_LIGHT_CYAN}$2${F_RESET}${option}${C_DARK_GRAY}$4${F_RESET} $5"
 }
