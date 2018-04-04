@@ -61,7 +61,7 @@ function gbw_test_assert_last_git_command_is {
 }
 
 function gbw_test_assert_first_line {
-    local current=`echo "${1}" | ${GBW_PARAMS_FILTER_FIRST_LINE}`
+    local current=`echo "${1}" | head -n1`
     local expected=$2
     local line=$3
 
