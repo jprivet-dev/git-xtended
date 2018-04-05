@@ -59,9 +59,7 @@ function gbw_test_find_all_func_gbw {
 function gbw_test_run {
     local func=$1
 
-    echo
-    echo -e "${C_LIGHT_YELLOW}# Testing launch${F_RESET}";
-    echo
+    gbw_print_step "Testing launch"
 
     if [ "${func}" == "" ]; then
         TEST_GBW_PARAMS_ASSERT_OK_SHOW_MESSAGE=0
@@ -78,6 +76,8 @@ function gbw_test_run {
 function gbw_test_run_all {
     local func_test_list=(`gbw_test_find_all_func_test`)
 
+    gbw_print_title_2 "Launch all tests"
+
     for func in "${func_test_list[@]}"
     do
         gbw_test_run_func $func
@@ -88,6 +88,8 @@ function gbw_test_run_all {
 
 function gbw_test_run_only {
     local func=$1
+
+    gbw_print_title_2 "Launch only one test"
 
     if type $func &>/dev/null; then
         gbw_test_run_func $func
@@ -112,9 +114,7 @@ function gbw_test_run_func {
 function gbw_test_check_func_with_test {
     local func_gbw_list=(`gbw_test_find_all_func_gbw`)
 
-    echo
-    echo -e "${C_LIGHT_YELLOW}# Functions with test${F_RESET}";
-    echo
+    gbw_print_title_2 "Functions with test"
 
     for func in "${func_gbw_list[@]}"
     do
