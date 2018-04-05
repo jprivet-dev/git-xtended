@@ -23,18 +23,20 @@ function gbw_install_activation_show_status {
     local gbw_workflow_on_off="`gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE}`"
     local gbw_bash_aliases_on_off="`gbw_install_activation_on_off_color ${GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE}`"
 
-    local line_info="| @info ${GBW_PARAMS_GITHUB} |"
+    local line_info="@info ${GBW_PARAMS_GITHUB}"
     local col_width=${#line_info}
     local space=" "
 
-    local line=`gbw_print_fixed_width $col_width "-" "+" "+"`
+    local line=`gbw_print_fixed_width $col_width "-" "" ""`
 
     cat ~/git-bash-workflow/src/logo/logo.txt
     echo
 
     echo
+    gbw_print_fixed_width $col_width "${space}" "" "${GBW_PARAMS_VERSION}"
     echo "${line}"
-    gbw_print_fixed_width $col_width "${space}" "| ${GBW_PARAMS_TITLE}" "${GBW_PARAMS_VERSION} |"
+
+    echo "${line_info}"
     echo "${line}"
 
     gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_PROMPT}"        "| ${gbw_prompt_on_off} |"
@@ -42,12 +44,6 @@ function gbw_install_activation_show_status {
     gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_GIT_HOOKS}"     "| ${gbw_git_hooks_on_off} |"
     gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_WORKFLOW}"      "| ${gbw_workflow_on_off} |"
     gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_BASH_ALIASES}"  "| ${gbw_bash_aliases_on_off} |"
-
-    echo "${line}"
-    echo "${line_info}"
-    echo "${line}"
-
-    echo
 
     echo "${line}"
     gbw_print_fixed_width -e $col_width "${space}"  "| git config ..." "|"
