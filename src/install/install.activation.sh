@@ -29,6 +29,9 @@ function gbw_install_activation_show_status {
 
     local line=`gbw_print_fixed_width $col_width "-" "+" "+"`
 
+    cat ~/git-bash-workflow/src/logo/logo.txt
+    echo
+
     echo
     echo "${line}"
     gbw_print_fixed_width $col_width "${space}" "| ${GBW_PARAMS_TITLE}" "${GBW_PARAMS_VERSION} |"
