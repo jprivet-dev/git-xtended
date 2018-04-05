@@ -182,9 +182,9 @@ function gbw_prompt_ps1_part1 {
 function gbw_prompt_ps1_part2 {
     local ps2="${F_RESET}\n"
 
-    if [[ -d "`gbw_git_current_folder_is_repo`" ]]; then
-        ps2="${ps2}[`gbw_git_get_current_user_name`] "
-    fi
+#    if [[ -d "`gbw_git_current_folder_is_repo`" ]]; then
+#        ps2="${ps2}[`gbw_git_get_current_user_name`] "
+#    fi
 
     ps2="${ps2}\$ "
 
