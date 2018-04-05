@@ -163,7 +163,7 @@ function gbw_prompt_ahead_colors {
 
 # @test
 function gbw_prompt_ps1_part1 {
-    ps1="`gbw_prompt_time` `gbw_prompt_userhost`:`gbw_prompt_dir`"
+    local ps1="`gbw_prompt_time` `gbw_prompt_userhost`:`gbw_prompt_dir`"
 
     if [[ -d "`gbw_git_current_folder_is_repo`" ]]; then
         ps1="${ps1} `gbw_prompt_branch`"
@@ -180,7 +180,15 @@ function gbw_prompt_ps1_part1 {
 
 # @test
 function gbw_prompt_ps1_part2 {
-    echo "${F_RESET}\n\$ "
+    local ps2="${F_RESET}\n"
+
+    if [[ -d "`gbw_git_current_folder_is_repo`" ]]; then
+        ps2="${ps2}[`gbw_git_get_current_user_name`] "
+    fi
+
+    ps2="${ps2}\$ "
+
+    echo "${ps2}"
 }
 
 function gbw_prompt_set_ps1 {
