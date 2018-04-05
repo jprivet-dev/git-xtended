@@ -10,6 +10,10 @@ function gbw_git_get_current_branch {
     git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
+function gbw_git_get_current_user_name {
+    git config user.name
+}
+
 # @test
 function gbw_git_get_remote_branch_ref {
     local branch="$1"
