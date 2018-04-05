@@ -25,6 +25,8 @@ function gbw_command_parse_action {
 }
 
 function gbw_command_action_install {
+    gbw_print_title_1 "${GBW_PARAMS_TITLE} INSTALL"
+
     gbw_install_choice
     gbw_install_activation
     gbw_install_activation_show_status
