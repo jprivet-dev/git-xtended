@@ -50,6 +50,10 @@ function gbw_test_fake_git_rev_parse_git_dir {
     echo ".git"
 }
 
+function gbw_test_fake_git_get_current_user_name {
+    echo "username"
+}
+
 function gbw_test_fake_git_last_args_set {
     echo "$*" > /tmp/gbw_test_fake_git_last_args.sh
 }
@@ -96,6 +100,9 @@ function gbw_test_fake_git {
         ;;
         "rev-parse --git-dir")
             gbw_test_fake_git_rev_parse_git_dir
+        ;;
+        "config user.name")
+            gbw_test_fake_git_get_current_user_name
         ;;
         "--version")
             return
