@@ -39,21 +39,24 @@ function gbw_install_activation_show_status {
     echo "${line_info}"
     echo "${line}"
 
-    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_PROMPT}"        "| ${gbw_prompt_on_off} |"
-    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_GIT_ALIASES}"   "| ${gbw_git_aliases_on_off} |"
-    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_GIT_HOOKS}"     "| ${gbw_git_hooks_on_off} |"
-    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_WORKFLOW}"      "| ${gbw_workflow_on_off} |"
-    gbw_print_fixed_width -e $col_width "${space}" "| ${GBW_PARAMS_LABEL_BASH_ALIASES}"  "| ${gbw_bash_aliases_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "${GBW_PARAMS_LABEL_PROMPT}"        "| ${gbw_prompt_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "${GBW_PARAMS_LABEL_GIT_ALIASES}"   "| ${gbw_git_aliases_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "${GBW_PARAMS_LABEL_GIT_HOOKS}"     "| ${gbw_git_hooks_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "${GBW_PARAMS_LABEL_WORKFLOW}"      "| ${gbw_workflow_on_off} |"
+    gbw_print_fixed_width -e $col_width "${space}" "${GBW_PARAMS_LABEL_BASH_ALIASES}"  "| ${gbw_bash_aliases_on_off} |"
 
     echo "${line}"
-    gbw_print_fixed_width -e $col_width "${space}"  "| git config ..." "|"
-    gbw_print_fixed_width -e $col_width "${space}"  "| ${GBW_PARAMS_TAB}user.name  = `git config user.name`"     "|"
-    gbw_print_fixed_width -e $col_width "${space}"  "| ${GBW_PARAMS_TAB}user.email = `git config user.email`"    "|"
+    echo
 
-    echo "${line}"
-    gbw_print_fixed_width -e $col_width "${space}"  "| git config --global ..." "|"
-    gbw_print_fixed_width -e $col_width "${space}"  "| ${GBW_PARAMS_TAB}user.name  = `git config --global user.name`"    "|"
-    gbw_print_fixed_width -e $col_width "${space}"  "| ${GBW_PARAMS_TAB}user.email = `git config --global user.email`"   "|"
+    echo "git config ..."
+    echo "${GBW_PARAMS_TAB}user.name  = `git config user.name`"
+    echo "${GBW_PARAMS_TAB}user.email = `git config user.email`"
+    echo
+
+    echo "git config --global ..."
+    echo "${GBW_PARAMS_TAB}user.name  = `git config --global user.name`"
+    echo "${GBW_PARAMS_TAB}user.email = `git config --global user.email`"
+    echo
 
     echo "${line}"
     echo
