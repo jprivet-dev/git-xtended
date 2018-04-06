@@ -27,6 +27,12 @@ GBW_PARAMS_LABEL_GBW_COMMANDS="(6) ${GBW_PARAMS_TITLE_SHORT} commands"
 
 GBW_PARAMS_PRINT_E_TAG="-e"
 
+GBW_PARAMS_Y="y"
+GBW_PARAMS_N="n"
+
+GBW_PARAMS_YES="yes"
+GBW_PARAMS_NO="no"
+
 Change local
 if [ -z ${LC_ALL+x} ]; then
     echo "# LC_ALL is unset > export LC_ALL=C"
