@@ -92,6 +92,5 @@ function gbw_print_question_yes_no {
     fi
 
     _GBW_PRINT_QUESTION_YES_NO_LAST_VALUE="${GBW_PARAMS_NO}"
-    return
 }
 
