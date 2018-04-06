@@ -5,7 +5,7 @@ function gbw_install_choice_y_n {
     local label=$1
 
     while true; do
-        echo -e -n "${label} (y/n): "
+        echo -e -n "  ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}? [y/n] "
 
         exec < /dev/tty
         read choice
@@ -25,31 +25,33 @@ function gbw_install_choice_y_n {
 }
 
 function gbw_install_choice_prompt {
-    gbw_install_choice_y_n "Activate '${GBW_PARAMS_LABEL_PROMPT}' ?"
+    gbw_install_choice_y_n "${GBW_PARAMS_LABEL_PROMPT}"
     gwb_git_config_set "${GBW_PARAMS_GIT_CONFIG_KEY_PROMPT}" "${_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE}"
 }
 
 function gbw_install_choice_aliases {
-    gbw_install_choice_y_n "Activate '${GBW_PARAMS_LABEL_GIT_ALIASES}' ?"
+    gbw_install_choice_y_n "${GBW_PARAMS_LABEL_GIT_ALIASES}"
     gwb_git_config_set "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES}" "${_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE}"
 }
 
 function gbw_install_choice_hooks {
-    gbw_install_choice_y_n "Activate '${GBW_PARAMS_LABEL_GIT_HOOKS}' ?"
+    gbw_install_choice_y_n "${GBW_PARAMS_LABEL_GIT_HOOKS}"
     gwb_git_config_set "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS}" "${_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE}"
 }
 
 function gbw_install_choice_workflow {
-    gbw_install_choice_y_n "Activate '${GBW_PARAMS_LABEL_WORKFLOW}' ?"
+    gbw_install_choice_y_n "${GBW_PARAMS_LABEL_WORKFLOW}"
     gwb_git_config_set "${GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW}" "${_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE}"
 }
 
 function gbw_install_choice_bashaliases {
-    gbw_install_choice_y_n "Activate '${GBW_PARAMS_LABEL_BASH_ALIASES}' ?"
+    gbw_install_choice_y_n "${GBW_PARAMS_LABEL_BASH_ALIASES}"
     gwb_git_config_set "${GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES}" "${_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE}"
 }
 
 function gbw_install_choice {
+    gbw_print_step "Would you like to install... :"
+
     gbw_install_choice_prompt
     gbw_install_choice_aliases
     gbw_install_choice_hooks
