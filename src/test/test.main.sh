@@ -46,7 +46,7 @@ function gbw_test_find_all_func_gbw {
 function gbw_test_run {
     local func=$1
 
-    gbw_print_step "Testing launch"
+    gbw_print_step "Tests launched"
 
     if [ "${func}" == "" ]; then
         TEST_GBW_PARAMS_ASSERT_OK_SHOW_MESSAGE=0
