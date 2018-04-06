@@ -17,35 +17,22 @@ function gbw_test_print_results {
     local count
     local prefix
 
-    local color_ok="${C_LIGHT_GREEN}"
-    local color_nok="${C_LIGHT_RED}"
-    local color
-
     local test_plurial
     local assertion_plurial
     local failure_plurial
     local symbol="-"
 
-    if [[ ${gbw_test_count_failures} > 0 ]]; then
-        prefix="FAILURES!"
-        color="${color_nok}"
-    else
-        prefix="OK:"
-        color="${color_ok}"
-    fi
-
     [[ ${gbw_test_count_tests} > 1 ]]         && test_plurial="tests"             || test_plurial="test"
     [[ ${gbw_test_count_assertions} > 1 ]]    && assertion_plurial="assertions"   || assertion_plurial="assertion"
     [[ ${gbw_test_count_failures} > 1 ]]      && failure_plurial="failures"       || failure_plurial="failure"
 
-    message="${prefix} ${gbw_test_count_tests} ${test_plurial}, ${gbw_test_count_assertions} ${assertion_plurial}, ${gbw_test_count_failures} ${failure_plurial}"
-    length=${#message}
-    line=`gbw_line_generator "${length}" "${symbol}"`
+    message="${gbw_test_count_tests} ${test_plurial}, ${gbw_test_count_assertions} ${assertion_plurial}, ${gbw_test_count_failures} ${failure_plurial}"
 
-    echo
-    echo -e "${color}+${symbol}${line}${symbol}+"
-    echo -e "| ${message} |"
-    echo -e "+${symbol}${line}${symbol}+${F_RESET}"
+    if [[ ${gbw_test_count_failures} > 0 ]]; then
+        gbw_print_title_error "FAILURES! ${message}"
+    else
+        gbw_print_title_success "OK: ${message}"
+    fi
 }
 
 function gbw_test_find_all_func_test {
