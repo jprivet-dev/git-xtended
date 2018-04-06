@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gbw_install {
+function gbw_install_choice_question_yes_no {
     local label=$1
     local key=$2
     local choice=""
@@ -15,11 +15,11 @@ function gbw_install {
 function gbw_install_choice {
     gbw_print_step "Would you like to install... :"
 
-    gbw_install "${GBW_PARAMS_LABEL_PROMPT}"        "${GBW_PARAMS_GIT_CONFIG_KEY_PROMPT}"
-    gbw_install "${GBW_PARAMS_LABEL_GIT_ALIASES}"   "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES}"
-    gbw_install "${GBW_PARAMS_LABEL_GIT_HOOKS}"     "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS}"
-    gbw_install "${GBW_PARAMS_LABEL_WORKFLOW}"      "${GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW}"
-    gbw_install "${GBW_PARAMS_LABEL_BASH_ALIASES}"  "${GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES}"
+    gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_PROMPT}"        "${GBW_PARAMS_GIT_CONFIG_KEY_PROMPT}"
+    gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_GIT_ALIASES}"   "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES}"
+    gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_GIT_HOOKS}"     "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS}"
+    gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_WORKFLOW}"      "${GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW}"
+    gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_BASH_ALIASES}"  "${GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES}"
 }
 
 function gbw_install_choice_params_set_all_from_git_config {
