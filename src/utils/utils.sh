@@ -106,26 +106,19 @@ function gbw_print {
 }
 
 function gbw_print_title_1 {
-    local line_info=" $* "
-    local col_width=${#line_info}
-    local space=" "
-
-    gbw_print
-    gbw_print_fixed_width -e $col_width "${space}" "${C_BLACK}${C_BG_LIGHT_YELLOW}"                 "${F_RESET}"
-    gbw_print_fixed_width -e $col_width "${space}" "${C_BLACK}${C_BG_LIGHT_YELLOW}${line_info}"     "${F_RESET}"
-    gbw_print_fixed_width -e $col_width "${space}" "${C_BLACK}${C_BG_LIGHT_YELLOW}"                 "${F_RESET}"
-    gbw_print
+    gbw_print_colors_force "${C_BG_YELLOW}${C_BLACK}\n\n $*\n${F_RESET}\n"
 }
 
 function gbw_print_title_2 {
-    local line_info="| $* |"
-    local col_width=${#line_info}
+    gbw_print_colors_force "${C_LIGHT_YELLOW}\n--- $* ---\n${F_RESET}"
+}
 
-    gbw_print
-    gbw_print_fixed_width -e $col_width "-" "${C_LIGHT_YELLOW}"                 "${F_RESET}" "+" "+"
-    gbw_print_fixed_width -e $col_width " " "${C_LIGHT_YELLOW}${line_info}"     "${F_RESET}"
-    gbw_print_fixed_width -e $col_width "-" "${C_LIGHT_YELLOW}"                 "${F_RESET}" "+" "+"
-    gbw_print
+function gbw_print_title_success {
+    gbw_print_colors_force "${C_BG_GREEN}${C_WHITE}\n\n $*\n${F_RESET}\n"
+}
+
+function gbw_print_title_error {
+    gbw_print_colors_force "${C_BG_RED}${C_WHITE}\n\n $*\n${F_RESET}\n"
 }
 
 function gbw_print_step {
