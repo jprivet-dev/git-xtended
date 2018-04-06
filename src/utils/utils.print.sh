@@ -76,7 +76,7 @@ function gbw_print_question_yes_no {
     local label="$*"
 
     while true; do
-        echo -e -n "> ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}? [y/n] "
+        echo -e -n "${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}? [y/n] "
 
         exec < /dev/tty
         read choice
