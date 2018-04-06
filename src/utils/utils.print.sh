@@ -70,3 +70,28 @@ function gbw_print_colors {
 function gbw_print_colors_force {
     echo -e "$*"
 }
+
+function gbw_print_question_yes_no {
+    local choice
+    local label="$*"
+
+    while true; do
+        echo -e -n "> ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}? [y/n] "
+
+        exec < /dev/tty
+        read choice
+
+        if [ "${choice}" == "${GBW_PARAMS_Y}" -o "${choice}" == "${GBW_PARAMS_N}" ]; then
+            break;
+        fi
+    done
+
+    if [ "${choice}" == "y" ]; then
+        _GBW_PRINT_QUESTION_YES_NO_LAST_VALUE="${GBW_PARAMS_YES}"
+        return
+    fi
+
+    _GBW_PRINT_QUESTION_YES_NO_LAST_VALUE="${GBW_PARAMS_NO}"
+    return
+}
+
