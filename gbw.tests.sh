@@ -4,8 +4,16 @@
 # START TEST MODE #
 ###################
 
-GBW_ENV_TEST=1
+gbw_print_title_1 ${GBW_PARAMS_TITLE} TESTING
 
+gbw_print_question_yes_no "Would you like to run the tests"
+
+if [ "${_GBW_PRINT_QUESTION_YES_NO_LAST_VALUE}" != "${GBW_PARAMS_YES}" ]; then
+    gbw_print_step "Abort tests"
+    return
+fi
+
+GBW_ENV_TEST=1
 
 alias git="gbw_test_fake_git"
 
@@ -21,7 +29,6 @@ source ~/git-bash-workflow/tests/prompt.tests.sh
 source ~/git-bash-workflow/tests/git.tests.sh
 source ~/git-bash-workflow/tests/utils.tests.sh
 
-gbw_print_title_1 ${GBW_PARAMS_TITLE} TESTING
 gbw_test_run $1
 
 unalias git
