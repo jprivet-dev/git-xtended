@@ -21,13 +21,3 @@ source ~/git-bash-workflow/src/install/install.sh
 
 gbw_install_activation
 gbw_install_activation_show_status
-
-hooks_path_global="~/git-bash-workflow/git/hooks"
-hooks_path_local="/home/jprivet/git-bash-workflow/.git/hooks"
-pcm_path="/prepare-commit-msg"
-
-rm ${hooks_path_local}${pcm_path}
-ls ${hooks_path_local}
-
-eval ln -sf ${hooks_path_global}${pcm_path} ${hooks_path_local}${pcm_path}
-ls ${hooks_path_local}
