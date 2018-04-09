@@ -6,7 +6,7 @@ function gbw_install_choice_question_yes_no {
     local function_install=$3
     local choice=""
 
-    gbw_print_question_yes_no ${label}
+    gbw_print_question_yes_no "Would you like to install '${label}'"
 
     [ "${_GBW_PRINT_QUESTION_YES_NO_LAST_VALUE}" == "${GBW_PARAMS_YES}" ] && choice="${GBW_PARAMS_ON}" || choice="${GBW_PARAMS_OFF}"
 
@@ -18,8 +18,6 @@ function gbw_install_choice_question_yes_no {
 }
 
 function gbw_install_choice {
-    gbw_print_step "Would you like to install... :"
-
     gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_PROMPT}"        "${GBW_PARAMS_GIT_CONFIG_KEY_PROMPT}"
     gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_GIT_ALIASES}"   "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES}"
     gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_GIT_HOOKS}"     "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS}"     "gbw_install_git_hooks"
