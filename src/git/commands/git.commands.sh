@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gbw_git_get_version {
+function gbw_git_get_current_version {
     gbw_regex_extract_version "`git --version`"
 }
 
