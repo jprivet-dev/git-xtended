@@ -60,3 +60,7 @@ function gbw_line_generator {
 
     echo "${result}"
 }
+
+function gbw_regex_extract_version {
+    echo "$1" | sed -e 's/^.*[^0-9]\([0-9]\+.[0-9]\+.[0-9]\+\).*$/\1/'
+}
