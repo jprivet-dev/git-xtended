@@ -3,11 +3,16 @@
 function gbw_install_choice_question_yes_no {
     local label=$1
     local key=$2
+    local function_install=$3
     local choice=""
 
     gbw_print_question_yes_no ${label}
 
     [ "${_GBW_PRINT_QUESTION_YES_NO_LAST_VALUE}" == "${GBW_PARAMS_YES}" ] && choice="${GBW_PARAMS_ON}" || choice="${GBW_PARAMS_OFF}"
+
+    if [ "${function_install}" != "" -a "${choice}" == "${GBW_PARAMS_ON}" ]; then
+        $function_install
+    fi
 
     gwb_git_config_set "${key}" "${choice}"
 }
@@ -17,7 +22,7 @@ function gbw_install_choice {
 
     gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_PROMPT}"        "${GBW_PARAMS_GIT_CONFIG_KEY_PROMPT}"
     gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_GIT_ALIASES}"   "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES}"
-    gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_GIT_HOOKS}"     "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS}"
+    gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_GIT_HOOKS}"     "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS}"     "gbw_install_git_hooks"
     gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_WORKFLOW}"      "${GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW}"
     gbw_install_choice_question_yes_no "${GBW_PARAMS_LABEL_BASH_ALIASES}"  "${GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES}"
 }
