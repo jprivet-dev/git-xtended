@@ -20,7 +20,7 @@ function gbw_install_git_hooks {
     fi
 
     gbw_install_git_hooks_hookspath_nok
-    
+
     gbw_install_git_hooks_symlink
 }
 
