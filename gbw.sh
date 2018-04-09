@@ -21,3 +21,5 @@ source ~/git-bash-workflow/src/install/install.sh
 
 gbw_install_activation
 gbw_install_activation_show_status
+
+gbw_git_get_version
