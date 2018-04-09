@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function gbw_git_get_version {
-    git --version | sed -e 's/[^0-9.]//g'
+    gbw_regex_extract_version "`git --version`"
 }
 
 # TODO : create test
