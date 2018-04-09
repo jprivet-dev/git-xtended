@@ -76,17 +76,17 @@ function gbw_is_good_version {
     local target_patch
     IFS="." read target_major target_minor target_patch <<< "${2}"
 
-    if [[ "${current_major}" < "${target_major}" ]]; then
+    if [[ "${current_major}" -lt "${target_major}" ]]; then
         echo "${GBW_PARAMS_FALSE}"
         return
     fi
 
-    if [[ "${current_minor}" < "${target_minor}" ]]; then
+    if [[ "${current_minor}" -lt "${target_minor}" ]]; then
         echo "${GBW_PARAMS_FALSE}"
         return
     fi
 
-    if [[ "${current_patch}" < "${target_patch}" ]]; then
+    if [[ "${current_patch}" -lt "${target_patch}" ]]; then
         echo "${GBW_PARAMS_FALSE}"
         return
     fi
