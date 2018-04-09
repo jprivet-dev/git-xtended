@@ -148,3 +148,15 @@ function test_gbw_regex_extract_version {
     assert equals "`gbw_regex_extract_version "git version 2.16.2.windows.1"`"      "2.16.2" $LINENO
     assert equals "`gbw_regex_extract_version "x xx xxx 2.16.2.xx.x.0"`"            "2.16.2" $LINENO
 }
+
+function test_gbw_is_good_version {
+    assert equals "`gbw_is_good_version "1.1.1" "1.1.1"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
+
+    assert equals "`gbw_is_good_version "0.1.1" "1.1.1"`"   "${TEST_GBW_PARAMS_FALSE}" $LINENO
+    assert equals "`gbw_is_good_version "1.0.1" "1.1.1"`"   "${TEST_GBW_PARAMS_FALSE}" $LINENO
+    assert equals "`gbw_is_good_version "1.1.0" "1.1.1"`"   "${TEST_GBW_PARAMS_FALSE}" $LINENO
+
+    assert equals "`gbw_is_good_version "2.1.1" "1.1.1"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
+    assert equals "`gbw_is_good_version "1.2.1" "1.1.1"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
+    assert equals "`gbw_is_good_version "1.1.2" "1.1.1"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
+}
