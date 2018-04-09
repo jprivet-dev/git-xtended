@@ -64,3 +64,32 @@ function gbw_line_generator {
 function gbw_regex_extract_version {
     echo "$1" | sed -e 's/^.*[^0-9]\([0-9]\+.[0-9]\+.[0-9]\+\).*$/\1/'
 }
+
+function gbw_is_good_version {
+    local current_major
+    local current_minor
+    local current_patch
+    IFS="." read current_major current_minor current_patch <<< "${1}"
+
+    local target_major
+    local target_minor
+    local target_patch
+    IFS="." read target_major target_minor target_patch <<< "${2}"
+
+    if [[ "${current_major}" < "${target_major}" ]]; then
+        echo "${GBW_PARAMS_FALSE}"
+        return
+    fi
+
+    if [[ "${current_minor}" < "${target_minor}" ]]; then
+        echo "${GBW_PARAMS_FALSE}"
+        return
+    fi
+
+    if [[ "${current_patch}" < "${target_patch}" ]]; then
+        echo "${GBW_PARAMS_FALSE}"
+        return
+    fi
+
+    echo "${GBW_PARAMS_TRUE}"
+}
