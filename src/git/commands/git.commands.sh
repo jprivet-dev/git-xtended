@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+function gbw_git_get_version {
+    git --version | sed -e 's/[^0-9.]//g'
+}
+
 # TODO : create test
 function gbw_git_current_folder_is_repo {
     git rev-parse --git-dir 2> /dev/null
