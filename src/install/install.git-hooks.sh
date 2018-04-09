@@ -12,25 +12,12 @@ function gbw_install_git_hooks {
 
     local config_hookspath_available="$(gbw_is_good_version "`gbw_git_get_current_version`" "${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN}")"
 
-    echo -e "${C_LIGHT_GREEN}"
-    echo -e "################################"
-    echo -e "# ${GBW_PARAMS_TITLE} - Githooks #"
-    echo -e "################################"
-    echo -e "${F_RESET}"
+    echo "${GBW_PARAMS_TAB}Option [1]: create symlink"
+    echo "${GBW_PARAMS_TAB_2}${pcm_symlink_command_create}"
 
-    echo "Active prepare-commit-msg :"
-    echo "${pcm_symlink_command_create}"
-    echo "${pcm_symlink_command_create_ls}"
-    echo
-
-    echo "Delete prepare-commit-msg :"
-    echo "${pcm_symlink_command_delete}"
-    echo
-
-    echo "Use git config core.hooksPath (enable=${config_hookspath_available}):"
-
+    echo "${GBW_PARAMS_TAB}Option [2]: use git config core.hooksPath"
     if [[ "${config_hookspath_available}" == "${GBW_PARAMS_FALSE}" ]]; then
-        echo -e "${C_RED}WARNING : core.hooksPath NOT AVAILABLE !${F_RESET}"
-        echo "Git min version ${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN} required (Git current version `gbw_git_get_current_version`)"
+        echo -e "${GBW_PARAMS_TAB_2}${C_RED}WARNING : core.hooksPath NOT AVAILABLE !${F_RESET}"
+        echo "${GBW_PARAMS_TAB_2}Git min version ${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN} required (Git current version `gbw_git_get_current_version`)"
     fi
 }
