@@ -48,6 +48,30 @@ function gbw_test_assert_equals {
     fi
 }
 
+function gbw_test_assert_true {
+    local current=$1
+    local line=$2
+    local expected="${TEST_GBW_PARAMS_TRUE}"
+
+    if [[ "${current}" == "${expected}" ]]; then
+        gbw_test_assert_ok ${line} "Value is ${expected}" "${current}" "${expected}"
+    else
+        gbw_test_assert_nok ${line} "Value is not ${expected}" "${current}" "${expected}"
+    fi
+}
+
+function gbw_test_assert_false {
+    local current=$1
+    local line=$2
+    local expected="${TEST_GBW_PARAMS_FALSE}"
+
+    if [[ "${current}" == "${expected}" ]]; then
+        gbw_test_assert_ok ${line} "Value is ${expected}" "${current}" "${expected}"
+    else
+        gbw_test_assert_nok ${line} "Value is not ${expected}" "${current}" "${expected}"
+    fi
+}
+
 function gbw_test_assert_last_git_command_is {
     local current="`gbw_test_fake_git_last_args_check`"
     local expected=$1
@@ -115,6 +139,12 @@ function gbw_test_assert {
         ;;
         last-line)
             gbw_test_assert_last_line "$@"
+        ;;
+        true)
+            gbw_test_assert_true $1 $2
+        ;;
+        false)
+            gbw_test_assert_false $1 $2
         ;;
         *)
             echo -e "${C_LIGHT_RED}[ERROR] Assert type '${type}' does not exist${F_RESET}"
