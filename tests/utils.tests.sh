@@ -141,3 +141,10 @@ function test_gbw_print_colors {
     assert equals "`gbw_print_colors "${GBW_PARAMS_TAB}${F_BOLD}hello${F_RESET}"`"        "${TEST_GBW_PARAMS_TAB}${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
     assert equals "`gbw_print_colors "${GBW_PARAMS_TAB}${F_BOLD}hello 42${F_RESET}"`"     "${TEST_GBW_PARAMS_TAB}${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
 }
+
+function test_gbw_regex_extract_version {
+    assert equals "`gbw_regex_extract_version "git version 1.2.3"`"                 "1.2.3" $LINENO
+    assert equals "`gbw_regex_extract_version "git version 12.34.56"`"              "12.34.56" $LINENO
+    assert equals "`gbw_regex_extract_version "git version 2.16.2.windows.1"`"      "2.16.2" $LINENO
+    assert equals "`gbw_regex_extract_version "x xx xxx 2.16.2.xx.x.0"`"            "2.16.2" $LINENO
+}
