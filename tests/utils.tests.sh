@@ -150,23 +150,23 @@ function test_gbw_regex_extract_version {
 }
 
 function test_gbw_is_good_version {
-    assert equals "`gbw_is_good_version "1.1.1" "1.1.1"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
+    assert true "`gbw_is_good_version "1.1.1" "1.1.1"`"     $LINENO
 
-    assert equals "`gbw_is_good_version "0.1.1" "1.1.1"`"   "${TEST_GBW_PARAMS_FALSE}" $LINENO
-    assert equals "`gbw_is_good_version "1.0.1" "1.1.1"`"   "${TEST_GBW_PARAMS_FALSE}" $LINENO
-    assert equals "`gbw_is_good_version "1.1.0" "1.1.1"`"   "${TEST_GBW_PARAMS_FALSE}" $LINENO
+    assert false "`gbw_is_good_version "0.1.1" "1.1.1"`"    $LINENO
+    assert false "`gbw_is_good_version "1.0.1" "1.1.1"`"    $LINENO
+    assert false "`gbw_is_good_version "1.1.0" "1.1.1"`"    $LINENO
 
-    assert equals "`gbw_is_good_version "2.1.1" "1.1.1"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
-    assert equals "`gbw_is_good_version "1.2.1" "1.1.1"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
-    assert equals "`gbw_is_good_version "1.1.2" "1.1.1"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
+    assert true "`gbw_is_good_version "2.1.1" "1.1.1"`"     $LINENO
+    assert true "`gbw_is_good_version "1.2.1" "1.1.1"`"     $LINENO
+    assert true "`gbw_is_good_version "1.1.2" "1.1.1"`"     $LINENO
 
-    assert equals "`gbw_is_good_version "10.10.10" "10.10.10"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
+    assert true "`gbw_is_good_version "10.10.10" "10.10.10"`"   $LINENO
 
-    assert equals "`gbw_is_good_version "9.10.10" "10.10.10"`"   "${TEST_GBW_PARAMS_FALSE}" $LINENO
-    assert equals "`gbw_is_good_version "10.9.10" "10.10.10"`"   "${TEST_GBW_PARAMS_FALSE}" $LINENO
-    assert equals "`gbw_is_good_version "10.10.9" "10.10.10"`"   "${TEST_GBW_PARAMS_FALSE}" $LINENO
+    assert false "`gbw_is_good_version "9.10.10" "10.10.10"`"   $LINENO
+    assert false "`gbw_is_good_version "10.9.10" "10.10.10"`"   $LINENO
+    assert false "`gbw_is_good_version "10.10.9" "10.10.10"`"   $LINENO
 
-    assert equals "`gbw_is_good_version "11.10.10" "10.10.10"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
-    assert equals "`gbw_is_good_version "10.11.10" "10.10.10"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
-    assert equals "`gbw_is_good_version "10.10.11" "10.10.10"`"   "${TEST_GBW_PARAMS_TRUE}" $LINENO
+    assert true "`gbw_is_good_version "11.10.10" "10.10.10"`"   $LINENO
+    assert true "`gbw_is_good_version "10.11.10" "10.10.10"`"   $LINENO
+    assert true "`gbw_is_good_version "10.10.11" "10.10.10"`"   $LINENO
 }
