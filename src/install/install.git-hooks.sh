@@ -20,7 +20,7 @@ function gbw_install_git_hooks {
     gbw_print_step "'git config core.hooksPath' NOT available ! Git version ${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN} is at least required (current version: `gbw_git_get_current_version`)"
     gbw_print_step "Create symlink instead ($ ${pcm_symlink_command_create})"
 
-    if [[ -L $current_dir_hook_pcm ]]; then
+    if [[ "`gbw_symlink_exists "$current_dir_hook_pcm"`" == "${GBW_PARAMS_TRUE}" ]]; then
         gbw_print_step "Symlink allready exists"
         gbw_print_question_yes_no "Remove hooks symlink"
 
