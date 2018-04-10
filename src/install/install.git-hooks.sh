@@ -8,16 +8,26 @@ function gbw_install_git_hooks {
         return
     fi
 
-    gbw_install_git_hooks_corehookspath_not_available
+    gbw_install_git_hooks_corehookspath_remove
     gbw_install_git_hooks_symlink
 }
 
 function gbw_install_git_hooks_corehookspath_create {
     gbw_print_step "'git config core.hooksPath' available"
+    gbw_print_question_yes_no "Remove hooks symlink"
+
+    if [[ "${_GBW_PRINT_QUESTION_YES_NO_LAST_VALUE}" == "${GBW_PARAMS_YES}" ]]; then
+        gbw_git_config_hooks_on
+        gbw_print_step "Symlink removed"
+        return
+    fi
+
+    gbw_print_step "core.hooksPath = `gwb_git_config_get "core.hooksPath"`"
 }
 
-function gbw_install_git_hooks_corehookspath_not_available {
+function gbw_install_git_hooks_corehookspath_remove {
     gbw_print_step "'git config core.hooksPath' NOT available ! Git version ${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN} is at least required (current version: `gbw_git_get_current_version`)"
+    gbw_git_config_hooks_off
 }
 
 function gbw_install_git_hooks_symlink {
