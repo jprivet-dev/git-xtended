@@ -93,3 +93,12 @@ function gbw_is_good_version {
 
     echo "${GBW_PARAMS_TRUE}"
 }
+
+function gbw_symlink_exists {
+    if [[ -L $1 ]]; then
+        echo "${GBW_PARAMS_TRUE}"
+        return
+    fi
+
+    echo "${GBW_PARAMS_FALSE}"
+}
