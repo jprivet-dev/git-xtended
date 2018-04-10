@@ -6,33 +6,42 @@ function gbw_install_git_hooks {
     local current_dir_hooks="${current_dir}/.git/hooks"
     local current_dir_hook_pcm="${current_dir_hooks}/prepare-commit-msg"
 
-    local pcm_symlink_command_create="$ ln -sf ${gbw_pcm} ${current_dir_hook_pcm}"
-    local pcm_symlink_command_create_ls="$ ls ${current_dir_hooks}"
-    local pcm_symlink_command_delete="$ rm ${current_dir_hook_pcm}"
+    local pcm_symlink_command_create="ln -sf ${gbw_pcm} ${current_dir_hook_pcm}"
+    local pcm_symlink_command_create_ls="ls ${current_dir_hooks}"
+    local pcm_symlink_command_delete="rm ${current_dir_hook_pcm}"
 
     local hookspath_available="$(gbw_is_good_version "`gbw_git_get_current_version`" "${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN}")"
 
-    echo "hookspath_available = $hookspath_available"
-
     if [[ "${hookspath_available}" == "${GBW_PARAMS_TRUE}" ]]; then
-        gbw_install_git_hooks_hookspath
+        gbw_print_step "'git config core.hooksPath' available"
         return
     fi
 
-    gbw_install_git_hooks_hookspath_nok
+    gbw_print_step "'git config core.hooksPath' NOT available ! Git version ${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN} is at least required (current version: `gbw_git_get_current_version`)"
+    gbw_print_step "Create symlink instead ($ ${pcm_symlink_command_create})"
 
-    gbw_install_git_hooks_symlink
-}
+    if [[ -L $current_dir_hook_pcm ]]; then
+        gbw_print_step "Symlink allready exists"
+        gbw_print_question_yes_no "Remove hooks symlink"
 
-function gbw_install_git_hooks_symlink {
-    echo "${GBW_PARAMS_TAB}Option [1]: create symlink"
-    echo "${GBW_PARAMS_TAB_2}${pcm_symlink_command_create}"
-}
+        if [[ "${_GBW_PRINT_QUESTION_YES_NO_LAST_VALUE}" == "${GBW_PARAMS_YES}" ]]; then
+            gbw_print_step "Symlink removed"
+            eval "${pcm_symlink_command_delete}"
+            return
+        fi
 
-function gbw_install_git_hooks_hookspath {
-    gbw_print_step "'git config core.hooksPath' available"
-}
+        gbw_print_step "Symlink does not remove !"
+        return
+    fi
 
-function gbw_install_git_hooks_hookspath_nok {
-    gbw_print_step "'git config core.hooksPath' NOT available !"
+    gbw_print_question_yes_no "Create hooks symlink"
+
+    if [[ "${_GBW_PRINT_QUESTION_YES_NO_LAST_VALUE}" == "${GBW_PARAMS_YES}" ]]; then
+        gbw_print_step "Symlink created"
+        eval "${pcm_symlink_command_create}"
+        return
+    fi
+
+    gbw_print_step "Symlink does not create !"
+    return
 }
