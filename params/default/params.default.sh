@@ -15,6 +15,7 @@ GBW_PARAMS_OFF_C="${C_BG_RED}${C_WHITE} OFF ${F_RESET}"
 GBW_PARAMS_USER_PS1="\u"
 GBW_PARAMS_ROOT="~/git-bash-workflow"
 GBW_PARAMS_GITHUB="https://github.com/jprivet-dev/git-bash-workflow.git"
+GBW_PARAMS_HOOKS_PREPARE_COMMIT_MSG_PATH="${GBW_PARAMS_ROOT}/git/hooks/prepare-commit-msg"
 
 GBW_PARAMS_TITLE="Git Bash Workflow"
 GBW_PARAMS_TITLE_SHORT="GBW"
