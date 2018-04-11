@@ -8,9 +8,9 @@ function gbw_install_disable_or_enable {
 
     gbw_print_choose_one_option "${label}" "${GBW_PARAMS_DISABLED}" "${GBW_PARAMS_ENABLED}"
 
-    [ "${_GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}" == "${GBW_PARAMS_ENABLED}" ] && choice="${GBW_PARAMS_ON}" || choice="${GBW_PARAMS_OFF}"
+    [ "${_GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}" == "${GBW_PARAMS_ENABLED}" ] && choice="${GBW_PARAMS_ENABLED}" || choice="${GBW_PARAMS_OFF}"
 
-    if [ "${function_install}" != "" -a "${choice}" == "${GBW_PARAMS_ON}" ]; then
+    if [ "${function_install}" != "" -a "${choice}" == "${GBW_PARAMS_ENABLED}" ]; then
         $function_install
     fi
 
