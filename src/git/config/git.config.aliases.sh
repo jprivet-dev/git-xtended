@@ -78,10 +78,10 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.find
 }
 
-function gbw_git_aliases_on {
+function gbw_git_aliases_enabled {
     gbw_git_config_set_aliases --global
 }
 
-function gbw_git_aliases_off {
+function gbw_git_aliases_disabled {
     gbw_git_config_unset_aliases --global
 }

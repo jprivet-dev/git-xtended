@@ -14,10 +14,10 @@ function gbw_git_config_hooks_unset {
     git config $global --unset core.hooksPath
 }
 
-function gbw_git_config_hooks_on {
+function gbw_git_config_hooks_enabled {
     gbw_git_config_hooks_set --global
 }
 
-function gbw_git_config_hooks_off {
+function gbw_git_config_hooks_disabled {
     gbw_git_config_hooks_unset --global
 }
