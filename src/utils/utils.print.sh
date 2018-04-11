@@ -106,18 +106,18 @@ function gbw_print_choose_one_option {
     local choice_index
     local choice_label
 
-    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK}${label}${F_RESET}?"
+    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK}${label}${F_RESET}"
 
     for o in "${options[@]}"
     do
-        message="${message}\n${GBW_PARAMS_TAB}[${count}] ${o}"
+        message="${message}  ${C_LIGHT_CYAN}[${count}]${F_RESET} ${o}"
         ((count++))
     done
 
-    echo -e "${message}"
+    echo -e -n "${message}"
 
     while true; do
-        echo -n "${GBW_PARAMS_TAB}Choose index: "
+        echo -n " : "
 
         exec < /dev/tty
         read choice_index
