@@ -199,7 +199,7 @@ function gbw_prompt_set_ps2 {
     PS2="${C_CYAN}>"
 }
 
-function gbw_prompt_on {
+function gbw_prompt_enabled {
     if [[ "`gbw_is_bash_interactive`" == "false" ]]; then
         return
     fi
