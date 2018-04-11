@@ -94,3 +94,52 @@ function gbw_print_question_yes_no {
     _GBW_PRINT_QUESTION_YES_NO_LAST_VALUE="${GBW_PARAMS_NO}"
 }
 
+function gbw_print_choose_one_option {
+    local choice
+    local label="$1"
+    shift
+
+    local -a options="($*)"
+    local count="0"
+    local o
+
+    local choice_index
+    local choice_label
+
+    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}"
+
+    for o in "${options[@]}"
+    do
+        message="${message}\n${GBW_PARAMS_TAB}[${count}] ${o}"
+        ((count++))
+    done
+
+    echo -e "${message}"
+
+    while true; do
+        echo -n "${GBW_PARAMS_TAB}Choose index: "
+
+        exec < /dev/tty
+        read choice_index
+
+        choice_label=""
+        count="0"
+
+        for o in "${options[@]}"
+        do
+            if [[ "${choice_index}" == "${count}" ]]; then
+                choice_label="${o}"
+            fi
+            ((count++))
+        done
+
+        if [[ "${choice_label}" != "" ]]; then
+            break;
+        fi
+    done
+
+    _GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE="${choice_label}"
+
+    gbw_print_step "${label} [${_GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}]"
+}
+
