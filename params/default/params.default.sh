@@ -12,6 +12,9 @@ GBW_PARAMS_OFF="off"
 GBW_PARAMS_ON_C="${C_BG_GREEN}${C_BLACK} ON  ${F_RESET}"
 GBW_PARAMS_OFF_C="${C_BG_RED}${C_WHITE} OFF ${F_RESET}"
 
+GBW_PARAMS_ENABLED="Enabled"
+GBW_PARAMS_DISABLED="Disabled"
+
 GBW_PARAMS_USER_PS1="\u"
 GBW_PARAMS_ROOT="~/git-bash-workflow"
 GBW_PARAMS_GITHUB="https://github.com/jprivet-dev/git-bash-workflow.git"
