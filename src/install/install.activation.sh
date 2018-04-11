@@ -3,15 +3,15 @@
 function gbw_install_activation {
     gbw_install_choice_params_set_all_from_git_config
 
-    [ "${GBW_PARAMS_INSTALL_PROMPT_ACTIVE}" == "${GBW_PARAMS_ON}" ]         && gbw_prompt_on
-    [ "${GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE}" == "${GBW_PARAMS_ON}" ]    && gbw_git_aliases_on           || gbw_git_aliases_off
-    [ "${GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE}" == "${GBW_PARAMS_ON}" ]      && gbw_git_config_hooks_on      || gbw_git_config_hooks_off
-    [ "${GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE}" == "${GBW_PARAMS_ON}" ]       && gbw_git_config_workflow_on   || gbw_git_config_workflow_off
-    [ "${GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE}" == "${GBW_PARAMS_ON}" ]   && gbw_bash_aliases_on          || gbw_bash_aliases_off
+    [ "${GBW_PARAMS_INSTALL_PROMPT_ACTIVE}" == "${GBW_PARAMS_ENABLED}" ]         && gbw_prompt_on
+    [ "${GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE}" == "${GBW_PARAMS_ENABLED}" ]    && gbw_git_aliases_on           || gbw_git_aliases_off
+    [ "${GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE}" == "${GBW_PARAMS_ENABLED}" ]      && gbw_git_config_hooks_on      || gbw_git_config_hooks_off
+    [ "${GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE}" == "${GBW_PARAMS_ENABLED}" ]       && gbw_git_config_workflow_on   || gbw_git_config_workflow_off
+    [ "${GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE}" == "${GBW_PARAMS_ENABLED}" ]   && gbw_bash_aliases_on          || gbw_bash_aliases_off
 }
 
 function gbw_install_activation_on_off_color {
-    [ "$1" == "${GBW_PARAMS_ON}" ] && echo "${GBW_PARAMS_ENABLED_C}" || echo "${GBW_PARAMS_DISABLED_C}"
+    [ "$1" == "${GBW_PARAMS_ENABLED}" ] && echo "${GBW_PARAMS_ENABLED_C}" || echo "${GBW_PARAMS_DISABLED_C}"
 }
 
 function gbw_install_activation_show_status {
