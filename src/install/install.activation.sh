@@ -11,7 +11,7 @@ function gbw_install_activation {
 }
 
 function gbw_install_activation_on_off_color {
-    [ "$1" == "${GBW_PARAMS_ON}" ] && echo "${GBW_PARAMS_ON_C}" || echo "${GBW_PARAMS_OFF_C}"
+    [ "$1" == "${GBW_PARAMS_ON}" ] && echo "${GBW_PARAMS_ENABLED_C}" || echo "${GBW_PARAMS_DISABLED_C}"
 }
 
 function gbw_install_activation_show_status {
