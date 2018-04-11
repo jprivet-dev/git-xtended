@@ -60,7 +60,7 @@ function gbw_print_title_error {
 }
 
 function gbw_print_step {
-    gbw_print_colors_force "${C_LIGHT_YELLOW}> $*${F_RESET}"
+    gbw_print_colors_force "> $*"
 }
 
 function gbw_print_colors {
@@ -76,7 +76,7 @@ function gbw_print_question_yes_no {
     local label="$*"
 
     while true; do
-        echo -e -n "${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK}${label}${F_RESET}? [y/n] "
+        echo -e -n "${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}? [y/n] "
 
         exec < /dev/tty
         read choice
@@ -106,7 +106,7 @@ function gbw_print_choose_one_option {
     local choice_index
     local choice_label
 
-    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK}${label}${F_RESET}"
+    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}\n"
 
     for o in "${options[@]}"
     do
