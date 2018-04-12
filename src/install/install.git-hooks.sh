@@ -1,15 +1,24 @@
 #!/usr/bin/env bash
 
 function gbw_install_git_hooks {
+    local status=$1
     local hookspath_available="$(gbw_is_good_version "`gbw_git_get_current_version`" "${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN}")"
 
     if [[ "${hookspath_available}" == "${GBW_PARAMS_TRUE}" ]]; then
-        gbw_install_git_hooks_corehookspath_create
+        if [[ "${status}" == "${GBW_PARAMS_ENABLED}" ]]; then
+            gbw_install_git_hooks_corehookspath_create
+        else
+            gbw_install_git_hooks_corehookspath_remove
+        fi
+
         return
     fi
 
-    gbw_install_git_hooks_corehookspath_remove
-    gbw_install_git_hooks_symlink
+    if [[ "${status}" == "${GBW_PARAMS_ENABLED}" ]]; then
+        gbw_install_git_hooks_symlink_create
+    else
+        gbw_install_git_hooks_symlink_remove
+    fi
 }
 
 function gbw_install_git_hooks_corehookspath_create {
