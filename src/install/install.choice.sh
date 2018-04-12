@@ -3,15 +3,15 @@
 function gbw_install_disable_or_enable {
     local label=$1
     local key=$2
-    local function_install=$3
+    local call_function=$3
     local choice=""
 
     gbw_print_choose_one_option "${label}" "${GBW_PARAMS_DISABLED}" "${GBW_PARAMS_ENABLED}"
 
     [ "${_GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}" == "${GBW_PARAMS_ENABLED}" ] && choice="${GBW_PARAMS_ENABLED}" || choice="${GBW_PARAMS_DISABLED}"
 
-    if [ "${function_install}" != "" -a "${choice}" == "${GBW_PARAMS_ENABLED}" ]; then
-        $function_install
+    if [ "${call_function}" != "" ]; then
+       $call_function "${choice}"
     fi
 
     gwb_git_config_set "${key}" "${choice}"
