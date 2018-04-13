@@ -24,6 +24,10 @@ function gbw_command_parse_action {
     echo "[ERROR] 'gbw ${action}' : unknow action"
 }
 
+function gbw_command_action_config {
+    git config --list | grep ${GBW_PARAMS_GIT_CONFIG_KEY_ROOT}
+}
+
 function gbw_command_action_install {
     gbw_print_title_1 "${GBW_PARAMS_TITLE} INSTALL"
 
