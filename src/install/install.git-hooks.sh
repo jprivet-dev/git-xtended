@@ -14,11 +14,13 @@ function gbw_install_git_hooks {
 
 function gbw_install_git_hooks_corehookspath_available {
     local status=$1
+
     if [[ "${status}" == "${GBW_PARAMS_ENABLED}" ]]; then
         gbw_install_git_hooks_corehookspath_create
-    else
-        gbw_install_git_hooks_corehookspath_remove
+        return
     fi
+
+    gbw_install_git_hooks_corehookspath_remove
 }
 
 function gbw_install_git_hooks_corehookspath_not_available {
@@ -28,9 +30,10 @@ function gbw_install_git_hooks_corehookspath_not_available {
 
     if [[ "${status}" == "${GBW_PARAMS_ENABLED}" ]]; then
         gbw_install_git_hooks_symlink_create
-    else
-        gbw_install_git_hooks_symlink_remove
+        return
     fi
+    
+    gbw_install_git_hooks_symlink_remove
 }
 
 function gbw_install_git_hooks_corehookspath_create {
