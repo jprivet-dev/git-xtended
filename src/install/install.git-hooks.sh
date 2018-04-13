@@ -19,6 +19,7 @@ function gbw_install_git_hooks_corehookspath_available {
     local status=$1
 
     gbw_print_step "'git config core.hooksPath' is available"
+    gbw_git_config_hooks_set_type_hookspath
 
     if [[ "${status}" == "${GBW_PARAMS_ENABLED}" ]]; then
         gbw_install_git_hooks_corehookspath_create
@@ -32,6 +33,7 @@ function gbw_install_git_hooks_corehookspath_not_available {
     local status=$1
 
     gbw_print_step "'git config core.hooksPath' is NOT available"
+    gbw_git_config_hooks_set_type_symlink
 
     if [[ "${status}" == "${GBW_PARAMS_ENABLED}" ]]; then
         gbw_install_git_hooks_symlink_create
