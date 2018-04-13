@@ -66,6 +66,10 @@ function gbw_command_action_aliases {
     gbw_command_config_git_aliases "$@"
 }
 
+function gbw_command_action_reload {
+    eval "source ${GBW_PARAMS_GBW_SH}"
+}
+
 function gbw_command_config_git_aliases {
     local global=""
     local unset=""
