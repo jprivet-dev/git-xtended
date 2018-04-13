@@ -68,6 +68,8 @@ function gbw_git_config_unset_aliases {
 	git config $global --unset alias.k
 	git config $global --unset alias.l
 	git config $global --unset alias.ll
+    git config $global --unset alias.lfile
+    git config $global --unset alias.lmerges
 	git config $global --unset alias.lcount
 	git config $global --unset alias.untracked
 	git config $global --unset alias.r
