@@ -15,6 +15,8 @@ function gbw_install_git_hooks {
 function gbw_install_git_hooks_corehookspath_available {
     local status=$1
 
+    gbw_print_step "'git config core.hooksPath' available"
+
     if [[ "${status}" == "${GBW_PARAMS_ENABLED}" ]]; then
         gbw_install_git_hooks_corehookspath_create
         return
@@ -32,22 +34,18 @@ function gbw_install_git_hooks_corehookspath_not_available {
         gbw_install_git_hooks_symlink_create
         return
     fi
-    
+
     gbw_install_git_hooks_symlink_remove
 }
 
 function gbw_install_git_hooks_corehookspath_create {
-    gbw_print_step "'git config core.hooksPath' available"
-    gbw_print_question_yes_no "Set core.hooksPath"
-
-    if [[ "${_GBW_PRINT_QUESTION_YES_NO_LAST_VALUE}" == "${GBW_PARAMS_YES}" ]]; then
-        gbw_git_config_hooks_enabled
-        gbw_print_step "core.hooksPath = `gwb_git_config_get "core.hooksPath"`"
-    fi
+    gbw_git_config_hooks_enabled
+    gbw_print_step "core.hooksPath = `gwb_git_config_get "core.hooksPath"`"
 }
 
 function gbw_install_git_hooks_corehookspath_remove {
-    echo "TODO: remove corehookspath"
+    gbw_git_config_hooks_disabled
+    gbw_print_step "core.hooksPath = `gwb_git_config_get "core.hooksPath"`"
 }
 
 function gbw_install_git_hooks_symlink {
@@ -71,10 +69,9 @@ function gbw_install_git_hooks_symlink_create {
     if [[ "`gbw_symlink_exists "${current_hooks_prepare_commit_msg_path}"`" == "${GBW_PARAMS_TRUE}" ]]; then
         gbw_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' already exists"
         return
-    else
-        gbw_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' does not exist"
     fi
 
+    gbw_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' does not exist"
     eval "${command_create_symlink}"
     gbw_print_step "Symlink created"
 }
@@ -88,10 +85,9 @@ function gbw_install_git_hooks_symlink_remove {
     if [[ "`gbw_symlink_exists "${current_hooks_prepare_commit_msg_path}"`" == "${GBW_PARAMS_FALSE}" ]]; then
         gbw_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' does not exist"
         return
-    else
-        gbw_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' exists"
     fi
 
+    gbw_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' exists"
     eval "${command_symlink_remove}"
     gbw_print_step "Symlink removed"
 }
