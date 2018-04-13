@@ -8,9 +8,6 @@ function gbw_bash_aliases_enabled {
         complete -o default -o nospace -F _git g
     fi
 
-    alias reload="source ~/.bashrc"
-    alias reloadp="source ~/.bash_profile"
-
     alias c="clear"
 
     alias ls="ls -alF --color=auto"
@@ -19,9 +16,6 @@ function gbw_bash_aliases_enabled {
 
 function gbw_bash_aliases_disabled {
     unalias g
-
-    unalias reload
-    unalias reloadp
 
     unalias c
 
