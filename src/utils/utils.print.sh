@@ -106,7 +106,7 @@ function gbw_print_choose_one_option {
     local choice_index
     local choice_label
 
-    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}\n"
+    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}"
 
     for o in "${options[@]}"
     do
