@@ -4,6 +4,9 @@ function gbw_install_git_hooks {
     local status=$1
     local hookspath_available="$(gbw_is_good_version "`gbw_git_get_current_version`" "${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN}")"
 
+    gbw_print_step "'git config core.hooksPath' available from git version ${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN} onwards"
+    gbw_print_step "Current git version = `gbw_git_get_current_version`"
+
     if [[ "${hookspath_available}" == "${GBW_PARAMS_TRUE}" ]]; then
         gbw_install_git_hooks_corehookspath_available "${status}"
         return
@@ -15,7 +18,7 @@ function gbw_install_git_hooks {
 function gbw_install_git_hooks_corehookspath_available {
     local status=$1
 
-    gbw_print_step "'git config core.hooksPath' available"
+    gbw_print_step "'git config core.hooksPath' is available"
 
     if [[ "${status}" == "${GBW_PARAMS_ENABLED}" ]]; then
         gbw_install_git_hooks_corehookspath_create
@@ -28,7 +31,7 @@ function gbw_install_git_hooks_corehookspath_available {
 function gbw_install_git_hooks_corehookspath_not_available {
     local status=$1
 
-    gbw_print_step "'git config core.hooksPath' NOT available ! Git version ${GBW_PARAMS_GIT_HOOKSPATH_VERSION_MIN} is at least required (current version: `gbw_git_get_current_version`)"
+    gbw_print_step "'git config core.hooksPath' is NOT available"
 
     if [[ "${status}" == "${GBW_PARAMS_ENABLED}" ]]; then
         gbw_install_git_hooks_symlink_create
@@ -40,12 +43,12 @@ function gbw_install_git_hooks_corehookspath_not_available {
 
 function gbw_install_git_hooks_corehookspath_create {
     gbw_git_config_hooks_enabled
-    gbw_print_step "core.hooksPath = `gwb_git_config_get "core.hooksPath"`"
+    gbw_print_step "Set core.hooksPath = `gwb_git_config_get "core.hooksPath"`"
 }
 
 function gbw_install_git_hooks_corehookspath_remove {
     gbw_git_config_hooks_disabled
-    gbw_print_step "core.hooksPath = `gwb_git_config_get "core.hooksPath"`"
+    gbw_print_step "Remove core.hooksPath configuration"
 }
 
 function gbw_install_git_hooks_symlink {
@@ -64,7 +67,7 @@ function gbw_install_git_hooks_symlink_create {
     local current_hooks_prepare_commit_msg_path="${PWD}/.git/hooks/prepare-commit-msg"
     local command_create_symlink="ln -sf ${GBW_PARAMS_HOOKS_PREPARE_COMMIT_MSG_PATH} ${current_hooks_prepare_commit_msg_path}"
 
-    gbw_print_step "Create hooks symlink instead ($ ${command_create_symlink})"
+    gbw_print_step "Create hooks symlink instead (execute $ ${command_create_symlink})"
 
     if [[ "`gbw_symlink_exists "${current_hooks_prepare_commit_msg_path}"`" == "${GBW_PARAMS_TRUE}" ]]; then
         gbw_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' already exists"
@@ -80,7 +83,7 @@ function gbw_install_git_hooks_symlink_remove {
     local current_hooks_prepare_commit_msg_path="${PWD}/.git/hooks/prepare-commit-msg"
     local command_symlink_remove="rm ${current_hooks_prepare_commit_msg_path}"
 
-    gbw_print_step "Remove hooks symlink ($ ${command_symlink_remove})"
+    gbw_print_step "Remove hooks symlink (execute $ ${command_symlink_remove})"
     
     if [[ "`gbw_symlink_exists "${current_hooks_prepare_commit_msg_path}"`" == "${GBW_PARAMS_FALSE}" ]]; then
         gbw_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' does not exist"
