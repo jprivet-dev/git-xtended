@@ -1,3 +1,4 @@
+:VERSION: 0.0.0-beta
 :MAIN_TITLE: Git Bash Workflow
 :MAIN_TITLE_SHORT: GBW
 :BASHRC_PATH: ~/.bashrc
@@ -6,7 +7,7 @@
 :GBW_ENTRY_FILE_PATH: {GBW_ROOT}/{GBW_ENTRY_FILE}
 :GIT_PROJECT: https://github.com/jprivet-dev/git-bash-workflow
 
-= {MAIN_TITLE}
+= {MAIN_TITLE} ({VERSION})
 :numbered:
 :toc: macro
 
