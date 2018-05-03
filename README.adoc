@@ -77,13 +77,13 @@ image::doc/img/prompt.png[{PROMPT_PS1}]
 
 {nbsp}
 
-[cols=">s,d"]
+[cols="s,d"]
 |===
-2+<| BASIC INFORMATION
+2+| BASIC INFORMATION
 | {PROMPT_TIME}               | current time
 | {PROMPT_USER_HOST}          | current user & hostname
 | {PROMPT_DIR}                | current working directory
-2+<| GIT INFORMATION
+2+| GIT INFORMATION
 | {PROMPT_BRANCH}             | current local branch
 | {PROMPT_COUNT}              | *{PROMPT_COUNT_NB}* changes in total
 | {PROMPT_UNTRACKED}          | *{PROMPT_UNTRACKED_NB}* untracked file
