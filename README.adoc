@@ -99,13 +99,11 @@ image::doc/img/prompt.png[{PROMPT_PS1}]
 | {PROMPT_AHEAD}              | *{PROMPT_AHEAD_NB}* commits ahead branch of reference
 |===
 
-=== Case examples
-
-In *no change case*, you can see :
+For example, in *no change case*, you can see :
 
 image::doc/img/prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
 
-In *one change case*, you can see :
+And for example, in *one change case*, you can see :
 
 image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
