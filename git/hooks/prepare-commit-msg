@@ -60,7 +60,7 @@ declare -A types_index
 declare -A types_shortcut
 
 echo ""
-echo -e "$_TYPE_ ="
+echo -e "${_TYPE_} ="
 
 for key in "${!types[@]}"; do
 	if [[ ${types[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
@@ -95,7 +95,7 @@ declare -A subtypes_shortcut
 declare -A subtypes_index
 
 echo ""
-echo -e "$_SUBTYPE_ ="
+echo -e "${_SUBTYPE_} ="
 
 for key in "${!subtypes[@]}"; do
 	if [[ ${subtypes[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
@@ -127,14 +127,14 @@ done
 # Example
 
 echo ""
-echo -e "MSG = $_TYPE_$type_split$_SUBTYPE_($_MAINSCOPE_)$main_split$_SUBJECT_"
+echo -e "MSG = ${_TYPE_}$type_split${_SUBTYPE_}(${_MAINSCOPE_})$main_split${_SUBJECT_}"
 echo ""
 
 # --------------
 # Type & Subtype
 
 while true; do
-	echo -e -n "$_TYPE_.$_SUBTYPE_ : "
+	echo -e -n "${_TYPE_}.${_SUBTYPE_} : "
 
 	exec < /dev/tty
 	read choise_type_subtype_index
@@ -193,7 +193,7 @@ fi
 files_listing=`get_filenames`
 
 while true; do
-    echo -e -n "$type$type_split$subtype($_MAINSCOPE_) : [$files_listing] "
+    echo -e -n "$type$type_split$subtype(${_MAINSCOPE_}) : [$files_listing] "
 
 	exec < /dev/tty
     read mainscope_choose
@@ -215,7 +215,7 @@ fi
 # Commit message
 
 while true; do
-	echo -e -n "$type$type_split$subtype($mainscope)$main_split$_SUBJECT_ "
+	echo -e -n "$type$type_split$subtype($mainscope)$main_split${_SUBJECT_} "
 
 	exec < /dev/tty
 	read subject
