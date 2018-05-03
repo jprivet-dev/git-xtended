@@ -17,10 +17,10 @@ _M_="\\033[1;35m"
 _BG_DG_="\\033[100m" #dark gray
 _BG_R_="\\033[41m" #red
 
-_TYPE_="$_M_<type*>$F_RESET"
-_SUBTYPE_="$_R_<subtype>$F_RESET"
-_MAINSCOPE_="$_G_<scope*>$F_RESET"
-_SUBJECT_="$_Y_<subject*>$F_RESET"
+_TYPE_="$_M_<type*>${F_RESET}"
+_SUBTYPE_="$_R_<subtype>${F_RESET}"
+_MAINSCOPE_="$_G_<scope*>${F_RESET}"
+_SUBJECT_="$_Y_<subject*>${F_RESET}"
 
 
 # git/hooks/prepare-commit-msg
@@ -252,7 +252,7 @@ if [ "${message}" != "no" ]; then
 	echo ""
     echo "$complete_message" > "$COMMIT_MSG"
 else
-	echo -e "$_BG_R_ commit aborted $F_RESET"
+	echo -e "$_BG_R_ commit aborted ${F_RESET}"
 	exit 1
 fi
 
