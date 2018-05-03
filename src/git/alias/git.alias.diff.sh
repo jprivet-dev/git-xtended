@@ -17,7 +17,7 @@ git status -s | cut -c4- | while read path; do
     status_i=`expr ${status_i} + 1`
     for i in ${indexes}; do
         if [ "${status_i}" == "${i}" ]; then
-            echo "> git diff (${i}) ${path}"
+            printf "> git diff (%s) %s\n" ${i} ${path}
             git diff ${path}
         fi
     done
