@@ -4,7 +4,7 @@ function gbw_test_fake_git_status_porcelain {
     echo "M  changes/to/be/committed/modified"
     echo "A  changes/to/be/committed/added"
     echo "D  changes/to/be/committed/deleted"
-    echo "R  changes/to/be/committed/renamed"
+    echo "R  old/filename -> changes/to/be/committed/renamed"
     echo "C  changes/to/be/committed/copied"
     echo " M changes/not/staged/for/commit/modified"
     echo " A changes/not/staged/for/commit/added"
