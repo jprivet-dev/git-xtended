@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_indexes=$1
+_indexes=$@
 
 if [ "${_indexes}" == "" ]; then
     echo "which file(s) would you want to restore ?"
@@ -13,10 +13,12 @@ else
 
     git status -s | cut -c4- | while read path; do
         _current_index=`expr $_current_index + 1`
-        if [ "${_current_index}" == "${_indexes}" ]; then
-            echo "> git checkout (${_indexes}) ${path}"
-            git checkout ${path}
-        fi
+        for i in ${_indexes}; do
+            if [ "${_current_index}" == "${i}" ]; then
+                echo "> git checkout (${i}) ${path}"
+                git checkout ${path}
+            fi
+        done
     done
 fi
 
