@@ -5,10 +5,10 @@ source ~/git-bash-workflow/params/default/params.colors.sh
 COMMIT_MSG=$1
 COMMIT_MODE=$2
 
-TYPE="${C_LIGHT_MAGENTA}<type*>${F_RESET}"
-SUBTYPE="${C_LIGHT_RED}<subtype>${F_RESET}"
-MAINSCOPE="${C_LIGHT_GREEN}<scope*>${F_RESET}"
-SUBJECT="${C_LIGHT_YELLOW}<subject*>${F_RESET}"
+TYPE_LABEL="${C_LIGHT_MAGENTA}<type*>${F_RESET}"
+SUBTYPE_LABEL="${C_LIGHT_RED}<subtype>${F_RESET}"
+MAINSCOPE_LABEL="${C_LIGHT_GREEN}<scope*>${F_RESET}"
+SUBJECT_LABEL="${C_LIGHT_YELLOW}<subject*>${F_RESET}"
 
 function get_status_listing {
 	git status -s | while read line; do
@@ -60,7 +60,7 @@ declare -A types_index
 declare -A types_shortcut
 
 echo ""
-echo -e "${TYPE} ="
+echo -e "${TYPE_LABEL} ="
 
 for key in "${!types[@]}"; do
 	if [[ ${types[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
@@ -95,7 +95,7 @@ declare -A subtypes_shortcut
 declare -A subtypes_index
 
 echo ""
-echo -e "${SUBTYPE} ="
+echo -e "${SUBTYPE_LABEL} ="
 
 for key in "${!subtypes[@]}"; do
 	if [[ ${subtypes[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
@@ -127,14 +127,14 @@ done
 # Example
 
 echo ""
-echo -e "MSG = ${TYPE}$type_split${SUBTYPE}(${MAINSCOPE})$main_split${SUBJECT}"
+echo -e "MSG = ${TYPE_LABEL}$type_split${SUBTYPE_LABEL}(${MAINSCOPE_LABEL})$main_split${SUBJECT_LABEL}"
 echo ""
 
 # --------------
 # Type & Subtype
 
 while true; do
-	echo -e -n "${TYPE}.${SUBTYPE} : "
+	echo -e -n "${TYPE_LABEL}.${SUBTYPE_LABEL} : "
 
 	exec < /dev/tty
 	read choise_type_subtype_index
@@ -193,7 +193,7 @@ fi
 files_listing=`get_filenames`
 
 while true; do
-    echo -e -n "$type$type_split$subtype(${MAINSCOPE}) : [$files_listing] "
+    echo -e -n "$type$type_split$subtype(${MAINSCOPE_LABEL}) : [$files_listing] "
 
 	exec < /dev/tty
     read mainscope_choose
@@ -215,7 +215,7 @@ fi
 # Commit message
 
 while true; do
-	echo -e -n "$type$type_split$subtype($mainscope)$main_split${SUBJECT} "
+	echo -e -n "$type$type_split$subtype($mainscope)$main_split${SUBJECT_LABEL} "
 
 	exec < /dev/tty
 	read subject
@@ -232,9 +232,9 @@ complete_message="$type$type_split$subtype($mainscope)$main_split$subject"
 
 if [ "${message}" != "no" ]; then
 	echo ""
-    echo "$complete_message" > "$COMMIT_MSG"
+    echo "$complete_message" > "${COMMIT_MSG}"
 else
-	echo -e "${_BG_R_} commit aborted ${F_RESET}"
+	echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
 	exit 1
 fi
 
