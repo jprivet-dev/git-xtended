@@ -39,6 +39,12 @@ function test_gbw_git_get_status_changes_to_be_committed_count {
     assert last-git-command-is "git status --porcelain" $LINENO
 }
 
+function test_gbw_git_get_status_changes_to_be_committed {
+    local count_lines="`gbw_git_get_status_changes_to_be_committed | wc -l`"
+    assert equals "${count_lines}" "5" $LINENO
+    assert last-git-command-is "git status --porcelain" $LINENO
+}
+
 function test_gbw_git_get_status_changes_to_be_committed_modified_count {
     assert equals "`gbw_git_get_status_changes_to_be_committed_modified_count`" "1" $LINENO
     assert last-git-command-is "git status --porcelain" $LINENO
