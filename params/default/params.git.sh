@@ -19,6 +19,7 @@ GBW_PARAMS_GIT_ALIAS_DIFF_FILE="${GBW_PARAMS_ROOT}/src/git/alias/git.alias.diff.
 GBW_PARAMS_GIT_ALIAS_COMMIT_FILE="${GBW_PARAMS_ROOT}/src/git/alias/git.alias.commit.sh"
 GBW_PARAMS_GIT_ALIAS_STATUS_FILE="${GBW_PARAMS_ROOT}/src/git/alias/git.alias.status.sh"
 GBW_PARAMS_GIT_ALIAS_FIND_FILE="${GBW_PARAMS_ROOT}/src/git/alias/git.alias.find.sh"
+GBW_PARAMS_GIT_ALIAS_CHECKOUT_FILE="${GBW_PARAMS_ROOT}/src/git/alias/git.alias.checkout.sh"
 
 GBW_PARAMS_GIT_HOOKS_DIR="${GBW_PARAMS_ROOT}/git/hooks/"
 
