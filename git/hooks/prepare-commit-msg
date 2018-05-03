@@ -5,16 +5,10 @@ source ~/git-bash-workflow/params/default/params.colors.sh
 COMMIT_MSG=$1
 COMMIT_MODE=$2
 
-_R_="\\033[1;31m"
-_G_="\\033[1;32m"
-_Y_="\\033[1;33m"
-_M_="\\033[1;35m"
-_BG_R_="\\033[41m" #red
-
-_TYPE_="${_M_}<type*>${F_RESET}"
-_SUBTYPE_="${_R_}<subtype>${F_RESET}"
-_MAINSCOPE_="${_G_}<scope*>${F_RESET}"
-_SUBJECT_="${_Y_}<subject*>${F_RESET}"
+_TYPE_="${C_LIGHT_MAGENTA}<type*>${F_RESET}"
+_SUBTYPE_="${C_LIGHT_RED}<subtype>${F_RESET}"
+_MAINSCOPE_="${C_LIGHT_GREEN}<scope*>${F_RESET}"
+_SUBJECT_="${C_LIGHT_YELLOW}<subject*>${F_RESET}"
 
 
 # git/hooks/prepare-commit-msg
