@@ -4,11 +4,7 @@ indexes=$@
 
 if [ "${indexes}" == "" ]; then
     echo "which file(s) would you want to restore ?"
-    count=0
-    while IFS= read -r line; do
-        count=`expr ${count} + 1`
-        echo -e "${count}) ${line}"
-    done < <(git status --porcelain)
+    source ~/git-bash-workflow/src/git/alias/git.alias.status.sh
     exit 1
 fi
 
