@@ -10,12 +10,6 @@ _SUBTYPE_="${C_LIGHT_RED}<subtype>${F_RESET}"
 _MAINSCOPE_="${C_LIGHT_GREEN}<scope*>${F_RESET}"
 _SUBJECT_="${C_LIGHT_YELLOW}<subject*>${F_RESET}"
 
-
-# git/hooks/prepare-commit-msg
-# git/hooks/prepare-commit-msg.php
-
-#echo "Bash version ${BASH_VERSION}..."
-
 function get_status_listing {
 	git status -s | while read line; do
 		if [[ $line =~ (^[MARD][M ] ) ]]; then
