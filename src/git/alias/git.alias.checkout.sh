@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
-_indexes=$@
+indexes=$@
 
-if [ "${_indexes}" == "" ]; then
+if [ "${indexes}" == "" ]; then
     echo "which file(s) would you want to restore ?"
     while IFS= read -r line; do
-        _index=`expr $_index + 1`
-        echo -e "${_index}) ${line}"
+        count=`expr ${count} + 1`
+        echo -e "${count}) ${line}"
     done < <(git status --porcelain)
 else
-    _current_index=0
+    status_i=0
 
     git status -s | cut -c4- | while read path; do
-        _current_index=`expr $_current_index + 1`
-        for i in ${_indexes}; do
-            if [ "${_current_index}" == "${i}" ]; then
+        status_i=`expr ${status_i} + 1`
+        for i in ${indexes}; do
+            if [ "${status_i}" == "${i}" ]; then
                 echo "> git checkout (${i}) ${path}"
                 git checkout ${path}
             fi
