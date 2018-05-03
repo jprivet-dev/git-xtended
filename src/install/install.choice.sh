@@ -1,66 +1,34 @@
 #!/usr/bin/env bash
 
-function gbw_install_choice_y_n {
-    local choice
+function gbw_install_disable_or_enable {
     local label=$1
+    local key=$2
+    local call_function=$3
+    local choice=""
 
-    while true; do
-        echo -e -n "$label (y/n): "
+    gbw_print_choose_one_option "${label}" "${GBW_PARAMS_DISABLED}" "${GBW_PARAMS_ENABLED}"
 
-        exec < /dev/tty
-        read choice
+    [ "${_GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}" == "${GBW_PARAMS_ENABLED}" ] && choice="${GBW_PARAMS_ENABLED}" || choice="${GBW_PARAMS_DISABLED}"
 
-        if [ "$choice" == "y" -o "$choice" == "n" ]; then
-            break;
-        fi
-    done
-
-    if [ "$choice" == "y" ]; then
-        _GBW_INSTALL_CHOICE_Y_N_LAST_VALUE="$GBW_PARAMS_ON"
-        return
+    if [ "${call_function}" != "" ]; then
+       $call_function "${choice}"
     fi
 
-    _GBW_INSTALL_CHOICE_Y_N_LAST_VALUE="$GBW_PARAMS_OFF"
-    return
-}
-
-function gbw_install_choice_prompt {
-    gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_PROMPT'"
-    gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_PROMPT" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
-}
-
-function gbw_install_choice_aliases {
-    gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_GIT_ALIASES'"
-    gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
-}
-
-function gbw_install_choice_hooks {
-    gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_GIT_HOOKS'"
-    gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
-}
-
-function gbw_install_choice_workflow {
-    gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_WORKFLOW'"
-    gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
-}
-
-function gbw_install_choice_bashaliases {
-    gbw_install_choice_y_n "Activate '$GBW_PARAMS_LABEL_BASH_ALIASES'"
-    gwb_git_config_set "$GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES" "$_GBW_INSTALL_CHOICE_Y_N_LAST_VALUE"
+    gwb_git_config_set "${key}" "${choice}"
 }
 
 function gbw_install_choice {
-    gbw_install_choice_prompt
-    gbw_install_choice_aliases
-    gbw_install_choice_hooks
-    gbw_install_choice_workflow
-    gbw_install_choice_bashaliases
+    gbw_install_disable_or_enable "${GBW_PARAMS_LABEL_PROMPT}"        "${GBW_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS}"
+    gbw_install_disable_or_enable "${GBW_PARAMS_LABEL_GIT_ALIASES}"   "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS}"
+    gbw_install_disable_or_enable "${GBW_PARAMS_LABEL_GIT_HOOKS}"     "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_STATUS}"     "gbw_install_git_hooks"
+    gbw_install_disable_or_enable "${GBW_PARAMS_LABEL_WORKFLOW}"      "${GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW_STATUS}"
+    gbw_install_disable_or_enable "${GBW_PARAMS_LABEL_BASH_ALIASES}"  "${GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES_STATUS}"
 }
 
 function gbw_install_choice_params_set_all_from_git_config {
-    GBW_PARAMS_INSTALL_PROMPT_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_PROMPT $GBW_PARAMS_OFF)"
-    GBW_PARAMS_INSTALL_GIT_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES $GBW_PARAMS_OFF)"
-    GBW_PARAMS_INSTALL_GIT_HOOKS_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS $GBW_PARAMS_OFF)"
-    GBW_PARAMS_INSTALL_WORKFLOW_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW $GBW_PARAMS_OFF)"
-    GBW_PARAMS_INSTALL_BASH_ALIASES_ACTIVE="$(gwb_git_config_get $GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES $GBW_PARAMS_OFF)"
+    GBW_PARAMS_INSTALL_PROMPT_STATUS="`gwb_git_config_get ${GBW_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS} ${GBW_PARAMS_DISABLED}`"
+    GBW_PARAMS_INSTALL_GIT_ALIASES_STATUS="`gwb_git_config_get ${GBW_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS} ${GBW_PARAMS_DISABLED}`"
+    GBW_PARAMS_INSTALL_GIT_HOOKS_STATUS="`gwb_git_config_get ${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_STATUS} ${GBW_PARAMS_DISABLED}`"
+    GBW_PARAMS_INSTALL_WORKFLOW_STATUS="`gwb_git_config_get ${GBW_PARAMS_GIT_CONFIG_KEY_WORKFLOW_STATUS} ${GBW_PARAMS_DISABLED}`"
+    GBW_PARAMS_INSTALL_BASH_ALIASES_STATUS="`gwb_git_config_get ${GBW_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES_STATUS} ${GBW_PARAMS_DISABLED}`"
 }

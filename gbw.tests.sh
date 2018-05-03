@@ -4,19 +4,27 @@
 # START TEST MODE #
 ###################
 
-GBW_ENV_TEST=1
+gbw_print_title_1 ${GBW_PARAMS_TITLE} TESTING
 
-echo -e "$C_LIGHT_YELLOW"
-echo -e "#############################"
-echo -e "# $GBW_PARAMS_TITLE TESTING #"
-echo -e "#############################"
-echo -e "$F_RESET"
+gbw_print_question_yes_no "Would you like to run the tests"
+
+if [ "${_GBW_PRINT_QUESTION_YES_NO_LAST_VALUE}" != "${GBW_PARAMS_YES}" ]; then
+    gbw_print_step "Abort tests"
+    return
+fi
+
+GBW_ENV_TEST=1
 
 alias git="gbw_test_fake_git"
 
-source ~/git-bash-workflow/src/test.sh
+source ~/git-bash-workflow/src/test/test.sh
 source ~/git-bash-workflow/gbw.sh
 
+source ~/git-bash-workflow/tests/test.tests.sh
+
+source ~/git-bash-workflow/tests/bash.tests.sh
+source ~/git-bash-workflow/tests/commands.tests.sh
+source ~/git-bash-workflow/tests/colors.tests.sh
 source ~/git-bash-workflow/tests/prompt.tests.sh
 source ~/git-bash-workflow/tests/git.tests.sh
 source ~/git-bash-workflow/tests/utils.tests.sh
@@ -26,12 +34,10 @@ gbw_test_run $1
 unalias git
 unset GBW_ENV_TEST
 
-####################
-# FINISH TEST MODE #
-####################
+#
+# FINISH TEST MODE
+#
 
-echo
-echo -e "${C_LIGHT_YELLOW}# Reload original $GBW_PARAMS_TITLE !${F_RESET}";
-echo
+gbw_print_step "Reload original ${GBW_PARAMS_TITLE} !"
 
 source ~/git-bash-workflow/gbw.sh
