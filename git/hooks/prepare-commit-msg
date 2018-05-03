@@ -5,10 +5,10 @@ source ~/git-bash-workflow/params/default/params.colors.sh
 COMMIT_MSG=$1
 COMMIT_MODE=$2
 
-_TYPE_="${C_LIGHT_MAGENTA}<type*>${F_RESET}"
-_SUBTYPE_="${C_LIGHT_RED}<subtype>${F_RESET}"
-_MAINSCOPE_="${C_LIGHT_GREEN}<scope*>${F_RESET}"
-_SUBJECT_="${C_LIGHT_YELLOW}<subject*>${F_RESET}"
+TYPE="${C_LIGHT_MAGENTA}<type*>${F_RESET}"
+SUBTYPE="${C_LIGHT_RED}<subtype>${F_RESET}"
+MAINSCOPE="${C_LIGHT_GREEN}<scope*>${F_RESET}"
+SUBJECT="${C_LIGHT_YELLOW}<subject*>${F_RESET}"
 
 function get_status_listing {
 	git status -s | while read line; do
@@ -60,7 +60,7 @@ declare -A types_index
 declare -A types_shortcut
 
 echo ""
-echo -e "${_TYPE_} ="
+echo -e "${TYPE} ="
 
 for key in "${!types[@]}"; do
 	if [[ ${types[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
@@ -95,7 +95,7 @@ declare -A subtypes_shortcut
 declare -A subtypes_index
 
 echo ""
-echo -e "${_SUBTYPE_} ="
+echo -e "${SUBTYPE} ="
 
 for key in "${!subtypes[@]}"; do
 	if [[ ${subtypes[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
@@ -127,14 +127,14 @@ done
 # Example
 
 echo ""
-echo -e "MSG = ${_TYPE_}$type_split${_SUBTYPE_}(${_MAINSCOPE_})$main_split${_SUBJECT_}"
+echo -e "MSG = ${TYPE}$type_split${SUBTYPE}(${MAINSCOPE})$main_split${SUBJECT}"
 echo ""
 
 # --------------
 # Type & Subtype
 
 while true; do
-	echo -e -n "${_TYPE_}.${_SUBTYPE_} : "
+	echo -e -n "${TYPE}.${SUBTYPE} : "
 
 	exec < /dev/tty
 	read choise_type_subtype_index
@@ -193,7 +193,7 @@ fi
 files_listing=`get_filenames`
 
 while true; do
-    echo -e -n "$type$type_split$subtype(${_MAINSCOPE_}) : [$files_listing] "
+    echo -e -n "$type$type_split$subtype(${MAINSCOPE}) : [$files_listing] "
 
 	exec < /dev/tty
     read mainscope_choose
@@ -215,7 +215,7 @@ fi
 # Commit message
 
 while true; do
-	echo -e -n "$type$type_split$subtype($mainscope)$main_split${_SUBJECT_} "
+	echo -e -n "$type$type_split$subtype($mainscope)$main_split${SUBJECT} "
 
 	exec < /dev/tty
 	read subject
