@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-_index=0
+count=0
 while IFS= read -r line; do
-    _index=`expr $_index + 1`
-    echo -e "${_index}) ${line}"
+    count=`expr ${count} + 1`
+    echo -e "${count}) ${line}"
 done < <(git status --porcelain)
