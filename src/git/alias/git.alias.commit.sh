@@ -17,10 +17,11 @@ fi
 
 _current_index=0
 
-git status -s | cut -c4- | while read line; do
+git status -s | cut -c4- | while read path; do
     _current_index=`expr $_current_index + 1`
     if [ "${_current_index}" == "${_indexes}" ]; then
-        git add $line
+        echo "> git commit (${_indexes}) ${path}"
+        git add ${path}
 
         echo
         echo "${_split}"
