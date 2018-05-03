@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 indexes=$@
-_split="--------------------------------------------------"
+split="--------------------------------------------------"
 
 if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
     echo "> git add all files & commit"
@@ -15,21 +15,23 @@ if [ "${indexes}" == "" ]; then
     indexes=1
 fi
 
-current_i=0
+status_i=0
 
 git status -s | cut -c4- | while read path; do
-    current_i=`expr ${current_i} + 1`
-    if [ "${current_i}" == "${indexes}" ]; then
-        echo "> git add (${indexes}) ${path}"
-        git add ${path}
-    fi
+    status_i=`expr ${status_i} + 1`
+    for i in ${indexes}; do
+        if [ "${status_i}" == "${i}" ]; then
+            echo "> git add (${i}) ${path}"
+            git add ${path}
+        fi
+    done
 done
 
 echo "> & commit ..."
 
 echo
-echo "${_split}"
+echo "${split}"
 git status -s -u
 
-echo "${_split}"
+echo "${split}"
 git commit -m ""
