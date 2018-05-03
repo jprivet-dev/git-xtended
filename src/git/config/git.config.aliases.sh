@@ -21,7 +21,7 @@ function gbw_git_config_set_aliases {
     git config ${global} alias.${GBW_PARAMS_GIT_ALIAS_AMEND} "commit -m --amend"
 
     # git checkout
-    git config ${global} alias.${GBW_PARAMS_GIT_ALIAS_CK} checkout
+    git config ${global} alias.${GBW_PARAMS_GIT_ALIAS_CK} '!f() { '${GBW_PARAMS_GIT_ALIAS_CHECKOUT_FILE}' "$@"; }; f'
 
     # git log
     local hash="%C(yellow)%h"
