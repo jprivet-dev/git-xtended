@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 
-_index=$1
+indexes=$@
 
-if [ "${_index}" == "all" ] || [ "${_index}" == "." ]; then
+if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
     git diff
     exit 1
 fi
 
-if [ "${_index}" == "" ]; then
-    _index="1"
+if [ "${indexes}" == "" ]; then
+    indexes="1"
 fi
 
-_current_index=0
+status_i=0
 
-git status -s | cut -c4- | while read line; do
-    _current_index=`expr $_current_index + 1`
-    if [ "${_current_index}" == "${_index}" ]; then
-        git diff $line
-    fi
+git status -s | cut -c4- | while read path; do
+    status_i=`expr ${status_i} + 1`
+    for i in ${indexes}; do
+        if [ "${status_i}" == "${i}" ]; then
+            echo "> git diff (${i}) ${path}"
+            git diff ${path}
+        fi
+    done
 done
