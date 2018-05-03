@@ -11,7 +11,7 @@ function gbw_git_config_aliases_help {
     gbw_git_config_aliases_help_line "          " "${GBW_PARAMS_GIT_ALIAS_LMERGES}" "" ........... "Show all merge logs (graphical representation)"
     gbw_git_config_aliases_help_line "          " "${GBW_PARAMS_GIT_ALIAS_LCOUNT}" "" ............ "Number of commits per author"
     gbw_git_config_aliases_help_line "  branch |" "${GBW_PARAMS_GIT_ALIAS_B}" "" ................. "Simple \"branch\" alias"
-    gbw_git_config_aliases_help_line "checkout |" "${GBW_PARAMS_GIT_ALIAS_CK}" "" ................ "Simple \"checkout\" alias"
+    gbw_git_config_aliases_help_line "checkout |" "${GBW_PARAMS_GIT_ALIAS_CK}"  "[1 2 ... n]" .... "Extended \"checkout\" alias ${select_file}"
     gbw_git_config_aliases_help_line "  status |" "${GBW_PARAMS_GIT_ALIAS_S}" "" ................. "${F_UNDERLINED}Indexed${F_RESET} status list (staged, unstaged, and untracked files)"
     gbw_git_config_aliases_help_line "          " "${GBW_PARAMS_GIT_ALIAS_SS}" "" ................ "Simple \"status\" alias"
     gbw_git_config_aliases_help_line "    diff |" "${GBW_PARAMS_GIT_ALIAS_D}"  "[1 2 ... n]" ..... "Extended \"diff\" alias ${select_file}"
