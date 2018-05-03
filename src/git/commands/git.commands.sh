@@ -61,6 +61,10 @@ function gbw_git_diff_current_branch_origin_dev {
 }
 
 # @test
+function gbw_git_get_status_changes_to_be_committed {
+    git status --porcelain | grep '^[^? ]' 2> /dev/null
+}
+
 function gbw_git_get_status_changes_to_be_committed_count {
     git status --porcelain | grep '^[^? ]' | wc -l 2> /dev/null
 }
