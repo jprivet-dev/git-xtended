@@ -44,7 +44,7 @@ function get_status_listing {
 }
 
 function get_filenames {
-	echo $(get_status_listing)
+	echo `get_status_listing`
 }
 
 types[10]='a/archi/Changes application architecture (folder position, name, ...)'
@@ -206,7 +206,7 @@ fi
 # --------------
 # File ref
 
-files_listing=$(get_filenames)
+files_listing=`get_filenames`
 
 while true; do
     echo -e -n "$type$type_split$subtype($_MAINSCOPE_) : [$files_listing] "
