@@ -11,7 +11,8 @@ function gbw_git_config_set_aliases {
     git config ${global} alias.d '!f() { '${GBW_PARAMS_GIT_ALIAS_DIFF_FILE}' "$1"; }; f'
 
     # git add
-    git config ${global} alias.${GBW_PARAMS_GIT_ALIAS_A} "add"
+    git config ${global} alias.${GBW_PARAMS_GIT_ALIAS_A} '!f() { '${GBW_PARAMS_GIT_ALIAS_ADD_FILE}' "$@"; }; f'
+
     git config ${global} alias.${GBW_PARAMS_GIT_ALIAS_ALL} "add --all"
     git config ${global} alias.${GBW_PARAMS_GIT_ALIAS_NM} "add ."
     git config ${global} alias.${GBW_PARAMS_GIT_ALIAS_MD} "add --update"
