@@ -95,6 +95,18 @@ function test_gbw_git_status_behind_count {
     assert last-git-command-is "git rev-list --left-right --count remote-branch...current-branch" $LINENO
 }
 
+function test_gbw_git_status_get_filenames_inline {
+    local count_lines="`gbw_git_status_get_filenames | wc -l`"
+    assert equals "${count_lines}" "5" $LINENO
+}
+
+function test_gbw_git_status_get_filenames_inline {
+    local count_lines="`gbw_git_status_get_filenames_inline | wc -l`"
+    assert equals "${count_lines}" "1" $LINENO
+
+    assert equals "`gbw_git_status_get_filenames_inline`" "modified, added, deleted, renamed, copied" $LINENO
+}
+
 function test_gbw_git_config_set_global_alias_cmd {
     local name="my_name"
     local value
