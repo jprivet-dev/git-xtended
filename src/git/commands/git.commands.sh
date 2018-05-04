@@ -4,7 +4,6 @@ function gbw_git_get_current_version {
     gbw_regex_extract_version "`git --version`"
 }
 
-# TODO : create test
 function gbw_git_current_folder_is_repo {
     git rev-parse --git-dir 2> /dev/null
 }
@@ -32,17 +31,14 @@ function gbw_git_status {
     git status --porcelain 2> /dev/null
 }
 
-# TODO: create test
 function gbw_git_commit_indexed {
     source "${GBW_PARAMS_GIT_ALIAS_COMMIT_FILE}"
 }
 
-# TODO: create test
 function gbw_git_diff_indexed {
     source "${GBW_PARAMS_GIT_ALIAS_DIFF_FILE}"
 }
 
-# TODO: create test
 function gbw_git_status_indexed {
     source "${GBW_PARAMS_GIT_ALIAS_STATUS_FILE}"
 }
