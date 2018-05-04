@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# @test
 function gbw_prompt_time {
     echo `gbw_prompt_time_colors "\t"`
 }
@@ -10,7 +9,6 @@ function gbw_prompt_time_colors {
     echo "${C_LIGHT_RED}${time}${F_RESET}"
 }
 
-# @test
 function gbw_prompt_user {
     echo `gbw_prompt_user_colors "${GBW_PARAMS_USER_PS1}"`
 }
@@ -20,7 +18,6 @@ function gbw_prompt_user_colors {
     echo "${C_LIGHT_GREEN}${user}${F_RESET}"
 }
 
-# @test
 function gbw_prompt_host {
     echo `gbw_prompt_host_colors "\h"`
 }
@@ -30,7 +27,6 @@ function gbw_prompt_host_colors {
     echo "${C_LIGHT_GREEN}${host}${F_RESET}"
 }
 
-# @test
 function gbw_prompt_userhost {
     echo $(gbw_prompt_userhost_colors "`gbw_prompt_user`" "`gbw_prompt_host`")
 }
@@ -41,12 +37,10 @@ function gbw_prompt_userhost_colors {
     echo "${user}${C_LIGHT_GREEN}@${F_RESET}${host}"
 }
 
-# @test
 function gbw_prompt_dir {
     echo "${C_CYAN}\\w${F_RESET}"
 }
 
-# @test
 function gbw_prompt_branch {
     echo $(gbw_prompt_branch_colors "`gbw_git_get_current_branch`")
 }
@@ -56,7 +50,6 @@ function gbw_prompt_branch_colors {
     echo "${C_LIGHT_YELLOW}(${branch})${F_RESET}"
 }
 
-# @test
 function gbw_prompt_changes_count {
     echo $(gbw_prompt_changes_count_colors "`gbw_git_get_changes_nb`")
 }
@@ -66,7 +59,6 @@ function gbw_prompt_changes_count_colors {
     echo "${C_LIGHT_MAGENTA}${count}≡${F_RESET}"
 }
 
-# @test
 function gbw_prompt_status_to_be_commited {
     local m="`gbw_git_get_status_changes_to_be_committed_modified_extended_count`"
     local n="`gbw_git_get_status_changes_to_be_committed_new_file_count`"
@@ -88,7 +80,6 @@ function gbw_prompt_status_to_be_commited_colors {
     echo "${format_c}c(${m} +${n} -${d})${F_RESET}"
 }
 
-# @test
 function gbw_prompt_status_not_staged {
     local count="`gbw_git_get_status_changes_not_staged_for_commit_count`"
     echo `gbw_prompt_status_not_staged_colors "${count}"`
@@ -104,7 +95,6 @@ function gbw_prompt_status_not_staged_colors {
     echo "${format}${count}!${F_RESET}"
 }
 
-# @test
 function gbw_prompt_status_untracked {
     local count="`gbw_git_get_status_untracked_files_count`"
     echo `gbw_prompt_status_untracked_colors "${count}"`
@@ -120,12 +110,10 @@ function gbw_prompt_status_untracked_colors {
     echo "${format}${count}?${F_RESET}"
 }
 
-# @test
 function gbw_prompt_status {
     echo "`gbw_prompt_status_untracked` `gbw_prompt_status_not_staged` `gbw_prompt_status_to_be_commited`"
 }
 
-# @test
 function gbw_prompt_behind {
     local count="$(gbw_git_status_behind_count `gbw_git_get_current_branch` `gbw_git_get_remote_branch_ref`)"
     echo `gbw_prompt_behind_colors "${count}"`
@@ -143,7 +131,6 @@ function gbw_prompt_behind_colors {
     echo "${format}${count}↓${F_RESET}"
 }
 
-# @test
 function gbw_prompt_ahead {
     local count="$(gbw_git_status_ahead_count `gbw_git_get_current_branch` `gbw_git_get_remote_branch_ref`)"
     echo `gbw_prompt_ahead_colors "${count}"`
@@ -161,7 +148,6 @@ function gbw_prompt_ahead_colors {
     echo "${format}${count}↑${F_RESET}"
 }
 
-# @test
 function gbw_prompt_ps1_part1 {
     local ps1="`gbw_prompt_time` `gbw_prompt_userhost`:`gbw_prompt_dir`"
 
@@ -178,7 +164,6 @@ function gbw_prompt_ps1_part1 {
     echo "${ps1}"
 }
 
-# @test
 function gbw_prompt_ps1_part2 {
     local ps2="${F_RESET}\n"
 
