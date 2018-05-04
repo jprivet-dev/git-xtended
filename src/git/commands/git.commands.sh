@@ -138,3 +138,16 @@ function gbw_git_status_behind_count {
     # into testing function "test_gbw_git_status_behind_count". Find why !!!
     gbw_git_status_behind "${from_branch}" "${to_branch}" | while read -a array; do echo ${array[0]} ; done
 }
+
+function gbw_git_status_get_filenames {
+	git status --porcelain | grep '^[^? ]' | while read path; do
+        filename=$(basename -- "${path}")
+        printf "${filename}\n"
+	done
+}
+
+function gbw_git_status_get_filenames_inline {
+    local listing=(`gbw_git_status_get_filenames`)
+    local filenames=$(printf ", %s" "${listing[@]}")
+    printf "${filenames:2}\n"
+}
