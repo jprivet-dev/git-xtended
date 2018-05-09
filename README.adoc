@@ -128,4 +128,3 @@ image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
     gx config .......... Show GX git configuration
     gx colors .......... Show all GX colors
     gx test [<func>] ... Run one or all GX tests
-
