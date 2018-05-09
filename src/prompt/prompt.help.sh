@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# @test
 function gbw_prompt_help {
     local branch=`gbw_prompt_branch_colors "branch"`
     local count=`gbw_prompt_changes_count_colors "8"`

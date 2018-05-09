@@ -1,51 +1,15 @@
 #!/bin/bash
 
+source ~/git-bash-workflow/params/default/params.colors.sh
+source ~/git-bash-workflow/src/git/commands/git.commands.sh
+
 COMMIT_MSG=$1
 COMMIT_MODE=$2
 
-_D_="\\033[0;39m"
-_R_="\\033[1;31m"
-_G_="\\033[1;32m"
-_Y_="\\033[1;33m"
-_B_="\\033[1;34m"
-_M_="\\033[1;35m"
-
-# Background
-_BG_D_="\\033[49m" #default
-_BG_DG_="\\033[100m" #dark gray
-_BG_R_="\\033[41m" #red
-
-_TYPE_="$_M_<type*>$_D_"
-_SUBTYPE_="$_R_<subtype>$_D_"
-_MAINSCOPE_="$_G_<scope*>$_D_"
-_SUBJECT_="$_Y_<subject*>$_D_"
-
-
-# git/hooks/prepare-commit-msg
-# git/hooks/prepare-commit-msg.php
-
-#echo "Bash version ${BASH_VERSION}..."
-
-function get_status_listing {
-	git status -s | while read line; do
-		if [[ $line =~ (^[MARD][M ] ) ]]; then
-			st=${BASH_REMATCH[1]}
-		else
-			st=""
-		fi
-
-		if [ "$st" != "" ]; then
-			if [[ $line =~ ([^/ ]*$) ]]; then
-				filename=${BASH_REMATCH[1]}
-				echo "$filename"
-			fi
-		fi
-	done
-}
-
-function get_filenames {
-	echo `get_status_listing`
-}
+TYPE_LABEL="${C_LIGHT_MAGENTA}<type*>${F_RESET}"
+SUBTYPE_LABEL="${C_LIGHT_RED}<subtype>${F_RESET}"
+MAINSCOPE_LABEL="${C_LIGHT_GREEN}<scope*>${F_RESET}"
+SUBJECT_LABEL="${C_LIGHT_YELLOW}<subject*>${F_RESET}"
 
 types[10]='a/archi/Changes application architecture (folder position, name, ...)'
 types[15]='c/conf/Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)'
@@ -76,7 +40,7 @@ declare -A types_index
 declare -A types_shortcut
 
 echo ""
-echo -e "$_TYPE_ ="
+echo -e "${TYPE_LABEL} ="
 
 for key in "${!types[@]}"; do
 	if [[ ${types[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
@@ -111,7 +75,7 @@ declare -A subtypes_shortcut
 declare -A subtypes_index
 
 echo ""
-echo -e "$_SUBTYPE_ ="
+echo -e "${SUBTYPE_LABEL} ="
 
 for key in "${!subtypes[@]}"; do
 	if [[ ${subtypes[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
@@ -143,14 +107,14 @@ done
 # Example
 
 echo ""
-echo -e "MSG = $_TYPE_$type_split$_SUBTYPE_($_MAINSCOPE_)$main_split$_SUBJECT_"
+echo -e "MSG = ${TYPE_LABEL}$type_split${SUBTYPE_LABEL}(${MAINSCOPE_LABEL})$main_split${SUBJECT_LABEL}"
 echo ""
 
 # --------------
 # Type & Subtype
 
 while true; do
-	echo -e -n "$_TYPE_.$_SUBTYPE_ : "
+	echo -e -n "${TYPE_LABEL}.${SUBTYPE_LABEL} : "
 
 	exec < /dev/tty
 	read choise_type_subtype_index
@@ -206,10 +170,10 @@ fi
 # --------------
 # File ref
 
-files_listing=`get_filenames`
+files_listing=`gbw_git_status_get_filenames_inline`
 
 while true; do
-    echo -e -n "$type$type_split$subtype($_MAINSCOPE_) : [$files_listing] "
+    echo -e -n "$type$type_split$subtype(${MAINSCOPE_LABEL}) : [$files_listing] "
 
 	exec < /dev/tty
     read mainscope_choose
@@ -231,7 +195,7 @@ fi
 # Commit message
 
 while true; do
-	echo -e -n "$type$type_split$subtype($mainscope)$main_split$_SUBJECT_ "
+	echo -e -n "$type$type_split$subtype($mainscope)$main_split${SUBJECT_LABEL} "
 
 	exec < /dev/tty
 	read subject
@@ -248,9 +212,9 @@ complete_message="$type$type_split$subtype($mainscope)$main_split$subject"
 
 if [ "${message}" != "no" ]; then
 	echo ""
-    echo "$complete_message" > "$COMMIT_MSG"
+    echo "$complete_message" > "${COMMIT_MSG}"
 else
-	echo -e "$_BG_R_ commit aborted $_BG_D_"
+	echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
 	exit 1
 fi
 

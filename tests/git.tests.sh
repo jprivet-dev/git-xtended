@@ -39,6 +39,12 @@ function test_gbw_git_get_status_changes_to_be_committed_count {
     assert last-git-command-is "git status --porcelain" $LINENO
 }
 
+function test_gbw_git_get_status_changes_to_be_committed {
+    local count_lines="`gbw_git_get_status_changes_to_be_committed | wc -l`"
+    assert equals "${count_lines}" "5" $LINENO
+    assert last-git-command-is "git status --porcelain" $LINENO
+}
+
 function test_gbw_git_get_status_changes_to_be_committed_modified_count {
     assert equals "`gbw_git_get_status_changes_to_be_committed_modified_count`" "1" $LINENO
     assert last-git-command-is "git status --porcelain" $LINENO
@@ -87,6 +93,18 @@ function test_gbw_git_status_behind {
 function test_gbw_git_status_behind_count {
     assert equals "`gbw_git_status_behind_count current-branch remote-branch`" "0" $LINENO
     assert last-git-command-is "git rev-list --left-right --count remote-branch...current-branch" $LINENO
+}
+
+function test_gbw_git_status_get_filenames_inline {
+    local count_lines="`gbw_git_status_get_filenames | wc -l`"
+    assert equals "${count_lines}" "5" $LINENO
+}
+
+function test_gbw_git_status_get_filenames_inline {
+    local count_lines="`gbw_git_status_get_filenames_inline | wc -l`"
+    assert equals "${count_lines}" "1" $LINENO
+
+    assert equals "`gbw_git_status_get_filenames_inline`" "modified, added, deleted, renamed, copied" $LINENO
 }
 
 function test_gbw_git_config_set_global_alias_cmd {
@@ -139,5 +157,5 @@ function test_gbw_git_config_aliases_help {
     assert equals "${count_lines}" "23" $LINENO
 
     assert first-line   "`gbw_git_config_aliases_help`"   "${TEST_C_WHITE}(2) Git aliases${TEST_F_RESET} :" $LINENO
-    assert last-line    "`gbw_git_config_aliases_help`"   "        grep | git ${TEST_C_LIGHT_CYAN}find${TEST_F_RESET} <string> ${TEST_C_DARK_GRAY}.....${TEST_F_RESET} Look for specified strings in the tracked files (case sensitive`" $LINENO
+    assert last-line    "`gbw_git_config_aliases_help`"   "        grep | git ${TEST_C_LIGHT_CYAN}find${TEST_F_RESET} <string> ${TEST_C_DARK_GRAY}.....${TEST_F_RESET} Look for specified strings in the tracked files (case sensitive)" $LINENO
 }
