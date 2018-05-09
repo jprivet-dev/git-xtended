@@ -61,7 +61,7 @@ function gx_test_run {
 }
 
 function gx_test_run_all {
-    local func_test_list=(`gx_test_find_all_func_test`)
+    local func_test_list=($(gx_test_find_all_func_test))
 
     gx_print_title_2 "Launch all tests"
 
@@ -99,7 +99,7 @@ function gx_test_run_func {
 }
 
 function gx_test_check_func_with_test {
-    local func_gx_list=(`gx_test_find_all_func_gx`)
+    local func_gx_list=($(gx_test_find_all_func_gx))
 
     gx_print_title_2 "Functions with test"
 
