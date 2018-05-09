@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gbw_test_fake_git_status_porcelain {
+function gx_test_fake_git_status_porcelain {
     echo "M  changes/to/be/committed/modified"
     echo "A  changes/to/be/committed/added"
     echo "D  changes/to/be/committed/deleted"
@@ -14,19 +14,19 @@ function gbw_test_fake_git_status_porcelain {
     echo "?? untracked/files"
 }
 
-function gbw_test_fake_git_branch {
+function gx_test_fake_git_branch {
     echo "  fake-branch-1"
     echo "  fake-branch-2"
-    echo "* ${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
+    echo "* ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
     echo "  develop"
     echo "  master"
 }
 
-function gbw_test_fake_git_rev_parse_abbrev_ref_head {
-    echo "${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
+function gx_test_fake_git_rev_parse_abbrev_ref_head {
+    echo "${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
 }
 
-function gbw_test_fake_git_diff_current_branch_origin_dev {
+function gx_test_fake_git_diff_current_branch_origin_dev {
     echo " README.adoc                                  |   6 +-"
     echo " path/to/file-1                               |  18 +++++"
     echo " path/to/file-2                               |  13 ++++"
@@ -34,75 +34,75 @@ function gbw_test_fake_git_diff_current_branch_origin_dev {
     echo " 32 files changed, 755 insertions(+), 526 deletions(-)"
 }
 
-function gbw_test_fake_git_revlist_current_remote {
+function gx_test_fake_git_revlist_current_remote {
     echo "88      0"
 }
 
-function gbw_test_fake_git_revlist_remote_current {
+function gx_test_fake_git_revlist_remote_current {
     echo "0       88"
 }
 
-function gbw_test_fake_git_revlist_current_remote_nok {
+function gx_test_fake_git_revlist_current_remote_nok {
     echo ""
 }
 
-function gbw_test_fake_git_rev_parse_git_dir {
+function gx_test_fake_git_rev_parse_git_dir {
     echo ".git"
 }
 
-function gbw_test_fake_git_get_current_user_name {
+function gx_test_fake_git_get_current_user_name {
     echo "username"
 }
 
-function gbw_test_fake_git_last_args_set {
-    echo "$*" > /tmp/gbw_test_fake_git_last_args.sh
+function gx_test_fake_git_last_args_set {
+    echo "$*" > /tmp/gx_test_fake_git_last_args.sh
 }
 
-function gbw_test_fake_git_last_args_check {
-    local value=`< /tmp/gbw_test_fake_git_last_args.sh`
-    gbw_test_fake_git_last_args_set ""
+function gx_test_fake_git_last_args_check {
+    local value=`< /tmp/gx_test_fake_git_last_args.sh`
+    gx_test_fake_git_last_args_set ""
     echo "${value}"
 }
 
-function gbw_test_fake_git_last_args_get {
-    echo `< /tmp/gbw_test_fake_git_last_args.sh`
+function gx_test_fake_git_last_args_get {
+    echo `< /tmp/gx_test_fake_git_last_args.sh`
 }
 
-function gbw_test_fake_git {
+function gx_test_fake_git {
     local args="$*"
 
-    gbw_test_fake_git_last_args_set "git $*"
+    gx_test_fake_git_last_args_set "git $*"
 
     case $args in
         "status --porcelain")
-            gbw_test_fake_git_status_porcelain
+            gx_test_fake_git_status_porcelain
         ;;
         "branch")
-            gbw_test_fake_git_branch
+            gx_test_fake_git_branch
         ;;
         "rev-parse --abbrev-ref HEAD")
-            gbw_test_fake_git_rev_parse_abbrev_ref_head
+            gx_test_fake_git_rev_parse_abbrev_ref_head
         ;;
-        "diff --stat ${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
-            gbw_test_fake_git_diff_current_branch_origin_dev
+        "diff --stat ${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
+            gx_test_fake_git_diff_current_branch_origin_dev
         ;;
-        "rev-list --left-right --count ${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
-            gbw_test_fake_git_revlist_current_remote
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
+            gx_test_fake_git_revlist_current_remote
         ;;
-        "rev-list --left-right --count ${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}...${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
-            gbw_test_fake_git_revlist_remote_current
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}...${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
+            gx_test_fake_git_revlist_remote_current
         ;;
-        "rev-list --left-right --count ${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...nok-branch")
-            gbw_test_fake_git_revlist_current_remote_nok
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...nok-branch")
+            gx_test_fake_git_revlist_current_remote_nok
         ;;
-        "rev-list --left-right --count nok-branch...${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
-            gbw_test_fake_git_revlist_remote_current_nok
+        "rev-list --left-right --count nok-branch...${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
+            gx_test_fake_git_revlist_remote_current_nok
         ;;
         "rev-parse --git-dir")
-            gbw_test_fake_git_rev_parse_git_dir
+            gx_test_fake_git_rev_parse_git_dir
         ;;
         "config user.name")
-            gbw_test_fake_git_get_current_user_name
+            gx_test_fake_git_get_current_user_name
         ;;
         "--version")
             return

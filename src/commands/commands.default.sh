@@ -1,76 +1,76 @@
 #!/usr/bin/env bash
 
-# Alias of gbw_command_parse_action
-function gbw {
-    gbw_command_parse_action "$@"
+# Alias of gx_command_parse_action
+function gx {
+    gx_command_parse_action "$@"
 }
 
-function gbw_command_parse_action {
+function gx_command_parse_action {
     local action=$1
     shift
 
     if [ "${action}" == "" ]; then
-        gbw_command_action_help
+        gx_command_action_help
         return
     fi
 
-    local func_name="gbw_command_action_${action}"
+    local func_name="gx_command_action_${action}"
 
     if type "${func_name}" &>/dev/null; then
         $func_name "$@"
         return
     fi
 
-    echo "[ERROR] 'gbw ${action}' : unknow action"
+    echo "[ERROR] 'gx ${action}' : unknow action"
 }
 
-function gbw_command_action_config {
-    git config --list | grep ${GBW_PARAMS_GIT_CONFIG_KEY_ROOT}
+function gx_command_action_config {
+    git config --list | grep ${GX_PARAMS_GIT_CONFIG_KEY_ROOT}
 }
 
-function gbw_command_action_install {
-    gbw_print_title_1 "${GBW_PARAMS_TITLE} INSTALL"
+function gx_command_action_install {
+    gx_print_title_1 "${GX_PARAMS_TITLE} INSTALL"
 
-    gbw_install_choice
-    gbw_install_activation
-    gbw_install_activation_show_status
+    gx_install_choice
+    gx_install_activation
+    gx_install_activation_show_status
 }
 
-function gbw_command_action_status {
-    gbw_install_activation_show_status
+function gx_command_action_status {
+    gx_install_activation_show_status
 }
 
-function gbw_command_action_help {
-    gbw_install_activation_show_status
-    gbw_prompt_help
-    gbw_git_config_aliases_help
-    gbw_git_config_hooks_help
-    gbw_git_config_workflow_help
-    gbw_bash_aliases_help
-    gbw_command_help
+function gx_command_action_help {
+    gx_install_activation_show_status
+    gx_prompt_help
+    gx_git_config_aliases_help
+    gx_git_config_hooks_help
+#    gx_git_config_workflow_help
+#    gx_bash_aliases_help
+    gx_command_help
 }
 
-function gbw_command_action_colors {
-    gbw_colors_print_all
+function gx_command_action_colors {
+    gx_colors_print_all
 }
 
-function gbw_command_action_test {
-    source ~/git-bash-workflow/gbw.tests.sh
+function gx_command_action_test {
+    source ~/git-xtended/gx.tests.sh
 }
 
-function gbw_command_action_githooks {
-    gbw_command_githooks
+function gx_command_action_githooks {
+    gx_command_githooks
 }
 
-function gbw_command_action_aliases {
-    gbw_command_config_git_aliases "$@"
+function gx_command_action_aliases {
+    gx_command_config_git_aliases "$@"
 }
 
-function gbw_command_action_reload {
-    eval "source ${GBW_PARAMS_GBW_SH}"
+function gx_command_action_reload {
+    eval "source ${GX_PARAMS_GX_SH}"
 }
 
-function gbw_command_config_git_aliases {
+function gx_command_config_git_aliases {
     local global=""
     local unset=""
     local i
@@ -92,13 +92,13 @@ function gbw_command_config_git_aliases {
     done
 
     if [[ "${unset}" == "--unset" ]]; then
-        gbw_git_config_unset_aliases $global
+        gx_git_config_unset_aliases $global
     else
-        gbw_git_config_set_aliases $global
+        gx_git_config_set_aliases $global
     fi
 }
 
 # TODO: to remove
-function gbw_command_githooks {
+function gx_command_githooks {
     echo "Removed"
 }
