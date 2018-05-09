@@ -46,7 +46,7 @@ function gx_command_action_help {
     gx_git_config_aliases_help
     gx_git_config_hooks_help
 #    gx_git_config_workflow_help
-    gx_bash_aliases_help
+#    gx_bash_aliases_help
     gx_command_help
 }
 
