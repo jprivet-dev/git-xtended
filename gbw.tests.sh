@@ -18,7 +18,7 @@ GBW_ENV_TEST=1
 alias git="gbw_test_fake_git"
 
 source ~/git-xtended/src/test/test.sh
-source ~/git-xtended/gbw.sh
+source ~/git-xtended/gx.sh
 
 source ~/git-xtended/tests/test.tests.sh
 
@@ -40,4 +40,4 @@ unset GBW_ENV_TEST
 
 gbw_print_step "Reload original ${GBW_PARAMS_TITLE} !"
 
-source ~/git-xtended/gbw.sh
+source ~/git-xtended/gx.sh
