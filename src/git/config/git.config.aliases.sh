@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gbw_git_config_set_aliases {
+function gx_git_config_set_aliases {
     local global="$1"
     [[ "${global}" != "--global" ]] && global=""
 
@@ -54,7 +54,7 @@ function gbw_git_config_set_aliases {
     git config ${global} alias.${GBW_PARAMS_GIT_ALIAS_FIND} '!f() { '${GBW_PARAMS_GIT_ALIAS_FIND_FILE}' "$@"; }; f'
 }
 
-function gbw_git_config_unset_aliases {
+function gx_git_config_unset_aliases {
     local global="$1"
     [[ "${global}" != "--global" ]] && global=""
 
@@ -81,10 +81,10 @@ function gbw_git_config_unset_aliases {
 	git config ${global} --unset alias.${GBW_PARAMS_GIT_ALIAS_FIND}
 }
 
-function gbw_git_aliases_enabled {
-    gbw_git_config_set_aliases --global
+function gx_git_aliases_enabled {
+    gx_git_config_set_aliases --global
 }
 
-function gbw_git_aliases_disabled {
-    gbw_git_config_unset_aliases --global
+function gx_git_aliases_disabled {
+    gx_git_config_unset_aliases --global
 }

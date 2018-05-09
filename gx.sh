@@ -18,5 +18,5 @@ source ~/git-xtended/src/prompt/prompt.sh
 source ~/git-xtended/src/bash/bash.sh
 source ~/git-xtended/src/install/install.sh
 
-gbw_install_activation
-gbw_install_activation_show_status
+gx_install_activation
+gx_install_activation_show_status
