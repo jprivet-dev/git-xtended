@@ -33,7 +33,7 @@ function gx_install_activation_show_status {
     echo
 
     echo
-    gx_print_fixed_width $col_width "${space}" "" "${GX_PARAMS_VERSION}"
+    gx_print_fixed_width $col_width "${space}" "${GX_PARAMS_TITLE}" "${GX_PARAMS_VERSION}"
     echo "${line}"
 
     echo "${line_info}"
