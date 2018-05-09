@@ -7,7 +7,7 @@ function gx_install_activation {
     [ "${GX_PARAMS_INSTALL_GIT_ALIASES_STATUS}" == "${GX_PARAMS_ENABLED}" ]    && gx_git_aliases_enabled           || gx_git_aliases_disabled
     [ "${GX_PARAMS_INSTALL_GIT_HOOKS_STATUS}" == "${GX_PARAMS_ENABLED}" ]      && gx_git_config_hooks_enabled      || gx_git_config_hooks_disabled
 #    [ "${GX_PARAMS_INSTALL_WORKFLOW_STATUS}" == "${GX_PARAMS_ENABLED}" ]       && gx_git_config_workflow_enabled   || gx_git_config_workflow_disabled
-    [ "${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS}" == "${GX_PARAMS_ENABLED}" ]   && gx_bash_aliases_enabled          || gx_bash_aliases_disabled
+#    [ "${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS}" == "${GX_PARAMS_ENABLED}" ]   && gx_bash_aliases_enabled          || gx_bash_aliases_disabled
 }
 
 function gx_install_activation_status_color {
@@ -21,7 +21,7 @@ function gx_install_activation_show_status {
     local gx_git_aliases_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_GIT_ALIASES_STATUS}`"
     local gx_git_hooks_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_GIT_HOOKS_STATUS}`"
 #    local gx_workflow_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_WORKFLOW_STATUS}`"
-    local gx_bash_aliases_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS}`"
+#    local gx_bash_aliases_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS}`"
 
     local line_info="@info ${GX_PARAMS_GITHUB}"
     local col_width=${#line_info}
@@ -43,7 +43,7 @@ function gx_install_activation_show_status {
     gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_GIT_ALIASES}"   "${gx_git_aliases_status}"
     gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_GIT_HOOKS}"     "${gx_git_hooks_status}"
 #    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_WORKFLOW}"      "${gx_workflow_status}"
-    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_BASH_ALIASES}"  "${gx_bash_aliases_status}"
+#    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_BASH_ALIASES}"  "${gx_bash_aliases_status}"
 
     echo "${line}"
     echo
