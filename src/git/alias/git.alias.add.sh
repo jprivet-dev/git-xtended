@@ -3,7 +3,7 @@
 indexes=$@
 
 if [ "${indexes}" == "" ]; then
-    printf "which file(s) would you want to restore ?\n"
+    printf "which file(s) would you want to add ?\n"
     source ~/git-xtended/src/git/alias/git.alias.status.sh
     exit 1
 fi
@@ -14,8 +14,8 @@ git status -s | cut -c4- | while read path; do
     status_i=`expr ${status_i} + 1`
     for i in ${indexes}; do
         if [ "${status_i}" == "${i}" ]; then
-            printf "> git checkout (%s) %s\n" ${i} ${path}
-            git checkout ${path}
+            printf "> git add (%s) %s\n" ${i} ${path}
+            git add ${path}
         fi
     done
 done

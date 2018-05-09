@@ -4,7 +4,7 @@ indexes=$@
 split="--------------------------------------------------"
 
 if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
-    echo "> git add all files & commit"
+    printf "> git add all files & commit\n"
     git add .
     git status -s -u
     git commit -m ""
@@ -21,17 +21,16 @@ git status -s | cut -c4- | while read path; do
     status_i=`expr ${status_i} + 1`
     for i in ${indexes}; do
         if [ "${status_i}" == "${i}" ]; then
-            echo "> git add (${i}) ${path}"
+            printf "> git add (%s) %s\n" ${i} ${path}
             git add ${path}
         fi
     done
 done
 
-echo "> & commit ..."
+printf "> & commit ...\n"
 
-echo
-echo "${split}"
+printf "\n${split}\n"
 git status -s -u
 
-echo "${split}"
+printf "\n${split}\n"
 git commit -m ""

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-source ~/git-bash-workflow/src/git/config/git.config.sh
-source ~/git-bash-workflow/src/git/commands/git.commands.sh
+source ~/git-xtended/src/git/config/git.config.sh
+source ~/git-xtended/src/git/commands/git.commands.sh
