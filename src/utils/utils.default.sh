@@ -4,9 +4,9 @@
 # test_1="hello"
 # test_2="bonjour"
 # test_3=""
-# gbw_implode ', ' 'a' 'b' "$test_1" 3 "$test_2" 4 "$test_3" 5
+# gx_implode ', ' 'a' 'b' "$test_1" 3 "$test_2" 4 "$test_3" 5
 # a, b, hello, 3, bonjour, 4, 5
-function gbw_implode {
+function gx_implode {
     local glue="$1"
     local current_glue=""
     shift
@@ -16,7 +16,7 @@ function gbw_implode {
 
     for p in "${pieces[@]}"
     do
-        p="`gbw_trim "${p}"`"
+        p="`gx_trim "${p}"`"
 
         if [[ "${implode}" == "" ]]; then
             [[ "${p}" != "" ]] && implode="${p}"
@@ -28,28 +28,28 @@ function gbw_implode {
     echo "${implode}"
 }
 
-function gbw_is_bash_interactive {
+function gx_is_bash_interactive {
     [[ $- == *i* ]] \
         && echo "true" \
         || echo "false"
 }
 
 # -bash: $'\r': command not found
-function gbw_remove_r {
+function gx_remove_r {
     local file=$1
     sed -i 's/\r$//' $file
 }
 
-function gbw_trim {
+function gx_trim {
     local string=$1
     echo "${string}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
 
-function gbw_regex_remove_colors {
+function gx_regex_remove_colors {
     echo "$1" | sed -E 's/\\e\[[0-9]{1,3}m//g'
 }
 
-function gbw_line_generator {
+function gx_line_generator {
     local length=$1
     local symbol=$2
     local result
@@ -60,11 +60,11 @@ function gbw_line_generator {
     echo "${result}"
 }
 
-function gbw_regex_extract_version {
+function gx_regex_extract_version {
     echo "$1" | sed -e 's/^.*[^0-9]\([0-9]\+.[0-9]\+.[0-9]\+\).*$/\1/'
 }
 
-function gbw_is_good_version {
+function gx_is_good_version {
     local current_major
     local current_minor
     local current_patch
@@ -93,7 +93,7 @@ function gbw_is_good_version {
     echo "${GBW_PARAMS_TRUE}"
 }
 
-function gbw_symlink_exists {
+function gx_symlink_exists {
     if [[ -L $1 ]]; then
         echo "${GBW_PARAMS_TRUE}"
         return
