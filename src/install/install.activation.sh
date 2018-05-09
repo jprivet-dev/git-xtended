@@ -17,17 +17,17 @@ function gx_install_activation_status_color {
 function gx_install_activation_show_status {
     gx_install_choice_params_set_all_from_git_config
 
-    local gx_prompt_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_PROMPT_STATUS}`"
-    local gx_git_aliases_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_GIT_ALIASES_STATUS}`"
-    local gx_git_hooks_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_GIT_HOOKS_STATUS}`"
-#    local gx_workflow_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_WORKFLOW_STATUS}`"
-#    local gx_bash_aliases_status="`gx_install_activation_status_color ${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS}`"
+    local gx_prompt_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_PROMPT_STATUS})"
+    local gx_git_aliases_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_GIT_ALIASES_STATUS})"
+    local gx_git_hooks_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_GIT_HOOKS_STATUS})"
+#    local gx_workflow_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_WORKFLOW_STATUS})"
+#    local gx_bash_aliases_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS})"
 
     local line_info="@info ${GX_PARAMS_GITHUB}"
     local col_width=${#line_info}
     local space=" "
 
-    local line=`gx_print_fixed_width $col_width "-" "" ""`
+    local line=$(gx_print_fixed_width $col_width "-" "" "")
 
     echo
     cat ~/git-xtended/src/logo/logo.txt
@@ -50,13 +50,13 @@ function gx_install_activation_show_status {
     echo
 
 #    echo "git config ..."
-#    echo "${GX_PARAMS_TAB}user.name  = `git config user.name`"
-#    echo "${GX_PARAMS_TAB}user.email = `git config user.email`"
+#    echo "${GX_PARAMS_TAB}user.name  = $(git config user.name)"
+#    echo "${GX_PARAMS_TAB}user.email = $(git config user.email)"
 #    echo
 #
 #    echo "git config --global ..."
-#    echo "${GX_PARAMS_TAB}user.name  = `git config --global user.name`"
-#    echo "${GX_PARAMS_TAB}user.email = `git config --global user.email`"
+#    echo "${GX_PARAMS_TAB}user.name  = $(git config --global user.name)"
+#    echo "${GX_PARAMS_TAB}user.email = $(git config --global user.email)"
 #    echo
 #
 #    echo "${line}"
