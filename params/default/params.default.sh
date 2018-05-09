@@ -20,7 +20,7 @@ GBW_PARAMS_DISABLED_C="${C_BG_RED}${C_WHITE} Disabled ${F_RESET}"
 
 GBW_PARAMS_USER_PS1="\u"
 GBW_PARAMS_ROOT="~/git-xtended"
-GBW_PARAMS_GBW_SH="${GBW_PARAMS_ROOT}/gbw.sh"
+GBW_PARAMS_GBW_SH="${GBW_PARAMS_ROOT}/gx.sh"
 GBW_PARAMS_GITHUB="https://github.com/jprivet-dev/git-xtended.git"
 GBW_PARAMS_HOOKS_PREPARE_COMMIT_MSG_PATH="${GBW_PARAMS_ROOT}/git/hooks/prepare-commit-msg"
 
