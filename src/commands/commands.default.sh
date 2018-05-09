@@ -55,7 +55,7 @@ function gbw_command_action_colors {
 }
 
 function gbw_command_action_test {
-    source ~/git-xtended/gbw.tests.sh
+    source ~/git-xtended/gx.tests.sh
 }
 
 function gbw_command_action_githooks {
