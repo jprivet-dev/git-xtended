@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Alias of gx_command_parse_action
-function gbw {
+function gx {
     gx_command_parse_action "$@"
 }
 
@@ -21,7 +21,7 @@ function gx_command_parse_action {
         return
     fi
 
-    echo "[ERROR] 'gbw ${action}' : unknow action"
+    echo "[ERROR] 'gx ${action}' : unknow action"
 }
 
 function gx_command_action_config {
