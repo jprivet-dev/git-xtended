@@ -24,8 +24,8 @@ In your shell, clone the project :
 [source,shell]
 [subs=attributes+]
 ----
-cd
-git clone {GIT_PROJECT}
+$ cd
+$ git clone {GIT_PROJECT}
 ----
 
 Add to your `{BASHRC_PATH}` the following code :
@@ -42,11 +42,42 @@ Reload `{BASHRC_PATH}` with the following command (avoids logout and back to the
 [source,shell]
 [subs=attributes+]
 ----
-. {BASHRC_PATH}
+$ . {BASHRC_PATH}
 ----
 
-TADA ! *{MAIN_TITLE}* is ready
+*{MAIN_TITLE}* is now available. You can see help with the following command :
 
+[source,shell]
+[subs=attributes+]
+----
+$ gx
+
+    _____ _ _      __ __ _             _       _
+   |   __|_| |_   |  |  | |_ ___ ___ _| |___ _| |
+   |  |  | |  _|  |-   -|  _| -_|   | . | -_| . |
+   |_____|_|_|    |__|__|_| |___|_|_|___|___|___|
+                           Git Xtended 0.0.0-beta
+
+----------------------------------------------------
+@info https://github.com/jprivet-dev/git-xtended.git
+----------------------------------------------------
+(1) Prompt with Git information            Disabled
+(2) Git aliases                            Disabled
+(3) Git hooks                              Disabled
+----------------------------------------------------
+
+...
+... [Displaying the rest of the help]
+...
+----
+
+As you can see, the options are disabled. Activate what you want with the following command :
+
+[source,shell]
+[subs=attributes+]
+----
+$ gx install
+----
 == Prompt with Git information
 
 :PROMPT_TIME:                   09:15:27
@@ -118,6 +149,33 @@ image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 == Git hooks
 
 === `prepare-commit-msg` : commits are documentation
+
+[source,shell]
+[subs=attributes+]
+----
+    <type*> =
+        (a)   archi        Changes application architecture (folder position, name, ...)
+        (c)   conf         Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)
+        (co)  content      Changes wording or images in contents
+        (ch)  chore        Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)
+        (d)   dev          Changes main code (creation, enhancement, evolution, ...)
+        (do)  docs         Documentation only changes
+        (i)   integ        Web integration, UX works - doesn't touch business logic (css, js, ...)
+        (in)  install      Install or update project, modules, pluggins (ex: composer install ...)
+        (t)   tpl          Templating works (Twig, Drupal templating, Smarty, ...)
+        (tr)  trans        Adds locale-specific components, translates text, ...
+
+    <subtype> =
+        (c)   clean        Remove pointless code or files
+        (d)   debug        Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !
+        (f)   fix          Bug fix
+        (g)   generate     Auto-generate code (Doctrine, PhoneGap, Ionic, ...)
+        (p)   perf         A code change that improves performance
+        (r)   refactor     A code change that neither fixes a bug nor adds a feature
+        (s)   style        Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
+
+    MSG = <type*>.<subtype>(<scope*>): <subject*>
+----
 
 == {MAIN_TITLE_SHORT} commands
 
