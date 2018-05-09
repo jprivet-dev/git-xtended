@@ -15,5 +15,5 @@ function gx_command_help {
 function gx_command_help_command_line {
     local option
     [ "$2" == "" ] && option=" " || option=" $2 "
-    gx_print_colors "${GBW_PARAMS_TAB}gbw ${C_LIGHT_YELLOW}$1${F_RESET}${option}${C_DARK_GRAY}$3${F_RESET} $4"
+    gx_print_colors "${GBW_PARAMS_TAB}gx ${C_LIGHT_YELLOW}$1${F_RESET}${option}${C_DARK_GRAY}$3${F_RESET} $4"
 }

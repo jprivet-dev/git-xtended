@@ -39,7 +39,7 @@ function gx_test_find_all_func_test {
     compgen -A function | grep ^test_
 }
 
-function gx_test_find_all_func_gbw {
+function gx_test_find_all_func_gx {
     compgen -A function | grep ^gx_ | grep -v ^gx_test_
 }
 
@@ -99,7 +99,7 @@ function gx_test_run_func {
 }
 
 function gx_test_check_func_with_test {
-    local func_gx_list=(`gx_test_find_all_func_gbw`)
+    local func_gx_list=(`gx_test_find_all_func_gx`)
 
     gx_print_title_2 "Functions with test"
 
