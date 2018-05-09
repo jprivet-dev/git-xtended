@@ -1,12 +1,13 @@
-:MAIN_TITLE: Git Bash Workflow
-:MAIN_TITLE_SHORT: GBW
+:VERSION: 0.0.0-beta
+:MAIN_TITLE: Git Xtended
+:MAIN_TITLE_SHORT: GX
 :BASHRC_PATH: ~/.bashrc
-:GBW_ROOT: ~/git-bash-workflow
-:GBW_ENTRY_FILE: gbw.sh
-:GBW_ENTRY_FILE_PATH: {GBW_ROOT}/{GBW_ENTRY_FILE}
-:GIT_PROJECT: https://github.com/jprivet-dev/git-bash-workflow
+:GX_ROOT: ~/git-xtended
+:GX_ENTRY_FILE: gx.sh
+:GX_ENTRY_FILE_PATH: {GX_ROOT}/{GX_ENTRY_FILE}
+:GIT_PROJECT: https://github.com/jprivet-dev/git-xtended
 
-= {MAIN_TITLE}
+= {MAIN_TITLE} ({VERSION})
 :numbered:
 :toc: macro
 
@@ -23,8 +24,8 @@ In your shell, clone the project :
 [source,shell]
 [subs=attributes+]
 ----
-cd
-git clone {GIT_PROJECT}
+$ cd
+$ git clone {GIT_PROJECT}
 ----
 
 Add to your `{BASHRC_PATH}` the following code :
@@ -32,8 +33,8 @@ Add to your `{BASHRC_PATH}` the following code :
 [source,shell]
 [subs=attributes+]
 ----
-# If the file `{GBW_ENTRY_FILE}` exists, then load it
-[[ -f {GBW_ENTRY_FILE_PATH} ]] && source {GBW_ENTRY_FILE_PATH}
+# If the file `{GX_ENTRY_FILE}` exists, then load it
+[[ -f {GX_ENTRY_FILE_PATH} ]] && source {GX_ENTRY_FILE_PATH}
 ----
 
 Reload `{BASHRC_PATH}` with the following command (avoids logout and back to the shell) :
@@ -41,14 +42,43 @@ Reload `{BASHRC_PATH}` with the following command (avoids logout and back to the
 [source,shell]
 [subs=attributes+]
 ----
-. {BASHRC_PATH}
+$ . {BASHRC_PATH}
 ----
 
-TADA ! *{MAIN_TITLE}* is ready
+*{MAIN_TITLE}* is now available. You can see help with the following command :
 
+[source,shell]
+[subs=attributes+]
+----
+$ gx
+
+    _____ _ _      __ __ _             _       _
+   |   __|_| |_   |  |  | |_ ___ ___ _| |___ _| |
+   |  |  | |  _|  |-   -|  _| -_|   | . | -_| . |
+   |_____|_|_|    |__|__|_| |___|_|_|___|___|___|
+                           Git Xtended 0.0.0-beta
+
+----------------------------------------------------
+@info https://github.com/jprivet-dev/git-xtended.git
+----------------------------------------------------
+(1) Prompt with Git information            Disabled
+(2) Git aliases                            Disabled
+(3) Git hooks                              Disabled
+----------------------------------------------------
+
+...
+... [Displaying the rest of the help]
+...
+----
+
+As you can see, the options are disabled. Activate what you want with the following command :
+
+[source,shell]
+[subs=attributes+]
+----
+$ gx install
+----
 == Prompt with Git information
-
-=== Presentation
 
 :PROMPT_TIME:                   09:15:27
 :PROMPT_USER_HOST:              user@host
@@ -76,160 +106,83 @@ TADA ! *{MAIN_TITLE}* is ready
 
 image::doc/img/prompt.png[{PROMPT_PS1}]
 
-{nbsp}
+    (branch) ..... Current branch
+    8≡ ........... All elements from git status
+    2? ........... Untracked files
+    3! ........... Changes not staged for commit
+    c(2 +0 -1) ... Changes to be committed
+    3↓ ........... Commits behind remote branch reference
+    42↑ .......... Commits ahead remote branch reference
 
-[cols="s,d", options="header"]
-|===
-2+| Basic information
-| {PROMPT_TIME}               | current time
-| {PROMPT_USER_HOST}          | current user & hostname
-| {PROMPT_DIR}                | current working directory
-|===
-
-[cols="s,d", options="header"]
-|===
-2+| Git information
-| {PROMPT_BRANCH}             | current local branch
-| {PROMPT_COUNT}              | *{PROMPT_COUNT_NB}* changes in total
-| {PROMPT_UNTRACKED}          | *{PROMPT_UNTRACKED_NB}* untracked file
-| {PROMPT_NOT_STAGED}         | *{PROMPT_NOT_STAGED_NB}* changes not staged for commit
-
-| {PROMPT_TO_BE_COMMITTED}
-| changes to be committed
-(*{PROMPT_TO_BE_COMMITTED_NB_1}* = {PROMPT_TO_BE_COMMITTED_NB_1} modified
-/ *+{PROMPT_TO_BE_COMMITTED_NB_2}* = {PROMPT_TO_BE_COMMITTED_NB_2} added
-/ *-{PROMPT_TO_BE_COMMITTED_NB_3}* = {PROMPT_TO_BE_COMMITTED_NB_3} deleted)
-
-| {PROMPT_BEHIND}             | *{PROMPT_BEHIND_NB}* commits behind branch of reference
-| {PROMPT_AHEAD}              | *{PROMPT_AHEAD_NB}* commits ahead branch of reference
-|===
-
-=== Case examples
-
-In *no change case*, you can see :
+For example, in *no change case*, you can see :
 
 image::doc/img/prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
 
-In *one change case*, you can see :
+And for example, in *one change case*, you can see :
 
 image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
 == Git aliases
 
-=== Activation and removal
-
-Active all aliases configured by {MAIN_TITLE_SHORT} :
-
-[source,shell]
-[subs=attributes+]
-----
-$ gbw aliases [--global]
-----
-
-Remove all aliases configured by {MAIN_TITLE_SHORT}
-
-[source,shell]
-[subs=attributes+]
-----
-$ gbw aliases --unset [--global]
-----
-
-TIP: You can see all aliases in `--global` configuration file `~/.gitconfig`, or in the current repository configuration file `.git/config`
-
-=== Command list
-
-[cols="1 s,2 d,1 d", options="header"]
-|===
-| Alias
-| Raw command
-| Description
-
-| git{nbsp}b
-| git branch
-| List, create, or delete branches
-
-| git{nbsp}c
-| git commit -m
-| Record changes to the repository with message
-
-| git{nbsp}amend
-| git commit -m --amend
-| Change the last commit
-
-| git{nbsp}undo
-| git reset --soft HEAD^
-| Undone last commit & changes are staged
-
-| git{nbsp}k
-| git checkout
-| Switch branches
-
-| git{nbsp}d
-| git diff --function-context
-| Show changes
-
-| git{nbsp}l
-| git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s' -12
-| Show last 12 commit logs
-
-| git{nbsp}ll
-| git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h %C(cyan)[%ar] %C(green)<%<(9,trunc)%aN>%C(auto)%d %C(reset)%s'
-| Show commit logs
-
-| git{nbsp}lcount
-| git shortlog -sn
-| Explain
-
-| git{nbsp}rrr
-| git clean -f -d; git reset --hard HEAD
-| Explain
-
-| git{nbsp}untracked
-| git clean -f -d
-| Explain
-
-| git{nbsp}s
-| git status -s
-| Explain
-
-| git{nbsp}ss
-| git status
-| Explain
-
-| git{nbsp}sniffer
-| git grep --break --heading --line-number --extended-regexp 'dump\\(\|console\\.[^(]+\\('
-| Explain
-|===
+         log | git l ................. Show the last 12 commit logs (graphical representation)
+               git ll ................ Show all commit logs (graphical representation)
+               git lfile <file> ...... Show all commit logs for a specific file (graphical representation)
+               git lmerges ........... Show all merge logs (graphical representation)
+               git lcount ............ Number of commits per author
+      branch | git b ................. Simple "branch" alias
+    checkout | git ck [1 2 ... n] .... Extended "checkout" alias (select file with index status instead of path)
+      status | git s ................. Indexed status list (staged, unstaged, and untracked files)
+               git ss ................ Simple "status" alias
+        diff | git d [1 2 ... n] ..... Extended "diff" alias (select file with index status instead of path)
+         add | git a [1 2 ... n] ..... Extended "add" alias (select file with index status instead of path)
+               git all ............... Add all files (new, modified and deleted)
+               git nm ................ Add new and modified files, without deleted
+               git md ................ Add modified and deleted files, without new
+      commit | git c [1 2 ... n] ..... Extended "commit" alias (select file with index status instead of path)
+               git amend ............. Oops level 1! Modify the last commit
+       reset | git r ................. Simple "reset" alias
+               git hard [<commit>] ... Simple "reset --hard" alias (by default, discard any changes to tracked files, since last commit)
+               git undo .............. Oops level 2! Undo the last commit, while keeping files changes
+       clean | git untracked ......... Remove all untracked files
+        grep | git find <string> ..... Look for specified strings in the tracked files (case sensitive)
 
 == Git hooks
 
-=== Commits are documentation : `prepare-commit-msg`
-
-==== Git hooks symlink
+=== `prepare-commit-msg` : commits are documentation
 
 [source,shell]
 [subs=attributes+]
 ----
-$ ln -s {GBW_ROOT}/git/hooks/prepare-commit-msg ~/url/of/my/project/.git/hooks/prepare-commit-msg
+    <type*> =
+        (a)   archi        Changes application architecture (folder position, name, ...)
+        (c)   conf         Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)
+        (co)  content      Changes wording or images in contents
+        (ch)  chore        Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)
+        (d)   dev          Changes main code (creation, enhancement, evolution, ...)
+        (do)  docs         Documentation only changes
+        (i)   integ        Web integration, UX works - doesn't touch business logic (css, js, ...)
+        (in)  install      Install or update project, modules, pluggins (ex: composer install ...)
+        (t)   tpl          Templating works (Twig, Drupal templating, Smarty, ...)
+        (tr)  trans        Adds locale-specific components, translates text, ...
+
+    <subtype> =
+        (c)   clean        Remove pointless code or files
+        (d)   debug        Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !
+        (f)   fix          Bug fix
+        (g)   generate     Auto-generate code (Doctrine, PhoneGap, Ionic, ...)
+        (p)   perf         A code change that improves performance
+        (r)   refactor     A code change that neither fixes a bug nor adds a feature
+        (s)   style        Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
+
+    MSG = <type*>.<subtype>(<scope*>): <subject*>
 ----
 
-TODO : to complete (Work in progress)
+== {MAIN_TITLE_SHORT} commands
 
-== Agile Git workflow commands
-
-=== Activation
-
-TODO (Work in progress)
-
-=== Command list
-
-TODO (Work in progress)
-
-[cols="s,d", options="header"]
-|===
-| Workflow alias
-| Description
-
-| git workflow
-| Explain
-|===
+    gx help ............ Display help information about GX
+    gx install ......... Select and install GX elements
+    gx reload .......... Reload GX
+    gx status .......... Show status of GX elements
+    gx config .......... Show GX git configuration
+    gx colors .......... Show all GX colors
+    gx test [<func>] ... Run one or all GX tests
