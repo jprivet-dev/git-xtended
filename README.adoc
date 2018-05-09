@@ -11,6 +11,10 @@
 :numbered:
 :toc: macro
 
+image::https://api.codacy.com/project/badge/Grade/0e5266aa58fa4c7e8b0759971ae1b45d[Codacy Badge, link=https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jprivet-dev/git-xtended&amp;utm_campaign=Badge_Grade]
+
+'''
+
 :toc-title: Summary
 :toclevels: 3
 toc::[]
@@ -18,7 +22,6 @@ toc::[]
 '''
 
 == Installation
-
 In your shell, clone the project :
 
 [source,shell]
