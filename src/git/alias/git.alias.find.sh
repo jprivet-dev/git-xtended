@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-echo
+printf "\n"
 git grep --break --heading --line-number "$@"
-echo
+printf "\n"

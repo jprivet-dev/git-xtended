@@ -1,3 +1,4 @@
+:VERSION: 0.0.0-beta
 :MAIN_TITLE: Git Bash Workflow
 :MAIN_TITLE_SHORT: GBW
 :BASHRC_PATH: ~/.bashrc
@@ -6,7 +7,7 @@
 :GBW_ENTRY_FILE_PATH: {GBW_ROOT}/{GBW_ENTRY_FILE}
 :GIT_PROJECT: https://github.com/jprivet-dev/git-bash-workflow
 
-= {MAIN_TITLE}
+= {MAIN_TITLE} ({VERSION})
 :numbered:
 :toc: macro
 
@@ -48,8 +49,6 @@ TADA ! *{MAIN_TITLE}* is ready
 
 == Prompt with Git information
 
-=== Presentation
-
 :PROMPT_TIME:                   09:15:27
 :PROMPT_USER_HOST:              user@host
 :PROMPT_DIR:                    :~/dir/project
@@ -78,17 +77,13 @@ image::doc/img/prompt.png[{PROMPT_PS1}]
 
 {nbsp}
 
-[cols="s,d", options="header"]
+[cols="s,d"]
 |===
-2+| Basic information
+2+| BASIC INFORMATION
 | {PROMPT_TIME}               | current time
 | {PROMPT_USER_HOST}          | current user & hostname
 | {PROMPT_DIR}                | current working directory
-|===
-
-[cols="s,d", options="header"]
-|===
-2+| Git information
+2+| GIT INFORMATION
 | {PROMPT_BRANCH}             | current local branch
 | {PROMPT_COUNT}              | *{PROMPT_COUNT_NB}* changes in total
 | {PROMPT_UNTRACKED}          | *{PROMPT_UNTRACKED_NB}* untracked file
@@ -104,13 +99,11 @@ image::doc/img/prompt.png[{PROMPT_PS1}]
 | {PROMPT_AHEAD}              | *{PROMPT_AHEAD_NB}* commits ahead branch of reference
 |===
 
-=== Case examples
-
-In *no change case*, you can see :
+For example, in *no change case*, you can see :
 
 image::doc/img/prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
 
-In *one change case*, you can see :
+And for example, in *one change case*, you can see :
 
 image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
 
