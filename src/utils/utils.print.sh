@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-function gbw_print_fixed_width {
-    local e="${GBW_PARAMS_OFF}"
+function gx_print_fixed_width {
+    local e="${GX_PARAMS_OFF}"
     local width middle_char start end
     local start_no_style end_no_style
     local middle_prefix middle_suffix
     local middle trucate count
 
     if [ "$1" == "-e" ]; then
-        e="${GBW_PARAMS_ON}"
+        e="${GX_PARAMS_ON}"
         shift
     fi
 
@@ -19,19 +19,19 @@ function gbw_print_fixed_width {
     [ "$5" != "" ] && middle_prefix="$5"
     [ "$6" != "" ] && middle_suffix="$6"
 
-    if [ "${e}" == "${GBW_PARAMS_ON}" ]; then
-        start_no_style=`gbw_regex_remove_colors "${start}"`
-        end_no_style=`gbw_regex_remove_colors "${end}"`
+    if [ "${e}" == "${GX_PARAMS_ON}" ]; then
+        start_no_style=`gx_regex_remove_colors "${start}"`
+        end_no_style=`gx_regex_remove_colors "${end}"`
     else
         start_no_style="${start}"
         end_no_style="${end}"
     fi
 
-    middle=`gbw_line_generator "${width}" "${middle_char}"`
+    middle=`gx_line_generator "${width}" "${middle_char}"`
     count=${#start_no_style}+${#end_no_style}+${#middle_prefix}+${#middle_suffix}
     trucate="${middle_prefix}${middle:$count}${middle_suffix}"
 
-    if [ "${e}" == "${GBW_PARAMS_ON}" ]; then
+    if [ "${e}" == "${GX_PARAMS_ON}" ]; then
         echo -e "${start}${trucate}${end}"
         return
     fi
@@ -39,39 +39,39 @@ function gbw_print_fixed_width {
     echo "${start}${trucate}${end}"
 }
 
-function gbw_print {
+function gx_print {
     echo "$*"
 }
 
-function gbw_print_title_1 {
-    gbw_print_colors_force "${C_BG_YELLOW}${C_BLACK}\n\n $*\n${F_RESET}\n"
+function gx_print_title_1 {
+    gx_print_colors_force "${C_BG_YELLOW}${C_BLACK}\n\n $*\n${F_RESET}\n"
 }
 
-function gbw_print_title_2 {
-    gbw_print_colors_force "${C_LIGHT_YELLOW}\n--- $* ---\n${F_RESET}"
+function gx_print_title_2 {
+    gx_print_colors_force "${C_LIGHT_YELLOW}\n--- $* ---\n${F_RESET}"
 }
 
-function gbw_print_title_success {
-    gbw_print_colors_force "${C_BG_GREEN}${C_WHITE}\n\n $*\n${F_RESET}\n"
+function gx_print_title_success {
+    gx_print_colors_force "${C_BG_GREEN}${C_WHITE}\n\n $*\n${F_RESET}\n"
 }
 
-function gbw_print_title_error {
-    gbw_print_colors_force "${C_BG_RED}${C_WHITE}\n\n $*\n${F_RESET}\n"
+function gx_print_title_error {
+    gx_print_colors_force "${C_BG_RED}${C_WHITE}\n\n $*\n${F_RESET}\n"
 }
 
-function gbw_print_step {
-    gbw_print_colors_force "> $*"
+function gx_print_step {
+    gx_print_colors_force "> $*"
 }
 
-function gbw_print_colors {
-    echo ${GBW_PARAMS_PRINT_E_TAG} "$*"
+function gx_print_colors {
+    echo ${GX_PARAMS_PRINT_E_TAG} "$*"
 }
 
-function gbw_print_colors_force {
+function gx_print_colors_force {
     echo -e "$*"
 }
 
-function gbw_print_question_yes_no {
+function gx_print_question_yes_no {
     local choice
     local label="$*"
 
@@ -81,20 +81,20 @@ function gbw_print_question_yes_no {
         exec < /dev/tty
         read choice
 
-        if [ "${choice}" == "${GBW_PARAMS_Y}" -o "${choice}" == "${GBW_PARAMS_N}" ]; then
+        if [ "${choice}" == "${GX_PARAMS_Y}" -o "${choice}" == "${GX_PARAMS_N}" ]; then
             break;
         fi
     done
 
     if [ "${choice}" == "y" ]; then
-        _GBW_PRINT_QUESTION_YES_NO_LAST_VALUE="${GBW_PARAMS_YES}"
+        _GX_PRINT_QUESTION_YES_NO_LAST_VALUE="${GX_PARAMS_YES}"
         return
     fi
 
-    _GBW_PRINT_QUESTION_YES_NO_LAST_VALUE="${GBW_PARAMS_NO}"
+    _GX_PRINT_QUESTION_YES_NO_LAST_VALUE="${GX_PARAMS_NO}"
 }
 
-function gbw_print_choose_one_option {
+function gx_print_choose_one_option {
     local choice
     local label="$1"
     shift
@@ -138,8 +138,8 @@ function gbw_print_choose_one_option {
         fi
     done
 
-    _GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE="${choice_label}"
+    _GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE="${choice_label}"
 
-    gbw_print_step "${label} [${_GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}]"
+    gx_print_step "${label} [${_GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}]"
 }
 
