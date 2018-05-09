@@ -24,7 +24,7 @@ GX_PARAMS_GX_SH="${GX_PARAMS_ROOT}/gx.sh"
 GX_PARAMS_GITHUB="https://github.com/jprivet-dev/git-xtended.git"
 GX_PARAMS_HOOKS_PREPARE_COMMIT_MSG_PATH="${GX_PARAMS_ROOT}/git/hooks/prepare-commit-msg"
 
-GX_PARAMS_TITLE="Git Bash Workflow"
+GX_PARAMS_TITLE="Git Xtended"
 GX_PARAMS_TITLE_SHORT="GX"
 GX_PARAMS_LABEL_PROMPT="(1) Prompt with Git information"
 GX_PARAMS_LABEL_GIT_ALIASES="(2) Git aliases"
