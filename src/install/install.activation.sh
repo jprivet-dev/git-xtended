@@ -29,11 +29,12 @@ function gx_install_activation_show_status {
 
     local line=`gx_print_fixed_width $col_width "-" "" ""`
 
+    echo
     cat ~/git-xtended/src/logo/logo.txt
     echo
 
+    gx_print_fixed_width $col_width "${space}" "" "${GX_PARAMS_TITLE} ${GX_PARAMS_VERSION}   "
     echo
-    gx_print_fixed_width $col_width "${space}" "${GX_PARAMS_TITLE}" "${GX_PARAMS_VERSION}"
     echo "${line}"
 
     echo "${line_info}"
