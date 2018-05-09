@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-source ~/git-bash-workflow/src/utils/utils.params.sh
-source ~/git-bash-workflow/src/utils/utils.default.sh
-source ~/git-bash-workflow/src/utils/utils.print.sh
+source ~/git-xtended/src/utils/utils.params.sh
+source ~/git-xtended/src/utils/utils.default.sh
+source ~/git-xtended/src/utils/utils.print.sh

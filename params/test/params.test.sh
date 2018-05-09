@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ~/git-bash-workflow/params/test/params.test.colors.sh
-source ~/git-bash-workflow/params/test/params.test.default.sh
-source ~/git-bash-workflow/params/test/params.test.prompt.sh
-source ~/git-bash-workflow/params/test/params.test.overload.sh
+source ~/git-xtended/params/test/params.test.colors.sh
+source ~/git-xtended/params/test/params.test.default.sh
+source ~/git-xtended/params/test/params.test.prompt.sh
+source ~/git-xtended/params/test/params.test.overload.sh

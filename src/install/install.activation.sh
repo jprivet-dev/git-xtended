@@ -29,7 +29,7 @@ function gbw_install_activation_show_status {
 
     local line=`gbw_print_fixed_width $col_width "-" "" ""`
 
-    cat ~/git-bash-workflow/src/logo/logo.txt
+    cat ~/git-xtended/src/logo/logo.txt
     echo
 
     echo

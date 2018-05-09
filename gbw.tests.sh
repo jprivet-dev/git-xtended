@@ -17,17 +17,17 @@ GBW_ENV_TEST=1
 
 alias git="gbw_test_fake_git"
 
-source ~/git-bash-workflow/src/test/test.sh
-source ~/git-bash-workflow/gbw.sh
+source ~/git-xtended/src/test/test.sh
+source ~/git-xtended/gbw.sh
 
-source ~/git-bash-workflow/tests/test.tests.sh
+source ~/git-xtended/tests/test.tests.sh
 
-source ~/git-bash-workflow/tests/bash.tests.sh
-source ~/git-bash-workflow/tests/commands.tests.sh
-source ~/git-bash-workflow/tests/colors.tests.sh
-source ~/git-bash-workflow/tests/prompt.tests.sh
-source ~/git-bash-workflow/tests/git.tests.sh
-source ~/git-bash-workflow/tests/utils.tests.sh
+source ~/git-xtended/tests/bash.tests.sh
+source ~/git-xtended/tests/commands.tests.sh
+source ~/git-xtended/tests/colors.tests.sh
+source ~/git-xtended/tests/prompt.tests.sh
+source ~/git-xtended/tests/git.tests.sh
+source ~/git-xtended/tests/utils.tests.sh
 
 gbw_test_run $1
 
@@ -40,4 +40,4 @@ unset GBW_ENV_TEST
 
 gbw_print_step "Reload original ${GBW_PARAMS_TITLE} !"
 
-source ~/git-bash-workflow/gbw.sh
+source ~/git-xtended/gbw.sh

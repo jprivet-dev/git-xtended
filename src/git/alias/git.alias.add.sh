@@ -4,7 +4,7 @@ indexes=$@
 
 if [ "${indexes}" == "" ]; then
     printf "which file(s) would you want to add ?\n"
-    source ~/git-bash-workflow/src/git/alias/git.alias.status.sh
+    source ~/git-xtended/src/git/alias/git.alias.status.sh
     exit 1
 fi
 
