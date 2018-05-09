@@ -20,7 +20,7 @@ function gx_install_activation {
         gx_git_config_hooks_enabled
     else
         gx_git_config_hooks_disabled
-    fi 
+    fi
 
 #    [ "${GX_PARAMS_INSTALL_WORKFLOW_STATUS}" == "${GX_PARAMS_ENABLED}" ]       && gx_git_config_workflow_enabled   || gx_git_config_workflow_disabled
 #    [ "${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS}" == "${GX_PARAMS_ENABLED}" ]   && gx_bash_aliases_enabled          || gx_bash_aliases_disabled
