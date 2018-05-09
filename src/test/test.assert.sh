@@ -8,7 +8,7 @@ function gx_test_assert_ok {
     #local tab="  ${C_LIGHT_GREEN}|${F_RESET} "
     local tab="  | "
 
-    if [[ "${TEST_GBW_PARAMS_ASSERT_OK_SHOW_MESSAGE}" == 1 ]]; then
+    if [[ "${TEST_GX_PARAMS_ASSERT_OK_SHOW_MESSAGE}" == 1 ]]; then
         gx_test_pipeline_message_add_title_ok "${line}"
         gx_test_pipeline_message_add "${tab}${message}"
         gx_test_pipeline_message_add "${tab}Current : '${current}'"
@@ -51,7 +51,7 @@ function gx_test_assert_equals {
 function gx_test_assert_true {
     local current=$1
     local line=$2
-    local expected="${TEST_GBW_PARAMS_TRUE}"
+    local expected="${TEST_GX_PARAMS_TRUE}"
 
     if [[ "${current}" == "${expected}" ]]; then
         gx_test_assert_ok ${line} "Value is ${expected}" "${current}" "${expected}"
@@ -63,7 +63,7 @@ function gx_test_assert_true {
 function gx_test_assert_false {
     local current=$1
     local line=$2
-    local expected="${TEST_GBW_PARAMS_FALSE}"
+    local expected="${TEST_GX_PARAMS_FALSE}"
 
     if [[ "${current}" == "${expected}" ]]; then
         gx_test_assert_ok ${line} "Value is ${expected}" "${current}" "${expected}"

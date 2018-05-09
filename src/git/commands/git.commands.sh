@@ -19,12 +19,12 @@ function gx_git_get_current_user_name {
 function gx_git_get_remote_branch_ref {
     local branch="$1"
 
-    if [[ "${GBW_PARAMS_GIT_REMOTE_BRANCH_REF}" == "" ]]; then
+    if [[ "${GX_PARAMS_GIT_REMOTE_BRANCH_REF}" == "" ]]; then
         gx_git_get_current_branch
         return
     fi
 
-    echo "${GBW_PARAMS_GIT_REMOTE_BRANCH_REF}"
+    echo "${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
 }
 
 function gx_git_status {
@@ -32,15 +32,15 @@ function gx_git_status {
 }
 
 function gx_git_commit_indexed {
-    source "${GBW_PARAMS_GIT_ALIAS_COMMIT_FILE}"
+    source "${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}"
 }
 
 function gx_git_diff_indexed {
-    source "${GBW_PARAMS_GIT_ALIAS_DIFF_FILE}"
+    source "${GX_PARAMS_GIT_ALIAS_DIFF_FILE}"
 }
 
 function gx_git_status_indexed {
-    source "${GBW_PARAMS_GIT_ALIAS_STATUS_FILE}"
+    source "${GX_PARAMS_GIT_ALIAS_STATUS_FILE}"
 }
 
 function gx_git_get_changes_nb {

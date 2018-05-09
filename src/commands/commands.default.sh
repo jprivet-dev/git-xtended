@@ -25,11 +25,11 @@ function gx_command_parse_action {
 }
 
 function gx_command_action_config {
-    git config --list | grep ${GBW_PARAMS_GIT_CONFIG_KEY_ROOT}
+    git config --list | grep ${GX_PARAMS_GIT_CONFIG_KEY_ROOT}
 }
 
 function gx_command_action_install {
-    gx_print_title_1 "${GBW_PARAMS_TITLE} INSTALL"
+    gx_print_title_1 "${GX_PARAMS_TITLE} INSTALL"
 
     gx_install_choice
     gx_install_activation
@@ -67,7 +67,7 @@ function gx_command_action_aliases {
 }
 
 function gx_command_action_reload {
-    eval "source ${GBW_PARAMS_GBW_SH}"
+    eval "source ${GX_PARAMS_GX_SH}"
 }
 
 function gx_command_config_git_aliases {

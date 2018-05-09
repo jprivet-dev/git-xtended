@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function test_gx_prompt_time {
-    assert equals "`gx_prompt_time`" "${TEST_GBW_PARAMS_PROMPT_TIME}" $LINENO
+    assert equals "`gx_prompt_time`" "${TEST_GX_PARAMS_PROMPT_TIME}" $LINENO
 }
 
 function test_gx_prompt_time_colors {
@@ -10,7 +10,7 @@ function test_gx_prompt_time_colors {
 }
 
 function test_gx_prompt_user {
-    assert equals "`gx_prompt_user`" "${TEST_GBW_PARAMS_PROMPT_USER}" $LINENO
+    assert equals "`gx_prompt_user`" "${TEST_GX_PARAMS_PROMPT_USER}" $LINENO
 }
 
 function test_gx_prompt_user_colors {
@@ -19,7 +19,7 @@ function test_gx_prompt_user_colors {
 }
 
 function test_gx_prompt_host {
-    assert equals "`gx_prompt_host`" "${TEST_GBW_PARAMS_PROMPT_HOST}" $LINENO
+    assert equals "`gx_prompt_host`" "${TEST_GX_PARAMS_PROMPT_HOST}" $LINENO
 }
 
 function test_gx_prompt_host_colors {
@@ -28,7 +28,7 @@ function test_gx_prompt_host_colors {
 }
 
 function test_gx_prompt_userhost {
-    assert equals "`gx_prompt_userhost`" "${TEST_GBW_PARAMS_PROMPT_USERHOST}" $LINENO
+    assert equals "`gx_prompt_userhost`" "${TEST_GX_PARAMS_PROMPT_USERHOST}" $LINENO
 }
 
 function test_gx_prompt_userhost_colors {
@@ -38,19 +38,19 @@ function test_gx_prompt_userhost_colors {
 }
 
 function test_gx_prompt_dir {
-    assert equals "`gx_prompt_dir`" "${TEST_GBW_PARAMS_PROMPT_DIR}" $LINENO
+    assert equals "`gx_prompt_dir`" "${TEST_GX_PARAMS_PROMPT_DIR}" $LINENO
 }
 
 function test_gx_prompt_branch {
-    assert equals "`gx_prompt_branch`" "${TEST_GBW_PARAMS_PROMPT_BRANCH}" $LINENO
+    assert equals "`gx_prompt_branch`" "${TEST_GX_PARAMS_PROMPT_BRANCH}" $LINENO
 }
 
 function test_gx_prompt_changes_count {
-    assert equals "`gx_prompt_changes_count`" "${TEST_GBW_PARAMS_PROMPT_COUNT}" $LINENO
+    assert equals "`gx_prompt_changes_count`" "${TEST_GX_PARAMS_PROMPT_COUNT}" $LINENO
 }
 
 function test_gx_prompt_status_to_be_commited {
-    assert equals "`gx_prompt_status_to_be_commited`" "${TEST_GBW_PARAMS_PROMPT_STATUS_C}" $LINENO
+    assert equals "`gx_prompt_status_to_be_commited`" "${TEST_GX_PARAMS_PROMPT_STATUS_C}" $LINENO
 }
 
 function test_gx_prompt_status_to_be_commited_colors {
@@ -72,7 +72,7 @@ function test_gx_prompt_status_to_be_commited_colors {
 }
 
 function test_gx_prompt_status_not_staged {
-    assert equals "`gx_prompt_status_not_staged`" "${TEST_GBW_PARAMS_PROMPT_STATUS_S}" $LINENO
+    assert equals "`gx_prompt_status_not_staged`" "${TEST_GX_PARAMS_PROMPT_STATUS_S}" $LINENO
 }
 
 function test_gx_prompt_status_not_staged_colors {
@@ -85,7 +85,7 @@ function test_gx_prompt_status_not_staged_colors {
 }
 
 function test_gx_prompt_status_untracked {
-    assert equals "`gx_prompt_status_untracked`" "${TEST_GBW_PARAMS_PROMPT_STATUS_U}" $LINENO
+    assert equals "`gx_prompt_status_untracked`" "${TEST_GX_PARAMS_PROMPT_STATUS_U}" $LINENO
 }
 
 function test_gx_prompt_status_untracked_colors {
@@ -98,27 +98,27 @@ function test_gx_prompt_status_untracked_colors {
 }
 
 function test_gx_prompt_status {
-    assert equals "`gx_prompt_status`" "${TEST_GBW_PARAMS_PROMPT_STATUS}" $LINENO
+    assert equals "`gx_prompt_status`" "${TEST_GX_PARAMS_PROMPT_STATUS}" $LINENO
 }
 
 function test_gx_prompt_behind {
-    local restore="${GBW_PARAMS_GIT_REMOTE_BRANCH_REF}"
+    local restore="${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
 
-    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GBW_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
-    assert equals "`gx_prompt_behind`" "${TEST_GBW_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
+    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
+    assert equals "`gx_prompt_behind`" "${TEST_GX_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
 
-    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
-    assert equals "`gx_prompt_behind`" "${TEST_GBW_PARAMS_PROMPT_BEHIND}" $LINENO
+    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
+    assert equals "`gx_prompt_behind`" "${TEST_GX_PARAMS_PROMPT_BEHIND}" $LINENO
 }
 
 function test_gx_prompt_ahead {
-    local restore="${GBW_PARAMS_GIT_REMOTE_BRANCH_REF}"
+    local restore="${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
 
-    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GBW_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
-    assert equals "`gx_prompt_ahead`" "${TEST_GBW_PARAMS_PROMPT_AHEAD_NOK}" $LINENO
+    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
+    assert equals "`gx_prompt_ahead`" "${TEST_GX_PARAMS_PROMPT_AHEAD_NOK}" $LINENO
 
-    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
-    assert equals "`gx_prompt_ahead`" "${TEST_GBW_PARAMS_PROMPT_AHEAD}" $LINENO
+    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
+    assert equals "`gx_prompt_ahead`" "${TEST_GX_PARAMS_PROMPT_AHEAD}" $LINENO
 }
 
 function test_gx_prompt_help {
@@ -126,34 +126,34 @@ function test_gx_prompt_help {
     assert equals "${count_lines}" "9" $LINENO
 
     assert first-line   "`gx_prompt_help`"   "${TEST_C_WHITE}(1) Prompt with Git information${TEST_F_RESET} :" $LINENO
-    assert last-line    "`gx_prompt_help`"   "${TEST_GBW_PARAMS_TAB}${TEST_C_LIGHT_GRAY}42↑${TEST_F_RESET} ${TEST_C_DARK_GRAY}..........${TEST_F_RESET} Commits ahead remote branch reference" $LINENO
+    assert last-line    "`gx_prompt_help`"   "${TEST_GX_PARAMS_TAB}${TEST_C_LIGHT_GRAY}42↑${TEST_F_RESET} ${TEST_C_DARK_GRAY}..........${TEST_F_RESET} Commits ahead remote branch reference" $LINENO
 
 }
 
 function test_gx_prompt_ps1_part1 {
-    assert equals "`gx_prompt_ps1_part1`" "${TEST_GBW_PARAMS_PROMPT_PS1_PART1}" $LINENO
+    assert equals "`gx_prompt_ps1_part1`" "${TEST_GX_PARAMS_PROMPT_PS1_PART1}" $LINENO
 }
 
 function test_gx_prompt_ps1_part2 {
-    assert equals "`gx_prompt_ps1_part2`" "${TEST_GBW_PARAMS_PROMPT_PS1_PART2}" $LINENO
+    assert equals "`gx_prompt_ps1_part2`" "${TEST_GX_PARAMS_PROMPT_PS1_PART2}" $LINENO
 }
 
 function test_gx_prompt_ahead_colors {
-    assert equals "`gx_prompt_ahead_colors 88`" "${TEST_GBW_PARAMS_PROMPT_AHEAD}" $LINENO
-    assert equals "`gx_prompt_ahead_colors ""`" "${TEST_GBW_PARAMS_PROMPT_AHEAD_NOK}" $LINENO
+    assert equals "`gx_prompt_ahead_colors 88`" "${TEST_GX_PARAMS_PROMPT_AHEAD}" $LINENO
+    assert equals "`gx_prompt_ahead_colors ""`" "${TEST_GX_PARAMS_PROMPT_AHEAD_NOK}" $LINENO
 }
 
 function test_gx_prompt_behind_colors {
-    assert equals "`gx_prompt_behind_colors 0`" "${TEST_GBW_PARAMS_PROMPT_BEHIND}" $LINENO
-    assert equals "`gx_prompt_behind_colors ""`" "${TEST_GBW_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
+    assert equals "`gx_prompt_behind_colors 0`" "${TEST_GX_PARAMS_PROMPT_BEHIND}" $LINENO
+    assert equals "`gx_prompt_behind_colors ""`" "${TEST_GX_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
 }
 
 function test_gx_prompt_branch_colors {
-    assert equals "`gx_prompt_branch_colors "current-branch"`" "${TEST_GBW_PARAMS_PROMPT_BRANCH}" $LINENO
+    assert equals "`gx_prompt_branch_colors "current-branch"`" "${TEST_GX_PARAMS_PROMPT_BRANCH}" $LINENO
 }
 
 function test_gx_prompt_changes_count_colors {
-    assert equals "`gx_prompt_changes_count_colors "11"`" "${TEST_GBW_PARAMS_PROMPT_COUNT}" $LINENO
+    assert equals "`gx_prompt_changes_count_colors "11"`" "${TEST_GX_PARAMS_PROMPT_COUNT}" $LINENO
 }
 
 function test_gx_prompt_help_line {
@@ -161,11 +161,11 @@ function test_gx_prompt_help_line {
     local dots="...."
     local description="Description"
 
-    assert equals "`gx_prompt_help_line "${label}" $dots "${description}"`"      "${TEST_GBW_PARAMS_TAB}${label} ${TEST_C_DARK_GRAY}${dots}${TEST_F_RESET} ${description}" $LINENO
+    assert equals "`gx_prompt_help_line "${label}" $dots "${description}"`"      "${TEST_GX_PARAMS_TAB}${label} ${TEST_C_DARK_GRAY}${dots}${TEST_F_RESET} ${description}" $LINENO
 
     local label="A long label"
     local dots="........"
     local description="A long description"
 
-    assert equals "`gx_prompt_help_line "${label}" $dots "${description}"`"      "${TEST_GBW_PARAMS_TAB}${label} ${TEST_C_DARK_GRAY}${dots}${TEST_F_RESET} ${description}" $LINENO
+    assert equals "`gx_prompt_help_line "${label}" $dots "${description}"`"      "${TEST_GX_PARAMS_TAB}${label} ${TEST_C_DARK_GRAY}${dots}${TEST_F_RESET} ${description}" $LINENO
 }

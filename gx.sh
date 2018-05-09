@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-GBW_ENV_TEST=${GBW_ENV_TEST:-0}
+GX_ENV_TEST=${GX_ENV_TEST:-0}
 
 source ~/git-xtended/params/default/params.sh
 
-if [[ "${GBW_ENV_TEST}" == 1 ]]; then
+if [[ "${GX_ENV_TEST}" == 1 ]]; then
     source ~/git-xtended/params/test/params.test.sh
 elif [[ -f ~/git-xtended/params/default/params.sh ]]; then
     source ~/git-xtended/params/default/params.sh

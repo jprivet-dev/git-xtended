@@ -17,13 +17,13 @@ function gx_test_fake_git_status_porcelain {
 function gx_test_fake_git_branch {
     echo "  fake-branch-1"
     echo "  fake-branch-2"
-    echo "* ${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
+    echo "* ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
     echo "  develop"
     echo "  master"
 }
 
 function gx_test_fake_git_rev_parse_abbrev_ref_head {
-    echo "${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
+    echo "${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}"
 }
 
 function gx_test_fake_git_diff_current_branch_origin_dev {
@@ -83,19 +83,19 @@ function gx_test_fake_git {
         "rev-parse --abbrev-ref HEAD")
             gx_test_fake_git_rev_parse_abbrev_ref_head
         ;;
-        "diff --stat ${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
+        "diff --stat ${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
             gx_test_fake_git_diff_current_branch_origin_dev
         ;;
-        "rev-list --left-right --count ${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
             gx_test_fake_git_revlist_current_remote
         ;;
-        "rev-list --left-right --count ${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}...${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}...${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
             gx_test_fake_git_revlist_remote_current
         ;;
-        "rev-list --left-right --count ${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...nok-branch")
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...nok-branch")
             gx_test_fake_git_revlist_current_remote_nok
         ;;
-        "rev-list --left-right --count nok-branch...${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
+        "rev-list --left-right --count nok-branch...${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
             gx_test_fake_git_revlist_remote_current_nok
         ;;
         "rev-parse --git-dir")

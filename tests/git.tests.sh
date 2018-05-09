@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
 function test_gx_git_get_current_branch {
-    assert equals "`gx_git_get_current_branch`" "${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}" $LINENO
+    assert equals "`gx_git_get_current_branch`" "${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}" $LINENO
     assert last-git-command-is "git rev-parse --abbrev-ref HEAD" $LINENO
 }
 
 function test_gx_git_get_remote_branch_ref {
-    local last_value="${GBW_PARAMS_GIT_REMOTE_BRANCH_REF}"
+    local last_value="${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
 
-    GBW_PARAMS_GIT_REMOTE_BRANCH_REF=""
-    assert equals "`gx_git_get_remote_branch_ref`" "${TEST_GBW_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}" $LINENO
+    GX_PARAMS_GIT_REMOTE_BRANCH_REF=""
+    assert equals "`gx_git_get_remote_branch_ref`" "${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}" $LINENO
     assert last-git-command-is "git rev-parse --abbrev-ref HEAD" $LINENO
 
-    GBW_PARAMS_GIT_REMOTE_BRANCH_REF="${last_value}"
-    assert equals "`gx_git_get_remote_branch_ref`" "${TEST_GBW_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}" $LINENO
+    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${last_value}"
+    assert equals "`gx_git_get_remote_branch_ref`" "${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}" $LINENO
     assert last-git-command-is "" $LINENO
 }
 
@@ -141,7 +141,7 @@ function test_gx_git_config_hooks_help {
     assert equals "${count_lines}" "3" $LINENO
 
     assert first-line   "`gx_git_config_hooks_help`"   "${TEST_C_WHITE}(3) Git hooks${TEST_F_RESET} :" $LINENO
-    assert last-line    "`gx_git_config_hooks_help`"   "${TEST_GBW_PARAMS_TAB}XX ... WIP" $LINENO
+    assert last-line    "`gx_git_config_hooks_help`"   "${TEST_GX_PARAMS_TAB}XX ... WIP" $LINENO
 }
 
 function test_gx_git_config_workflow_help {
@@ -149,7 +149,7 @@ function test_gx_git_config_workflow_help {
     assert equals "${count_lines}" "3" $LINENO
 
     assert first-line   "`gx_git_config_workflow_help`"   "${TEST_C_WHITE}(4) Git workflow commands (Agility)${TEST_F_RESET} :" $LINENO
-    assert last-line    "`gx_git_config_workflow_help`"   "${TEST_GBW_PARAMS_TAB}XX ... WIP" $LINENO
+    assert last-line    "`gx_git_config_workflow_help`"   "${TEST_GX_PARAMS_TAB}XX ... WIP" $LINENO
 }
 
 function test_gx_git_config_aliases_help {

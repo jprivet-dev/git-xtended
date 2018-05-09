@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 function gx_print_fixed_width {
-    local e="${GBW_PARAMS_OFF}"
+    local e="${GX_PARAMS_OFF}"
     local width middle_char start end
     local start_no_style end_no_style
     local middle_prefix middle_suffix
     local middle trucate count
 
     if [ "$1" == "-e" ]; then
-        e="${GBW_PARAMS_ON}"
+        e="${GX_PARAMS_ON}"
         shift
     fi
 
@@ -19,7 +19,7 @@ function gx_print_fixed_width {
     [ "$5" != "" ] && middle_prefix="$5"
     [ "$6" != "" ] && middle_suffix="$6"
 
-    if [ "${e}" == "${GBW_PARAMS_ON}" ]; then
+    if [ "${e}" == "${GX_PARAMS_ON}" ]; then
         start_no_style=`gx_regex_remove_colors "${start}"`
         end_no_style=`gx_regex_remove_colors "${end}"`
     else
@@ -31,7 +31,7 @@ function gx_print_fixed_width {
     count=${#start_no_style}+${#end_no_style}+${#middle_prefix}+${#middle_suffix}
     trucate="${middle_prefix}${middle:$count}${middle_suffix}"
 
-    if [ "${e}" == "${GBW_PARAMS_ON}" ]; then
+    if [ "${e}" == "${GX_PARAMS_ON}" ]; then
         echo -e "${start}${trucate}${end}"
         return
     fi
@@ -64,7 +64,7 @@ function gx_print_step {
 }
 
 function gx_print_colors {
-    echo ${GBW_PARAMS_PRINT_E_TAG} "$*"
+    echo ${GX_PARAMS_PRINT_E_TAG} "$*"
 }
 
 function gx_print_colors_force {
@@ -81,17 +81,17 @@ function gx_print_question_yes_no {
         exec < /dev/tty
         read choice
 
-        if [ "${choice}" == "${GBW_PARAMS_Y}" -o "${choice}" == "${GBW_PARAMS_N}" ]; then
+        if [ "${choice}" == "${GX_PARAMS_Y}" -o "${choice}" == "${GX_PARAMS_N}" ]; then
             break;
         fi
     done
 
     if [ "${choice}" == "y" ]; then
-        _GBW_PRINT_QUESTION_YES_NO_LAST_VALUE="${GBW_PARAMS_YES}"
+        _GX_PRINT_QUESTION_YES_NO_LAST_VALUE="${GX_PARAMS_YES}"
         return
     fi
 
-    _GBW_PRINT_QUESTION_YES_NO_LAST_VALUE="${GBW_PARAMS_NO}"
+    _GX_PRINT_QUESTION_YES_NO_LAST_VALUE="${GX_PARAMS_NO}"
 }
 
 function gx_print_choose_one_option {
@@ -138,8 +138,8 @@ function gx_print_choose_one_option {
         fi
     done
 
-    _GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE="${choice_label}"
+    _GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE="${choice_label}"
 
-    gx_print_step "${label} [${_GBW_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}]"
+    gx_print_step "${label} [${_GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}]"
 }
 

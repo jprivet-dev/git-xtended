@@ -76,28 +76,28 @@ function gx_is_good_version {
     IFS="." read target_major target_minor target_patch <<< "${2}"
 
     if [[ "${current_major}" -lt "${target_major}" ]]; then
-        echo "${GBW_PARAMS_FALSE}"
+        echo "${GX_PARAMS_FALSE}"
         return
     fi
 
     if [[ "${current_minor}" -lt "${target_minor}" ]]; then
-        echo "${GBW_PARAMS_FALSE}"
+        echo "${GX_PARAMS_FALSE}"
         return
     fi
 
     if [[ "${current_patch}" -lt "${target_patch}" ]]; then
-        echo "${GBW_PARAMS_FALSE}"
+        echo "${GX_PARAMS_FALSE}"
         return
     fi
 
-    echo "${GBW_PARAMS_TRUE}"
+    echo "${GX_PARAMS_TRUE}"
 }
 
 function gx_symlink_exists {
     if [[ -L $1 ]]; then
-        echo "${GBW_PARAMS_TRUE}"
+        echo "${GX_PARAMS_TRUE}"
         return
     fi
 
-    echo "${GBW_PARAMS_FALSE}"
+    echo "${GX_PARAMS_FALSE}"
 }
