@@ -49,14 +49,14 @@ function gx_test_run {
     gx_print_step "Tests launched"
 
     if [ "${func}" == "" ]; then
-        TEST_GBW_PARAMS_ASSERT_OK_SHOW_MESSAGE=0
+        TEST_GX_PARAMS_ASSERT_OK_SHOW_MESSAGE=0
         gx_test_check_func_with_test
         echo
         gx_test_run_all
         return
     fi
 
-    TEST_GBW_PARAMS_ASSERT_OK_SHOW_MESSAGE=1
+    TEST_GX_PARAMS_ASSERT_OK_SHOW_MESSAGE=1
     gx_test_run_only $func
 }
 

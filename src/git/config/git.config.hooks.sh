@@ -4,7 +4,7 @@ function gx_git_config_hooks_set {
     local global="$1"
     [[ "${global}" != "--global" ]] && global=""
 
-    git config $global core.hooksPath "${GBW_PARAMS_GIT_HOOKS_DIR}"
+    git config $global core.hooksPath "${GX_PARAMS_GIT_HOOKS_DIR}"
 }
 
 function gx_git_config_hooks_unset {
@@ -23,9 +23,9 @@ function gx_git_config_hooks_disabled {
 }
 
 function gx_git_config_hooks_set_type_hookspath {
-    gwb_git_config_set "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_TYPE}" "${GBW_PARAMS_GIT_HOOKS_TYPE_HOOKSPATH}"
+    gwb_git_config_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_TYPE}" "${GX_PARAMS_GIT_HOOKS_TYPE_HOOKSPATH}"
 }
 
 function gx_git_config_hooks_set_type_symlink {
-    gwb_git_config_set "${GBW_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_TYPE}" "${GBW_PARAMS_GIT_HOOKS_TYPE_SYMLINK}"
+    gwb_git_config_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_TYPE}" "${GX_PARAMS_GIT_HOOKS_TYPE_SYMLINK}"
 }

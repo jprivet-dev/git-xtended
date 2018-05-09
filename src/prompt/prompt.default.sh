@@ -10,7 +10,7 @@ function gx_prompt_time_colors {
 }
 
 function gx_prompt_user {
-    echo `gx_prompt_user_colors "${GBW_PARAMS_USER_PS1}"`
+    echo `gx_prompt_user_colors "${GX_PARAMS_USER_PS1}"`
 }
 
 function gx_prompt_user_colors {

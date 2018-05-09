@@ -9,7 +9,7 @@ function gx_prompt_help {
     local behind=`gx_prompt_behind_colors "3"`
     local ahead=`gx_prompt_ahead_colors "42"`
 
-    gx_print_colors "${C_WHITE}${GBW_PARAMS_LABEL_PROMPT}${F_RESET} :"
+    gx_print_colors "${C_WHITE}${GX_PARAMS_LABEL_PROMPT}${F_RESET} :"
     gx_prompt_help_line "${branch}"      .....           "Current branch"
     gx_prompt_help_line "${count}"       ...........     "All elements from git status"
     gx_prompt_help_line "${status_u}"    ...........     "Untracked files"
@@ -21,6 +21,6 @@ function gx_prompt_help {
 }
 
 function gx_prompt_help_line {
-    gx_print_colors "${GBW_PARAMS_TAB}$1 ${C_DARK_GRAY}$2${F_RESET} $3"
+    gx_print_colors "${GX_PARAMS_TAB}$1 ${C_DARK_GRAY}$2${F_RESET} $3"
 }
 

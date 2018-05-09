@@ -5,7 +5,7 @@ function test_gx_command_help {
     assert equals "${count_lines}" "9" $LINENO
 
     assert first-line   "`gx_command_help`"   "${TEST_C_WHITE}(6) GBW commands${TEST_F_RESET} :" $LINENO
-    assert last-line    "`gx_command_help`"   "${TEST_GBW_PARAMS_TAB}gx ${TEST_C_LIGHT_YELLOW}test${TEST_F_RESET} [<func>] ${TEST_C_DARK_GRAY}...${TEST_F_RESET} Run one or all GBW tests" $LINENO
+    assert last-line    "`gx_command_help`"   "${TEST_GX_PARAMS_TAB}gx ${TEST_C_LIGHT_YELLOW}test${TEST_F_RESET} [<func>] ${TEST_C_DARK_GRAY}...${TEST_F_RESET} Run one or all GBW tests" $LINENO
 }
 
 function test_gx_command_help_command_line {
