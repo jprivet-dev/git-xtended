@@ -59,13 +59,13 @@ function gx_test_fake_git_last_args_set {
 }
 
 function gx_test_fake_git_last_args_check {
-    local value=`< /tmp/gx_test_fake_git_last_args.sh`
+    local value=$(< /tmp/gx_test_fake_git_last_args.sh)
     gx_test_fake_git_last_args_set ""
     echo "${value}"
 }
 
 function gx_test_fake_git_last_args_get {
-    echo `< /tmp/gx_test_fake_git_last_args.sh`
+    echo $(< /tmp/gx_test_fake_git_last_args.sh)
 }
 
 function gx_test_fake_git {
