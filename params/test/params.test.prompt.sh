@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034
+:
 
 TEST_GX_PARAMS_PROMPT_TIME="${TEST_C_LIGHT_RED}\t${TEST_F_RESET}"
 

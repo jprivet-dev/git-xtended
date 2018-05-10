@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034
+:
 
 F_BOLD="\e[1m";
 F_DIM="\e[2m";
