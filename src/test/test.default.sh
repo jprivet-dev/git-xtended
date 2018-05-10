@@ -14,13 +14,9 @@ function gx_test_count_failures_increment {
 
 function gx_test_print_results {
     local message
-    local count
-    local prefix
-
     local test_plurial
     local assertion_plurial
     local failure_plurial
-    local symbol="-"
 
     [[ ${gx_test_count_tests} > 1 ]]         && test_plurial="tests"             || test_plurial="test"
     [[ ${gx_test_count_assertions} > 1 ]]    && assertion_plurial="assertions"   || assertion_plurial="assertion"
