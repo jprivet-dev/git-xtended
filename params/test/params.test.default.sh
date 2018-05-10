@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034
+:
 
 TEST_GX_PARAMS_FALSE="false"
 TEST_GX_PARAMS_TRUE="true"

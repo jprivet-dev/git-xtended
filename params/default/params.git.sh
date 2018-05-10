@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034
+:
 
 GX_PARAMS_GIT_CONFIG_KEY_ROOT="gx"
 
