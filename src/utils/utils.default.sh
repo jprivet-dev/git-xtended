@@ -8,7 +8,6 @@
 # a, b, hello, 3, bonjour, 4, 5
 function gx_implode {
     local glue="$1"
-    local current_glue=""
     shift
 
     local -a pieces="($*)"
@@ -16,7 +15,7 @@ function gx_implode {
 
     for p in "${pieces[@]}"
     do
-        p="`gx_trim "${p}"`"
+        p="$(gx_trim "${p}")"
 
         if [[ "${implode}" == "" ]]; then
             [[ "${p}" != "" ]] && implode="${p}"

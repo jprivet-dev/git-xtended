@@ -2,10 +2,10 @@
 
 function gx_install_git_hooks {
     local status=$1
-    local hookspath_available="$(gx_is_good_version "`gx_git_get_current_version`" "${GX_PARAMS_GIT_HOOKSPATH_VERSION_MIN}")"
+    local hookspath_available="$(gx_is_good_version "$(gx_git_get_current_version)" "${GX_PARAMS_GIT_HOOKSPATH_VERSION_MIN}")"
 
     gx_print_step "'git config core.hooksPath' available from git version ${GX_PARAMS_GIT_HOOKSPATH_VERSION_MIN} onwards"
-    gx_print_step "Current git version = `gx_git_get_current_version`"
+    gx_print_step "Current git version = $(gx_git_get_current_version)"
 
     if [[ "${hookspath_available}" == "${GX_PARAMS_TRUE}" ]]; then
         gx_install_git_hooks_corehookspath_available "${status}"
@@ -45,7 +45,7 @@ function gx_install_git_hooks_corehookspath_not_available {
 
 function gx_install_git_hooks_corehookspath_create {
     gx_git_config_hooks_enabled
-    gx_print_step "Set core.hooksPath = `gwb_git_config_get "core.hooksPath"`"
+    gx_print_step "Set core.hooksPath = $(gwb_git_config_get "core.hooksPath")"
 }
 
 function gx_install_git_hooks_corehookspath_remove {
@@ -56,7 +56,7 @@ function gx_install_git_hooks_corehookspath_remove {
 function gx_install_git_hooks_symlink {
     local current_hooks_prepare_commit_msg_path="${PWD}/.git/hooks/prepare-commit-msg"
 
-    if [[ "`gx_symlink_exists "${current_hooks_prepare_commit_msg_path}"`" == "${GX_PARAMS_TRUE}" ]]; then
+    if [[ "$(gx_symlink_exists "${current_hooks_prepare_commit_msg_path}")" == "${GX_PARAMS_TRUE}" ]]; then
         gx_print_step "Symlink allready exists (${current_hooks_prepare_commit_msg_path})"
         gx_install_git_hooks_symlink_remove "${current_hooks_prepare_commit_msg_path}"
         return
@@ -71,7 +71,7 @@ function gx_install_git_hooks_symlink_create {
 
     gx_print_step "Create hooks symlink instead (execute $ ${command_create_symlink})"
 
-    if [[ "`gx_symlink_exists "${current_hooks_prepare_commit_msg_path}"`" == "${GX_PARAMS_TRUE}" ]]; then
+    if [[ "$(gx_symlink_exists "${current_hooks_prepare_commit_msg_path}")" == "${GX_PARAMS_TRUE}" ]]; then
         gx_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' already exists"
         return
     fi
@@ -87,7 +87,7 @@ function gx_install_git_hooks_symlink_remove {
 
     gx_print_step "Remove hooks symlink (execute $ ${command_symlink_remove})"
     
-    if [[ "`gx_symlink_exists "${current_hooks_prepare_commit_msg_path}"`" == "${GX_PARAMS_FALSE}" ]]; then
+    if [[ "$(gx_symlink_exists "${current_hooks_prepare_commit_msg_path}")" == "${GX_PARAMS_FALSE}" ]]; then
         gx_print_step "Symlink '${current_hooks_prepare_commit_msg_path}' does not exist"
         return
     fi

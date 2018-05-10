@@ -73,7 +73,7 @@ function gx_test_assert_false {
 }
 
 function gx_test_assert_last_git_command_is {
-    local current="`gx_test_fake_git_last_args_check`"
+    local current="$(gx_test_fake_git_last_args_check)"
     local expected=$1
     local line=$2
 
@@ -85,7 +85,7 @@ function gx_test_assert_last_git_command_is {
 }
 
 function gx_test_assert_first_line {
-    local current=`echo "${1}" | head -n1`
+    local current=$(echo "${1}" | head -n1)
     local expected=$2
     local line=$3
 
@@ -97,7 +97,7 @@ function gx_test_assert_first_line {
 }
 
 function gx_test_assert_second_line {
-    local current=`echo "${1}" | head -n2 | tail -n1`
+    local current=$(echo "${1}" | head -n2 | tail -n1)
     local expected=$2
     local line=$3
 
@@ -109,7 +109,7 @@ function gx_test_assert_second_line {
 }
 
 function gx_test_assert_last_line {
-    local current=`echo "${1}" | tail -n1`
+    local current=$(echo "${1}" | tail -n1)
     local expected=$2
     local line=$3
 

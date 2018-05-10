@@ -20,14 +20,14 @@ function gx_print_fixed_width {
     [ "$6" != "" ] && middle_suffix="$6"
 
     if [ "${e}" == "${GX_PARAMS_ON}" ]; then
-        start_no_style=`gx_regex_remove_colors "${start}"`
-        end_no_style=`gx_regex_remove_colors "${end}"`
+        start_no_style=$(gx_regex_remove_colors "${start}")
+        end_no_style=$(gx_regex_remove_colors "${end}")
     else
         start_no_style="${start}"
         end_no_style="${end}"
     fi
 
-    middle=`gx_line_generator "${width}" "${middle_char}"`
+    middle=$(gx_line_generator "${width}" "${middle_char}")
     count=${#start_no_style}+${#end_no_style}+${#middle_prefix}+${#middle_suffix}
     trucate="${middle_prefix}${middle:$count}${middle_suffix}"
 
@@ -91,6 +91,7 @@ function gx_print_question_yes_no {
         return
     fi
 
+    # shellcheck disable=SC2034
     _GX_PRINT_QUESTION_YES_NO_LAST_VALUE="${GX_PARAMS_NO}"
 }
 
