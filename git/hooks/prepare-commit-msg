@@ -170,7 +170,7 @@ fi
 # --------------
 # File ref
 
-files_listing=`gx_git_status_get_filenames_inline`
+files_listing=$(gx_git_status_get_filenames_inline)
 
 while true; do
     echo -e -n "$type$type_split$subtype(${MAINSCOPE_LABEL}) : [$files_listing] "

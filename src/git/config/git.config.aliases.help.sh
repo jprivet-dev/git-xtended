@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 function gx_git_config_aliases_help {
-    local cat
     local select_file="(select file with ${F_UNDERLINED}index${F_RESET} status instead of path)"
 
     gx_print_colors "${C_WHITE}${GX_PARAMS_LABEL_GIT_ALIASES}${F_RESET} :"

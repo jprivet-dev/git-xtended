@@ -13,6 +13,7 @@ if [ "${_GX_PRINT_QUESTION_YES_NO_LAST_VALUE}" != "${GX_PARAMS_YES}" ]; then
     return
 fi
 
+# shellcheck disable=SC2034
 GX_ENV_TEST=1
 
 alias git="gx_test_fake_git"
