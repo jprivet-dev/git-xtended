@@ -25,6 +25,7 @@ function gx_install_choice {
 #    gx_install_disable_or_enable "${GX_PARAMS_LABEL_BASH_ALIASES}"  "${GX_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES_STATUS}"
 }
 
+# shellcheck disable=SC2034
 function gx_install_choice_params_set_all_from_git_config {
     GX_PARAMS_INSTALL_PROMPT_STATUS="$(gwb_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS} ${GX_PARAMS_DISABLED})"
     GX_PARAMS_INSTALL_GIT_ALIASES_STATUS="$(gwb_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS} ${GX_PARAMS_DISABLED})"
