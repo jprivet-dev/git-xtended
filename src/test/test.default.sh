@@ -14,13 +14,9 @@ function gx_test_count_failures_increment {
 
 function gx_test_print_results {
     local message
-    local count
-    local prefix
-
     local test_plurial
     local assertion_plurial
     local failure_plurial
-    local symbol="-"
 
     [[ ${gx_test_count_tests} > 1 ]]         && test_plurial="tests"             || test_plurial="test"
     [[ ${gx_test_count_assertions} > 1 ]]    && assertion_plurial="assertions"   || assertion_plurial="assertion"
@@ -56,12 +52,14 @@ function gx_test_run {
         return
     fi
 
+    # shellcheck disable=SC2034
     TEST_GX_PARAMS_ASSERT_OK_SHOW_MESSAGE=1
+
     gx_test_run_only $func
 }
 
 function gx_test_run_all {
-    local func_test_list=(`gx_test_find_all_func_test`)
+    local func_test_list=($(gx_test_find_all_func_test))
 
     gx_print_title_2 "Launch all tests"
 
@@ -99,7 +97,7 @@ function gx_test_run_func {
 }
 
 function gx_test_check_func_with_test {
-    local func_gx_list=(`gx_test_find_all_func_gx`)
+    local func_gx_list=($(gx_test_find_all_func_gx))
 
     gx_print_title_2 "Functions with test"
 

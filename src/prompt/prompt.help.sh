@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 function gx_prompt_help {
-    local branch=`gx_prompt_branch_colors "branch"`
-    local count=`gx_prompt_changes_count_colors "8"`
-    local status_u=`gx_prompt_status_untracked_colors "2"`
-    local status_s=`gx_prompt_status_not_staged_colors "3"`
-    local status_c=`gx_prompt_status_to_be_commited_colors "2" "0" "1"`
-    local behind=`gx_prompt_behind_colors "3"`
-    local ahead=`gx_prompt_ahead_colors "42"`
+    local branch=$(gx_prompt_branch_colors "branch")
+    local count=$(gx_prompt_changes_count_colors "8")
+    local status_u=$(gx_prompt_status_untracked_colors "2")
+    local status_s=$(gx_prompt_status_not_staged_colors "3")
+    local status_c=$(gx_prompt_status_to_be_commited_colors "2" "0" "1")
+    local behind=$(gx_prompt_behind_colors "3")
+    local ahead=$(gx_prompt_ahead_colors "42")
 
     gx_print_colors "${C_WHITE}${GX_PARAMS_LABEL_PROMPT}${F_RESET} :"
     gx_prompt_help_line "${branch}"      .....           "Current branch"

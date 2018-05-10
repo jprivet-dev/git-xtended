@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function gx_git_get_current_version {
-    gx_regex_extract_version "`git --version`"
+    gx_regex_extract_version "$(git --version)"
 }
 
 function gx_git_current_folder_is_repo {
@@ -17,8 +17,6 @@ function gx_git_get_current_user_name {
 }
 
 function gx_git_get_remote_branch_ref {
-    local branch="$1"
-
     if [[ "${GX_PARAMS_GIT_REMOTE_BRANCH_REF}" == "" ]]; then
         gx_git_get_current_branch
         return
@@ -48,7 +46,7 @@ function gx_git_get_changes_nb {
 }
 
 function gx_git_diff_current_branch_origin_dev {
-    git diff --stat "`gx_git_get_remote_branch_ref`" 2> /dev/null
+    git diff --stat "$(gx_git_get_remote_branch_ref)" 2> /dev/null
 }
 
 function gx_git_get_status_changes_to_be_committed {
@@ -127,7 +125,7 @@ function gx_git_status_get_filenames {
 }
 
 function gx_git_status_get_filenames_inline {
-    local listing=(`gx_git_status_get_filenames`)
+    local listing=($(gx_git_status_get_filenames))
     local filenames=$(printf ", %s" "${listing[@]}")
     printf "${filenames:2}\n"
 }
