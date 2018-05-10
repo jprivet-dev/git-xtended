@@ -52,7 +52,9 @@ function gx_test_run {
         return
     fi
 
+    # shellcheck disable=SC2034
     TEST_GX_PARAMS_ASSERT_OK_SHOW_MESSAGE=1
+
     gx_test_run_only $func
 }
 
