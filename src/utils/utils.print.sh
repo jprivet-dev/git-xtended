@@ -91,6 +91,7 @@ function gx_print_question_yes_no {
         return
     fi
 
+    # shellcheck disable=SC2034
     _GX_PRINT_QUESTION_YES_NO_LAST_VALUE="${GX_PARAMS_NO}"
 }
 
