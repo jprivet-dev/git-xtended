@@ -6,6 +6,7 @@
 :GX_ENTRY_FILE: gx.sh
 :GX_ENTRY_FILE_PATH: {GX_ROOT}/{GX_ENTRY_FILE}
 :GIT_PROJECT: https://github.com/jprivet-dev/git-xtended
+:PROMPT_PS1: 09:15:27 user@host:~/path/project (current-branch) 8≡ 1? 3! c(2 +1 -1) 3↓ 42↑
 
 = {MAIN_TITLE} ({VERSION})
 :numbered:
@@ -58,47 +59,17 @@ $ gx install
 ----
 == Prompt with Git information
 
-:PROMPT_TIME:                   09:15:27
-:PROMPT_USER_HOST:              user@host
-:PROMPT_DIR:                    :~/dir/project
-:PROMPT_BRANCH:                 branch-project
-:PROMPT_COUNT_NB:               7
-:PROMPT_COUNT:                  ({PROMPT_COUNT_NB})
-:PROMPT_UNTRACKED_NB:           1
-:PROMPT_UNTRACKED:              {PROMPT_UNTRACKED_NB}?
-:PROMPT_NOT_STAGED_NB:          3
-:PROMPT_NOT_STAGED:             {PROMPT_NOT_STAGED_NB}!
-:PROMPT_TO_BE_COMMITTED_NB_1:   2
-:PROMPT_TO_BE_COMMITTED_NB_2:   1
-:PROMPT_TO_BE_COMMITTED_NB_3:   0
-:PROMPT_TO_BE_COMMITTED:        c({PROMPT_TO_BE_COMMITTED_NB_1} +{PROMPT_TO_BE_COMMITTED_NB_2} -{PROMPT_TO_BE_COMMITTED_NB_3})
-:PROMPT_BEHIND_NB:              2
-:PROMPT_BEHIND:                 {PROMPT_BEHIND_NB}↓
-:PROMPT_AHEAD_NB:               74
-:PROMPT_AHEAD:                  {PROMPT_AHEAD_NB}↑
-:PROMPT_PS1:                    {PROMPT_TIME} {PROMPT_USER_HOST}{PROMPT_DIR} {PROMPT_BRANCH} {PROMPT_COUNT} {PROMPT_UNTRACKED} {PROMPT_NOT_STAGED} {PROMPT_TO_BE_COMMITTED} {PROMPT_BEHIND} {PROMPT_AHEAD}
-:PROMPT_PS1_NO_CHANGE:          09:12:03 user@host:~/dir/project branch-project 0↓ 71↑
-:PROMPT_PS1_ONE_CHANGE:         09:13:38 user@host:~/dir/project branch-project (1) 0? 1! c(0 +0 -0) 0↓ 71↑
-
 *{MAIN_TITLE}* changes the prompt (`PS1`) and adds information about Git :
 
-image::doc/img/prompt.png[{PROMPT_PS1}]
+image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 
-    (branch) ..... Current branch
-    8≡ ........... All elements from git status
-    2? ........... Untracked files
-    3! ........... Changes not staged for commit
-    c(2 +0 -1) ... Changes to be committed
-    3↓ ........... Commits behind remote branch reference
-    42↑ .......... Commits ahead remote branch reference
-
-For example, in *no change case*, you can see :
-
-image::doc/img/prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
-
-And for example, in *one change case*, you can see :
-
-image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
+    (current-branch) ... Current git branch
+    8≡ ................. All elements from git status
+    2? ................. Untracked files
+    3! ................. Changes not staged for commit
+    c(2 +0 -1) ......... Changes to be committed
+    3↓ ................. Commits behind remote branch reference
+    42↑ ................ Commits ahead remote branch reference
 
 == Git aliases
 
