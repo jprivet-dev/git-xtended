@@ -155,7 +155,7 @@ image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
     MSG = <type*>.<subtype>(<scope*>): <subject*>
 ----
 
-== {MAIN_TITLE_SHORT} commands
+== {MAIN_TITLE} commands
 
     gx help ............ Display help information about GX
     gx install ......... Select and install GX elements
