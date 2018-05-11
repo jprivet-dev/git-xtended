@@ -65,9 +65,9 @@ image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 
     (current-branch) ... Current git branch
     8≡ ................. All elements from git status
-    2? ................. Untracked files
+    1? ................. Untracked files
     3! ................. Changes not staged for commit
-    c(2 +0 -1) ......... Changes to be committed
+    c(2 +1 -1) ......... Changes to be committed
     3↓ ................. Commits behind remote branch reference
     42↑ ................ Commits ahead remote branch reference
 
