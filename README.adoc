@@ -22,7 +22,8 @@ toc::[]
 '''
 
 == Installation
-In your shell, clone the project :
+
+1) Clone the project
 
 [source,shell]
 [subs=attributes+]
@@ -31,7 +32,7 @@ $ cd
 $ git clone {GIT_PROJECT}
 ----
 
-Add to your `{BASHRC_PATH}` the following code :
+2) Import `{GX_ENTRY_FILE}` in `{BASHRC_PATH}`
 
 [source,shell]
 [subs=attributes+]
@@ -40,7 +41,7 @@ Add to your `{BASHRC_PATH}` the following code :
 [[ -f {GX_ENTRY_FILE_PATH} ]] && source {GX_ENTRY_FILE_PATH}
 ----
 
-Reload `{BASHRC_PATH}` with the following command (avoids logout and back to the shell) :
+3) Reload `{BASHRC_PATH}` (avoid logout and back to the shell)
 
 [source,shell]
 [subs=attributes+]
@@ -48,33 +49,7 @@ Reload `{BASHRC_PATH}` with the following command (avoids logout and back to the
 $ . {BASHRC_PATH}
 ----
 
-*{MAIN_TITLE}* is now available. You can see help with the following command :
-
-[source,shell]
-[subs=attributes+]
-----
-$ gx
-
-    _____ _ _      __ __ _             _       _
-   |   __|_| |_   |  |  | |_ ___ ___ _| |___ _| |
-   |  |  | |  _|  |-   -|  _| -_|   | . | -_| . |
-   |_____|_|_|    |__|__|_| |___|_|_|___|___|___|
-                               Git Xtended vX.X.X
-
-----------------------------------------------------
-@info https://github.com/jprivet-dev/git-xtended.git
-----------------------------------------------------
-(1) Prompt with Git information            Disabled
-(2) Git aliases                            Disabled
-(3) Git hooks                              Disabled
-----------------------------------------------------
-
-...
-... [Displaying the rest of the help]
-...
-----
-
-As you can see, the options are disabled. Activate what you want with the following command :
+4) Activate the {MAIN_TITLE} options you want
 
 [source,shell]
 [subs=attributes+]
