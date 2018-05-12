@@ -63,6 +63,12 @@ $ gx install
 
 image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 
+[subs=attributes+]
+----
+{PROMPT_PS1}
+$ gx help prompt
+
+(1) Prompt with Git information :
     (current-branch) ... Current git branch
     8≡ ................. All elements from git status
     1? ................. Untracked files
@@ -70,9 +76,14 @@ image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
     c(2 +1 -1) ......... Changes to be committed
     3↓ ................. Commits behind remote branch reference
     42↑ ................ Commits ahead remote branch reference
+----
 
 == Git aliases
 
+----
+$ gx help aliases
+
+(2) Git aliases :
          log | git l ................. Show the last 12 commit logs (graphical representation)
                git ll ................ Show all commit logs (graphical representation)
                git lfile <file> ...... Show all commit logs for a specific file (graphical representation)
@@ -94,13 +105,12 @@ image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
                git undo .............. Oops level 2! Undo the last commit, while keeping files changes
        clean | git untracked ......... Remove all untracked files
         grep | git find <string> ..... Look for specified strings in the tracked files (case sensitive)
+----
 
 == Git hooks
 
 === `prepare-commit-msg` : commits are documentation
 
-[source,shell]
-[subs=attributes+]
 ----
     <type*> =
         (a)   archi        Changes application architecture (folder position, name, ...)
@@ -128,6 +138,10 @@ image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 
 == {MAIN_TITLE} commands
 
+----
+$ gx help gx
+
+(4) GX commands :
     gx help ............ Display help information about GX
     gx install ......... Select and install GX elements
     gx reload .......... Reload GX
@@ -135,3 +149,5 @@ image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
     gx config .......... Show GX git configuration
     gx colors .......... Show all GX colors
     gx test [<func>] ... Run one or all GX tests
+
+----
