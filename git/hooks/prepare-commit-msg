@@ -24,13 +24,16 @@ types=(
     'tr/trans/Adds locale-specific components, translates text, ...'
 )
 
-subtypes[10]='c/clean/Remove pointless code or files'
-subtypes[15]='d/debug/Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !'
-subtypes[20]='f/fix/Bug fix'
-subtypes[25]='g/generate/Auto-generate code (Doctrine, PhoneGap, Ionic, ...)'
-subtypes[30]='p/perf/A code change that improves performance'
-subtypes[35]='r/refactor/A code change that neither fixes a bug nor adds a feature'
-subtypes[40]='s/style/Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)'
+subtypes=(
+    'c/clean/Remove pointless code or files'
+    'd/debug/Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !'
+    'f/fix/Bug fix'
+    'g/generate/Auto-generate code (Doctrine, PhoneGap, Ionic, ...)'
+    'p/perf/A code change that improves performance'
+    'r/refactor/A code change that neither fixes a bug nor adds a feature'
+    's/style/Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)'
+)
+
 
 type_split="."
 main_split=": "
