@@ -100,6 +100,22 @@ function test_gx_git_status_get_filenames_inline {
     assert equals "${count_lines}" "5" $LINENO
 }
 
+function test_gx_git_status_extract_only_basename {
+    local path;
+
+    path="M  path/to/my/file.sh"
+    assert equals "$(gx_git_status_extract_only_basename "${path}")" "file.sh" $LINENO
+
+    path=" M path/to/my/file.sh"
+    assert equals "$(gx_git_status_extract_only_basename "${path}")" "file.sh" $LINENO
+
+    path="M  file.sh"
+    assert equals "$(gx_git_status_extract_only_basename "${path}")" "file.sh" $LINENO
+
+    path=" M file.sh"
+    assert equals "$(gx_git_status_extract_only_basename "${path}")" "file.sh" $LINENO
+}
+
 function test_gx_git_status_get_filenames_inline {
     local count_lines="$(gx_git_status_get_filenames_inline | wc -l)"
     assert equals "${count_lines}" "1" $LINENO
