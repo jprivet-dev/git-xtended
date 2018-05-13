@@ -125,8 +125,7 @@ function gx_git_status_extract_only_basename {
 
 function gx_git_status_get_filenames {
 	git status --porcelain | grep '^[^? ]' | while read path; do
-        filename=$(basename -- "${path}")
-        printf "${filename}\n"
+        printf "$(gx_git_status_extract_only_basename "${path}")\n"
 	done
 }
 
