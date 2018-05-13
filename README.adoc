@@ -66,7 +66,7 @@ image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 [subs=attributes+]
 ----
 {PROMPT_PS1}
-$ gx help prompt
+$ gx help
 
 (1) Prompt with Git information :
     (current-branch) ... Current git branch
@@ -81,7 +81,7 @@ $ gx help prompt
 == Git aliases
 
 ----
-$ gx help aliases
+$ gx help
 
 (2) Git aliases :
          log | git l ................. Show the last 12 commit logs (graphical representation)
@@ -139,7 +139,7 @@ $ gx help aliases
 == {MAIN_TITLE} commands
 
 ----
-$ gx help gx
+$ gx help
 
 (4) GX commands :
     gx help ............ Display help information about GX
