@@ -25,20 +25,7 @@ function gx_hooks_pcmsg {
             types_shortcut[$shorcut]=$shorcut
             types_index[$shorcut]=$type
 
-            text="   "
-            text="${text} (${shorcut})"
-            for (( i=${#shorcut}; i<=2; i++ )); do
-                text="${text} "
-            done
-
-            text="${text} ${type}"
-            for (( i=${#type}; i<=11; i++ )); do
-                text="${text} "
-            done
-
-            text="${text} ${info}"
-
-            echo "${text}"
+            gx_hooks_pcmsg_print_type "${shorcut}" "${type}" "${info}"
         fi
     done
 
@@ -191,4 +178,25 @@ function gx_hooks_pcmsg {
         echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
         exit 1
     fi
+}
+
+function gx_hooks_pcmsg_print_type {
+    local shortcut=$1
+    local type=$2
+    local info=$3
+    local text="   "
+
+    text="${text} (${shorcut})"
+    for (( i=${#shorcut}; i<=2; i++ )); do
+        text="${text} "
+    done
+
+    text="${text} ${type}"
+    for (( i=${#type}; i<=11; i++ )); do
+        text="${text} "
+    done
+
+    text="${text} ${info}"
+
+    echo "${text}"
 }
