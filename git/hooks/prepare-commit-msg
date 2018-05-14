@@ -36,10 +36,10 @@ _GX_HOOKS_PCMSG_SUBTYPES=(
     's/style/Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)'
 )
 
-type_split="."
-main_split=": "
-
 function gx_hooks_pcmsg {
+    local type_split="."
+    local main_split=": "
+
     # --------------
     # TYPE
 
