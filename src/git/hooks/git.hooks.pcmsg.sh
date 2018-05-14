@@ -171,19 +171,27 @@ function gx_hooks_pcmsg_print_type {
     local shortcut=$1
     local type=$2
     local info=$3
-    local text="   "
 
-    text="${text} (${shorcut})"
-    for (( i=${#shorcut}; i<=2; i++ )); do
-        text="${text} "
-    done
+#    local text="   "
+#
+#    text="${text} (${shorcut})"
+#    for (( i=${#shorcut}; i<=2; i++ )); do
+#        text="${text} "
+#    done
+#
+#    text="${text} ${type}"
+#    for (( i=${#type}; i<=11; i++ )); do
+#        text="${text} "
+#    done
+#
+#    text="${text} ${info}"
+#
+#    echo "${text}"
+    local _shortcut_max_length=8
 
-    text="${text} ${type}"
-    for (( i=${#type}; i<=11; i++ )); do
-        text="${text} "
-    done
+    local _shortcut="(${shortcut})"
+    local _shortcut_space=$(printf " %.0s" {1..8})
+    local _shortcut_count=${#_shortcut}
 
-    text="${text} ${info}"
-
-    echo "${text}"
+    echo "${GX_PARAMS_TAB} ${_shortcut}${_shortcut_space:$_shortcut_count}${type} ${info}"
 }
