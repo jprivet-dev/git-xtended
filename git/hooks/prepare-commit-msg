@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ~/git-xtended/params/default/params.colors.sh
-source ~/git-xtended/src/git/commands/git.commands.sh
+source ~/git-xtended/params/default/params.sh
+source ~/git-xtended/src/git/git.sh
 
 COMMIT_MSG=$1
 COMMIT_MODE=$2
@@ -33,7 +33,6 @@ subtypes=(
     'r/refactor/A code change that neither fixes a bug nor adds a feature'
     's/style/Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)'
 )
-
 
 type_split="."
 main_split=": "
