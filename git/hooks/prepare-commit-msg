@@ -58,19 +58,19 @@ for key in "${!_GX_HOOKS_PCMSG_TYPES[@]}"; do
 		types_index[$shorcut]=$type
 
 		text="   "
-		text="$text ($shorcut)"
+		text="${text} (${shorcut})"
 		for (( i=${#shorcut}; i<=2; i++ )); do
-			text="$text "
+			text="${text} "
 		done
 
-		text="$text $type"
+		text="${text} ${type}"
 		for (( i=${#type}; i<=11; i++ )); do
-			text="$text "
+			text="${text} "
 		done
 
-		text="$text $info"
+		text="${text} ${info}"
 
-		echo "$text"
+		echo "${text}"
 	fi
 done
 
@@ -93,19 +93,19 @@ for key in "${!_GX_HOOKS_PCMSG_SUBTYPES[@]}"; do
 		subtypes_index[$shorcut]=$subtype
 
 		text="   "
-		text="$text ($shorcut)"
+		text="${text} (${shorcut})"
 		for (( i=${#shorcut}; i<=2; i++ )); do
-			text="$text "
+			text="${text} "
 		done
 
-		text="$text $subtype"
+		text="${text} ${subtype}"
 		for (( i=${#subtype}; i<=11; i++ )); do
-			text="$text "
+			text="${text} "
 		done
 
-		text="$text $info"
+		text="${text} ${info}"
 
-		echo "$text"
+		echo "${text}"
 	fi
 done
 
@@ -113,7 +113,7 @@ done
 # Example
 
 echo ""
-echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}$type_split${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})$main_split${_GX_HOOKS_PCMSG_SUBJECT_LABEL}"
+echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}${type_split}${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}"
 echo ""
 
 # --------------
@@ -125,7 +125,7 @@ while true; do
 	exec < /dev/tty
 	read choise_type_subtype_index
 
-	choise_type_subtype_index_tab=($choise_type_subtype_index)
+	choise_type_subtype_index_tab=(${choise_type_subtype_index})
 	choise_type_index="${choise_type_subtype_index_tab[0]}"
 	choise_subtype_index="${choise_type_subtype_index_tab[1]}"
 
@@ -138,7 +138,7 @@ while true; do
 		choise_type_index_valid=1;
 	fi
 
-	if [ "$choise_subtype_index" == "" ] ;then
+	if [ "${choise_subtype_index}" == "" ] ;then
 	    choise_subtype_index_valid=1
 	else
         [[ " ${subtypes_shortcut[@]} " =~ " ${choise_subtype_index} " ]]
@@ -148,7 +148,7 @@ while true; do
         fi
 	fi
 
-	if [ "$choise_type_index_valid" == 1 -a "$choise_subtype_index_valid" == 1 ]; then
+	if [ "${choise_type_index_valid}" == 1 -a "${choise_subtype_index_valid}" == 1 ]; then
 		break;
 	fi
 done
@@ -162,14 +162,14 @@ type=${types_index[$choise_type_index]}
 # Subtype
 
 subtype=""
-if [ "$choise_subtype_index" != "" ] ;then
+if [ "${choise_subtype_index}" != "" ] ;then
 	subtype=${subtypes_index[$choise_subtype_index]}
 fi
 
 # --------------
 # Type split
 
-if [ "$type" == "" -o "$subtype" == "" ]; then
+if [ "${type}" == "" -o "${subtype}" == "" ]; then
 	type_split=""
 fi
 
@@ -179,19 +179,19 @@ fi
 files_listing=$(gx_git_status_get_filenames_inline)
 
 while true; do
-    echo -e -n "$type$type_split$subtype(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) : [$files_listing] "
+    echo -e -n "${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) : [${files_listing}] "
 
 	exec < /dev/tty
     read mainscope_choose
 
-	if [ "$files_listing" != "" -o "$mainscope_choose" != "" ]; then
+	if [ "${files_listing}" != "" -o "${mainscope_choose}" != "" ]; then
 		break;
 	fi
 done
 
-mainscope="$files_listing"
-if [ "$mainscope_choose" != "" ] ;then
-	mainscope="$mainscope_choose"
+mainscope="${files_listing}"
+if [ "${mainscope_choose}" != "" ] ;then
+	mainscope="${mainscope_choose}"
 fi
 
 # --------------
@@ -201,12 +201,12 @@ fi
 # Commit message
 
 while true; do
-	echo -e -n "$type$type_split$subtype($mainscope)$main_split${_GX_HOOKS_PCMSG_SUBJECT_LABEL} "
+	echo -e -n "${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} "
 
 	exec < /dev/tty
 	read subject
 
-	if [ "$subject" != "" ]; then
+	if [ "${subject}" != "" ]; then
 		break;
 	fi
 done
@@ -214,11 +214,11 @@ done
 # --------------
 # Final message
 
-complete_message="$type$type_split$subtype($mainscope)$main_split$subject"
+complete_message="${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
 
 if [ "${message}" != "no" ]; then
 	echo ""
-    echo "$complete_message" > "${COMMIT_MSG}"
+    echo "${complete_message}" > "${COMMIT_MSG}"
 else
 	echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
 	exit 1
