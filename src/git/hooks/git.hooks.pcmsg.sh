@@ -47,20 +47,7 @@ function gx_hooks_pcmsg {
             subtypes_shortcut[$shorcut]=$shorcut
             subtypes_index[$shorcut]=$subtype
 
-            text="   "
-            text="${text} (${shorcut})"
-            for (( i=${#shorcut}; i<=2; i++ )); do
-                text="${text} "
-            done
-
-            text="${text} ${subtype}"
-            for (( i=${#subtype}; i<=11; i++ )); do
-                text="${text} "
-            done
-
-            text="${text} ${info}"
-
-            echo "${text}"
+            gx_hooks_pcmsg_print_type "${shorcut}" "${subtype}" "${info}"
         fi
     done
 
