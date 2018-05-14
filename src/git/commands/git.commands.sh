@@ -117,10 +117,15 @@ function gx_git_status_behind_count {
     gx_git_status_behind "${from_branch}" "${to_branch}" | while read -a array; do echo ${array[0]} ; done
 }
 
+function gx_git_status_extract_only_basename {
+    local path=$1
+    filename=$(basename -- "${path:3}")
+    printf "${filename}\n"
+}
+
 function gx_git_status_get_filenames {
 	git status --porcelain | grep '^[^? ]' | while read path; do
-        filename=$(basename -- "${path}")
-        printf "${filename}\n"
+        printf "$(gx_git_status_extract_only_basename "${path}")\n"
 	done
 }
 

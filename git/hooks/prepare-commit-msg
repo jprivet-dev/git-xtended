@@ -11,24 +11,29 @@ SUBTYPE_LABEL="${C_LIGHT_RED}<subtype>${F_RESET}"
 MAINSCOPE_LABEL="${C_LIGHT_GREEN}<scope*>${F_RESET}"
 SUBJECT_LABEL="${C_LIGHT_YELLOW}<subject*>${F_RESET}"
 
-types[10]='a/archi/Changes application architecture (folder position, name, ...)'
-types[15]='c/conf/Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)'
-types[20]='co/content/Changes wording or images in contents'
-types[22]='ch/chore/Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)'
-types[30]='d/dev/Changes main code (creation, enhancement, evolution, ...)'
-types[35]='do/docs/Documentation only changes'
-types[40]="i/integ/Web integration, UX works - doesn't touch business logic (css, js, ...)"
-types[45]="in/install/Install or update project, modules, pluggins (ex: composer install ...)"
-types[55]='t/tpl/Templating works (Twig, Drupal templating, Smarty, ...)'
-types[60]='tr/trans/Adds locale-specific components, translates text, ...'
+types=(
+    'a/archi/Changes application architecture (folder position, name, ...)'
+    'c/conf/Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)'
+    'co/content/Changes wording or images in contents'
+    'ch/chore/Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)'
+    'd/dev/Changes main code (creation, enhancement, evolution, ...)'
+    'do/docs/Documentation only changes'
+    "i/integ/Web integration, UX works - doesn't touch business logic (css, js, ...)"
+    "in/install/Install or update project, modules, pluggins (ex: composer install ...)"
+    't/tpl/Templating works (Twig, Drupal templating, Smarty, ...)'
+    'tr/trans/Adds locale-specific components, translates text, ...'
+)
 
-subtypes[10]='c/clean/Remove pointless code or files'
-subtypes[15]='d/debug/Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !'
-subtypes[20]='f/fix/Bug fix'
-subtypes[25]='g/generate/Auto-generate code (Doctrine, PhoneGap, Ionic, ...)'
-subtypes[30]='p/perf/A code change that improves performance'
-subtypes[35]='r/refactor/A code change that neither fixes a bug nor adds a feature'
-subtypes[40]='s/style/Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)'
+subtypes=(
+    'c/clean/Remove pointless code or files'
+    'd/debug/Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !'
+    'f/fix/Bug fix'
+    'g/generate/Auto-generate code (Doctrine, PhoneGap, Ionic, ...)'
+    'p/perf/A code change that improves performance'
+    'r/refactor/A code change that neither fixes a bug nor adds a feature'
+    's/style/Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)'
+)
+
 
 type_split="."
 main_split=": "

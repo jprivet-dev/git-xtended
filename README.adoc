@@ -6,6 +6,7 @@
 :GX_ENTRY_FILE: gx.sh
 :GX_ENTRY_FILE_PATH: {GX_ROOT}/{GX_ENTRY_FILE}
 :GIT_PROJECT: https://github.com/jprivet-dev/git-xtended
+:PROMPT_PS1: 09:15:27 user@host:~/path/project (current-branch) 8≡ 1? 3! c(2 +1 -1) 3↓ 42↑
 
 = {MAIN_TITLE} ({VERSION})
 :numbered:
@@ -22,7 +23,8 @@ toc::[]
 '''
 
 == Installation
-In your shell, clone the project :
+
+1) Clone the project
 
 [source,shell]
 [subs=attributes+]
@@ -31,7 +33,7 @@ $ cd
 $ git clone {GIT_PROJECT}
 ----
 
-Add to your `{BASHRC_PATH}` the following code :
+2) Import `{GX_ENTRY_FILE}` in `{BASHRC_PATH}`
 
 [source,shell]
 [subs=attributes+]
@@ -40,7 +42,7 @@ Add to your `{BASHRC_PATH}` the following code :
 [[ -f {GX_ENTRY_FILE_PATH} ]] && source {GX_ENTRY_FILE_PATH}
 ----
 
-Reload `{BASHRC_PATH}` with the following command (avoids logout and back to the shell) :
+3) Reload `{BASHRC_PATH}` (avoid logout and back to the shell)
 
 [source,shell]
 [subs=attributes+]
@@ -48,33 +50,7 @@ Reload `{BASHRC_PATH}` with the following command (avoids logout and back to the
 $ . {BASHRC_PATH}
 ----
 
-*{MAIN_TITLE}* is now available. You can see help with the following command :
-
-[source,shell]
-[subs=attributes+]
-----
-$ gx
-
-    _____ _ _      __ __ _             _       _
-   |   __|_| |_   |  |  | |_ ___ ___ _| |___ _| |
-   |  |  | |  _|  |-   -|  _| -_|   | . | -_| . |
-   |_____|_|_|    |__|__|_| |___|_|_|___|___|___|
-                               Git Xtended vX.X.X
-
-----------------------------------------------------
-@info https://github.com/jprivet-dev/git-xtended.git
-----------------------------------------------------
-(1) Prompt with Git information            Disabled
-(2) Git aliases                            Disabled
-(3) Git hooks                              Disabled
-----------------------------------------------------
-
-...
-... [Displaying the rest of the help]
-...
-----
-
-As you can see, the options are disabled. Activate what you want with the following command :
+4) Activate the {MAIN_TITLE} options you want
 
 [source,shell]
 [subs=attributes+]
@@ -83,50 +59,31 @@ $ gx install
 ----
 == Prompt with Git information
 
-:PROMPT_TIME:                   09:15:27
-:PROMPT_USER_HOST:              user@host
-:PROMPT_DIR:                    :~/dir/project
-:PROMPT_BRANCH:                 branch-project
-:PROMPT_COUNT_NB:               7
-:PROMPT_COUNT:                  ({PROMPT_COUNT_NB})
-:PROMPT_UNTRACKED_NB:           1
-:PROMPT_UNTRACKED:              {PROMPT_UNTRACKED_NB}?
-:PROMPT_NOT_STAGED_NB:          3
-:PROMPT_NOT_STAGED:             {PROMPT_NOT_STAGED_NB}!
-:PROMPT_TO_BE_COMMITTED_NB_1:   2
-:PROMPT_TO_BE_COMMITTED_NB_2:   1
-:PROMPT_TO_BE_COMMITTED_NB_3:   0
-:PROMPT_TO_BE_COMMITTED:        c({PROMPT_TO_BE_COMMITTED_NB_1} +{PROMPT_TO_BE_COMMITTED_NB_2} -{PROMPT_TO_BE_COMMITTED_NB_3})
-:PROMPT_BEHIND_NB:              2
-:PROMPT_BEHIND:                 {PROMPT_BEHIND_NB}↓
-:PROMPT_AHEAD_NB:               74
-:PROMPT_AHEAD:                  {PROMPT_AHEAD_NB}↑
-:PROMPT_PS1:                    {PROMPT_TIME} {PROMPT_USER_HOST}{PROMPT_DIR} {PROMPT_BRANCH} {PROMPT_COUNT} {PROMPT_UNTRACKED} {PROMPT_NOT_STAGED} {PROMPT_TO_BE_COMMITTED} {PROMPT_BEHIND} {PROMPT_AHEAD}
-:PROMPT_PS1_NO_CHANGE:          09:12:03 user@host:~/dir/project branch-project 0↓ 71↑
-:PROMPT_PS1_ONE_CHANGE:         09:13:38 user@host:~/dir/project branch-project (1) 0? 1! c(0 +0 -0) 0↓ 71↑
-
 *{MAIN_TITLE}* changes the prompt (`PS1`) and adds information about Git :
 
-image::doc/img/prompt.png[{PROMPT_PS1}]
+image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 
-    (branch) ..... Current branch
-    8≡ ........... All elements from git status
-    2? ........... Untracked files
-    3! ........... Changes not staged for commit
-    c(2 +0 -1) ... Changes to be committed
-    3↓ ........... Commits behind remote branch reference
-    42↑ .......... Commits ahead remote branch reference
+[subs=attributes+]
+----
+{PROMPT_PS1}
+$ gx help
 
-For example, in *no change case*, you can see :
-
-image::doc/img/prompt-no-change.png[{PROMPT_PS1_NO_CHANGE}]
-
-And for example, in *one change case*, you can see :
-
-image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
+(1) Prompt with Git information :
+    (current-branch) ... Current git branch
+    8≡ ................. All elements from git status
+    1? ................. Untracked files
+    3! ................. Changes not staged for commit
+    c(2 +1 -1) ......... Changes to be committed
+    3↓ ................. Commits behind remote branch reference
+    42↑ ................ Commits ahead remote branch reference
+----
 
 == Git aliases
 
+----
+$ gx help
+
+(2) Git aliases :
          log | git l ................. Show the last 12 commit logs (graphical representation)
                git ll ................ Show all commit logs (graphical representation)
                git lfile <file> ...... Show all commit logs for a specific file (graphical representation)
@@ -148,13 +105,12 @@ image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
                git undo .............. Oops level 2! Undo the last commit, while keeping files changes
        clean | git untracked ......... Remove all untracked files
         grep | git find <string> ..... Look for specified strings in the tracked files (case sensitive)
+----
 
 == Git hooks
 
 === `prepare-commit-msg` : commits are documentation
 
-[source,shell]
-[subs=attributes+]
 ----
     <type*> =
         (a)   archi        Changes application architecture (folder position, name, ...)
@@ -180,8 +136,12 @@ image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
     MSG = <type*>.<subtype>(<scope*>): <subject*>
 ----
 
-== {MAIN_TITLE_SHORT} commands
+== {MAIN_TITLE} commands
 
+----
+$ gx help
+
+(4) GX commands :
     gx help ............ Display help information about GX
     gx install ......... Select and install GX elements
     gx reload .......... Reload GX
@@ -189,3 +149,5 @@ image::doc/img/prompt-one-change.png[{PROMPT_PS1_ONE_CHANGE}]
     gx config .......... Show GX git configuration
     gx colors .......... Show all GX colors
     gx test [<func>] ... Run one or all GX tests
+
+----
