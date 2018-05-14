@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 function gx_hooks_pcmsg {
+    local commit_msg=$1
+    local commit_mode=$2
+    
     local type_split="."
     local main_split=": "
 
@@ -183,7 +186,7 @@ function gx_hooks_pcmsg {
 
     if [ "${message}" != "no" ]; then
         echo ""
-        echo "${complete_message}" > "${COMMIT_MSG}"
+        echo "${complete_message}" > "${commit_msg}"
     else
         echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
         exit 1
