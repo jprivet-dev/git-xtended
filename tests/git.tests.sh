@@ -175,3 +175,9 @@ function test_gx_git_config_aliases_help {
     assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}(2) Git aliases${TEST_F_RESET} :" $LINENO
     assert last-line    "$(gx_git_config_aliases_help)"   "        grep | git ${TEST_C_LIGHT_CYAN}find${TEST_F_RESET} <string> ${TEST_C_DARK_GRAY}.....${TEST_F_RESET} Look for specified strings in the tracked files (case sensitive)" $LINENO
 }
+
+function test_gx_hooks_pcmsg_print_type {
+    assert equals "$(gx_hooks_pcmsg_print_type "a" "type" "short description")"     "coucou" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "ab" "type" "short description")"    "coucou" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "abc" "type" "short description")"   "coucou" $LINENO
+}
