@@ -1,7 +1,9 @@
 #!/bin/bash
 
 source ~/git-xtended/params/default/params.sh
-source ~/git-xtended/src/git/git.sh
+source ~/git-xtended/src/git/hooks/git.hooks.pcmsg.params.sh
+source ~/git-xtended/src/git/hooks/git.hooks.pcmsg.sh
+source ~/git-xtended/src/git/commands/git.commands.sh
 
 COMMIT_MSG=$1
 COMMIT_MODE=$2
