@@ -13,7 +13,7 @@ _GX_HOOKS_PCMSG_SUBTYPE_LABEL="${C_LIGHT_RED}<subtype>${F_RESET}"
 _GX_HOOKS_PCMSG_MAINSCOPE_LABEL="${C_LIGHT_GREEN}<scope*>${F_RESET}"
 _GX_HOOKS_PCMSG_SUBJECT_LABEL="${C_LIGHT_YELLOW}<subject*>${F_RESET}"
 
-types=(
+_GX_HOOKS_PCMSG_TYPES=(
     'a/archi/Changes application architecture (folder position, name, ...)'
     'c/conf/Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)'
     'co/content/Changes wording or images in contents'
@@ -26,7 +26,7 @@ types=(
     'tr/trans/Adds locale-specific components, translates text, ...'
 )
 
-subtypes=(
+_GX_HOOKS_PCMSG_SUBTYPES=(
     'c/clean/Remove pointless code or files'
     'd/debug/Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !'
     'f/fix/Bug fix'
@@ -48,8 +48,8 @@ declare -A types_shortcut
 echo ""
 echo -e "${_GX_HOOKS_PCMSG_TYPE_LABEL} ="
 
-for key in "${!types[@]}"; do
-	if [[ ${types[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
+for key in "${!_GX_HOOKS_PCMSG_TYPES[@]}"; do
+	if [[ ${_GX_HOOKS_PCMSG_TYPES[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
 		shorcut=${BASH_REMATCH[1]}
 		type=${BASH_REMATCH[2]}
 		info=${BASH_REMATCH[3]}
@@ -83,8 +83,8 @@ declare -A subtypes_index
 echo ""
 echo -e "${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ="
 
-for key in "${!subtypes[@]}"; do
-	if [[ ${subtypes[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
+for key in "${!_GX_HOOKS_PCMSG_SUBTYPES[@]}"; do
+	if [[ ${_GX_HOOKS_PCMSG_SUBTYPES[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
 		shorcut=${BASH_REMATCH[1]}
 		subtype=${BASH_REMATCH[2]}
 		info=${BASH_REMATCH[3]}
