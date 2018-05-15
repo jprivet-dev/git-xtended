@@ -187,10 +187,11 @@ function gx_hooks_pcmsg_print_type {
 #    text="${text} ${info}"
 #
 #    echo "${text}"
-    local _shortcut_max_length=8
+    local _shortcut_max_length=10
 
     local _shortcut="(${shortcut})"
-    local _shortcut_space=$(printf " %.0s" {1..8})
+    local _command=$(echo "printf ' %.0s' {1..$_shortcut_max_length}");
+    local _shortcut_space=$(eval "${_command}")
     local _shortcut_count=${#_shortcut}
 
     echo "${GX_PARAMS_TAB} ${_shortcut}${_shortcut_space:$_shortcut_count}${type} ${info}"
