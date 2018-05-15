@@ -48,10 +48,13 @@ function gx_print_col_fixed_width {
     fi
 
     local text_length=${#text}
-    local command=$(echo "printf ' %.0s' {1..$width}");
-    local spaces=$(eval "${command}")
+    local spaces=""
 
-    printf "%s%s" "${text}" "${spaces:$text_length}"
+    for (( i=${text_length}; i<${width}; i++ )); do
+        spaces="${spaces} "
+    done
+
+    printf "${text}${spaces}"
 }
 
 function gx_print {
