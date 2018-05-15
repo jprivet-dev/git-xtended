@@ -181,3 +181,23 @@ function test_gx_hooks_pcmsg_print_type {
     assert equals "$(gx_hooks_pcmsg_print_type "ab" "type" "short description")"    "coucou" $LINENO
     assert equals "$(gx_hooks_pcmsg_print_type "abc" "type" "short description")"   "coucou" $LINENO
 }
+
+function test_gx_print_col_fixed_width {
+    assert equals "$(gx_print_col_fixed_width 0 "")"            " " $LINENO
+    assert equals "$(gx_print_col_fixed_width 0 "a")"           "a" $LINENO
+    assert equals "$(gx_print_col_fixed_width 0 1)"             "1" $LINENO
+
+    assert equals "$(gx_print_col_fixed_width 4 "")"            "    " $LINENO
+    assert equals "$(gx_print_col_fixed_width 4 "a")"           "a   " $LINENO
+    assert equals "$(gx_print_col_fixed_width 4 "abcd")"        "abcd" $LINENO
+    assert equals "$(gx_print_col_fixed_width 4 "abcdef")"      "abcdef" $LINENO
+
+    assert equals "$(gx_print_col_fixed_width 8 "")"            "        " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 "a")"           "a       " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 "abcd")"        "abcd    " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 "abcdefghi")"   "abcdefghi" $LINENO
+
+    assert equals "$(gx_print_col_fixed_width 8 1)"             "1       " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 1234)"          "1234    " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 123456789)"     "123456789" $LINENO
+}
