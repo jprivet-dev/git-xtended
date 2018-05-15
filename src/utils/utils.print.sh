@@ -39,6 +39,21 @@ function gx_print_fixed_width {
     echo "${start}${trucate}${end}"
 }
 
+function gx_print_col_fixed_width {
+    local width=$1
+    local text=$2
+
+    if [[ "${width}" < 1 ]]; then
+        width=1
+    fi
+
+    local text_length=${#text}
+    local command=$(echo "printf ' %.0s' {1..$width}");
+    local spaces=$(eval "${command}")
+
+    printf "%s%s" "${text}" "${spaces:$text_length}"
+}
+
 function gx_print {
     echo "$*"
 }
