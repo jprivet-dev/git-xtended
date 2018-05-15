@@ -25,7 +25,7 @@ function gx_hooks_pcmsg {
             types_index[$shorcut]=$type
             types_shortcut[$shorcut]=$shorcut
 
-            gx_hooks_pcmsg_print_type "${type}" "${shorcut}" "${info}"
+            gx_hooks_pcmsg_print_type "${C_LIGHT_MAGENTA}" "${type}" "${shorcut}" "${info}"
         fi
     done
 
@@ -47,7 +47,7 @@ function gx_hooks_pcmsg {
             subtypes_index[$shorcut]=$subtype
             subtypes_shortcut[$shorcut]=$shorcut
 
-            gx_hooks_pcmsg_print_type "${subtype}" "${shorcut}" "${info}"
+            gx_hooks_pcmsg_print_type "${C_LIGHT_RED}" "${subtype}" "${shorcut}" "${info}"
         fi
     done
 
@@ -168,12 +168,13 @@ function gx_hooks_pcmsg {
 }
 
 function gx_hooks_pcmsg_print_type {
-    local type=$1
-    local shortcut=$2
-    local description=$3
+    local color=$1
+    local type=$2
+    local shortcut=$3
+    local description=$4
 
     local type_column="$(gx_print_col_fixed_width 10 "${type}")"
-    local shorcut_column="$(gx_print_col_fixed_width 7 "(${shortcut})")"
+    local shortcut_lengh=${#shortcut}
 
-    printf "${type_column}${shorcut_column}${description}\n"
+    printf " ${color}${shortcut}${F_RESET}${type_column:$shortcut_lengh}${description}\n"
 }
