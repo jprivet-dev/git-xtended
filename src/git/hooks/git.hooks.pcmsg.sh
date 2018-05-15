@@ -14,7 +14,7 @@ function gx_hooks_pcmsg {
     declare -A types_shortcut
 
     echo ""
-    echo -e "${_GX_HOOKS_PCMSG_TYPE_LABEL} ="
+    echo -e "${_GX_HOOKS_PCMSG_TYPE_LABEL}"
 
     for key in "${!_GX_HOOKS_PCMSG_TYPES[@]}"; do
         if [[ ${_GX_HOOKS_PCMSG_TYPES[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
@@ -36,7 +36,7 @@ function gx_hooks_pcmsg {
     declare -A subtypes_index
 
     echo ""
-    echo -e "${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ="
+    echo -e "${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}"
 
     for key in "${!_GX_HOOKS_PCMSG_SUBTYPES[@]}"; do
         if [[ ${_GX_HOOKS_PCMSG_SUBTYPES[$key]} =~ ([^\/]*)\/([^\/]*)\/([^\/]*) ]]; then
