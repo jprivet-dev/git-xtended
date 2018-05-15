@@ -22,10 +22,10 @@ function gx_hooks_pcmsg {
             type=${BASH_REMATCH[2]}
             info=${BASH_REMATCH[3]}
 
-            types_shortcut[$shorcut]=$shorcut
             types_index[$shorcut]=$type
+            types_shortcut[$shorcut]=$shorcut
 
-            gx_hooks_pcmsg_print_type "${shorcut}" "${type}" "${info}"
+            gx_hooks_pcmsg_print_type "${type}" "${shorcut}" "${info}"
         fi
     done
 
@@ -44,10 +44,10 @@ function gx_hooks_pcmsg {
             subtype=${BASH_REMATCH[2]}
             info=${BASH_REMATCH[3]}
 
-            subtypes_shortcut[$shorcut]=$shorcut
             subtypes_index[$shorcut]=$subtype
+            subtypes_shortcut[$shorcut]=$shorcut
 
-            gx_hooks_pcmsg_print_type "${shorcut}" "${subtype}" "${info}"
+            gx_hooks_pcmsg_print_type "${subtype}" "${shorcut}" "${info}"
         fi
     done
 
@@ -168,9 +168,9 @@ function gx_hooks_pcmsg {
 }
 
 function gx_hooks_pcmsg_print_type {
-    local shortcut=$1
-    local type=$2
-    local info=$3
+    local type=$1
+    local shortcut=$2
+    local description=$3
 
 #    local text="   "
 #
@@ -187,12 +187,9 @@ function gx_hooks_pcmsg_print_type {
 #    text="${text} ${info}"
 #
 #    echo "${text}"
-    local _shortcut_max_length=10
 
-    local _shortcut="(${shortcut})"
-    local _command=$(echo "printf ' %.0s' {1..$_shortcut_max_length}");
-    local _shortcut_space=$(eval "${_command}")
-    local _shortcut_count=${#_shortcut}
+    local type_column="$(gx_print_col_fixed_width 10 "${type}")"
+    local shorcut_column="$(gx_print_col_fixed_width 7 "(${shortcut})")"
 
-    echo "${GX_PARAMS_TAB} ${_shortcut}${_shortcut_space:$_shortcut_count}${type} ${info}"
+    printf "%s%s%s\n" "${type_column}" "${shorcut_column}" "${description}"
 }
