@@ -176,5 +176,5 @@ function gx_hooks_pcmsg_print_type {
     local type_column="$(gx_print_col_fixed_width 10 "${type}")"
     local shortcut_lengh=${#shortcut}
 
-    printf " ${color}${shortcut}${F_RESET}${type_column:$shortcut_lengh}${description}\n"
+    gx_print_colors " ${color}${shortcut}${F_RESET}${type_column:$shortcut_lengh}${description}"
 }
