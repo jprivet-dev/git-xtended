@@ -172,24 +172,8 @@ function gx_hooks_pcmsg_print_type {
     local shortcut=$2
     local description=$3
 
-#    local text="   "
-#
-#    text="${text} (${shorcut})"
-#    for (( i=${#shorcut}; i<=2; i++ )); do
-#        text="${text} "
-#    done
-#
-#    text="${text} ${type}"
-#    for (( i=${#type}; i<=11; i++ )); do
-#        text="${text} "
-#    done
-#
-#    text="${text} ${info}"
-#
-#    echo "${text}"
-
     local type_column="$(gx_print_col_fixed_width 10 "${type}")"
     local shorcut_column="$(gx_print_col_fixed_width 7 "(${shortcut})")"
 
-    printf "%s%s%s\n" "${type_column}" "${shorcut_column}" "${description}"
+    printf "${type_column}${shorcut_column}${description}\n"
 }
