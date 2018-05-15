@@ -177,9 +177,13 @@ function test_gx_git_config_aliases_help {
 }
 
 function test_gx_hooks_pcmsg_print_type {
-    assert equals "$(gx_hooks_pcmsg_print_type "a" "type" "short description")"     "coucou" $LINENO
-    assert equals "$(gx_hooks_pcmsg_print_type "ab" "type" "short description")"    "coucou" $LINENO
-    assert equals "$(gx_hooks_pcmsg_print_type "abc" "type" "short description")"   "coucou" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "t" "a" "short description")"                    "t         (a)    short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "type" "a" "short description")"                 "type      (a)    short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "typetoooooolong" "a" "short description")"      "typetoooooolong(a)    short description" $LINENO
+
+    assert equals "$(gx_hooks_pcmsg_print_type "type" "a" "short description")"                 "type      (a)    short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "type" "ab" "short description")"                "type      (ab)   short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "type" "abctoooloong" "short description")"      "type      (abctoooloong)short description" $LINENO
 }
 
 function test_gx_print_col_fixed_width {
