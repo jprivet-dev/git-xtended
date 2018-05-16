@@ -17,14 +17,22 @@ image::https://api.codacy.com/project/badge/Grade/0e5266aa58fa4c7e8b0759971ae1b4
 '''
 
 :toc-title: Summary
-:toclevels: 3
+:toclevels: 2
 toc::[]
 
 '''
 
+== Presentation
+
+Git Xtended facilitates recurring Git actions in shell :
+
+- Project status display with main Git information in prompt
+- Aliases of recurring Git commands
+- Formatted commit with a `prepare-commit-msg` hook
+
 == Installation
 
-1) Clone the project
+*1) Clone the project*
 
 [source,shell]
 [subs=attributes+]
@@ -33,7 +41,9 @@ $ cd
 $ git clone {GIT_PROJECT}
 ----
 
-2) Import `{GX_ENTRY_FILE}` in `{BASHRC_PATH}`
+*2) Import `{GX_ENTRY_FILE}` in `{BASHRC_PATH}`*
+
+Copy the following code at the end of your file `{BASHRC_PATH}` :
 
 [source,shell]
 [subs=attributes+]
@@ -42,7 +52,7 @@ $ git clone {GIT_PROJECT}
 [[ -f {GX_ENTRY_FILE_PATH} ]] && source {GX_ENTRY_FILE_PATH}
 ----
 
-3) Reload `{BASHRC_PATH}` (avoid logout and back to the shell)
+*3) Reload `{BASHRC_PATH}` (avoid logout and back to the shell)*
 
 [source,shell]
 [subs=attributes+]
@@ -50,19 +60,35 @@ $ git clone {GIT_PROJECT}
 $ . {BASHRC_PATH}
 ----
 
-4) Activate the {MAIN_TITLE} options you want
+*4) Activate the {MAIN_TITLE} options you want*
 
 [source,shell]
-[subs=attributes+]
 ----
 $ gx install
 ----
-== Prompt with Git information
+
+After installation, you will be able to see the {MAIN_TITLE} parameters in the global Git `.config` file. For example :
+
+.`.config`
+----
+[gx "prompt"]
+	status = Enabled
+[gx "gitaliases"]
+	status = Enabled
+[gx "githooks"]
+	type = symlink
+	status = Enabled
+----
+
+== Features overview
+
+=== Prompt with Git information
 
 *{MAIN_TITLE}* changes the prompt (`PS1`) and adds information about Git :
 
 image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 
+[source,shell]
 [subs=attributes+]
 ----
 {PROMPT_PS1}
@@ -78,8 +104,9 @@ $ gx help
     42↑ ................ Commits ahead remote branch reference
 ----
 
-== Git aliases
+=== Git aliases
 
+[source,shell]
 ----
 $ gx help
 
@@ -107,37 +134,41 @@ $ gx help
         grep | git find <string> ..... Look for specified strings in the tracked files (case sensitive)
 ----
 
-== Git hooks
+=== Git hooks
 
-=== `prepare-commit-msg` : commits are documentation
+===== `prepare-commit-msg` : commits are documentation
 
+[source,shell]
 ----
-    <type*> =
-        (a)   archi        Changes application architecture (folder position, name, ...)
-        (c)   conf         Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)
-        (co)  content      Changes wording or images in contents
-        (ch)  chore        Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)
-        (d)   dev          Changes main code (creation, enhancement, evolution, ...)
-        (do)  docs         Documentation only changes
-        (i)   integ        Web integration, UX works - doesn't touch business logic (css, js, ...)
-        (in)  install      Install or update project, modules, pluggins (ex: composer install ...)
-        (t)   tpl          Templating works (Twig, Drupal templating, Smarty, ...)
-        (tr)  trans        Adds locale-specific components, translates text, ...
+$ git c
 
-    <subtype> =
-        (c)   clean        Remove pointless code or files
-        (d)   debug        Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !
-        (f)   fix          Bug fix
-        (g)   generate     Auto-generate code (Doctrine, PhoneGap, Ionic, ...)
-        (p)   perf         A code change that improves performance
-        (r)   refactor     A code change that neither fixes a bug nor adds a feature
-        (s)   style        Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
+<type*>
+ archi     Changes application architecture (folder position, name, ...)
+ conf      Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)
+ content   Changes wording or images in contents
+ chore     Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)
+ dev       Changes main code (creation, enhancement, evolution, ...)
+ docs      Documentation only changes
+ integ     Web integration, UX works - doesn't touch business logic (css, js, ...)
+ install   Install or update project, modules, pluggins (ex: composer install ...)
+ tpl       Templating works (Twig, Drupal templating, Smarty, ...)
+ trans     Adds locale-specific components, translates text, ...
 
-    MSG = <type*>.<subtype>(<scope*>): <subject*>
+<subtype>
+ clean     Remove pointless code or files
+ debug     Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !
+ fix       Bug fix
+ generate  Auto-generate code (Doctrine, PhoneGap, Ionic, ...)
+ perf      A code change that improves performance
+ refactor  A code change that neither fixes a bug nor adds a feature
+ style     Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
+
+MSG = <type*>.<subtype>(<scope*>): <subject*>
 ----
 
-== {MAIN_TITLE} commands
+=== {MAIN_TITLE} commands
 
+[source,shell]
 ----
 $ gx help
 
@@ -149,5 +180,29 @@ $ gx help
     gx config .......... Show GX git configuration
     gx colors .......... Show all GX colors
     gx test [<func>] ... Run one or all GX tests
-
 ----
+
+== Tips
+
+=== Use index instead of name
+
+For example, `$ git s` is an indexed version of `$ git status.`
+
+Instead of specifying the name of the file you want to commit, just specify the index :
+
+[source,shell]
+----
+$ git s
+1)  M path/to/my/file1.sh
+2)  M path/to/my/file2.sh
+3)  M path/to/my/file3.sh
+
+$ git c 2
+> git add (2) path/to/my/file2.sh
+>
+# Then follow the steps of `prepare-commit-msg` hook...
+----
+
+=== Customization
+
+== Ressources & Inspiration
