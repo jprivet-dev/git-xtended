@@ -39,7 +39,7 @@ function gx_install_activation_show_status {
 #    local gx_workflow_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_WORKFLOW_STATUS})"
 #    local gx_bash_aliases_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS})"
 
-    local line_info="${GX_PARAMS_GITHUB}"
+    local line_info="- ${GX_PARAMS_GITHUB} -"
     local col_width=${#line_info}
     local space=" "
 
@@ -62,6 +62,7 @@ function gx_install_activation_show_status {
 
     echo "${line}"
     echo "${line_info}"
+    echo "${line}"
     echo
 
 #    echo "git config ..."
