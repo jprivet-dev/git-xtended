@@ -6,6 +6,7 @@
 :GX_ENTRY_FILE: gx.sh
 :GX_ENTRY_FILE_PATH: {GX_ROOT}/{GX_ENTRY_FILE}
 :GIT_PROJECT: https://github.com/jprivet-dev/git-xtended
+:GIT_CLONE_PROJECT: git@github.com:jprivet-dev/git-xtended.git
 :PROMPT_PS1: 09:15:27 user@host:~/path/project (current-branch) 8≡ 1? 3! c(2 +1 -1) 3↓ 42↑
 
 = {MAIN_TITLE} ({VERSION})
@@ -24,7 +25,7 @@ toc::[]
 
 == Presentation
 
-Git Xtended facilitates recurring Git actions in shell :
+{MAIN_TITLE} facilitates recurring Git actions in shell :
 
 - Project status display with main Git information in prompt
 - Aliases of recurring Git commands
@@ -38,7 +39,7 @@ Git Xtended facilitates recurring Git actions in shell :
 [subs=attributes+]
 ----
 $ cd
-$ git clone {GIT_PROJECT}
+$ git clone {GIT_CLONE_PROJECT}
 ----
 
 *2) Import `{GX_ENTRY_FILE}` in `{BASHRC_PATH}`*
@@ -70,16 +71,18 @@ $ . {BASHRC_PATH}
 (2) Git aliases                      Disabled
 (3) Git hooks                        Disabled
 ----------------------------------------------
-https://github.com/jprivet-dev/git-xtended.git
+- {GIT_PROJECT} -
+----------------------------------------------
 ----
 
 *4) Activate the {MAIN_TITLE} options you want*
 
 [source,shell]
+[subs=attributes+]
 ----
 $ gx install
 
-Git Xtended INSTALL
+{MAIN_TITLE} INSTALL
 
 > (1) Prompt with Git information   [0] Disabled  [1] Enabled : 1
 > (1) Prompt with Git information [Enabled]
@@ -90,10 +93,9 @@ Git Xtended INSTALL
 > 'git config core.hooksPath' available from git version 2.9.0 onwards
 > Current git version = 2.1.4
 > 'git config core.hooksPath' is NOT available
-> Create hooks symlink instead (execute $ ln -sf ~/git-xtended/git/hooks/prepare-commit-msg /home/path/to/my/project/.git/hooks/prepare-commit-msg)
+> Create hooks symlink instead (execute $ ln -sf {GX_ROOT}/git/hooks/prepare-commit-msg /home/path/to/my/project/.git/hooks/prepare-commit-msg)
 > Symlink '/home/path/to/my/project/.git/hooks/prepare-commit-msg' does not exist
 > Symlink created
-
 ----
 
 After installation, you will be able to see the {MAIN_TITLE} parameters in the global Git `.config` file. For example :
@@ -108,6 +110,16 @@ After installation, you will be able to see the {MAIN_TITLE} parameters in the g
 	status = Enabled
 [alias]
     ...
+----
+
+== Update
+
+[source,shell]
+[subs=attributes+]
+----
+$ cd {GX_ROOT}
+$ git pull origin master
+$ gx reload
 ----
 
 == Features overview
@@ -216,7 +228,7 @@ $ gx help
 
 === Use index instead of name
 
-For example, `$ git s` is an indexed version of `$ git status.`
+For example, `$ git s` is an indexed version of `$ git status`:
 
 [source,shell]
 ----
