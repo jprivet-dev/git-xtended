@@ -185,25 +185,25 @@ $ gx help
 $ git c
 
 <type*>
- archi     Changes application architecture (folder position, name, ...)
- conf      Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)
- content   Changes wording or images in contents
- chore     Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)
- dev       Changes main code (creation, enhancement, evolution, ...)
- docs      Documentation only changes
- integ     Web integration, UX works - doesn't touch business logic (css, js, ...)
- install   Install or update project, modules, pluggins (ex: composer install ...)
- tpl       Templating works (Twig, Drupal templating, Smarty, ...)
- trans     Adds locale-specific components, translates text, ...
+ archi ...... Changes application architecture (folder position, name, ...)
+ conf ....... Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)
+ content .... Changes wording or images in contents
+ chore ...... Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)
+ dev ........ Changes main code (creation, enhancement, evolution, ...)
+ docs ....... Documentation only changes
+ integ ...... Web integration, UX works - doesn't touch business logic (css, js, ...)
+ install .... Install or update project, modules, pluggins (ex: composer install ...)
+ tpl ........ Templating works (Twig, Drupal templating, Smarty, ...)
+ trans ...... Adds locale-specific components, translates text, ...
 
 <subtype>
- clean     Remove pointless code or files
- debug     Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !
- fix       Bug fix
- generate  Auto-generate code (Doctrine, PhoneGap, Ionic, ...)
- perf      A code change that improves performance
- refactor  A code change that neither fixes a bug nor adds a feature
- style     Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
+ clean ...... Remove pointless code or files
+ debug ...... Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !
+ fix ........ Bug fix
+ generate ... Auto-generate code (Doctrine, PhoneGap, Ionic, ...)
+ perf ....... A code change that improves performance
+ refactor ... A code change that neither fixes a bug nor adds a feature
+ style ...... Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
 
 MSG = <type*>.<subtype>(<scope*>): <subject*>
 ----
