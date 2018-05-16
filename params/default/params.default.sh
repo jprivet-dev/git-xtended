@@ -23,7 +23,7 @@ GX_PARAMS_DISABLED_C="${C_BG_RED}${C_WHITE} Disabled ${F_RESET}"
 GX_PARAMS_USER_PS1="\u"
 GX_PARAMS_ROOT="~/git-xtended"
 GX_PARAMS_GX_SH="${GX_PARAMS_ROOT}/gx.sh"
-GX_PARAMS_GITHUB="https://github.com/jprivet-dev/git-xtended.git"
+GX_PARAMS_GITHUB="https://github.com/jprivet-dev/git-xtended"
 GX_PARAMS_HOOKS_PREPARE_COMMIT_MSG_PATH="${GX_PARAMS_ROOT}/git/hooks/prepare-commit-msg"
 
 GX_PARAMS_TITLE="Git Xtended"
