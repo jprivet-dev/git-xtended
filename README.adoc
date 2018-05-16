@@ -218,21 +218,65 @@ $ gx help
 
 For example, `$ git s` is an indexed version of `$ git status.`
 
-Instead of specifying the name of the file you want to commit, just specify the index :
-
 [source,shell]
 ----
 $ git s
 1)  M path/to/my/file1.sh
 2)  M path/to/my/file2.sh
 3)  M path/to/my/file3.sh
-
-$ git c 2
-> git add (2) path/to/my/file2.sh
->
-# Then follow the steps of `prepare-commit-msg` hook...
 ----
 
+Instead of specifying the name of the file you want to commit, just *specify the index*:
+
+[source,shell]
+----
+$ git c 2
+> git add (2) path/to/my/file2.sh
+> & commit ...
+
+--------------------------------------------------
+ M path/to/my/file1.sh
+M  path/to/my/file2.sh
+ M path/to/my/file3.sh
+--------------------------------------------------
+
+# Then follow the steps of `prepare-commit-msg` hook
+----
+
+If you specify *no index*, the *first file* will be chosen by default:
+
+[source,shell]
+----
+$ git c
+> git add (1) path/to/my/file1.sh
+> & commit ...
+
+--------------------------------------------------
+M  path/to/my/file1.sh
+ M path/to/my/file2.sh
+ M path/to/my/file3.sh
+--------------------------------------------------
+
+# Then follow the steps of `prepare-commit-msg` hook
+----
+
+You can also specify *multiple indexes*:
+
+[source,shell]
+----
+$ git c 1 3
+> git add (1) path/to/my/file1.sh
+> git add (3) path/to/my/file3.sh
+> & commit ...
+
+--------------------------------------------------
+M  path/to/my/file1.sh
+ M path/to/my/file2.sh
+M  path/to/my/file3.sh
+--------------------------------------------------
+
+# Then follow the steps of `prepare-commit-msg` hook
+----
 === Customization
 
 == Ressources & Inspiration
