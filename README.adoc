@@ -153,27 +153,27 @@ $ gx help
 $ gx help
 
 (2) Git aliases :
-         log | git l ................. Show the last 12 commit logs (graphical representation)
-               git ll ................ Show all commit logs (graphical representation)
-               git lfile <file> ...... Show all commit logs for a specific file (graphical representation)
-               git lmerges ........... Show all merge logs (graphical representation)
-               git lcount ............ Number of commits per author
-      branch | git b ................. Simple "branch" alias
-    checkout | git ck [1 2 ... n] .... Extended "checkout" alias (select file with index status instead of path)
-      status | git s ................. Indexed status list (staged, unstaged, and untracked files)
-               git ss ................ Simple "status" alias
-        diff | git d [1 2 ... n] ..... Extended "diff" alias (select file with index status instead of path)
-         add | git a [1 2 ... n] ..... Extended "add" alias (select file with index status instead of path)
-               git all ............... Add all files (new, modified and deleted)
-               git nm ................ Add new and modified files, without deleted
-               git md ................ Add modified and deleted files, without new
-      commit | git c [1 2 ... n] ..... Extended "commit" alias (select file with index status instead of path)
-               git amend ............. Oops level 1! Modify the last commit
-       reset | git r ................. Simple "reset" alias
-               git hard [<commit>] ... Simple "reset --hard" alias (by default, discard any changes to tracked files, since last commit)
-               git undo .............. Oops level 2! Undo the last commit, while keeping files changes
-       clean | git untracked ......... Remove all untracked files
-        grep | git find <string> ..... Look for specified strings in the tracked files (case sensitive)
+         log | git l .................... Show the last 12 commit logs (graphical representation)
+               git ll ................... Show all commit logs (graphical representation)
+               git lfile <file> ......... Show all commit logs for a specific file (graphical representation)
+               git lmerges .............. Show all merge logs (graphical representation)
+               git lcount ............... Number of commits per author
+      branch | git b .................... Simple "branch" alias
+    checkout | git ck [<i>|<path>] ...... Extended "checkout" alias (select file with index status instead of path)
+      status | git s .................... Indexed status list (staged, unstaged, and untracked files)
+               git ss ................... Simple "status" alias
+        diff | git d [<i>|<path>] ....... Extended "diff" alias (select file with index status instead of path)
+         add | git a [<i>|<path>] ....... Extended "add" alias (select file with index status instead of path)
+               git all .................. Add all files (new, modified and deleted)
+               git nm ................... Add new and modified files, without deleted
+               git md ................... Add modified and deleted files, without new
+      commit | git c [<i>|<path>|all] ... Extended "commit" alias (select file with index status instead of path)
+               git amend ................ Oops level 1! Modify the last commit
+       reset | git r .................... Simple "reset" alias
+               git hard [<commit>] ...... Simple "reset --hard" alias (by default, discard any changes to tracked files, since last commit)
+               git undo ................. Oops level 2! Undo the last commit, while keeping files changes
+       clean | git untracked ............ Remove all untracked files
+        grep | git find <string> ........ Look for specified strings in the tracked files (case sensitive)
 ----
 
 === Git hooks
