@@ -118,12 +118,10 @@ function gx_hooks_pcmsg {
     # --------------
     # File ref
 
-    printf "%s\n" "${split}"
-
     files_listing=$(gx_git_status_get_filenames_inline)
 
     while true; do
-        echo -e -n "${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) : [${files_listing}] "
+        echo -e -n "\e[1A${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) : [${files_listing}] "
 
         exec < /dev/tty
         read mainscope_choose
@@ -144,10 +142,8 @@ function gx_hooks_pcmsg {
     # --------------
     # Commit message
 
-    printf "%s\n" "${split}"
-
     while true; do
-        echo -e -n "${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} "
+        echo -e -n "\e[1A${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} "
 
         exec < /dev/tty
         read subject
@@ -161,6 +157,7 @@ function gx_hooks_pcmsg {
     # Final message
 
     complete_message="${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
+    echo -e "\e[1A${complete_message}"
 
     if [ "${message}" != "no" ]; then
         echo ""
