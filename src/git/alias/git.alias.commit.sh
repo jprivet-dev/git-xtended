@@ -29,8 +29,8 @@ done
 
 printf "> & commit ...\n"
 
-printf "\n${split}\n"
+printf "%s\n" "${split}"
 git status -s -u
+printf "%s\n" "${split}"
 
-printf "\n${split}\n"
 git commit -m ""
