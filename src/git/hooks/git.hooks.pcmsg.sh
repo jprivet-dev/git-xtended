@@ -194,5 +194,5 @@ function gx_hooks_pcmsg_col_fixed_width {
         spaces="${spaces}."
     done
 
-    printf "${text} ${C_DARK_GRAY}${spaces}${F_RESET} "
+    gx_print_colors "${text} ${C_DARK_GRAY}${spaces}${F_RESET} "
 }
