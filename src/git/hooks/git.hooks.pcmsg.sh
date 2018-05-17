@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 function gx_hooks_pcmsg {
+    local split="--------------------------------------------------"
+
     local commit_msg=$1
     local commit_mode=$2
     
@@ -12,6 +14,9 @@ function gx_hooks_pcmsg {
 
     declare -A types_index
     declare -A types_shortcut
+
+    echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}${type_split}${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}"
+    printf "%s\n" "${split}"
 
     echo ""
     echo -e "${_GX_HOOKS_PCMSG_TYPE_LABEL}"
@@ -51,12 +56,7 @@ function gx_hooks_pcmsg {
         fi
     done
 
-    # --------------
-    # Example
-
-    echo ""
-    echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}${type_split}${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}"
-    echo ""
+    printf "\n%s\n" "${split}"
 
     # --------------
     # Type & Subtype
@@ -118,6 +118,8 @@ function gx_hooks_pcmsg {
     # --------------
     # File ref
 
+    printf "%s\n" "${split}"
+
     files_listing=$(gx_git_status_get_filenames_inline)
 
     while true; do
@@ -141,6 +143,8 @@ function gx_hooks_pcmsg {
 
     # --------------
     # Commit message
+
+    printf "%s\n" "${split}"
 
     while true; do
         echo -e -n "${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} "
