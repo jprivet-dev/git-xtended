@@ -157,7 +157,10 @@ function gx_hooks_pcmsg {
     # Final message
 
     complete_message="${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
-    echo -e "\e[1A${complete_message}"
+
+    tput cuu1
+    tput el
+    echo -e "${complete_message}"
 
     if [ "${message}" != "no" ]; then
         echo ""
