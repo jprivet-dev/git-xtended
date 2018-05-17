@@ -161,6 +161,7 @@ function gx_hooks_pcmsg {
     tput cuu1
     tput el
     echo -e "${complete_message}"
+    printf "%s\n" "${split}"
 
     if [ "${message}" != "no" ]; then
         echo ""
