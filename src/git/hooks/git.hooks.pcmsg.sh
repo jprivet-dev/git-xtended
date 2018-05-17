@@ -173,8 +173,26 @@ function gx_hooks_pcmsg_print_type {
     local shortcut=$3
     local description=$4
 
-    local type_column="$(gx_print_col_fixed_width 10 "${type}")"
+    local type_column="$(gx_hooks_pcmsg_col_fixed_width 11 "${type}")"
     local shortcut_lengh=${#shortcut}
 
     gx_print_colors " ${color}${shortcut}${F_RESET}${type_column:$shortcut_lengh}${description}"
+}
+
+function gx_hooks_pcmsg_col_fixed_width {
+    local width=$1
+    local text=$2
+
+    if [[ "${width}" < 1 ]]; then
+        width=1
+    fi
+
+    local text_length=${#text}
+    local spaces=""
+
+    for (( i=${text_length}; i<${width}; i++ )); do
+        spaces="${spaces}."
+    done
+
+    printf "${text} ${C_DARK_GRAY}${spaces}${F_RESET} "
 }
