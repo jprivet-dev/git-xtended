@@ -5,7 +5,13 @@ function gx_hooks_pcmsg {
 
     local commit_msg=$1
     local commit_mode=$2
-    
+
+    local trigger_by_hook=0
+
+    if [[ ".git/COMMIT_EDITMSG" == "${commit_msg}" ]]; then
+        trigger_by_hook=1
+    fi
+
     local type_split="."
     local main_split=": "
 
@@ -177,7 +183,11 @@ function gx_hooks_pcmsg {
 
     if [ "${message}" != "no" ]; then
         echo ""
-        echo "${complete_message}" > "${commit_msg}"
+        if [[ "${trigger_by_hook}" == 1 ]]; then
+            echo "${complete_message}" > "${commit_msg}"
+        else
+            git commit -m "${complete_message}"
+        fi
     else
         echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
         exit 1
