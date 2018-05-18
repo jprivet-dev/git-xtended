@@ -200,7 +200,7 @@ MSG = <type*>.<subtype>(<scope*>): <subject*>
 ----
 $ gx help
 
-(4) GX commands :
+(3) GX commands :
     gx help ............ Display help information about GX
     gx install ......... Select and install GX elements
     gx reload .......... Reload GX
