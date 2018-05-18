@@ -8,7 +8,7 @@ function gx_git_config_set_aliases {
     git config ${global} alias.b branch
 
     # git diff
-    git config ${global} alias.d '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}' "$1"; }; f'
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}' "$1"; }; f'
 
     # git add
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_A} '!f() { '${GX_PARAMS_GIT_ALIAS_ADD_FILE}' "$@"; }; f'
@@ -20,6 +20,9 @@ function gx_git_config_set_aliases {
     # git commit
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}' "$@"; }; f'
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit -m --amend"
+
+    # git diff & commit one file
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D}${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}'; '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}'; }; f'
 
     # git checkout
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CK} '!f() { '${GX_PARAMS_GIT_ALIAS_CHECKOUT_FILE}' "$@"; }; f'
