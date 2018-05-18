@@ -6,6 +6,11 @@ function gx_hooks_pcmsg {
     local commit_msg=$1
     local commit_mode=$2
 
+    local type
+    local subtype
+    local scope
+    local subject
+
     local trigger_by_hook=0
 
     if [[ ".git/COMMIT_EDITMSG" == "${commit_msg}" ]]; then
