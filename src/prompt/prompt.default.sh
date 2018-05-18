@@ -166,13 +166,7 @@ function gx_prompt_ps1_part1 {
 
 function gx_prompt_ps1_part2 {
     local ps2="${F_RESET}\n"
-
-#    if [[ -d "$(gx_git_current_folder_is_repo)" ]]; then
-#        ps2="${ps2}[$(gx_git_get_current_user_name)] "
-#    fi
-
     ps2="${ps2}\$ "
-
     echo "${ps2}"
 }
 
