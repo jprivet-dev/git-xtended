@@ -61,7 +61,11 @@ function gx_hooks_pcmsg {
     # --------------
     # Type & Subtype
 
+    echo "" # tricks : with tput cuu1 and el, thath avoid new line with first ENTER action
+
     while true; do
+        tput cuu1
+        tput el
         echo -e -n "${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} : "
 
         exec < /dev/tty
