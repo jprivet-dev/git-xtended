@@ -121,7 +121,9 @@ function gx_hooks_pcmsg {
     files_listing=$(gx_git_status_get_filenames_inline)
 
     while true; do
-        echo -e -n "\e[1A${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) : [${files_listing}] "
+        tput cuu1
+        tput el
+        echo -e -n "${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) : [${files_listing}] "
 
         exec < /dev/tty
         read mainscope_choose
@@ -143,7 +145,9 @@ function gx_hooks_pcmsg {
     # Commit message
 
     while true; do
-        echo -e -n "\e[1A${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} "
+        tput cuu1
+        tput el
+        echo -e -n "${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} "
 
         exec < /dev/tty
         read subject
