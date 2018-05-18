@@ -11,11 +11,20 @@ function gx_hooks_pcmsg {
     local scope
     local subject
 
+    local type_subtype_default
+    local subject_default
+
     local trigger_by_hook=0
 
     if [[ ".git/COMMIT_EDITMSG" == "${commit_msg}" ]]; then
         trigger_by_hook=1
+    else
+        type_subtype_default="$1"
+        shift
+        subject_default="$@"
     fi
+
+    echo "${type_default} / ${subtype_default} / ${subject_default}"
 
     local type_split="."
     local main_split=": "
