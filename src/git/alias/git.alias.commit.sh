@@ -12,8 +12,14 @@ split="--------------------------------------------------"
 if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
     printf "> git add all files & commit\n"
     git add .
+    printf "> & commit ...\n"
+
+    printf "%s\n" "${split}"
     git status -s -u
-    git commit -m ""
+    printf "%s\n" "${split}"
+    
+#    git commit -m ""
+    gx_hooks_pcmsg $@
     exit 1
 fi
 
