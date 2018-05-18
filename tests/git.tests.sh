@@ -173,17 +173,18 @@ function test_gx_git_config_aliases_help {
     assert equals "${count_lines}" "23" $LINENO
 
     assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}(2) Git aliases${TEST_F_RESET} :" $LINENO
-    assert last-line    "$(gx_git_config_aliases_help)"   "        grep | git ${TEST_C_LIGHT_CYAN}find${TEST_F_RESET} <string> ${TEST_C_DARK_GRAY}.....${TEST_F_RESET} Look for specified strings in the tracked files (case sensitive)" $LINENO
+    assert last-line    "$(gx_git_config_aliases_help)"   "        grep | git \e[96mfind\e[0m <string> \e[90m........\e[0m Look for specified strings in the tracked files (case sensitive)" $LINENO
 }
 
 function test_gx_hooks_pcmsg_print_type {
-    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}" "t" "a" "short description")"                      " ${TEST_C_GREEN}a${TEST_F_RESET}         short description" $LINENO
-    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "a" "short description")"                   " ${TEST_C_BLUE}a${TEST_F_RESET}ype      short description" $LINENO
-    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "typetoooooolong" "a" "short description")"       " ${TEST_C_GREEN}a${TEST_F_RESET}ypetoooooolongshort description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}" "t" "a" "short description")"                      " ${TEST_C_GREEN}a${TEST_F_RESET} ${TEST_C_DARK_GRAY}..........${TEST_F_RESET} short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "a" "short description")"                   " ${TEST_C_BLUE}a${TEST_F_RESET}ype ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "typetoooooolong" "a" "short description")"       " ${TEST_C_GREEN}a${TEST_F_RESET}ypetoooooolong ${TEST_C_DARK_GRAY}${TEST_F_RESET} short description" $LINENO
 
-    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "type" "a" "short description")"                  " ${TEST_C_GREEN}a${TEST_F_RESET}ype      short description" $LINENO
-    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "ab" "short description")"                  " ${TEST_C_BLUE}ab${TEST_F_RESET}pe      short description" $LINENO
-    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "type" "abctoooloong" "short description")"       " ${TEST_C_GREEN}abctoooloong${TEST_F_RESET}short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "type" "a" "short description")"                  " ${TEST_C_GREEN}a${TEST_F_RESET}ype ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "ab" "short description")"                  " ${TEST_C_BLUE}ab${TEST_F_RESET}pe ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+    # TODO : not a good behavior with too long shorcut
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "type" "abctoooloong" "short description")"       " ${TEST_C_GREEN}abctoooloong${TEST_F_RESET}......${TEST_F_RESET} short description" $LINENO
 }
 
 function test_gx_print_col_fixed_width {
