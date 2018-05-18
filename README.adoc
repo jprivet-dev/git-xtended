@@ -69,7 +69,6 @@ $ . {BASHRC_PATH}
 ----------------------------------------------
 (1) Prompt with Git information      Disabled
 (2) Git aliases                      Disabled
-(3) Git hooks                        Disabled
 ----------------------------------------------
 - {GIT_PROJECT} -
 ----------------------------------------------
@@ -88,14 +87,6 @@ $ gx install
 > (1) Prompt with Git information [Enabled]
 > (2) Git aliases   [0] Disabled  [1] Enabled : 1
 > (2) Git aliases [Enabled]
-> (3) Git hooks   [0] Disabled  [1] Enabled : 1
-> (3) Git hooks [Enabled]
-> 'git config core.hooksPath' available from git version 2.9.0 onwards
-> Current git version = 2.1.4
-> 'git config core.hooksPath' is NOT available
-> Create hooks symlink instead (execute $ ln -sf {GX_ROOT}/git/hooks/prepare-commit-msg /home/path/to/my/project/.git/hooks/prepare-commit-msg)
-> Symlink '/home/path/to/my/project/.git/hooks/prepare-commit-msg' does not exist
-> Symlink created
 ----
 
 After installation, you will be able to see the {MAIN_TITLE} parameters in the global Git `.config` file. For example :
@@ -104,9 +95,6 @@ After installation, you will be able to see the {MAIN_TITLE} parameters in the g
 [gx "prompt"]
 	status = Enabled
 [gx "gitaliases"]
-	status = Enabled
-[gx "githooks"]
-	type = symlink
 	status = Enabled
 [alias]
     ...
@@ -176,9 +164,7 @@ $ gx help
         grep | git find <string> ........ Look for specified strings in the tracked files (case sensitive)
 ----
 
-=== Git hooks
-
-===== `prepare-commit-msg` : commits are documentation
+==== `git c` : commits are documentation
 
 [source,shell]
 ----
