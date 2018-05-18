@@ -24,8 +24,6 @@ function gx_hooks_pcmsg {
         subject_default="$@"
     fi
 
-    echo "${type_default} / ${subtype_default} / ${subject_default}"
-
     local type_split="."
     local main_split=": "
 
