@@ -15,6 +15,10 @@ function gx_hooks_pcmsg {
     declare -A types_index
     declare -A types_shortcut
 
+    echo "user.name  : $(git config user.name)"
+    echo "user.email : $(git config user.email)"
+    printf "%s\n" "${split}"
+
     echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}${type_split}${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}"
     printf "%s\n" "${split}"
 
