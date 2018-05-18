@@ -23,7 +23,6 @@ source ~/git-xtended/gx.sh
 
 source ~/git-xtended/tests/test.tests.sh
 
-source ~/git-xtended/tests/bash.tests.sh
 source ~/git-xtended/tests/commands.tests.sh
 source ~/git-xtended/tests/colors.tests.sh
 source ~/git-xtended/tests/prompt.tests.sh
