@@ -70,7 +70,7 @@ function gx_hooks_pcmsg {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} : "
+        echo -e -n "${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec < /dev/tty
         read choise_type_subtype_index
@@ -131,7 +131,7 @@ function gx_hooks_pcmsg {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) : [${files_listing}] "
+        echo -e -n "${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
 
         exec < /dev/tty
         read mainscope_choose
@@ -155,7 +155,7 @@ function gx_hooks_pcmsg {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} "
+        echo -e -n "${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec < /dev/tty
         read subject
