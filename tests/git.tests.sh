@@ -152,22 +152,6 @@ function test_gx_git_config_set_global_alias_sh_cmd {
     assert last-git-command-is "git config --global alias.${name} !sh -c ${value}" $LINENO
 }
 
-#function test_gx_git_config_hooks_help {
-#    local count_lines="$(gx_git_config_hooks_help | wc -l)"
-#    assert equals "${count_lines}" "3" $LINENO
-#
-#    assert first-line   "$(gx_git_config_hooks_help)"   "${TEST_C_WHITE}(3) Git hooks${TEST_F_RESET} :" $LINENO
-#    assert last-line    "$(gx_git_config_hooks_help)"   "${TEST_GX_PARAMS_TAB}XX ... WIP" $LINENO
-#}
-
-#function test_gx_git_config_workflow_help {
-#    local count_lines="$(gx_git_config_workflow_help | wc -l)"
-#    assert equals "${count_lines}" "3" $LINENO
-#
-#    assert first-line   "$(gx_git_config_workflow_help)"   "${TEST_C_WHITE}(4) Git workflow commands (Agility)${TEST_F_RESET} :" $LINENO
-#    assert last-line    "$(gx_git_config_workflow_help)"   "${TEST_GX_PARAMS_TAB}XX ... WIP" $LINENO
-#}
-
 function test_gx_git_config_aliases_help {
     local count_lines="$(gx_git_config_aliases_help | wc -l)"
     assert equals "${count_lines}" "23" $LINENO
