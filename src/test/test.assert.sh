@@ -5,7 +5,6 @@ function gx_test_assert_ok {
     local message=$2
     local current=$3
     local expected=$4
-    #local tab="  ${C_LIGHT_GREEN}|${F_RESET} "
     local tab="  | "
 
     if [[ "${TEST_GX_PARAMS_ASSERT_OK_SHOW_MESSAGE}" == 1 ]]; then
@@ -23,7 +22,6 @@ function gx_test_assert_nok {
     local message=$2
     local current=$3
     local expected=$4
-    #local tab="  ${C_LIGHT_RED}|${F_RESET} "
     local tab="  | "
 
     gx_test_pipeline_message_add_title_failure "${line}"
@@ -155,7 +153,6 @@ function gx_test_assert {
     gx_test_count_assertions_increment
 }
 
-# gx_test_assert_equals alias
 function assert {
     gx_test_assert "$@"
 }
