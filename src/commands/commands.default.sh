@@ -44,7 +44,7 @@ function gx_command_action_help {
     gx_install_activation_show_status
     gx_prompt_help
     gx_git_config_aliases_help
-    gx_git_config_hooks_help
+#    gx_git_config_hooks_help
 #    gx_git_config_workflow_help
 #    gx_bash_aliases_help
     gx_command_help
@@ -58,9 +58,9 @@ function gx_command_action_test {
     source ~/git-xtended/gx.tests.sh
 }
 
-function gx_command_action_githooks {
-    gx_command_githooks
-}
+#function gx_command_action_githooks {
+#    gx_command_githooks
+#}
 
 function gx_command_action_aliases {
     gx_command_config_git_aliases "$@"
