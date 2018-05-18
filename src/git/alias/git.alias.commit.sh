@@ -17,7 +17,7 @@ if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
     printf "%s\n" "${split}"
     git status -s -u
     printf "%s\n" "${split}"
-    
+
 #    git commit -m ""
     gx_hooks_pcmsg $@
     exit 1
