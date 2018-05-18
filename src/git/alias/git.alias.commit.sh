@@ -1,13 +1,25 @@
 #!/usr/bin/env bash
 
+source ~/git-xtended/params/default/params.sh
+source ~/git-xtended/src/git/hooks/git.hooks.pcmsg.params.sh
+source ~/git-xtended/src/git/hooks/git.hooks.pcmsg.sh
+source ~/git-xtended/src/git/commands/git.commands.sh
+source ~/git-xtended/src/utils/utils.print.sh
+
 indexes=$@
 split="--------------------------------------------------"
 
 if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
     printf "> git add all files & commit\n"
     git add .
+    printf "> & commit ...\n"
+
+    printf "%s\n" "${split}"
     git status -s -u
-    git commit -m ""
+    printf "%s\n" "${split}"
+
+#    git commit -m ""
+    gx_hooks_pcmsg $@
     exit 1
 fi
 
@@ -29,8 +41,9 @@ done
 
 printf "> & commit ...\n"
 
-printf "\n${split}\n"
+printf "%s\n" "${split}"
 git status -s -u
+printf "%s\n" "${split}"
 
-printf "\n${split}\n"
-git commit -m ""
+gx_hooks_pcmsg $@
+#git commit -m ""

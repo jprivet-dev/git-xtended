@@ -152,26 +152,41 @@ function test_gx_git_config_set_global_alias_sh_cmd {
     assert last-git-command-is "git config --global alias.${name} !sh -c ${value}" $LINENO
 }
 
-function test_gx_git_config_hooks_help {
-    local count_lines="$(gx_git_config_hooks_help | wc -l)"
-    assert equals "${count_lines}" "3" $LINENO
-
-    assert first-line   "$(gx_git_config_hooks_help)"   "${TEST_C_WHITE}(3) Git hooks${TEST_F_RESET} :" $LINENO
-    assert last-line    "$(gx_git_config_hooks_help)"   "${TEST_GX_PARAMS_TAB}XX ... WIP" $LINENO
-}
-
-#function test_gx_git_config_workflow_help {
-#    local count_lines="$(gx_git_config_workflow_help | wc -l)"
-#    assert equals "${count_lines}" "3" $LINENO
-#
-#    assert first-line   "$(gx_git_config_workflow_help)"   "${TEST_C_WHITE}(4) Git workflow commands (Agility)${TEST_F_RESET} :" $LINENO
-#    assert last-line    "$(gx_git_config_workflow_help)"   "${TEST_GX_PARAMS_TAB}XX ... WIP" $LINENO
-#}
-
 function test_gx_git_config_aliases_help {
     local count_lines="$(gx_git_config_aliases_help | wc -l)"
     assert equals "${count_lines}" "23" $LINENO
 
     assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}(2) Git aliases${TEST_F_RESET} :" $LINENO
-    assert last-line    "$(gx_git_config_aliases_help)"   "        grep | git ${TEST_C_LIGHT_CYAN}find${TEST_F_RESET} <string> ${TEST_C_DARK_GRAY}.....${TEST_F_RESET} Look for specified strings in the tracked files (case sensitive)" $LINENO
+    assert last-line    "$(gx_git_config_aliases_help)"   "        grep | git \e[96mfind\e[0m <string> \e[90m........\e[0m Look for specified strings in the tracked files (case sensitive)" $LINENO
+}
+
+function test_gx_hooks_pcmsg_print_type {
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}" "t" "a" "short description")"                      " ${TEST_C_GREEN}a${TEST_F_RESET} ${TEST_C_DARK_GRAY}..........${TEST_F_RESET} short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "a" "short description")"                   " ${TEST_C_BLUE}a${TEST_F_RESET}ype ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "typetoooooolong" "a" "short description")"       " ${TEST_C_GREEN}a${TEST_F_RESET}ypetoooooolong ${TEST_C_DARK_GRAY}${TEST_F_RESET} short description" $LINENO
+
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "type" "a" "short description")"                  " ${TEST_C_GREEN}a${TEST_F_RESET}ype ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "ab" "short description")"                  " ${TEST_C_BLUE}ab${TEST_F_RESET}pe ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+    # TODO : not a good behavior with too long shorcut
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "type" "abctoooloong" "short description")"       " ${TEST_C_GREEN}abctoooloong${TEST_F_RESET}......${TEST_F_RESET} short description" $LINENO
+}
+
+function test_gx_print_col_fixed_width {
+    assert equals "$(gx_print_col_fixed_width 0 "")"            " " $LINENO
+    assert equals "$(gx_print_col_fixed_width 0 "a")"           "a" $LINENO
+    assert equals "$(gx_print_col_fixed_width 0 1)"             "1" $LINENO
+
+    assert equals "$(gx_print_col_fixed_width 4 "")"            "    " $LINENO
+    assert equals "$(gx_print_col_fixed_width 4 "a")"           "a   " $LINENO
+    assert equals "$(gx_print_col_fixed_width 4 "abcd")"        "abcd" $LINENO
+    assert equals "$(gx_print_col_fixed_width 4 "abcdef")"      "abcdef" $LINENO
+
+    assert equals "$(gx_print_col_fixed_width 8 "")"            "        " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 "a")"           "a       " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 "abcd")"        "abcd    " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 "abcdefghi")"   "abcdefghi" $LINENO
+
+    assert equals "$(gx_print_col_fixed_width 8 1)"             "1       " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 1234)"          "1234    " $LINENO
+    assert equals "$(gx_print_col_fixed_width 8 123456789)"     "123456789" $LINENO
 }
