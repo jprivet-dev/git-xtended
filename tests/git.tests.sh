@@ -86,12 +86,12 @@ function test_gx_git_status_ahead_count {
 }
 
 function test_gx_git_status_behind {
-    assert equals "$(gx_git_status_behind current-branch remote-branch)" "0       88" $LINENO
+    assert equals "$(gx_git_status_behind current-branch remote-branch)" "10       32" $LINENO
     assert last-git-command-is "git rev-list --left-right --count remote-branch...current-branch" $LINENO
 }
 
 function test_gx_git_status_behind_count {
-    assert equals "$(gx_git_status_behind_count current-branch remote-branch)" "0" $LINENO
+    assert equals "$(gx_git_status_behind_count current-branch remote-branch)" "10" $LINENO
     assert last-git-command-is "git rev-list --left-right --count remote-branch...current-branch" $LINENO
 }
 
