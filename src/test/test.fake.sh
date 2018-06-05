@@ -55,7 +55,7 @@ function gx_test_fake_git_get_current_username {
 }
 
 function gx_test_fake_git_get_remote_branch_ref {
-    echo "remote-branch"
+    echo "${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}"
 }
 
 function gx_test_fake_git_last_args_set {
@@ -87,13 +87,13 @@ function gx_test_fake_git {
         "rev-parse --abbrev-ref HEAD")
             gx_test_fake_git_rev_parse_abbrev_ref_head
         ;;
-        "diff --stat ${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
+        "diff --stat ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}")
             gx_test_fake_git_diff_current_branch_origin_dev
         ;;
-        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}")
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}")
             gx_test_fake_git_revlist_current_remote
         ;;
-        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}...${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}...${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
             gx_test_fake_git_revlist_remote_current
         ;;
         "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}")
