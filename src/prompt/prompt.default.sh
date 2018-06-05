@@ -41,13 +41,14 @@ function gx_prompt_dir {
     echo "${C_CYAN}\\w${F_RESET}"
 }
 
-function gx_prompt_branch {
-    echo $(gx_prompt_branch_colors "$(gx_git_get_current_branch)")
+function gx_prompt_username_branch {
+    echo $(gx_prompt_username_branch_colors "$(gx_git_get_current_username)" "$(gx_git_get_current_branch)")
 }
 
-function gx_prompt_branch_colors {
-    local branch=$1
-    echo "${C_LIGHT_YELLOW}(${branch})${F_RESET}"
+function gx_prompt_username_branch_colors {
+    local username=$1
+    local branch=$2
+    echo "${C_LIGHT_MAGENTA}${username}(${F_RESET}${C_LIGHT_YELLOW}${branch}${F_RESET}${C_LIGHT_MAGENTA})${F_RESET}"
 }
 
 function gx_prompt_changes_count {
@@ -115,8 +116,15 @@ function gx_prompt_status {
 }
 
 function gx_prompt_behind {
-    local count="$(gx_git_status_behind_count $(gx_git_get_current_branch) $(gx_git_get_remote_branch_ref))"
-    echo $(gx_prompt_behind_colors "${count}")
+    local current_branch=$(gx_git_get_current_branch)
+    local remote_branch_ref=$(gx_git_get_remote_branch_ref)
+    local count=""
+
+    if [[ -n "${remote_branch_ref}" ]]; then
+        count="$(gx_git_status_behind_count ${current_branch} ${remote_branch_ref})"
+    fi
+
+    echo $(gx_prompt_behind_colors "${count}")    
 }
 
 function gx_prompt_behind_colors {
@@ -132,7 +140,14 @@ function gx_prompt_behind_colors {
 }
 
 function gx_prompt_ahead {
-    local count="$(gx_git_status_ahead_count $(gx_git_get_current_branch) $(gx_git_get_remote_branch_ref))"
+    local current_branch=$(gx_git_get_current_branch)
+    local remote_branch_ref=$(gx_git_get_remote_branch_ref)
+    local count=""
+
+    if [[ -n "${remote_branch_ref}" ]]; then
+        count="$(gx_git_status_ahead_count ${current_branch} ${remote_branch_ref})"
+    fi
+
     echo $(gx_prompt_ahead_colors "${count}")
 }
 
@@ -152,7 +167,7 @@ function gx_prompt_ps1_part1 {
     local ps1="$(gx_prompt_time) $(gx_prompt_userhost):$(gx_prompt_dir)"
 
     if [[ -d "$(gx_git_current_folder_is_repo)" ]]; then
-        ps1="${ps1} $(gx_prompt_branch)"
+        ps1="${ps1} $(gx_prompt_username_branch)"
 
         if [[ "$(gx_git_get_changes_nb)" != 0 ]]; then
             ps1="${ps1} $(gx_prompt_changes_count) $(gx_prompt_status)"

@@ -125,7 +125,7 @@ image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 $ gx help
 
 (1) Prompt with Git information :
-    (current-branch) ... Current git branch
+    username(branch) ... Current Git username & branch
     8≡ ................. All elements from git status
     1? ................. Untracked files
     3! ................. Changes not staged for commit

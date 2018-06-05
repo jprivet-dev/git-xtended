@@ -12,17 +12,12 @@ function gx_git_get_current_branch {
     git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
-function gx_git_get_current_user_name {
+function gx_git_get_current_username {
     git config user.name
 }
 
 function gx_git_get_remote_branch_ref {
-    if [[ "${GX_PARAMS_GIT_REMOTE_BRANCH_REF}" == "" ]]; then
-        gx_git_get_current_branch
-        return
-    fi
-
-    echo "${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
+    git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOVE_BRANCH_REF} 2> /dev/null
 }
 
 function gx_git_status {
