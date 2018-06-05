@@ -17,12 +17,7 @@ function gx_git_get_current_username {
 }
 
 function gx_git_get_remote_branch_ref {
-    if [[ "${GX_PARAMS_GIT_REMOTE_BRANCH_REF}" == "" ]]; then
-        gx_git_get_current_branch
-        return
-    fi
-
-    echo "${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
+    git config gx.remote_branch_ref 2> /dev/null
 }
 
 function gx_git_status {
