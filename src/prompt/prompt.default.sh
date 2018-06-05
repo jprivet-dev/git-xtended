@@ -41,6 +41,15 @@ function gx_prompt_dir {
     echo "${C_CYAN}\\w${F_RESET}"
 }
 
+function gx_prompt_username {
+    echo $(gx_prompt_username_colors "$(gx_git_get_current_user_name)")
+}
+
+function gx_prompt_username_colors {
+    local username=$1
+    echo "${C_LIGHT_YELLOW}(${username})${F_RESET}"
+}
+
 function gx_prompt_branch {
     echo $(gx_prompt_branch_colors "$(gx_git_get_current_branch)")
 }
