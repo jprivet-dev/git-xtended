@@ -72,8 +72,8 @@ function test_gx_git_status_ahead {
     assert equals "$(gx_git_status_ahead current-branch remote-branch)" "88      0" $LINENO
     assert last-git-command-is "git rev-list --left-right --count current-branch...remote-branch" $LINENO
 
-    assert equals "$(gx_git_status_ahead current-branch wrong-remote-branch)" "" $LINENO
-    assert last-git-command-is "git rev-list --left-right --count current-branch...wrong-remote-branch" $LINENO
+    assert equals "$(gx_git_status_ahead current-branch ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK})" "" $LINENO
+    assert last-git-command-is "git rev-list --left-right --count current-branch...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}" $LINENO
 }
 
 function test_gx_git_status_ahead_count {
