@@ -55,7 +55,7 @@ function gx_test_fake_git_get_current_username {
 }
 
 function gx_test_fake_git_get_remote_branch_ref {
-    echo "${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}"
+    echo "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}"
 }
 
 function gx_test_fake_git_last_args_set {
