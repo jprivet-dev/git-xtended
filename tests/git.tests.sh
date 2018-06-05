@@ -71,6 +71,9 @@ function test_gx_git_get_status_untracked_files_count {
 function test_gx_git_status_ahead {
     assert equals "$(gx_git_status_ahead current-branch remote-branch)" "88      0" $LINENO
     assert last-git-command-is "git rev-list --left-right --count current-branch...remote-branch" $LINENO
+
+    assert equals "$(gx_git_status_ahead current-branch nok-branch)" "" $LINENO
+    assert last-git-command-is "git rev-list --left-right --count current-branch...nok-branch" $LINENO
 }
 
 function test_gx_git_status_ahead_count {
