@@ -50,7 +50,7 @@ function gx_test_fake_git_rev_parse_git_dir {
     echo ".git"
 }
 
-function gx_test_fake_git_get_current_user_name {
+function gx_test_fake_git_get_current_username {
     echo "current-username"
 }
 
@@ -102,7 +102,7 @@ function gx_test_fake_git {
             gx_test_fake_git_rev_parse_git_dir
         ;;
         "config user.name")
-            gx_test_fake_git_get_current_user_name
+            gx_test_fake_git_get_current_username
         ;;
         "--version")
             return
