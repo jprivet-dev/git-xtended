@@ -12,7 +12,7 @@ function gx_git_get_current_branch {
     git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
-function gx_git_get_current_user_name {
+function gx_git_get_current_username {
     git config user.name
 }
 
