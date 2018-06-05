@@ -7,7 +7,7 @@ function test_gx_git_get_current_branch {
 
 function test_gx_git_get_remote_branch_ref {
     assert equals "$(gx_git_get_remote_branch_ref)" "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}" $LINENO
-    assert last-git-command-is "git config gx.remote_branch_ref" $LINENO
+    assert last-git-command-is "git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOVE_BRANCH_REF}" $LINENO
 }
 
 function test_gx_git_status {
