@@ -17,7 +17,7 @@ function gx_git_get_current_username {
 }
 
 function gx_git_get_remote_branch_ref {
-    git config gx.remote_branch_ref 2> /dev/null
+    git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOVE_BRANCH_REF} 2> /dev/null
 }
 
 function gx_git_status {
