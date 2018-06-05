@@ -98,22 +98,10 @@ function test_gx_prompt_status {
 }
 
 function test_gx_prompt_behind {
-    local restore="${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
-    assert equals "$(gx_prompt_behind)" "${TEST_GX_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
     assert equals "$(gx_prompt_behind)" "${TEST_GX_PARAMS_PROMPT_BEHIND}" $LINENO
 }
 
 function test_gx_prompt_ahead {
-    local restore="${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
-    assert equals "$(gx_prompt_ahead)" "${TEST_GX_PARAMS_PROMPT_AHEAD_NOK}" $LINENO
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
     assert equals "$(gx_prompt_ahead)" "${TEST_GX_PARAMS_PROMPT_AHEAD}" $LINENO
 }
 
