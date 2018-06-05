@@ -148,6 +148,10 @@ function test_gx_prompt_behind_colors {
     assert equals "$(gx_prompt_behind_colors "")" "${TEST_GX_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
 }
 
+function test_gx_prompt_username_colors {
+    assert equals "$(gx_prompt_username_colors "current-username")" "${TEST_GX_PARAMS_PROMPT_USERNAME}" $LINENO
+}
+
 function test_gx_prompt_branch_colors {
     assert equals "$(gx_prompt_branch_colors "current-branch")" "${TEST_GX_PARAMS_PROMPT_BRANCH}" $LINENO
 }
