@@ -140,7 +140,7 @@ function test_gx_prompt_ahead_colors {
 }
 
 function test_gx_prompt_behind_colors {
-    assert equals "$(gx_prompt_behind_colors 0)" "${TEST_GX_PARAMS_PROMPT_BEHIND}" $LINENO
+    assert equals "$(gx_prompt_behind_colors "10")" "${TEST_GX_PARAMS_PROMPT_BEHIND}" $LINENO
     assert equals "$(gx_prompt_behind_colors "")" "${TEST_GX_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
 }
 
