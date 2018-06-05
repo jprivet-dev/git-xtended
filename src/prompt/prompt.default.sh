@@ -41,13 +41,14 @@ function gx_prompt_dir {
     echo "${C_CYAN}\\w${F_RESET}"
 }
 
-function gx_prompt_username {
-    echo $(gx_prompt_username_colors "$(gx_git_get_current_user_name)")
+function gx_prompt_username_branch {
+    echo $(gx_prompt_username_branch_colors "$(gx_git_get_current_user_name)" "$(gx_git_get_current_branch)")
 }
 
-function gx_prompt_username_colors {
+function gx_prompt_username_branch_colors {
     local username=$1
-    echo "${C_LIGHT_YELLOW}(${username})${F_RESET}"
+    local branch=$2
+    echo "${C_LIGHT_MAGENTA}${username}(${F_RESET}${C_LIGHT_YELLOW}${branch}${F_RESET}${C_LIGHT_MAGENTA})${F_RESET}"
 }
 
 function gx_prompt_branch {
@@ -161,7 +162,7 @@ function gx_prompt_ps1_part1 {
     local ps1="$(gx_prompt_time) $(gx_prompt_userhost):$(gx_prompt_dir)"
 
     if [[ -d "$(gx_git_current_folder_is_repo)" ]]; then
-        ps1="${ps1} $(gx_prompt_branch)"
+        ps1="${ps1} $(gx_prompt_username_branch)"
 
         if [[ "$(gx_git_get_changes_nb)" != 0 ]]; then
             ps1="${ps1} $(gx_prompt_changes_count) $(gx_prompt_status)"
