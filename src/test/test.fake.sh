@@ -96,10 +96,10 @@ function gx_test_fake_git {
         "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}...${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
             gx_test_fake_git_revlist_remote_current
         ;;
-        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...wrong-remote-branch")
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}")
             gx_test_fake_git_revlist_current_remote_nok
         ;;
-        "rev-list --left-right --count wrong-remote-branch...${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
+        "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}...${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}")
             gx_test_fake_git_revlist_remote_current_nok
         ;;
         "rev-parse --git-dir")
