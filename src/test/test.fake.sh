@@ -54,6 +54,10 @@ function gx_test_fake_git_get_current_username {
     echo "current-username"
 }
 
+function gx_test_fake_git_get_remote_branch_ref {
+    echo "remote-branch"
+}
+
 function gx_test_fake_git_last_args_set {
     echo "$*" > /tmp/gx_test_fake_git_last_args.sh
 }
@@ -103,6 +107,9 @@ function gx_test_fake_git {
         ;;
         "config user.name")
             gx_test_fake_git_get_current_username
+        ;;
+        "config gx.remote_branch_ref")
+            gx_test_fake_git_get_remote_branch_ref
         ;;
         "--version")
             return
