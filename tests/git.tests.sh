@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function test_gx_git_get_current_branch {
-    assert equals "$(gx_git_get_current_branch)" "${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}" $LINENO
+    assert equals "$(gx_git_get_current_branch)" "${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" $LINENO
     assert last-git-command-is "git rev-parse --abbrev-ref HEAD" $LINENO
 }
 
