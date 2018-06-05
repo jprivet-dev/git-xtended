@@ -51,15 +51,6 @@ function gx_prompt_username_branch_colors {
     echo "${C_LIGHT_MAGENTA}${username}(${F_RESET}${C_LIGHT_YELLOW}${branch}${F_RESET}${C_LIGHT_MAGENTA})${F_RESET}"
 }
 
-function gx_prompt_branch {
-    echo $(gx_prompt_branch_colors "$(gx_git_get_current_branch)")
-}
-
-function gx_prompt_branch_colors {
-    local branch=$1
-    echo "${C_LIGHT_YELLOW}(${branch})${F_RESET}"
-}
-
 function gx_prompt_changes_count {
     echo $(gx_prompt_changes_count_colors "$(gx_git_get_changes_nb)")
 }
