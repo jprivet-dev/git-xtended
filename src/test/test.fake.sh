@@ -108,7 +108,7 @@ function gx_test_fake_git {
         "config user.name")
             gx_test_fake_git_get_current_username
         ;;
-        "config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOVE_BRANCH_REF}")
+        "config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_BRANCH_REF}")
             gx_test_fake_git_get_remote_branch_ref
         ;;
         "--version")
