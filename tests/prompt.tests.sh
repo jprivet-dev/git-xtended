@@ -41,10 +41,6 @@ function test_gx_prompt_dir {
     assert equals "$(gx_prompt_dir)" "${TEST_GX_PARAMS_PROMPT_DIR}" $LINENO
 }
 
-function test_gx_prompt_branch {
-    assert equals "$(gx_prompt_branch)" "${TEST_GX_PARAMS_PROMPT_BRANCH}" $LINENO
-}
-
 function test_gx_prompt_changes_count {
     assert equals "$(gx_prompt_changes_count)" "${TEST_GX_PARAMS_PROMPT_COUNT}" $LINENO
 }
@@ -148,12 +144,8 @@ function test_gx_prompt_behind_colors {
     assert equals "$(gx_prompt_behind_colors "")" "${TEST_GX_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
 }
 
-function test_gx_prompt_username_colors {
-    assert equals "$(gx_prompt_username_colors "current-username")" "${TEST_GX_PARAMS_PROMPT_USERNAME}" $LINENO
-}
-
-function test_gx_prompt_branch_colors {
-    assert equals "$(gx_prompt_branch_colors "current-branch")" "${TEST_GX_PARAMS_PROMPT_BRANCH}" $LINENO
+function test_gx_prompt_username_branch_colors {
+    assert equals "$(gx_prompt_username_branch_colors "current-username" "current-branch")" "${TEST_GX_PARAMS_PROMPT_USERNAME_BRANCH}" $LINENO
 }
 
 function test_gx_prompt_changes_count_colors {
