@@ -8,6 +8,7 @@ function gx_prompt_help {
     local status_c=$(gx_prompt_status_to_be_commited_colors "2" "1" "1")
     local behind=$(gx_prompt_behind_colors "3")
     local ahead=$(gx_prompt_ahead_colors "42")
+    local remote_branch_ref=$(gx_git_get_remote_branch_ref)
 
     gx_print_colors "${C_WHITE}${GX_PARAMS_LABEL_PROMPT}${F_RESET} :"
     gx_prompt_help_line "${username_branch}"    ...                   "Current Git username & branch"
@@ -15,8 +16,8 @@ function gx_prompt_help {
     gx_prompt_help_line "${status_u}"           .................     "Untracked files"
     gx_prompt_help_line "${status_s}"           .................     "Changes not staged for commit"
     gx_prompt_help_line "${status_c}"           .........             "Changes to be committed"
-    gx_prompt_help_line "${behind}"             .................     "Commits behind remote branch reference"
-    gx_prompt_help_line "${ahead}"              ................      "Commits ahead remote branch reference"
+    gx_prompt_help_line "${behind}"             .................     "Commits behind remote branch reference (${remote_branch_ref})"
+    gx_prompt_help_line "${ahead}"              ................      "Commits ahead remote branch reference (${remote_branch_ref})"
     echo
 }
 
