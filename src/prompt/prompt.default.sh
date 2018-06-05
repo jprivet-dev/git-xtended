@@ -42,7 +42,7 @@ function gx_prompt_dir {
 }
 
 function gx_prompt_username_branch {
-    echo $(gx_prompt_username_branch_colors "$(gx_git_get_current_user_name)" "$(gx_git_get_current_branch)")
+    echo $(gx_prompt_username_branch_colors "$(gx_git_get_current_username)" "$(gx_git_get_current_branch)")
 }
 
 function gx_prompt_username_branch_colors {
