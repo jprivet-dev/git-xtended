@@ -39,7 +39,7 @@ function gx_test_fake_git_revlist_current_remote {
 }
 
 function gx_test_fake_git_revlist_remote_current {
-    echo "0       88"
+    echo "10       32"
 }
 
 function gx_test_fake_git_revlist_current_remote_nok {
