@@ -51,7 +51,7 @@ function gx_test_fake_git_rev_parse_git_dir {
 }
 
 function gx_test_fake_git_get_current_user_name {
-    echo "username"
+    echo "current-username"
 }
 
 function gx_test_fake_git_last_args_set {
