@@ -41,10 +41,6 @@ function test_gx_prompt_dir {
     assert equals "$(gx_prompt_dir)" "${TEST_GX_PARAMS_PROMPT_DIR}" $LINENO
 }
 
-function test_gx_prompt_branch {
-    assert equals "$(gx_prompt_branch)" "${TEST_GX_PARAMS_PROMPT_BRANCH}" $LINENO
-}
-
 function test_gx_prompt_changes_count {
     assert equals "$(gx_prompt_changes_count)" "${TEST_GX_PARAMS_PROMPT_COUNT}" $LINENO
 }
@@ -102,22 +98,10 @@ function test_gx_prompt_status {
 }
 
 function test_gx_prompt_behind {
-    local restore="${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
-    assert equals "$(gx_prompt_behind)" "${TEST_GX_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
     assert equals "$(gx_prompt_behind)" "${TEST_GX_PARAMS_PROMPT_BEHIND}" $LINENO
 }
 
 function test_gx_prompt_ahead {
-    local restore="${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}"
-    assert equals "$(gx_prompt_ahead)" "${TEST_GX_PARAMS_PROMPT_AHEAD_NOK}" $LINENO
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${restore}"
     assert equals "$(gx_prompt_ahead)" "${TEST_GX_PARAMS_PROMPT_AHEAD}" $LINENO
 }
 
@@ -126,7 +110,7 @@ function test_gx_prompt_help {
     assert equals "${count_lines}" "9" $LINENO
 
     assert first-line   "$(gx_prompt_help)"   "${TEST_C_WHITE}(1) Prompt with Git information${TEST_F_RESET} :" $LINENO
-    assert last-line    "$(gx_prompt_help)"   "${TEST_GX_PARAMS_TAB}${TEST_C_LIGHT_GRAY}42↑${TEST_F_RESET} ${TEST_C_DARK_GRAY}................${TEST_F_RESET} Commits ahead remote branch reference" $LINENO
+    assert last-line    "$(gx_prompt_help)"   "${TEST_GX_PARAMS_TAB}${TEST_C_LIGHT_GRAY}42↑${TEST_F_RESET} ${TEST_C_DARK_GRAY}................${TEST_F_RESET} Commits ahead remote branch reference (${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF})" $LINENO
 
 }
 
@@ -144,12 +128,12 @@ function test_gx_prompt_ahead_colors {
 }
 
 function test_gx_prompt_behind_colors {
-    assert equals "$(gx_prompt_behind_colors 0)" "${TEST_GX_PARAMS_PROMPT_BEHIND}" $LINENO
+    assert equals "$(gx_prompt_behind_colors "10")" "${TEST_GX_PARAMS_PROMPT_BEHIND}" $LINENO
     assert equals "$(gx_prompt_behind_colors "")" "${TEST_GX_PARAMS_PROMPT_BEHIND_NOK}" $LINENO
 }
 
-function test_gx_prompt_branch_colors {
-    assert equals "$(gx_prompt_branch_colors "current-branch")" "${TEST_GX_PARAMS_PROMPT_BRANCH}" $LINENO
+function test_gx_prompt_username_branch_colors {
+    assert equals "$(gx_prompt_username_branch_colors "current-username" "current-branch")" "${TEST_GX_PARAMS_PROMPT_USERNAME_BRANCH}" $LINENO
 }
 
 function test_gx_prompt_changes_count_colors {

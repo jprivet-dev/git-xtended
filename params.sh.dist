@@ -1,3 +1,1 @@
 #!/usr/bin/env bash
-
-GX_PARAMS_GIT_REMOTE_BRANCH_REF="origin/dev"

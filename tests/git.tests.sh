@@ -1,20 +1,13 @@
 #!/usr/bin/env bash
 
 function test_gx_git_get_current_branch {
-    assert equals "$(gx_git_get_current_branch)" "${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}" $LINENO
+    assert equals "$(gx_git_get_current_branch)" "${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" $LINENO
     assert last-git-command-is "git rev-parse --abbrev-ref HEAD" $LINENO
 }
 
 function test_gx_git_get_remote_branch_ref {
-    local last_value="${GX_PARAMS_GIT_REMOTE_BRANCH_REF}"
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF=""
-    assert equals "$(gx_git_get_remote_branch_ref)" "${TEST_GX_PARAMS_FAKE_GIT_GET_CURRENT_BRANCH}" $LINENO
-    assert last-git-command-is "git rev-parse --abbrev-ref HEAD" $LINENO
-
-    GX_PARAMS_GIT_REMOTE_BRANCH_REF="${last_value}"
-    assert equals "$(gx_git_get_remote_branch_ref)" "${TEST_GX_PARAMS_FAKE_GIT_GET_REMOTE_BRANCH_REF}" $LINENO
-    assert last-git-command-is "" $LINENO
+    assert equals "$(gx_git_get_remote_branch_ref)" "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}" $LINENO
+    assert last-git-command-is "git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOVE_BRANCH_REF}" $LINENO
 }
 
 function test_gx_git_status {
@@ -31,7 +24,7 @@ function test_gx_git_get_changes_nb {
 function test_gx_git_diff_current_branch_origin_dev {
     local count_lines="$(gx_git_diff_current_branch_origin_dev | wc -l)"
     assert equals "${count_lines}" "5" $LINENO
-    assert last-git-command-is "git diff --stat remote-branch" $LINENO
+    assert last-git-command-is "git diff --stat ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}" $LINENO
 }
 
 function test_gx_git_get_status_changes_to_be_committed_count {
@@ -76,23 +69,26 @@ function test_gx_git_get_status_untracked_files_count {
 }
 
 function test_gx_git_status_ahead {
-    assert equals "$(gx_git_status_ahead current-branch remote-branch)" "88      0" $LINENO
-    assert last-git-command-is "git rev-list --left-right --count current-branch...remote-branch" $LINENO
+    assert equals "$(gx_git_status_ahead ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF})" "88      0" $LINENO
+    assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}" $LINENO
+
+    assert equals "$(gx_git_status_ahead ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK})" "" $LINENO
+    assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}" $LINENO
 }
 
 function test_gx_git_status_ahead_count {
-    assert equals "$(gx_git_status_ahead_count current-branch remote-branch)" "88" $LINENO
-    assert last-git-command-is "git rev-list --left-right --count current-branch...remote-branch" $LINENO
+    assert equals "$(gx_git_status_ahead_count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF})" "88" $LINENO
+    assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}" $LINENO
 }
 
 function test_gx_git_status_behind {
-    assert equals "$(gx_git_status_behind current-branch remote-branch)" "0       88" $LINENO
-    assert last-git-command-is "git rev-list --left-right --count remote-branch...current-branch" $LINENO
+    assert equals "$(gx_git_status_behind ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF})" "10       32" $LINENO
+    assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}...${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" $LINENO
 }
 
 function test_gx_git_status_behind_count {
-    assert equals "$(gx_git_status_behind_count current-branch remote-branch)" "0" $LINENO
-    assert last-git-command-is "git rev-list --left-right --count remote-branch...current-branch" $LINENO
+    assert equals "$(gx_git_status_behind_count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF})" "10" $LINENO
+    assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}...${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" $LINENO
 }
 
 function test_gx_git_status_get_filenames_inline {
