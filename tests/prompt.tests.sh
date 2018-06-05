@@ -122,7 +122,7 @@ function test_gx_prompt_help {
     assert equals "${count_lines}" "9" $LINENO
 
     assert first-line   "$(gx_prompt_help)"   "${TEST_C_WHITE}(1) Prompt with Git information${TEST_F_RESET} :" $LINENO
-    assert last-line    "$(gx_prompt_help)"   "${TEST_GX_PARAMS_TAB}${TEST_C_LIGHT_GRAY}42↑${TEST_F_RESET} ${TEST_C_DARK_GRAY}................${TEST_F_RESET} Commits ahead remote branch reference" $LINENO
+    assert last-line    "$(gx_prompt_help)"   "${TEST_GX_PARAMS_TAB}${TEST_C_LIGHT_GRAY}42↑${TEST_F_RESET} ${TEST_C_DARK_GRAY}................${TEST_F_RESET} Commits ahead remote branch reference (${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF})" $LINENO
 
 }
 
