@@ -116,8 +116,15 @@ function gx_prompt_status {
 }
 
 function gx_prompt_behind {
-    local count="$(gx_git_status_behind_count $(gx_git_get_current_branch) $(gx_git_get_remote_branch_ref))"
-    echo $(gx_prompt_behind_colors "${count}")
+    local current_branch=$(gx_git_get_current_branch)
+    local remote_branch_ref=$(gx_git_get_remote_branch_ref)
+    local count=""
+
+    if [[ -n "${remote_branch_ref}" ]]; then
+        count="$(gx_git_status_behind_count ${current_branch} ${remote_branch_ref})"
+    fi
+
+    echo $(gx_prompt_behind_colors "${count}")    
 }
 
 function gx_prompt_behind_colors {
