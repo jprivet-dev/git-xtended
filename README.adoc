@@ -28,11 +28,20 @@ toc::[]
 
 == Presentation
 
+**{MAIN_TITLE}** brings together in a single entity my various "facilities" developed in recent years to exploit Git more quickly.
+
 **{MAIN_TITLE}** facilitates recurring Git actions in shell :
 
 . Project status display with main **Git information in prompt**
 . **Aliases** of recurring Git commands
 . **Formatted commit message** (without `prepare-commit-msg` hook)
+
+== Roadmap & Public Alpha Version
+
+**{MAIN_TITLE}** has recently been released (June 2018) in **public alpha version**.
+This means that this version is being tested and stabilized with some people (Thank you!).
+
+Comments, suggestions? Feel free to make them to me in the https://github.com/jprivet-dev/git-xtended/issues[Git issues section of that project] :)
 
 == Installation
 
