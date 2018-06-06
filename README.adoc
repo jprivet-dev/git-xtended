@@ -30,7 +30,7 @@ toc::[]
 
 **{MAIN_TITLE}** brings together in a single entity my various "facilities" developed in recent years to exploit Git more quickly.
 
-It facilitates **recurring Git actions in shell** :
+It facilitates **recurring Git actions in shell**:
 
 . Project status display with main **Git information in prompt**
 . **Aliases** of recurring Git commands
@@ -55,7 +55,7 @@ $ git clone {GIT_CLONE_PROJECT}
 
 *2) Import `{GX_ENTRY_FILE}`*
 
-Copy the following code at the end of your file `{BASHRC_PATH}` (or in `{BASH_PROFILE_PATH}`) :
+Copy the following code at the end of your file `{BASHRC_PATH}` (or in `{BASH_PROFILE_PATH}`):
 
 [subs=attributes+]
 ----
@@ -63,7 +63,7 @@ Copy the following code at the end of your file `{BASHRC_PATH}` (or in `{BASH_PR
 [[ -f {GX_ENTRY_FILE_PATH} ]] && source {GX_ENTRY_FILE_PATH}
 ----
 
-*3) Reload `{BASHRC_PATH}` (or `{BASH_PROFILE_PATH}`) : avoid logout and back to the shell*
+*3) Reload `{BASHRC_PATH}` (or `{BASH_PROFILE_PATH}`): avoid logout and back to the shell*
 
 [subs=attributes+]
 ----
@@ -91,17 +91,17 @@ $ gx install
 
 {MAIN_TITLE} install (Global configuration)
 
-> Prompt with Git information   [0] Disabled  [1] Enabled : 1
+> Prompt with Git information  [0] Disabled  [1] Enabled : 1
 > Prompt with Git information = Enabled
-> Remote branch reference  : origin/dev
+> Remote branch reference : origin/dev
 > Remote branch reference = origin/dev
-> Git aliases   [0] Disabled  [1] Enabled : 1
+> Git aliases  [0] Disabled  [1] Enabled : 1
 > Git aliases = Enabled
 ----
 
 *5) See {MAIN_TITLE} configuration*
 
-After installation, you will be able to see the **{MAIN_TITLE}** parameters in the global Git `.config` file :
+After installation, you will be able to see the **{MAIN_TITLE}** parameters in the global Git `.config` file:
 
 ----
 [gx]
@@ -112,7 +112,7 @@ After installation, you will be able to see the **{MAIN_TITLE}** parameters in t
     ...
 ----
 
-You can also find the `gx` configuration :
+You can also print the `gx` configuration in shell:
 
 ----
 $ gx config
@@ -121,7 +121,7 @@ gx.remote-branch-ref=origin/dev
 gx.gitaliases-status=Enabled
 ----
 
-You can see the whole git configuration (Global & Local) :
+You can see the whole git configuration (Global & Local):
 
 ----
 $ git config --list
@@ -140,7 +140,7 @@ $ gx reload
 
 === Prompt with Git information
 
-**{MAIN_TITLE}** changes the prompt (`PS1`) and adds information about Git :
+**{MAIN_TITLE}** changes the prompt (`PS1`) and adds information about Git:
 
 image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 
@@ -161,7 +161,7 @@ $ gx help
 
 ==== Prompt : `remote branch reference` configuration
 
-The `remote branch reference` is configured at installation (`$ gx install`), in a global way :
+The `remote branch reference` is configured at installation (`$ gx install`), in a global way:
 
 ----
 $ cd path/to/my/repo
@@ -171,7 +171,7 @@ gx.remote-branch-ref=origin/dev
 gx.gitaliases-status=Enabled
 ----
 
-You can configure a `remote branch reference` per Git repository :
+You can configure a `remote branch reference` per Git repository:
 
 ----
 $ cd path/to/my/repo
@@ -186,7 +186,7 @@ gx.gitaliases-status=Enabled
 gx.remote-branch-ref=origin/myremotebranch  <== local config
 ----
 
-If necessary, delete the local configuration :
+If necessary, delete the local configuration:
 
 ----
 $ cd path/to/my/repo
@@ -243,7 +243,7 @@ $ gx help
 
 ==== `git c` : commits are documentation
 
-**{MAIN_TITLE}** proposes a **commit message formatting system** (without `prepare-commit-msg` hook) :
+**{MAIN_TITLE}** proposes a **commit message formatting system** (without `prepare-commit-msg` hook):
 
 ----
 $ git c
@@ -285,7 +285,7 @@ MSG = <type*>.<subtype>(<scope*>): <subject*>
 
 First, you will have to choose a **type** (mandatory) and a **subtype** (not mandatory).
 To do so, type the corresponding **shortcuts indicated in color and underlined** in shell (and unfortunately not in Github in this adoc file !).
-For example :
+For example:
 
 ----
 do      => docs(...)
@@ -297,21 +297,21 @@ t r     => tpl.refactor(...)
 
 After **choosing the type and subtype**, you will have to **choose the scope**.
 It will be suggested to you **the names of files in progress**.
-You will be able to modify it scope with your suitability (**To keep the suggestion**, simply tap **Enter**) :
+You will be able to modify it scope with your suitability (**To keep the suggestion**, simply tap **Enter**):
 
 ----
 --------------------------------------------------
 docs(<scope*>) <<< [README.adoc] |
 ----
 
-Then, indicate the **subject** :
+Then, indicate the **subject**:
 
 ----
 --------------------------------------------------
 docs(README.adoc): <subject*> <<< update licence section|
 ----
 
-And tap **Enter** :
+And tap **Enter**:
 
 [subs=attributes+]
 ----
@@ -355,7 +355,7 @@ $ git s
 3)  M path/to/my/file3.sh
 ----
 
-Instead of specifying the name of the file you want to commit, just *specify the index* :
+Instead of specifying the name of the file you want to commit, just *specify the index*:
 
 ----
 $ git c 2
@@ -371,7 +371,7 @@ M  path/to/my/file2.sh
 # Then follow the steps of the formatted commit message
 ----
 
-If you specify *no index*, the *first file* will be chosen by default :
+If you specify *no index*, the *first file* will be chosen by default:
 
 ----
 $ git c
@@ -387,7 +387,7 @@ M  path/to/my/file1.sh
 # Then follow the steps of the formatted commit message
 ----
 
-However, if you have already added files, there will be no default addition. Example :
+However, if you have already added files, there will be no default addition. Example:
 
 ----
 $ git add path/to/my/file3.sh
@@ -423,21 +423,21 @@ M  path/to/my/file3.sh
 === Customization : override default settings
 
 you can **override all variables** in the folder `{GX_ROOT}/params/default/`.
-To do this, duplicate the following parameters file :
+To do this, duplicate the following parameters file:
 
 [subs=attributes+]
 ----
 $ cp {GX_ROOT}/params.sh.dist {GX_ROOT}/params.sh
 ----
 
-And copy in `{GX_ROOT}/params.sh` the variables you want to change. For example, you can change Git aliases :
+And copy in `{GX_ROOT}/params.sh` the variables you want to change. For example, you can change Git aliases:
 
 ----
 GX_PARAMS_GIT_ALIAS_L="lg"        # instead of "l"
 GX_PARAMS_GIT_ALIAS_UNTRACKED="u" # instead of "untracked"
 ----
 
-To take into account its overloads, you will have to reload **{MAIN_TITLE}** :
+To take into account its overloads, you will have to reload **{MAIN_TITLE}**:
 
 ----
 $ gx reload
