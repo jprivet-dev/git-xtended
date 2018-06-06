@@ -148,6 +148,47 @@ Prompt with Git information :
     42↑ ................ Commits ahead remote branch reference (origin/dev)
 ----
 
+==== "Remote branch reference" configuration
+
+The remote branch reference is configured at installation (`$ gx install`), in a global way :
+
+----
+$ cd path/to/my/repo
+$ gx config
+gx.prompt-status=Enabled
+gx.remote-branch-ref=origin/dev
+gx.gitaliases-status=Enabled
+----
+
+You can configure a remote branch reference per Git repository :
+
+----
+$ cd path/to/my/repo
+$ git config gx.remote-branch-ref origin/myremotebranch
+----
+
+----
+$ gx config
+gx.prompt-status=Enabled
+gx.remote-branch-ref=origin/dev             <== global config
+gx.gitaliases-status=Enabled
+gx.remote-branch-ref=origin/myremotebranch  <== local config
+----
+
+To delete the local configuration, execute the following command :
+
+----
+$ cd path/to/my/repo
+$ git config --unset gx.remote-branch-ref
+----
+
+----
+$ gx config
+gx.prompt-status=Enabled
+gx.remote-branch-ref=origin/dev             <== global config
+gx.gitaliases-status=Enabled
+----
+
 === Git aliases
 
 ----
