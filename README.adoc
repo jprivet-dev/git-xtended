@@ -234,6 +234,8 @@ $ gx help
 
 ==== `git c` : commits are documentation
 
+**{MAIN_TITLE}** proposes a **commit message formatting system** (without `prepare-commit-msg` hook) :
+
 ----
 $ git c
 > git add (1) README.adoc
@@ -272,19 +274,23 @@ MSG = <type*>.<subtype>(<scope*>): <subject*>
 <type*>.<subtype> <<< do|
 ----
 
-+++<u>underline me</u>+++ is underlined.
-
-pass:[<u>underline me</u>] is also underlined.
+After **choosing the type and subtype** (type the shortcut indicated in color and underline), you will have to **choose the scope**.
+It will be suggested to you **the names of files in progress**.
+You will be able to modify it scope with your suitability (**To keep the suggestion**, simply tap **Enter**) :
 
 ----
 --------------------------------------------------
 docs(<scope*>) <<< [README.adoc] |
 ----
 
+Then, indicate the **subject** :
+
 ----
 --------------------------------------------------
 docs(README.adoc): <subject*> <<< update licence section|
 ----
+
+And tap **Enter** :
 
 [subs=attributes+]
 ----
@@ -294,9 +300,11 @@ docs(README.adoc): update licence section
 
 [70-gx-config-enhancement dd0a2c4] docs(README.adoc): update licence section
  1 file changed, 1 insertion(+), 1 deletion(-)
-{PROMPT_PS1}
+{PROMPT_PS1_NO_CHANGE}
 $
 ----
+
+Your changes have been saved !
 
 === {MAIN_TITLE} commands
 
