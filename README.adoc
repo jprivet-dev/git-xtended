@@ -41,7 +41,7 @@ toc::[]
 **{MAIN_TITLE}** has recently been released (June 2018) in **public alpha version**.
 This means that this version is being tested and stabilized with some people (Thank you!).
 
-Comments, suggestions? Feel free to make them to me in the https://github.com/jprivet-dev/git-xtended/issues[Git issues section of that project] :)
+Comments, suggestions? Feel free to make them to me in the {GIT_PROJECT}/issues[Git issues section of that project] :)
 
 == Installation
 
@@ -452,7 +452,11 @@ WARNING: For the moment this overload system is not complete. Work is still in p
 . https://www.atlassian.com/blog/git/advanced-git-aliases
 . https://www.atlassian.com/blog/git/git-automatic-merges-with-server-side-hooks-for-the-win
 
+== License
 
+**{MAIN_TITLE}** is released under the **MIT License**
+
+{GIT_PROJECT}/blob/master/LICENSE
 
 
 
