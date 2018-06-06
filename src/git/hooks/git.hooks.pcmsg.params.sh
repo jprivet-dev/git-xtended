@@ -25,7 +25,7 @@ _GX_HOOKS_PCMSG_TYPES=(
 
 _GX_HOOKS_PCMSG_SUBTYPES=(
     'c/clean/Remove pointless code or files'
-    'd/debug/Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !'
+    'd/debug/Adding code for debugging (console.log, dpm, var_dump, ...), to remove later!'
     'f/fix/Bug fix'
     'g/generate/Auto-generate code (Doctrine, PhoneGap, Ionic, ...)'
     'p/perf/A code change that improves performance'

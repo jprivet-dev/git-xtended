@@ -118,7 +118,7 @@ function gx_test_fake_git {
             return
         ;;
         *)
-            echo "[ ERROR !!! No Git fake command for 'git ${args}' ]"
+            echo "[ ERROR!!! No Git fake command for 'git ${args}' ]"
         ;;
     esac
 }

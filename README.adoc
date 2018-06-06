@@ -272,7 +272,7 @@ MSG = <type*>.<subtype>(<scope*>): <subject*>
 
 <subtype>
  clean ...... Remove pointless code or files
- debug ...... Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !
+ debug ...... Adding code for debugging (console.log, dpm, var_dump, ...), to remove later!
  fix ........ Bug fix
  generate ... Auto-generate code (Doctrine, PhoneGap, Ionic, ...)
  perf ....... A code change that improves performance
@@ -284,7 +284,7 @@ MSG = <type*>.<subtype>(<scope*>): <subject*>
 ----
 
 First, you will have to choose a **type** (mandatory) and a **subtype** (not mandatory).
-To do so, type the corresponding **shortcuts indicated in color and underlined** in shell (and unfortunately not in Github in this adoc file !).
+To do so, type the corresponding **shortcuts indicated in color and underlined** in shell (and unfortunately not in Github in this adoc file!).
 For example:
 
 ----
@@ -325,7 +325,7 @@ docs(README.adoc): update licence section
 $
 ----
 
-Your changes have been saved !
+Your changes have been saved!
 
 === {MAIN_TITLE} commands
 
