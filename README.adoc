@@ -283,7 +283,19 @@ MSG = <type*>.<subtype>(<scope*>): <subject*>
 <type*>.<subtype> <<< do|
 ----
 
-After **choosing the type and subtype** (type the shortcut indicated in color and underline), you will have to **choose the scope**.
+First, you will have to choose a **type** (mandatory) and a **subtype** (not mandatory).
+To do so, type the corresponding **shortcuts indicated in color and underlined** in shell (and unfortunately not in Github in this adoc file !).
+For example :
+
+----
+do      => docs(...)
+d f     => dev.fix(...)
+i       => integ(...)
+t r     => tpl.refactor(...)
+...
+----
+
+After **choosing the type and subtype**, you will have to **choose the scope**.
 It will be suggested to you **the names of files in progress**.
 You will be able to modify it scope with your suitability (**To keep the suggestion**, simply tap **Enter**) :
 
