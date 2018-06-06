@@ -10,6 +10,7 @@
 :GIT_CLONE_PROJECT: git@github.com:jprivet-dev/git-xtended.git
 :PROMPT_PS1: 09:15:27 user@host:~/path/project username(branch) 8≡ 1? 3! c(2 +1 -1) 3↓ 42↑
 :PROMPT_PS1_ERRORS: 09:15:27 user@host:~/path/project username(branch) 8≡ 1? 3! c(2 +1 -1) x↓ x↑
+:PROMPT_PS1_NO_CHANGE: 09:15:27 user@host:~/path/project username(branch) 0↓ 10↑
 
 = {MAIN_TITLE} ({VERSION})
 :numbered:
@@ -234,7 +235,17 @@ $ gx help
 ==== `git c` : commits are documentation
 
 ----
-$ git c 
+$ git c
+> git add (1) README.adoc
+> & commit ...
+--------------------------------------------------
+M  README.adoc
+--------------------------------------------------
+user.name  : username
+user.email : user@gmail.com
+--------------------------------------------------
+MSG = <type*>.<subtype>(<scope*>): <subject*>
+--------------------------------------------------
 
 <type*>
  archi ...... Changes application architecture (folder position, name, ...)
@@ -257,7 +268,34 @@ $ git c
  refactor ... A code change that neither fixes a bug nor adds a feature
  style ...... Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
 
-MSG = <type*>.<subtype>(<scope*>): <subject*>
+--------------------------------------------------
+<type*>.<subtype> <<< do|
+----
+
++++<u>underline me</u>+++ is underlined.
+
+pass:[<u>underline me</u>] is also underlined.
+
+----
+--------------------------------------------------
+docs(<scope*>) <<< [README.adoc] |
+----
+
+----
+--------------------------------------------------
+docs(README.adoc): <subject*> <<< update licence section|
+----
+
+[subs=attributes+]
+----
+--------------------------------------------------
+docs(README.adoc): update licence section
+--------------------------------------------------
+
+[70-gx-config-enhancement dd0a2c4] docs(README.adoc): update licence section
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+{PROMPT_PS1}
+$
 ----
 
 === {MAIN_TITLE} commands
