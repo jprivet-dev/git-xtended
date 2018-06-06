@@ -82,7 +82,7 @@ Git aliases                           Disabled
 ----
 $ gx install
 
-{MAIN_TITLE} INSTALL (Global configuration)
+{MAIN_TITLE} install (Global configuration)
 
 > Prompt with Git information   [0] Disabled  [1] Enabled : 1
 > Prompt with Git information = Enabled
