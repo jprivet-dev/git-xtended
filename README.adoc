@@ -265,7 +265,7 @@ MSG = <type*>.<subtype>(<scope*>): <subject*>
 ----
 $ gx help
 
-(3) GX commands :
+GX commands :
     gx help ............ Display help information about GX
     gx install ......... Select and install GX elements
     gx reload .......... Reload GX
@@ -288,7 +288,7 @@ $ git s
 3)  M path/to/my/file3.sh
 ----
 
-Instead of specifying the name of the file you want to commit, just *specify the index*:
+Instead of specifying the name of the file you want to commit, just *specify the index* :
 
 ----
 $ git c 2
@@ -338,6 +338,36 @@ M  path/to/my/file3.sh
 ----
 
 === Customization
+
+you can **override all variables** in the folder ~/git-extended/params/default/.
+To do this, duplicate the following parameters file :
+
+[subs=attributes+]
+----
+$ cp {GX_ROOT}/params.sh.dist {GX_ROOT}/params.sh
+----
+
+And copy in `{GX_ROOT}/params.sh` the variables you want to change. For example, you can change Git aliases :
+
+----
+GX_PARAMS_GIT_ALIAS_L="lg"        # instead of "l"
+GX_PARAMS_GIT_ALIAS_UNTRACKED="u" # instead of "untracked"
+----
+
+To take into account its overloads, you will have to reload **{MAIN_TITLE}** :
+
+----
+$ gx reload
+----
+
+----
+$ gx
+    Git aliases :
+         log | git lg ................... Show the last 12 commit logs (graphical representation)
+       clean | git u .................... Remove all untracked files
+----
+
+WARNING: For the moment this overload system is not complete. Work is still in progress :)
 
 == Ressources & Inspiration
 
