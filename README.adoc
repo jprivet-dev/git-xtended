@@ -43,7 +43,7 @@ $ cd
 $ git clone {GIT_CLONE_PROJECT}
 ----
 
-*2) Import `{GX_ENTRY_FILE}` in `{BASHRC_PATH}`*
+*2) Import `{GX_ENTRY_FILE}`*
 
 Copy the following code at the end of your file `{BASHRC_PATH}` (or in `{BASH_PROFILE_PATH}`) :
 
@@ -53,7 +53,7 @@ Copy the following code at the end of your file `{BASHRC_PATH}` (or in `{BASH_PR
 [[ -f {GX_ENTRY_FILE_PATH} ]] && source {GX_ENTRY_FILE_PATH}
 ----
 
-*3) Reload `{BASHRC_PATH}` (avoid logout and back to the shell)*
+*3) Reload `{BASHRC_PATH}` (or `{BASH_PROFILE_PATH}`) : avoid logout and back to the shell*
 
 [subs=attributes+]
 ----
@@ -340,3 +340,36 @@ M  path/to/my/file3.sh
 === Customization
 
 == Ressources & Inspiration
+
+. http://reinh.com/blog/2009/03/02/a-git-workflow-for-agile-teams.html
+. http://www.jarrodspillers.com/git/2009/08/19/git-merge-vs-git-rebase-avoiding-rebase-hell.html
+. https://bitbucket.org/durdn/cfg/src/master/.gitconfig?fileviewer=file-view-default
+. https://developer.atlassian.com/blog/2015/10/monorepos-in-git/
+. https://explainshell.com
+. https://fr.atlassian.com/git/tutorials/rewriting-history
+. https://gist.github.com/aemonge/9e60332c6a3e7147ee8e
+. https://gist.github.com/stephenparish/9941e89d80e2bc58a153
+. https://git-scm.com
+. https://git-scm.com/book/en/v2/Git-Branching-Rebasing
+. https://git-scm.com/book/fr/v1/Git-distribu%C3%A9-Contribution-%C3%A0-un-projet
+. https://github.com/ahmadawais/hacktoberfest
+. https://github.com/alebcay/awesome-shell
+. https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md
+. https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines
+. https://github.com/nojhan/liquidprompt
+. https://jondavidjohn.com/git-aliases-parameters/
+. https://nvie.com/posts/a-successful-git-branching-model/
+. https://raw.githubusercontent.com/arslanbilal/git-cheat-sheet/master/Img/git-flow-commands-without-flow.png
+. https://stackoverflow.com/questions/20433867/git-ahead-behind-info-between-master-and-branch
+. https://stackoverflow.com/questions/3258243/check-if-pull-needed-in-git
+. https://stackoverflow.com/questions/572549/difference-between-git-add-a-and-git-add
+. https://www.atlassian.com/agile/software-development/git-branching-video
+. https://www.atlassian.com/blog/git/advanced-git-aliases
+. https://www.atlassian.com/blog/git/git-automatic-merges-with-server-side-hooks-for-the-win
+
+
+
+
+
+
+
