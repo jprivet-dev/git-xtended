@@ -383,9 +383,9 @@ M  path/to/my/file3.sh
 # Then follow the steps of the formatted commit message
 ----
 
-=== Customization
+=== Customization : override default settings
 
-you can **override all variables** in the folder ~/git-extended/params/default/.
+you can **override all variables** in the folder `{GX_ROOT}/params/default/`.
 To do this, duplicate the following parameters file :
 
 [subs=attributes+]
