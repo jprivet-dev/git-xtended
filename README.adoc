@@ -20,18 +20,18 @@ image::https://api.codacy.com/project/badge/Grade/0e5266aa58fa4c7e8b0759971ae1b4
 '''
 
 :toc-title: Summary
-:toclevels: 2
+:toclevels: 3
 toc::[]
 
 '''
 
 == Presentation
 
-{MAIN_TITLE} facilitates recurring Git actions in shell :
+**{MAIN_TITLE}** facilitates recurring Git actions in shell :
 
-- Project status display with main Git information in prompt
-- Aliases of recurring Git commands
-- Formatted commit with a `prepare-commit-msg` hook
+. Project status display with main **Git information in prompt**
+. **Aliases** of recurring Git commands
+. **Formatted commit message** (without `prepare-commit-msg` hook)
 
 == Installation
 
@@ -91,7 +91,7 @@ $ gx install
 
 *5) See {MAIN_TITLE} configuration*
 
-After installation, you will be able to see the {MAIN_TITLE} parameters in the global Git `.config` file :
+After installation, you will be able to see the **{MAIN_TITLE}** parameters in the global Git `.config` file :
 
 ----
 [gx]
@@ -102,7 +102,7 @@ After installation, you will be able to see the {MAIN_TITLE} parameters in the g
     ...
 ----
 
-You can also find the `gx` configuration with the following command :
+You can also find the `gx` configuration :
 
 ----
 $ gx config
@@ -111,7 +111,7 @@ gx.remote-branch-ref=origin/dev
 gx.gitaliases-status=Enabled
 ----
 
-You can see the whole git configuration (Global & Local) with the following command :
+You can see the whole git configuration (Global & Local) :
 
 ----
 $ git config --list
@@ -130,7 +130,7 @@ $ gx reload
 
 === Prompt with Git information
 
-*{MAIN_TITLE}* changes the prompt (`PS1`) and adds information about Git :
+**{MAIN_TITLE}** changes the prompt (`PS1`) and adds information about Git :
 
 image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 
@@ -149,9 +149,9 @@ Prompt with Git information :
     42↑ ................ Commits ahead remote branch reference (origin/dev)
 ----
 
-==== "Remote branch reference" configuration
+==== Prompt : `remote branch reference` configuration
 
-The remote branch reference is configured at installation (`$ gx install`), in a global way :
+The `remote branch reference` is configured at installation (`$ gx install`), in a global way :
 
 ----
 $ cd path/to/my/repo
@@ -161,7 +161,7 @@ gx.remote-branch-ref=origin/dev
 gx.gitaliases-status=Enabled
 ----
 
-You can configure a remote branch reference per Git repository :
+You can configure a `remote branch reference` per Git repository :
 
 ----
 $ cd path/to/my/repo
@@ -176,7 +176,7 @@ gx.gitaliases-status=Enabled
 gx.remote-branch-ref=origin/myremotebranch  <== local config
 ----
 
-To delete the local configuration, execute the following command :
+If necessary, delete the local configuration :
 
 ----
 $ cd path/to/my/repo
@@ -190,7 +190,7 @@ gx.remote-branch-ref=origin/dev             <== global config
 gx.gitaliases-status=Enabled
 ----
 
-==== "Remote branch reference" troubleshooting (x↓ x↑)
+==== Prompt : `remote branch reference` troubleshooting (x↓ x↑)
 
 Sometimes, instead of having numbers (ex: `0↓ 42↑`), you will  see in the prompt `x↓ x↑` in red:
 
@@ -199,7 +199,7 @@ Sometimes, instead of having numbers (ex: `0↓ 42↑`), you will  see in the pr
 {PROMPT_PS1_ERRORS}
 ----
 
-This means that the remote branch reference is not correct.
+This means that the `remote branch reference` is not correct.
 **Check that the remote branch of your repository is really existing.**
 
 === Git aliases
@@ -301,7 +301,7 @@ M  path/to/my/file2.sh
  M path/to/my/file3.sh
 --------------------------------------------------
 
-# Then follow the steps of `prepare-commit-msg` hook
+# Then follow the steps of the formatted commit message
 ----
 
 If you specify *no index*, the *first file* will be chosen by default:
@@ -317,7 +317,7 @@ M  path/to/my/file1.sh
  M path/to/my/file3.sh
 --------------------------------------------------
 
-# Then follow the steps of `prepare-commit-msg` hook
+# Then follow the steps of the formatted commit message
 ----
 
 You can also specify *multiple indexes*:
@@ -334,7 +334,7 @@ M  path/to/my/file1.sh
 M  path/to/my/file3.sh
 --------------------------------------------------
 
-# Then follow the steps of `prepare-commit-msg` hook
+# Then follow the steps of the formatted commit message
 ----
 
 === Customization
