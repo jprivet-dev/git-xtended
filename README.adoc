@@ -234,7 +234,7 @@ $ gx help
 ==== `git c` : commits are documentation
 
 ----
-$ git c
+$ git c 
 
 <type*>
  archi ...... Changes application architecture (folder position, name, ...)
