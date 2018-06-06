@@ -23,21 +23,25 @@ if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
     exit 1
 fi
 
-if [ "${indexes}" == "" ]; then
-    indexes=1
+if [ "${indexes}" == "" -a "$(gx_git_get_status_changes_to_be_committed_count)" == 0 ]; then
+   indexes=1
+else
+   indexes=""
 fi
 
-status_i=0
+if [ "${indexes}" != "" ]; then
+    status_i=0
 
-git status -s | cut -c4- | while read path; do
-    status_i=$((status_i + 1))
-    for i in ${indexes}; do
-        if [ "${status_i}" == "${i}" ]; then
-            printf "> git add (%s) %s\n" ${i} ${path}
-            git add ${path}
-        fi
+    git status -s | cut -c4- | while read path; do
+        status_i=$((status_i + 1))
+        for i in ${indexes}; do
+            if [ "${status_i}" == "${i}" ]; then
+                printf "> git add (%s) %s\n" ${i} ${path}
+                git add ${path}
+            fi
+        done
     done
-done
+fi
 
 printf "> & commit ...\n"
 
