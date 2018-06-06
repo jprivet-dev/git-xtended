@@ -52,7 +52,7 @@ function gx_hooks_pcmsg {
             types_index[$shorcut]=$type
             types_shortcut[$shorcut]=$shorcut
 
-            gx_hooks_pcmsg_print_type "${C_LIGHT_GREEN}" "${type}" "${shorcut}" "${info}"
+            gx_hooks_pcmsg_print_type "${F_UNDERLINED}${C_LIGHT_GREEN}" "${type}" "${shorcut}" "${info}"
         fi
     done
 
@@ -74,7 +74,7 @@ function gx_hooks_pcmsg {
             subtypes_index[$shorcut]=$subtype
             subtypes_shortcut[$shorcut]=$shorcut
 
-            gx_hooks_pcmsg_print_type "${C_LIGHT_YELLOW}" "${subtype}" "${shorcut}" "${info}"
+            gx_hooks_pcmsg_print_type "${F_UNDERLINED}${C_LIGHT_YELLOW}" "${subtype}" "${shorcut}" "${info}"
         fi
     done
 

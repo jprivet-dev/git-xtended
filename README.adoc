@@ -2,12 +2,15 @@
 :MAIN_TITLE: Git Xtended
 :MAIN_TITLE_SHORT: GX
 :BASHRC_PATH: ~/.bashrc
+:BASH_PROFILE_PATH: ~/.bash_profile
 :GX_ROOT: ~/git-xtended
 :GX_ENTRY_FILE: gx.sh
 :GX_ENTRY_FILE_PATH: {GX_ROOT}/{GX_ENTRY_FILE}
 :GIT_PROJECT: https://github.com/jprivet-dev/git-xtended
 :GIT_CLONE_PROJECT: git@github.com:jprivet-dev/git-xtended.git
-:PROMPT_PS1: 09:15:27 user@host:~/path/project (current-branch) 8≡ 1? 3! c(2 +1 -1) 3↓ 42↑
+:PROMPT_PS1: 09:15:27 user@host:~/path/project username(branch) 8≡ 1? 3! c(2 +1 -1) 3↓ 42↑
+:PROMPT_PS1_ERRORS: 09:15:27 user@host:~/path/project username(branch) 8≡ 1? 3! c(2 +1 -1) x↓ x↑
+:PROMPT_PS1_NO_CHANGE: 09:15:27 user@host:~/path/project username(branch) 0↓ 10↑
 
 = {MAIN_TITLE} ({VERSION})
 :numbered:
@@ -18,44 +21,41 @@ image::https://api.codacy.com/project/badge/Grade/0e5266aa58fa4c7e8b0759971ae1b4
 '''
 
 :toc-title: Summary
-:toclevels: 2
+:toclevels: 3
 toc::[]
 
 '''
 
 == Presentation
 
-{MAIN_TITLE} facilitates recurring Git actions in shell :
+**{MAIN_TITLE}** facilitates recurring Git actions in shell :
 
-- Project status display with main Git information in prompt
-- Aliases of recurring Git commands
-- Formatted commit with a `prepare-commit-msg` hook
+. Project status display with main **Git information in prompt**
+. **Aliases** of recurring Git commands
+. **Formatted commit message** (without `prepare-commit-msg` hook)
 
 == Installation
 
 *1) Clone the project*
 
-[source,shell]
 [subs=attributes+]
 ----
 $ cd
 $ git clone {GIT_CLONE_PROJECT}
 ----
 
-*2) Import `{GX_ENTRY_FILE}` in `{BASHRC_PATH}`*
+*2) Import `{GX_ENTRY_FILE}`*
 
-Copy the following code at the end of your file `{BASHRC_PATH}` :
+Copy the following code at the end of your file `{BASHRC_PATH}` (or in `{BASH_PROFILE_PATH}`) :
 
-[source,shell]
 [subs=attributes+]
 ----
 # If the file `{GX_ENTRY_FILE}` exists, then load it
 [[ -f {GX_ENTRY_FILE_PATH} ]] && source {GX_ENTRY_FILE_PATH}
 ----
 
-*3) Reload `{BASHRC_PATH}` (avoid logout and back to the shell)*
+*3) Reload `{BASHRC_PATH}` (or `{BASH_PROFILE_PATH}`) : avoid logout and back to the shell*
 
-[source,shell]
 [subs=attributes+]
 ----
 $ . {BASHRC_PATH}
@@ -67,8 +67,8 @@ $ . {BASHRC_PATH}
 
                                         v0.0.0
 ----------------------------------------------
-(1) Prompt with Git information      Disabled
-(2) Git aliases                      Disabled
+Prompt with Git information           Disabled
+Git aliases                           Disabled
 ----------------------------------------------
 - {GIT_PROJECT} -
 ----------------------------------------------
@@ -76,33 +76,50 @@ $ . {BASHRC_PATH}
 
 *4) Activate the {MAIN_TITLE} options you want*
 
-[source,shell]
 [subs=attributes+]
 ----
 $ gx install
 
-{MAIN_TITLE} INSTALL
+{MAIN_TITLE} install (Global configuration)
 
-> (1) Prompt with Git information   [0] Disabled  [1] Enabled : 1
-> (1) Prompt with Git information [Enabled]
-> (2) Git aliases   [0] Disabled  [1] Enabled : 1
-> (2) Git aliases [Enabled]
+> Prompt with Git information   [0] Disabled  [1] Enabled : 1
+> Prompt with Git information = Enabled
+> Remote branch reference  : origin/dev
+> Remote branch reference = origin/dev
+> Git aliases   [0] Disabled  [1] Enabled : 1
+> Git aliases = Enabled
 ----
 
-After installation, you will be able to see the {MAIN_TITLE} parameters in the global Git `.config` file. For example :
+*5) See {MAIN_TITLE} configuration*
+
+After installation, you will be able to see the **{MAIN_TITLE}** parameters in the global Git `.config` file :
 
 ----
-[gx "prompt"]
-	status = Enabled
-[gx "gitaliases"]
-	status = Enabled
+[gx]
+	prompt-status = Enabled
+	remote-branch-ref = origin/dev
+	gitaliases-status = Enabled
 [alias]
     ...
 ----
 
-== Update
+You can also find the `gx` configuration :
 
-[source,shell]
+----
+$ gx config
+gx.prompt-status=Enabled
+gx.remote-branch-ref=origin/dev
+gx.gitaliases-status=Enabled
+----
+
+You can see the whole git configuration (Global & Local) :
+
+----
+$ git config --list
+----
+
+== Update {MAIN_TITLE}
+
 [subs=attributes+]
 ----
 $ cd {GX_ROOT}
@@ -114,33 +131,84 @@ $ gx reload
 
 === Prompt with Git information
 
-*{MAIN_TITLE}* changes the prompt (`PS1`) and adds information about Git :
+**{MAIN_TITLE}** changes the prompt (`PS1`) and adds information about Git :
 
 image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 
-[source,shell]
 [subs=attributes+]
 ----
 {PROMPT_PS1}
 $ gx help
 
-(1) Prompt with Git information :
+  # Prompt with Git information :
     username(branch) ... Current Git username & branch
     8≡ ................. All elements from git status
     1? ................. Untracked files
     3! ................. Changes not staged for commit
     c(2 +1 -1) ......... Changes to be committed
-    3↓ ................. Commits behind remote branch reference
-    42↑ ................ Commits ahead remote branch reference
+    3↓ ................. Commits behind remote branch reference (origin/dev)
+    42↑ ................ Commits ahead remote branch reference (origin/dev)
 ----
+
+==== Prompt : `remote branch reference` configuration
+
+The `remote branch reference` is configured at installation (`$ gx install`), in a global way :
+
+----
+$ cd path/to/my/repo
+$ gx config
+gx.prompt-status=Enabled
+gx.remote-branch-ref=origin/dev
+gx.gitaliases-status=Enabled
+----
+
+You can configure a `remote branch reference` per Git repository :
+
+----
+$ cd path/to/my/repo
+$ git config gx.remote-branch-ref origin/myremotebranch
+----
+
+----
+$ gx config
+gx.prompt-status=Enabled
+gx.remote-branch-ref=origin/dev             <== global config
+gx.gitaliases-status=Enabled
+gx.remote-branch-ref=origin/myremotebranch  <== local config
+----
+
+If necessary, delete the local configuration :
+
+----
+$ cd path/to/my/repo
+$ git config --unset gx.remote-branch-ref
+----
+
+----
+$ gx config
+gx.prompt-status=Enabled
+gx.remote-branch-ref=origin/dev             <== global config
+gx.gitaliases-status=Enabled
+----
+
+==== Prompt : `remote branch reference` troubleshooting (x↓ x↑)
+
+Sometimes, instead of having numbers (ex: `0↓ 42↑`), you will  see in the prompt `x↓ x↑` in red:
+
+[subs=attributes+]
+----
+{PROMPT_PS1_ERRORS}
+----
+
+This means that the `remote branch reference` is not correct.
+**Check that the remote branch of your repository is really existing.**
 
 === Git aliases
 
-[source,shell]
 ----
 $ gx help
 
-(2) Git aliases :
+  # Git aliases :
          log | git l .................... Show the last 12 commit logs (graphical representation)
                git ll ................... Show all commit logs (graphical representation)
                git lfile <file> ......... Show all commit logs for a specific file (graphical representation)
@@ -166,9 +234,20 @@ $ gx help
 
 ==== `git c` : commits are documentation
 
-[source,shell]
+**{MAIN_TITLE}** proposes a **commit message formatting system** (without `prepare-commit-msg` hook) :
+
 ----
 $ git c
+> git add (1) README.adoc
+> & commit ...
+--------------------------------------------------
+M  README.adoc
+--------------------------------------------------
+user.name  : username
+user.email : user@gmail.com
+--------------------------------------------------
+MSG = <type*>.<subtype>(<scope*>): <subject*>
+--------------------------------------------------
 
 <type*>
  archi ...... Changes application architecture (folder position, name, ...)
@@ -191,16 +270,48 @@ $ git c
  refactor ... A code change that neither fixes a bug nor adds a feature
  style ...... Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
 
-MSG = <type*>.<subtype>(<scope*>): <subject*>
+--------------------------------------------------
+<type*>.<subtype> <<< do|
 ----
+
+After **choosing the type and subtype** (type the shortcut indicated in color and underline), you will have to **choose the scope**.
+It will be suggested to you **the names of files in progress**.
+You will be able to modify it scope with your suitability (**To keep the suggestion**, simply tap **Enter**) :
+
+----
+--------------------------------------------------
+docs(<scope*>) <<< [README.adoc] |
+----
+
+Then, indicate the **subject** :
+
+----
+--------------------------------------------------
+docs(README.adoc): <subject*> <<< update licence section|
+----
+
+And tap **Enter** :
+
+[subs=attributes+]
+----
+--------------------------------------------------
+docs(README.adoc): update licence section
+--------------------------------------------------
+
+[70-gx-config-enhancement dd0a2c4] docs(README.adoc): update licence section
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+{PROMPT_PS1_NO_CHANGE}
+$
+----
+
+Your changes have been saved !
 
 === {MAIN_TITLE} commands
 
-[source,shell]
 ----
 $ gx help
 
-(3) GX commands :
+  # GX commands :
     gx help ............ Display help information about GX
     gx install ......... Select and install GX elements
     gx reload .......... Reload GX
@@ -216,7 +327,6 @@ $ gx help
 
 For example, `$ git s` is an indexed version of `$ git status`:
 
-[source,shell]
 ----
 $ git s
 1)  M path/to/my/file1.sh
@@ -224,9 +334,8 @@ $ git s
 3)  M path/to/my/file3.sh
 ----
 
-Instead of specifying the name of the file you want to commit, just *specify the index*:
+Instead of specifying the name of the file you want to commit, just *specify the index* :
 
-[source,shell]
 ----
 $ git c 2
 > git add (2) path/to/my/file2.sh
@@ -238,12 +347,11 @@ M  path/to/my/file2.sh
  M path/to/my/file3.sh
 --------------------------------------------------
 
-# Then follow the steps of `prepare-commit-msg` hook
+# Then follow the steps of the formatted commit message
 ----
 
 If you specify *no index*, the *first file* will be chosen by default:
 
-[source,shell]
 ----
 $ git c
 > git add (1) path/to/my/file1.sh
@@ -255,12 +363,11 @@ M  path/to/my/file1.sh
  M path/to/my/file3.sh
 --------------------------------------------------
 
-# Then follow the steps of `prepare-commit-msg` hook
+# Then follow the steps of the formatted commit message
 ----
 
 You can also specify *multiple indexes*:
 
-[source,shell]
 ----
 $ git c 1 3
 > git add (1) path/to/my/file1.sh
@@ -273,8 +380,72 @@ M  path/to/my/file1.sh
 M  path/to/my/file3.sh
 --------------------------------------------------
 
-# Then follow the steps of `prepare-commit-msg` hook
+# Then follow the steps of the formatted commit message
 ----
-=== Customization
+
+=== Customization : override default settings
+
+you can **override all variables** in the folder `{GX_ROOT}/params/default/`.
+To do this, duplicate the following parameters file :
+
+[subs=attributes+]
+----
+$ cp {GX_ROOT}/params.sh.dist {GX_ROOT}/params.sh
+----
+
+And copy in `{GX_ROOT}/params.sh` the variables you want to change. For example, you can change Git aliases :
+
+----
+GX_PARAMS_GIT_ALIAS_L="lg"        # instead of "l"
+GX_PARAMS_GIT_ALIAS_UNTRACKED="u" # instead of "untracked"
+----
+
+To take into account its overloads, you will have to reload **{MAIN_TITLE}** :
+
+----
+$ gx reload
+----
+
+----
+$ gx
+    Git aliases :
+         log | git lg ................... Show the last 12 commit logs (graphical representation)
+       clean | git u .................... Remove all untracked files
+----
+
+WARNING: For the moment this overload system is not complete. Work is still in progress :)
 
 == Ressources & Inspiration
+
+. http://reinh.com/blog/2009/03/02/a-git-workflow-for-agile-teams.html
+. http://www.jarrodspillers.com/git/2009/08/19/git-merge-vs-git-rebase-avoiding-rebase-hell.html
+. https://bitbucket.org/durdn/cfg/src/master/.gitconfig?fileviewer=file-view-default
+. https://developer.atlassian.com/blog/2015/10/monorepos-in-git/
+. https://explainshell.com
+. https://fr.atlassian.com/git/tutorials/rewriting-history
+. https://gist.github.com/aemonge/9e60332c6a3e7147ee8e
+. https://gist.github.com/stephenparish/9941e89d80e2bc58a153
+. https://git-scm.com
+. https://git-scm.com/book/en/v2/Git-Branching-Rebasing
+. https://git-scm.com/book/fr/v1/Git-distribu%C3%A9-Contribution-%C3%A0-un-projet
+. https://github.com/ahmadawais/hacktoberfest
+. https://github.com/alebcay/awesome-shell
+. https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md
+. https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines
+. https://github.com/nojhan/liquidprompt
+. https://jondavidjohn.com/git-aliases-parameters/
+. https://nvie.com/posts/a-successful-git-branching-model/
+. https://raw.githubusercontent.com/arslanbilal/git-cheat-sheet/master/Img/git-flow-commands-without-flow.png
+. https://stackoverflow.com/questions/20433867/git-ahead-behind-info-between-master-and-branch
+. https://stackoverflow.com/questions/3258243/check-if-pull-needed-in-git
+. https://stackoverflow.com/questions/572549/difference-between-git-add-a-and-git-add
+. https://www.atlassian.com/agile/software-development/git-branching-video
+. https://www.atlassian.com/blog/git/advanced-git-aliases
+. https://www.atlassian.com/blog/git/git-automatic-merges-with-server-side-hooks-for-the-win
+
+
+
+
+
+
+

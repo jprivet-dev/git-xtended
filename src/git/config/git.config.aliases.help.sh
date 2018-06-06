@@ -3,7 +3,7 @@
 function gx_git_config_aliases_help {
     local select_file="(select file with ${F_UNDERLINED}index${F_RESET} status instead of path)"
 
-    gx_print_colors "${C_WHITE}${GX_PARAMS_LABEL_GIT_ALIASES}${F_RESET} :"
+    gx_print_colors "${C_WHITE}  # ${GX_PARAMS_LABEL_GIT_ALIASES}${F_RESET} :"
     gx_git_config_aliases_help_line "     log |" "${GX_PARAMS_GIT_ALIAS_L}" "" .................... "Show the last 12 commit logs (graphical representation)"
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_LL}" "" ................... "Show all commit logs (graphical representation)"
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_LFILE}"  "<file>" ......... "Show all commit logs for a specific file (graphical representation)"

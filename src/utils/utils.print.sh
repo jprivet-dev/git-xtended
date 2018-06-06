@@ -159,6 +159,28 @@ function gx_print_choose_one_option {
 
     _GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE="${choice_label}"
 
-    gx_print_step "${label} [${_GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}]"
+    gx_print_step "${label} = ${_GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}"
+}
+
+function gx_print_input_text {
+    local choice
+    local label="$1"
+
+    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET} : "
+
+    while true; do
+        echo -e -n "${message}"
+
+        exec < /dev/tty
+        read choice
+
+        if [ "${choice}" != "" ]; then
+            break;
+        fi
+    done
+
+    _GX_PRINT_INPUT_TEXT_LAST_VALUE="${choice}"
+
+    gx_print_step "${label} = ${_GX_PRINT_INPUT_TEXT_LAST_VALUE}"
 }
 
