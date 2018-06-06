@@ -139,7 +139,7 @@ image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 {PROMPT_PS1}
 $ gx help
 
-Prompt with Git information :
+  # Prompt with Git information :
     username(branch) ... Current Git username & branch
     8≡ ................. All elements from git status
     1? ................. Untracked files
@@ -207,7 +207,7 @@ This means that the `remote branch reference` is not correct.
 ----
 $ gx help
 
-Git aliases :
+  # Git aliases :
          log | git l .................... Show the last 12 commit logs (graphical representation)
                git ll ................... Show all commit logs (graphical representation)
                git lfile <file> ......... Show all commit logs for a specific file (graphical representation)
@@ -265,7 +265,7 @@ MSG = <type*>.<subtype>(<scope*>): <subject*>
 ----
 $ gx help
 
-GX commands :
+  # GX commands :
     gx help ............ Display help information about GX
     gx install ......... Select and install GX elements
     gx reload .......... Reload GX
