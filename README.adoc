@@ -359,7 +359,7 @@ M  path/to/my/file2.sh
 # Then follow the steps of the formatted commit message
 ----
 
-If you specify *no index*, the *first file* will be chosen by default:
+If you specify *no index*, the *first file* will be chosen by default :
 
 ----
 $ git c
@@ -370,6 +370,22 @@ $ git c
 M  path/to/my/file1.sh
  M path/to/my/file2.sh
  M path/to/my/file3.sh
+--------------------------------------------------
+
+# Then follow the steps of the formatted commit message
+----
+
+However, if you have already added files, there will be no default addition. Example :
+
+----
+$ git add path/to/my/file3.sh
+$ git c
+> & commit ...
+
+--------------------------------------------------
+ M path/to/my/file1.sh
+ M path/to/my/file2.sh
+M  path/to/my/file3.sh
 --------------------------------------------------
 
 # Then follow the steps of the formatted commit message
