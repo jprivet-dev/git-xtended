@@ -30,7 +30,7 @@ toc::[]
 
 **{MAIN_TITLE}** brings together in a single entity my various "facilities" developed in recent years to exploit Git more quickly.
 
-**{MAIN_TITLE}** facilitates recurring Git actions in shell :
+It facilitates **recurring Git actions in shell** :
 
 . Project status display with main **Git information in prompt**
 . **Aliases** of recurring Git commands
