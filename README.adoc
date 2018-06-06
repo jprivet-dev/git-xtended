@@ -1,4 +1,4 @@
-:VERSION: v0.0.0-alpha.7
+:VERSION: 0.0.0-beta-1
 :MAIN_TITLE: Git Xtended
 :MAIN_TITLE_SHORT: GX
 :BASHRC_PATH: ~/.bashrc
@@ -36,9 +36,9 @@ It facilitates **recurring Git actions in shell** :
 . **Aliases** of recurring Git commands
 . **Formatted commit message** (without `prepare-commit-msg` hook)
 
-== Roadmap & Public Alpha Version
+== Roadmap & Public Beta Version
 
-**{MAIN_TITLE}** has recently been released (June 2018) in **public alpha version**.
+**{MAIN_TITLE}** has recently been released (June 2018) in **public beta version**.
 This means that this version is being tested and stabilized with some people (Thank you!).
 
 Comments, suggestions? Feel free to make them to me in the {GIT_PROJECT}/issues[Git issues section of that project] :)
