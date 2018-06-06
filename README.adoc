@@ -2,12 +2,13 @@
 :MAIN_TITLE: Git Xtended
 :MAIN_TITLE_SHORT: GX
 :BASHRC_PATH: ~/.bashrc
+:BASH_PROFILE_PATH: ~/.bash_profile
 :GX_ROOT: ~/git-xtended
 :GX_ENTRY_FILE: gx.sh
 :GX_ENTRY_FILE_PATH: {GX_ROOT}/{GX_ENTRY_FILE}
 :GIT_PROJECT: https://github.com/jprivet-dev/git-xtended
 :GIT_CLONE_PROJECT: git@github.com:jprivet-dev/git-xtended.git
-:PROMPT_PS1: 09:15:27 user@host:~/path/project (current-branch) 8≡ 1? 3! c(2 +1 -1) 3↓ 42↑
+:PROMPT_PS1: 09:15:27 user@host:~/path/project username(branch) 8≡ 1? 3! c(2 +1 -1) 3↓ 42↑
 
 = {MAIN_TITLE} ({VERSION})
 :numbered:
@@ -44,7 +45,7 @@ $ git clone {GIT_CLONE_PROJECT}
 
 *2) Import `{GX_ENTRY_FILE}` in `{BASHRC_PATH}`*
 
-Copy the following code at the end of your file `{BASHRC_PATH}` :
+Copy the following code at the end of your file `{BASHRC_PATH}` (or in `{BASH_PROFILE_PATH}`) :
 
 [source,shell]
 [subs=attributes+]
@@ -67,8 +68,8 @@ $ . {BASHRC_PATH}
 
                                         v0.0.0
 ----------------------------------------------
-(1) Prompt with Git information      Disabled
-(2) Git aliases                      Disabled
+Prompt with Git information           Disabled
+Git aliases                           Disabled
 ----------------------------------------------
 - {GIT_PROJECT} -
 ----------------------------------------------
@@ -81,21 +82,23 @@ $ . {BASHRC_PATH}
 ----
 $ gx install
 
-{MAIN_TITLE} INSTALL
+{MAIN_TITLE} INSTALL (Global configuration)
 
-> (1) Prompt with Git information   [0] Disabled  [1] Enabled : 1
-> (1) Prompt with Git information [Enabled]
-> (2) Git aliases   [0] Disabled  [1] Enabled : 1
-> (2) Git aliases [Enabled]
+> Prompt with Git information   [0] Disabled  [1] Enabled : 1
+> Prompt with Git information = Enabled
+> Remote branch reference  : origin/dev
+> Remote branch reference = origin/dev
+> Git aliases   [0] Disabled  [1] Enabled : 1
+> Git aliases = Enabled
 ----
 
 After installation, you will be able to see the {MAIN_TITLE} parameters in the global Git `.config` file. For example :
 
 ----
-[gx "prompt"]
-	status = Enabled
-[gx "gitaliases"]
-	status = Enabled
+[gx]
+	prompt-status = Enabled
+	remote-branch-ref = origin/dev
+	gitaliases-status = Enabled
 [alias]
     ...
 ----
@@ -124,7 +127,7 @@ image::doc/img/gx-prompt.gif[{PROMPT_PS1}]
 {PROMPT_PS1}
 $ gx help
 
-(1) Prompt with Git information :
+Prompt with Git information :
     username(branch) ... Current Git username & branch
     8≡ ................. All elements from git status
     1? ................. Untracked files
@@ -140,7 +143,7 @@ $ gx help
 ----
 $ gx help
 
-(2) Git aliases :
+Git aliases :
          log | git l .................... Show the last 12 commit logs (graphical representation)
                git ll ................... Show all commit logs (graphical representation)
                git lfile <file> ......... Show all commit logs for a specific file (graphical representation)
