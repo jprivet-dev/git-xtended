@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function gx_command_help {
-    gx_print_colors "${C_WHITE}${GX_PARAMS_LABEL_GX_COMMANDS}${F_RESET} :"
+    gx_print_colors "${C_WHITE}  # ${GX_PARAMS_LABEL_GX_COMMANDS}${F_RESET} :"
     gx_command_help_command_line "help" "" ............ "Display help information about ${GX_PARAMS_TITLE_SHORT}"
     gx_command_help_command_line "install" "" ......... "Select and install ${GX_PARAMS_TITLE_SHORT} elements"
     gx_command_help_command_line "reload" "" .......... "Reload ${GX_PARAMS_TITLE_SHORT}"
