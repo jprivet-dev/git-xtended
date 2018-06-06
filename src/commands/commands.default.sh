@@ -29,7 +29,7 @@ function gx_command_action_config {
 }
 
 function gx_command_action_install {
-    gx_print_title_1 "${GX_PARAMS_TITLE} INSTALL (Global configuration)"
+    gx_print_title_1 "${GX_PARAMS_TITLE} install (Global configuration)"
 
     gx_install_choice
     gx_install_activation
