@@ -3,13 +3,13 @@
 function gx_install_activation {
     gx_install_choice_params_set_all_from_git_config
 
-    if [ "${GX_PARAMS_INSTALL_PROMPT_STATUS}" == "${GX_PARAMS_ENABLED}" ]
-    then
+    if [ "${GX_PARAMS_INSTALL_PROMPT_STATUS}" == "${GX_PARAMS_ENABLED}" ]; then
         gx_prompt_enabled
+    else
+        gx_prompt_disabled
     fi
 
-    if [ "${GX_PARAMS_INSTALL_GIT_ALIASES_STATUS}" == "${GX_PARAMS_ENABLED}" ]
-    then
+    if [ "${GX_PARAMS_INSTALL_GIT_ALIASES_STATUS}" == "${GX_PARAMS_ENABLED}" ]; then
         gx_git_aliases_enabled
     else
         gx_git_aliases_disabled
