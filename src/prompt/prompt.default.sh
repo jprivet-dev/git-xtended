@@ -201,3 +201,9 @@ function gx_prompt_enabled {
     gx_prompt_set_ps2
 }
 
+function gx_prompt_disabled {
+    PS1=${GX_PARAMS_INSTALL_OLD_PS1}
+    PS2=${GX_PARAMS_INSTALL_OLD_PS2}
+    PROMPT_COMMAND=${GX_PARAMS_INSTALL_OLD_PROMPT_COMMAND}
+}
+
