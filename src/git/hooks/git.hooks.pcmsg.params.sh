@@ -3,7 +3,10 @@
 _GX_HOOKS_PCMSG_TYPE_COLOR="${C_LIGHT_GREEN}"
 _GX_HOOKS_PCMSG_SUBTYPE_COLOR="${C_LIGHT_YELLOW}"
 _GX_HOOKS_PCMSG_MAINSCOPE_COLOR="${C_LIGHT_MAGENTA}"
-_GX_HOOKS_PCMSG_SUBJECT_COLOR="${C_LIGHT_RED}"
+_GX_HOOKS_PCMSG_SUBJECT_COLOR="${C_CYAN}"
+
+_GX_HOOKS_PCMSG_TYPE_SHORTCUT_COLOR="${F_UNDERLINED}${C_LIGHT_GREEN}"
+_GX_HOOKS_PCMSG_SUBTYPE_SHORTCUT_COLOR="${F_UNDERLINED}${C_LIGHT_YELLOW}"
 
 _GX_HOOKS_PCMSG_TYPE_LABEL="${_GX_HOOKS_PCMSG_TYPE_COLOR}<type*>${F_RESET}"
 _GX_HOOKS_PCMSG_SUBTYPE_LABEL="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}<subtype>${F_RESET}"
@@ -25,7 +28,7 @@ _GX_HOOKS_PCMSG_TYPES=(
 
 _GX_HOOKS_PCMSG_SUBTYPES=(
     'c/clean/Remove pointless code or files'
-    'd/debug/Adding code for debugging (console.log, dpm, var_dump, ...), to remove later !'
+    'd/debug/Adding code for debugging (console.log, dpm, var_dump, ...), to remove later!'
     'f/fix/Bug fix'
     'g/generate/Auto-generate code (Doctrine, PhoneGap, Ionic, ...)'
     'p/perf/A code change that improves performance'
