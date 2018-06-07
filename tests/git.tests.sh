@@ -152,7 +152,7 @@ function test_gx_git_config_aliases_help {
     local count_lines="$(gx_git_config_aliases_help | wc -l)"
     assert equals "${count_lines}" "23" $LINENO
 
-    assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}(2) Git aliases${TEST_F_RESET} :" $LINENO
+    assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}  # Git aliases${TEST_F_RESET} :" $LINENO
     assert last-line    "$(gx_git_config_aliases_help)"   "        grep | git \e[96mfind\e[0m <string> \e[90m........\e[0m Look for specified strings in the tracked files (case sensitive)" $LINENO
 }
 

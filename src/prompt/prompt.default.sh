@@ -6,7 +6,7 @@ function gx_prompt_time {
 
 function gx_prompt_time_colors {
     local time=$1
-    echo "${C_LIGHT_RED}${time}${F_RESET}"
+    echo "${GX_PARAMS_PROMPT_TIME_COLORS}${time}${F_RESET}"
 }
 
 function gx_prompt_user {
@@ -15,7 +15,7 @@ function gx_prompt_user {
 
 function gx_prompt_user_colors {
     local user=$1
-    echo "${C_LIGHT_GREEN}${user}${F_RESET}"
+    echo "${GX_PARAMS_PROMPT_USER_COLORS}${user}${F_RESET}"
 }
 
 function gx_prompt_host {
@@ -24,7 +24,7 @@ function gx_prompt_host {
 
 function gx_prompt_host_colors {
     local host=$1
-    echo "${C_LIGHT_GREEN}${host}${F_RESET}"
+    echo "${GX_PARAMS_PROMPT_HOST_COLORS}${host}${F_RESET}"
 }
 
 function gx_prompt_userhost {
@@ -34,11 +34,11 @@ function gx_prompt_userhost {
 function gx_prompt_userhost_colors {
     local user=$1
     local host=$2
-    echo "${user}${C_LIGHT_GREEN}@${F_RESET}${host}"
+    echo "${user}${GX_PARAMS_PROMPT_USERHOST_COLORS}@${F_RESET}${host}"
 }
 
 function gx_prompt_dir {
-    echo "${C_CYAN}\\w${F_RESET}"
+    echo "${GX_PARAMS_PROMPT_DIR_COLORS}\\w${F_RESET}"
 }
 
 function gx_prompt_username_branch {
@@ -48,7 +48,7 @@ function gx_prompt_username_branch {
 function gx_prompt_username_branch_colors {
     local username=$1
     local branch=$2
-    echo "${C_LIGHT_MAGENTA}${username}(${F_RESET}${C_LIGHT_YELLOW}${branch}${F_RESET}${C_LIGHT_MAGENTA})${F_RESET}"
+    echo "${GX_PARAMS_PROMPT_USERNAME_COLORS}${username}(${F_RESET}${GX_PARAMS_PROMPT_BRANCH_COLORS}${branch}${F_RESET}${GX_PARAMS_PROMPT_USERNAME_COLORS})${F_RESET}"
 }
 
 function gx_prompt_changes_count {
@@ -57,7 +57,7 @@ function gx_prompt_changes_count {
 
 function gx_prompt_changes_count_colors {
     local count=$1
-    echo "${C_LIGHT_MAGENTA}${count}≡${F_RESET}"
+    echo "${GX_PARAMS_PROMPT_CHANGES_COUNT_COLORS}${count}≡${F_RESET}"
 }
 
 function gx_prompt_status_to_be_commited {
@@ -69,14 +69,14 @@ function gx_prompt_status_to_be_commited {
 }
 
 function gx_prompt_status_to_be_commited_colors {
-    local format_c="${C_LIGHT_GREEN}"
+    local format_c="${GX_PARAMS_PROMPT_STATUS_TO_BE_COMMITED_COLORS_ON}"
 
     local m=$1
     local n=$2
     local d=$3
 
     [[ "${m}${n}${d}" == "000" ]] \
-        && format_c="${C_DARK_GRAY}"
+        && format_c="${GX_PARAMS_PROMPT_STATUS_TO_BE_COMMITED_COLORS_OFF}"
 
     echo "${format_c}c(${m} +${n} -${d})${F_RESET}"
 }
@@ -88,10 +88,10 @@ function gx_prompt_status_not_staged {
 
 function gx_prompt_status_not_staged_colors {
     local count=$1
-    local format="${C_DARK_GRAY}"
+    local format="${GX_PARAMS_PROMPT_STATUS_NOT_STAGED_COLORS}"
 
     [[ "${count}" > 0 ]] \
-        && format="${C_LIGHT_RED}"
+        && format="${GX_PARAMS_PROMPT_STATUS_NOT_STAGED_COLORS_ERROR}"
 
     echo "${format}${count}!${F_RESET}"
 }
@@ -103,10 +103,10 @@ function gx_prompt_status_untracked {
 
 function gx_prompt_status_untracked_colors {
     local count=$1
-    local format="${C_DARK_GRAY}"
+    local format="${GX_PARAMS_PROMPT_STATUS_UNTRACKED_COLORS}"
 
     [[ "${count}" > 0 ]] \
-        && format="${C_LIGHT_RED}"
+        && format="${GX_PARAMS_PROMPT_STATUS_UNTRACKED_COLORS_ERROR}"
 
     echo "${format}${count}?${F_RESET}"
 }
@@ -129,11 +129,11 @@ function gx_prompt_behind {
 
 function gx_prompt_behind_colors {
     local count=$1
-    local format="${C_LIGHT_GRAY}"
+    local format="${GX_PARAMS_PROMPT_BEHIND_COLORS}"
 
     if [[ -z "${count}" ]]; then
         count="x"
-        format="${C_LIGHT_RED}"
+        format="${GX_PARAMS_PROMPT_BEHIND_COLORS_ERROR}"
     fi
 
     echo "${format}${count}↓${F_RESET}"
@@ -153,11 +153,11 @@ function gx_prompt_ahead {
 
 function gx_prompt_ahead_colors {
     local count=$1
-    local format="${C_LIGHT_GRAY}"
+    local format="${GX_PARAMS_PROMPT_AHEAD_COLORS}"
 
     if [[ -z "${count}" ]]; then
         count="x"
-        format="${C_LIGHT_RED}"
+        format="${GX_PARAMS_PROMPT_AHEAD_COLORS_ERROR}"
     fi
 
     echo "${format}${count}↑${F_RESET}"
@@ -190,7 +190,7 @@ function gx_prompt_set_ps1 {
 }
 
 function gx_prompt_set_ps2 {
-    PS2="${C_CYAN}>"
+    PS2="${GX_PARAMS_PROMPT_SET_PS2_COLORS}>"
 }
 
 function gx_prompt_enabled {
@@ -199,5 +199,11 @@ function gx_prompt_enabled {
     fi
     PROMPT_COMMAND='gx_prompt_set_ps1'
     gx_prompt_set_ps2
+}
+
+function gx_prompt_disabled {
+    PS1=${GX_PARAMS_INSTALL_OLD_PS1}
+    PS2=${GX_PARAMS_INSTALL_OLD_PS2}
+    PROMPT_COMMAND=${GX_PARAMS_INSTALL_OLD_PROMPT_COMMAND}
 }
 

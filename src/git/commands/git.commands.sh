@@ -92,7 +92,7 @@ function gx_git_status_ahead_count {
     local to_branch=$2
     # TODO : use "| while read -a array; do echo ${array[0]} ; done"
     # instead of "| cut -f 1". Last tip does not work when gx_git_status_ahead_count called
-    # into testing function "test_gx_git_status_ahead_count". Find why !!!
+    # into testing function "test_gx_git_status_ahead_count". Find why!!!
     gx_git_status_ahead "${from_branch}" "${to_branch}" | while read -a array; do echo ${array[0]} ; done
 }
 
@@ -108,7 +108,7 @@ function gx_git_status_behind_count {
     local to_branch=$2
     # TODO : use "| while read -a array; do echo ${array[0]} ; done"
     # instead of "| cut -f 1". Last tip does not work when gx_git_status_ahead_count called
-    # into testing function "test_gx_git_status_behind_count". Find why !!!
+    # into testing function "test_gx_git_status_behind_count". Find why!!!
     gx_git_status_behind "${from_branch}" "${to_branch}" | while read -a array; do echo ${array[0]} ; done
 }
 
