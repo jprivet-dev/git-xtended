@@ -70,7 +70,7 @@ function gx_git_config_unset_aliases {
 	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_C}
 	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_AMEND}
 	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CK}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_L}}
+	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_L}
 	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LL}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LFILE}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LMERGES}
