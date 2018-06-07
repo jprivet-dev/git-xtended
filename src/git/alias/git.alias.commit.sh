@@ -25,8 +25,6 @@ fi
 
 if [ "${indexes}" == "" -a "$(gx_git_get_status_changes_to_be_committed_count)" == 0 ]; then
    indexes=1
-else
-   indexes=""
 fi
 
 if [ "${indexes}" != "" ]; then
