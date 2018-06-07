@@ -74,7 +74,7 @@ function gx_hooks_pcmsg {
             subtypes_index[$shorcut]=$subtype
             subtypes_shortcut[$shorcut]=$shorcut
 
-            gx_hooks_pcmsg_print_type "${_GX_HOOKS_PCMSG_TYPE_SHORTCUT_COLOR}" "${subtype}" "${shorcut}" "${info}"
+            gx_hooks_pcmsg_print_type "${_GX_HOOKS_PCMSG_SUBTYPE_SHORTCUT_COLOR}" "${subtype}" "${shorcut}" "${info}"
         fi
     done
 
