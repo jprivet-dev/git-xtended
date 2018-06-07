@@ -52,7 +52,7 @@ function gx_hooks_pcmsg {
             types_index[$shorcut]=$type
             types_shortcut[$shorcut]=$shorcut
 
-            gx_hooks_pcmsg_print_type "${F_UNDERLINED}${C_LIGHT_GREEN}" "${type}" "${shorcut}" "${info}"
+            gx_hooks_pcmsg_print_type "${_GX_HOOKS_PCMSG_TYPE_SHORTCUT_COLOR}" "${type}" "${shorcut}" "${info}"
         fi
     done
 
@@ -74,7 +74,7 @@ function gx_hooks_pcmsg {
             subtypes_index[$shorcut]=$subtype
             subtypes_shortcut[$shorcut]=$shorcut
 
-            gx_hooks_pcmsg_print_type "${F_UNDERLINED}${C_LIGHT_YELLOW}" "${subtype}" "${shorcut}" "${info}"
+            gx_hooks_pcmsg_print_type "${_GX_HOOKS_PCMSG_TYPE_SHORTCUT_COLOR}" "${subtype}" "${shorcut}" "${info}"
         fi
     done
 
@@ -188,9 +188,16 @@ function gx_hooks_pcmsg {
 
     complete_message="${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
 
+    local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
+    local subtype_colors="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}${subtype}${F_RESET}"
+    local mainscope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${mainscope}${F_RESET}"
+    local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
+
+    local complete_message_colors="${type_colors}${type_split}${subtype_colors}(${mainscope_colors})${main_split}${subject_colors}"
+
     tput cuu1
     tput el
-    echo -e "${complete_message}"
+    echo -e "${complete_message_colors}"
     printf "%s\n" "${split}"
 
     if [ "${message}" != "no" ]; then
