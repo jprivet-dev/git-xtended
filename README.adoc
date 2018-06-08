@@ -52,7 +52,8 @@ It facilitates **recurring Git actions in shell**:
 == Roadmap & Public Beta Version
 
 **{MAIN_TITLE}** has recently been released (June 2018) in **public beta version**.
-This means that this version is being tested and stabilized with some people (Thank you!).
+
+This means that during the next semester, this version will be tested and stabilized with some beta testers :P (Thank you!).
 
 Comments, suggestions? Feel free to make them to me in the {GIT_PROJECT}/issues[Git issues section of that project] :)
 
