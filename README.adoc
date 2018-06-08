@@ -502,6 +502,46 @@ $ gx c
 
 {BACK_TO_TOP}
 
+== Code quality & Tests
+
+=== Codacy & ShellCheck
+
+**Codacy** (https://www.codacy.com/) is an automated code analysis/quality tool that helps developers ship better software, faster.
+**Codacy** uses **ShellCheck** (https://github.com/koalaman/shellcheck), a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts.
+
+=== Functional & Unit tests
+
+**{MAIN_TITLE}** uses an internal system of functional and unit tests to verify the stability of developments.
+
+----
+$ gx test
+
+Git Xtended testing
+
+>  Would you like to run the tests ? [y/n] y
+
+--- Functions with test ---
+
+[x]  gx_colors_print_all
+[ ]  gx_command_action_aliases
+...
+[ ]  gx_symlink_exists
+[x]  gx_trim
+
+--- Launch all tests ---
+
+# test_gx_colors_print_all +
+# test_gx_command_help +++
+...
+# test_gx_test_fake_git ++
+# test_gx_trim ++++++++
+
+OK: 65 tests, 234 assertions, 0 failure
+
+----
+
+{BACK_TO_TOP}
+
 == Ressources & Inspiration
 
 . http://reinh.com/blog/2009/03/02/a-git-workflow-for-agile-teams.html
