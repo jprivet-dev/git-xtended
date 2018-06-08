@@ -446,7 +446,32 @@ M  path/to/my/file3.sh
 
 === Customization : override default settings
 
-you can **override all variables** in the folder `{GX_ROOT}/params/default/`.
+you can **override all variables** from parameter files `params.xxx.sh` in the folder `{GX_ROOT}/params/default/`.
+
+[subs=attributes+]
+----
+.
+`-- {GX_ROOT}/
+    |-- doc/
+    |-- params/
+    |   |-- default/
+    |   |   |-- params.colors.sh        |
+    |   |   |-- params.default.sh       |
+    |   |   |-- params.git.sh           | OVERLOADABLE
+    |   |   |-- params.install.sh       | PARAMETERS
+    |   |   |-- params.prompt.sh        |
+    |   |   |-- params.sh               |
+    |   |   `-- params.version.sh       |
+    |   `-- test/
+    |-- src/
+    |-- tests/
+    |-- .gitignore
+    |-- gx.sh
+    |-- gx.tests.sh
+    |-- LICENSE
+    `-- params.sh.dist
+----
+
 To do this, duplicate the following parameters file:
 
 [subs=attributes+]
@@ -516,6 +541,27 @@ https://app.codacy.com/project/jprivet-dev/git-xtended/dashboard[See the {MAIN_T
 === Functional & Unit tests
 
 **{MAIN_TITLE}** uses an **internal system of functional and unit tests** to verify the stability of developments.
+
+[subs=attributes+]
+----
+.
+`-- {GX_ROOT}/
+    |-- doc/
+    |-- params/
+    |-- src/
+    |-- tests/
+    |   |-- colors.tests.sh         |
+    |   |-- commands.tests.sh       |
+    |   |-- git.tests.sh            | FUNCTIONAL AND
+    |   |-- prompt.tests.sh         | UNIT TESTS
+    |   |-- test.tests.sh           |
+    |   `-- utils.tests.sh          |
+    |-- .gitignore
+    |-- gx.sh
+    |-- gx.tests.sh
+    |-- LICENSE
+    `-- params.sh.dist
+----
 
 ----
 $ gx test
