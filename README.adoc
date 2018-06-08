@@ -235,6 +235,8 @@ This means that the `remote branch reference` is not correct.
 
 === Git aliases
 
+==== Find 21 aliases at your disposal
+
 ----
 $ gx help
 
