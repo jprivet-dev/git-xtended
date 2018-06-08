@@ -58,9 +58,9 @@ Comments, suggestions? Feel free to make them to me in the {GIT_PROJECT}/issues[
 
 {BACK_TO_TOP}
 
-== Installation
+== Installation in 4 steps
 
-*1) Clone the project*
+*STEP 1 : Clone the project*
 
 [subs=attributes+]
 ----
@@ -68,7 +68,7 @@ $ cd
 $ git clone {GIT_CLONE_PROJECT}
 ----
 
-*2) Import `{GX_ENTRY_FILE}`*
+*STEP 2 : Import `{GX_ENTRY_FILE}`*
 
 Copy the following code at the end of your file `{BASHRC_PATH}` (or in `{BASH_PROFILE_PATH}`):
 
@@ -78,7 +78,7 @@ Copy the following code at the end of your file `{BASHRC_PATH}` (or in `{BASH_PR
 [[ -f {GX_ENTRY_FILE_PATH} ]] && source {GX_ENTRY_FILE_PATH}
 ----
 
-*3) Reload `{BASHRC_PATH}` (or `{BASH_PROFILE_PATH}`): avoid logout and back to the shell*
+*STEP 3 : Reload `{BASHRC_PATH}` (or `{BASH_PROFILE_PATH}`). Avoid logout and back to the shell*
 
 [subs=attributes+]
 ----
@@ -98,7 +98,7 @@ Git aliases                           Disabled
 ----------------------------------------------
 ----
 
-*4) Activate the {MAIN_TITLE} options you want*
+*STEP 4 : Activate the {MAIN_TITLE} options you want*
 
 [subs=attributes+]
 ----
@@ -113,8 +113,6 @@ $ gx install
 > Git aliases  [0] Disabled  [1] Enabled : 1
 > Git aliases = Enabled
 ----
-
-*5) See {MAIN_TITLE} configuration*
 
 After installation, you will be able to see the **{MAIN_TITLE}** parameters in the global Git `.config` file:
 
