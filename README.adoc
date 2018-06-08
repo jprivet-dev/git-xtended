@@ -183,7 +183,6 @@ $ gx help
 The `remote branch reference` is configured at installation (`$ gx install`), in a global way:
 
 ----
-$ cd path/to/my/repo
 $ gx config
 gx.prompt-status=Enabled
 gx.remote-branch-ref=origin/dev
@@ -193,7 +192,6 @@ gx.gitaliases-status=Enabled
 You can configure a `remote branch reference` per Git repository:
 
 ----
-$ cd path/to/my/repo
 $ git config gx.remote-branch-ref origin/myremotebranch
 ----
 
@@ -208,7 +206,6 @@ gx.remote-branch-ref=origin/myremotebranch  <== local config
 If necessary, delete the local configuration:
 
 ----
-$ cd path/to/my/repo
 $ git config --unset gx.remote-branch-ref
 ----
 
