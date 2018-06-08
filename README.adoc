@@ -1,26 +1,38 @@
+:numbered:
+:toc: macro
+:sectanchors:
+
 :VERSION: 0.0.0-beta-1
 :MAIN_TITLE: Git Xtended
 :MAIN_TITLE_SHORT: GX
+
+:BACK_TO_TOP_TARGET: back-to-top
+:BACK_TO_TOP_LABEL: ⬆ Back to top
+:BACK_TO_TOP: <<{BACK_TO_TOP_TARGET},{BACK_TO_TOP_LABEL}>>
+
 :BASHRC_PATH: ~/.bashrc
 :BASH_PROFILE_PATH: ~/.bash_profile
+
 :GX_ROOT: ~/git-xtended
 :GX_ENTRY_FILE: gx.sh
 :GX_ENTRY_FILE_PATH: {GX_ROOT}/{GX_ENTRY_FILE}
+
 :GIT_PROJECT: https://github.com/jprivet-dev/git-xtended
 :GIT_CLONE_PROJECT: git@github.com:jprivet-dev/git-xtended.git
+
 :PROMPT_PS1: 09:15:27 user@host:~/path/project username(branch) 8≡ 1? 3! c(2 +1 -1) 3↓ 42↑
 :PROMPT_PS1_ERRORS: 09:15:27 user@host:~/path/project username(branch) 8≡ 1? 3! c(2 +1 -1) x↓ x↑
 :PROMPT_PS1_NO_CHANGE: 09:15:27 user@host:~/path/project username(branch) 0↓ 10↑
 
 = {MAIN_TITLE} ({VERSION})
-:numbered:
-:toc: macro
+
+[[{BACK_TO_TOP_TARGET}]]
 
 image::https://api.codacy.com/project/badge/Grade/0e5266aa58fa4c7e8b0759971ae1b45d[Codacy Badge, link=https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jprivet-dev/git-xtended&amp;utm_campaign=Badge_Grade]
 
 '''
 
-:toc-title: Summary
+:toc-title: Table of contents
 :toclevels: 3
 toc::[]
 
@@ -36,12 +48,16 @@ It facilitates **recurring Git actions in shell**:
 . **Aliases** of recurring Git commands
 . **Formatted commit message** (without `prepare-commit-msg` hook)
 
+{BACK_TO_TOP}
+
 == Roadmap & Public Beta Version
 
 **{MAIN_TITLE}** has recently been released (June 2018) in **public beta version**.
 This means that this version is being tested and stabilized with some people (Thank you!).
 
 Comments, suggestions? Feel free to make them to me in the {GIT_PROJECT}/issues[Git issues section of that project] :)
+
+{BACK_TO_TOP}
 
 == Installation
 
@@ -127,6 +143,8 @@ You can see the whole git configuration (Global & Local):
 $ git config --list
 ----
 
+{BACK_TO_TOP}
+
 == Update {MAIN_TITLE}
 
 [subs=attributes+]
@@ -135,6 +153,8 @@ $ cd {GX_ROOT}
 $ git pull origin master
 $ gx reload
 ----
+
+{BACK_TO_TOP}
 
 == Features overview
 
@@ -158,6 +178,8 @@ $ gx help
     3↓ ................. Commits behind remote branch reference (origin/dev)
     42↑ ................ Commits ahead remote branch reference (origin/dev)
 ----
+
+{BACK_TO_TOP}
 
 ==== Prompt : `remote branch reference` configuration
 
@@ -200,6 +222,8 @@ gx.remote-branch-ref=origin/dev             <== global config
 gx.gitaliases-status=Enabled
 ----
 
+{BACK_TO_TOP}
+
 ==== Prompt : `remote branch reference` troubleshooting (x↓ x↑)
 
 Sometimes, instead of having numbers (ex: `0↓ 42↑`), you will  see in the prompt `x↓ x↑` in red:
@@ -211,6 +235,8 @@ Sometimes, instead of having numbers (ex: `0↓ 42↑`), you will  see in the pr
 
 This means that the `remote branch reference` is not correct.
 **Check that the remote branch of your repository is really existing.**
+
+{BACK_TO_TOP}
 
 === Git aliases
 
@@ -240,6 +266,8 @@ $ gx help
        clean | git untracked ............ Remove all untracked files
         grep | git find <string> ........ Look for specified strings in the tracked files (case sensitive)
 ----
+
+{BACK_TO_TOP}
 
 ==== `git c` : commits are documentation
 
@@ -327,6 +355,8 @@ $
 
 Your changes have been saved!
 
+{BACK_TO_TOP}
+
 === {MAIN_TITLE} commands
 
 ----
@@ -341,6 +371,8 @@ $ gx help
     gx colors .......... Show all GX colors
     gx test [<func>] ... Run one or all GX tests
 ----
+
+{BACK_TO_TOP}
 
 == Tips
 
@@ -420,6 +452,8 @@ M  path/to/my/file3.sh
 # Then follow the steps of the formatted commit message
 ----
 
+{BACK_TO_TOP}
+
 === Customization : override default settings
 
 you can **override all variables** in the folder `{GX_ROOT}/params/default/`.
@@ -452,6 +486,8 @@ $ gx
 
 WARNING: For the moment this overload system is not complete. Work is still in progress :)
 
+{BACK_TO_TOP}
+
 == Ressources & Inspiration
 
 . http://reinh.com/blog/2009/03/02/a-git-workflow-for-agile-teams.html
@@ -480,11 +516,18 @@ WARNING: For the moment this overload system is not complete. Work is still in p
 . https://www.atlassian.com/blog/git/advanced-git-aliases
 . https://www.atlassian.com/blog/git/git-automatic-merges-with-server-side-hooks-for-the-win
 
+{BACK_TO_TOP}
+
 == License
 
 **{MAIN_TITLE}** is released under the **MIT License**
 
 {GIT_PROJECT}/blob/master/LICENSE
+
+'''
+
+{BACK_TO_TOP}
+
 
 
 
