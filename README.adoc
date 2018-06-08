@@ -457,8 +457,13 @@ To do this, duplicate the following parameters file:
 $ cp {GX_ROOT}/params.sh.dist {GX_ROOT}/params.sh
 ----
 
-And copy in `{GX_ROOT}/params.sh` the variables you want to change. For example, you can change Git aliases:
+And copy in `{GX_ROOT}/params.sh` the variables you want to change.
 
+WARNING: For the moment this overload system is not complete. Work is still in progress :)
+
+==== Override Git aliases labels
+
+.{GX_ROOT}/params.sh
 ----
 GX_PARAMS_GIT_ALIAS_L="lg"        # instead of "l"
 GX_PARAMS_GIT_ALIAS_UNTRACKED="u" # instead of "untracked"
@@ -477,7 +482,26 @@ $ gx
        clean | git u .................... Remove all untracked files
 ----
 
-WARNING: For the moment this overload system is not complete. Work is still in progress :)
+==== Override types & subtypes of Git commit message formatting system
+
+(TODO)
+
+.{GX_ROOT}/params.sh
+----
+GX_PARAMS_GIT_ALIAS_L="lg"
+...
+----
+
+To take into account its overloads, you will have to reload **{MAIN_TITLE}**:
+
+----
+$ gx reload
+----
+
+----
+$ gx c
+...
+----
 
 {BACK_TO_TOP}
 
