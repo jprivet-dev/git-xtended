@@ -19,6 +19,7 @@ _GX_HOOKS_PCMSG_TYPES=(
     'co/content/Changes wording or images in contents'
     'ch/chore/Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)'
     'd/dev/Changes main code (creation, enhancement, evolution, ...)'
+    'db/db/Changes related to data manipulation in databases (SQL, Oracle, Postgres, Cassandra, ...)'
     'do/docs/Documentation only changes'
     "i/integ/Web integration, UX works - doesn't touch business logic (css, js, ...)"
     "in/install/Install or update project, modules, pluggins (ex: composer install ...)"
