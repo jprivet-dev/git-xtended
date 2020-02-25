@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
+export LAST_REFERENCE;
+
 function gx_hooks_pcmsg {
     local split="--------------------------------------------------"
 
     local commit_msg=$1
     local commit_mode=$2
 
+    local reference
     local type
     local subtype
     local scope
@@ -24,6 +27,7 @@ function gx_hooks_pcmsg {
         subject_default="$@"
     fi
 
+    local reference_split=" "
     local type_split="."
     local main_split=": "
 
@@ -37,7 +41,7 @@ function gx_hooks_pcmsg {
     echo "user.email : $(git config user.email)"
     printf "%s\n" "${split}"
 
-    echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}${type_split}${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}"
+    echo -e "MSG = ${_GX_HOOKS_PCMSG_REFERENCE_LABEL}${reference_split}${_GX_HOOKS_PCMSG_TYPE_LABEL}${type_split}${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}"
     printf "%s\n" "${split}"
 
     echo ""
@@ -81,14 +85,34 @@ function gx_hooks_pcmsg {
     printf "\n%s\n" "${split}"
 
     # --------------
-    # Type & Subtype
+    # Reference
 
     echo "" # tricks : with tput cuu1 and el, thath avoid new line with first ENTER action
 
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
+        echo -e -n "${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} [${LAST_REFERENCE}] "
+
+        exec < /dev/tty
+        read reference_choose
+
+        break;
+    done
+
+    reference=""
+    if [ "${reference_choose}" != "" ] ;then
+        reference="[#${reference_choose}]${reference_split}"
+        LAST_REFERENCE="${reference}"
+    fi
+
+    # --------------
+    # Type & Subtype
+
+    while true; do
+        tput cuu1
+        tput el
+        echo -e -n "${reference}${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec < /dev/tty
         read choise_type_subtype_index
@@ -149,7 +173,7 @@ function gx_hooks_pcmsg {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
+        echo -e -n "${reference}${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
 
         exec < /dev/tty
         read mainscope_choose
@@ -173,7 +197,7 @@ function gx_hooks_pcmsg {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
+        echo -e -n "${reference}${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec < /dev/tty
         read subject
@@ -186,8 +210,9 @@ function gx_hooks_pcmsg {
     # --------------
     # Final message
 
-    complete_message="${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
+    complete_message="${reference}${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
 
+    local reference_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${reference}${F_RESET}"
     local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
     local subtype_colors="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}${subtype}${F_RESET}"
     local mainscope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${mainscope}${F_RESET}"
