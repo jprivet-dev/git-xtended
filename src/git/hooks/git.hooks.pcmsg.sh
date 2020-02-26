@@ -96,46 +96,9 @@ function gx_hooks_pcmsg {
     gx_hooks_pcmsg_type_subtype
 
     # --------------
-    # File ref
+    # Mainscope
 
-    files_listing=$(gx_git_status_get_filenames_inline)
-
-    while true; do
-        tput cuu1
-        tput el
-        echo -e -n "${reference}${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
-
-        exec < /dev/tty
-        read mainscope_choose
-
-        if [ "${files_listing}" != "" -o "${mainscope_choose}" != "" ]; then
-            break;
-        fi
-    done
-
-    mainscope="${files_listing}"
-    if [ "${mainscope_choose}" != "" ] ;then
-        mainscope="${mainscope_choose}"
-    fi
-
-    # --------------
-    # Scope
-
-    # --------------
-    # Commit message
-
-    while true; do
-        tput cuu1
-        tput el
-        echo -e -n "${reference}${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
-
-        exec < /dev/tty
-        read subject
-
-        if [ "${subject}" != "" ]; then
-            break;
-        fi
-    done
+    gx_hooks_pcmsg_type_mainscope
 
     # --------------
     # Final message
@@ -258,6 +221,47 @@ function gx_hooks_pcmsg_type_subtype {
     if [ "${type}" == "" -o "${subtype}" == "" ]; then
         type_split=""
     fi
+}
+
+function gx_hooks_pcmsg_type_mainscope {
+    files_listing=$(gx_git_status_get_filenames_inline)
+
+    while true; do
+        tput cuu1
+        tput el
+        echo -e -n "${reference}${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
+
+        exec < /dev/tty
+        read mainscope_choose
+
+        if [ "${files_listing}" != "" -o "${mainscope_choose}" != "" ]; then
+            break;
+        fi
+    done
+
+    mainscope="${files_listing}"
+    if [ "${mainscope_choose}" != "" ] ;then
+        mainscope="${mainscope_choose}"
+    fi
+
+    # --------------
+    # Scope
+
+    # --------------
+    # Commit message
+
+    while true; do
+        tput cuu1
+        tput el
+        echo -e -n "${reference}${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
+
+        exec < /dev/tty
+        read subject
+
+        if [ "${subject}" != "" ]; then
+            break;
+        fi
+    done
 }
 
 function gx_hooks_pcmsg_git_config_local_get {
