@@ -6,7 +6,7 @@ function gx_hooks_pcmsg {
     local commit_msg=$1
     local commit_mode=$2
 
-    local last_reference=$(gx_hooks_git_config_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
+    local last_reference=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
     local reference
     local type
     local subtype
@@ -115,9 +115,9 @@ function gx_hooks_pcmsg {
     fi
 
     if [ "${reference_choose}" == "" ] ;then
-        gx_hooks_git_config_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
+        gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
     else
-        gx_hooks_git_config_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}"
+        gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}"
     fi
 
     # --------------
@@ -252,16 +252,16 @@ function gx_hooks_pcmsg {
     fi
 }
 
-function gx_hooks_git_config_get {
+function gx_hooks_pcmsg_git_config_local_get {
     git config $1
 }
 
-function gx_hooks_git_config_remove {
+function gx_hooks_pcmsg_git_config_local_remove {
     git config --unset $1
 }
 
-# gx_hooks_git_config_set return an error for the moment !
-function gx_hooks_git_config_set {
+# gx_hooks_pcmsg_git_config_local_set return an error for the moment !
+function gx_hooks_pcmsg_git_config_local_set {
     git config $1 $2
 }
 
