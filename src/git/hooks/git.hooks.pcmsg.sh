@@ -93,61 +93,7 @@ function gx_hooks_pcmsg {
     # --------------
     # Type & Subtype
 
-    while true; do
-        tput cuu1
-        tput el
-        echo -e -n "${reference}${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
-
-        exec < /dev/tty
-        read choise_type_subtype_index
-
-        choise_type_subtype_index_tab=(${choise_type_subtype_index})
-        choise_type_index="${choise_type_subtype_index_tab[0]}"
-        choise_subtype_index="${choise_type_subtype_index_tab[1]}"
-
-        choise_type_index_valid=0
-        choise_subtype_index_valid=0
-
-        [[ " ${types_shortcut[@]} " =~ " ${choise_type_index} " ]]
-
-        if [ "${BASH_REMATCH}" != "" ]; then
-            choise_type_index_valid=1;
-        fi
-
-        if [ "${choise_subtype_index}" == "" ] ;then
-            choise_subtype_index_valid=1
-        else
-            [[ " ${subtypes_shortcut[@]} " =~ " ${choise_subtype_index} " ]]
-
-            if [ "${BASH_REMATCH}" != "" ]; then
-                choise_subtype_index_valid=1
-            fi
-        fi
-
-        if [ "${choise_type_index_valid}" == 1 -a "${choise_subtype_index_valid}" == 1 ]; then
-            break;
-        fi
-    done
-
-    # --------------
-    # Type
-
-    type=${types_index[$choise_type_index]}
-
-    # --------------
-    # Subtype
-
-    subtype=""
-    if [ "${choise_subtype_index}" != "" ] ;then
-        subtype=${subtypes_index[$choise_subtype_index]}
-    fi
-
-    # --------------
-    # Type split
-
-    if [ "${type}" == "" -o "${subtype}" == "" ]; then
-        type_split=""
-    fi
+    gx_hooks_pcmsg_type_subtype
 
     # --------------
     # File ref
@@ -253,6 +199,64 @@ function gx_hooks_pcmsg_reference {
         gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
     else
         gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}"
+    fi
+}
+
+function gx_hooks_pcmsg_type_subtype {
+    while true; do
+        tput cuu1
+        tput el
+        echo -e -n "${reference}${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
+
+        exec < /dev/tty
+        read choise_type_subtype_index
+
+        choise_type_subtype_index_tab=(${choise_type_subtype_index})
+        choise_type_index="${choise_type_subtype_index_tab[0]}"
+        choise_subtype_index="${choise_type_subtype_index_tab[1]}"
+
+        choise_type_index_valid=0
+        choise_subtype_index_valid=0
+
+        [[ " ${types_shortcut[@]} " =~ " ${choise_type_index} " ]]
+
+        if [ "${BASH_REMATCH}" != "" ]; then
+            choise_type_index_valid=1;
+        fi
+
+        if [ "${choise_subtype_index}" == "" ] ;then
+            choise_subtype_index_valid=1
+        else
+            [[ " ${subtypes_shortcut[@]} " =~ " ${choise_subtype_index} " ]]
+
+            if [ "${BASH_REMATCH}" != "" ]; then
+                choise_subtype_index_valid=1
+            fi
+        fi
+
+        if [ "${choise_type_index_valid}" == 1 -a "${choise_subtype_index_valid}" == 1 ]; then
+            break;
+        fi
+    done
+
+    # --------------
+    # Type
+
+    type=${types_index[$choise_type_index]}
+
+    # --------------
+    # Subtype
+
+    subtype=""
+    if [ "${choise_subtype_index}" != "" ] ;then
+        subtype=${subtypes_index[$choise_subtype_index]}
+    fi
+
+    # --------------
+    # Type split
+
+    if [ "${type}" == "" -o "${subtype}" == "" ]; then
+        type_split=""
     fi
 }
 
