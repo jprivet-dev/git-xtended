@@ -103,32 +103,7 @@ function gx_hooks_pcmsg {
     # --------------
     # Final message
 
-    complete_message="${reference}${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
-
-    local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
-    local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
-    local subtype_colors="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}${subtype}${F_RESET}"
-    local mainscope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${mainscope}${F_RESET}"
-    local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
-
-    local complete_message_colors="${reference_colors}${type_colors}${type_split}${subtype_colors}(${mainscope_colors})${main_split}${subject_colors}"
-
-    tput cuu1
-    tput el
-    echo -e "${complete_message_colors}"
-    printf "%s\n" "${split}"
-
-    if [ "${message}" != "no" ]; then
-        echo ""
-        if [[ "${trigger_by_hook}" == 1 ]]; then
-            echo "${complete_message}" > "${commit_msg}"
-        else
-            git commit -m "${complete_message}"
-        fi
-    else
-        echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
-        exit 1
-    fi
+    gx_hooks_pcmsg_type_final_message
 }
 
 function gx_hooks_pcmsg_reference {
@@ -262,6 +237,35 @@ function gx_hooks_pcmsg_type_mainscope {
             break;
         fi
     done
+}
+
+function gx_hooks_pcmsg_type_final_message() {
+    complete_message="${reference}${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
+
+    local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
+    local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
+    local subtype_colors="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}${subtype}${F_RESET}"
+    local mainscope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${mainscope}${F_RESET}"
+    local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
+
+    local complete_message_colors="${reference_colors}${type_colors}${type_split}${subtype_colors}(${mainscope_colors})${main_split}${subject_colors}"
+
+    tput cuu1
+    tput el
+    echo -e "${complete_message_colors}"
+    printf "%s\n" "${split}"
+
+    if [ "${message}" != "*" ]; then
+        echo ""
+        if [[ "${trigger_by_hook}" == 1 ]]; then
+            echo "${complete_message}" > "${commit_msg}"
+        else
+            git commit -m "${complete_message}"
+        fi
+    else
+        echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
+        exit 1
+    fi
 }
 
 function gx_hooks_pcmsg_git_config_local_get {
