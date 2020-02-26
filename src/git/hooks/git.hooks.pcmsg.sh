@@ -82,27 +82,11 @@ function gx_hooks_pcmsg {
     done
 
     printf "\n%s\n" "${split}"
-
-    # --------------
-    # Reference
-
     echo "" # tricks : with tput cuu1 and el, thath avoid new line with first ENTER action
 
     gx_hooks_pcmsg_reference
-
-    # --------------
-    # Type & Subtype
-
     gx_hooks_pcmsg_type_subtype
-
-    # --------------
-    # Mainscope
-
     gx_hooks_pcmsg_type_mainscope
-
-    # --------------
-    # Final message
-
     gx_hooks_pcmsg_type_final_message
 }
 
