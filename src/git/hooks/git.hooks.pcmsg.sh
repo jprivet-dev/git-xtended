@@ -103,7 +103,7 @@ function gx_hooks_pcmsg {
     # --------------
     # Final message
 
-    gx_hooks_pcmsg_type_final_message 
+    gx_hooks_pcmsg_type_final_message
 }
 
 function gx_hooks_pcmsg_reference {
@@ -255,7 +255,7 @@ function gx_hooks_pcmsg_type_final_message() {
     echo -e "${complete_message_colors}"
     printf "%s\n" "${split}"
 
-    if [ "${message}" != "*" ]; then
+    if [ "${subject}" != "*" ]; then
         echo ""
         if [[ "${trigger_by_hook}" == 1 ]]; then
             echo "${complete_message}" > "${commit_msg}"
