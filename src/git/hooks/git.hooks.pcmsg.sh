@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-export LAST_REFERENCE;
-
 function gx_hooks_pcmsg {
     local split="--------------------------------------------------"
 
     local commit_msg=$1
     local commit_mode=$2
 
+    local last_reference=$(gx_hooks_git_config_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
     local reference
     local type
     local subtype
@@ -92,7 +91,7 @@ function gx_hooks_pcmsg {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} [${LAST_REFERENCE}] "
+        echo -e -n "${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} [#${last_reference}]* "
 
         exec < /dev/tty
         read reference_choose
@@ -101,9 +100,24 @@ function gx_hooks_pcmsg {
     done
 
     reference=""
-    if [ "${reference_choose}" != "" ] ;then
+
+    if [ "${reference_choose}" == "*" ] ;then
+      reference_choose=""
+      last_reference=""
+    fi
+
+    if [ "${reference_choose}" == "" ] ;then
+      if [ "${last_reference}" != "" ] ;then
+          reference="[#${last_reference}]${reference_split}"
+      fi
+    else
         reference="[#${reference_choose}]${reference_split}"
-        LAST_REFERENCE="${reference}"
+    fi
+
+    if [ "${reference_choose}" == "" ] ;then
+        gx_hooks_git_config_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
+    else
+        gx_hooks_git_config_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}"
     fi
 
     # --------------
@@ -212,13 +226,13 @@ function gx_hooks_pcmsg {
 
     complete_message="${reference}${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
 
-    local reference_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${reference}${F_RESET}"
+    local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
     local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
     local subtype_colors="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}${subtype}${F_RESET}"
     local mainscope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${mainscope}${F_RESET}"
     local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
 
-    local complete_message_colors="${type_colors}${type_split}${subtype_colors}(${mainscope_colors})${main_split}${subject_colors}"
+    local complete_message_colors="${reference_colors}${type_colors}${type_split}${subtype_colors}(${mainscope_colors})${main_split}${subject_colors}"
 
     tput cuu1
     tput el
@@ -236,6 +250,19 @@ function gx_hooks_pcmsg {
         echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
         exit 1
     fi
+}
+
+function gx_hooks_git_config_get {
+    git config $1
+}
+
+function gx_hooks_git_config_remove {
+    git config --unset $1
+}
+
+# gx_hooks_git_config_set return an error for the moment !
+function gx_hooks_git_config_set {
+    git config $1 $2
 }
 
 function gx_hooks_pcmsg_print_type {
