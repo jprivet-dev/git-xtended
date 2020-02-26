@@ -103,7 +103,7 @@ function gx_hooks_pcmsg {
     # --------------
     # Final message
 
-    gx_hooks_pcmsg_type_final_message
+    gx_hooks_pcmsg_type_final_message 
 }
 
 function gx_hooks_pcmsg_reference {
