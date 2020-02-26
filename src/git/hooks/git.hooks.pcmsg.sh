@@ -91,10 +91,16 @@ function gx_hooks_pcmsg {
 }
 
 function gx_hooks_pcmsg_reference {
+    local last_reference_prompt=""
+
+    if [ "${last_reference}" != "" ] ;then
+      last_reference_prompt="[#${last_reference}]* "
+    fi
+
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} [#${last_reference}]* "
+        echo -e -n "${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
 
         exec < /dev/tty
         read reference_choose
@@ -117,7 +123,7 @@ function gx_hooks_pcmsg_reference {
         reference="[#${reference_choose}]${reference_split}"
     fi
 
-    if [ "${reference_choose}" == "" ] ;then
+    if [ "${reference}" == "" ] ;then
         gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
     else
         gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}"
