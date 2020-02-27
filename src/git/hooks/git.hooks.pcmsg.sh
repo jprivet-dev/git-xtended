@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gx_hooks_pcmsg {
+function gx_hooks_pcmsg() {
     local split="--------------------------------------------------"
 
     local commit_msg=$1
@@ -86,35 +86,35 @@ function gx_hooks_pcmsg {
     echo "" # tricks : with tput cuu1 and el, thath avoid new line with first ENTER action
 
     while true; do
-      case $step in
-          0)
-              gx_hooks_pcmsg_reference
-          ;;
-          1)
-              gx_hooks_pcmsg_type_subtype
-          ;;
-          2)
-              gx_hooks_pcmsg_type_mainscope
-          ;;
-          3)
-              gx_hooks_pcmsg_type_subject
-          ;;
-          4)
-              gx_hooks_pcmsg_type_final_message
-          ;;
-          *)
-              break
-          ;;
-      esac
+        case $step in
+        0)
+            gx_hooks_pcmsg_reference
+            ;;
+        1)
+            gx_hooks_pcmsg_type_subtype
+            ;;
+        2)
+            gx_hooks_pcmsg_type_mainscope
+            ;;
+        3)
+            gx_hooks_pcmsg_type_subject
+            ;;
+        4)
+            gx_hooks_pcmsg_type_final_message
+            ;;
+        *)
+            break
+            ;;
+        esac
     done
 }
 
-function gx_hooks_pcmsg_reference {
+function gx_hooks_pcmsg_reference() {
     local last_reference_prompt=""
     last_reference=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
 
-    if [ "${last_reference}" != "" ] ;then
-      last_reference_prompt="[#${last_reference}]* "
+    if [ "${last_reference}" != "" ]; then
+        last_reference_prompt="[#${last_reference}]* "
     fi
 
     while true; do
@@ -122,36 +122,36 @@ function gx_hooks_pcmsg_reference {
         tput el
         echo -e -n "${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
 
-        exec < /dev/tty
+        exec </dev/tty
         read reference_choose
 
-        break;
+        break
     done
 
     reference=""
 
-    if [ "${reference_choose}" == "*" ] ;then
-      reference_choose=""
-      last_reference=""
+    if [ "${reference_choose}" == "*" ]; then
+        reference_choose=""
+        last_reference=""
     fi
 
-    if [ "${reference_choose}" == "" ] ;then
-      if [ "${last_reference}" != "" ] ;then
-          reference="[#${last_reference}]${reference_split}"
-      fi
+    if [ "${reference_choose}" == "" ]; then
+        if [ "${last_reference}" != "" ]; then
+            reference="[#${last_reference}]${reference_split}"
+        fi
     else
         reference="[#${reference_choose}]${reference_split}"
         $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}")
     fi
 
-    if [ "${reference}" == "" ] ;then
+    if [ "${reference}" == "" ]; then
         gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
     fi
 
     gx_hooks_pcmsg_next_step
 }
 
-function gx_hooks_pcmsg_type_subtype {
+function gx_hooks_pcmsg_type_subtype() {
     type=""
     subtype=""
 
@@ -160,10 +160,10 @@ function gx_hooks_pcmsg_type_subtype {
         tput el
         echo -e -n "${reference}${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
-        exec < /dev/tty
+        exec </dev/tty
         read choise_type_subtype_index
 
-        if [ "${choise_type_subtype_index}" == "*" ] ;then
+        if [ "${choise_type_subtype_index}" == "*" ]; then
             break
         fi
 
@@ -177,10 +177,10 @@ function gx_hooks_pcmsg_type_subtype {
         [[ " ${types_shortcut[@]} " =~ " ${choise_type_index} " ]]
 
         if [ "${BASH_REMATCH}" != "" ]; then
-            choise_type_index_valid=1;
+            choise_type_index_valid=1
         fi
 
-        if [ "${choise_subtype_index}" == "" ] ;then
+        if [ "${choise_subtype_index}" == "" ]; then
             choise_subtype_index_valid=1
         else
             [[ " ${subtypes_shortcut[@]} " =~ " ${choise_subtype_index} " ]]
@@ -191,11 +191,11 @@ function gx_hooks_pcmsg_type_subtype {
         fi
 
         if [ "${choise_type_index_valid}" == 1 -a "${choise_subtype_index_valid}" == 1 ]; then
-            break;
+            break
         fi
     done
 
-    if [ "${choise_type_subtype_index}" == "*" ] ;then
+    if [ "${choise_type_subtype_index}" == "*" ]; then
         gx_hooks_pcmsg_previous_step
     else
         # --------------
@@ -207,7 +207,7 @@ function gx_hooks_pcmsg_type_subtype {
         # Subtype
 
         subtype=""
-        if [ "${choise_subtype_index}" != "" ] ;then
+        if [ "${choise_subtype_index}" != "" ]; then
             subtype=${subtypes_index[$choise_subtype_index]}
         fi
 
@@ -224,7 +224,7 @@ function gx_hooks_pcmsg_type_subtype {
     fi
 }
 
-function gx_hooks_pcmsg_type_mainscope {
+function gx_hooks_pcmsg_type_mainscope() {
     files_listing=$(gx_git_status_get_filenames_inline)
 
     while true; do
@@ -232,24 +232,24 @@ function gx_hooks_pcmsg_type_mainscope {
         tput el
         echo -e -n "${reference}${type}${final_type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
 
-        exec < /dev/tty
+        exec </dev/tty
         read mainscope_choose
 
-        if [ "${mainscope_choose}" == "*" ] ;then
+        if [ "${mainscope_choose}" == "*" ]; then
             break
         fi
 
         if [ "${files_listing}" != "" -o "${mainscope_choose}" != "" ]; then
-            break;
+            break
         fi
     done
 
-    if [ "${mainscope_choose}" == "*" ] ;then
+    if [ "${mainscope_choose}" == "*" ]; then
         gx_hooks_pcmsg_previous_step
     else
 
         mainscope="${files_listing}"
-        if [ "${mainscope_choose}" != "" ] ;then
+        if [ "${mainscope_choose}" != "" ]; then
             mainscope="${mainscope_choose}"
         fi
 
@@ -263,19 +263,19 @@ function gx_hooks_pcmsg_type_subject() {
         tput el
         echo -e -n "${reference}${type}${final_type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
-        exec < /dev/tty
+        exec </dev/tty
         read subject
 
-        if [ "${subject}" == "*" ] ;then
+        if [ "${subject}" == "*" ]; then
             break
         fi
 
         if [ "${subject}" != "" ]; then
-            break;
+            break
         fi
     done
 
-    if [ "${subject}" == "*" ] ;then
+    if [ "${subject}" == "*" ]; then
         gx_hooks_pcmsg_previous_step
     else
         gx_hooks_pcmsg_next_step
@@ -301,7 +301,7 @@ function gx_hooks_pcmsg_type_final_message() {
     if [ "${subject}" != "*" ]; then
         echo ""
         if [[ "${trigger_by_hook}" == 1 ]]; then
-            echo "${complete_message}" > "${commit_msg}"
+            echo "${complete_message}" >"${commit_msg}"
         else
             git commit -m "${complete_message}"
         fi
@@ -313,20 +313,20 @@ function gx_hooks_pcmsg_type_final_message() {
     gx_hooks_pcmsg_next_step
 }
 
-function gx_hooks_pcmsg_git_config_local_get {
+function gx_hooks_pcmsg_git_config_local_get() {
     git config $1
 }
 
-function gx_hooks_pcmsg_git_config_local_remove {
+function gx_hooks_pcmsg_git_config_local_remove() {
     git config --unset $1
 }
 
 # gx_hooks_pcmsg_git_config_local_set return an error for the moment !
-function gx_hooks_pcmsg_git_config_local_set {
+function gx_hooks_pcmsg_git_config_local_set() {
     git config $1 $2
 }
 
-function gx_hooks_pcmsg_print_type {
+function gx_hooks_pcmsg_print_type() {
     local color=$1
     local type=$2
     local shortcut=$3
@@ -338,7 +338,7 @@ function gx_hooks_pcmsg_print_type {
     gx_print_colors " ${color}${shortcut}${F_RESET}${type_column:$shortcut_lengh}${description}"
 }
 
-function gx_hooks_pcmsg_col_fixed_width {
+function gx_hooks_pcmsg_col_fixed_width() {
     local width=$1
     local text=$2
 
@@ -349,7 +349,7 @@ function gx_hooks_pcmsg_col_fixed_width {
     local text_length=${#text}
     local spaces=""
 
-    for (( i=${text_length}; i<${width}; i++ )); do
+    for ((i = ${text_length}; i < ${width}; i++)); do
         spaces="${spaces}."
     done
 
@@ -357,9 +357,9 @@ function gx_hooks_pcmsg_col_fixed_width {
 }
 
 function gx_hooks_pcmsg_next_step() {
-    step=$((step+1))
+    step=$((step + 1))
 }
 
 function gx_hooks_pcmsg_previous_step() {
-    step=$((step-1))
+    step=$((step - 1))
 }
