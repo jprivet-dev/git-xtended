@@ -86,11 +86,24 @@ function gx_hooks_pcmsg {
     echo "" # tricks : with tput cuu1 and el, thath avoid new line with first ENTER action
 
     while true; do
-      gx_hooks_pcmsg_reference
-      gx_hooks_pcmsg_type_subtype
-      gx_hooks_pcmsg_type_mainscope
-      gx_hooks_pcmsg_type_final_message
-      break
+      case $step in
+          0)
+              gx_hooks_pcmsg_reference
+          ;;
+          1)
+              gx_hooks_pcmsg_type_subtype
+          ;;
+          2)
+              gx_hooks_pcmsg_type_mainscope
+          ;;
+          3)
+              gx_hooks_pcmsg_type_final_message
+          ;;
+          *)
+              break
+          ;;
+      esac
+      step=$((step+1))
     done
 }
 
