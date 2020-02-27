@@ -25,7 +25,7 @@ function gx_git_config_set_aliases {
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D}${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}'; '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}'; }; f'
 
     # git checkout
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CK} '!f() { '${GX_PARAMS_GIT_ALIAS_CHECKOUT_FILE}' "$@"; }; f'
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CANCEL} '!f() { '${GX_PARAMS_GIT_ALIAS_CHECKOUT_FILE}' "$@"; }; f'
 
     # git log
     local hash="%C(yellow)%h"
@@ -69,7 +69,7 @@ function gx_git_config_unset_aliases {
 	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_MD}
 	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_C}
 	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_AMEND}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CK}
+	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CANCEL}
 	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_L}
 	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LL}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LFILE}
