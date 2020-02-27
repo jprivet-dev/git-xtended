@@ -156,6 +156,10 @@ function gx_hooks_pcmsg_type_subtype {
         exec < /dev/tty
         read choise_type_subtype_index
 
+        if [ "${choise_type_subtype_index}" == "*" ] ;then
+            break
+        fi
+
         choise_type_subtype_index_tab=(${choise_type_subtype_index})
         choise_type_index="${choise_type_subtype_index_tab[0]}"
         choise_subtype_index="${choise_type_subtype_index_tab[1]}"
@@ -184,27 +188,31 @@ function gx_hooks_pcmsg_type_subtype {
         fi
     done
 
-    # --------------
-    # Type
+    if [ "${choise_type_subtype_index}" == "*" ] ;then
+        gx_hooks_pcmsg_previous_step
+    else
+        # --------------
+        # Type
 
-    type=${types_index[$choise_type_index]}
+        type=${types_index[$choise_type_index]}
 
-    # --------------
-    # Subtype
+        # --------------
+        # Subtype
 
-    subtype=""
-    if [ "${choise_subtype_index}" != "" ] ;then
-        subtype=${subtypes_index[$choise_subtype_index]}
+        subtype=""
+        if [ "${choise_subtype_index}" != "" ] ;then
+            subtype=${subtypes_index[$choise_subtype_index]}
+        fi
+
+        # --------------
+        # Type split
+
+        if [ "${type}" == "" -o "${subtype}" == "" ]; then
+            type_split=""
+        fi
+
+        gx_hooks_pcmsg_next_step
     fi
-
-    # --------------
-    # Type split
-
-    if [ "${type}" == "" -o "${subtype}" == "" ]; then
-        type_split=""
-    fi
-
-    gx_hooks_pcmsg_next_step
 }
 
 function gx_hooks_pcmsg_type_mainscope {
