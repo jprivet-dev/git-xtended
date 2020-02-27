@@ -243,7 +243,7 @@ $ gx help
                git lmerges .............. Show all merge logs (graphical representation)
                git lcount ............... Number of commits per author
       branch | git b .................... Simple "branch" alias
-    checkout | git ck [<i>|<path>] ...... Extended "checkout" alias (select file with index status instead of path)
+    checkout | git cancel [<i>|<path>] .. Extended "checkout" alias (select file with index status instead of path)
       status | git s .................... Indexed status list (staged, unstaged, and untracked files)
                git ss ................... Simple "status" alias
         diff | git d [<i>|<path>] ....... Extended "diff" alias (select file with index status instead of path)
