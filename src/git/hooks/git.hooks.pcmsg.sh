@@ -6,11 +6,10 @@ function gx_hooks_pcmsg {
     local commit_msg=$1
     local commit_mode=$2
 
-    local last_reference=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
+    local last_reference
     local reference
     local type
     local subtype
-    local type_split_subtype
     local scope
     local subject
     local step=0
@@ -112,6 +111,7 @@ function gx_hooks_pcmsg {
 
 function gx_hooks_pcmsg_reference {
     local last_reference_prompt=""
+    last_reference=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
 
     if [ "${last_reference}" != "" ] ;then
       last_reference_prompt="[#${last_reference}]* "
