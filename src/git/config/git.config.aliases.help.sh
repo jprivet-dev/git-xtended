@@ -10,7 +10,7 @@ function gx_git_config_aliases_help {
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_LMERGES}" "" .............. "Show all merge logs (graphical representation)"
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_LCOUNT}" "" ............... "Number of commits per author"
     gx_git_config_aliases_help_line "  branch |" "${GX_PARAMS_GIT_ALIAS_B}" "" .................... "Simple \"branch\" alias"
-    gx_git_config_aliases_help_line "checkout |" "${GX_PARAMS_GIT_ALIAS_CK}"  "[<i>|<path>]" ...... "Extended \"checkout\" alias ${select_file}"
+    gx_git_config_aliases_help_line "checkout |" "${GX_PARAMS_GIT_ALIAS_CANCEL}"  "[<i>|<path>]" ...... "Extended \"checkout\" alias ${select_file}"
     gx_git_config_aliases_help_line "  status |" "${GX_PARAMS_GIT_ALIAS_S}" "" .................... "${F_UNDERLINED}Indexed${F_RESET} status list (staged, unstaged, and untracked files)"
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_SS}" "" ................... "Simple \"status\" alias"
     gx_git_config_aliases_help_line "    diff |" "${GX_PARAMS_GIT_ALIAS_D}"  "[<i>|<path>]" ....... "Extended \"diff\" alias ${select_file}"
