@@ -103,7 +103,6 @@ function gx_hooks_pcmsg {
               break
           ;;
       esac
-      gx_hooks_pcmsg_next_step
     done
 }
 
@@ -144,6 +143,8 @@ function gx_hooks_pcmsg_reference {
     if [ "${reference}" == "" ] ;then
         gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
     fi
+
+    gx_hooks_pcmsg_next_step
 }
 
 function gx_hooks_pcmsg_type_subtype {
@@ -202,6 +203,8 @@ function gx_hooks_pcmsg_type_subtype {
     if [ "${type}" == "" -o "${subtype}" == "" ]; then
         type_split=""
     fi
+
+    gx_hooks_pcmsg_next_step
 }
 
 function gx_hooks_pcmsg_type_mainscope {
@@ -243,6 +246,8 @@ function gx_hooks_pcmsg_type_mainscope {
             break;
         fi
     done
+
+    gx_hooks_pcmsg_next_step
 }
 
 function gx_hooks_pcmsg_type_final_message() {
@@ -272,6 +277,8 @@ function gx_hooks_pcmsg_type_final_message() {
         echo -e "${C_BG_LIGHT_RED} commit aborted ${F_RESET}"
         exit 1
     fi
+
+    gx_hooks_pcmsg_next_step
 }
 
 function gx_hooks_pcmsg_git_config_local_get {
