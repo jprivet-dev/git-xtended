@@ -97,6 +97,9 @@ function gx_hooks_pcmsg {
               gx_hooks_pcmsg_type_mainscope
           ;;
           3)
+              gx_hooks_pcmsg_type_subject
+          ;;
+          4)
               gx_hooks_pcmsg_type_final_message
           ;;
           *)
@@ -236,12 +239,10 @@ function gx_hooks_pcmsg_type_mainscope {
         mainscope="${mainscope_choose}"
     fi
 
-    # --------------
-    # Scope
+    gx_hooks_pcmsg_next_step
+}
 
-    # --------------
-    # Commit message
-
+function gx_hooks_pcmsg_type_subject() {
     while true; do
         tput cuu1
         tput el
