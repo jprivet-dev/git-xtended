@@ -10,6 +10,7 @@ function gx_hooks_pcmsg {
     local reference
     local type
     local subtype
+    local type_split_subtype
     local scope
     local subject
     local step=0
@@ -151,6 +152,9 @@ function gx_hooks_pcmsg_reference {
 }
 
 function gx_hooks_pcmsg_type_subtype {
+    type=""
+    subtype=""
+
     while true; do
         tput cuu1
         tput el
@@ -211,7 +215,9 @@ function gx_hooks_pcmsg_type_subtype {
         # Type split
 
         if [ "${type}" == "" -o "${subtype}" == "" ]; then
-            type_split=""
+            final_type_split=""
+        else
+            final_type_split="${type_split}"
         fi
 
         gx_hooks_pcmsg_next_step
@@ -224,29 +230,38 @@ function gx_hooks_pcmsg_type_mainscope {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${reference}${type}${type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
+        echo -e -n "${reference}${type}${final_type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
 
         exec < /dev/tty
         read mainscope_choose
+
+        if [ "${mainscope_choose}" == "*" ] ;then
+            break
+        fi
 
         if [ "${files_listing}" != "" -o "${mainscope_choose}" != "" ]; then
             break;
         fi
     done
 
-    mainscope="${files_listing}"
-    if [ "${mainscope_choose}" != "" ] ;then
-        mainscope="${mainscope_choose}"
-    fi
+    if [ "${mainscope_choose}" == "*" ] ;then
+        gx_hooks_pcmsg_previous_step
+    else
 
-    gx_hooks_pcmsg_next_step
+        mainscope="${files_listing}"
+        if [ "${mainscope_choose}" != "" ] ;then
+            mainscope="${mainscope_choose}"
+        fi
+
+        gx_hooks_pcmsg_next_step
+    fi
 }
 
 function gx_hooks_pcmsg_type_subject() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${reference}${type}${type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
+        echo -e -n "${reference}${type}${final_type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec < /dev/tty
         read subject
@@ -260,7 +275,7 @@ function gx_hooks_pcmsg_type_subject() {
 }
 
 function gx_hooks_pcmsg_type_final_message() {
-    complete_message="${reference}${type}${type_split}${subtype}(${mainscope})${main_split}${subject}"
+    complete_message="${reference}${type}${final_type_split}${subtype}(${mainscope})${main_split}${subject}"
 
     local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
     local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
@@ -268,7 +283,7 @@ function gx_hooks_pcmsg_type_final_message() {
     local mainscope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${mainscope}${F_RESET}"
     local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
 
-    local complete_message_colors="${reference_colors}${type_colors}${type_split}${subtype_colors}(${mainscope_colors})${main_split}${subject_colors}"
+    local complete_message_colors="${reference_colors}${type_colors}${final_type_split}${subtype_colors}(${mainscope_colors})${main_split}${subject_colors}"
 
     tput cuu1
     tput el
