@@ -12,6 +12,7 @@ function gx_hooks_pcmsg {
     local subtype
     local scope
     local subject
+    local step=0
 
     local type_subtype_default
     local subject_default
@@ -84,10 +85,13 @@ function gx_hooks_pcmsg {
     printf "\n%s\n" "${split}"
     echo "" # tricks : with tput cuu1 and el, thath avoid new line with first ENTER action
 
-    gx_hooks_pcmsg_reference
-    gx_hooks_pcmsg_type_subtype
-    gx_hooks_pcmsg_type_mainscope
-    gx_hooks_pcmsg_type_final_message
+    while true; do
+      gx_hooks_pcmsg_reference
+      gx_hooks_pcmsg_type_subtype
+      gx_hooks_pcmsg_type_mainscope
+      gx_hooks_pcmsg_type_final_message
+      break
+    done
 }
 
 function gx_hooks_pcmsg_reference {
