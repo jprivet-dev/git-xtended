@@ -103,7 +103,7 @@ function gx_hooks_pcmsg {
               break
           ;;
       esac
-      step=$((step+1))
+      gx_hooks_pcmsg_next_step
     done
 }
 
@@ -315,4 +315,12 @@ function gx_hooks_pcmsg_col_fixed_width {
     done
 
     gx_print_colors "${text} ${C_DARK_GRAY}${spaces}${F_RESET} "
+}
+
+function gx_hooks_pcmsg_next_step() {
+    step=$((step+1))
+}
+
+function gx_hooks_pcmsg_previous_step() {
+    step=$((step-1))
 }
