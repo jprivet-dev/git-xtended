@@ -266,12 +266,20 @@ function gx_hooks_pcmsg_type_subject() {
         exec < /dev/tty
         read subject
 
+        if [ "${subject}" == "*" ] ;then
+            break
+        fi
+
         if [ "${subject}" != "" ]; then
             break;
         fi
     done
 
-    gx_hooks_pcmsg_next_step
+    if [ "${subject}" == "*" ] ;then
+        gx_hooks_pcmsg_previous_step
+    else
+        gx_hooks_pcmsg_next_step
+    fi
 }
 
 function gx_hooks_pcmsg_type_final_message() {
