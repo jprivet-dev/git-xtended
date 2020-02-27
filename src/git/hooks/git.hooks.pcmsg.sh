@@ -121,12 +121,11 @@ function gx_hooks_pcmsg_reference {
       fi
     else
         reference="[#${reference_choose}]${reference_split}"
+        $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}")
     fi
 
     if [ "${reference}" == "" ] ;then
         gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
-    else
-        gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}"
     fi
 }
 
