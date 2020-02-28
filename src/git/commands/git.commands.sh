@@ -20,10 +20,6 @@ function gx_git_get_remote_branch_ref {
     git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_BRANCH_REF} 2> /dev/null
 }
 
-function gx_git_get_commit_last_reference {
-    git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE} 2> /dev/null
-}
-
 function gx_git_status {
     git status --porcelain 2> /dev/null
 }
