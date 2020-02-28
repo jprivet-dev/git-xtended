@@ -38,4 +38,3 @@ _GX_HOOKS_PCMSG_SUBTYPES=(
     'r/refactor/A code change that neither fixes a bug nor adds a feature'
     's/style/Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)'
 )
-
