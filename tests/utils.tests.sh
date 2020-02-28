@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function test_gx_implode {
+function test_gx_implode() {
     assert equals "$(gx_implode "-" "con" "ca" "te" "na" "te")"                                "con-ca-te-na-te" $LINENO
     assert equals "$(gx_implode "-"   "con"  "ca"  "te"      "na"  "te")"                      "con-ca-te-na-te" $LINENO
     assert equals "$(gx_implode "-"   "con"  "ca"  "te"   ""   "na" "" "te")"                  "con-ca-te-na-te" $LINENO
@@ -33,7 +33,7 @@ function test_gx_implode {
     assert equals "$(gx_implode "@" "${email_part_1}" "")" "address" $LINENO
 }
 
-function test_gx_print_fixed_width {
+function test_gx_print_fixed_width() {
     assert equals "$(gx_print_fixed_width 12 . "abcd" "4321")"              "abcd....4321" $LINENO
     assert equals "$(gx_print_fixed_width 12 . "abcdef" "21")"              "abcdef....21" $LINENO
     assert equals "$(gx_print_fixed_width 12 . "ab" "654321")"              "ab....654321" $LINENO
@@ -70,7 +70,7 @@ function test_gx_print_fixed_width {
     assert equals "$(gx_print_fixed_width 12 . "abcdefgh" "89654321" " " " ")"      "abcdefgh  89654321" $LINENO
 }
 
-function test_gx_trim {
+function test_gx_trim() {
     assert equals "$(gx_trim "abc")"   "abc" $LINENO
     assert equals "$(gx_trim "abc ")"  "abc" $LINENO
     assert equals "$(gx_trim " abc")"  "abc" $LINENO
@@ -82,7 +82,7 @@ function test_gx_trim {
     assert equals "$(gx_trim " abc 123 ")"     "abc 123" $LINENO
 }
 
-function test_gx_regex_remove_colors {
+function test_gx_regex_remove_colors() {
     assert equals "$(gx_regex_remove_colors "color")"   "color" $LINENO
 
     assert equals "$(gx_regex_remove_colors "${F_BOLD}color")"                "color" $LINENO
@@ -107,7 +107,7 @@ function test_gx_regex_remove_colors {
     assert equals "$(gx_regex_remove_colors "\e[1234m")"       "\e[1234m" $LINENO
 }
 
-function test_gx_line_generator {
+function test_gx_line_generator() {
     assert equals "$(gx_line_generator 0 ".")"     "" $LINENO
 
     assert equals "$(gx_line_generator 5 ".")"     "....." $LINENO
@@ -120,7 +120,7 @@ function test_gx_line_generator {
     assert equals "$(gx_line_generator 5 "| ")"    "| | | | | " $LINENO
 }
 
-function test_gx_print {
+function test_gx_print() {
     assert equals "$(gx_print hello)"                              "hello" $LINENO
     assert equals "$(gx_print hello 42)"                           "hello 42" $LINENO
 
@@ -131,7 +131,7 @@ function test_gx_print {
     assert equals "$(gx_print "${GX_PARAMS_TAB}hello 42")"        "${TEST_GX_PARAMS_TAB}hello 42" $LINENO
 }
 
-function test_gx_print_colors {
+function test_gx_print_colors() {
     assert equals "$(gx_print_colors ${F_BOLD}hello${F_RESET})"                           "${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
     assert equals "$(gx_print_colors ${F_BOLD}hello 42${F_RESET})"                        "${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
 
@@ -142,14 +142,14 @@ function test_gx_print_colors {
     assert equals "$(gx_print_colors "${GX_PARAMS_TAB}${F_BOLD}hello 42${F_RESET}")"     "${TEST_GX_PARAMS_TAB}${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
 }
 
-function test_gx_regex_extract_version {
+function test_gx_regex_extract_version() {
     assert equals "$(gx_regex_extract_version "git version 1.2.3")"                 "1.2.3" $LINENO
     assert equals "$(gx_regex_extract_version "git version 12.34.56")"              "12.34.56" $LINENO
     assert equals "$(gx_regex_extract_version "git version 2.16.2.windows.1")"      "2.16.2" $LINENO
     assert equals "$(gx_regex_extract_version "x xx xxx 2.16.2.xx.x.0")"            "2.16.2" $LINENO
 }
 
-function test_gx_is_good_version {
+function test_gx_is_good_version() {
     assert true "$(gx_is_good_version "1.1.1" "1.1.1")"     $LINENO
 
     assert false "$(gx_is_good_version "0.1.1" "1.1.1")"    $LINENO
