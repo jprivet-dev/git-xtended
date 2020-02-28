@@ -19,4 +19,3 @@ git status -s | cut -c4- | while read path; do
         fi
     done
 done
-
