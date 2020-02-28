@@ -2,10 +2,10 @@
 # shellcheck disable=SC2034
 :
 
-TEST_F_BOLD="\e[1m";
-TEST_F_DIM="\e[2m";
-TEST_F_UNDERLINED="\e[4m";
-TEST_F_INVERTED="\e[7m";
+TEST_F_BOLD="\e[1m"
+TEST_F_DIM="\e[2m"
+TEST_F_UNDERLINED="\e[4m"
+TEST_F_INVERTED="\e[7m"
 TEST_F_HIDDEN="\e[8m"
 TEST_F_RESET="\e[0m"
 
