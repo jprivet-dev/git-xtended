@@ -33,6 +33,7 @@ function gx_hooks_pcmsg() {
     local reference_split=" "
     local type_split="."
     local main_split=": "
+    local cancel_char="*"
 
     # --------------
     # TYPE
@@ -117,7 +118,7 @@ function gx_hooks_pcmsg_reference() {
     last_reference=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
 
     if [ "${last_reference}" != "" ]; then
-        last_reference_prompt="[#${last_reference}]* "
+        last_reference_prompt="[#${last_reference}]${cancel_char} "
     fi
 
     while true; do
@@ -133,7 +134,7 @@ function gx_hooks_pcmsg_reference() {
 
     reference=""
 
-    if [ "${reference_choose}" == "*" ]; then
+    if [ "${reference_choose}" == "${cancel_char}" ]; then
         reference_choose=""
         last_reference=""
     fi
@@ -181,7 +182,7 @@ function gx_hooks_pcmsg_type_subtype() {
         exec </dev/tty
         read choise_type_subtype_index
 
-        if [ "${choise_type_subtype_index}" == "*" ]; then
+        if [ "${choise_type_subtype_index}" == "${cancel_char}" ]; then
             break
         fi
 
@@ -226,7 +227,7 @@ function gx_hooks_pcmsg_type_subtype() {
         fi
     done
 
-    if [ "${choise_type_subtype_index}" == "*" ]; then
+    if [ "${choise_type_subtype_index}" == "${cancel_char}" ]; then
         gx_hooks_pcmsg_previous_step
     else
         # --------------
@@ -266,7 +267,7 @@ function gx_hooks_pcmsg_type_mainscope() {
         exec </dev/tty
         read mainscope_choose
 
-        if [ "${mainscope_choose}" == "*" ]; then
+        if [ "${mainscope_choose}" == "${cancel_char}" ]; then
             break
         fi
 
@@ -275,7 +276,7 @@ function gx_hooks_pcmsg_type_mainscope() {
         fi
     done
 
-    if [ "${mainscope_choose}" == "*" ]; then
+    if [ "${mainscope_choose}" == "${cancel_char}" ]; then
         gx_hooks_pcmsg_previous_step
     else
 
@@ -297,7 +298,7 @@ function gx_hooks_pcmsg_type_subject() {
         exec </dev/tty
         read subject
 
-        if [ "${subject}" == "*" ]; then
+        if [ "${subject}" == "${cancel_char}" ]; then
             break
         fi
 
@@ -306,7 +307,7 @@ function gx_hooks_pcmsg_type_subject() {
         fi
     done
 
-    if [ "${subject}" == "*" ]; then
+    if [ "${subject}" == "${cancel_char}" ]; then
         gx_hooks_pcmsg_previous_step
     else
         gx_hooks_pcmsg_next_step
@@ -329,7 +330,7 @@ function gx_hooks_pcmsg_type_final_message() {
     echo -e "${complete_message_colors}"
     printf "%s\n" "${split}"
 
-    if [ "${subject}" != "*" ]; then
+    if [ "${subject}" != "${cancel_char}" ]; then
         echo ""
         if [[ "${trigger_by_hook}" == 1 ]]; then
             echo "${complete_message}" >"${commit_msg}"
