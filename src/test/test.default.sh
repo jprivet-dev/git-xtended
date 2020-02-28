@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-function gx_test_count_tests_increment {
+function gx_test_count_tests_increment() {
     ((gx_test_count_tests++))
 }
 
-function gx_test_count_assertions_increment {
+function gx_test_count_assertions_increment() {
     ((gx_test_count_assertions++))
 }
 
-function gx_test_count_failures_increment {
+function gx_test_count_failures_increment() {
     ((gx_test_count_failures++))
 }
 
-function gx_test_print_results {
+function gx_test_print_results() {
     local message
     local test_plurial
     local assertion_plurial
@@ -31,15 +31,15 @@ function gx_test_print_results {
     fi
 }
 
-function gx_test_find_all_func_test {
+function gx_test_find_all_func_test() {
     compgen -A function | grep ^test_
 }
 
-function gx_test_find_all_func_gx {
+function gx_test_find_all_func_gx() {
     compgen -A function | grep ^gx_ | grep -v ^gx_test_
 }
 
-function gx_test_run {
+function gx_test_run() {
     local func=$1
 
     gx_print_step "Tests launched"
@@ -58,20 +58,19 @@ function gx_test_run {
     gx_test_run_only $func
 }
 
-function gx_test_run_all {
+function gx_test_run_all() {
     local func_test_list=($(gx_test_find_all_func_test))
 
     gx_print_title_2 "Launch all tests"
 
-    for func in "${func_test_list[@]}"
-    do
+    for func in "${func_test_list[@]}"; do
         gx_test_run_func $func
     done
 
     gx_test_print_results
 }
 
-function gx_test_run_only {
+function gx_test_run_only() {
     local func=$1
 
     gx_print_title_2 "Launch only one test"
@@ -84,7 +83,7 @@ function gx_test_run_only {
     fi
 }
 
-function gx_test_run_func {
+function gx_test_run_func() {
     local func=$1
 
     echo -e -n "${C_LIGHT_YELLOW}#${F_RESET} ${func} "
@@ -96,13 +95,12 @@ function gx_test_run_func {
     gx_test_assert_pipeline_message_print_all
 }
 
-function gx_test_check_func_with_test {
+function gx_test_check_func_with_test() {
     local func_gx_list=($(gx_test_find_all_func_gx))
 
     gx_print_title_2 "Functions with test"
 
-    for func in "${func_gx_list[@]}"
-    do
+    for func in "${func_gx_list[@]}"; do
         func_test_version="test_${func}"
 
         if type $func_test_version &>/dev/null; then
