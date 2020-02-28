@@ -18,13 +18,13 @@ if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
     git status -s -u
     printf "%s\n" "${split}"
 
-#    git commit -m ""
+    # git commit -m ""
     gx_hooks_pcmsg $@
     exit 1
 fi
 
 if [ "${indexes}" == "" -a "$(gx_git_get_status_changes_to_be_committed_count)" == 0 ]; then
-   indexes=1
+    indexes=1
 fi
 
 if [ "${indexes}" != "" ]; then
