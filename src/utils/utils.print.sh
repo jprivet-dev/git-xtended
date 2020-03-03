@@ -50,7 +50,7 @@ function gx_print_col_fixed_width() {
     local text_length=${#text}
     local spaces=""
 
-    for ((i = ${text_length}; i < ${width}; i++)); do
+    for ((i = text_length; i < width; i++)); do
         spaces="${spaces} "
     done
 
