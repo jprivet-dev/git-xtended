@@ -274,7 +274,7 @@ M  README.adoc
 user.name  : username
 user.email : user@gmail.com
 --------------------------------------------------
-MSG = <type*>.<subtype>(<scope*>): <subject*>
+MSG = [#reference] <type*>.<subtype>(<scope*>): <subject*>
 --------------------------------------------------
 
 <type*>
@@ -299,10 +299,17 @@ MSG = <type*>.<subtype>(<scope*>): <subject*>
  style ...... Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
 
 --------------------------------------------------
-<type*>.<subtype> <<< do|
+[#reference] <<< 123|
 ----
 
-First, you will have to choose a **type** (mandatory) and a **subtype** (not mandatory).
+1) Indicate a reference (not mandatory). You can leave this value blank.
+
+----
+--------------------------------------------------
+[#123] <type*>.<subtype> <<< do|
+----
+
+2) You will have to choose a **type** (mandatory) and a **subtype** (not mandatory).
 To do so, type the corresponding **shortcuts indicated in color and underlined** in shell (and unfortunately not in Github in this adoc file!).
 For example:
 
@@ -314,28 +321,28 @@ t r     => tpl.refactor(...)
 ...
 ----
 
-After **choosing the type and subtype**, you will have to **choose the scope**.
+3) You will have to **choose the scope**.
 It will be suggested to you **the names of files in progress**.
 You will be able to modify it scope with your suitability (**To keep the suggestion**, simply tap **Enter**):
 
 ----
 --------------------------------------------------
-docs(<scope*>) <<< [README.adoc] |
+[#123] docs(<scope*>) <<< [README.adoc] |
 ----
 
-Then, indicate the **subject**:
+4) Then, indicate the **subject**:
 
 ----
 --------------------------------------------------
-docs(README.adoc): <subject*> <<< update licence section|
+[#123] docs(README.adoc): <subject*> <<< update licence section|
 ----
 
-And tap **Enter**:
+5) And tap **Enter** to validate and commit:
 
 [subs=attributes+]
 ----
 --------------------------------------------------
-docs(README.adoc): update licence section
+[#123] docs(README.adoc): update licence section
 --------------------------------------------------
 
 [70-gx-config-enhancement dd0a2c4] docs(README.adoc): update licence section
@@ -343,8 +350,6 @@ docs(README.adoc): update licence section
 {PROMPT_PS1_NO_CHANGE}
 $
 ----
-
-Your changes have been saved!
 
 {BACK_TO_TOP}
 
