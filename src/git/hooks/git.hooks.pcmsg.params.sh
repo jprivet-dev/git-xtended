@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034  # Unused variables left for readability
+:
 
 _GX_HOOKS_PCMSG_REFERENCE_COLOR="${C_LIGHT_RED}"
 _GX_HOOKS_PCMSG_TYPE_COLOR="${C_LIGHT_GREEN}"
