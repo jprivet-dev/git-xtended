@@ -262,7 +262,7 @@ $ gx help
 
 ==== `git c` : commits are documentation
 
-**{MAIN_TITLE}** proposes a **commit message formatting system** (without `prepare-commit-msg` hook):
+**{MAIN_TITLE}** proposes a **commit message formatting system** (without `prepare-commit-msg` hook) with `git c`:
 
 ----
 $ git c
@@ -299,26 +299,21 @@ MSG = [#reference] <type*>.<subtype>(<scope*>): <subject*>
  style ...... Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
 
 --------------------------------------------------
-[#reference] <<< 123|
+[#reference] <<< |
 ----
 
 1) Indicate a reference (not mandatory). You can leave this value blank.
 
 ----
---------------------------------------------------
-[#123] <type*>.<subtype> <<< do|
+[#reference] <<< 123|
 ----
 
 2) You will have to choose a **type** (mandatory) and a **subtype** (not mandatory).
 To do so, type the corresponding **shortcuts indicated in color and underlined** in shell (and unfortunately not in Github in this adoc file!).
-For example:
+For example (with do => docs()):
 
 ----
-do      => docs(...)
-d f     => dev.fix(...)
-i       => integ(...)
-t r     => tpl.refactor(...)
-...
+[#123] <type*>.<subtype> <<< do|
 ----
 
 3) You will have to **choose the scope**.
@@ -326,14 +321,12 @@ It will be suggested to you **the names of files in progress**.
 You will be able to modify it scope with your suitability (**To keep the suggestion**, simply tap **Enter**):
 
 ----
---------------------------------------------------
 [#123] docs(<scope*>) <<< [README.adoc] |
 ----
 
 4) Then, indicate the **subject**:
 
 ----
---------------------------------------------------
 [#123] docs(README.adoc): <subject*> <<< update licence section|
 ----
 
