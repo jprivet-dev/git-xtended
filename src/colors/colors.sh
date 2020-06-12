@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gx_colors_print_all {
+function gx_colors_print_all() {
     echo -n "${F_UNDERLINED} : ";       echo -e "Normal ${F_UNDERLINED}Underlined${F_RESET}"
     echo -n "${F_DIM} : ";              echo -e "Normal ${F_DIM}Dim${F_RESET}"0
     echo -n "${F_BOLD} : ";             echo -e "Normal ${F_BOLD}Bold${F_RESET}"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gx_prompt_help {
+function gx_prompt_help() {
     local username_branch=$(gx_prompt_username_branch_colors "username" "branch")
     local count=$(gx_prompt_changes_count_colors "8")
     local status_u=$(gx_prompt_status_untracked_colors "1")
@@ -21,7 +21,6 @@ function gx_prompt_help {
     echo
 }
 
-function gx_prompt_help_line {
+function gx_prompt_help_line() {
     gx_print_colors "${GX_PARAMS_TAB}$1 ${C_DARK_GRAY}$2${F_RESET} $3"
 }
-

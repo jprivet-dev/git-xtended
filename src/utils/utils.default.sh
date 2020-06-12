@@ -6,15 +6,14 @@
 # test_3=""
 # gx_implode ', ' 'a' 'b' "$test_1" 3 "$test_2" 4 "$test_3" 5
 # a, b, hello, 3, bonjour, 4, 5
-function gx_implode {
+function gx_implode() {
     local glue="$1"
     shift
 
     local -a pieces="($*)"
     local implode=""
 
-    for p in "${pieces[@]}"
-    do
+    for p in "${pieces[@]}"; do
         p="$(gx_trim "${p}")"
 
         if [[ "${implode}" == "" ]]; then
@@ -27,28 +26,28 @@ function gx_implode {
     echo "${implode}"
 }
 
-function gx_is_bash_interactive {
-    [[ $- == *i* ]] \
-        && echo "true" \
-        || echo "false"
+function gx_is_bash_interactive() {
+    [[ $- == *i* ]] &&
+        echo "true" ||
+        echo "false"
 }
 
 # -bash: $'\r': command not found
-function gx_remove_r {
+function gx_remove_r() {
     local file=$1
     sed -i 's/\r$//' $file
 }
 
-function gx_trim {
+function gx_trim() {
     local string=$1
     echo "${string}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
 
-function gx_regex_remove_colors {
+function gx_regex_remove_colors() {
     echo "$1" | sed -E 's/\\e\[[0-9]{1,3}m//g'
 }
 
-function gx_line_generator {
+function gx_line_generator() {
     local length=$1
     local symbol=$2
     local result
@@ -59,20 +58,20 @@ function gx_line_generator {
     echo "${result}"
 }
 
-function gx_regex_extract_version {
+function gx_regex_extract_version() {
     echo "$1" | sed -e 's/^.*[^0-9]\([0-9]\+.[0-9]\+.[0-9]\+\).*$/\1/'
 }
 
-function gx_is_good_version {
+function gx_is_good_version() {
     local current_major
     local current_minor
     local current_patch
-    IFS="." read current_major current_minor current_patch <<< "${1}"
+    IFS="." read current_major current_minor current_patch <<<"${1}"
 
     local target_major
     local target_minor
     local target_patch
-    IFS="." read target_major target_minor target_patch <<< "${2}"
+    IFS="." read target_major target_minor target_patch <<<"${2}"
 
     if [[ "${current_major}" -lt "${target_major}" ]]; then
         echo "${GX_PARAMS_FALSE}"
@@ -92,7 +91,7 @@ function gx_is_good_version {
     echo "${GX_PARAMS_TRUE}"
 }
 
-function gx_symlink_exists {
+function gx_symlink_exists() {
     if [[ -L $1 ]]; then
         echo "${GX_PARAMS_TRUE}"
         return

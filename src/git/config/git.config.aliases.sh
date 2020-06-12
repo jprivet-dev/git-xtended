@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gx_git_config_set_aliases {
+function gx_git_config_set_aliases() {
     local global="$1"
     [[ "${global}" != "--global" ]] && global=""
 
@@ -19,13 +19,13 @@ function gx_git_config_set_aliases {
 
     # git commit
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}' "$@"; }; f'
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit -m --amend"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit --amend -m"
 
     # git diff & commit one file
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D}${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}'; '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}'; }; f'
 
     # git checkout
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CK} '!f() { '${GX_PARAMS_GIT_ALIAS_CHECKOUT_FILE}' "$@"; }; f'
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CANCEL} '!f() { '${GX_PARAMS_GIT_ALIAS_CHECKOUT_FILE}' "$@"; }; f'
 
     # git log
     local hash="%C(yellow)%h"
@@ -57,37 +57,37 @@ function gx_git_config_set_aliases {
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_FIND} '!f() { '${GX_PARAMS_GIT_ALIAS_FIND_FILE}' "$@"; }; f'
 }
 
-function gx_git_config_unset_aliases {
+function gx_git_config_unset_aliases() {
     local global="$1"
     [[ "${global}" != "--global" ]] && global=""
 
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_B}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_D}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_A}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_ALL}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_NM}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_MD}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_C}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_AMEND}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CK}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_L}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LL}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_D}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_A}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_ALL}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_NM}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_MD}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_C}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_AMEND}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CANCEL}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_L}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LL}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LFILE}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LMERGES}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LCOUNT}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_UNTRACKED}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_R}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_HARD}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_UNDO}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_S}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_SS}
-	git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_FIND}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LCOUNT}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_UNTRACKED}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_R}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_HARD}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_UNDO}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_S}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_SS}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_FIND}
 }
 
-function gx_git_aliases_enabled {
+function gx_git_aliases_enabled() {
     gx_git_config_set_aliases --global
 }
 
-function gx_git_aliases_disabled {
+function gx_git_aliases_disabled() {
     gx_git_config_unset_aliases --global
 }
