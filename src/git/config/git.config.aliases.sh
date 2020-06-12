@@ -19,7 +19,7 @@ function gx_git_config_set_aliases() {
 
     # git commit
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}' "$@"; }; f'
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit -m --amend"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit --amend -m"
 
     # git diff & commit one file
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D}${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}'; '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}'; }; f'
