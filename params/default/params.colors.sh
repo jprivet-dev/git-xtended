@@ -2,10 +2,10 @@
 # shellcheck disable=SC2034
 :
 
-F_BOLD="\e[1m";
-F_DIM="\e[2m";
-F_UNDERLINED="\e[4m";
-F_INVERTED="\e[7m";
+F_BOLD="\e[1m"
+F_DIM="\e[2m"
+F_UNDERLINED="\e[4m"
+F_INVERTED="\e[7m"
 F_HIDDEN="\e[8m"
 F_RESET="\e[0m"
 
@@ -44,4 +44,3 @@ C_BG_LIGHT_BLUE="\e[104m"
 C_BG_LIGHT_MAGENTA="\e[105m"
 C_BG_LIGHT_CYAN="\e[106m"
 C_BG_WHITE="\e[107m"
-

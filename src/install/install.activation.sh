@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gx_install_activation {
+function gx_install_activation() {
     gx_install_choice_params_set_all_from_git_config
 
     if [ "${GX_PARAMS_INSTALL_PROMPT_STATUS}" == "${GX_PARAMS_ENABLED}" ]; then
@@ -16,11 +16,11 @@ function gx_install_activation {
     fi
 }
 
-function gx_install_activation_status_color {
+function gx_install_activation_status_color() {
     [ "$1" == "${GX_PARAMS_ENABLED}" ] && echo "${GX_PARAMS_ENABLED_C}" || echo "${GX_PARAMS_DISABLED_C}"
 }
 
-function gx_install_activation_show_status {
+function gx_install_activation_show_status() {
     gx_install_choice_params_set_all_from_git_config
 
     local gx_prompt_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_PROMPT_STATUS})"
@@ -39,10 +39,9 @@ function gx_install_activation_show_status {
     echo
     gx_print_fixed_width $col_width " " "" "${GX_PARAMS_VERSION}"
 
-
     echo "${line}"
-    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_PROMPT}"        "${gx_prompt_status}"
-    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_GIT_ALIASES}"   "${gx_git_aliases_status}"
+    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_PROMPT}"      "${gx_prompt_status}"
+    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_GIT_ALIASES}" "${gx_git_aliases_status}"
 
     echo "${line}"
     echo "${line_info}"

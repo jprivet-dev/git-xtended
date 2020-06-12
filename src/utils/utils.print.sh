@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gx_print_fixed_width {
+function gx_print_fixed_width() {
     local e="${GX_PARAMS_OFF}"
     local width middle_char start end
     local start_no_style end_no_style
@@ -39,7 +39,7 @@ function gx_print_fixed_width {
     echo "${start}${trucate}${end}"
 }
 
-function gx_print_col_fixed_width {
+function gx_print_col_fixed_width() {
     local width=$1
     local text=$2
 
@@ -50,57 +50,57 @@ function gx_print_col_fixed_width {
     local text_length=${#text}
     local spaces=""
 
-    for (( i=${text_length}; i<${width}; i++ )); do
+    for ((i = text_length; i < width; i++)); do
         spaces="${spaces} "
     done
 
     printf "${text}${spaces}"
 }
 
-function gx_print {
+function gx_print() {
     echo "$*"
 }
 
-function gx_print_title_1 {
+function gx_print_title_1() {
     gx_print_colors_force "${C_BG_YELLOW}${C_BLACK}\n\n $*\n${F_RESET}\n"
 }
 
-function gx_print_title_2 {
+function gx_print_title_2() {
     gx_print_colors_force "${C_LIGHT_YELLOW}\n--- $* ---\n${F_RESET}"
 }
 
-function gx_print_title_success {
+function gx_print_title_success() {
     gx_print_colors_force "${C_BG_GREEN}${C_WHITE}\n\n $*\n${F_RESET}\n"
 }
 
-function gx_print_title_error {
+function gx_print_title_error() {
     gx_print_colors_force "${C_BG_RED}${C_WHITE}\n\n $*\n${F_RESET}\n"
 }
 
-function gx_print_step {
+function gx_print_step() {
     gx_print_colors_force "> $*"
 }
 
-function gx_print_colors {
+function gx_print_colors() {
     echo ${GX_PARAMS_PRINT_E_TAG} "$*"
 }
 
-function gx_print_colors_force {
+function gx_print_colors_force() {
     echo -e "$*"
 }
 
-function gx_print_question_yes_no {
+function gx_print_question_yes_no() {
     local choice
     local label="$*"
 
     while true; do
         echo -e -n "${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}? [y/n] "
 
-        exec < /dev/tty
+        exec </dev/tty
         read choice
 
         if [ "${choice}" == "${GX_PARAMS_Y}" -o "${choice}" == "${GX_PARAMS_N}" ]; then
-            break;
+            break
         fi
     done
 
@@ -113,7 +113,7 @@ function gx_print_question_yes_no {
     _GX_PRINT_QUESTION_YES_NO_LAST_VALUE="${GX_PARAMS_NO}"
 }
 
-function gx_print_choose_one_option {
+function gx_print_choose_one_option() {
     local choice
     local label="$1"
     shift
@@ -127,8 +127,7 @@ function gx_print_choose_one_option {
 
     local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}"
 
-    for o in "${options[@]}"
-    do
+    for o in "${options[@]}"; do
         message="${message}  ${C_LIGHT_CYAN}[${count}]${F_RESET} ${o}"
         ((count++))
     done
@@ -138,14 +137,13 @@ function gx_print_choose_one_option {
     while true; do
         echo -n " : "
 
-        exec < /dev/tty
+        exec </dev/tty
         read choice_index
 
         choice_label=""
         count="0"
 
-        for o in "${options[@]}"
-        do
+        for o in "${options[@]}"; do
             if [[ "${choice_index}" == "${count}" ]]; then
                 choice_label="${o}"
             fi
@@ -153,7 +151,7 @@ function gx_print_choose_one_option {
         done
 
         if [[ "${choice_label}" != "" ]]; then
-            break;
+            break
         fi
     done
 
@@ -162,7 +160,7 @@ function gx_print_choose_one_option {
     gx_print_step "${label} = ${_GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}"
 }
 
-function gx_print_input_text {
+function gx_print_input_text() {
     local choice
     local label="$1"
 
@@ -171,11 +169,11 @@ function gx_print_input_text {
     while true; do
         echo -e -n "${message}"
 
-        exec < /dev/tty
+        exec </dev/tty
         read choice
 
         if [ "${choice}" != "" ]; then
-            break;
+            break
         fi
     done
 
@@ -183,4 +181,3 @@ function gx_print_input_text {
 
     gx_print_step "${label} = ${_GX_PRINT_INPUT_TEXT_LAST_VALUE}"
 }
-
