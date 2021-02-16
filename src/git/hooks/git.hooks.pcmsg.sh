@@ -10,10 +10,10 @@ function gx_hooks_pcmsg() {
     local last_type_index
     local last_subtype_index
 
-    local reference
     local type
     local subtype
     local scope
+    local reference
     local subject
     local step=0
 
@@ -30,9 +30,9 @@ function gx_hooks_pcmsg() {
         subject_default="$@"
     fi
 
-    local reference_split=" "
     local type_split="."
     local main_split=": "
+    local reference_split=" "
     local cancel_char="*"
 
     # --------------
@@ -45,7 +45,7 @@ function gx_hooks_pcmsg() {
     echo "user.email : $(git config user.email)"
     printf "%s\n" "${split}"
 
-    echo -e "MSG = ${_GX_HOOKS_PCMSG_REFERENCE_LABEL}${reference_split}${_GX_HOOKS_PCMSG_TYPE_LABEL}${type_split}${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}"
+    echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}${type_split}${_GX_HOOKS_PCMSG_SUBTYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL}${reference_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}"
     printf "%s\n" "${split}"
 
     echo ""
@@ -92,13 +92,13 @@ function gx_hooks_pcmsg() {
     while true; do
         case $step in
         0)
-            gx_hooks_pcmsg_reference
-            ;;
-        1)
             gx_hooks_pcmsg_type_subtype
             ;;
-        2)
+        1)
             gx_hooks_pcmsg_type_mainscope
+            ;;
+        2)
+            gx_hooks_pcmsg_reference
             ;;
         3)
             gx_hooks_pcmsg_type_subject
@@ -111,48 +111,6 @@ function gx_hooks_pcmsg() {
             ;;
         esac
     done
-}
-
-function gx_hooks_pcmsg_reference() {
-    local last_reference_prompt=""
-    last_reference=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
-
-    if [ "${last_reference}" != "" ]; then
-        last_reference_prompt="[#${last_reference}]${cancel_char} "
-    fi
-
-    while true; do
-        tput cuu1
-        tput el
-        echo -e -n "${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
-
-        exec </dev/tty
-        read reference_choose
-
-        break
-    done
-
-    reference=""
-
-    if [ "${reference_choose}" == "${cancel_char}" ]; then
-        reference_choose=""
-        last_reference=""
-    fi
-
-    if [ "${reference_choose}" == "" ]; then
-        if [ "${last_reference}" != "" ]; then
-            reference="[#${last_reference}]${reference_split}"
-        fi
-    else
-        reference="[#${reference_choose}]${reference_split}"
-        $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}")
-    fi
-
-    if [ "${reference}" == "" ]; then
-        gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
-    fi
-
-    gx_hooks_pcmsg_next_step
 }
 
 function gx_hooks_pcmsg_type_subtype() {
@@ -177,7 +135,7 @@ function gx_hooks_pcmsg_type_subtype() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${reference}${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ${C_DARK_GRAY}<<<${F_RESET}${gx_git_get_commit_last_suggest} "
+        echo -e -n "${_GX_HOOKS_PCMSG_TYPE_LABEL}.${_GX_HOOKS_PCMSG_SUBTYPE_LABEL} ${C_DARK_GRAY}<<<${F_RESET}${gx_git_get_commit_last_suggest} "
 
         exec </dev/tty
         read choise_type_subtype_index
@@ -262,7 +220,7 @@ function gx_hooks_pcmsg_type_mainscope() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${reference}${type}${final_type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
+        echo -e -n "${type}${final_type_split}${subtype}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
 
         exec </dev/tty
         read mainscope_choose
@@ -289,11 +247,53 @@ function gx_hooks_pcmsg_type_mainscope() {
     fi
 }
 
+function gx_hooks_pcmsg_reference() {
+    local last_reference_prompt=""
+    last_reference=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
+
+    if [ "${last_reference}" != "" ]; then
+        last_reference_prompt="[#${last_reference}]${cancel_char} "
+    fi
+
+    while true; do
+        tput cuu1
+        tput el
+        echo -e -n "${type}${final_type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
+
+        exec </dev/tty
+        read reference_choose
+
+        break
+    done
+
+    reference=""
+
+    if [ "${reference_choose}" == "${cancel_char}" ]; then
+        reference_choose=""
+        last_reference=""
+    fi
+
+    if [ "${reference_choose}" == "" ]; then
+        if [ "${last_reference}" != "" ]; then
+            reference="[#${last_reference}]${reference_split}"
+        fi
+    else
+        reference="[#${reference_choose}]${reference_split}"
+        $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}")
+    fi
+
+    if [ "${reference}" == "" ]; then
+        gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}"
+    fi
+
+    gx_hooks_pcmsg_next_step
+}
+
 function gx_hooks_pcmsg_type_subject() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${reference}${type}${final_type_split}${subtype}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
+        echo -e -n "${type}${final_type_split}${subtype}(${mainscope})${main_split}${reference}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec </dev/tty
         read subject
@@ -315,15 +315,15 @@ function gx_hooks_pcmsg_type_subject() {
 }
 
 function gx_hooks_pcmsg_type_final_message() {
-    complete_message="${reference}${type}${final_type_split}${subtype}(${mainscope})${main_split}${subject}"
+    complete_message="${type}${final_type_split}${subtype}(${mainscope})${main_split}${reference}${subject}"
 
-    local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
     local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
     local subtype_colors="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}${subtype}${F_RESET}"
     local mainscope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${mainscope}${F_RESET}"
+    local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
     local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
 
-    local complete_message_colors="${reference_colors}${type_colors}${final_type_split}${subtype_colors}(${mainscope_colors})${main_split}${subject_colors}"
+    local complete_message_colors="${type_colors}${final_type_split}${subtype_colors}(${mainscope_colors})${main_split}${reference_colors}${subject_colors}"
 
     tput cuu1
     tput el
