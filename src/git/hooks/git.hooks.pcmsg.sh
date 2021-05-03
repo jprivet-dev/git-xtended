@@ -6,7 +6,7 @@ function gx_hooks_pcmsg() {
     local commit_msg=$1
     local commit_mode=$2
 
-    local last_mainscope
+    local last_scope
     local last_reference
     local last_type_index
 
@@ -70,7 +70,7 @@ function gx_hooks_pcmsg() {
             gx_hooks_pcmsg_type
             ;;
         1)
-            gx_hooks_pcmsg_mainscope
+            gx_hooks_pcmsg_scope
             ;;
         2)
             gx_hooks_pcmsg_type_subject
@@ -142,40 +142,40 @@ function gx_hooks_pcmsg_type() {
     fi
 }
 
-function gx_hooks_pcmsg_mainscope() {
-    local last_mainscope_prompt=""
-    last_mainscope=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}")
+function gx_hooks_pcmsg_scope() {
+    local last_scope_prompt=""
+    last_scope=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}")
 
-    if [ "${last_mainscope}" != "" ]; then
-        last_mainscope_prompt="[${last_mainscope}] "
+    if [ "${last_scope}" != "" ]; then
+        last_scope_prompt="[${last_scope}] "
     fi
 
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} ${last_mainscope_prompt}"
+        echo -e -n "${type}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} ${last_scope_prompt}"
 
         exec </dev/tty
-        read mainscope_choose
+        read read_scope
 
         break
     done
 
-    if [ "${mainscope_choose}" == "${cancel_char}" ]; then
+    if [ "${read_scope}" == "${cancel_char}" ]; then
         gx_hooks_pcmsg_previous_step
     else
-        mainscope=""
+        scope=""
 
-        if [ "${mainscope_choose}" == "" ]; then
-            if [ "${last_mainscope}" != "" ]; then
-                mainscope="${last_mainscope}${mainscope_split}"
+        if [ "${read_scope}" == "" ]; then
+            if [ "${last_scope}" != "" ]; then
+                scope="${last_scope}${scope_split}"
             fi
         else
-            mainscope="${mainscope_choose}${mainscope_split}"
-            $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}" "${mainscope_choose}")
+            scope="${read_scope}${scope_split}"
+            $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}" "${read_scope}")
         fi
 
-        if [ "${mainscope}" == "" ]; then
+        if [ "${scope}" == "" ]; then
             gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}"
         fi
 
@@ -195,7 +195,7 @@ function gx_hooks_pcmsg_reference() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}(${mainscope})${main_split}${subject}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
+        echo -e -n "${type}(${scope})${main_split}${subject}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
 
         exec </dev/tty
         read reference_choose
@@ -234,7 +234,7 @@ function gx_hooks_pcmsg_type_subject() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
+        echo -e -n "${type}(${scope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec </dev/tty
         read subject
@@ -256,15 +256,15 @@ function gx_hooks_pcmsg_type_subject() {
 }
 
 function gx_hooks_pcmsg_type_final_message() {
-    complete_message="${type}(${mainscope})${main_split}${subject}${reference}"
+    complete_message="${type}(${scope})${main_split}${subject}${reference}"
 
     local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
     #local subtype_colors="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}${subtype}${F_RESET}"
-    local mainscope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${mainscope}${F_RESET}"
+    local scope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${scope}${F_RESET}"
     local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
     local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
 
-    local complete_message_colors="${type_colors}(${mainscope_colors})${main_split}${subject_colors}${reference_colors}"
+    local complete_message_colors="${type_colors}(${scope_colors})${main_split}${subject_colors}${reference_colors}"
 
     tput cuu1
     tput el
