@@ -42,7 +42,7 @@ function gx_hooks_pcmsg() {
     echo "user.email : $(git config user.email)"
     printf "%s\n" "${split}"
 
-    echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL}"
+    echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}(${_GX_HOOKS_PCMSG_SCOPE_LABEL})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL}"
     printf "%s\n" "${split}"
 
     echo ""
@@ -144,7 +144,7 @@ function gx_hooks_pcmsg_type() {
 
 function gx_hooks_pcmsg_scope() {
     local last_scope_prompt=""
-    last_scope=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}")
+    last_scope=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_SCOPE}")
 
     if [ "${last_scope}" != "" ]; then
         last_scope_prompt="[${last_scope}] "
@@ -153,7 +153,7 @@ function gx_hooks_pcmsg_scope() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} ${last_scope_prompt}"
+        echo -e -n "${type}(${_GX_HOOKS_PCMSG_SCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} ${last_scope_prompt}"
 
         exec </dev/tty
         read read_scope
@@ -172,11 +172,11 @@ function gx_hooks_pcmsg_scope() {
             fi
         else
             scope="${read_scope}${scope_split}"
-            $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}" "${read_scope}")
+            $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_SCOPE}" "${read_scope}")
         fi
 
         if [ "${scope}" == "" ]; then
-            gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}"
+            gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_SCOPE}"
         fi
 
         gx_hooks_pcmsg_next_step
@@ -260,7 +260,7 @@ function gx_hooks_pcmsg_type_final_message() {
 
     local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
     #local subtype_colors="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}${subtype}${F_RESET}"
-    local scope_colors="${_GX_HOOKS_PCMSG_MAINSCOPE_COLOR}${scope}${F_RESET}"
+    local scope_colors="${_GX_HOOKS_PCMSG_SCOPE_COLOR}${scope}${F_RESET}"
     local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
     local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
 
