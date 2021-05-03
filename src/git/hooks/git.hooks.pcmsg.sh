@@ -199,7 +199,7 @@ function gx_hooks_pcmsg_reference() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
+        echo -e -n "${type}(${mainscope})${main_split}${subject}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
 
         exec </dev/tty
         read reference_choose
