@@ -327,9 +327,9 @@ $
 
 {BACK_TO_TOP}
 
-==== Type `x` to go back
+=== Type `x` to go back and `*` to empty the reference
 
-
+image::doc/img/git-c-go-back.gif[]
 
 {BACK_TO_TOP}
 
@@ -350,9 +350,9 @@ $ gx help
 
 {BACK_TO_TOP}
 
-== Tips
+== Use index instead of path
 
-=== Use index instead of name
+image::doc/img/git-a-index.gif[]
 
 For example, `$ git s` is an indexed version of `$ git status`:
 
@@ -363,7 +363,7 @@ $ git s
 3)  M path/to/my/file3.sh
 ----
 
-Instead of specifying the name of the file you want to commit, just *specify the index*:
+Instead of specifying the path to the file you want to commit, just *specify the index*:
 
 ----
 $ git c 2
@@ -430,7 +430,7 @@ M  path/to/my/file3.sh
 
 {BACK_TO_TOP}
 
-=== Customization : override default settings
+== Customization : override default settings
 
 you can **override all variables** from parameter files `params.xxx.sh` in the folder `{GX_ROOT}/params/default/`.
 
@@ -605,6 +605,7 @@ OK: 65 tests, 234 assertions, 0 failure
 . https://www.atlassian.com/agile/software-development/git-branching-video
 . https://www.atlassian.com/blog/git/advanced-git-aliases
 . https://www.atlassian.com/blog/git/git-automatic-merges-with-server-side-hooks-for-the-win
+. https://www.conventionalcommits.org/en/v1.0.0/
 
 {BACK_TO_TOP}
 
