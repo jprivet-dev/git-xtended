@@ -29,6 +29,3 @@ _GX_HOOKS_PCMSG_TYPES=(
     "s|style|Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)"
     "t|test|Adding missing tests or correcting existing tests"
 )
-
-_GX_HOOKS_PCMSG_SUBTYPES=(
-)
