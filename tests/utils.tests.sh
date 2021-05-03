@@ -85,26 +85,26 @@ function test_gx_trim() {
 function test_gx_regex_remove_colors() {
     assert equals "$(gx_regex_remove_colors "color")"   "color" $LINENO
 
-    assert equals "$(gx_regex_remove_colors "${F_BOLD}color")"                "color" $LINENO
-    assert equals "$(gx_regex_remove_colors "color${F_RESET}")"               "color" $LINENO
+    assert equals "$(gx_regex_remove_colors "${F_BOLD}color")"               "color" $LINENO
+    assert equals "$(gx_regex_remove_colors "color${F_RESET}")"              "color" $LINENO
     assert equals "$(gx_regex_remove_colors "${F_BOLD}color${F_RESET}")"     "color" $LINENO
 
-    assert equals "$(gx_regex_remove_colors "${F_BOLD}color outrenoir")"                  "color outrenoir" $LINENO
-    assert equals "$(gx_regex_remove_colors "color outrenoir${F_RESET}")"                 "color outrenoir" $LINENO
+    assert equals "$(gx_regex_remove_colors "${F_BOLD}color outrenoir")"                 "color outrenoir" $LINENO
+    assert equals "$(gx_regex_remove_colors "color outrenoir${F_RESET}")"                "color outrenoir" $LINENO
     assert equals "$(gx_regex_remove_colors "${F_BOLD}color outrenoir${F_RESET}")"       "color outrenoir" $LINENO
     assert equals "$(gx_regex_remove_colors "${F_BOLD}color${F_RESET} outrenoir")"       "color outrenoir" $LINENO
     assert equals "$(gx_regex_remove_colors "color ${F_BOLD}outrenoir${F_RESET}")"       "color outrenoir" $LINENO
 
-    assert equals "$(gx_regex_remove_colors "color${C_RED}outrenoir")"                    "coloroutrenoir" $LINENO
+    assert equals "$(gx_regex_remove_colors "color${C_RED}outrenoir")"                   "coloroutrenoir" $LINENO
 
     assert equals "$(gx_regex_remove_colors "${F_BOLD}${F_RESET}${C_RED}${C_WHITE}${C_BG_CYAN}${C_BG_LIGHT_MAGENTA}")" "" $LINENO
 
-    assert equals "$(gx_regex_remove_colors "\e${C_RED}\e")"  "\e\e" $LINENO
-    assert equals "$(gx_regex_remove_colors "m${C_RED}m")"    "mm" $LINENO
-    assert equals "$(gx_regex_remove_colors "\e${C_RED}m")"   "\em" $LINENO
-    assert equals "$(gx_regex_remove_colors "\e[${C_RED}")"   "\e[" $LINENO
+    assert equals "$(gx_regex_remove_colors "\033${C_RED}\033")"    "\033\033" $LINENO
+    assert equals "$(gx_regex_remove_colors "m${C_RED}m")"          "mm" $LINENO
+    assert equals "$(gx_regex_remove_colors "\033${C_RED}m")"       "\033m" $LINENO
+    assert equals "$(gx_regex_remove_colors "\033[${C_RED}")"       "\033[" $LINENO
 
-    assert equals "$(gx_regex_remove_colors "\e[1234m")"       "\e[1234m" $LINENO
+    assert equals "$(gx_regex_remove_colors "\033[1234m")"          "\033[1234m" $LINENO
 }
 
 function test_gx_line_generator() {
@@ -138,8 +138,8 @@ function test_gx_print_colors() {
     assert equals "$(gx_print_colors "${F_BOLD}hello${F_RESET}")"                         "${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
     assert equals "$(gx_print_colors "${F_BOLD}hello 42${F_RESET}")"                      "${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
 
-    assert equals "$(gx_print_colors "${GX_PARAMS_TAB}${F_BOLD}hello${F_RESET}")"        "${TEST_GX_PARAMS_TAB}${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
-    assert equals "$(gx_print_colors "${GX_PARAMS_TAB}${F_BOLD}hello 42${F_RESET}")"     "${TEST_GX_PARAMS_TAB}${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
+    assert equals "$(gx_print_colors "${GX_PARAMS_TAB}${F_BOLD}hello${F_RESET}")"         "${TEST_GX_PARAMS_TAB}${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
+    assert equals "$(gx_print_colors "${GX_PARAMS_TAB}${F_BOLD}hello 42${F_RESET}")"      "${TEST_GX_PARAMS_TAB}${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
 }
 
 function test_gx_regex_extract_version() {

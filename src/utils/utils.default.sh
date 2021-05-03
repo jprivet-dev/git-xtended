@@ -44,7 +44,7 @@ function gx_trim() {
 }
 
 function gx_regex_remove_colors() {
-    echo "$1" | sed -E 's/\\e\[[0-9]{1,3}m//g'
+    echo "$1" | sed -E 's/\\033\[[0-9]{1,3}m//g'
 }
 
 function gx_line_generator() {
