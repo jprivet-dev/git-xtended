@@ -62,7 +62,7 @@ function gx_hooks_pcmsg() {
     done
 
     printf "\n%s\n" "${split}"
-    echo "" # tricks : with tput cuu1 and el, thath avoid new line with first ENTER action
+    echo "" # tricks : with tput cuu1 and el, that avoid new line with first ENTER action
 
     while true; do
         case $step in
