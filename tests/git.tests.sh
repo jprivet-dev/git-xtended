@@ -153,7 +153,7 @@ function test_gx_git_config_aliases_help() {
     assert equals "${count_lines}" "23" $LINENO
 
     assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}  # Git aliases${TEST_F_RESET} :" $LINENO
-    assert last-line    "$(gx_git_config_aliases_help)"   "        grep | git \e[96mfind\e[0m <string> \e[90m........\e[0m Look for specified strings in the tracked files (case sensitive)" $LINENO
+    assert last-line    "$(gx_git_config_aliases_help)"   "        grep | git \033[96mfind\033[0m <string> \033[90m........\033[0m Look for specified strings in the tracked files (case sensitive)" $LINENO
 }
 
 function test_gx_hooks_pcmsg_print_type() {

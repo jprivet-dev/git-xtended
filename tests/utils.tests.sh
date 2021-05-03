@@ -102,9 +102,9 @@ function test_gx_regex_remove_colors() {
     assert equals "$(gx_regex_remove_colors "\e${C_RED}\e")"  "\e\e" $LINENO
     assert equals "$(gx_regex_remove_colors "m${C_RED}m")"    "mm" $LINENO
     assert equals "$(gx_regex_remove_colors "\e${C_RED}m")"   "\em" $LINENO
-    assert equals "$(gx_regex_remove_colors "\e[${C_RED}")"   "\e[" $LINENO
+    assert equals "$(gx_regex_remove_colors "\033[${C_RED}")"   "\033[" $LINENO
 
-    assert equals "$(gx_regex_remove_colors "\e[1234m")"       "\e[1234m" $LINENO
+    assert equals "$(gx_regex_remove_colors "\033[1234m")"       "\033[1234m" $LINENO
 }
 
 function test_gx_line_generator() {
