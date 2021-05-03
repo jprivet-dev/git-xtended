@@ -6,6 +6,7 @@ function gx_hooks_pcmsg() {
     local commit_msg=$1
     local commit_mode=$2
 
+    local last_mainscope
     local last_reference
     local last_type_index
 
@@ -66,10 +67,10 @@ function gx_hooks_pcmsg() {
     while true; do
         case $step in
         0)
-            gx_hooks_pcmsg_type_subtype
+            gx_hooks_pcmsg_type
             ;;
         1)
-            gx_hooks_pcmsg_type_mainscope
+            gx_hooks_pcmsg_mainscope
             ;;
         2)
             gx_hooks_pcmsg_reference
@@ -87,7 +88,7 @@ function gx_hooks_pcmsg() {
     done
 }
 
-function gx_hooks_pcmsg_type_subtype() {
+function gx_hooks_pcmsg_type() {
     local gx_git_get_commit_last_suggest=""
 
     last_type_index=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_TYPE_INDEX}")
@@ -145,38 +146,47 @@ function gx_hooks_pcmsg_type_subtype() {
     fi
 }
 
-function gx_hooks_pcmsg_type_mainscope() {
-    files_listing=$(gx_git_status_get_filenames_inline)
+function gx_hooks_pcmsg_mainscope() {
+    local last_mainscope_prompt=""
+    last_mainscope=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}")
+
+    if [ "${last_mainscope}" != "" ]; then
+        last_mainscope_prompt="[${last_mainscope}] "
+    fi
 
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} [${files_listing}] "
+        echo -e -n "${type}(${_GX_HOOKS_PCMSG_MAINSCOPE_LABEL}) ${C_DARK_GRAY}<<<${F_RESET} ${last_mainscope_prompt}"
 
         exec </dev/tty
         read mainscope_choose
 
-        if [ "${mainscope_choose}" == "${cancel_char}" ]; then
-            break
-        fi
-
-        if [ "${files_listing}" != "" -o "${mainscope_choose}" != "" ]; then
-            break
-        fi
+        break
     done
 
     if [ "${mainscope_choose}" == "${cancel_char}" ]; then
         gx_hooks_pcmsg_previous_step
     else
+        mainscope=""
 
-        mainscope="${files_listing}"
-        if [ "${mainscope_choose}" != "" ]; then
-            mainscope="${mainscope_choose}"
+        if [ "${mainscope_choose}" == "" ]; then
+            if [ "${last_mainscope}" != "" ]; then
+                mainscope="${last_mainscope}${mainscope_split}"
+            fi
+        else
+            mainscope="${mainscope_choose}${mainscope_split}"
+            $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}" "${mainscope_choose}")
+        fi
+
+        if [ "${mainscope}" == "" ]; then
+            gx_hooks_pcmsg_git_config_local_remove "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_MAINSCOPE}"
         fi
 
         gx_hooks_pcmsg_next_step
     fi
 }
+
 
 function gx_hooks_pcmsg_reference() {
     local last_reference_prompt=""
