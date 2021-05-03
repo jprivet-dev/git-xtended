@@ -198,28 +198,28 @@ function gx_hooks_pcmsg_reference() {
         echo -e -n "${type}(${scope})${main_split}${subject}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
 
         exec </dev/tty
-        read reference_choose
+        read read_reference
 
         break
     done
 
-    if [ "${reference_choose}" == "${cancel_char}" ]; then
+    if [ "${read_reference}" == "${cancel_char}" ]; then
         gx_hooks_pcmsg_previous_step
     else
         reference=""
 
-        if [ "${reference_choose}" == "${clear_char}" ]; then
-            reference_choose=""
+        if [ "${read_reference}" == "${clear_char}" ]; then
+            read_reference=""
             last_reference=""
         fi
 
-        if [ "${reference_choose}" == "" ]; then
+        if [ "${read_reference}" == "" ]; then
             if [ "${last_reference}" != "" ]; then
                 reference="${reference_split}(#${last_reference})"
             fi
         else
-            reference="${reference_split}(#${reference_choose})"
-            $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${reference_choose}")
+            reference="${reference_split}(#${read_reference})"
+            $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${read_reference}")
         fi
 
         if [ "${reference}" == "" ]; then
@@ -237,20 +237,21 @@ function gx_hooks_pcmsg_subject() {
         echo -e -n "${type}(${scope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec </dev/tty
-        read subject
+        read read_subject
 
-        if [ "${subject}" == "${cancel_char}" ]; then
+        if [ "${read_subject}" == "${cancel_char}" ]; then
             break
         fi
 
-        if [ "${subject}" != "" ]; then
+        if [ "${read_subject}" != "" ]; then
             break
         fi
     done
 
-    if [ "${subject}" == "${cancel_char}" ]; then
+    if [ "${read_subject}" == "${cancel_char}" ]; then
         gx_hooks_pcmsg_previous_step
     else
+        subject="$read_subject"
         gx_hooks_pcmsg_next_step
     fi
 }
@@ -259,7 +260,6 @@ function gx_hooks_pcmsg_final_message() {
     complete_message="${type}(${scope})${main_split}${subject}${reference}"
 
     local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
-    #local subtype_colors="${_GX_HOOKS_PCMSG_SUBTYPE_COLOR}${subtype}${F_RESET}"
     local scope_colors="${_GX_HOOKS_PCMSG_SCOPE_COLOR}${scope}${F_RESET}"
     local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
     local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
