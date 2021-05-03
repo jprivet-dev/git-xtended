@@ -238,7 +238,7 @@ function gx_hooks_pcmsg_type_subject() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}(${mainscope})${main_split}${reference}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
+        echo -e -n "${type}(${mainscope})${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec </dev/tty
         read subject
