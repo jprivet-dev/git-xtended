@@ -73,7 +73,7 @@ function gx_hooks_pcmsg() {
             gx_hooks_pcmsg_scope
             ;;
         2)
-            gx_hooks_pcmsg_type_subject
+            gx_hooks_pcmsg_subject
             ;;
         3)
             gx_hooks_pcmsg_reference
@@ -230,7 +230,7 @@ function gx_hooks_pcmsg_reference() {
     fi
 }
 
-function gx_hooks_pcmsg_type_subject() {
+function gx_hooks_pcmsg_subject() {
     while true; do
         tput cuu1
         tput el
