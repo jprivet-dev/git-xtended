@@ -2,7 +2,7 @@
 :toc: macro
 :sectanchors:
 
-:VERSION: 0.0.0-beta-1
+:VERSION: 1.0.0-beta.0
 :MAIN_TITLE: Git Xtended
 :MAIN_TITLE_SHORT: GX
 
@@ -25,7 +25,7 @@
 :PROMPT_PS1_NO_CHANGE: 09:15:27 user@host:~/path/project username(branch) 0↓ 10↑
 
 [#{BACK_TO_TOP_TARGET}]
-= {MAIN_TITLE} ({VERSION})
+= {MAIN_TITLE} (v{VERSION})
 
 image:https://api.codacy.com/project/badge/Grade/31960ec18f3d4134b92e9164255dee6e["Codacy code quality", link="https://www.codacy.com/app/jprivet-dev/git-xtended?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade"]
 
@@ -46,14 +46,6 @@ It facilitates **recurring Git actions in shell**:
 . Project status display with main **Git information in prompt**
 . **Aliases** of recurring Git commands
 . **Formatted commit message** (without `prepare-commit-msg` hook)
-
-{BACK_TO_TOP}
-
-== Roadmap & Public Beta Version
-
-**{MAIN_TITLE}** has recently been released (June 2018) in **public beta version**.
-
-This means that during the next semester, this version will be tested and stabilized with some beta testers :P (Thank you!).
 
 Comments, suggestions? Feel free to make them to me in the {GIT_PROJECT}/issues[Git issues section of that project] :)
 
@@ -109,8 +101,8 @@ $ gx install
 
 > Prompt with Git information  [0] Disabled  [1] Enabled : 1
 > Prompt with Git information = Enabled
-> Remote branch reference : origin/dev
-> Remote branch reference = origin/dev
+> Remote branch reference : origin/develop
+> Remote branch reference = origin/develop
 > Git aliases  [0] Disabled  [1] Enabled : 1
 > Git aliases = Enabled
 ----
@@ -120,7 +112,7 @@ After installation, you will be able to see the **{MAIN_TITLE}** parameters in t
 ----
 [gx]
 	prompt-status = Enabled
-	remote-branch-ref = origin/dev
+	remote-branch-ref = origin/develop
 	gitaliases-status = Enabled
 [alias]
     ...
@@ -131,7 +123,7 @@ You can also print the `gx` configuration in shell:
 ----
 $ gx config
 gx.prompt-status=Enabled
-gx.remote-branch-ref=origin/dev
+gx.remote-branch-ref=origin/develop
 gx.gitaliases-status=Enabled
 ----
 
@@ -154,9 +146,7 @@ $ gx reload
 
 {BACK_TO_TOP}
 
-== Features overview
-
-=== Prompt with Git information
+== Prompt with Git information
 
 **{MAIN_TITLE}** changes the prompt (`PS1`) and adds information about Git:
 
@@ -173,18 +163,18 @@ $ gx help
     1? ................. Untracked files
     3! ................. Changes not staged for commit
     c(2 +1 -1) ......... Changes to be committed
-    3↓ ................. Commits behind remote branch reference (origin/dev)
-    42↑ ................ Commits ahead remote branch reference (origin/dev)
+    3↓ ................. Commits behind remote branch reference (origin/develop)
+    42↑ ................ Commits ahead remote branch reference (origin/develop)
 ----
 
-==== Prompt : `remote branch reference` configuration
+=== Prompt : `remote branch reference` configuration
 
 The `remote branch reference` is configured at installation (`$ gx install`), in a global way:
 
 ----
 $ gx config
 gx.prompt-status=Enabled
-gx.remote-branch-ref=origin/dev
+gx.remote-branch-ref=origin/develop
 gx.gitaliases-status=Enabled
 ----
 
@@ -197,7 +187,7 @@ $ git config gx.remote-branch-ref origin/myremotebranch
 ----
 $ gx config
 gx.prompt-status=Enabled
-gx.remote-branch-ref=origin/dev             <== global config
+gx.remote-branch-ref=origin/develop         <== global config
 gx.gitaliases-status=Enabled
 gx.remote-branch-ref=origin/myremotebranch  <== local config
 ----
@@ -211,11 +201,11 @@ $ git config --unset gx.remote-branch-ref
 ----
 $ gx config
 gx.prompt-status=Enabled
-gx.remote-branch-ref=origin/dev             <== global config
+gx.remote-branch-ref=origin/develop         <== global config
 gx.gitaliases-status=Enabled
 ----
 
-==== Prompt : `remote branch reference` troubleshooting (x↓ x↑)
+=== Prompt : `remote branch reference` troubleshooting (x↓ x↑)
 
 Sometimes, instead of having numbers (ex: `0↓ 42↑`), you will  see in the prompt `x↓ x↑` in red:
 
@@ -229,9 +219,7 @@ This means that the `remote branch reference` is not correct.
 
 {BACK_TO_TOP}
 
-=== Git aliases
-
-==== Find 21 aliases at your disposal
+== `$ gx help`: find 21 aliases
 
 ----
 $ gx help
@@ -260,9 +248,13 @@ $ gx help
         grep | git find <string> ........ Look for specified strings in the tracked files (case sensitive)
 ----
 
-==== `git c` : commits are documentation
+== `$ git c` : commits are documentation
 
 **{MAIN_TITLE}** proposes a **commit message formatting system** (without `prepare-commit-msg` hook) with `git c`:
+
+image::doc/img/git-c.gif[]
+
+=== Detailed steps
 
 ----
 $ git c
@@ -272,81 +264,81 @@ $ git c
 M  README.adoc
 --------------------------------------------------
 user.name  : username
-user.email : user@gmail.com
+user.email : user@email.com
 --------------------------------------------------
-MSG = [#reference] <type*>.<subtype>(<scope*>): <subject*>
+MSG = <type*>(<scope*>): <subject*> (#reference)
 --------------------------------------------------
 
 <type*>
- archi ...... Changes application architecture (folder position, name, ...)
- conf ....... Changes configuration, parameters (config.yml, .gitignore, .gitkeep, ...)
- content .... Changes wording or images in contents
- chore ...... Changes to the build process or auxiliary tools and libraries (Gulp, Composer, ...)
- dev ........ Changes main code (creation, enhancement, evolution, ...)
- docs ....... Documentation only changes
- integ ...... Web integration, UX works - doesn't touch business logic (css, js, ...)
- install .... Install or update project, modules, pluggins (ex: composer install ...)
- tpl ........ Templating works (Twig, Drupal templating, Smarty, ...)
- trans ...... Adds locale-specific components, translates text, ...
-
-<subtype>
- clean ...... Remove pointless code or files
- debug ...... Adding code for debugging (console.log, dpm, var_dump, ...), to remove later!
- fix ........ Bug fix
- generate ... Auto-generate code (Doctrine, PhoneGap, Ionic, ...)
+ build ...... Build system or external dependencies (Gulp, Broccoli, npm, ...)
+ chore ...... Other changes that don't modify src or test files (.editorconfig, .gitignore, ...)
+ ci ......... CI configuration files and scripts (Travis, Circle, BrowserStack, ...)
+ docs ....... Documentation only changes (CHANGELOG, README, ...)
+ feat ....... A new feature
+ fix ........ A bug fix
  perf ....... A code change that improves performance
- refactor ... A code change that neither fixes a bug nor adds a feature
+ refactor ... Refactoring or code-cleanup (no functional changes, no API changes)
  style ...... Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)
+ test ....... Adding missing tests or correcting existing tests
 
 --------------------------------------------------
-[#reference] <<< |
+<type*> <<< |
 ----
 
-1) Indicate a reference (not mandatory). You can leave this value blank.
-
-----
-[#reference] <<< 123|
-----
-
-2) You will have to choose a **type** (mandatory) and a **subtype** (not mandatory).
+1) You will have to choose a **type** (mandatory).
 To do so, type the corresponding **shortcuts indicated in color and underlined** in shell (and unfortunately not in Github in this adoc file!).
-For example (with do => docs()):
+For example (with `d` => `docs()`):
 
 ----
-[#123] <type*>.<subtype> <<< do|
+<type*> <<< d|
 ----
 
-3) You will have to **choose the scope**.
-It will be suggested to you **the names of files in progress**.
-You will be able to modify it scope with your suitability (**To keep the suggestion**, simply tap **Enter**):
+2) You will have to **choose the scope**:
+
+The last specified scope is displayed in square brackets. Just press `ENTER` to reuse it.
 
 ----
-[#123] docs(<scope*>) <<< [README.adoc] |
+docs(<scope*>) <<< [readme] |
 ----
 
-4) Then, indicate the **subject**:
+3) Then, indicate the **subject**:
 
 ----
-[#123] docs(README.adoc): <subject*> <<< update licence section|
+docs(readme): <subject*> <<< update installation|
 ----
 
-5) And tap **Enter** to validate and commit:
+4) Indicate a *reference* (not mandatory). You can leave this value blank.
+
+The last specified *reference* is displayed in square brackets. Just press `ENTER` to reuse it. +
+Type `*` to delete it.
+
+----
+docs(readme): update installation (#reference) <<< 90|
+----
+
+5) And tap `ENTER` to validate and commit:
 
 [subs=attributes+]
 ----
 --------------------------------------------------
-[#123] docs(README.adoc): update licence section
+docs(readme): update installation (#90)
 --------------------------------------------------
 
-[70-gx-config-enhancement dd0a2c4] docs(README.adoc): update licence section
- 1 file changed, 1 insertion(+), 1 deletion(-)
+[90-remove-subtype 69dc982] docs(readme): update installation (#90)
+ 1 file changed, 32 insertions(+), 51 deletions(-)
 {PROMPT_PS1_NO_CHANGE}
 $
 ----
 
 {BACK_TO_TOP}
 
-=== {MAIN_TITLE} commands
+=== Type `x` to go back / Type `*` to empty the reference
+
+image::doc/img/git-c-go-back.gif[]
+
+{BACK_TO_TOP}
+
+== `$ gx` commands
 
 ----
 $ gx help
@@ -363,9 +355,9 @@ $ gx help
 
 {BACK_TO_TOP}
 
-== Tips
+== Use index instead of path
 
-=== Use index instead of name
+image::doc/img/git-a-index.gif[]
 
 For example, `$ git s` is an indexed version of `$ git status`:
 
@@ -376,7 +368,7 @@ $ git s
 3)  M path/to/my/file3.sh
 ----
 
-Instead of specifying the name of the file you want to commit, just *specify the index*:
+Instead of specifying the path to the file you want to commit, just *specify the index*:
 
 ----
 $ git c 2
@@ -443,7 +435,7 @@ M  path/to/my/file3.sh
 
 {BACK_TO_TOP}
 
-=== Customization : override default settings
+== Customization : override default settings
 
 you can **override all variables** from parameter files `params.xxx.sh` in the folder `{GX_ROOT}/params/default/`.
 
@@ -618,6 +610,7 @@ OK: 65 tests, 234 assertions, 0 failure
 . https://www.atlassian.com/agile/software-development/git-branching-video
 . https://www.atlassian.com/blog/git/advanced-git-aliases
 . https://www.atlassian.com/blog/git/git-automatic-merges-with-server-side-hooks-for-the-win
+. https://www.conventionalcommits.org/en/v1.0.0/
 
 {BACK_TO_TOP}
 
