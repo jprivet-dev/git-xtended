@@ -79,7 +79,7 @@ function gx_hooks_pcmsg() {
             gx_hooks_pcmsg_reference
             ;;
         4)
-            gx_hooks_pcmsg_type_final_message
+            gx_hooks_pcmsg_final_message
             ;;
         *)
             break
@@ -255,7 +255,7 @@ function gx_hooks_pcmsg_subject() {
     fi
 }
 
-function gx_hooks_pcmsg_type_final_message() {
+function gx_hooks_pcmsg_final_message() {
     complete_message="${type}(${scope})${main_split}${subject}${reference}"
 
     local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
