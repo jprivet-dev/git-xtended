@@ -107,17 +107,17 @@ function gx_hooks_pcmsg_type() {
         echo -e -n "${_GX_HOOKS_PCMSG_TYPE_LABEL} ${C_DARK_GRAY}<<<${F_RESET}${gx_git_get_commit_last_suggest} "
 
         exec </dev/tty
-        read choise_type_subtype_index
+        read read_type_index
 
-        if [ "${choise_type_subtype_index}" == "${cancel_char}" ]; then
+        if [ "${read_type_index}" == "${cancel_char}" ]; then
             break
         fi
 
-        if [ "${choise_type_subtype_index}" == "" ]; then
+        if [ "${read_type_index}" == "" ]; then
             choise_type_index="${last_type_index}"
         else
-            choise_type_subtype_index_tab=(${choise_type_subtype_index})
-            choise_type_index="${choise_type_subtype_index_tab[0]}"
+            choise_type_index_tab=(${read_type_index})
+            choise_type_index="${choise_type_index_tab[0]}"
         fi
 
         choise_type_index_valid=0
@@ -134,14 +134,10 @@ function gx_hooks_pcmsg_type() {
         fi
     done
 
-    if [ "${choise_type_subtype_index}" == "${cancel_char}" ]; then
+    if [ "${read_type_index}" == "${cancel_char}" ]; then
         gx_hooks_pcmsg_previous_step
     else
-        # --------------
-        # Type
-
         type=${types_index[$choise_type_index]}
-
         gx_hooks_pcmsg_next_step
     fi
 }
