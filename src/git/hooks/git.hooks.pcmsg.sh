@@ -26,7 +26,6 @@ function gx_hooks_pcmsg() {
         subject_default="$@"
     fi
 
-    local type_split="."
     local scope_prefix="("
     local scope_suffix=")"
     local main_split=": "
