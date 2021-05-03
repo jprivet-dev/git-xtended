@@ -25,7 +25,7 @@
 :PROMPT_PS1_NO_CHANGE: 09:15:27 user@host:~/path/project username(branch) 0↓ 10↑
 
 [#{BACK_TO_TOP_TARGET}]
-= {MAIN_TITLE} ({VERSION})
+= {MAIN_TITLE} (v{VERSION})
 
 image:https://api.codacy.com/project/badge/Grade/31960ec18f3d4134b92e9164255dee6e["Codacy code quality", link="https://www.codacy.com/app/jprivet-dev/git-xtended?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade"]
 
