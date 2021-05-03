@@ -163,8 +163,14 @@ function test_gx_hooks_pcmsg_print_type() {
 
     assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "type" "a" "short description")"                  " ${TEST_C_GREEN}a${TEST_F_RESET}ype ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
     assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "ab" "short description")"                  " ${TEST_C_BLUE}ab${TEST_F_RESET}pe ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
-    # TODO : not a good behavior with too long shorcut
-    assert equals "$(gx_hooks_pcmsg_print_type "${C_GREEN}"  "type" "abctoooloong" "short description")"       " ${TEST_C_GREEN}abctoooloong${TEST_F_RESET}......${TEST_F_RESET} short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "type" "short description")"                " ${TEST_C_BLUE}type${TEST_F_RESET} ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+
+    # TODO(#93) : not a good behavior with too long shorcut
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "type_" "short description")"               " ${TEST_C_BLUE}type_${TEST_F_RESET}${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+    #assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "type___" "short description")"             " ${TEST_C_BLUE}type___${TEST_F_RESET}${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "type___" "short description")"             " \033[34mtype___\033[0m33[90m.......\033[0m short description" $LINENO
+    #assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "type______" "short description")"          " ${TEST_C_BLUE}type______${TEST_F_RESET}${TEST_C_DARK_GRAY}.......${TEST_F_RESET} short description" $LINENO
+    assert equals "$(gx_hooks_pcmsg_print_type "${C_BLUE}"  "type" "type______" "short description")"          " \033[34mtype______\033[0m90m.......\033[0m short description" $LINENO
 }
 
 function test_gx_print_col_fixed_width() {
