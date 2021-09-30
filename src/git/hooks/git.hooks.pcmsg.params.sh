@@ -18,6 +18,7 @@ _GX_HOOKS_PCMSG_TYPES=(
     "b|build|Build system or external dependencies (Gulp, Broccoli, npm, ...)"
     "c|chore|Other changes that don't modify src or test files (.editorconfig, .gitignore, ...)"
     "ci|ci|CI configuration files and scripts (Travis, Circle, BrowserStack, ...)"
+    "co|conf|Configuration files (config/*.yaml, ...)"
     "d|docs|Documentation only changes (CHANGELOG, README, ...)"
     "f|feat|A new feature"
     "fi|fix|A bug fix"
