@@ -20,6 +20,7 @@ function gx_git_config_set_aliases() {
     # git commit
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}' "$@"; }; f'
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit --amend -m"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_NOEDIT} "commit --amend --no-edit"
 
     # git diff & commit one file
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D}${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}'; '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}'; }; f'
@@ -72,6 +73,7 @@ function gx_git_config_unset_aliases() {
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_MD}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_C}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_AMEND}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_NOEDIT}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CANCEL}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_L}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LL}
