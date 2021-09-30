@@ -20,6 +20,16 @@ function gx_git_get_current_remote_origin_url() {
     git config remote.origin.url
 }
 
+function gx_git_get_remote_main() {
+    local remote=$(git config branch.main.remote)
+    local name=main
+    if [[ "${remote}" == "" ]]; then
+      remote=$(git config branch.master.remote)
+      name=master
+    fi
+    printf "${remote}/${name}"
+}
+
 function gx_git_get_remote_branch_ref() {
     git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_BRANCH_REF} 2>/dev/null
 }
