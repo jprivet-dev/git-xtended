@@ -16,6 +16,10 @@ function gx_git_get_current_username() {
     git config user.name
 }
 
+function gx_git_get_current_remote_origin_url() {
+    git config remote.origin.url
+}
+
 function gx_git_get_remote_branch_ref() {
     git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_BRANCH_REF} 2>/dev/null
 }
