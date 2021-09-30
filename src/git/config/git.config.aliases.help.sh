@@ -25,6 +25,7 @@ function gx_git_config_aliases_help() {
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_UNDO}" "" ................. "Oops level 2! Undo the last commit, while keeping files changes"
     gx_git_config_aliases_help_line "   clean |" "${GX_PARAMS_GIT_ALIAS_UNTRACKED}" "" ............ "Remove all ${F_UNDERLINED}untracked${F_RESET} files"
     gx_git_config_aliases_help_line "    grep |" "${GX_PARAMS_GIT_ALIAS_FIND}" "<string>" ........ "Look for specified strings in the tracked files (case sensitive)"
+    gx_git_config_aliases_help_line "  others |" "${GX_PARAMS_GIT_ALIAS_CREATEPR}" "" ............. "Generates the url to compare and create a PR with the current branch"
     echo
 }
 
