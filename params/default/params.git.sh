@@ -25,7 +25,7 @@ GX_PARAMS_GIT_ALIAS_STATUS_FILE="${GX_PARAMS_ROOT}/src/git/alias/git.alias.statu
 GX_PARAMS_GIT_ALIAS_FIND_FILE="${GX_PARAMS_ROOT}/src/git/alias/git.alias.find.sh"
 GX_PARAMS_GIT_ALIAS_CHECKOUT_FILE="${GX_PARAMS_ROOT}/src/git/alias/git.alias.checkout.sh"
 GX_PARAMS_GIT_ALIAS_ADD_FILE="${GX_PARAMS_ROOT}/src/git/alias/git.alias.add.sh"
-GX_PARAMS_GIT_ALIAS_CREATEPR_FILE="${GX_PARAMS_ROOT}/src/git/alias/git.alias.createpr.sh"
+GX_PARAMS_GIT_ALIAS_PR_FILE="${GX_PARAMS_ROOT}/src/git/alias/git.alias.pr.sh"
 
 #GX_PARAMS_GIT_HOOKS_DIR="${GX_PARAMS_ROOT}/git/hooks/"
 
@@ -56,4 +56,4 @@ GX_PARAMS_GIT_ALIAS_HARD="hard"
 GX_PARAMS_GIT_ALIAS_UNDO="undo"
 GX_PARAMS_GIT_ALIAS_UNTRACKED="untracked"
 GX_PARAMS_GIT_ALIAS_FIND="find"
-GX_PARAMS_GIT_ALIAS_CREATEPR="createpr"
+GX_PARAMS_GIT_ALIAS_PR="pr"

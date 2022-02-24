@@ -58,7 +58,7 @@ function gx_git_config_set_aliases() {
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_FIND} '!f() { '${GX_PARAMS_GIT_ALIAS_FIND_FILE}' "$@"; }; f'
 
     # git grep
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CREATEPR} '!f() { '${GX_PARAMS_GIT_ALIAS_CREATEPR_FILE}' "$@"; }; f'
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_PR} '!f() { '${GX_PARAMS_GIT_ALIAS_PR_FILE}' "$@"; }; f'
 }
 
 function gx_git_config_unset_aliases() {
