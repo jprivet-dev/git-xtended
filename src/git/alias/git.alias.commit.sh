@@ -31,10 +31,10 @@ else
    # indexes does not start with a number
 
    if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
-       printf "> git add . (all files) & commit\n"
+       printf "> git add . (all files)\n"
        git add .
    else
-       printf "> git add ${indexes} files & commit\n"
+       printf "> git add ${indexes} files\n"
        git add ${indexes}
    fi
 fi
