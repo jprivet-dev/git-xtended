@@ -20,7 +20,7 @@ function gx_git_config_aliases_help() {
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_MD}" "" ................... "Add modified and deleted files, without new"
     gx_git_config_aliases_help_line "  commit |" "${GX_PARAMS_GIT_ALIAS_C}" "[<i>|<path>|all]" ... "Extended \"commit\" alias ${select_file}"
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_AMEND}" "" ................ "Modify message of the previous commit"
-    gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_NOEDIT}" "" ................ "Modify previous commit without modifying the commit message"
+    gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_NOEDIT}" "" ............... "Modify previous commit without modifying the commit message"
     gx_git_config_aliases_help_line "   reset |" "${GX_PARAMS_GIT_ALIAS_R}" "" .................... "Simple \"reset\" alias"
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_HARD}" "[<commit>]" ...... "Simple \"reset --hard\" alias (by default, discard any changes to ${F_UNDERLINED}tracked${F_RESET} files, since last commit)"
     gx_git_config_aliases_help_line "          " "${GX_PARAMS_GIT_ALIAS_UNDO}" "" ................. "Undo the last commit, while keeping files changes"
