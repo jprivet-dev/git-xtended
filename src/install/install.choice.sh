@@ -14,7 +14,7 @@ function gx_install_disable_or_enable() {
         $call_function "${choice}"
     fi
 
-    gwb_git_config_set "${key}" "${choice}"
+    gx_git_config_set "${key}" "${choice}"
 }
 
 function gx_install_input_text() {
@@ -23,7 +23,7 @@ function gx_install_input_text() {
 
     gx_print_input_text "${label}"
 
-    gwb_git_config_set "${key}" "${_GX_PRINT_INPUT_TEXT_LAST_VALUE}"
+    gx_git_config_set "${key}" "${_GX_PRINT_INPUT_TEXT_LAST_VALUE}"
 }
 
 function gx_install_choice() {
@@ -41,9 +41,9 @@ function gx_install_choice() {
 
 # shellcheck disable=SC2034
 function gx_install_choice_params_set_all_from_git_config() {
-    GX_PARAMS_INSTALL_PROMPT_STATUS="$(gwb_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS} ${GX_PARAMS_DISABLED})"
-    GX_PARAMS_INSTALL_GIT_ALIASES_STATUS="$(gwb_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS} ${GX_PARAMS_DISABLED})"
-    #    GX_PARAMS_INSTALL_GIT_HOOKS_STATUS="$(gwb_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_STATUS} ${GX_PARAMS_DISABLED})"
-    #    GX_PARAMS_INSTALL_WORKFLOW_STATUS="$(gwb_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_WORKFLOW_STATUS} ${GX_PARAMS_DISABLED})"
-    #    GX_PARAMS_INSTALL_BASH_ALIASES_STATUS="$(gwb_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES_STATUS} ${GX_PARAMS_DISABLED})"
+    GX_PARAMS_INSTALL_PROMPT_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS} ${GX_PARAMS_DISABLED})"
+    GX_PARAMS_INSTALL_GIT_ALIASES_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS} ${GX_PARAMS_DISABLED})"
+    #    GX_PARAMS_INSTALL_GIT_HOOKS_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_STATUS} ${GX_PARAMS_DISABLED})"
+    #    GX_PARAMS_INSTALL_WORKFLOW_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_WORKFLOW_STATUS} ${GX_PARAMS_DISABLED})"
+    #    GX_PARAMS_INSTALL_BASH_ALIASES_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES_STATUS} ${GX_PARAMS_DISABLED})"
 }
