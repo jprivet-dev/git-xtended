@@ -120,21 +120,23 @@ function gx_prompt_behind() {
     local remote_branch_ref=$(gx_git_get_remote_branch_ref)
     local count=""
 
-    if [[ -n "${remote_branch_ref}" ]]; then
+    [[ -n "${remote_branch_ref}" ]] &&
         count="$(gx_git_status_behind_count ${current_branch} ${remote_branch_ref})"
-    fi
 
     echo $(gx_prompt_behind_colors "${count}")
 }
 
 function gx_prompt_behind_colors() {
     local count=$1
-    local format="${GX_PARAMS_PROMPT_BEHIND_COLORS}"
+    local format="${GX_PARAMS_PROMPT_BEHIND_COLORS_ON}"
 
     if [[ -z "${count}" ]]; then
         count="x"
         format="${GX_PARAMS_PROMPT_BEHIND_COLORS_ERROR}"
     fi
+
+    [[ "${count}" == 0 ]] &&
+        format="${GX_PARAMS_PROMPT_BEHIND_COLORS_OFF}"
 
     echo "${format}${count}↓${F_RESET}"
 }
@@ -153,12 +155,15 @@ function gx_prompt_ahead() {
 
 function gx_prompt_ahead_colors() {
     local count=$1
-    local format="${GX_PARAMS_PROMPT_AHEAD_COLORS}"
+    local format="${GX_PARAMS_PROMPT_AHEAD_COLORS_ON}"
 
     if [[ -z "${count}" ]]; then
         count="x"
         format="${GX_PARAMS_PROMPT_AHEAD_COLORS_ERROR}"
     fi
+
+    [[ "${count}" == 0 ]] &&
+        format="${GX_PARAMS_PROMPT_AHEAD_COLORS_OFF}"
 
     echo "${format}${count}↑${F_RESET}"
 }
