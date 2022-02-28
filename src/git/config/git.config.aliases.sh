@@ -7,12 +7,15 @@ function gx_git_config_set_aliases() {
     # git branch
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_B} branch
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RECENT} "!git branch --sort=-committerdate --format='%(HEAD) %(refname:short);%(committerdate:relative);%(authorname);%(subject)' | column -t -s ';'"
-    git config --global alias.${GX_PARAMS_GIT_ALIAS_DELETE} "branch -d"
-    git config --global alias.${GX_PARAMS_GIT_ALIAS_DELETEF} "branch -D"
-    git config --global alias.${GX_PARAMS_GIT_ALIAS_DELETER} "push --delete"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DELETE} "branch -d"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DELETEF} "branch -D"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DELETER} "push --delete"
 
     # git diff
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}' "$1"; }; f'
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DW} "diff -w --word-diff --color-words"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DS} "diff --staged"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DSW} "diff --staged -w --word-diff --color-words"
 
     # git add
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_A} '!f() { '${GX_PARAMS_GIT_ALIAS_ADD_FILE}' "$@"; }; f'
