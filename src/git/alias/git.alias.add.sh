@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+source ~/git-xtended/params/default/params.sh
+source ~/git-xtended/src/git/hooks/git.hooks.pcmsg.params.sh
+source ~/git-xtended/src/git/hooks/git.hooks.pcmsg.sh
+source ~/git-xtended/src/git/commands/git.commands.sh
+source ~/git-xtended/src/utils/utils.print.sh
+
+if [ "$(gx_git_get_changes_nb)" == 0 ]; then
+  printf "${C_BG_LIGHT_RED}No files to add !${F_RESET}\n"
+  exit 1
+fi
+
 indexes=$@
 
 if [ "${indexes}" == "" ]; then
