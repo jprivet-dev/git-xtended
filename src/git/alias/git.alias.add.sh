@@ -8,14 +8,28 @@ if [ "${indexes}" == "" ]; then
     exit 1
 fi
 
-status_i=0
+if [[ "${indexes}" =~ ^[0-9]+ ]]; then
+   # indexes starts with a number
 
-git status -s | cut -c4- | while read path; do
-    status_i=$((status_i + 1))
-    for i in ${indexes}; do
-        if [ "${status_i}" == "${i}" ]; then
-            printf "> git add (%s) %s\n" ${i} ${path}
-            git add ${path}
-        fi
-    done
-done
+   status_i=0
+
+   git status -s | cut -c4- | while read path; do
+       status_i=$((status_i + 1))
+       for i in ${indexes}; do
+           if [ "${status_i}" == "${i}" ]; then
+               printf "> git add (%s) %s\n" ${i} ${path}
+               git add ${path}
+           fi
+       done
+   done
+else
+   # indexes does not start with a number
+
+   if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
+       printf "> git add . (all files)\n"
+       git add .
+   elif [ "${indexes}" != "" ]; then
+       printf "> git add ${indexes} files\n"
+       git add ${indexes}
+   fi
+fi
