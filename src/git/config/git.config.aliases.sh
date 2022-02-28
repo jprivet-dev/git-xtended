@@ -5,7 +5,11 @@ function gx_git_config_set_aliases() {
     [[ "${global}" != "--global" ]] && global=""
 
     # git branch
-    git config ${global} alias.b branch
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_B} branch
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RECENT} "!git branch --sort=-committerdate --format='%(HEAD) %(refname:short);%(committerdate:relative);%(authorname);%(subject)' | column -t -s ';'"
+    git config --global alias.${GX_PARAMS_GIT_ALIAS_DELETE} "branch -d"
+    git config --global alias.${GX_PARAMS_GIT_ALIAS_DELETEF} "branch -D"
+    git config --global alias.${GX_PARAMS_GIT_ALIAS_DELETER} "push --delete"
 
     # git diff
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}' "$1"; }; f'
