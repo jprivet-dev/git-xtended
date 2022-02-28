@@ -39,12 +39,7 @@ else
    fi
 fi
 
-m="$(gx_git_get_status_changes_to_be_committed_modified_extended_count)"
-n="$(gx_git_get_status_changes_to_be_committed_new_file_count)"
-d="$(gx_git_get_status_changes_to_be_committed_deleted_count)"
-count=$(($m + $n + $d))
-
-if [ "$count" == 0 ]; then
+if [ "$(gx_git_get_status_changes_to_be_committed_count)" == 0 ]; then
   printf "${C_BG_LIGHT_RED}No files to commit !${F_RESET}\n"
   exit 1
 fi
