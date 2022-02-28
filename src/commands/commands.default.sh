@@ -47,6 +47,19 @@ function gx_command_action_help() {
     gx_command_help
 }
 
+
+function gx_command_action_p() {
+    gx_prompt_help
+}
+
+function gx_command_action_a() {
+    gx_git_config_aliases_help
+}
+
+function gx_command_action_c() {
+    gx_command_help
+}
+
 function gx_command_action_colors() {
     gx_colors_print_all
 }
