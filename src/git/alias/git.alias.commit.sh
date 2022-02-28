@@ -33,7 +33,7 @@ else
    if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
        printf "> git add . (all files)\n"
        git add .
-   else
+   elif [ "${indexes}" != "" ]; then
        printf "> git add ${indexes} files\n"
        git add ${indexes}
    fi
