@@ -49,14 +49,17 @@ function gx_command_action_help() {
 
 
 function gx_command_action_p() {
+    echo ""
     gx_prompt_help
 }
 
 function gx_command_action_a() {
+    echo ""
     gx_git_config_aliases_help
 }
 
 function gx_command_action_c() {
+    echo ""
     gx_command_help
 }
 
