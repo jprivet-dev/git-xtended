@@ -29,9 +29,6 @@ function gx_git_config_set_aliases() {
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit --amend -m"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_NOEDIT} "commit --amend --no-edit"
 
-    # git cherry-pick
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CP} "cherry-pick"
-
     # git diff & commit one file
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D}${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}'; '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}'; }; f'
 
@@ -45,7 +42,6 @@ function gx_git_config_set_aliases() {
     local author="%C(green)<%<(9,trunc)%aN>"
     local reference="%C(auto)%d"
     local subject="%C(reset)%s"
-
     local command_log_oneline="log --graph --oneline --decorate --date=short --pretty=format:'${hash} ${time} ${author}${reference} ${subject}'"
 
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_L} "${command_log_oneline} -12"
@@ -58,16 +54,25 @@ function gx_git_config_set_aliases() {
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_R} "reset"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_HARD} "reset --hard"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_UNDO} "reset --soft HEAD^"
+
+    # git clean
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_UNTRACKED} "clean -f -d"
 
     # git status
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_S} "!sh -c ${GX_PARAMS_GIT_ALIAS_STATUS_FILE}"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_SS} "status"
 
+    # git cherry-pick
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CP} "cherry-pick"
+
+    # git describe
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_TLAST} "describe --tags --abbrev=0"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_TLIST} "!git tag --list | sort --version-sort"
+
     # git grep
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_FIND} '!f() { '${GX_PARAMS_GIT_ALIAS_FIND_FILE}' "$@"; }; f'
 
-    # git grep
+    # pull request
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_PR} '!f() { '${GX_PARAMS_GIT_ALIAS_PR_FILE}' "$@"; }; f'
 }
 
@@ -105,6 +110,8 @@ function gx_git_config_unset_aliases() {
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_RESTORE}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_S}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_SS}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_TLAST}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_TLIST}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_UNDO}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_UNTRACKED}
 }
