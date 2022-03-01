@@ -29,6 +29,9 @@ function gx_git_config_set_aliases() {
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit --amend -m"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_NOEDIT} "commit --amend --no-edit"
 
+    # git cherry-pick
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CP} "cherry-pick"
+
     # git diff & commit one file
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D}${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}'; '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}'; }; f'
 
@@ -78,6 +81,7 @@ function gx_git_config_unset_aliases() {
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_B}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_C}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CK}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CP}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_D}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_DELETE}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_DELETEF}
