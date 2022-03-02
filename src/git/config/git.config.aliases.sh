@@ -5,8 +5,9 @@ function gx_git_config_set_aliases() {
     [[ "${global}" != "--global" ]] && global=""
 
     # git branch
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_B} branch
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_B} "branch"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RECENT} "!git branch --sort=-committerdate --format='%(HEAD) %(refname:short);%(committerdate:relative);%(authorname);%(subject)' | column -t -s ';'"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_PREVIOUS} "checkout -"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_NEW} "switch -c"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RENAME} '!f() { \
                                                                  [ -z "$2" ] && o=$(git rev-parse --abbrev-ref HEAD) || o=$1 && n=${2:-$1} \
@@ -116,6 +117,7 @@ function gx_git_config_unset_aliases() {
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_NM}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_NOEDIT}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_PR}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_PREVIOUS}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_R}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_RECENT}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_RENAME}
