@@ -12,6 +12,7 @@ function gx_git_config_aliases_help() {
     gx_git_config_aliases_help_line "      branch |" "${GX_PARAMS_GIT_ALIAS_B}" "" ........................... "Simple \"branch\" alias"
     gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_RECENT}" "" ...................... "Show all local branches ordered by recent commits"
     gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_NEW}" "<branch> [<remote>/<b>]" . "Create and switch on new branch"
+    gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_RENAME}" "[<branch>] <name>" .... "Rename one local branch"
     gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DELETE}" "<branch>" ............. "Delete local branch"
     gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DELETEF}" "<branch>" ............ "Forcefully delete local branch"
     gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DELETER}" "<remote> <branch>" ... "Delete remote branch"
