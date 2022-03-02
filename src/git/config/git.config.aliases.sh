@@ -7,6 +7,7 @@ function gx_git_config_set_aliases() {
     # git branch
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_B} branch
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RECENT} "!git branch --sort=-committerdate --format='%(HEAD) %(refname:short);%(committerdate:relative);%(authorname);%(subject)' | column -t -s ';'"
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_NEW} "switch -c"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DELETE} "branch -d"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DELETEF} "branch -D"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DELETER} "push --delete"
@@ -107,6 +108,7 @@ function gx_git_config_unset_aliases() {
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LL}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_LMERGES}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_MD}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_NEW}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_NM}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_NOEDIT}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_PR}
