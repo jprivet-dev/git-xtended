@@ -75,6 +75,9 @@ function gx_git_config_set_aliases() {
 
     # pull request
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_PR} '!f() { '${GX_PARAMS_GIT_ALIAS_PR_FILE}' "$@"; }; f'
+
+    # stats
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CONTRIBUTORS} '!git log --format="%aN" | sort -u'
 }
 
 function gx_git_config_unset_aliases() {
@@ -87,6 +90,7 @@ function gx_git_config_unset_aliases() {
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_B}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_C}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CK}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CONTRIBUTORS}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_CP}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_D}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_DELETE}

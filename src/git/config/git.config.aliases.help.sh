@@ -39,6 +39,7 @@ function gx_git_config_aliases_help() {
     gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_TLIST}" "" ....................... "Display tags in natural order"
     gx_git_config_aliases_help_line "        grep |" "${GX_PARAMS_GIT_ALIAS_FIND}" "<string>" ............... "Look for specified strings in the tracked files (case sensitive)"
     gx_git_config_aliases_help_line "pull request |" "${GX_PARAMS_GIT_ALIAS_PR}" "[<base>]" ................. "Generates the url to compare and create a PR with the current branch"
+    gx_git_config_aliases_help_line "       stats |" "${GX_PARAMS_GIT_ALIAS_CONTRIBUTORS}" "" ................ "Get the list of contributors for the current repository"
     echo
 }
 
