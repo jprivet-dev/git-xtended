@@ -150,10 +150,10 @@ function test_gx_git_config_set_global_alias_sh_cmd() {
 
 function test_gx_git_config_aliases_help() {
     local count_lines="$(gx_git_config_aliases_help | wc -l)"
-    assert equals "${count_lines}" "37" $LINENO
+    assert equals "${count_lines}" "40" $LINENO
 
     assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}  # Git aliases${TEST_F_RESET} :" $LINENO
-    assert last-line    "$(gx_git_config_aliases_help)"   "    pull request | git \033[94mpr\033[0m [<base>] \033[90m.................\033[0m Generates the url to compare and create a PR with the current branch" $LINENO
+    assert last-line    "$(gx_git_config_aliases_help)"   "           stats | git \033[94mcontributors\033[0m \033[90m................\033[0m Get the list of contributors for the current repository" $LINENO
 }
 
 function test_gx_hooks_pcmsg_print_type() {
