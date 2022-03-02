@@ -34,7 +34,7 @@ function gx_git_config_set_aliases() {
 
     # git checkout
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CK} "checkout"
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RESTORE} '!f() { '${GX_PARAMS_GIT_ALIAS_CHECKOUT_FILE}' "$@"; }; f'
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RES} '!f() { '${GX_PARAMS_GIT_ALIAS_RESTORE_FILE}' "$@"; }; f'
 
     # git log
     local hash="%C(yellow)%h"
@@ -107,9 +107,10 @@ function gx_git_config_unset_aliases() {
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_PR}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_R}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_RECENT}
-    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_RESTORE}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_RES}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_S}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_SS}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_SW}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_TLAST}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_TLIST}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_UNDO}
