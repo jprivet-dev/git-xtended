@@ -35,6 +35,7 @@ function gx_git_config_set_aliases() {
     # git checkout
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CK} "checkout"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RES} '!f() { '${GX_PARAMS_GIT_ALIAS_RESTORE_FILE}' "$@"; }; f'
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_SW} "switch"
 
     # git log
     local hash="%C(yellow)%h"
