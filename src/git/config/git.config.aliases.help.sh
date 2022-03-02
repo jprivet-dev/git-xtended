@@ -34,7 +34,7 @@ function gx_git_config_aliases_help() {
     gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_HARD}" "[<commit>]" ............. "Simple \"reset --hard\" alias (by default, discard any changes to ${F_UNDERLINED}tracked${F_RESET} files, since last commit)"
     gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_UNDO}" "" ........................ "Undo the last commit, while keeping files changes"
     gx_git_config_aliases_help_line "       clean |" "${GX_PARAMS_GIT_ALIAS_UNTRACKED}" "" ................... "Remove all ${F_UNDERLINED}untracked${F_RESET} files"
-    gx_git_config_aliases_help_line " cherry pick |" "${GX_PARAMS_GIT_ALIAS_CP}" "" ................. "Simple \"cherry-pick\" alias"
+    gx_git_config_aliases_help_line " cherry pick |" "${GX_PARAMS_GIT_ALIAS_CP}" "" .......................... "Simple \"cherry-pick\" alias"
     gx_git_config_aliases_help_line "        tags |" "${GX_PARAMS_GIT_ALIAS_TLAST}" "" ....................... "Show the most recent tag on the current branch"
     gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_TLIST}" "" ....................... "Display tags in natural order"
     gx_git_config_aliases_help_line "        grep |" "${GX_PARAMS_GIT_ALIAS_FIND}" "<string>" ............... "Look for specified strings in the tracked files (case sensitive)"
