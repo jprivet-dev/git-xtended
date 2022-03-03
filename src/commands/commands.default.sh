@@ -25,7 +25,7 @@ function gx_command_parse_action() {
 }
 
 function gx_command_action_config() {
-    git config --list | grep ${GX_PARAMS_GIT_CONFIG_KEY_ROOT}
+    git "${GX_PARAMS_GIT_ALIAS_CONFGX}"
 }
 
 function gx_command_action_install() {
