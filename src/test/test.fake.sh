@@ -58,6 +58,10 @@ function gx_test_fake_git_get_remote_ref_branch() {
     echo "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}"
 }
 
+function gx_test_fake_git_get_autolink_reference_prefix() {
+    echo "${TEST_GX_PARAMS_FAKE_GIT_AUTOLINK_REFERENCE_PREFIX}"
+}
+
 function gx_test_fake_git_last_args_set() {
     echo "$*" >/tmp/gx_test_fake_git_last_args.sh
 }
@@ -110,6 +114,9 @@ function gx_test_fake_git() {
         ;;
     "config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}")
         gx_test_fake_git_get_remote_ref_branch
+        ;;
+    "config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_AUTOLINK_REFERENCE_PREFIX}")
+        gx_test_fake_git_get_autolink_reference_prefix
         ;;
     "--version")
         return

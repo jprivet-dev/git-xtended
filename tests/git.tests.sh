@@ -10,6 +10,11 @@ function test_gx_git_get_remote_ref_branch() {
     assert last-git-command-is "git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}" $LINENO
 }
 
+function test_gx_git_get_autolink_reference_prefix() {
+    assert equals "$(gx_git_get_autolink_reference_prefix)" "${TEST_GX_PARAMS_FAKE_GIT_AUTOLINK_REFERENCE_PREFIX}" $LINENO
+    assert last-git-command-is "git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_AUTOLINK_REFERENCE_PREFIX}" $LINENO
+}
+
 function test_gx_git_status() {
     local count_lines="$(gx_git_status | wc -l)"
     assert equals "${count_lines}" "11" $LINENO
