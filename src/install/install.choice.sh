@@ -20,20 +20,21 @@ function gx_install_disable_or_enable() {
 function gx_install_input_text() {
     local label=$1
     local key=$2
+    local default_value=$3
 
-    gx_print_input_text "${label}"
+    gx_print_input_text "${label}" "${default_value}"
 
     gx_git_config_set "${key}" "${_GX_PRINT_INPUT_TEXT_LAST_VALUE}"
 }
 
 function gx_install_choice() {
-    gx_install_disable_or_enable "${GX_PARAMS_LABEL_PROMPT}" "${GX_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS}"
+    gx_install_disable_or_enable "${GX_PARAMS_PROMPT_TITLE}" "${GX_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS}"
 
     if [ "${_GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}" == "${GX_PARAMS_ENABLED}" ]; then
-        gx_install_input_text "${GX_PARAMS_LABEL_REMOTE_REF_BRANCH}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}"
+        gx_install_input_text "${GX_PARAMS_REMOTE_REF_BRANCH_TITLE}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}" "${GX_PARAMS_REMOTE_REF_BRANCH_DEFAULT_VALUE}"
     fi
 
-    gx_install_disable_or_enable "${GX_PARAMS_LABEL_GIT_ALIASES}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS}"
+    gx_install_disable_or_enable "${GX_PARAMS_GIT_ALIASES_TITLE}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS}"
     #    gx_install_disable_or_enable "${GX_PARAMS_LABEL_GIT_HOOKS}"     "${GX_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_STATUS}"     "gx_install_git_hooks"
     #    gx_install_disable_or_enable "${GX_PARAMS_LABEL_WORKFLOW}"      "${GX_PARAMS_GIT_CONFIG_KEY_WORKFLOW_STATUS}"
     #    gx_install_disable_or_enable "${GX_PARAMS_LABEL_BASH_ALIASES}"  "${GX_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES_STATUS}"

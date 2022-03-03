@@ -10,7 +10,7 @@ function gx_prompt_help() {
     local ahead=$(gx_prompt_ahead_colors "42")
     local remote_ref_branch=$(gx_git_get_remote_ref_branch)
 
-    gx_print_colors "${C_WHITE}  # ${GX_PARAMS_LABEL_PROMPT}${F_RESET} :"
+    gx_print_colors "${C_WHITE}  # ${GX_PARAMS_PROMPT_TITLE}${F_RESET} :"
     gx_prompt_help_line "${username_branch}"    ...                   "Current Git username & branch"
     gx_prompt_help_line "${count}"              .................     "All elements from git status"
     gx_prompt_help_line "${status_u}"           .................     "Untracked files"
