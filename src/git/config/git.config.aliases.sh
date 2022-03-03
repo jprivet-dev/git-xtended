@@ -8,7 +8,8 @@ function gx_git_config_set_aliases() {
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_B} "branch"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RECENT} "!git branch --sort=-committerdate --format='%(HEAD) %(refname:short);%(committerdate:relative);%(authorname);%(subject)' | column -t -s ';'"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_PREVIOUS} "checkout -"
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_NEW} "switch -c"
+    # (trick: use `branch -b` instead of `switch -c` for good branch completion)
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_NEW} "branch -b"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RENAME} '!f() { \
                                                                  [ -z "$2" ] && o=$(git rev-parse --abbrev-ref HEAD) || o=$1 && n=${2:-$1} \
                                                                  && git branch -m $@ && echo "Rename branch $o to $n" \
