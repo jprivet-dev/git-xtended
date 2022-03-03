@@ -117,11 +117,11 @@ function gx_prompt_status() {
 
 function gx_prompt_behind() {
     local current_branch=$(gx_git_get_current_branch)
-    local remote_branch_ref=$(gx_git_get_remote_branch_ref)
+    local remote_ref_branch=$(gx_git_get_remote_ref_branch)
     local count=""
 
-    [[ -n "${remote_branch_ref}" ]] &&
-        count="$(gx_git_status_behind_count ${current_branch} ${remote_branch_ref})"
+    [[ -n "${remote_ref_branch}" ]] &&
+        count="$(gx_git_status_behind_count ${current_branch} ${remote_ref_branch})"
 
     echo $(gx_prompt_behind_colors "${count}")
 }
@@ -143,11 +143,11 @@ function gx_prompt_behind_colors() {
 
 function gx_prompt_ahead() {
     local current_branch=$(gx_git_get_current_branch)
-    local remote_branch_ref=$(gx_git_get_remote_branch_ref)
+    local remote_ref_branch=$(gx_git_get_remote_ref_branch)
     local count=""
 
-    if [[ -n "${remote_branch_ref}" ]]; then
-        count="$(gx_git_status_ahead_count ${current_branch} ${remote_branch_ref})"
+    if [[ -n "${remote_ref_branch}" ]]; then
+        count="$(gx_git_status_ahead_count ${current_branch} ${remote_ref_branch})"
     fi
 
     echo $(gx_prompt_ahead_colors "${count}")

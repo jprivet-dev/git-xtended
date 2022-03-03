@@ -69,6 +69,10 @@ function gx_git_config_set_aliases() {
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_S} "!sh -c ${GX_PARAMS_GIT_ALIAS_STATUS_FILE}"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_SS} "status"
 
+    # git push
+    # (trick: start with '!git push ...' for good branch completion)
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_PUSHF} "!git push --force-with-lease"
+
     # git cherry-pick
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CP} "cherry-pick"
 
@@ -118,6 +122,7 @@ function gx_git_config_unset_aliases() {
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_NOEDIT}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_PR}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_PREVIOUS}
+    git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_PUSHF}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_R}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_RECENT}
     git config ${global} --unset alias.${GX_PARAMS_GIT_ALIAS_RENAME}

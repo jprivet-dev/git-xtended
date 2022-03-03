@@ -30,7 +30,7 @@ function gx_install_choice() {
     gx_install_disable_or_enable "${GX_PARAMS_LABEL_PROMPT}" "${GX_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS}"
 
     if [ "${_GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}" == "${GX_PARAMS_ENABLED}" ]; then
-        gx_install_input_text "${GX_PARAMS_LABEL_REMOTE_BRANCH_REF}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_BRANCH_REF}"
+        gx_install_input_text "${GX_PARAMS_LABEL_REMOTE_REF_BRANCH}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}"
     fi
 
     gx_install_disable_or_enable "${GX_PARAMS_LABEL_GIT_ALIASES}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS}"

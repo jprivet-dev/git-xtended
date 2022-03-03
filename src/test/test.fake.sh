@@ -54,8 +54,8 @@ function gx_test_fake_git_get_current_username() {
     echo "current-username"
 }
 
-function gx_test_fake_git_get_remote_branch_ref() {
-    echo "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}"
+function gx_test_fake_git_get_remote_ref_branch() {
+    echo "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}"
 }
 
 function gx_test_fake_git_last_args_set() {
@@ -87,19 +87,19 @@ function gx_test_fake_git() {
     "rev-parse --abbrev-ref HEAD")
         gx_test_fake_git_rev_parse_abbrev_ref_head
         ;;
-    "diff --stat ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}")
+    "diff --stat ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}")
         gx_test_fake_git_diff_current_branch_origin_dev
         ;;
-    "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}")
+    "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}")
         gx_test_fake_git_revlist_current_remote
         ;;
-    "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF}...${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}")
+    "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}...${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}")
         gx_test_fake_git_revlist_remote_current
         ;;
-    "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}")
+    "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH_NOK}")
         gx_test_fake_git_revlist_current_remote_nok
         ;;
-    "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_BRANCH_REF_NOK}...${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}")
+    "rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH_NOK}...${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}")
         gx_test_fake_git_revlist_remote_current_nok
         ;;
     "rev-parse --git-dir")
@@ -108,8 +108,8 @@ function gx_test_fake_git() {
     "config user.name")
         gx_test_fake_git_get_current_username
         ;;
-    "config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_BRANCH_REF}")
-        gx_test_fake_git_get_remote_branch_ref
+    "config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}")
+        gx_test_fake_git_get_remote_ref_branch
         ;;
     "--version")
         return

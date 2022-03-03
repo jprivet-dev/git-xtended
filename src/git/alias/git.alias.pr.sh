@@ -24,12 +24,12 @@ else
   remote_main=$(gx_git_get_remote_main)
   remote_main_last_element=${remote_main##*/} # get the string after '@'
 
-  remote_branch_ref=$(gx_git_get_remote_branch_ref)
-  remote_branch_ref_last_element=${remote_branch_ref##*/} # get the string after '@'
+  remote_ref_branch=$(gx_git_get_remote_ref_branch)
+  remote_ref_branch_last_element=${remote_ref_branch##*/} # get the string after '@'
 
   printf "> ${url_root}${remote_main_last_element}...${current_branch}\n"
-  if [ "${remote_main_last_element}" !=  "${remote_branch_ref_last_element}" ]; then
-    printf "> ${url_root}${remote_branch_ref_last_element}...${current_branch}\n"
+  if [ "${remote_main_last_element}" !=  "${remote_ref_branch_last_element}" ]; then
+    printf "> ${url_root}${remote_ref_branch_last_element}...${current_branch}\n"
   fi
 fi
 
