@@ -447,9 +447,10 @@ you can **override all variables** from parameter files `params.xxx.sh` in the f
     |-- params/
     |   |-- default/
     |   |   |-- params.colors.sh        |
-    |   |   |-- params.default.sh       |
-    |   |   |-- params.git.sh           | OVERLOADABLE
-    |   |   |-- params.install.sh       | PARAMETERS
+    |   |   |-- params.commands.sh      |
+    |   |   |-- params.git.sh           |
+    |   |   |-- params.install.sh       | OVERLOADABLE
+    |   |   |-- params.main.sh          | PARAMETERS
     |   |   |-- params.prompt.sh        |
     |   |   |-- params.sh               |
     |   |   `-- params.version.sh       |
