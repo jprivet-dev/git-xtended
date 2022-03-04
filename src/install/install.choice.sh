@@ -29,15 +29,19 @@ function gx_install_input_text() {
 
 function gx_install_choice() {
     gx_install_disable_or_enable "${GX_PARAMS_PROMPT_TITLE}" "${GX_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS}"
+    printf "\n"
 
     if [ "${_GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}" == "${GX_PARAMS_ENABLED}" ]; then
         gx_install_input_text "${GX_PARAMS_REMOTE_REF_BRANCH_TITLE}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}" "${GX_PARAMS_REMOTE_REF_BRANCH_DEFAULT_VALUE}"
+        printf "\n"
     fi
 
     gx_install_disable_or_enable "${GX_PARAMS_GIT_ALIASES_TITLE}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS}"
+    printf "\n"
 
     if [ "${_GX_PRINT_CHOOSE_ONE_OPTION_LAST_VALUE}" == "${GX_PARAMS_ENABLED}" ]; then
         gx_install_input_text "${GX_PARAMS_GIT_AUTOLINK_REFERENCE_PREFIX_TITLE}" "${GX_PARAMS_GIT_CONFIG_KEY_GIT_AUTOLINK_REFERENCE_PREFIX}" "${GX_PARAMS_GIT_AUTOLINK_REFERENCE_PREFIX_DEFAULT_VALUE}"
+        printf "\n"
     fi
     #    gx_install_disable_or_enable "${GX_PARAMS_LABEL_GIT_HOOKS}"     "${GX_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_STATUS}"     "gx_install_git_hooks"
     #    gx_install_disable_or_enable "${GX_PARAMS_LABEL_WORKFLOW}"      "${GX_PARAMS_GIT_CONFIG_KEY_WORKFLOW_STATUS}"
