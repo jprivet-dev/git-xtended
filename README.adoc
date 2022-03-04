@@ -564,7 +564,7 @@ Git Xtended testing
 --- Functions with test ---
 
 [x]  gx_colors_print_all
-[ ]  gx_command_action_aliases
+[ ]  gx_commands_action_aliases
 ...
 [ ]  gx_symlink_exists
 [x]  gx_trim
@@ -572,7 +572,7 @@ Git Xtended testing
 --- Launch all tests ---
 
 # test_gx_colors_print_all +
-# test_gx_command_help +++
+# test_gx_commands_help +++
 ...
 # test_gx_test_fake_git ++
 # test_gx_trim ++++++++
@@ -611,6 +611,7 @@ OK: 65 tests, 234 assertions, 0 failure
 . https://www.atlassian.com/blog/git/advanced-git-aliases
 . https://www.atlassian.com/blog/git/git-automatic-merges-with-server-side-hooks-for-the-win
 . https://www.conventionalcommits.org/en/v1.0.0/
+. https://iridakos.com/programming/2018/03/01/bash-programmable-completion-tutorial
 
 {BACK_TO_TOP}
 

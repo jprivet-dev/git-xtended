@@ -17,5 +17,4 @@ source ~/git-xtended/src/git/git.sh
 source ~/git-xtended/src/prompt/prompt.sh
 source ~/git-xtended/src/install/install.sh
 
-gx_install_activation
-gx_install_activation_show_status
+gx_install
