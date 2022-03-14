@@ -26,15 +26,19 @@ function gx_hooks_pcmsg() {
         subject_default="$@"
     fi
 
-    local scope_prefix="("
-    local scope_suffix=")"
+    local scope_start="("
+    local scope_end=")"
     local main_split=": "
     local reference_split=" "
-    local reference_hashtag="#"
-    local reference_prefix="("
-    local reference_suffix=")"
+    local reference_prefix=$(gx_git_get_autolink_reference_prefix)
+    local reference_label="<reference>"
+    local reference_start="("
+    local reference_end=")"
     local cancel_char="x"
     local clear_char="*"
+
+    # !!! overload
+    _GX_HOOKS_PCMSG_REFERENCE_LABEL="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference_start}${reference_prefix}${reference_label}${reference_end}${F_RESET}"
 
     # --------------
     # TYPE
@@ -46,7 +50,7 @@ function gx_hooks_pcmsg() {
     echo "user.email : $(git config user.email)"
     printf "%s\n" "${split}"
 
-    echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}${scope_prefix}${_GX_HOOKS_PCMSG_SCOPE_LABEL}${scope_suffix}${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL}"
+    echo -e "MSG = ${_GX_HOOKS_PCMSG_TYPE_LABEL}${scope_start}${_GX_HOOKS_PCMSG_SCOPE_LABEL}${scope_end}${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL}"
     printf "%s\n" "${split}"
 
     echo ""
@@ -157,7 +161,7 @@ function gx_hooks_pcmsg_scope() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}${scope_prefix}${_GX_HOOKS_PCMSG_SCOPE_LABEL}${scope_suffix} ${C_DARK_GRAY}<<<${F_RESET} ${last_scope_prompt}"
+        echo -e -n "${type}${scope_start}${_GX_HOOKS_PCMSG_SCOPE_LABEL}${scope_end} ${C_DARK_GRAY}<<<${F_RESET} ${last_scope_prompt}"
 
         exec </dev/tty
         read read_scope
@@ -193,13 +197,13 @@ function gx_hooks_pcmsg_reference() {
     last_reference=$(gx_hooks_pcmsg_git_config_local_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}")
 
     if [ "${last_reference}" != "" ]; then
-        last_reference_prompt="${reference_prefix}${reference_hashtag}${last_reference}${reference_suffix}${clear_char} "
+        last_reference_prompt="${reference_start}${reference_prefix}${last_reference}${reference_end}${clear_char} "
     fi
 
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}${scope_prefix}${scope}${scope_suffix}${main_split}${subject}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
+        echo -e -n "${type}${scope_start}${scope}${scope_end}${main_split}${subject}${reference_split}${_GX_HOOKS_PCMSG_REFERENCE_LABEL} ${C_DARK_GRAY}<<<${F_RESET} ${last_reference_prompt}"
 
         exec </dev/tty
         read read_reference
@@ -219,10 +223,10 @@ function gx_hooks_pcmsg_reference() {
 
         if [ "${read_reference}" == "" ]; then
             if [ "${last_reference}" != "" ]; then
-                reference="${reference_split}${reference_prefix}${reference_hashtag}${last_reference}${reference_suffix}"
+                reference="${reference_split}${reference_start}${reference_prefix}${last_reference}${reference_end}"
             fi
         else
-            reference="${reference_split}${reference_prefix}${reference_hashtag}${read_reference}${reference_suffix}"
+            reference="${reference_split}${reference_start}${reference_prefix}${read_reference}${reference_end}"
             $(gx_hooks_pcmsg_git_config_local_set "${GX_PARAMS_GIT_CONFIG_KEY_GIT_COMMIT_LAST_REFERENCE}" "${read_reference}")
         fi
 
@@ -238,7 +242,7 @@ function gx_hooks_pcmsg_subject() {
     while true; do
         tput cuu1
         tput el
-        echo -e -n "${type}${scope_prefix}${scope}${scope_suffix}${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
+        echo -e -n "${type}${scope_start}${scope}${scope_end}${main_split}${_GX_HOOKS_PCMSG_SUBJECT_LABEL} ${C_DARK_GRAY}<<<${F_RESET} "
 
         exec </dev/tty
         read read_subject
@@ -261,14 +265,14 @@ function gx_hooks_pcmsg_subject() {
 }
 
 function gx_hooks_pcmsg_final_message() {
-    complete_message="${type}${scope_prefix}${scope}${scope_suffix}${main_split}${subject}${reference}"
+    complete_message="${type}${scope_start}${scope}${scope_end}${main_split}${subject}${reference}"
 
     local type_colors="${_GX_HOOKS_PCMSG_TYPE_COLOR}${type}${F_RESET}"
     local scope_colors="${_GX_HOOKS_PCMSG_SCOPE_COLOR}${scope}${F_RESET}"
     local subject_colors="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}${subject}${F_RESET}"
     local reference_colors="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}${reference}${F_RESET}"
 
-    local complete_message_colors="${type_colors}${scope_prefix}${scope_colors}${scope_suffix}${main_split}${subject_colors}${reference_colors}"
+    local complete_message_colors="${type_colors}${scope_start}${scope_colors}${scope_end}${main_split}${subject_colors}${reference_colors}"
 
     tput cuu1
     tput el

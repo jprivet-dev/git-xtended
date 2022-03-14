@@ -4,7 +4,7 @@
 # START TEST MODE #
 ###################
 
-gx_print_title_1 ${GX_PARAMS_TITLE} testing
+gx_print_title_1 ${GX_PARAMS_GX_TITLE} testing
 
 gx_print_question_yes_no "Would you like to run the tests"
 
@@ -38,6 +38,6 @@ unset GX_ENV_TEST
 # FINISH TEST MODE
 #
 
-gx_print_step "Reload original ${GX_PARAMS_TITLE}!"
+gx_print_step "Reload original ${GX_PARAMS_GX_TITLE}!"
 
 source ~/git-xtended/gx.sh
