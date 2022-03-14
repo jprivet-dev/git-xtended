@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function gwb_git_config_get() {
+function gx_git_config_get() {
     local key=$1
     local default=$2
 
@@ -14,7 +14,7 @@ function gwb_git_config_get() {
     echo "${value}"
 }
 
-function gwb_git_config_set() {
+function gx_git_config_set() {
     git config --global $1 $2
 }
 

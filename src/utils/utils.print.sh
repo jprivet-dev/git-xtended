@@ -163,8 +163,15 @@ function gx_print_choose_one_option() {
 function gx_print_input_text() {
     local choice
     local label="$1"
+    local default_value="$2"
 
-    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET} : "
+    local message="${C_CYAN}>${F_RESET} ${C_BG_CYAN}${C_BLACK} ${label} ${F_RESET}"
+
+    if [ "${default_value}" != "" ]; then
+      message+=" [${default_value}]"
+    fi
+
+    message+=": ";
 
     while true; do
         echo -e -n "${message}"
@@ -172,12 +179,12 @@ function gx_print_input_text() {
         exec </dev/tty
         read choice
 
-        if [ "${choice}" != "" ]; then
+        if [ "${default_value}" != "" -o "${choice}" != "" ]; then
             break
         fi
     done
 
-    _GX_PRINT_INPUT_TEXT_LAST_VALUE="${choice}"
+    _GX_PRINT_INPUT_TEXT_LAST_VALUE="${choice:-${default_value}}"
 
     gx_print_step "${label} = ${_GX_PRINT_INPUT_TEXT_LAST_VALUE}"
 }

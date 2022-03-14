@@ -16,8 +16,26 @@ function gx_git_get_current_username() {
     git config user.name
 }
 
-function gx_git_get_remote_branch_ref() {
-    git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_BRANCH_REF} 2>/dev/null
+function gx_git_get_current_remote_origin_url() {
+    git config remote.origin.url
+}
+
+function gx_git_get_remote_main() {
+    local remote=$(git config branch.main.remote)
+    local name=main
+    if [[ "${remote}" == "" ]]; then
+      remote=$(git config branch.master.remote)
+      name=master
+    fi
+    printf "${remote}/${name}"
+}
+
+function gx_git_get_remote_ref_branch() {
+    git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH} 2>/dev/null
+}
+
+function gx_git_get_autolink_reference_prefix() {
+    git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_AUTOLINK_REFERENCE_PREFIX} 2>/dev/null
 }
 
 function gx_git_status() {
@@ -41,7 +59,7 @@ function gx_git_get_changes_nb() {
 }
 
 function gx_git_diff_current_branch_origin_dev() {
-    git diff --stat "$(gx_git_get_remote_branch_ref)" 2>/dev/null
+    git diff --stat "$(gx_git_get_remote_ref_branch)" 2>/dev/null
 }
 
 function gx_git_get_status_changes_to_be_committed() {

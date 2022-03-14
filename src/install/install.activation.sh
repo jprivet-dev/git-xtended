@@ -40,8 +40,8 @@ function gx_install_activation_show_status() {
     gx_print_fixed_width $col_width " " "" "${GX_PARAMS_VERSION}"
 
     echo "${line}"
-    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_PROMPT}"      "${gx_prompt_status}"
-    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_LABEL_GIT_ALIASES}" "${gx_git_aliases_status}"
+    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_PROMPT_TITLE}"      "${gx_prompt_status}"
+    gx_print_fixed_width -e $col_width "${space}" "${GX_PARAMS_GIT_ALIASES_TITLE}" "${gx_git_aliases_status}"
 
     echo "${line}"
     echo "${line_info}"
