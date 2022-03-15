@@ -15,36 +15,36 @@ indexes=$@
 split="--------------------------------------------------"
 
 if [ "${indexes}" == "" ]; then
-    printf "which file(s) would you want to add ?\n"
-    source ~/git-xtended/src/git/alias/git.alias.status.sh
-    exit 1
+  printf "which file(s) would you want to add ?\n"
+  source ~/git-xtended/src/git/alias/git.alias.status.sh
+  exit 1
 fi
 
 if [[ "${indexes}" =~ ^[0-9]+ ]]; then
-   # indexes starts with a number
+  # indexes starts with a number
 
-   status_i=0
+  status_i=0
 
-   printf "%s\n" "${split}"
-   git status -s | cut -c4- | while read path; do
-       status_i=$((status_i + 1))
-       for i in ${indexes}; do
-           if [ "${status_i}" == "${i}" ]; then
-               printf "> git add (%s) %s\n" ${i} ${path}
-               git add ${path}
-           fi
-       done
-   done
-   printf "%s\n" "${split}"
+  printf "%s\n" "${split}"
+  git status -s | cut -c4- | while read path; do
+    status_i=$((status_i + 1))
+    for i in ${indexes}; do
+      if [ "${status_i}" == "${i}" ]; then
+        printf "> git add (%s) %s\n" ${i} ${path}
+        git add ${path}
+      fi
+    done
+  done
+  printf "%s\n" "${split}"
 else
-   # indexes does not start with a number
+  # indexes does not start with a number
 
-   printf "%s\n" "${split}"
-   if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
-       printf "> git add . (all files)\n"
-       git add .
-   elif [ "${indexes}" != "" ]; then
-       printf "> git add ${indexes} files\n"
-       git add ${indexes}
-   fi
+  printf "%s\n" "${split}"
+  if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
+    printf "> git add . (all files)\n"
+    git add .
+  elif [ "${indexes}" != "" ]; then
+    printf "> git add ${indexes} files\n"
+    git add ${indexes}
+  fi
 fi
