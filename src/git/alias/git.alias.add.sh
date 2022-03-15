@@ -12,6 +12,7 @@ if [ "$(gx_git_get_changes_nb)" == 0 ]; then
 fi
 
 indexes=$@
+split="--------------------------------------------------"
 
 if [ "${indexes}" == "" ]; then
     printf "which file(s) would you want to add ?\n"
@@ -24,6 +25,7 @@ if [[ "${indexes}" =~ ^[0-9]+ ]]; then
 
    status_i=0
 
+   printf "%s\n" "${split}"
    git status -s | cut -c4- | while read path; do
        status_i=$((status_i + 1))
        for i in ${indexes}; do
@@ -33,9 +35,11 @@ if [[ "${indexes}" =~ ^[0-9]+ ]]; then
            fi
        done
    done
+   printf "%s\n" "${split}"
 else
    # indexes does not start with a number
 
+   printf "%s\n" "${split}"
    if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
        printf "> git add . (all files)\n"
        git add .
