@@ -40,7 +40,7 @@ else
 fi
 
 if [ "$(gx_git_get_status_changes_to_be_committed_count)" == 0 ]; then
-  printf "${C_BG_LIGHT_RED}No files to commit !${F_RESET}\n"
+  printf "${C_BG_LIGHT_RED} No files to commit ! ${F_RESET}\n"
   exit 1
 fi
 
