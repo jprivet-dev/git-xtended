@@ -19,7 +19,7 @@ function gx_git_config_set_aliases() {
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DELETER} "push --delete"
 
     # git diff
-    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}' "$1"; }; f'
+    git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}' "$@"; }; f'
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DW} "diff -w --word-diff --color-words"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DS} "diff --staged"
     git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DSW} "diff --staged -w --word-diff --color-words"
