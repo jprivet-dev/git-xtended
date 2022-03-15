@@ -44,12 +44,12 @@ function gx_git_config_aliases_help() {
   gx_git_config_aliases_help_line "      config |" "${GX_PARAMS_GIT_ALIAS_CONFGX}" "" ...................... "Show ${GX_PARAMS_GX_TITLE_SHORT} git configuration (as '$ gx config')"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_UNSET}" "" ....................... "Remove the line matching the key from config file (local)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_UNSET_ALL}" "" .................... "Remove all lines matching the key from config file (local)"
-  gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_EDIT}" "" ........................ "Opens an editor to modify the specified config file (local)"
+  gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_EDIT}" "" ........................ "Open an editor to modify the specified config file (local)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_UNSET_G}" "" ...................... "Remove the line matching the key from config file (global)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_UNSET_ALL_G}" "" ................... "Remove all lines matching the key from config file (global)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_EDIT_G}" "" ....................... "Opens an editor to modify the specified config file (global)"
   gx_git_config_aliases_help_line "        grep |" "${GX_PARAMS_GIT_ALIAS_FIND}" "<string>" ............... "Look for specified strings in the tracked files (case sensitive)"
-  gx_git_config_aliases_help_line "pull request |" "${GX_PARAMS_GIT_ALIAS_PR}" "[<base>]" ................. "Generates the url to compare and create a PR with the current branch"
+  gx_git_config_aliases_help_line "pull request |" "${GX_PARAMS_GIT_ALIAS_PR}" "[<base>]" ................. "Generate the url to compare and create a PR with the current branch"
   gx_git_config_aliases_help_line "       stats |" "${GX_PARAMS_GIT_ALIAS_CONTRIBUTORS}" "" ................ "Get the list of contributors for the current repository"
   echo
 }
