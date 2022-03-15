@@ -70,11 +70,11 @@ function gx_print_title_2() {
 }
 
 function gx_print_title_success() {
-  gx_print_colors_force "${C_BG_GREEN}${C_WHITE}\n\n $*\n${F_RESET}\n"
+  gx_print_colors_force "${C_BG_GREEN}${C_WHITE}\n\n $* \n${F_RESET}\n"
 }
 
 function gx_print_title_error() {
-  gx_print_colors_force "${C_BG_RED}${C_WHITE}\n\n $*\n${F_RESET}\n"
+  gx_print_colors_force "${C_BG_RED}${C_WHITE}\n\n $* \n${F_RESET}\n"
 }
 
 function gx_print_step() {
