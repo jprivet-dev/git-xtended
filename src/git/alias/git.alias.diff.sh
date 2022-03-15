@@ -11,21 +11,21 @@ if [ "$(gx_git_get_changes_nb)" == 0 ]; then
   exit 1
 fi
 
-indexes=$1
+first=$1
 split="--------------------------------------------------"
 
-if [ "${indexes}" == "" ]; then
-  indexes=1
+if [ "${first}" == "" ]; then
+  first=1
 fi
 
-if [[ "${indexes}" =~ ^[0-9]+ ]]; then
-  # indexes starts with a number
+if [[ "${first}" =~ ^[0-9]+ && "${#first}" < 7 ]]; then
+  # first param starts with a number (index of file) AND is not a commit reference
 
   status_i=0
 
   git status -s | cut -c4- | while read path; do
     status_i=$((status_i + 1))
-    for i in ${indexes}; do
+    for i in ${first}; do
       if [ "${status_i}" == "${i}" ]; then
         is_staged=$(git status --porcelain -s ${path} | grep '^[^? ]' | wc -l 2>/dev/null)
         is_not_staged=$(git status --porcelain -s ${path} | grep '^.[^? ]' | wc -l 2>/dev/null)
@@ -47,16 +47,8 @@ if [[ "${indexes}" =~ ^[0-9]+ ]]; then
     done
   done
 else
-  # indexes does not start with a number
+  # first param is not an index of file
 
   printf "%s\n" "${split}"
-  if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
-    printf "> git diff (all files)\n"
-    printf "%s\n" "${split}"
-    git diff
-  elif [ "${indexes}" != "" ]; then
-    printf "> git diff ${indexes} files\n"
-    printf "%s\n" "${split}"
-    git diff ${indexes}
-  fi
+  git diff $@
 fi
