@@ -178,7 +178,10 @@ function gx_prompt_warning() {
   [[ -n "${remote_ref_branch}" ]] &&
     behind_count="$(gx_git_status_behind_count ${current_branch} ${remote_ref_branch})"
 
-  [[ "${behind_count}" -gt "${GX_PARAMS_PROMPT_WARNING_BEHIND_COUNT_MIN}" || "${changes_count}" -ge "${GX_PARAMS_PROMPT_WARNING_CHANGES_COUNT_MAX}" ]] &&
+  [[ 
+    "${behind_count}" == "x" ||
+    "${behind_count}" -gt "${GX_PARAMS_PROMPT_WARNING_BEHIND_COUNT_MIN}" ||
+    "${changes_count}" -ge "${GX_PARAMS_PROMPT_WARNING_CHANGES_COUNT_MAX}" ]] &&
     message="${GX_PARAMS_PROMPT_WARNING_ICON}"
 
   echo $(gx_prompt_warning_colors "${message}")

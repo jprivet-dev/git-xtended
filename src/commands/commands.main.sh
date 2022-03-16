@@ -15,7 +15,7 @@ function gx_commands_parse_action() {
     return
   fi
 
-  local func_name="gx_commands_action_${action}"
+  local func_name="gx_commands_action_${action//-/_}"
 
   if type "${func_name}" &>/dev/null; then
     $func_name "$@"
@@ -27,6 +27,28 @@ function gx_commands_parse_action() {
 
 function gx_commands_action_config() {
   git "${GX_PARAMS_GIT_ALIAS_CONFGX}"
+}
+
+function gx_commands_action_remote_ref_branch() {
+  local local=$(git config --local "${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}")
+  local global=$(git config --global "${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}")
+  local current="(current)"
+  local local_current="${current}"
+  local global_current="${current}"
+
+  printf "%s\n" "${GX_PARAMS_SPLIT}"
+  printf "%s\n" "${GX_PARAMS_REMOTE_REF_BRANCH_TITLE}"
+
+  if [ "${local}" != "" -a "${local}" != "${global}" ]; then
+    printf "> %s %s %s\n" "local ...." "${local}" "${local_current}"
+    global_current=""
+  fi
+
+  if [ "${global}" != "" ]; then
+    printf "> %s %s %s\n" "global ..." "${global}" "${global_current}"
+  fi
+
+  printf "%s\n" "${GX_PARAMS_SPLIT}"
 }
 
 function gx_commands_action_install() {

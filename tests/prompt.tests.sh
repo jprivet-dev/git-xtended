@@ -34,7 +34,7 @@ function test_gx_prompt_userhost() {
 function test_gx_prompt_userhost_colors() {
   local user="current_userhost"
   local host="current_userhost"
-  assert equals "$(gx_prompt_userhost_colors "${user}" "${host}")" "${user}${TEST_C_LIGHT_GREEN}@${F_RESET}${host}" $LINENO
+  assert equals "$(gx_prompt_userhost_colors "${user}" "${host}")" "${user}${TEST_C_LIGHT_GREEN}@${TEST_F_RESET}${host}" $LINENO
 }
 
 function test_gx_prompt_dir() {

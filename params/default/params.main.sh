@@ -2,6 +2,8 @@
 # shellcheck disable=SC2034
 :
 
+GX_PARAMS_SPLIT="--------------------------------------------------"
+
 GX_PARAMS_TAB="    "
 GX_PARAMS_TAB_2="${GX_PARAMS_TAB}${GX_PARAMS_TAB}"
 
