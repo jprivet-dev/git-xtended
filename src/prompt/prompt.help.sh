@@ -9,6 +9,7 @@ function gx_prompt_help() {
   local behind=$(gx_prompt_behind_colors "3")
   local ahead=$(gx_prompt_ahead_colors "42")
   local remote_ref_branch=$(gx_git_get_remote_ref_branch)
+  local warning=$(gx_prompt_warning_colors "${GX_PARAMS_PROMPT_WARNING_ICON}")
 
   gx_print_colors "${C_WHITE}  # ${GX_PARAMS_PROMPT_TITLE}${F_RESET} :"
   gx_prompt_help_line "${username_branch}"  ...                 "Current Git username & branch"
@@ -18,6 +19,7 @@ function gx_prompt_help() {
   gx_prompt_help_line "${status_c}"         .........           "Changes to be committed"
   gx_prompt_help_line "${behind}"           .................   "Commits behind remote reference branch (${remote_ref_branch})"
   gx_prompt_help_line "${ahead}"            ................    "Commits ahead remote reference branch (${remote_ref_branch})"
+  gx_prompt_help_line "${warning}"          ................    "To many commits behind or to many changes"
   echo
 }
 
