@@ -168,6 +168,26 @@ function gx_prompt_ahead_colors() {
   echo "${format}${count}↑${F_RESET}"
 }
 
+function gx_prompt_warning() {
+  local current_branch=$(gx_git_get_current_branch)
+  local remote_ref_branch=$(gx_git_get_remote_ref_branch)
+  local behind_count=""
+  local changes_count="$(gx_git_get_changes_nb)"
+  local message=""
+
+  [[ -n "${remote_ref_branch}" ]] &&
+    behind_count="$(gx_git_status_behind_count ${current_branch} ${remote_ref_branch})"
+
+  [[ "${behind_count}" -gt "${GX_PARAMS_PROMPT_WARNING_BEHIND_COUNT_MIN}" || "${changes_count}" -ge "${GX_PARAMS_PROMPT_WARNING_CHANGES_COUNT_MAX}" ]] &&
+    message="${GX_PARAMS_PROMPT_WARNING_ICON}"
+
+  echo $(gx_prompt_warning_colors "${message}")
+}
+
+function gx_prompt_warning_colors() {
+  echo "${GX_PARAMS_PROMPT_WARNING_COLORS}${1} ${F_RESET}"
+}
+
 function gx_prompt_ps1_part1() {
   local ps1="$(gx_prompt_time) $(gx_prompt_userhost):$(gx_prompt_dir)"
 
@@ -178,7 +198,7 @@ function gx_prompt_ps1_part1() {
       ps1="${ps1} $(gx_prompt_changes_count) $(gx_prompt_status)"
     fi
 
-    ps1="${ps1} $(gx_prompt_behind) $(gx_prompt_ahead)"
+    ps1="${ps1} $(gx_prompt_behind) $(gx_prompt_ahead) $(gx_prompt_warning)"
   fi
 
   echo "${ps1}"
