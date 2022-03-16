@@ -30,6 +30,7 @@ if [[ "${indexes}" =~ ^[0-9]+ ]]; then
 else
   # indexes does not start with a number
 
+  printf "%s\n" "${split}"
   if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
     printf "> git add . (all files)\n"
     git add .

@@ -42,9 +42,11 @@ else
   printf "%s\n" "${split}"
   if [ "${indexes}" == "all" ] || [ "${indexes}" == "." ]; then
     printf "> git add . (all files)\n"
+    printf "%s\n" "${split}"
     git add .
   elif [ "${indexes}" != "" ]; then
     printf "> git add ${indexes} files\n"
+    printf "%s\n" "${split}"
     git add ${indexes}
   fi
 fi
