@@ -19,6 +19,10 @@ It allows :
 * Customise *options globally or by project*.
 * Ensure stability with *unit tests*.
 
+== Demo
+
+image::doc/img/git-c-demo.gif[]
+
 == Documentation
 
 Find all the information on installation and configuration in the https://www.jprivet.dev/git-xtended[*{GX_TITLE}* documentation] (coming soon !!!).
