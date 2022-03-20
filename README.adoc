@@ -27,6 +27,14 @@ image::doc/img/git-c-demo.gif[]
 
 Find all the information on installation and configuration in the https://www.jprivet.dev/git-xtended[*{GX_TITLE}* documentation] (coming soon !!!).
 
+== Searches on efficient Git and Bash aliases
+
+The features of Git Xtended are based on my research on Git and Bash aliases, which you can find on my gist https://gist.github.com/jprivet-dev/09912ca4188a4ba3c610d7f61c200c38[Git and Bash aliases defined and documented in a single `.bash_aliases` file, with Git auto-completion]
+
+== Comments, suggestions?
+
+Feel free to make comments/suggestions to me in the {GIT_PROJECT}/issues[Git issues section].
+
 == License
 
 *{GX_TITLE}* is released under the {GIT_PROJECT}/blob/main/LICENSE[*MIT License*]
