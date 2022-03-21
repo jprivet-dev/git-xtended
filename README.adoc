@@ -21,7 +21,9 @@ It allows :
 
 == Demo
 
-image::doc/img/git-c-demo.gif[]
+image::doc/img/gx-logo.png[]
+
+image::doc/img/gx-c-demo.gif[]
 
 == Documentation
 
