@@ -127,3 +127,7 @@ function gx_commands_config_git_aliases() {
     gx_git_config_set_aliases $global
   fi
 }
+
+function gx_commands_action_version() {
+  printf "%s\n" "${GX_PARAMS_VERSION}"
+}

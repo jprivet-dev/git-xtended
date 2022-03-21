@@ -13,6 +13,7 @@ function gx_commands_help() {
   gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_REMOTE_REF_BRANCH}" "" ... "Show remote reference branch (local & global)"
   gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_COLORS}" "" .............. "Show all ${GX_PARAMS_GX_TITLE_SHORT} colors"
   gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_TEST}" "[<func>]" ....... "Run one or all ${GX_PARAMS_GX_TITLE_SHORT} tests"
+  gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_VERSION}" "" ............. "Show ${GX_PARAMS_GX_TITLE_SHORT} version"
   gx_print
 }
 
