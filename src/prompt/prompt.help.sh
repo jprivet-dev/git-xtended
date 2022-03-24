@@ -16,7 +16,7 @@ function gx_prompt_help() {
   gx_prompt_help_line "${count}"            .................   "All elements from git status"
   gx_prompt_help_line "${status_u}"         .................   "Untracked files"
   gx_prompt_help_line "${status_s}"         .................   "Changes not staged for commit"
-  gx_prompt_help_line "${status_c}"         .........           "Changes to be committed"
+  gx_prompt_help_line "${status_c}"         .........           "Changes to be committed - c(modified added deleted)"
   gx_prompt_help_line "${behind}"           .................   "Commits behind remote reference branch (${remote_ref_branch})"
   gx_prompt_help_line "${ahead}"            ................    "Commits ahead remote reference branch (${remote_ref_branch})"
   gx_prompt_help_line "${warning}"          ................    "To many commits behind or to many changes"

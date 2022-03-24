@@ -14,7 +14,7 @@ It allows :
 
 * Display in the *shell prompt* the project status with *Git information*.
 * Set up *documented aliases* for recurring Git actions.
-* Have a *commit message formatter* (without `prepare-commit-msg` hook) based on https://www.conventionalcommits.org/[conventional commits].
+* Have a *commit message formatter* (without `prepare-commit-msg` hook) inspired by the https://www.conventionalcommits.org/[conventional commits].
 * Provide comprehensive and quickly accessible *documentation in the shell*.
 * Customise *options globally or by project*.
 * Ensure stability with *unit tests*.
