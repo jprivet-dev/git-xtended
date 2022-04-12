@@ -19,15 +19,13 @@ It allows :
 * Customise *options globally or by project*.
 * Ensure stability with *unit tests*.
 
-== Demo
-
-image::doc/img/gx-logo.png[]
+== Small demo
 
 image::doc/img/gx-c-demo.gif[]
 
 == Documentation
 
-Find all the information on installation and configuration in the https://www.jprivet.dev/git-xtended[*{GX_TITLE}* documentation] (coming soon !!!).
+Find all the information on installation and configuration in the https://www.jprivet.dev/git-xtended[*{GX_TITLE}* documentation].
 
 == Searches on efficient Git and Bash aliases
 
