@@ -3,8 +3,15 @@
 :GIT_PROJECT: https://github.com/jprivet-dev/{GX_NAME}
 
 = {GX_TITLE}
+:numbered:
+:toc: macro
+
+:toc-title: Summary
+:toclevels: 3
 
 image:https://app.codacy.com/project/badge/Grade/31960ec18f3d4134b92e9164255dee6e["Codacy code quality", link="https://www.codacy.com/gh/jprivet-dev/git-xtended/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade"]
+
+toc::[]
 
 == Presentation
 
@@ -22,6 +29,10 @@ It allows :
 == Small demo
 
 image::doc/img/gx-c-demo.gif[]
+
+== Documentation
+
+Find all the information on installation and configuration in the *{GX_TITLE}* documentation on https://www.jprivet.dev/git-xtended.
 
 == Overview of aliases
 
@@ -151,10 +162,6 @@ image::doc/img/gx-c-demo.gif[]
 |===
 | `git contributors` |  Get the list of contributors for the current repository
 |===
-
-== Documentation
-
-Find all the information on installation and configuration in the https://www.jprivet.dev/git-xtended[*{GX_TITLE}* documentation].
 
 == Searches on efficient Git and Bash aliases
 
