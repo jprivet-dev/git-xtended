@@ -17,6 +17,8 @@ toc::[]
 
 *{GX_TITLE}* is a shell tool that makes it easy to perform recurring actions with *Git* on a daily basis.
 
+image::doc/img/overview.png[]
+
 It allows :
 
 * Display in the *shell prompt* the project status with *Git information*.
@@ -26,7 +28,7 @@ It allows :
 * Customise *options globally or by project*.
 * Ensure stability with *unit tests*.
 
-== Small demo
+== A short demo
 
 image::doc/img/gx-c-demo.gif[]
 
