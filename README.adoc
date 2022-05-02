@@ -3,32 +3,176 @@
 :GIT_PROJECT: https://github.com/jprivet-dev/{GX_NAME}
 
 = {GX_TITLE}
+:numbered:
+:toc: macro
 
-image:https://api.codacy.com/project/badge/Grade/31960ec18f3d4134b92e9164255dee6e["Codacy code quality", link="https://www.codacy.com/app/jprivet-dev/git-xtended?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade"]
+:toc-title: Summary
+:toclevels: 3
+
+image:https://app.codacy.com/project/badge/Grade/31960ec18f3d4134b92e9164255dee6e["Codacy code quality", link="https://www.codacy.com/gh/jprivet-dev/git-xtended/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade"]
+
+toc::[]
 
 == Presentation
 
 *{GX_TITLE}* is a shell tool that makes it easy to perform recurring actions with *Git* on a daily basis.
 
+image::doc/img/overview.png[]
+
 It allows :
 
 * Display in the *shell prompt* the project status with *Git information*.
 * Set up *documented aliases* for recurring Git actions.
-* Have a *commit message formatter* (without `prepare-commit-msg` hook) based on https://www.conventionalcommits.org/[conventional commits].
+* Have a *commit message formatter* (without `prepare-commit-msg` hook) inspired by the https://www.conventionalcommits.org/[conventional commits].
 * Provide comprehensive and quickly accessible *documentation in the shell*.
 * Customise *options globally or by project*.
 * Ensure stability with *unit tests*.
 
+== A short demo
+
+image::doc/img/gx-c-demo.gif[]
+
 == Documentation
 
-Find all the information on installation and configuration in the https://www.jprivet.dev/git-xtended[*{GX_TITLE}* documentation] (coming soon !!!).
+Find all the information on installation and configuration in the *{GX_TITLE}* documentation on https://www.jprivet.dev/git-xtended.
+
+== Overview of aliases
+
+*log*
+
+|===
+| `git l` |  Show the last 12 commit logs (graphical representation)
+| `git ll` |  Show all commit logs (graphical representation)
+| `git lfile <file>` |  Show all commit logs for a specific file (graphical representation)
+| `git lmerges` |  Show all merge logs (graphical representation)
+| `git lcount` |  Number of commits per author
+|===
+
+*branch*
+
+|===
+| `git b` |  Simple "branch" alias
+| `git recent` |  Show all local branches ordered by recent commits
+| `git previous` |  Quickly switch to the previous branch
+| `git new <branch> [<remote>/<b>]` |  Create and switch on new branch
+| `git rename [<branch>] <name>` |  Rename one local branch
+| `git delete <branch>` |  Delete local branch
+| `git deletef <branch>` |  Forcefully delete local branch
+| `git deleter <remote> <branch>` |  Delete remote branch
+|===
+
+*checkout*
+
+|===
+| `git ck` |  Simple "checkout" alias
+| `git res [<i>\|<path>]` | Indexed "restore" command (select file with index status instead of path)
+| `git sw` |  Simple "switch" alias
+|===
+
+*status*
+
+|===
+| `git s` |  Indexed status list (staged, unstaged, and untracked files)
+| `git ss` |  Simple "status" alias
+|===
+
+*diff*
+
+|===
+| `git d [<i>\|<path>]` | Indexed "diff" command (select file with index status instead of path)
+| `git dw [<path>]` |  Show changes (ignore whitespace / word diff / without [-...-]{+...+})
+| `git ds [<path>]` |  Show changes staged for commit
+| `git dsw [<path>]` |  Show changes staged for commit, like 'dw'
+|===
+
+*add*
+
+|===
+| `git a [<i>\|<path>]` | Indexed "add" command (select file with index status instead of path)
+| `git all` |  Add all files (new, modified and deleted)
+| `git nm` |  Add new and modified files, without deleted
+| `git md` |  Add modified and deleted files, without new
+|===
+
+*commit*
+
+|===
+| `git c [<i>\|<path>\|all]` | Indexed "commit" command (select file with index status instead of path)
+| `git amend` |  Modify message of the previous commit
+| `git noedit` |  Modify previous commit without modifying the commit message
+|===
+
+*reset*
+
+|===
+| `git r` |  Simple "reset" alias
+| `git hard [<commit>]` |  Simple "reset --hard" alias (by default, discard any changes to tracked files, since last commit)
+| `git undo` |  Undo the last commit, while keeping files changes
+|===
+
+*clean*
+
+|===
+| `git untracked` |  Remove all untracked files
+|===
+
+*push*
+
+|===
+| `git pushf [<remote> <branch>]` |  Push force in safety mode
+|===
+
+*cherry pick*
+
+|===
+| `git cp` |  Simple "cherry-pick" alias
+|===
+
+*tags*
+
+|===
+| `git tlast` |  Show the most recent tag on the current branch
+| `git tlist` |  Display tags in natural order
+|===
+
+*config*
+
+|===
+| `git confgx` |  Show GX git configuration (as '$ gx config')
+| `git unset` |  Remove the line matching the key from config file (local)
+| `git unsetall` |  Remove all lines matching the key from config file (local)
+| `git edit` |  Open an editor to modify the specified config file (local)
+| `git unsetg` |  Remove the line matching the key from config file (global)
+| `git unsetallg` |  Remove all lines matching the key from config file (global)
+| `git editg` |  Opens an editor to modify the specified config file (global)
+|===
+
+*grep*
+
+|===
+| `git find <string>` |  Look for specified strings in the tracked files (case sensitive)
+|===
+
+*pull request*
+
+|===
+| `git pr [<base>]` |  Generate the url to compare and create a PR with the current branch
+|===
+
+*stats*
+
+|===
+| `git contributors` |  Get the list of contributors for the current repository
+|===
+
+== Searches on efficient Git and Bash aliases
+
+The features of Git Xtended are based on my research on Git and Bash aliases, which you can find on my gist https://gist.github.com/jprivet-dev/09912ca4188a4ba3c610d7f61c200c38[Git and Bash aliases defined and documented in a single `.bash_aliases` file, with Git auto-completion]
+
+== Comments, suggestions?
+
+Feel free to make comments/suggestions to me in the {GIT_PROJECT}/issues[Git issues section].
 
 == License
 
 *{GX_TITLE}* is released under the {GIT_PROJECT}/blob/main/LICENSE[*MIT License*]
-
-
-
-
-
-
