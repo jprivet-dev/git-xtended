@@ -9,8 +9,8 @@ gx_print_title_1 ${GX_PARAMS_GX_TITLE} testing
 gx_print_question_yes_no "Would you like to run the tests"
 
 if [ "${_GX_PRINT_QUESTION_YES_NO_LAST_VALUE}" != "${GX_PARAMS_YES}" ]; then
-    gx_print_step "Abort tests"
-    return
+  gx_print_step "Abort tests"
+  return
 fi
 
 # shellcheck disable=SC2034

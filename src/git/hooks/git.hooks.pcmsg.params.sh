@@ -15,15 +15,15 @@ _GX_HOOKS_PCMSG_SUBJECT_LABEL="${_GX_HOOKS_PCMSG_SUBJECT_COLOR}<subject*>${F_RES
 _GX_HOOKS_PCMSG_REFERENCE_LABEL="${_GX_HOOKS_PCMSG_REFERENCE_COLOR}(#<reference>)${F_RESET}" # !!! overload it in git.hooks.pcmsg.sh
 
 _GX_HOOKS_PCMSG_TYPES=(
-    "b|build|Build system or external dependencies (Gulp, Broccoli, npm, ...)"
-    "c|chore|Other changes that don't modify src or test files (.editorconfig, .gitignore, ...)"
-    "ci|ci|CI configuration files and scripts (Travis, Circle, BrowserStack, ...)"
-    "co|conf|Configuration files (config/*.yaml, ...)"
-    "d|docs|Documentation only changes (CHANGELOG, README, ...)"
-    "f|feat|A new feature"
-    "fi|fix|A bug fix"
-    "p|perf|A code change that improves performance"
-    "r|refactor|Refactoring or code-cleanup (no functional changes, no API changes)"
-    "s|style|Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)"
-    "t|test|Adding missing tests or correcting existing tests"
+  "b|build|Build system or external dependencies (Gulp, Broccoli, npm, ...)"
+  "c|chore|Other changes that don't modify src or test files (.editorconfig, .gitignore, ...)"
+  "ci|ci|CI configuration files and scripts (Travis, Circle, BrowserStack, ...)"
+  "co|conf|Configuration files (config/*.yaml, ...)"
+  "d|docs|Documentation only changes (CHANGELOG, README, ...)"
+  "f|feat|A new feature"
+  "fi|fix|A bug fix"
+  "p|perf|A code change that improves performance"
+  "r|refactor|Refactoring or code-cleanup (no functional changes, no API changes)"
+  "s|style|Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, ...)"
+  "t|test|Adding missing tests or correcting existing tests"
 )

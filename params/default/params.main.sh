@@ -2,6 +2,8 @@
 # shellcheck disable=SC2034
 :
 
+GX_PARAMS_SPLIT="--------------------------------------------------"
+
 GX_PARAMS_TAB="    "
 GX_PARAMS_TAB_2="${GX_PARAMS_TAB}${GX_PARAMS_TAB}"
 
@@ -17,8 +19,8 @@ GX_PARAMS_OFF_C="${C_BG_RED}${C_WHITE} OFF ${F_RESET}"
 GX_PARAMS_ENABLED="Enabled"
 GX_PARAMS_DISABLED="Disabled"
 
-GX_PARAMS_ENABLED_C="${C_BG_GREEN}${C_BLACK} Enabled  ${F_RESET}"
-GX_PARAMS_DISABLED_C="${C_BG_RED}${C_WHITE} Disabled ${F_RESET}"
+GX_PARAMS_ENABLED_C="${C_BG_GREEN}${C_BLACK} ENABLED  ${F_RESET}"
+GX_PARAMS_DISABLED_C="${C_BG_RED}${C_WHITE} DISABLED ${F_RESET}"
 
 GX_PARAMS_USER_PS1="\u"
 GX_PARAMS_ROOT="~/git-xtended"
