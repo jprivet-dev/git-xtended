@@ -81,6 +81,11 @@ function gx_commands_action_galiases() {
   gx_git_config_aliases_help
 }
 
+function gx_commands_action_baliases() {
+  echo ""
+  gx_bash_aliases_help
+}
+
 function gx_commands_action_commands() {
   echo ""
   gx_commands_help
