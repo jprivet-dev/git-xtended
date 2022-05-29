@@ -4,7 +4,7 @@ function gx_commands_help() {
   gx_print_colors "${C_WHITE}  # ${GX_PARAMS_GX_COMMANDS_TITLE}${F_RESET} :"
   gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_HELP}" "" ................ "Display all help information about ${GX_PARAMS_GX_TITLE_SHORT}"
   gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_PROMPT}" "" .............. "Display prompt information"
-  gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_ALIAS}" "" ............... "Display all ${GX_PARAMS_GX_TITLE_SHORT} aliases"
+  gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_GALIASES}" "" ............ "Display all Git aliases"
   gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_COMMANDS}" "" ............ "Display all ${GX_PARAMS_GX_TITLE_SHORT} commands"
   gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_INSTALL}" "" ............. "Select and install ${GX_PARAMS_GX_TITLE_SHORT} elements"
   gx_commands_help_command_line "${GX_PARAMS_COMMANDS_ACTION_RELOAD}" "" .............. "Reload ${GX_PARAMS_GX_TITLE_SHORT}"

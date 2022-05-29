@@ -76,7 +76,7 @@ function gx_commands_action_prompt() {
   gx_prompt_help
 }
 
-function gx_commands_action_alias() { # !!! `aliases` does not work
+function gx_commands_action_galiases() {
   echo ""
   gx_git_config_aliases_help
 }
