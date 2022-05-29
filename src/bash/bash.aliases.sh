@@ -4,8 +4,8 @@ function gx_bash_aliases_enabled() {
   [ -f /usr/share/bash-completion/completions/git ] && . /usr/share/bash-completion/completions/git
 
   # @see https://stackoverflow.com/a/24665529
-  alias g='git';      __git_complete g        __git_main
-  alias gti='git';    __git_complete gti      __git_main # because it could happen to anyone :P
+  alias ${GX_PARAMS_BASH_ALIAS_G}="git";      __git_complete ${GX_PARAMS_BASH_ALIAS_G}    __git_main
+  alias ${GX_PARAMS_BASH_ALIAS_GTI}="git";    __git_complete ${GX_PARAMS_BASH_ALIAS_GTI}  __git_main
 
   _GX_PARAMS_BASH_ALIASES_CREATED_BY_GX="${GX_PARAMS_TRUE}"
 }
@@ -13,8 +13,8 @@ function gx_bash_aliases_enabled() {
 function gx_bash_aliases_disabled() {
   # We only explicitly delete aliases that have been created by GX.
   if [ "${_GX_PARAMS_BASH_ALIASES_CREATED_BY_GX}" == "${GX_PARAMS_TRUE}" ]; then
-    unalias g
-    unalias gti
+    unalias ${GX_PARAMS_BASH_ALIAS_G}
+    unalias ${GX_PARAMS_BASH_ALIAS_GTI}
     _GX_PARAMS_BASH_ALIASES_CREATED_BY_GX="${GX_PARAMS_FALSE}"
   fi
 }

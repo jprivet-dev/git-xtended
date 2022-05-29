@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 function gx_prompt_help() {
+  local status=""
+  if [ "${GX_PARAMS_INSTALL_PROMPT_STATUS}" == "${GX_PARAMS_DISABLED}" ]; then
+    status=" (${GX_PARAMS_DISABLED_UPPERCASE})"
+  fi
+
   local username_branch=$(gx_prompt_username_branch_colors "username" "branch")
   local count=$(gx_prompt_changes_count_colors "8")
   local status_u=$(gx_prompt_status_untracked_colors "1")
@@ -11,7 +16,7 @@ function gx_prompt_help() {
   local remote_ref_branch=$(gx_git_get_remote_ref_branch)
   local warning=$(gx_prompt_warning_colors "${GX_PARAMS_PROMPT_WARNING_ICON}")
 
-  gx_print_colors "${C_WHITE}  # ${GX_PARAMS_PROMPT_TITLE}${F_RESET} :"
+  gx_print_colors "${C_WHITE}  # ${GX_PARAMS_PROMPT_TITLE}${status}${F_RESET} :"
   gx_prompt_help_line "${username_branch}"  ...                 "Current Git username & branch"
   gx_prompt_help_line "${count}"            .................   "All elements from git status"
   gx_prompt_help_line "${status_u}"         .................   "Untracked files"

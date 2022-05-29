@@ -225,7 +225,7 @@ function gx_prompt_enabled() {
   if [[ "$(gx_is_bash_interactive)" == "false" ]]; then
     return
   fi
-  PROMPT_COMMAND='gx_prompt_set_ps1'
+  PROMPT_COMMAND="gx_prompt_set_ps1"
   gx_prompt_set_ps2
 }
 

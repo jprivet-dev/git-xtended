@@ -6,5 +6,6 @@ source ~/git-xtended/params/default/params.main.sh
 
 source ~/git-xtended/params/default/params.commands.sh
 source ~/git-xtended/params/default/params.git.sh
+source ~/git-xtended/params/default/params.bash.sh
 source ~/git-xtended/params/default/params.install.sh
 source ~/git-xtended/params/default/params.prompt.sh
