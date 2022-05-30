@@ -157,7 +157,7 @@ function test_gx_git_config_aliases_help() {
   local count_lines="$(gx_git_config_aliases_help | wc -l)"
   assert equals "${count_lines}" "49" $LINENO
 
-  assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}  # Git aliases${TEST_F_RESET} :" $LINENO
+  assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}  # Git aliases (DISABLED)${TEST_F_RESET} :" $LINENO
   assert last-line    "$(gx_git_config_aliases_help)"   "           stats | git ${TEST_C_LIGHT_BLUE}contributors${TEST_F_RESET} ${TEST_C_DARK_GRAY}................${TEST_F_RESET} Get the list of contributors for the current repository" $LINENO
 }
 
