@@ -37,9 +37,6 @@ function gx_git_config_set_aliases() {
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit --amend -m"
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_NOEDIT} "commit --amend --no-edit"
 
-  # git diff & commit one file
-  git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D}${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}'; '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}'; }; f'
-
   # git checkout
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CK} "checkout"
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_RES} '!f() { '${GX_PARAMS_GIT_ALIAS_RESTORE_FILE}' "$@"; }; f'
