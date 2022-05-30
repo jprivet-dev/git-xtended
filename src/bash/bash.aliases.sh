@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function gx_bash_aliases_enabled() {
   # avoid error "__git_complete: command not found"
   # @see https://stackoverflow.com/a/47496210/13480534
