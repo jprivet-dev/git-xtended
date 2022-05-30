@@ -27,6 +27,7 @@ source ~/git-xtended/tests/commands.tests.sh
 source ~/git-xtended/tests/colors.tests.sh
 source ~/git-xtended/tests/prompt.tests.sh
 source ~/git-xtended/tests/git.tests.sh
+source ~/git-xtended/tests/bash.tests.sh
 source ~/git-xtended/tests/utils.tests.sh
 
 gx_test_run $1
