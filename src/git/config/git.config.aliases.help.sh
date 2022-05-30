@@ -28,6 +28,7 @@ function gx_git_config_aliases_help() {
   gx_git_config_aliases_help_line "      status |" "${GX_PARAMS_GIT_ALIAS_S}" "" ........................... "${F_UNDERLINED}Indexed${F_RESET} status list (staged, unstaged, and untracked files)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_SS}" "" .......................... "Simple \"status\" alias"
   gx_git_config_aliases_help_line "        diff |" "${GX_PARAMS_GIT_ALIAS_D}" "[<i>|<path>]" .............. "${F_UNDERLINED}Indexed${F_RESET} \"diff\" command ${select_file}"
+  gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DD}" "" .......................... "Simple \"diff\" alias"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DW}" "[<path>]" ................. "Show changes (ignore whitespace / word diff / without [-...-]{+...+})"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DS}" "[<path>]" ................. "Show changes staged for commit"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DSW}" "[<path>]" ................ "Show changes staged for commit, like 'dw'"
