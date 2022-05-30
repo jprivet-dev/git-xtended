@@ -19,7 +19,7 @@ function gx_test_fake_git_branch() {
   echo "  fake-branch-2"
   echo "* ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}"
   echo "  develop"
-  echo "  master"
+  echo "  main"
 }
 
 function gx_test_fake_git_rev_parse_abbrev_ref_head() {
