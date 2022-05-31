@@ -22,13 +22,13 @@
 :toc-title: Summary
 :toclevels: 3
 
+image:https://app.codacy.com/project/badge/Grade/31960ec18f3d4134b92e9164255dee6e["Codacy code quality", link="https://www.codacy.com/gh/jprivet-dev/git-xtended/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade"]
+
 toc::[]
 
-[cols=".^1,.^2"]
 |===
-h| Codacy | image:https://app.codacy.com/project/badge/Grade/31960ec18f3d4134b92e9164255dee6e["Codacy code quality", link="https://www.codacy.com/gh/jprivet-dev/git-xtended/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade"]
-h| Last release | https://github.com/jprivet-dev/git-xtended/releases/tag/{LAST_RELEASE}[{LAST_RELEASE}]
-h| Documentation | https://www.jprivet.dev/git-xtended
+| Last release | https://github.com/jprivet-dev/git-xtended/releases/tag/{LAST_RELEASE}[{LAST_RELEASE}]
+| Documentation | https://www.jprivet.dev/git-xtended
 |===
 
 == Presentation
@@ -53,19 +53,13 @@ It allows :
 
 The features of *{GX_TITLE}* are based on my experiments with hundreds of aliases, which you can find on my Gist https://gist.github.com/jprivet-dev/09912ca4188a4ba3c610d7f61c200c38[Git and Bash aliases defined and documented in a single `.bash_aliases` file, with Git auto-completion].
 
-{BACK_TO_TOP}
-
 == Documentation
 
 All on https://www.jprivet.dev/git-xtended[Git Xtended Documentation].
 
-{BACK_TO_TOP}
-
 == Installation
 
 All on https://www.jprivet.dev/git-xtended/#installation[Git Xtended Documentation - Installation]
-
-{BACK_TO_TOP}
 
 == Overview
 
@@ -96,8 +90,6 @@ $ gx prompt
 ```
 
 NOTE: More information on https://www.jprivet.dev/git-xtended/#prompt-with-git-information[Git Xtended Documentation - Prompt with Git information]
-
-{BACK_TO_TOP}
 
 === Git aliases
 
@@ -157,8 +149,6 @@ $ gx galiases
 
 NOTE: More information on https://www.jprivet.dev/git-xtended/#show-git-aliases[Git Xtended Documentation - GX Help - Show Git aliases]
 
-{BACK_TO_TOP}
-
 === Bash aliases
 
 ```
@@ -168,8 +158,6 @@ $ gx baliases
     g ................ Alias with Git autocomplete
     gti .............. Because it could happen to anyone ¯\_(ツ)_/¯
 ```
-
-{BACK_TO_TOP}
 
 === Commit message formater
 
@@ -205,8 +193,6 @@ MSG = <type*>(<scope*>): <subject*> (#<reference>)
 
 NOTE: More information on https://www.jprivet.dev/git-xtended/#git-alias-c[Git Xtended Documentation - $ git c: format your commits]
 
-{BACK_TO_TOP}
-
 === GX commands
 
 ```
@@ -230,16 +216,14 @@ $ gx commands
 
 NOTE: More information on https://www.jprivet.dev/git-xtended/#show-gx-commands[Git Xtended Documentation - GX Help - Show GX commands]
 
-{BACK_TO_TOP}
-
 == Comments, suggestions?
 
 Feel free to make comments/suggestions to me in the {GIT_PROJECT}/issues[Git issues section].
 
-{BACK_TO_TOP}
-
 == License
 
 *{GX_TITLE}* is released under the {GIT_PROJECT}/blob/main/LICENSE[*MIT License*]
+
+---
 
 {BACK_TO_TOP}
