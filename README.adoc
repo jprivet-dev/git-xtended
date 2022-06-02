@@ -33,7 +33,7 @@ toc::[]
 
 == Presentation
 
-*{GX_TITLE}* is a shell tool that makes it easy to perform recurring actions with *Git* on a daily basis.
+{GX_TITLE} is a shell tool that makes it easy to perform recurring actions with Git on a daily basis.
 
 image::doc/img/gx-c-demo.gif[]
 
@@ -48,10 +48,10 @@ It allows :
 
 [TIP]
 ====
-*{GX_TITLE}* does not alter the default operation of *Git* commands: all *Git* commands retain their original behaviour.
+{GX_TITLE} does not alter the default operation of Git commands: all Git commands retain their original behaviour.
 ====
 
-The features of *{GX_TITLE}* are based on my experiments with hundreds of aliases, which you can find on my Gist https://gist.github.com/jprivet-dev/09912ca4188a4ba3c610d7f61c200c38[Git and Bash aliases defined and documented in a single `.bash_aliases` file, with Git auto-completion].
+The features of {GX_TITLE} are based on my experiments with hundreds of aliases, which you can find on my Gist https://gist.github.com/jprivet-dev/09912ca4188a4ba3c610d7f61c200c38[Git and Bash aliases defined and documented in a single `.bash_aliases` file, with Git auto-completion].
 
 == Documentation
 
@@ -147,7 +147,7 @@ $ gx galiases
            stats | git contributors ................ Get the list of contributors for the current repository
 ```
 
-NOTE: More information on https://www.jprivet.dev/git-xtended/#show-git-aliases[Git Xtended Documentation - GX Help - Show Git aliases]
+NOTE: More information on https://www.jprivet.dev/git-xtended/#git-aliases[Git Xtended Documentation - Git aliases]
 
 === Bash aliases
 
@@ -155,9 +155,11 @@ NOTE: More information on https://www.jprivet.dev/git-xtended/#show-git-aliases[
 $ gx baliases
 
   # Bash aliases :
-    g ................ Alias with Git autocomplete
+    g ................ Alias with Git autocompletion
     gti .............. Because it could happen to anyone ¯\_(ツ)_/¯
 ```
+
+NOTE: More information on https://www.jprivet.dev/git-xtended/#bash-aliases[Git Xtended Documentation - Bash aliases]
 
 === Commit message formater
 
@@ -214,7 +216,7 @@ $ gx commands
     gx version ............. Show GX version
 ```
 
-NOTE: More information on https://www.jprivet.dev/git-xtended/#show-gx-commands[Git Xtended Documentation - GX Help - Show GX commands]
+NOTE: More information on https://www.jprivet.dev/git-xtended/#gx-commands[Git Xtended Documentation - GX commands]
 
 == Comments, suggestions?
 
@@ -222,7 +224,7 @@ Feel free to make comments/suggestions to me in the {GIT_PROJECT}/issues[Git iss
 
 == License
 
-*{GX_TITLE}* is released under the {GIT_PROJECT}/blob/main/LICENSE[*MIT License*]
+{GX_TITLE} is released under the {GIT_PROJECT}/blob/main/LICENSE[*MIT License*]
 
 ---
 
