@@ -7,7 +7,7 @@ function gx_bash_aliases_help() {
   fi
 
   gx_print_colors "${C_WHITE}  # ${GX_PARAMS_BASH_ALIASES_TITLE}${status}${F_RESET} :"
-  gx_bash_aliases_help_line "${GX_PARAMS_BASH_ALIAS_G}" "" ................ "Alias with Git autocomplete"
+  gx_bash_aliases_help_line "${GX_PARAMS_BASH_ALIAS_G}" "" ................ "Alias with Git autocompletion"
   gx_bash_aliases_help_line "${GX_PARAMS_BASH_ALIAS_GTI}" "" .............. "Because it could happen to anyone ¯\_(ツ)_/¯"
   gx_print
 }
