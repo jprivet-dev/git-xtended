@@ -13,6 +13,7 @@ fi
 source ~/git-xtended/src/colors/colors.sh
 source ~/git-xtended/src/commands/commands.sh
 source ~/git-xtended/src/git/git.sh
+source ~/git-xtended/src/bash/bash.sh
 source ~/git-xtended/src/install/install.sh
 source ~/git-xtended/src/logo/logo.sh
 source ~/git-xtended/src/prompt/prompt.sh

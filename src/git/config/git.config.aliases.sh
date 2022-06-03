@@ -20,6 +20,7 @@ function gx_git_config_set_aliases() {
 
   # git diff
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}' "$@"; }; f'
+  git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DD} "diff"
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DW} "diff -w --word-diff --color-words"
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DS} "diff --staged"
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DSW} "diff --staged -w --word-diff --color-words"
@@ -35,9 +36,6 @@ function gx_git_config_set_aliases() {
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}' "$@"; }; f'
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_AMEND} "commit --amend -m"
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_NOEDIT} "commit --amend --no-edit"
-
-  # git diff & commit one file
-  git config ${global} alias.${GX_PARAMS_GIT_ALIAS_D}${GX_PARAMS_GIT_ALIAS_C} '!f() { '${GX_PARAMS_GIT_ALIAS_DIFF_FILE}'; '${GX_PARAMS_GIT_ALIAS_COMMIT_FILE}'; }; f'
 
   # git checkout
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_CK} "checkout"
@@ -114,6 +112,7 @@ function gx_git_config_unset_aliases() {
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_CONTRIBUTORS}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_CP}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_D}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DD}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DELETE}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DELETEF}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DELETER}

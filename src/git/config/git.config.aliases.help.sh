@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
 function gx_git_config_aliases_help() {
+  local status=""
+  if [ "${GX_PARAMS_INSTALL_GIT_ALIASES_STATUS}" == "${GX_PARAMS_DISABLED}" ]; then
+    status=" (${GX_PARAMS_DISABLED_UPPERCASE})"
+  fi
+
   local select_file="(select file with index status instead of path)"
 
-  gx_print_colors "${C_WHITE}  # ${GX_PARAMS_GIT_ALIASES_TITLE}${F_RESET} :"
+  gx_print_colors "${C_WHITE}  # ${GX_PARAMS_GIT_ALIASES_TITLE}${status}${F_RESET} :"
   gx_git_config_aliases_help_line "         log |" "${GX_PARAMS_GIT_ALIAS_L}" "" ........................... "Show the last 12 commit logs (graphical representation)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_LL}" "" .......................... "Show all commit logs (graphical representation)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_LFILE}" "<file>" ................ "Show all commit logs for a specific file (graphical representation)"
@@ -23,6 +28,7 @@ function gx_git_config_aliases_help() {
   gx_git_config_aliases_help_line "      status |" "${GX_PARAMS_GIT_ALIAS_S}" "" ........................... "${F_UNDERLINED}Indexed${F_RESET} status list (staged, unstaged, and untracked files)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_SS}" "" .......................... "Simple \"status\" alias"
   gx_git_config_aliases_help_line "        diff |" "${GX_PARAMS_GIT_ALIAS_D}" "[<i>|<path>]" .............. "${F_UNDERLINED}Indexed${F_RESET} \"diff\" command ${select_file}"
+  gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DD}" "" .......................... "Simple \"diff\" alias"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DW}" "[<path>]" ................. "Show changes (ignore whitespace / word diff / without [-...-]{+...+})"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DS}" "[<path>]" ................. "Show changes staged for commit"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DSW}" "[<path>]" ................ "Show changes staged for commit, like 'dw'"
