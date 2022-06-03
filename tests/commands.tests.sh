@@ -2,10 +2,10 @@
 
 function test_gx_commands_help() {
   local count_lines="$(gx_commands_help | wc -l)"
-  assert equals "${count_lines}" "13" $LINENO
+  assert equals "${count_lines}" "15" $LINENO
 
   assert first-line   "$(gx_commands_help)"   "${TEST_C_WHITE}  # GX commands${TEST_F_RESET} :" $LINENO
-  assert last-line    "$(gx_commands_help)"   "${TEST_GX_PARAMS_TAB}gx ${TEST_C_LIGHT_YELLOW}test${TEST_F_RESET} [<func>] ${TEST_C_DARK_GRAY}.......${TEST_F_RESET} Run one or all GX tests" $LINENO
+  assert last-line    "$(gx_commands_help)"   "${TEST_GX_PARAMS_TAB}gx ${TEST_C_LIGHT_YELLOW}version${TEST_F_RESET} ${TEST_C_DARK_GRAY}.............${TEST_F_RESET} Show GX version" $LINENO
 }
 
 function test_gx_commands_help_command_line() {

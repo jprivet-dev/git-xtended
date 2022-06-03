@@ -67,6 +67,7 @@ function gx_commands_action_help() {
   gx_install_activation_show_status
   gx_prompt_help
   gx_git_config_aliases_help
+  gx_bash_aliases_help
   gx_commands_help
 }
 
@@ -75,9 +76,14 @@ function gx_commands_action_prompt() {
   gx_prompt_help
 }
 
-function gx_commands_action_alias() { # !!! `aliases` does not work
+function gx_commands_action_galiases() {
   echo ""
   gx_git_config_aliases_help
+}
+
+function gx_commands_action_baliases() {
+  echo ""
+  gx_bash_aliases_help
 }
 
 function gx_commands_action_commands() {

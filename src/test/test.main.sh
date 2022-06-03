@@ -97,16 +97,22 @@ function gx_test_run_func() {
 
 function gx_test_check_func_with_test() {
   local func_gx_list=($(gx_test_find_all_func_gx))
+  local count=0
+  local count_total=0
 
   gx_print_title_2 "Functions with test"
 
   for func in "${func_gx_list[@]}"; do
     func_test_version="test_${func}"
+    ((count_total++))
 
-    if type $func_test_version &>/dev/null; then
+    if type "$func_test_version" &>/dev/null; then
       echo -e "${C_LIGHT_GREEN}[x]  ${func}${F_RESET}"
+      ((count++))
     else
       echo -e "${C_LIGHT_BLUE}[ ]  ${func}${F_RESET}"
     fi
   done
+
+  echo -e "${C_LIGHT_YELLOW}\nTOTAL: ${count}/${count_total} - $((count*100 / count_total))%\n${F_RESET}"
 }
