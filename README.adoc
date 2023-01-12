@@ -8,7 +8,7 @@
 :GIT_PROJECT: https://github.com/jprivet-dev/{GX_NAME}
 :GIT_CLONE_PROJECT: git@github.com:jprivet-dev/{GX_NAME}.git
 :CMD_GIT_CLONE: git clone --depth 1 --config core.autocrlf=false {GIT_CLONE_PROJECT}
-:LAST_RELEASE: v1.1.0
+:LAST_RELEASE: v1.2.0
 
 :BACK_TO_TOP_TARGET: git-xtended
 :BACK_TO_TOP_LABEL: ⬆ Back to top
