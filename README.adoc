@@ -121,6 +121,7 @@ $ gx galiases
                    git dw [<path>] ................. Show changes (ignore whitespace / word diff / without [-...-]{+...+})
                    git ds [<path>] ................. Show changes staged for commit
                    git dsw [<path>] ................ Show changes staged for commit, like 'dw'
+                   git oneday ...................... Show changes over the last 24 hours
              add | git a [<i>|<path>] .............. Indexed "add" command (select file with index status instead of path)
                    git all ......................... Add all files (new, modified and deleted)
                    git nm .......................... Add new and modified files, without deleted
