@@ -23,7 +23,7 @@
 :toclevels: 3
 
 image:https://badgen.net/badge/release/{LAST_RELEASE}/blue[Project release,link={GIT_PROJECT}/releases/tag/{LAST_RELEASE}]
-image:https://app.codacy.com/project/badge/Grade/31960ec18f3d4134b92e9164255dee6e["Codacy code quality", link="https://www.codacy.com/gh/jprivet-dev/git-xtended/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade"]
+//image:https://app.codacy.com/project/badge/Grade/31960ec18f3d4134b92e9164255dee6e["Codacy code quality", link="https://www.codacy.com/gh/jprivet-dev/git-xtended/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade"]
 
 toc::[]
 
@@ -121,6 +121,7 @@ $ gx galiases
                    git dw [<path>] ................. Show changes (ignore whitespace / word diff / without [-...-]{+...+})
                    git ds [<path>] ................. Show changes staged for commit
                    git dsw [<path>] ................ Show changes staged for commit, like 'dw'
+                   git oneday ...................... Show changes over the last 24 hours
              add | git a [<i>|<path>] .............. Indexed "add" command (select file with index status instead of path)
                    git all ......................... Add all files (new, modified and deleted)
                    git nm .......................... Add new and modified files, without deleted
