@@ -30,6 +30,9 @@ if [[ "${indexes}" =~ ^[0-9]+ ]]; then
     status_i=$((status_i + 1))
     for i in ${indexes}; do
       if [ "${status_i}" == "${i}" ]; then
+        # Get last file name after '->' and avoid "error: unknown switch `>'" in the case of a file that has been renamed
+        # See https://github.com/jprivet-dev/git-xtended/issues/110
+        path="${path##* }"
         printf "> git add (%s) %s\n" ${i} ${path}
         git add ${path}
       fi
