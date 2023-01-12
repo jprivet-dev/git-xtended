@@ -32,6 +32,7 @@ function gx_git_config_aliases_help() {
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DW}" "[<path>]" ................. "Show changes (ignore whitespace / word diff / without [-...-]{+...+})"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DS}" "[<path>]" ................. "Show changes staged for commit"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_DSW}" "[<path>]" ................ "Show changes staged for commit, like 'dw'"
+  gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_ONEDAY}" "" ...................... "Comparisons over the last 24 hours"
   gx_git_config_aliases_help_line "         add |" "${GX_PARAMS_GIT_ALIAS_A}" "[<i>|<path>]" .............. "${F_UNDERLINED}Indexed${F_RESET} \"add\" command ${select_file}"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_ALL}" "" ......................... "Add all files (new, modified and deleted)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_NM}" "" .......................... "Add new and modified files, without deleted"

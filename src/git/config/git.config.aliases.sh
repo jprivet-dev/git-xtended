@@ -24,6 +24,7 @@ function gx_git_config_set_aliases() {
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DW} "diff -w --word-diff --color-words"
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DS} "diff --staged"
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_DSW} "diff --staged -w --word-diff --color-words"
+  git config ${global} alias.${GX_PARAMS_GIT_ALIAS_ONEDAY} "diff HEAD@{1day} HEAD"
 
   # git add
   git config ${global} alias.${GX_PARAMS_GIT_ALIAS_A} '!f() { '${GX_PARAMS_GIT_ALIAS_ADD_FILE}' "$@"; }; f'
@@ -102,53 +103,54 @@ function gx_git_config_unset_aliases() {
   local global="$1"
   [[ "${global}" != "--global" ]] && global=""
 
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_A}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_ALL}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_AMEND}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_A}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_B}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_C}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_CK}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_CONFGX}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_CONTRIBUTORS}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_CP}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_D}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_C}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DD}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DELETE}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DELETEF}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DELETER}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DS}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DELETE}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DSW}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DS}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_DW}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_EDIT}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_D}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_EDIT_G}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_EDIT}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_FIND}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_HARD}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_L}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_LCOUNT}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_LFILE}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_LL}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_LMERGES}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_L}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_MD}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_NEW}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_NM}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_NOEDIT}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_PR}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_ONEDAY}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_PREVIOUS}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_PR}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_PUSHF}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_R}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_RECENT}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_RENAME}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_RES}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_S}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_R}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_SS}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_SW}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_S}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_TLAST}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_TLIST}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_UNDO}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_UNSET}
-  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_UNSET_ALL}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_UNSET_ALL_G}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_UNSET_ALL}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_UNSET_G}
+  git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_UNSET}
   git config ${global} --unset-all alias.${GX_PARAMS_GIT_ALIAS_UNTRACKED}
 }
 
