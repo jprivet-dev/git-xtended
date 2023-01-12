@@ -142,14 +142,14 @@ function bump_version_from_to() {
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
   echo -e "${C_BLUE}${step}. Switch on the branch '${branch_target}' & Get last tags${F_RESET}"
   echo
-  echo "$ git checkout ${branch_target}"
+  echo "$ git switch ${branch_target}"
   echo "$ git pull --ff origin ${branch_target}"
 
   prompt_yes_no "Run the above git commands"
   local switch_on_target="${prompt_yes_no_choice}"
 
   if [ "${switch_on_target}" == "yes" ]; then
-    git checkout "${branch_target}" &&
+    git switch "${branch_target}" &&
       git pull --ff origin "${branch_target}"
   fi
 
@@ -183,13 +183,13 @@ function bump_version_from_to() {
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
   echo -e "${C_BLUE}${step}. Create the branch '${branch_release}'${F_RESET}"
   echo
-  echo "$ git checkout -b ${branch_release}"
+  echo "$ git switch -c ${branch_release}"
 
   prompt_yes_no "Run the above git commands"
   local new_release_choice="${prompt_yes_no_choice}"
 
   if [ "${new_release_choice}" == "yes" ]; then
-    git checkout -b "${branch_release}"
+    git switch -c "${branch_release}"
   fi
 
   ((step++))
@@ -229,7 +229,7 @@ function bump_version_from_to() {
   ((step++))
   echo
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
-  echo -e "${C_BLUE}${step}. Create the pull request on the branch '${branch_target}'${F_RESET}"
+  echo -e "${C_BLUE}${step}. Create on GitHub the pull request on the branch '${branch_target}'${F_RESET}"
   echo
 
   echo "- Go on      : ${new_pr_release_url}"
@@ -258,7 +258,7 @@ function bump_version_from_to() {
   ((step++))
   echo
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
-  echo -e "${C_BLUE}${step}. Tag the merge commit on the branch '${branch_target}'${F_RESET}"
+  echo -e "${C_BLUE}${step}. Tag the merge commit on GitHub on the branch '${branch_target}'${F_RESET}"
   echo
 
   echo "- Go on        : ${new_tag_url}"
@@ -284,20 +284,20 @@ function bump_version_from_to() {
   echo -e "${C_BLUE}${step}. Clean all & Continue the job on the branch '${branch_next}'${F_RESET}"
   echo
   echo "$ git push origin --delete ${branch_release}"
-  echo "$ git checkout ${branch_target} -f"
+  echo "$ git switch ${branch_target} -f"
   echo "$ git branch -D ${branch_release}"
   echo "$ git pull --ff origin ${branch_target}"
-  echo "$ git checkout -b ${to}-${BRANCH_RELEASE_NEXT_SUFFIX}"
+  echo "$ git switch -c ${to}-${BRANCH_RELEASE_NEXT_SUFFIX}"
 
   prompt_yes_no "Run the above git commands"
   local next_branch_choice="${prompt_yes_no_choice}"
 
   if [ "${next_branch_choice}" == "yes" ]; then
     git push origin --delete "${branch_release}" &&
-      git checkout "${branch_target}" -f &&
+      git switch "${branch_target}" -f &&
       git branch -D "${branch_release}" &&
       git pull --ff origin "${branch_target}" &&
-      git checkout -b "${to}"-"${BRANCH_RELEASE_NEXT_SUFFIX}"
+      git switch -c "${to}"-"${BRANCH_RELEASE_NEXT_SUFFIX}"
   fi
 
   echo
