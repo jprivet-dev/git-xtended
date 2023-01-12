@@ -14,19 +14,24 @@ function bump_version_from_to() {
   local ENCODE_SHARP="%23"
   local ENCODE_NEW_LINE="%0A"
 
-  local GITHUB_PROJECT="https://github.com/jprivet-dev/git-xtended"
   local BRANCH_RELEASE_PREFIX="release-stage"
   local BRANCH_RELEASE_NEXT_SUFFIX="next"
   local BRANCH_MAIN="main"
   local RELEASE_LABEL="Release"
   local PRERELEASE_LABEL="Pre-release"
+  local FILES="README.adoc params/default/params.version.sh"
+
+  local current_remote_origin_url=$(git config remote.origin.url)
+  local current_remote_origin_url_last_element=${current_remote_origin_url##*@}         # get the string after '@'
+  local current_github_project="https://${current_remote_origin_url_last_element/:/\/}" # change ':' by '/'
+  current_github_project="${current_github_project/.git/}"                              # remove '.git'
 
   local release_title="${RELEASE_LABEL}"
   local prerelease=0
   local last_tag=$(git describe --tags --abbrev=0)
   local step=0
 
-  local prompt_yes_no_choice
+  local prompt_yes_no_choice=""
 
   function prompt_yes_no() {
     local YES="yes"
@@ -66,7 +71,7 @@ function bump_version_from_to() {
     prompt_yes_no_choice="${choice}"
   }
 
-  local prompt_text
+  local prompt_response=""
 
   function prompt() {
     local label=$1
@@ -94,26 +99,30 @@ function bump_version_from_to() {
       fi
 
       if [ "${text}" != "" ]; then
-        prompt_text="${text}"
+        prompt_response="${text}"
         break
       fi
     done
   }
 
   function replace_first_occurrence() {
-    local from=$1
-    local to=$2
-    local file=$3
+    local from="$1"
+    shift
+    local to="$1"
+    shift
+    local files="$@"
 
-    echo
-    echo "#"
-    echo "# Replace ${from} by ${to} in ${file} file"
-    echo "#"
-    echo
+    for file in $files; do
+      echo
+      echo "#"
+      echo "# Replace '${from}' by '${to}' in '${file}'"
+      echo "#"
+      echo
 
-    # Replace only first occurrence
-    sed -i "0,/${from}/{s/${from}/${to}/}" "${file}"
-    git diff "${file}"
+      # Replace only first occurrence
+      #      sed -i "0,/${from}/{s/${from}/${to}/}" "${file}"
+      #      git diff "${file}"
+    done
   }
 
   function url_encode_light() {
@@ -125,11 +134,30 @@ function bump_version_from_to() {
     echo "${url}"
   }
 
-  prompt "Current release" "" "${last_tag}"
-  local from="${prompt_text}"
+  prompt "Target branch" "" "${BRANCH_MAIN}"
+  local branch_target="${prompt_response}"
+
+  ((step++))
+  echo
+  echo -e "${C_BLUE}${SPLIT}${F_RESET}"
+  echo -e "${C_BLUE}${step}. Switch on the branch '${branch_target}' & Get last tags${F_RESET}"
+  echo
+  echo "$ git checkout ${branch_target}"
+  echo "$ git pull --ff origin ${branch_target}"
+
+  prompt_yes_no "Run the above git commands"
+  local switch_on_target="${prompt_yes_no_choice}"
+
+  if [ "${switch_on_target}" == "yes" ]; then
+    git checkout "${branch_target}" &&
+      git pull --ff origin "${branch_target}"
+  fi
+
+  prompt "Last release" "" "${last_tag}"
+  local from="${prompt_response}"
 
   prompt "Next release" "v2.1.0"
-  local to="${prompt_text}"
+  local to="${prompt_response}"
 
   prompt_yes_no "As pre-release" "no"
   local prerelease_choice="${prompt_yes_no_choice}"
@@ -142,8 +170,10 @@ function bump_version_from_to() {
   echo
   echo -e "${C_BLUE}#${F_RESET}"
   echo -e "${C_BLUE}# ${release_title}${F_RESET}"
-  echo -e "${C_BLUE}# From: ${C_LIGHT_YELLOW}${from}${F_RESET}"
-  echo -e "${C_BLUE}# To  : ${C_LIGHT_YELLOW}${to}${F_RESET}"
+  echo -e "${C_BLUE}# - Project: ${C_LIGHT_YELLOW}${current_github_project}${F_RESET}"
+  echo -e "${C_BLUE}# - Branch : ${C_LIGHT_YELLOW}${branch_target}${F_RESET}"
+  echo -e "${C_BLUE}# - From   : ${C_LIGHT_YELLOW}${from}${F_RESET}"
+  echo -e "${C_BLUE}# - To     : ${C_LIGHT_YELLOW}${to}${F_RESET}"
   echo -e "${C_BLUE}#${F_RESET}"
 
   local branch_release="${BRANCH_RELEASE_PREFIX}-${to}"
@@ -153,17 +183,13 @@ function bump_version_from_to() {
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
   echo -e "${C_BLUE}${step}. Create the branch '${branch_release}'${F_RESET}"
   echo
-  echo "$ git checkout ${BRANCH_MAIN}"
-  echo "$ git pull --ff origin ${BRANCH_MAIN}"
   echo "$ git checkout -b ${branch_release}"
 
   prompt_yes_no "Run the above git commands"
   local new_release_choice="${prompt_yes_no_choice}"
 
   if [ "${new_release_choice}" == "yes" ]; then
-    git checkout "${BRANCH_MAIN}" &&
-      git pull --ff origin ${BRANCH_MAIN} &&
-      git checkout -b "${branch_release}"
+    git checkout -b "${branch_release}"
   fi
 
   ((step++))
@@ -172,12 +198,11 @@ function bump_version_from_to() {
   echo -e "${C_BLUE}${step}. Replace the version${F_RESET}"
   echo
 
-  prompt_yes_no "Replace '${from}' by '${to}' in the files (README.adoc, params.version.sh)"
+  prompt_yes_no "Replace '${from}' by '${to}' in the files [${FILES}]"
   local replace_choice="${prompt_yes_no_choice}"
 
   if [ "${replace_choice}" == "yes" ]; then
-    replace_first_occurrence "${from}" "${to}" README.adoc
-    replace_first_occurrence "${from}" "${to}" params/default/params.version.sh
+    replace_first_occurrence "${from}" "${to}" "${FILES}"
   fi
 
   ((step++))
@@ -197,14 +222,14 @@ function bump_version_from_to() {
       git push origin "${branch_release}"
   fi
 
-  local new_pr_release_url="${GITHUB_PROJECT}/compare/${BRANCH_MAIN}...${branch_release}"
+  local new_pr_release_url="${current_github_project}/compare/${branch_target}...${branch_release}"
   new_pr_release_url+="?quick_pull=1"
   new_pr_release_url+="&title=${release_title}${ENCODE_SPACE}${to}"
 
   ((step++))
   echo
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
-  echo -e "${C_BLUE}${step}. Create the pull request on the branch '${BRANCH_MAIN}'${F_RESET}"
+  echo -e "${C_BLUE}${step}. Create the pull request on the branch '${branch_target}'${F_RESET}"
   echo
 
   echo "- Go on      : ${new_pr_release_url}"
@@ -214,13 +239,13 @@ function bump_version_from_to() {
   echo "- Click on the button \"Merge the pull request\""
 
   prompt "PR id" "210"
-  local pr_id="${prompt_text}"
+  local pr_id="${prompt_response}"
 
-  local new_tag_description="## ${release_title} ${to}\n**Pull Request**: #${pr_id}\n**Full Changelog**: ${GITHUB_PROJECT}/compare/${from}...${to}"
+  local new_tag_description="## ${release_title} ${to}\n**Pull Request**: #${pr_id}\n**Full Changelog**: ${current_github_project}/compare/${from}...${to}"
 
-  local new_tag_url="${GITHUB_PROJECT}/releases/new"
+  local new_tag_url="${current_github_project}/releases/new"
   new_tag_url+="?tag=${to}"
-  new_tag_url+="&target=${BRANCH_MAIN}"
+  new_tag_url+="&target=${branch_target}"
   new_tag_url+="&title=${to}"
   new_tag_url+="&body=${new_tag_description}"
 
@@ -233,12 +258,12 @@ function bump_version_from_to() {
   ((step++))
   echo
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
-  echo -e "${C_BLUE}${step}. Tag the merge commit on the branch '${BRANCH_MAIN}'${F_RESET}"
+  echo -e "${C_BLUE}${step}. Tag the merge commit on the branch '${branch_target}'${F_RESET}"
   echo
 
   echo "- Go on        : ${new_tag_url}"
   echo -e "- Tag version  : ${C_YELLOW}${to}${F_RESET}"
-  echo "- Target       : Choose the branch '${BRANCH_MAIN}'"
+  echo "- Target       : Choose the branch '${branch_target}'"
   echo -e "- Release title: ${C_YELLOW}${to}${F_RESET}"
   echo "- Describe this release (copy/past the following text):"
   echo
@@ -259,9 +284,9 @@ function bump_version_from_to() {
   echo -e "${C_BLUE}${step}. Clean all & Continue the job on the branch '${branch_next}'${F_RESET}"
   echo
   echo "$ git push origin --delete ${branch_release}"
-  echo "$ git checkout ${BRANCH_MAIN} -f"
+  echo "$ git checkout ${branch_target} -f"
   echo "$ git branch -D ${branch_release}"
-  echo "$ git pull --ff origin ${BRANCH_MAIN}"
+  echo "$ git pull --ff origin ${branch_target}"
   echo "$ git checkout -b ${to}-${BRANCH_RELEASE_NEXT_SUFFIX}"
 
   prompt_yes_no "Run the above git commands"
@@ -269,9 +294,9 @@ function bump_version_from_to() {
 
   if [ "${next_branch_choice}" == "yes" ]; then
     git push origin --delete "${branch_release}" &&
-      git checkout "${BRANCH_MAIN}" -f &&
+      git checkout "${branch_target}" -f &&
       git branch -D "${branch_release}" &&
-      git pull --ff origin "${BRANCH_MAIN}" &&
+      git pull --ff origin "${branch_target}" &&
       git checkout -b "${to}"-"${BRANCH_RELEASE_NEXT_SUFFIX}"
   fi
 
