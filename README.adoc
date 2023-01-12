@@ -16,6 +16,8 @@
 
 [#{BACK_TO_TOP_TARGET}]
 = {GX_TITLE}
+
+image:https://api.codacy.com/project/badge/Grade/c6c50ecb84ba493cabceb69fcebfbd5a[link="https://app.codacy.com/gh/jprivet-dev/git-xtended?utm_source=github.com&utm_medium=referral&utm_content=jprivet-dev/git-xtended&utm_campaign=Badge_Grade_Settings"]
 :numbered:
 :toc: macro
 
