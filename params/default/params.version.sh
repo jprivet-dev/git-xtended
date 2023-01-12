@@ -2,4 +2,4 @@
 # shellcheck disable=SC2034
 :
 
-GX_PARAMS_VERSION="v1.2.0"
+GX_PARAMS_VERSION="v1.2.1"
