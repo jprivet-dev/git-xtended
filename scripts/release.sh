@@ -120,8 +120,8 @@ function bump_version_from_to() {
       echo
 
       # Replace only first occurrence
-      #      sed -i "0,/${from}/{s/${from}/${to}/}" "${file}"
-      #      git diff "${file}"
+      sed -i "0,/${from}/{s/${from}/${to}/}" "${file}"
+      git diff "${file}"
     done
   }
 
