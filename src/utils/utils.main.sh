@@ -34,12 +34,12 @@ function gx_is_bash_interactive() {
 
 # -bash: $'\r': command not found
 function gx_remove_r() {
-  local file=$1
-  sed -i 's/\r$//' $file
+  local file="$1"
+  sed -i 's/\r$//' "${file}"
 }
 
 function gx_trim() {
-  local string=$1
+  local string="$1"
   echo "${string}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
 
@@ -48,8 +48,8 @@ function gx_regex_remove_colors() {
 }
 
 function gx_line_generator() {
-  local length=$1
-  local symbol=$2
+  local length="$1"
+  local symbol="$2"
   local result
 
   printf -v generator '%*s' "${length}"
@@ -66,12 +66,12 @@ function gx_is_good_version() {
   local current_major
   local current_minor
   local current_patch
-  IFS="." read current_major current_minor current_patch <<<"${1}"
+  IFS="." read current_major current_minor current_patch <<<"$1"
 
   local target_major
   local target_minor
   local target_patch
-  IFS="." read target_major target_minor target_patch <<<"${2}"
+  IFS="." read target_major target_minor target_patch <<<"$2"
 
   if [[ "${current_major}" -lt "${target_major}" ]]; then
     echo "${GX_PARAMS_FALSE}"

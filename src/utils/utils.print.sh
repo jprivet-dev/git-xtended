@@ -40,8 +40,8 @@ function gx_print_fixed_width() {
 }
 
 function gx_print_col_fixed_width() {
-  local width=$1
-  local text=$2
+  local width="$1"
+  local text="$2"
 
   if [[ "${width}" < 1 ]]; then
     width=1
