@@ -29,9 +29,9 @@ function gx_install_activation_status_color() {
 function gx_install_activation_show_status() {
   gx_install_choice_params_set_all_from_git_config
 
-  local gx_prompt_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_PROMPT_STATUS})"
-  local gx_git_aliases_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_GIT_ALIASES_STATUS})"
-  local gx_bash_aliases_status="$(gx_install_activation_status_color ${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS})"
+  local gx_prompt_status="$(gx_install_activation_status_color "${GX_PARAMS_INSTALL_PROMPT_STATUS}")"
+  local gx_git_aliases_status="$(gx_install_activation_status_color "${GX_PARAMS_INSTALL_GIT_ALIASES_STATUS}")"
+  local gx_bash_aliases_status="$(gx_install_activation_status_color "${GX_PARAMS_INSTALL_BASH_ALIASES_STATUS}")"
   local col_width=$((${#GX_PARAMS_GITHUB} + 4))
   local space=" "
   local line=$(gx_print_fixed_width $col_width "-" "" "")

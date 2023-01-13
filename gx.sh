@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-GX_ENV_TEST=${GX_ENV_TEST:-0}
+GX_ENV_TEST="${GX_ENV_TEST:-0}"
 
 source ~/git-xtended/params/default/params.sh
 
