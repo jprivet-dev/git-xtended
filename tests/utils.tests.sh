@@ -132,8 +132,8 @@ function test_gx_print() {
 }
 
 function test_gx_print_colors() {
-  assert equals "$(gx_print_colors ${F_BOLD}hello${F_RESET})"                           "${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
-  assert equals "$(gx_print_colors ${F_BOLD}hello 42${F_RESET})"                        "${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
+  assert equals "$(gx_print_colors "${F_BOLD}"hello"${F_RESET}")"                       "${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
+  assert equals "$(gx_print_colors "${F_BOLD}"hello 42"${F_RESET}")"                    "${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO
 
   assert equals "$(gx_print_colors "${F_BOLD}hello${F_RESET}")"                         "${TEST_F_BOLD}hello${TEST_F_RESET}" $LINENO
   assert equals "$(gx_print_colors "${F_BOLD}hello 42${F_RESET}")"                      "${TEST_F_BOLD}hello 42${TEST_F_RESET}" $LINENO

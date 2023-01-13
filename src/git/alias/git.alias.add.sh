@@ -7,11 +7,11 @@ source ~/git-xtended/src/git/commands/git.commands.sh
 source ~/git-xtended/src/utils/utils.print.sh
 
 if [ "$(gx_git_get_changes_nb)" == 0 ]; then
-  printf "${C_BG_LIGHT_RED} No files to add ! ${F_RESET}\n"
+  printf "%s No files to add ! %s\n" "${C_BG_LIGHT_RED}" "${F_RESET}"
   exit 1
 fi
 
-indexes=$@
+indexes="$@"
 split="--------------------------------------------------"
 
 if [ "${indexes}" == "" ]; then
@@ -33,8 +33,8 @@ if [[ "${indexes}" =~ ^[0-9]+ ]]; then
         # Get last file name after '->' and avoid "error: unknown switch `>'" in the case of a file that has been renamed
         # See https://github.com/jprivet-dev/git-xtended/issues/110
         path="${path##* }"
-        printf "> git add (%s) %s\n" ${i} ${path}
-        git add ${path}
+        printf "> git add (%s) %s\n" "${i}" "${path}"
+        git add "${path}"
       fi
     done
   done
@@ -48,8 +48,8 @@ else
     printf "%s\n" "${split}"
     git add .
   elif [ "${indexes}" != "" ]; then
-    printf "> git add ${indexes} files\n"
+    printf "> git add %s files\n" "${indexes}"
     printf "%s\n" "${split}"
-    git add ${indexes}
+    git add "${indexes}"
   fi
 fi

@@ -7,7 +7,7 @@ function gx() {
 
 # See the list of actions in params/default/params.commands.sh
 function gx_commands_parse_action() {
-  local action=$1
+  local action="$1"
   shift
 
   if [ "${action}" == "" ]; then

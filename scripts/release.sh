@@ -4,6 +4,8 @@
 # $ . scripts/release.sh
 
 function bump_version_from_to() {
+  local files="$@"
+
   local SPLIT="——————————————————————————————————————————————————————————————————————"
   local F_RESET="\033[0m"
   local C_BLUE="\033[34m"
@@ -19,7 +21,6 @@ function bump_version_from_to() {
   local BRANCH_MAIN="main"
   local RELEASE_LABEL="Release"
   local PRERELEASE_LABEL="Pre-release"
-  local FILES="README.adoc params/default/params.version.sh"
 
   local current_remote_origin_url=$(git config remote.origin.url)
   local current_remote_origin_url_last_element=${current_remote_origin_url##*@}         # get the string after '@'
@@ -40,8 +41,8 @@ function bump_version_from_to() {
     local NO_SHORT="n"
 
     local choice
-    local label=$1
-    local default=$2
+    local label="$1"
+    local default="$2"
 
     prompt_yes_no_choice=""
 
@@ -74,9 +75,9 @@ function bump_version_from_to() {
   local prompt_response=""
 
   function prompt() {
-    local label=$1
-    local example=$2
-    local default=$3
+    local label="$1"
+    local example="$2"
+    local default="$3"
 
     local complete_label="${C_GREEN}> ${label}"
     if [ "${example}" != "" ]; then
@@ -126,7 +127,7 @@ function bump_version_from_to() {
   }
 
   function url_encode_light() {
-    local url=$1
+    local url="$1"
     url="${url// /${ENCODE_SPACE}}"
     url="${url//#/${ENCODE_SHARP}}"
     url="${url//\\n/${ENCODE_NEW_LINE}}"
@@ -134,7 +135,7 @@ function bump_version_from_to() {
     echo "${url}"
   }
 
-  prompt "Target branch" "" "${BRANCH_MAIN}"
+  prompt "Create tag on the branch" "" "${BRANCH_MAIN}"
   local branch_target="${prompt_response}"
 
   ((step++))
@@ -142,16 +143,22 @@ function bump_version_from_to() {
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
   echo -e "${C_BLUE}${step}. Switch on the branch '${branch_target}' & Get last tags${F_RESET}"
   echo
-  echo "$ git checkout ${branch_target}"
+  echo "$ git switch ${branch_target}"
   echo "$ git pull --ff origin ${branch_target}"
 
   prompt_yes_no "Run the above git commands"
   local switch_on_target="${prompt_yes_no_choice}"
 
   if [ "${switch_on_target}" == "yes" ]; then
-    git checkout "${branch_target}" &&
+    git switch "${branch_target}" &&
       git pull --ff origin "${branch_target}"
   fi
+
+  ((step++))
+  echo
+  echo -e "${C_BLUE}${SPLIT}${F_RESET}"
+  echo -e "${C_BLUE}${step}. Define the release${F_RESET}"
+  echo
 
   prompt "Last release" "" "${last_tag}"
   local from="${prompt_response}"
@@ -183,13 +190,13 @@ function bump_version_from_to() {
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
   echo -e "${C_BLUE}${step}. Create the branch '${branch_release}'${F_RESET}"
   echo
-  echo "$ git checkout -b ${branch_release}"
+  echo "$ git switch -c ${branch_release}"
 
   prompt_yes_no "Run the above git commands"
   local new_release_choice="${prompt_yes_no_choice}"
 
   if [ "${new_release_choice}" == "yes" ]; then
-    git checkout -b "${branch_release}"
+    git switch -c "${branch_release}"
   fi
 
   ((step++))
@@ -198,11 +205,11 @@ function bump_version_from_to() {
   echo -e "${C_BLUE}${step}. Replace the version${F_RESET}"
   echo
 
-  prompt_yes_no "Replace '${from}' by '${to}' in the files [${FILES}]"
+  prompt_yes_no "Replace '${from}' by '${to}' in the files [${files// /, }]"
   local replace_choice="${prompt_yes_no_choice}"
 
   if [ "${replace_choice}" == "yes" ]; then
-    replace_first_occurrence "${from}" "${to}" "${FILES}"
+    replace_first_occurrence "${from}" "${to}" "${files}"
   fi
 
   ((step++))
@@ -229,10 +236,10 @@ function bump_version_from_to() {
   ((step++))
   echo
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
-  echo -e "${C_BLUE}${step}. Create the pull request on the branch '${branch_target}'${F_RESET}"
+  echo -e "${C_BLUE}${step}. Create the pull request on the branch '${branch_target}' [ON GITHUB]${F_RESET}"
   echo
 
-  echo "- Go on      : ${new_pr_release_url}"
+  echo -e "- Go on      : ${C_YELLOW}${new_pr_release_url}${F_RESET}"
   echo "- Click on the button \"Create pull request\""
   echo -e "- Title      : ${C_YELLOW}${release_title} ${to}${F_RESET}"
   echo "- Description: Empty"
@@ -258,10 +265,10 @@ function bump_version_from_to() {
   ((step++))
   echo
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
-  echo -e "${C_BLUE}${step}. Tag the merge commit on the branch '${branch_target}'${F_RESET}"
+  echo -e "${C_BLUE}${step}. Tag the merge commit on the branch '${branch_target}' [ON GITHUB]${F_RESET}"
   echo
 
-  echo "- Go on        : ${new_tag_url}"
+  echo -e "- Go on        : ${C_YELLOW}${new_tag_url}${F_RESET}"
   echo -e "- Tag version  : ${C_YELLOW}${to}${F_RESET}"
   echo "- Target       : Choose the branch '${branch_target}'"
   echo -e "- Release title: ${C_YELLOW}${to}${F_RESET}"
@@ -281,26 +288,39 @@ function bump_version_from_to() {
   ((step++))
   echo
   echo -e "${C_BLUE}${SPLIT}${F_RESET}"
-  echo -e "${C_BLUE}${step}. Clean all & Continue the job on the branch '${branch_next}'${F_RESET}"
+  echo -e "${C_BLUE}${step}. Clean & Update all${F_RESET}"
   echo
   echo "$ git push origin --delete ${branch_release}"
-  echo "$ git checkout ${branch_target} -f"
+  echo "$ git switch ${branch_target} -f"
   echo "$ git branch -D ${branch_release}"
   echo "$ git pull --ff origin ${branch_target}"
-  echo "$ git checkout -b ${to}-${BRANCH_RELEASE_NEXT_SUFFIX}"
+
+  prompt_yes_no "Run the above git commands"
+  local clean_update_choice="${prompt_yes_no_choice}"
+
+  if [ "${clean_update_choice}" == "yes" ]; then
+    git push origin --delete "${branch_release}" &&
+      git switch "${branch_target}" -f &&
+      git branch -D "${branch_release}" &&
+      git pull --ff origin "${branch_target}"
+  fi
+
+  ((step++))
+  echo
+  echo -e "${C_BLUE}${SPLIT}${F_RESET}"
+  echo -e "${C_BLUE}${step}. Continue the job on the branch '${branch_next}' [LAST STEP]${F_RESET}"
+  echo
+  echo "$ git switch -c ${to}-${BRANCH_RELEASE_NEXT_SUFFIX}"
 
   prompt_yes_no "Run the above git commands"
   local next_branch_choice="${prompt_yes_no_choice}"
 
   if [ "${next_branch_choice}" == "yes" ]; then
-    git push origin --delete "${branch_release}" &&
-      git checkout "${branch_target}" -f &&
-      git branch -D "${branch_release}" &&
-      git pull --ff origin "${branch_target}" &&
-      git checkout -b "${to}"-"${BRANCH_RELEASE_NEXT_SUFFIX}"
+    git switch -c "${to}"-"${BRANCH_RELEASE_NEXT_SUFFIX}"
   fi
 
   echo
 }
 
-bump_version_from_to "$@"
+FILES="README.adoc params/default/params.version.sh"
+bump_version_from_to "${FILES}"

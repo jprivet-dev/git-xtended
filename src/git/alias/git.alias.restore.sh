@@ -16,9 +16,9 @@ git status -s | cut -c4- | while read path; do
   for i in ${indexes}; do
     if [ "${status_i}" == "${i}" ]; then
       printf "%s\n" "${split}"
-      printf "> git restore (%s) %s\n" ${i} ${path}
+      printf "> git restore (%s) %s\n" "${i}" "${path}"
       printf "%s\n" "${split}"
-      git checkout ${path}
+      git checkout "${path}"
     fi
   done
 done

@@ -106,7 +106,7 @@ function test_gx_prompt_ahead() {
 }
 
 function test_gx_prompt_help() {
-  local count_lines="$(gx_prompt_help | wc -l)"
+  local count_lines=$(gx_prompt_help | wc -l)
   assert equals "${count_lines}" "10" $LINENO
 
   assert first-line "$(gx_prompt_help)" "${TEST_C_WHITE}  # Prompt with Git information (DISABLED)${TEST_F_RESET} :" $LINENO

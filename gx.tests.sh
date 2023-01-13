@@ -4,7 +4,7 @@
 # START TEST MODE #
 ###################
 
-gx_print_title_1 ${GX_PARAMS_GX_TITLE} testing
+gx_print_title_1 "${GX_PARAMS_GX_TITLE}" testing
 
 gx_print_question_yes_no "Would you like to run the tests"
 

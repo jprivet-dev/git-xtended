@@ -3,8 +3,8 @@
 function gx_hooks_pcmsg() {
   local split="--------------------------------------------------"
 
-  local commit_msg=$1
-  local commit_mode=$2
+  local commit_msg="$1"
+  local commit_mode="$2"
 
   local last_scope
   local last_reference
@@ -58,14 +58,14 @@ function gx_hooks_pcmsg() {
 
   for key in "${!_GX_HOOKS_PCMSG_TYPES[@]}"; do
     if [[ ${_GX_HOOKS_PCMSG_TYPES[$key]} =~ ([^\|]*)\|([^\|]*)\|([^\|]*) ]]; then
-      shorcut=${BASH_REMATCH[1]}
-      type=${BASH_REMATCH[2]}
-      info=${BASH_REMATCH[3]}
+      shortcut="${BASH_REMATCH[1]}"
+      type="${BASH_REMATCH[2]}"
+      info="${BASH_REMATCH[3]}"
 
-      types_index[$shorcut]=$type
-      types_shortcut[$shorcut]=$shorcut
+      types_index[$shortcut]=$type
+      types_shortcut[$shortcut]=$shortcut
 
-      gx_hooks_pcmsg_print_type "${_GX_HOOKS_PCMSG_TYPE_SHORTCUT_COLOR}" "${type}" "${shorcut}" "${info}"
+      gx_hooks_pcmsg_print_type "${_GX_HOOKS_PCMSG_TYPE_SHORTCUT_COLOR}" "${type}" "${shortcut}" "${info}"
     fi
   done
 
@@ -294,39 +294,39 @@ function gx_hooks_pcmsg_final_message() {
 }
 
 function gx_hooks_pcmsg_git_config_local_get() {
-  git config $1
+  git config "$1"
 }
 
 function gx_hooks_pcmsg_git_config_local_remove() {
-  git config --unset $1
+  git config --unset "$1"
 }
 
 # gx_hooks_pcmsg_git_config_local_set return an error for the moment !
 function gx_hooks_pcmsg_git_config_local_set() {
-  git config $1 $2
+  git config "$1" "$2"
 }
 
 function gx_hooks_pcmsg_print_type() {
-  local color=$1
-  local type=$2
-  local shortcut=$3
-  local description=$4
+  local color="$1"
+  local type="$2"
+  local shortcut="$3"
+  local description="$4"
 
-  local type_column="$(gx_hooks_pcmsg_col_fixed_width 11 "${type}")"
-  local shortcut_lengh=${#shortcut}
+  local type_column=$(gx_hooks_pcmsg_col_fixed_width 11 "${type}")
+  local shortcut_lengh="${#shortcut}"
 
   gx_print_colors " ${color}${shortcut}${F_RESET}${type_column:$shortcut_lengh}${description}"
 }
 
 function gx_hooks_pcmsg_col_fixed_width() {
-  local width=$1
-  local text=$2
+  local width="$1"
+  local text="$2"
 
-  if [[ "${width}" < 1 ]]; then
+  if [[ "${width}" -lt 1 ]]; then
     width=1
   fi
 
-  local text_length=${#text}
+  local text_length="${#text}"
   local spaces=""
 
   for ((i = text_length; i < width; i++)); do

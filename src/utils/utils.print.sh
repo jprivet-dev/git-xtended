@@ -40,10 +40,10 @@ function gx_print_fixed_width() {
 }
 
 function gx_print_col_fixed_width() {
-  local width=$1
-  local text=$2
+  local width="$1"
+  local text="$2"
 
-  if [[ "${width}" < 1 ]]; then
+  if [[ "${width}" -lt 1 ]]; then
     width=1
   fi
 
@@ -54,7 +54,7 @@ function gx_print_col_fixed_width() {
     spaces="${spaces} "
   done
 
-  printf "${text}${spaces}"
+  printf "%s%s" "${text}" "${spaces}"
 }
 
 function gx_print() {

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 function gx_install_disable_or_enable() {
-  local label=$1
-  local key=$2
-  local call_function=$3
+  local label="$1"
+  local key="$2"
+  local call_function="$3"
   local choice=""
 
   gx_print_choose_one_option "${label}" "${GX_PARAMS_DISABLED}" "${GX_PARAMS_ENABLED}"
@@ -18,9 +18,9 @@ function gx_install_disable_or_enable() {
 }
 
 function gx_install_input_text() {
-  local label=$1
-  local key=$2
-  local default_value=$3
+  local label="$1"
+  local key="$2"
+  local default_value="$3"
 
   gx_print_input_text "${label}" "${default_value}"
 
@@ -52,9 +52,9 @@ function gx_install_choice() {
 
 # shellcheck disable=SC2034
 function gx_install_choice_params_set_all_from_git_config() {
-  GX_PARAMS_INSTALL_PROMPT_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS} ${GX_PARAMS_DISABLED})"
-  GX_PARAMS_INSTALL_GIT_ALIASES_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS} ${GX_PARAMS_DISABLED})"
-  #    GX_PARAMS_INSTALL_GIT_HOOKS_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_STATUS} ${GX_PARAMS_DISABLED})"
-  #    GX_PARAMS_INSTALL_WORKFLOW_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_WORKFLOW_STATUS} ${GX_PARAMS_DISABLED})"
-  GX_PARAMS_INSTALL_BASH_ALIASES_STATUS="$(gx_git_config_get ${GX_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES_STATUS} ${GX_PARAMS_DISABLED})"
+  GX_PARAMS_INSTALL_PROMPT_STATUS=$(gx_git_config_get "${GX_PARAMS_GIT_CONFIG_KEY_PROMPT_STATUS}" "${GX_PARAMS_DISABLED}")
+  GX_PARAMS_INSTALL_GIT_ALIASES_STATUS=$(gx_git_config_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_ALIASES_STATUS}" "${GX_PARAMS_DISABLED}")
+  #    GX_PARAMS_INSTALL_GIT_HOOKS_STATUS=$(gx_git_config_get "${GX_PARAMS_GIT_CONFIG_KEY_GIT_HOOKS_STATUS}" "${GX_PARAMS_DISABLED}")
+  #    GX_PARAMS_INSTALL_WORKFLOW_STATUS=$(gx_git_config_get "${GX_PARAMS_GIT_CONFIG_KEY_WORKFLOW_STATUS}" "${GX_PARAMS_DISABLED}")
+  GX_PARAMS_INSTALL_BASH_ALIASES_STATUS=$(gx_git_config_get "${GX_PARAMS_GIT_CONFIG_KEY_BASH_ALIASES_STATUS}" "${GX_PARAMS_DISABLED}")
 }
