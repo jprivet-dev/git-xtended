@@ -16,7 +16,7 @@ function test_gx_git_get_autolink_reference_prefix() {
 }
 
 function test_gx_git_status() {
-  local count_lines="$(gx_git_status | wc -l)"
+  local count_lines=$(gx_git_status | wc -l)
   assert equals "${count_lines}" "11" $LINENO
   assert last-git-command-is "git status --porcelain" $LINENO
 }
@@ -27,7 +27,7 @@ function test_gx_git_get_changes_nb() {
 }
 
 function test_gx_git_diff_current_branch_origin_dev() {
-  local count_lines="$(gx_git_diff_current_branch_origin_dev | wc -l)"
+  local count_lines=$(gx_git_diff_current_branch_origin_dev | wc -l)
   assert equals "${count_lines}" "5" $LINENO
   assert last-git-command-is "git diff --stat ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}" $LINENO
 }
@@ -38,7 +38,7 @@ function test_gx_git_get_status_changes_to_be_committed_count() {
 }
 
 function test_gx_git_get_status_changes_to_be_committed() {
-  local count_lines="$(gx_git_get_status_changes_to_be_committed | wc -l)"
+  local count_lines=$(gx_git_get_status_changes_to_be_committed | wc -l)
   assert equals "${count_lines}" "5" $LINENO
   assert last-git-command-is "git status --porcelain" $LINENO
 }
@@ -97,7 +97,7 @@ function test_gx_git_status_behind_count() {
 }
 
 function test_gx_git_status_get_filenames() {
-  local count_lines="$(gx_git_status_get_filenames | wc -l)"
+  local count_lines=$(gx_git_status_get_filenames | wc -l)
   assert equals "${count_lines}" "5" $LINENO
 }
 
@@ -118,7 +118,7 @@ function test_gx_git_status_extract_only_basename() {
 }
 
 function test_gx_git_status_get_filenames_inline() {
-  local count_lines="$(gx_git_status_get_filenames_inline | wc -l)"
+  local count_lines=$(gx_git_status_get_filenames_inline | wc -l)
   assert equals "${count_lines}" "1" $LINENO
 
   assert equals "$(gx_git_status_get_filenames_inline)" "modified, added, deleted, renamed, copied" $LINENO
@@ -154,7 +154,7 @@ function test_gx_git_config_set_global_alias_sh_cmd() {
 }
 
 function test_gx_git_config_aliases_help() {
-  local count_lines="$(gx_git_config_aliases_help | wc -l)"
+  local count_lines=$(gx_git_config_aliases_help | wc -l)
   assert equals "${count_lines}" "51" $LINENO
 
   assert first-line   "$(gx_git_config_aliases_help)"   "${TEST_C_WHITE}  # Git aliases (DISABLED)${TEST_F_RESET} :" $LINENO

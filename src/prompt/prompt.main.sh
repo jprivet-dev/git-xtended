@@ -172,7 +172,7 @@ function gx_prompt_warning() {
   local current_branch=$(gx_git_get_current_branch)
   local remote_ref_branch=$(gx_git_get_remote_ref_branch)
   local behind_count=""
-  local changes_count="$(gx_git_get_changes_nb)"
+  local changes_count=$(gx_git_get_changes_nb)
   local message=""
 
   [[ -n "${remote_ref_branch}" ]] &&
