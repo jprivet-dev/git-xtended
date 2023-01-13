@@ -55,7 +55,7 @@ function gx_test_run() {
   # shellcheck disable=SC2034
   TEST_GX_PARAMS_ASSERT_OK_SHOW_MESSAGE=1
 
-  gx_test_run_only ${func}
+  gx_test_run_only "${func}"
 }
 
 function gx_test_run_all() {
@@ -75,7 +75,7 @@ function gx_test_run_only() {
 
   gx_print_title_2 "Launch only one test"
 
-  if type $func &>/dev/null; then
+  if type "${func}" &>/dev/null; then
     gx_test_run_func "${func}"
     gx_test_print_results
   else

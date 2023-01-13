@@ -52,7 +52,7 @@ function gx_test_assert_true() {
   local expected="${TEST_GX_PARAMS_TRUE}"
 
   if [[ "${current}" == "${expected}" ]]; then
-    gx_test_assert_ok ${line} "Value is ${expected}" "${current}" "${expected}"
+    gx_test_assert_ok "${line}" "Value is ${expected}" "${current}" "${expected}"
   else
     gx_test_assert_nok "${line}" "Value is not ${expected}" "${current}" "${expected}"
   fi

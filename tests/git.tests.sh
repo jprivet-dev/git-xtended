@@ -129,11 +129,11 @@ function test_gx_git_config_set_global_alias_cmd() {
   local value
 
   value="my_value"
-  gx_git_config_set_global_alias_cmd ${name} ${value}
+  gx_git_config_set_global_alias_cmd "${name}" "${value}"
   assert last-git-command-is "git config --global alias.${name} \"${value}\"" $LINENO
 
   value="other_value --option"
-  gx_git_config_set_global_alias_cmd ${name} ${value}
+  gx_git_config_set_global_alias_cmd "${name}" "${value}"
   assert last-git-command-is "git config --global alias.${name} \"${value}\"" $LINENO
 }
 

@@ -30,7 +30,7 @@ source ~/git-xtended/tests/git.tests.sh
 source ~/git-xtended/tests/bash.tests.sh
 source ~/git-xtended/tests/utils.tests.sh
 
-gx_test_run $1
+gx_test_run "$1"
 
 unalias git
 unset GX_ENV_TEST
