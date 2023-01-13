@@ -61,9 +61,9 @@ function gx_prompt_changes_count_colors() {
 }
 
 function gx_prompt_status_to_be_commited() {
-  local m="$(gx_git_get_status_changes_to_be_committed_modified_extended_count)"
-  local n="$(gx_git_get_status_changes_to_be_committed_new_file_count)"
-  local d="$(gx_git_get_status_changes_to_be_committed_deleted_count)"
+  local m=$(gx_git_get_status_changes_to_be_committed_modified_extended_count)
+  local n=$(gx_git_get_status_changes_to_be_committed_new_file_count)
+  local d=$(gx_git_get_status_changes_to_be_committed_deleted_count)
 
   echo $(gx_prompt_status_to_be_commited_colors "${m}" "${n}" "${d}")
 }
@@ -82,12 +82,12 @@ function gx_prompt_status_to_be_commited_colors() {
 }
 
 function gx_prompt_status_not_staged() {
-  local count="$(gx_git_get_status_changes_not_staged_for_commit_count)"
+  local count=$(gx_git_get_status_changes_not_staged_for_commit_count)
   echo $(gx_prompt_status_not_staged_colors "${count}")
 }
 
 function gx_prompt_status_not_staged_colors() {
-  local count=$1
+  local count="$1"
   local format="${GX_PARAMS_PROMPT_STATUS_NOT_STAGED_COLORS}"
 
   [[ "${count}" > 0 ]] &&
@@ -97,12 +97,12 @@ function gx_prompt_status_not_staged_colors() {
 }
 
 function gx_prompt_status_untracked() {
-  local count="$(gx_git_get_status_untracked_files_count)"
+  local count=$(gx_git_get_status_untracked_files_count)
   echo $(gx_prompt_status_untracked_colors "${count}")
 }
 
 function gx_prompt_status_untracked_colors() {
-  local count=$1
+  local count="$1"
   local format="${GX_PARAMS_PROMPT_STATUS_UNTRACKED_COLORS}"
 
   [[ "${count}" > 0 ]] &&
@@ -121,7 +121,7 @@ function gx_prompt_behind() {
   local count=""
 
   [[ -n "${remote_ref_branch}" ]] &&
-    count="$(gx_git_status_behind_count ${current_branch} ${remote_ref_branch})"
+    count=$(gx_git_status_behind_count "${current_branch}" "${remote_ref_branch}")
 
   echo $(gx_prompt_behind_colors "${count}")
 }
@@ -147,14 +147,14 @@ function gx_prompt_ahead() {
   local count=""
 
   if [[ -n "${remote_ref_branch}" ]]; then
-    count="$(gx_git_status_ahead_count ${current_branch} ${remote_ref_branch})"
+    count=$(gx_git_status_ahead_count "${current_branch}" "${remote_ref_branch}")
   fi
 
   echo $(gx_prompt_ahead_colors "${count}")
 }
 
 function gx_prompt_ahead_colors() {
-  local count=$1
+  local count="$1"
   local format="${GX_PARAMS_PROMPT_AHEAD_COLORS_ON}"
 
   if [[ -z "${count}" ]]; then
@@ -176,7 +176,7 @@ function gx_prompt_warning() {
   local message=""
 
   [[ -n "${remote_ref_branch}" ]] &&
-    behind_count="$(gx_git_status_behind_count ${current_branch} ${remote_ref_branch})"
+    behind_count=$(gx_git_status_behind_count "${current_branch}" "${remote_ref_branch}")
 
   [[ 
     "${behind_count}" == "x" ||
