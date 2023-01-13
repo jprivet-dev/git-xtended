@@ -74,25 +74,25 @@ function test_gx_git_get_status_untracked_files_count() {
 }
 
 function test_gx_git_status_ahead() {
-  assert equals "$(gx_git_status_ahead ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH})" "88      0" $LINENO
+  assert equals "$(gx_git_status_ahead "${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}")" "88      0" $LINENO
   assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}" $LINENO
 
-  assert equals "$(gx_git_status_ahead ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH_NOK})" "" $LINENO
+  assert equals "$(gx_git_status_ahead "${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH_NOK}")" "" $LINENO
   assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH_NOK}" $LINENO
 }
 
 function test_gx_git_status_ahead_count() {
-  assert equals "$(gx_git_status_ahead_count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH})" "88" $LINENO
+  assert equals "$(gx_git_status_ahead_count "${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}")" "88" $LINENO
   assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}...${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}" $LINENO
 }
 
 function test_gx_git_status_behind() {
-  assert equals "$(gx_git_status_behind ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH})" "10       32" $LINENO
+  assert equals "$(gx_git_status_behind "${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}")" "10       32" $LINENO
   assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}...${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" $LINENO
 }
 
 function test_gx_git_status_behind_count() {
-  assert equals "$(gx_git_status_behind_count ${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH} ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH})" "10" $LINENO
+  assert equals "$(gx_git_status_behind_count "${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" "${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}")" "10" $LINENO
   assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}...${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" $LINENO
 }
 
