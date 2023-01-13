@@ -96,7 +96,7 @@ function test_gx_git_status_behind_count() {
   assert last-git-command-is "git rev-list --left-right --count ${TEST_GX_PARAMS_FAKE_GIT_REMOTE_REF_BRANCH}...${TEST_GX_PARAMS_FAKE_CURRENT_BRANCH}" $LINENO
 }
 
-function test_gx_git_status_get_filenames_inline() {
+function test_gx_git_status_get_filenames() {
   local count_lines="$(gx_git_status_get_filenames | wc -l)"
   assert equals "${count_lines}" "5" $LINENO
 }
