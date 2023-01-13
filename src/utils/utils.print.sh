@@ -82,7 +82,11 @@ function gx_print_step() {
 }
 
 function gx_print_colors() {
-  echo ${GX_PARAMS_PRINT_E_TAG} "$*"
+  if [ "${GX_PARAMS_PRINT_COLORS_ACTIVE}" == "${GX_PARAMS_TRUE}" ]; then
+    echo -e "$*"
+  else
+    echo "$*"
+  fi
 }
 
 function gx_print_colors_force() {

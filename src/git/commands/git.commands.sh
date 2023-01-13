@@ -31,11 +31,11 @@ function gx_git_get_remote_main() {
 }
 
 function gx_git_get_remote_ref_branch() {
-  git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH} 2>/dev/null
+  git config "${GX_PARAMS_GIT_CONFIG_KEY_GIT_REMOTE_REF_BRANCH}" 2>/dev/null
 }
 
 function gx_git_get_autolink_reference_prefix() {
-  git config ${GX_PARAMS_GIT_CONFIG_KEY_GIT_AUTOLINK_REFERENCE_PREFIX} 2>/dev/null
+  git config "${GX_PARAMS_GIT_CONFIG_KEY_GIT_AUTOLINK_REFERENCE_PREFIX}" 2>/dev/null
 }
 
 function gx_git_status() {
