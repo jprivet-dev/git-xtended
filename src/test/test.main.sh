@@ -18,13 +18,13 @@ function gx_test_print_results() {
   local assertion_plurial
   local failure_plurial
 
-  [[ ${gx_test_count_tests} > 1 ]]      && test_plurial="tests"           || test_plurial="test"
-  [[ ${gx_test_count_assertions} > 1 ]] && assertion_plurial="assertions" || assertion_plurial="assertion"
-  [[ ${gx_test_count_failures} > 1 ]]   && failure_plurial="failures"     || failure_plurial="failure"
+  [[ ${gx_test_count_tests} -gt 1 ]]      && test_plurial="tests"           || test_plurial="test"
+  [[ ${gx_test_count_assertions} -gt 1 ]] && assertion_plurial="assertions" || assertion_plurial="assertion"
+  [[ ${gx_test_count_failures} -gt 1 ]]   && failure_plurial="failures"     || failure_plurial="failure"
 
   message="${gx_test_count_tests} ${test_plurial}, ${gx_test_count_assertions} ${assertion_plurial}, ${gx_test_count_failures} ${failure_plurial}"
 
-  if [[ ${gx_test_count_failures} > 0 ]]; then
+  if [[ ${gx_test_count_failures} -gt 0 ]]; then
     gx_print_title_error "FAILURES! ${message}"
   else
     gx_print_title_success "OK: ${message}"

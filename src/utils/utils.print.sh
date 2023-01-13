@@ -43,7 +43,7 @@ function gx_print_col_fixed_width() {
   local width="$1"
   local text="$2"
 
-  if [[ "${width}" < 1 ]]; then
+  if [[ "${width}" -lt 1 ]]; then
     width=1
   fi
 

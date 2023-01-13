@@ -90,7 +90,7 @@ function gx_prompt_status_not_staged_colors() {
   local count="$1"
   local format="${GX_PARAMS_PROMPT_STATUS_NOT_STAGED_COLORS}"
 
-  [[ "${count}" > 0 ]] &&
+  [[ "${count}" -gt 0 ]] &&
     format="${GX_PARAMS_PROMPT_STATUS_NOT_STAGED_COLORS_ERROR}"
 
   echo "${format}${count}!${F_RESET}"
@@ -105,7 +105,7 @@ function gx_prompt_status_untracked_colors() {
   local count="$1"
   local format="${GX_PARAMS_PROMPT_STATUS_UNTRACKED_COLORS}"
 
-  [[ "${count}" > 0 ]] &&
+  [[ "${count}" -gt 0 ]] &&
     format="${GX_PARAMS_PROMPT_STATUS_UNTRACKED_COLORS_ERROR}"
 
   echo "${format}${count}?${F_RESET}"

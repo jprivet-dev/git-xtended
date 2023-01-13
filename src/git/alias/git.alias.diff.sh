@@ -18,7 +18,7 @@ if [ "${first}" == "" ]; then
   first=1
 fi
 
-if [[ "${first}" =~ ^[0-9]+ && "${#first}" < 7 ]]; then
+if [[ "${first}" =~ ^[0-9]+ && "${#first}" -lt 7 ]]; then
   # first param starts with a number (index of file) AND is not a commit reference
 
   status_i=0
