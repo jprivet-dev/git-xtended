@@ -6,7 +6,7 @@ source ~/git-xtended/src/git/hooks/git.hooks.pcmsg.sh
 source ~/git-xtended/src/git/commands/git.commands.sh
 source ~/git-xtended/src/utils/utils.print.sh
 
-base_branch=${1}
+base_branch="$1"
 
 current_remote_origin_url=$(gx_git_get_current_remote_origin_url)
 current_remote_origin_url_last_element=${current_remote_origin_url##*@} # get the string after '@'

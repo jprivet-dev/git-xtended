@@ -36,7 +36,7 @@ else
     git add .
   elif [ "${indexes}" != "" ]; then
     printf "> git add %s files\n" "${indexes}"
-    git add ${indexes}
+    git add "${indexes}"
   fi
 fi
 
