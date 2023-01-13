@@ -41,8 +41,7 @@ else
 fi
 
 if [ "$(gx_git_get_status_changes_to_be_committed_count)" == 0 ]; then
-  # CAUTION: for the moment, do not insert colors with %s in printf (e.g. C_BG_LIGHT_RED)
-  printf "${C_BG_LIGHT_RED} No files to commit !${F_RESET}\n"
+  printf "%b No files to commit !%b\n" "${C_BG_LIGHT_RED}" "${F_RESET}"
   exit 1
 fi
 

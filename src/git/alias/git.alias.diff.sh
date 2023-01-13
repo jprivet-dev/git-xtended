@@ -7,8 +7,7 @@ source ~/git-xtended/src/git/commands/git.commands.sh
 source ~/git-xtended/src/utils/utils.print.sh
 
 if [ "$(gx_git_get_changes_nb)" == 0 ]; then
-  # CAUTION: for the moment, do not insert colors with %s in printf (e.g. C_BG_LIGHT_RED)
-  printf "${C_BG_LIGHT_RED} No files ! ${F_RESET}\n"
+  printf "%b No files ! %b\n" "${C_BG_LIGHT_RED}" "${F_RESET}"
   exit 1
 fi
 
@@ -32,17 +31,15 @@ if [[ "${first}" =~ ^[0-9]+ && "${#first}" < 7 ]]; then
         is_not_staged=$(git status --porcelain -s "${path}" | grep '^.[^? ]' | wc -l 2>/dev/null)
 
         if [ "${is_staged}" == 1 ]; then
-          # CAUTION: for the moment, do not insert colors with %s in printf (e.g. C_BG_GREEN)
           printf "%s\n" "${split}"
-          printf "> git diff (%s) %s ${C_BG_GREEN} STAGED VERSION ${F_RESET}\n" "${i}" "${path}"
+          printf "> git diff (%s) %s %b STAGED VERSION %b\n" "${i}" "${path}" "${C_BG_GREEN}" "${F_RESET}"
           printf "%s\n" "${split}"
           git diff --staged "${path}"
         fi
 
         if [ "${is_not_staged}" == 1 ]; then
-          # CAUTION: for the moment, do not insert colors with %s in printf (e.g. C_BG_RED)
           printf "%s\n" "${split}"
-          printf "> git diff (%s) %s ${C_BG_RED} NOT STAGED VERSION ${F_RESET}\n" "${i}" "${path}"
+          printf "> git diff (%s) %s %b NOT STAGED VERSION %b\n" "${i}" "${path}" "${C_BG_RED}" "${F_RESET}"
           printf "%s\n" "${split}"
           git diff "${path}"
         fi

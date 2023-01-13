@@ -39,17 +39,16 @@ function gx_install_activation_show_status() {
 
   printf "\n"
   gx_logo_color
-  # CAUTION: for the moment, do not insert colors with %s in printf (e.g. C_LIGHT_MAGENTA)
-  printf "${C_LIGHT_MAGENTA}%s${F_RESET}\n" "${line_version}"
+  printf "%b%s%b\n" "${C_LIGHT_MAGENTA}" "${line_version}" "${F_RESET}"
   printf "\n"
 
-  printf "${C_DARK_GRAY}%s${F_RESET}\n" "${line}"
+  printf "%b%s%b\n" "${C_DARK_GRAY}" "${line}" "${F_RESET}"
   gx_print_fixed_width -e $col_width "${space}" "${C_DARK_GRAY}>${F_RESET} ${GX_PARAMS_PROMPT_TITLE}" "${gx_prompt_status}"
   gx_print_fixed_width -e $col_width "${space}" "${C_DARK_GRAY}>${F_RESET} ${GX_PARAMS_GIT_ALIASES_TITLE}" "${gx_git_aliases_status}"
   gx_print_fixed_width -e $col_width "${space}" "${C_DARK_GRAY}>${F_RESET} ${GX_PARAMS_BASH_ALIASES_TITLE}" "${gx_bash_aliases_status}"
 
-  printf "${C_DARK_GRAY}%s${F_RESET}\n" "${line}"
-  printf "${C_DARK_GRAY}>${F_RESET} %s ${C_DARK_GRAY}<${F_RESET}\n" "${GX_PARAMS_GITHUB}"
-  printf "${C_DARK_GRAY}%s${F_RESET}\n" "${line}"
+  printf "%b%s%b\n" "${C_DARK_GRAY}" "${line}" "${F_RESET}"
+  printf "%b>%b %s %b<%b\n" "${C_DARK_GRAY}" "${F_RESET}" "${GX_PARAMS_GITHUB}" "${C_DARK_GRAY}" "${F_RESET}"
+  printf "%b%s%b\n" "${C_DARK_GRAY}" "${line}" "${F_RESET}"
   printf "\n"
 }
