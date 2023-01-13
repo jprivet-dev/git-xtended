@@ -41,8 +41,8 @@ function bump_version_from_to() {
     local NO_SHORT="n"
 
     local choice
-    local label=$1
-    local default=$2
+    local label="$1"
+    local default="$2"
 
     prompt_yes_no_choice=""
 
@@ -75,9 +75,9 @@ function bump_version_from_to() {
   local prompt_response=""
 
   function prompt() {
-    local label=$1
-    local example=$2
-    local default=$3
+    local label="$1"
+    local example="$2"
+    local default="$3"
 
     local complete_label="${C_GREEN}> ${label}"
     if [ "${example}" != "" ]; then
@@ -127,7 +127,7 @@ function bump_version_from_to() {
   }
 
   function url_encode_light() {
-    local url=$1
+    local url="$1"
     url="${url// /${ENCODE_SPACE}}"
     url="${url//#/${ENCODE_SHARP}}"
     url="${url//\\n/${ENCODE_NEW_LINE}}"

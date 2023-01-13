@@ -47,8 +47,8 @@ function gx_test_assert_equals() {
 }
 
 function gx_test_assert_true() {
-  local current=$1
-  local line=$2
+  local current="$1"
+  local line="$2"
   local expected="${TEST_GX_PARAMS_TRUE}"
 
   if [[ "${current}" == "${expected}" ]]; then
@@ -83,7 +83,7 @@ function gx_test_assert_last_git_command_is() {
 }
 
 function gx_test_assert_first_line() {
-  local current=$(echo "${1}" | head -n1)
+  local current=$(echo "$1" | head -n1)
   local expected="$2"
   local line="$3"
 
@@ -95,7 +95,7 @@ function gx_test_assert_first_line() {
 }
 
 function gx_test_assert_second_line() {
-  local current=$(echo "${1}" | head -n2 | tail -n1)
+  local current=$(echo "$1" | head -n2 | tail -n1)
   local expected="$2"
   local line="$3"
 

@@ -100,14 +100,14 @@ function gx_git_get_status_untracked_files_count() {
 }
 
 function gx_git_status_ahead() {
-  local from_branch=$1
-  local to_branch=$2
+  local from_branch="$1"
+  local to_branch="$2"
   git rev-list --left-right --count "${from_branch}"..."${to_branch}" 2>/dev/null
 }
 
 function gx_git_status_ahead_count() {
-  local from_branch=$1
-  local to_branch=$2
+  local from_branch="$1"
+  local to_branch="$2"
   # TODO : use "| while read -a array; do echo ${array[0]} ; done"
   # instead of "| cut -f 1". Last tip does not work when gx_git_status_ahead_count called
   # into testing function "test_gx_git_status_ahead_count". Find why!!!
@@ -115,15 +115,15 @@ function gx_git_status_ahead_count() {
 }
 
 function gx_git_status_behind() {
-  local from_branch=$1
-  local to_branch=$2
+  local from_branch="$1"
+  local to_branch="$2"
 
   git rev-list --left-right --count "${to_branch}"..."${from_branch}" 2>/dev/null
 }
 
 function gx_git_status_behind_count() {
-  local from_branch=$1
-  local to_branch=$2
+  local from_branch="$1"
+  local to_branch="$2"
   # TODO : use "| while read -a array; do echo ${array[0]} ; done"
   # instead of "| cut -f 1". Last tip does not work when gx_git_status_ahead_count called
   # into testing function "test_gx_git_status_behind_count". Find why!!!
@@ -131,7 +131,7 @@ function gx_git_status_behind_count() {
 }
 
 function gx_git_status_extract_only_basename() {
-  local path=$1
+  local path="$1"
   filename=$(basename -- "${path:3}")
   printf "%s\n" "${filename}"
 }

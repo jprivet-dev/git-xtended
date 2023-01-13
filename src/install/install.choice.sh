@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 function gx_install_disable_or_enable() {
-  local label=$1
-  local key=$2
-  local call_function=$3
+  local label="$1"
+  local key="$2"
+  local call_function="$3"
   local choice=""
 
   gx_print_choose_one_option "${label}" "${GX_PARAMS_DISABLED}" "${GX_PARAMS_ENABLED}"
@@ -18,9 +18,9 @@ function gx_install_disable_or_enable() {
 }
 
 function gx_install_input_text() {
-  local label=$1
-  local key=$2
-  local default_value=$3
+  local label="$1"
+  local key="$2"
+  local default_value="$3"
 
   gx_print_input_text "${label}" "${default_value}"
 

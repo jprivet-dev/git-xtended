@@ -71,7 +71,7 @@ function gx_test_run_all() {
 }
 
 function gx_test_run_only() {
-  local func=$1
+  local func="$1"
 
   gx_print_title_2 "Launch only one test"
 
@@ -84,7 +84,7 @@ function gx_test_run_only() {
 }
 
 function gx_test_run_func() {
-  local func=$1
+  local func="$1"
 
   echo -e -n "${C_LIGHT_YELLOW}#${F_RESET} ${func} "
   $func

@@ -319,8 +319,8 @@ function gx_hooks_pcmsg_print_type() {
 }
 
 function gx_hooks_pcmsg_col_fixed_width() {
-  local width=$1
-  local text=$2
+  local width="$1"
+  local text="$2"
 
   if [[ "${width}" < 1 ]]; then
     width=1
