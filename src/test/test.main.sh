@@ -40,7 +40,7 @@ function gx_test_find_all_func_gx() {
 }
 
 function gx_test_run() {
-  local func=$1
+  local func="$1"
 
   gx_print_step "Tests launched"
 
@@ -55,7 +55,7 @@ function gx_test_run() {
   # shellcheck disable=SC2034
   TEST_GX_PARAMS_ASSERT_OK_SHOW_MESSAGE=1
 
-  gx_test_run_only $func
+  gx_test_run_only ${func}
 }
 
 function gx_test_run_all() {
@@ -64,7 +64,7 @@ function gx_test_run_all() {
   gx_print_title_2 "Launch all tests"
 
   for func in "${func_test_list[@]}"; do
-    gx_test_run_func $func
+    gx_test_run_func "${func}"
   done
 
   gx_test_print_results
@@ -76,7 +76,7 @@ function gx_test_run_only() {
   gx_print_title_2 "Launch only one test"
 
   if type $func &>/dev/null; then
-    gx_test_run_func $func
+    gx_test_run_func "${func}"
     gx_test_print_results
   else
     echo -e "${C_LIGHT_RED}[ERROR] Test function '${func}' does not exist${F_RESET}"
