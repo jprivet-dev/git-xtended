@@ -27,7 +27,7 @@ function gx_git_get_remote_main() {
     remote=$(git config branch.master.remote)
     name=master
   fi
-  printf "${remote}/${name}"
+  printf "%s/%s" "${remote}" "${name}"
 }
 
 function gx_git_get_remote_ref_branch() {
@@ -111,7 +111,7 @@ function gx_git_status_ahead_count() {
   # TODO : use "| while read -a array; do echo ${array[0]} ; done"
   # instead of "| cut -f 1". Last tip does not work when gx_git_status_ahead_count called
   # into testing function "test_gx_git_status_ahead_count". Find why!!!
-  gx_git_status_ahead "${from_branch}" "${to_branch}" | while read -a array; do echo ${array[0]}; done
+  gx_git_status_ahead "${from_branch}" "${to_branch}" | while read -a array; do echo "${array[0]}"; done
 }
 
 function gx_git_status_behind() {
@@ -127,13 +127,13 @@ function gx_git_status_behind_count() {
   # TODO : use "| while read -a array; do echo ${array[0]} ; done"
   # instead of "| cut -f 1". Last tip does not work when gx_git_status_ahead_count called
   # into testing function "test_gx_git_status_behind_count". Find why!!!
-  gx_git_status_behind "${from_branch}" "${to_branch}" | while read -a array; do echo ${array[0]}; done
+  gx_git_status_behind "${from_branch}" "${to_branch}" | while read -a array; do echo "${array[0]}"; done
 }
 
 function gx_git_status_extract_only_basename() {
   local path=$1
   filename=$(basename -- "${path:3}")
-  printf "${filename}\n"
+  printf "%s\n" "${filename}"
 }
 
 function gx_git_status_get_filenames() {
@@ -145,5 +145,5 @@ function gx_git_status_get_filenames() {
 function gx_git_status_get_filenames_inline() {
   local listing=($(gx_git_status_get_filenames))
   local filenames=$(printf ", %s" "${listing[@]}")
-  printf "${filenames:2}\n"
+  printf "%s\n" "${filenames:2}"
 }

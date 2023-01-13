@@ -19,7 +19,8 @@ current_branch=$(gx_git_get_current_branch)
 printf "> Compare & Create PR with current branch:\n"
 
 if [ "${base_branch}" != "" ]; then
-  printf "> ${url_root}${base_branch}...${current_branch}\n"
+  printf "> %s%s...%s\n" \
+    "${url_root}" "${base_branch}" "${current_branch}"
 else
   remote_main=$(gx_git_get_remote_main)
   remote_main_last_element=${remote_main##*/} # get the string after '@'
@@ -27,9 +28,12 @@ else
   remote_ref_branch=$(gx_git_get_remote_ref_branch)
   remote_ref_branch_last_element=${remote_ref_branch##*/} # get the string after '@'
 
-  printf "> ${url_root}${remote_main_last_element}...${current_branch}\n"
+  printf "> %s%s...%s\n" \
+    "${url_root}" "${remote_main_last_element}" "${current_branch}"
+
   if [ "${remote_main_last_element}" != "${remote_ref_branch_last_element}" ]; then
-    printf "> ${url_root}${remote_ref_branch_last_element}...${current_branch}\n"
+    printf "> %s%s...%s\n" \
+      "${url_root}" "${remote_ref_branch_last_element}" "${current_branch}"
   fi
 fi
 

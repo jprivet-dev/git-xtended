@@ -39,6 +39,7 @@ function gx_install_activation_show_status() {
 
   printf "\n"
   gx_logo_color
+  # CAUTION: for the moment, do not insert colors with %s in printf (e.g. C_LIGHT_MAGENTA)
   printf "${C_LIGHT_MAGENTA}%s${F_RESET}\n" "${line_version}"
   printf "\n"
 

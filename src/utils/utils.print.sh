@@ -54,7 +54,7 @@ function gx_print_col_fixed_width() {
     spaces="${spaces} "
   done
 
-  printf "${text}${spaces}"
+  printf "%s%s" "${text}" "${spaces}"
 }
 
 function gx_print() {
