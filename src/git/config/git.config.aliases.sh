@@ -79,6 +79,7 @@ function gx_git_config_set_aliases() {
   # git describe
   git config "${global}" alias."${GX_PARAMS_GIT_ALIAS_TLAST}" "describe --tags --abbrev=0"
   git config "${global}" alias."${GX_PARAMS_GIT_ALIAS_TLIST}" "!git tag --list | sort --version-sort"
+  git config "${global}" alias."${GX_PARAMS_GIT_ALIAS_RELEASE}" '!f() { '${GX_PARAMS_GIT_ALIAS_RELEASE_FILE}' "$@"; }; f'
 
   # git config
   git config "${global}" alias."${GX_PARAMS_GIT_ALIAS_CONFGX}" "!git config --list | grep ^${GX_PARAMS_GIT_CONFIG_KEY_ROOT}"
@@ -138,6 +139,7 @@ function gx_git_config_unset_aliases() {
   git config "${global}" --unset-all alias."${GX_PARAMS_GIT_ALIAS_PR}"
   git config "${global}" --unset-all alias."${GX_PARAMS_GIT_ALIAS_PUSHF}"
   git config "${global}" --unset-all alias."${GX_PARAMS_GIT_ALIAS_RECENT}"
+  git config "${global}" --unset-all alias."${GX_PARAMS_GIT_ALIAS_RELEASE}"
   git config "${global}" --unset-all alias."${GX_PARAMS_GIT_ALIAS_RENAME}"
   git config "${global}" --unset-all alias."${GX_PARAMS_GIT_ALIAS_RES}"
   git config "${global}" --unset-all alias."${GX_PARAMS_GIT_ALIAS_R}"

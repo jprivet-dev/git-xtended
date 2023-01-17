@@ -48,6 +48,7 @@ function gx_git_config_aliases_help() {
   gx_git_config_aliases_help_line " cherry pick |" "${GX_PARAMS_GIT_ALIAS_CP}" "" .......................... "Simple \"cherry-pick\" alias"
   gx_git_config_aliases_help_line "        tags |" "${GX_PARAMS_GIT_ALIAS_TLAST}" "" ....................... "Show the most recent tag on the current branch"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_TLIST}" "" ....................... "Display tags in natural order"
+  gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_RELEASE}" "<files>" ............. "[EXPERIMENTAL] Help with replacing versions in files and creating releases on GitHub"
   gx_git_config_aliases_help_line "      config |" "${GX_PARAMS_GIT_ALIAS_CONFGX}" "" ...................... "Show ${GX_PARAMS_GX_TITLE_SHORT} git configuration (as '$ gx config')"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_UNSET}" "" ....................... "Remove the line matching the key from config file (local)"
   gx_git_config_aliases_help_line "              " "${GX_PARAMS_GIT_ALIAS_UNSET_ALL}" "" .................... "Remove all lines matching the key from config file (local)"
