@@ -26,6 +26,8 @@ if [[ "${indexes}" =~ ^[0-9]+ ]]; then
   status_i=0
 
   printf "%s\n" "${split}"
+
+  # TODO: duplicate code in git.alias.commit.sh file
   git status -s | cut -c4- | while read path; do
     status_i=$((status_i + 1))
     for i in ${indexes}; do
