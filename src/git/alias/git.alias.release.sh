@@ -40,7 +40,7 @@ function prompt_yes_no() {
   local label=$1
   local default=$2
 
-  local prompt_yes_no_choice=""
+  prompt_yes_no_choice=""
 
   case $default in
   "${YES}" | "${YES_SHORT}") default="${YES}" ;;
