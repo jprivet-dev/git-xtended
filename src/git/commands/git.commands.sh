@@ -79,7 +79,7 @@ function gx_git_get_status_changes_to_be_committed_modified_extended_count() {
   # M = modified / A = added / D = deleted
   # R = renamed / C = copied / U = updated but unmerged
   # ? = untracked / ! = ignored
-  # get all without D, A, ? & ' '
+  # get all without 'D', 'A', '?' and ' ' (space)
   git status --porcelain | grep '^[^DA? ]' | wc -l 2>/dev/null
 }
 
