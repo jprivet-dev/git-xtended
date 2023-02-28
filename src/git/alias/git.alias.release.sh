@@ -131,7 +131,11 @@ function url_encode_light() {
   echo "${url}"
 }
 
-echo -e "${C_BLUE}[EXPERIMENTAL] Help with replacing versions in files and creating releases on GitHub${F_RESET}"
+echo -e "${C_BLUE}-------------------------------------------------------------------------${F_RESET}"
+echo -e "${C_BLUE}- Help with replacing versions in files and creating releases on GitHub -${F_RESET}"
+echo -e "${C_BLUE}-                             [EXPERIMENTAL]                            -${F_RESET}"
+echo -e "${C_BLUE}-------------------------------------------------------------------------${F_RESET}"
+echo
 
 if [ "${files}" == "" ]; then
   printf "ERROR! You must specify a list of files !\n"
@@ -144,16 +148,18 @@ branch_target="${prompt_response}"
 ((step++))
 echo
 echo -e "${C_BLUE}${SPLIT}${F_RESET}"
-echo -e "${C_BLUE}${step}. Switch on the branch '${branch_target}' & Get last tags${F_RESET}"
+echo -e "${C_BLUE}${step}. Switch on the branch '${branch_target}' & Get all tags${F_RESET}"
 echo
 echo "$ git switch ${branch_target}"
+echo "$ git fetch --all --tags"
 echo "$ git pull --ff origin ${branch_target}"
 
-prompt_yes_no "Run the above git commands"
+prompt_yes_no "Run the above commands"
 switch_on_target="${prompt_yes_no_choice}"
 
 if [ "${switch_on_target}" == "yes" ]; then
   git switch "${branch_target}" &&
+    git fetch --all --tags &&
     git pull --ff origin "${branch_target}"
 fi
 
@@ -195,7 +201,7 @@ echo -e "${C_BLUE}${step}. Create the branch '${branch_release}'${F_RESET}"
 echo
 echo "$ git switch -c ${branch_release}"
 
-prompt_yes_no "Run the above git commands"
+prompt_yes_no "Run the above commands"
 new_release_choice="${prompt_yes_no_choice}"
 
 if [ "${new_release_choice}" == "yes" ]; then
@@ -224,7 +230,7 @@ echo
 echo "$ git commit --all -m \"release: bump version to ${to}\""
 echo "$ git push origin ${branch_release}"
 
-prompt_yes_no "Run the above git commands"
+prompt_yes_no "Run the above commands"
 save_files_choice="${prompt_yes_no_choice}"
 
 if [ "${save_files_choice}" == "yes" ]; then
@@ -296,15 +302,17 @@ echo
 echo "$ git push origin --delete ${branch_release}"
 echo "$ git switch ${branch_target} -f"
 echo "$ git branch -D ${branch_release}"
+echo "$ git fetch --all --tags"
 echo "$ git pull --ff origin ${branch_target}"
 
-prompt_yes_no "Run the above git commands"
+prompt_yes_no "Run the above commands"
 clean_update_choice="${prompt_yes_no_choice}"
 
 if [ "${clean_update_choice}" == "yes" ]; then
   git push origin --delete "${branch_release}" &&
     git switch "${branch_target}" -f &&
     git branch -D "${branch_release}" &&
+    git fetch --all --tags &&
     git pull --ff origin "${branch_target}"
 fi
 
@@ -315,11 +323,13 @@ echo -e "${C_BLUE}${step}. Continue the job on the branch '${branch_next}' [LAST
 echo
 echo "$ git switch -c ${to}-${BRANCH_RELEASE_NEXT_SUFFIX}"
 
-prompt_yes_no "Run the above git commands"
+prompt_yes_no "Run the above commands"
 next_branch_choice="${prompt_yes_no_choice}"
 
 if [ "${next_branch_choice}" == "yes" ]; then
   git switch -c "${to}"-"${BRANCH_RELEASE_NEXT_SUFFIX}"
 fi
 
+echo
+echo -e "${C_BLUE}End!${F_RESET}"
 echo
